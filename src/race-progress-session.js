@@ -39,11 +39,13 @@ export class RaceProgressSession {
   }
 
   reset() {
+    this.pendingCheckpoint = null;
     this.status = STATUS.idle;
     this.runTimeExactMs = 0;
     this.lapStartedAtExactMs = 0;
     this.sectorStartedAtExactMs = 0;
     this.checkpointsPassed = 0;
+    this.completedLaps = 0;
     this.currentSector = 0;
     this.currentLapValid = true;
     return this.snapshot();
@@ -60,6 +62,7 @@ export class RaceProgressSession {
   }
 
   advance(deltaMs) {
+    this.requireNoPendingCheckpoint('advance');
     if (!Number.isFinite(deltaMs) || deltaMs < 0) {
       throw new RangeError('deltaMs must be a finite non-negative number');
     }
@@ -72,12 +75,23 @@ export class RaceProgressSession {
   }
 
   invalidate() {
+    this.requireNoPendingCheckpoint('invalidate');
     if (this.status !== STATUS.running || !this.currentLapValid) return false;
     this.currentLapValid = false;
     return true;
   }
 
   passCheckpoint(checkpointIndex) {
+    const prepared = this.prepareCheckpoint(checkpointIndex);
+    if (!prepared.accepted) return prepared;
+    this.commitSector();
+    this.commitLap();
+    this.commitRun();
+    return this.finishCheckpoint();
+  }
+
+  prepareCheckpoint(checkpointIndex) {
+    this.requireNoPendingCheckpoint('prepare a checkpoint');
     if (
       !Number.isInteger(checkpointIndex)
       || checkpointIndex < 0
@@ -102,7 +116,7 @@ export class RaceProgressSession {
       sectorTimeMs: null,
       lapTimeMs: null,
       lapValid: null,
-      runCompleted: Boolean(flags & FLAGS.run),
+      runCompleted: false,
     };
     if (!outcome.accepted) return outcome;
 
@@ -111,28 +125,86 @@ export class RaceProgressSession {
       this.checkpointsPassed,
       this.checkpointCount,
     );
-    if (flags & FLAGS.sector) {
-      outcome.sectorTimeMs = this.core.roundDurationMs(
+    this.pendingCheckpoint = {
+      flags,
+      outcome,
+      sectorCommitted: false,
+      lapCommitted: false,
+      runCommitted: false,
+    };
+    return { ...outcome };
+  }
+
+  commitSector() {
+    const pending = this.requirePendingCheckpoint('commit a sector');
+    if (pending.sectorCommitted) throw new Error('checkpoint sector stage was already committed');
+    pending.sectorCommitted = true;
+    if (pending.flags & FLAGS.sector) {
+      pending.outcome.sectorTimeMs = this.core.roundDurationMs(
         this.runTimeExactMs - this.sectorStartedAtExactMs,
       );
       this.currentSector += 1;
       this.sectorStartedAtExactMs = this.runTimeExactMs;
     }
-    if (flags & FLAGS.lap) {
-      outcome.lapTimeMs = this.core.roundDurationMs(
-        this.runTimeExactMs - this.lapStartedAtExactMs,
-      );
-      outcome.lapValid = this.currentLapValid;
-    }
-    if (flags & FLAGS.run) {
-      this.status = STATUS.finished;
-    } else if (flags & FLAGS.lap) {
+    return pending.outcome.sectorTimeMs;
+  }
+
+  commitLap() {
+    const pending = this.requirePendingCheckpoint('commit a lap');
+    if (!pending.sectorCommitted) throw new Error('checkpoint sector stage must commit before lap');
+    if (pending.lapCommitted) throw new Error('checkpoint lap stage was already committed');
+    pending.lapCommitted = true;
+    if (!(pending.flags & FLAGS.lap)) return null;
+
+    pending.outcome.lapTimeMs = this.core.roundDurationMs(
+      this.runTimeExactMs - this.lapStartedAtExactMs,
+    );
+    pending.outcome.lapValid = this.currentLapValid;
+    this.completedLaps += 1;
+    if (!(pending.flags & FLAGS.run)) {
       this.lapStartedAtExactMs = this.runTimeExactMs;
       this.sectorStartedAtExactMs = this.runTimeExactMs;
       this.currentSector = 0;
       this.currentLapValid = true;
     }
+    return {
+      timeMs: pending.outcome.lapTimeMs,
+      valid: pending.outcome.lapValid,
+    };
+  }
+
+  commitRun() {
+    const pending = this.requirePendingCheckpoint('commit a run');
+    if (!pending.lapCommitted) throw new Error('checkpoint lap stage must commit before run');
+    if (pending.runCommitted) throw new Error('checkpoint run stage was already committed');
+    pending.runCommitted = true;
+    if (!(pending.flags & FLAGS.run)) return false;
+    this.status = STATUS.finished;
+    pending.outcome.runCompleted = true;
+    return true;
+  }
+
+  finishCheckpoint() {
+    const pending = this.requirePendingCheckpoint('finish a checkpoint');
+    if (!pending.sectorCommitted || !pending.lapCommitted || !pending.runCommitted) {
+      throw new Error('checkpoint sector, lap, and run stages must commit before finish');
+    }
+    const outcome = { ...pending.outcome };
+    this.pendingCheckpoint = null;
     return outcome;
+  }
+
+  requireNoPendingCheckpoint(action) {
+    if (this.pendingCheckpoint) {
+      throw new Error(`cannot ${action} while a checkpoint transaction is pending`);
+    }
+  }
+
+  requirePendingCheckpoint(action) {
+    if (!this.pendingCheckpoint) {
+      throw new Error(`cannot ${action} without a pending checkpoint`);
+    }
+    return this.pendingCheckpoint;
   }
 
   snapshot() {
@@ -141,7 +213,7 @@ export class RaceProgressSession {
       status: STATUS_NAME[this.status],
       runTimeMs: this.core.roundDurationMs(this.runTimeExactMs),
       currentLapNumber: Math.min(
-        Math.floor(this.checkpointsPassed / this.checkpointCount) + 1,
+        this.completedLaps + 1,
         this.totalLaps,
       ),
       lapTimeMs: running

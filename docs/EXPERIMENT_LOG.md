@@ -411,10 +411,29 @@
 
 结论：可选 shadow 已把 shared rule 放进真实 session action 边界，并验证 adapter 不漂移；但 atomic/staged event 差异是实际接管阻碍，需先扩展 transaction 协议，不能仅把 shadow 改名为 owner。
 
-## 下一实验
+## checkpoint staged progress transaction 实验结果
 
 问题：checkpoint 规则能否拆成无 mutation 的 prepare result 与明确的 sector/lap/run commit 阶段，使 Rust/WASM progress owner 保留 legacy 的 checkpoint-event snapshot 时序？
 
 可观测量：accepted 后 pre-sector snapshot、sector event 后 snapshot、lap event/final run snapshot；wrong/idle/finish；WASM/JS fallback staged state；旧 35-action full event equality。
 
 停止条件：先让 staged wrapper 独立匹配 legacy 中间 snapshot；未证明 event/save 完整一致前不切 `RaceTimingSession`；ABI 增长和 120 Hz call 次数也记录，避免为形式接管增加无证据成本。
+
+- red evidence：staged test 在旧 wrapper 上以 `TypeError: prepareCheckpoint is not a function` 退出 1。
+- transaction：prepare 校验/flags 并只推进 checkpoint；sector/lap/run 各阶段明确 commit；finish 返回 compact outcome 并清 pending。pending 时拒绝其他 mutation，避免半事务被外部观察后继续推进。
+- compatibility：旧 `passCheckpoint()` 仍存在，在内部执行完整 transaction；atomic 34-snapshot test 和 live-shadow 35-action test未改即可通过。
+- intermediate oracle：使用 sector checkpoints `[2,3]`，确保有 accepted-but-no-sector 与 sector+lap 两类；分别与 checkpoint/sector/lap/run event 自带 snapshot 比较。
+- first failure：lap finish prepare 时 wrapper `currentLapNumber=2`，legacy checkpoint snapshot 为 1；原因是 wrapper 用 checkpoints 推导，legacy 用已提交 `laps.length`。改为 `completedLaps` 在 commitLap 增加后，46/46 intermediate snapshots 通过。
+- 双路径：真实 WASM 与 JS fallback 均通过 wrong checkpoint、invalid first lap、第二圈 finish、final run 和 transaction misuse guard。
+- cost：没有 Rust/WASM 修改；module/WASM size 不变，checkpoint transaction 只编排已有 rule result，120 Hz advance 调用也不增。
+- 回归：完整 `pnpm verify` 通过；六车 trace/physics/recovery、audio/assets、shared loader、build 均保持绿色。
+
+结论：已知 checkpoint event staging 阻碍被建模和验证，且暴露并修正了 lap owner 的隐藏差异；下一步可以做 authoritative wrapper 实验，但仍必须以完整 event/save equality 阻止双写。
+
+## 下一实验
+
+问题：`RaceTimingSession` 能否在 authoritative 模式只让 `RaceProgressSession` 写纯进度，而 JS adapter 仅写 reasons/laps/record/events，同时保持 default legacy 和 JS fallback 两条路径？
+
+可观测量：legacy vs WASM-owner vs fallback-owner 的完整 35-action result、event 中间 snapshot、summary/record、3 次 save；内部 legacy progress 字段是否停止 mutation；owner metadata；finished/restart 行为。
+
+停止条件：禁止双写；默认无 core 构造继续 legacy；WASM/fallback owner 深比较完全一致；DEV 可先使用 authoritative+shadow diagnostic，production 切换需再通过实际浏览器或等价运行证据。

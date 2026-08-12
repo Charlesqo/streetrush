@@ -38,6 +38,7 @@
     "test:race-progress-core": "pnpm build:core-wasm && node scripts/test-race-progress-core-wasm.mjs",
     "test:race-progress-session": "pnpm build:core-wasm && node scripts/test-race-progress-session.mjs",
     "test:timing-shadow": "pnpm build:core-wasm && node scripts/test-race-timing-progress-shadow.mjs",
+    "test:progress-staging": "pnpm build:core-wasm && node scripts/test-race-progress-staging.mjs",
     "test:vehicle-reset": "node scripts/test-vehicle-reset.mjs",
     "test:vehicle-boundaries": "node scripts/test-vehicle-input-boundaries.mjs",
     "test:vehicle-recovery": "node scripts/test-vehicle-internal-recovery.mjs",
@@ -46,7 +47,7 @@
     "test:physics:smoke": "node scripts/smoke-physics.mjs",
     "test:physics:regression": "node scripts/regression-physics.mjs",
     "calibrate": "node scripts/calibrate-physics.mjs",
-    "verify": "pnpm test:timing && pnpm test:medals && pnpm test:input && pnpm test:audio-context && pnpm test:audio-pause && pnpm test:audio-bank && pnpm test:audio-bank-loader && pnpm test:telemetry && pnpm test:orientation && pnpm test:track && pnpm test:route && pnpm test:assets && pnpm test:asset-license && pnpm test:scheduling && pnpm test:scheduler-owner && pnpm test:shared-core && pnpm test:replay-core && pnpm test:race-progress-core && pnpm test:race-progress-session && pnpm test:timing-shadow && pnpm test:vehicle-reset && pnpm test:vehicle-boundaries && pnpm test:vehicle-recovery && pnpm test:determinism && pnpm check:goal-calibration && pnpm test:physics && pnpm build && pnpm check:cloudflare && pnpm check:secrets && pnpm check:assets",
+    "verify": "pnpm test:timing && pnpm test:medals && pnpm test:input && pnpm test:audio-context && pnpm test:audio-pause && pnpm test:audio-bank && pnpm test:audio-bank-loader && pnpm test:telemetry && pnpm test:orientation && pnpm test:track && pnpm test:route && pnpm test:assets && pnpm test:asset-license && pnpm test:scheduling && pnpm test:scheduler-owner && pnpm test:shared-core && pnpm test:replay-core && pnpm test:race-progress-core && pnpm test:race-progress-session && pnpm test:timing-shadow && pnpm test:progress-staging && pnpm test:vehicle-reset && pnpm test:vehicle-boundaries && pnpm test:vehicle-recovery && pnpm test:determinism && pnpm check:goal-calibration && pnpm test:physics && pnpm build && pnpm check:cloudflare && pnpm check:secrets && pnpm check:assets",
     "check:release:public": "pnpm verify && pnpm check:assets:public && pnpm check:git-release",
     "check:release:commercial": "pnpm verify && pnpm check:assets:commercial && pnpm check:git-release"
   },
