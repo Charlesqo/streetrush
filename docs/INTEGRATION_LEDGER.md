@@ -72,6 +72,16 @@
 - 恢复语义：owner/cache 与显式局部 fallback 一致；真正非有限 body 与显式 reset oracle 一致；Rapier 已保持有限的 rotation 不做多余 reset。未覆盖 config、wheel anchor 或 collider 内部污染，不声称任意内存损坏可恢复。
 - 结果：30 scalar/cache + 24 body 配对全通过，其中 6 是 Rapier setter-normalized 路径；既有 90 外部边界、六车健康物理指标与完整 `pnpm verify` 保持通过。
 
+### 固定 seed 六车确定性基线
+
+- 事件 owner：测试复刻 main 顺序——manual reset 先 `reset(safeSample)`，同 tick 仍执行 `fixedUpdate → world.step → afterPhysics`；toggle/shift/direction 由 VehicleSystem 消费。
+- trace：`seeded-steady-v1` 720 ticks、`shift-direction-v1` 960 ticks、`reset-replay-v1` 900 ticks；三组输入 seed 分别为 `0x5eed0001..3`，每组 9 个 input 字段有独立 SHA-256。
+- snapshot：每 tick 50 个 canonical 数值，包括 body pose/velocity、gear/reverse/mode、RPM/load/steer、safeSample/trackHint、4 wheel omega 和关键 wheel telemetry；exact 使用 big-endian Float64 bytes，另有 1e-6 quantized SHA-256。
+- 首次运行：同一进程每个 car/scenario 重复 3 次，逐 tick `Object.is` 无首个分歧；退出 2 只因 baseline 文件尚不存在。用候选创建 `data/vehicle-replay-baseline.json` 后，新 Node 进程 18/18 trace 全匹配。
+- 信息量：reset sample 因车辆演化而不同（如 MX-5 `1→3`、AMG GT3 `2→5`），证明记录不是固定空日志；input hash 将“生成器/输入变化”与“物理状态变化”分层。
+- 限制：只证明当前 Windows + Node 24 + 当前 Rapier WASM 在同环境的同/跨进程重现；未证明浏览器、不同 CPU/版本或 Rust 物理一致。quantized hash 是未来比较边界，不是已有跨平台证明。
+- 结果：18 traces × 3 repeats = 54 runs 通过，并进入 `pnpm verify`；完整六车、Rust/WASM scheduler、audio/assets/build 门禁保持通过。
+
 ### 网页 Rust/WASM scheduler owner
 
 - 来源：本仓库已提交 `streetrush-core` raw WASM ABI 和 JS fixed-step oracle；本批没有再复制外部代码。
@@ -180,9 +190,10 @@
 - 证实：GLTFLoader 的 LoadingManager 是共享 owner，单请求 timeout 不能用全局 abort；per-car preload token/signal 能隔离六车重复请求并有界释放 stalled slots。
 - 证实：late GLTF 只有在未挂载、无 pending、与全部已知资源 identity 不重叠时才可局部安全回收；共享判断不足时应保留而不是猜测 dispose。
 - 证实：六车 owner scalar/cache 污染不会靠下一步自然消失；入口局部 fallback 可与显式 oracle 一致。Rapier 的 NaN rotation setter 在本环境保持有限，不能把所有坏 setter 统一描述为 body poison。
+- 证实：当前 JS/Rapier 六车在三类固定 seed 状态序列中可逐 tick exact 重现，并能跨新 Node 进程匹配登记 hash；证据范围尚不跨浏览器/平台。
 
 ## 当前最值得继续的方向
 
-1. 建立固定输入 trace 的六车重复运行基线，先量化 Rapier/JS 同进程确定性、reset/换向顺序和首个分歧字段，再决定回放接口放在 Rust 还是 JS boundary；
+1. 将 replay canonical Float64/quantization/rolling digest 做成 `streetrush-core` 的无状态纯函数，由 native 与 raw WASM 对同一 trace 对照；车辆模拟仍留在 JS/Rapier；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。

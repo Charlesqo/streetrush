@@ -1,0 +1,244 @@
+{
+  "formatVersion": 1,
+  "fixedDt": 0.008333333333333333,
+  "quantization": 0.000001,
+  "inputFields": [
+    "steer",
+    "throttle",
+    "brake",
+    "handbrake",
+    "shiftUp",
+    "shiftDown",
+    "toggleTransmission",
+    "reset",
+    "driveIntent"
+  ],
+  "frameFields": [
+    "body.translation.x",
+    "body.translation.y",
+    "body.translation.z",
+    "body.rotation.x",
+    "body.rotation.y",
+    "body.rotation.z",
+    "body.rotation.w",
+    "body.linvel.x",
+    "body.linvel.y",
+    "body.linvel.z",
+    "body.angvel.x",
+    "body.angvel.y",
+    "body.angvel.z",
+    "gear",
+    "reverse",
+    "transmissionMode",
+    "engineRpm",
+    "engineLoad",
+    "steerAngle",
+    "safeSample",
+    "trackHint",
+    "wheel.0.omega",
+    "wheel.1.omega",
+    "wheel.2.omega",
+    "wheel.3.omega",
+    "telemetry.speedKmh",
+    "telemetry.signedSpeedKmh",
+    "telemetry.rpm",
+    "telemetry.longitudinalAcceleration",
+    "telemetry.lateralAcceleration",
+    "telemetry.wheel.0.load",
+    "telemetry.wheel.0.suspension",
+    "telemetry.wheel.0.slipRatio",
+    "telemetry.wheel.0.slipAngle",
+    "telemetry.wheel.0.slipPower",
+    "telemetry.wheel.1.load",
+    "telemetry.wheel.1.suspension",
+    "telemetry.wheel.1.slipRatio",
+    "telemetry.wheel.1.slipAngle",
+    "telemetry.wheel.1.slipPower",
+    "telemetry.wheel.2.load",
+    "telemetry.wheel.2.suspension",
+    "telemetry.wheel.2.slipRatio",
+    "telemetry.wheel.2.slipAngle",
+    "telemetry.wheel.2.slipPower",
+    "telemetry.wheel.3.load",
+    "telemetry.wheel.3.suspension",
+    "telemetry.wheel.3.slipRatio",
+    "telemetry.wheel.3.slipAngle",
+    "telemetry.wheel.3.slipPower"
+  ],
+  "traces": {
+    "mx5": {
+      "seeded-steady-v1": {
+        "seed": 1592590337,
+        "ticks": 720,
+        "inputSha256": "7c6ffcc87d5bc636740fdcd150070fe2b1136ea0c8a7d0bf3d18502e075002a0",
+        "exactSha256": "f30f53cd0a03efe468656227862882bc14a1a6921f71cbef2fec34f70546c5b1",
+        "quantizedSha256": "ed95fac9edf218d5b5678e3d00655b80b1e5a253aea509156128ab474c826297",
+        "resetSamples": []
+      },
+      "shift-direction-v1": {
+        "seed": 1592590338,
+        "ticks": 960,
+        "inputSha256": "64fba8b4c30314671863fb7dd11fe6d5dfcb1ba1e8ff8330c48576ff39a447e1",
+        "exactSha256": "23802f6db8e404fe80f91f10c4abe01b0c19e98f2860c066c4d811a7bef7bfb6",
+        "quantizedSha256": "ddc8942c88e8cecbe9743095c91162412b360642a4ac011024388752f39560a2",
+        "resetSamples": []
+      },
+      "reset-replay-v1": {
+        "seed": 1592590339,
+        "ticks": 900,
+        "inputSha256": "6c343cb609376ab56a58b5c16767c4e59c228919f8da348202373a939bb63c90",
+        "exactSha256": "c09378fbae9d5dd6af3bb00b4884375ca3d96f2c6017a89f9302b3af227d31dd",
+        "quantizedSha256": "9a4973f981a87150581d01946eb165ec9f8473b6370a6f35d3b303fe70deae7a",
+        "resetSamples": [
+          { "tick": 300, "sampleIndex": 1 },
+          { "tick": 600, "sampleIndex": 3 }
+        ]
+      }
+    },
+    "m3e30": {
+      "seeded-steady-v1": {
+        "seed": 1592590337,
+        "ticks": 720,
+        "inputSha256": "7c6ffcc87d5bc636740fdcd150070fe2b1136ea0c8a7d0bf3d18502e075002a0",
+        "exactSha256": "9e91385b8fa3a0a50c6257fc3ee496cb66386e2329b5dd44fb0c67e55e613a28",
+        "quantizedSha256": "b504ffd171d5c8aa38db52677de1ca148c0f1a57fe12dff7a28a7a83d7cb7bf2",
+        "resetSamples": []
+      },
+      "shift-direction-v1": {
+        "seed": 1592590338,
+        "ticks": 960,
+        "inputSha256": "64fba8b4c30314671863fb7dd11fe6d5dfcb1ba1e8ff8330c48576ff39a447e1",
+        "exactSha256": "7e6aa2cdf213489e31e1343a7eac0054cf3c3f1b737018286e6135f7686878f8",
+        "quantizedSha256": "a5895bce98564351ca8f3925b22a88a3bffddb2f3e2113e39775568d36b72ada",
+        "resetSamples": []
+      },
+      "reset-replay-v1": {
+        "seed": 1592590339,
+        "ticks": 900,
+        "inputSha256": "6c343cb609376ab56a58b5c16767c4e59c228919f8da348202373a939bb63c90",
+        "exactSha256": "c7ccacdf4186de2d2367b22c580cd32448b90869d4198b963868b2184c549bb6",
+        "quantizedSha256": "d3f6b2cd457bb2fa0ed544c7dfaf7dffd6bce53f3180385e09f0233546b60a61",
+        "resetSamples": [
+          { "tick": 300, "sampleIndex": 1 },
+          { "tick": 600, "sampleIndex": 3 }
+        ]
+      }
+    },
+    "gt3rs": {
+      "seeded-steady-v1": {
+        "seed": 1592590337,
+        "ticks": 720,
+        "inputSha256": "7c6ffcc87d5bc636740fdcd150070fe2b1136ea0c8a7d0bf3d18502e075002a0",
+        "exactSha256": "a7be944e2dbd5f6d7c8854ebf014da7de58f894f27443a28495930156496d91b",
+        "quantizedSha256": "8219e57ac56bb8f2c3f8b0e42046a5ee02aee2b5327e46cbef7da54d746d09f4",
+        "resetSamples": []
+      },
+      "shift-direction-v1": {
+        "seed": 1592590338,
+        "ticks": 960,
+        "inputSha256": "64fba8b4c30314671863fb7dd11fe6d5dfcb1ba1e8ff8330c48576ff39a447e1",
+        "exactSha256": "fa31c2ef66b542c8aef35ff03375d6dd89e2a7b7082439e247c5aca2fe24abd2",
+        "quantizedSha256": "a10a5ad82d4f77de185d49002bc8d84e509e3bcef6d7be7b22c24a50ac8b0074",
+        "resetSamples": []
+      },
+      "reset-replay-v1": {
+        "seed": 1592590339,
+        "ticks": 900,
+        "inputSha256": "6c343cb609376ab56a58b5c16767c4e59c228919f8da348202373a939bb63c90",
+        "exactSha256": "c7aaf13191c4fdd29ad46fff68e378bf71eb36c6acc0104129920c73063cb7ca",
+        "quantizedSha256": "032375fdec026127dc6215596b665e99bf68aa08d38fc9fb3ebd532268abb207",
+        "resetSamples": [
+          { "tick": 300, "sampleIndex": 1 },
+          { "tick": 600, "sampleIndex": 3 }
+        ]
+      }
+    },
+    "lp700": {
+      "seeded-steady-v1": {
+        "seed": 1592590337,
+        "ticks": 720,
+        "inputSha256": "7c6ffcc87d5bc636740fdcd150070fe2b1136ea0c8a7d0bf3d18502e075002a0",
+        "exactSha256": "64fd12ed78c6c64bf86f2f8531da14ad343739fbc2b571774b22488c8cfe3179",
+        "quantizedSha256": "6e6387d19eb10b6cda332ffc80eb307c69b1de1f82d53f95724f9e015387c941",
+        "resetSamples": []
+      },
+      "shift-direction-v1": {
+        "seed": 1592590338,
+        "ticks": 960,
+        "inputSha256": "64fba8b4c30314671863fb7dd11fe6d5dfcb1ba1e8ff8330c48576ff39a447e1",
+        "exactSha256": "28d1ae791fae2a21c3b9261ceee705c8004729461b3e1ff15462e6d7c0cfef6d",
+        "quantizedSha256": "0ed6d543f026acd7a83e51c647f1665961b26514443168b4e19cc299fbb1e8c7",
+        "resetSamples": []
+      },
+      "reset-replay-v1": {
+        "seed": 1592590339,
+        "ticks": 900,
+        "inputSha256": "6c343cb609376ab56a58b5c16767c4e59c228919f8da348202373a939bb63c90",
+        "exactSha256": "6414dc0828ceede2702cdaca00ac064dbf23b8caf3cc9145be9ebe306eef825b",
+        "quantizedSha256": "bbd9578f3f55df2146338a9fc93b738ad1868fd9afd9a12b7bb645cf0a69b4c0",
+        "resetSamples": [
+          { "tick": 300, "sampleIndex": 2 },
+          { "tick": 600, "sampleIndex": 4 }
+        ]
+      }
+    },
+    "amggt3": {
+      "seeded-steady-v1": {
+        "seed": 1592590337,
+        "ticks": 720,
+        "inputSha256": "7c6ffcc87d5bc636740fdcd150070fe2b1136ea0c8a7d0bf3d18502e075002a0",
+        "exactSha256": "575c10120b2e56a87172b13dee885e66293d6ecfcf28ac200b74e1555ebb83cf",
+        "quantizedSha256": "d374faadffc0f1fd5187f79dde62d8aae340cdb6a0b4745c54effa36bc9918c9",
+        "resetSamples": []
+      },
+      "shift-direction-v1": {
+        "seed": 1592590338,
+        "ticks": 960,
+        "inputSha256": "64fba8b4c30314671863fb7dd11fe6d5dfcb1ba1e8ff8330c48576ff39a447e1",
+        "exactSha256": "237f58ad2c0f52a77bd359c45dc595817423bcdf5029af8d8c920f34a30c3efd",
+        "quantizedSha256": "a0497fccab995a711547fe492d0a6d7ac4244f3f311bff9c551647440c765fd4",
+        "resetSamples": []
+      },
+      "reset-replay-v1": {
+        "seed": 1592590339,
+        "ticks": 900,
+        "inputSha256": "6c343cb609376ab56a58b5c16767c4e59c228919f8da348202373a939bb63c90",
+        "exactSha256": "d78cec193cd19d453c0b33db4bbf373e4591c56612e8f30708f67099a6f670c2",
+        "quantizedSha256": "80e7b26d9dec804995feefe621fc5a7d95588ba8ab6e32508e9d97bc2a74dc51",
+        "resetSamples": [
+          { "tick": 300, "sampleIndex": 2 },
+          { "tick": 600, "sampleIndex": 5 }
+        ]
+      }
+    },
+    "m5g90": {
+      "seeded-steady-v1": {
+        "seed": 1592590337,
+        "ticks": 720,
+        "inputSha256": "7c6ffcc87d5bc636740fdcd150070fe2b1136ea0c8a7d0bf3d18502e075002a0",
+        "exactSha256": "8005a861c6167894d0b5a2c80bd3a19d93278e35792963f3758fe87401781103",
+        "quantizedSha256": "7176a07becc6ee766fea09d4d6a80eaa8f856a35fda2c67463de6b96272fce69",
+        "resetSamples": []
+      },
+      "shift-direction-v1": {
+        "seed": 1592590338,
+        "ticks": 960,
+        "inputSha256": "64fba8b4c30314671863fb7dd11fe6d5dfcb1ba1e8ff8330c48576ff39a447e1",
+        "exactSha256": "0c68b37cd1f92debe3f9ca63ca5e020f7bfdc72fbd750f6e222907bd72ff4958",
+        "quantizedSha256": "5550471a5c162153b4f08027eb6b7791d12e58591915d6d67299398410cdac73",
+        "resetSamples": []
+      },
+      "reset-replay-v1": {
+        "seed": 1592590339,
+        "ticks": 900,
+        "inputSha256": "6c343cb609376ab56a58b5c16767c4e59c228919f8da348202373a939bb63c90",
+        "exactSha256": "e4f9bfb27598c6b34840520298887f80158a27e64f9edeadaad7219910cbc277",
+        "quantizedSha256": "cdeb61f21b72355d8cfc197d9a24b35dcf206b38367382cff5c4314d589f5275",
+        "resetSamples": [
+          { "tick": 300, "sampleIndex": 2 },
+          { "tick": 600, "sampleIndex": 4 }
+        ]
+      }
+    }
+  }
+}

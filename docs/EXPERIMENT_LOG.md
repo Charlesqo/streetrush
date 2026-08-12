@@ -282,10 +282,28 @@
 
 结论：owner scalar/cache 可局部恢复，真正非有限 Rapier pose/velocity 可用现有 reset API 恢复，不需要立即 rebuild；Rapier 已拒绝的坏 rotation 不应触发无证据 reset。更深 config/collider 污染仍未覆盖。
 
-## 下一实验
+## 固定 seed 六车确定性实验结果
 
 问题：相同固定输入、同一车辆和相同状态事件序列重复运行时，JS/Rapier 车辆状态能否逐 tick 重现；reset、前进/倒车切换和换挡脉冲中哪个最早引入分歧？
 
-可观测量：六车每 tick 的 body pose/velocity、gear/reverse/RPM、wheel omega 和关键 telemetry；固定输入 trace hash、首个分歧 tick/field、同进程重复次数；不同状态序列分组而非重复同日志。
+可观测量：六车每 tick 的 50-field body/driveline/wheel/telemetry snapshot；9-field input trace hash；exact/1e-6 state hash；首个分歧 tick/field；reset sample 序列。
 
-停止条件：先用现有 JS owner 建立 3 类 trace（稳态、换向/换挡、reset 后重放）与稳定 hash；只有确定性边界清楚后才设计 Rust replay 格式或声称跨 native/WASM 一致，不先搬运大量状态。
+停止条件：3 类不同 trace 每车同进程重复 3 次逐值 exact；登记 baseline 后新 Node 进程再匹配；输入与状态 hash 分开；不得把同环境结果扩写为跨平台确定性。
+
+- owner 顺序：runner 复制 `main.fixedUpdate` 的 manual reset 顺序；reset 后同一 tick 仍执行物理。toggle/shift/direction pulses 只持续一 tick。
+- traces：seeded steady 720 ticks；manual shift + forward/brake/reverse 960 ticks；在 tick 300/600 reset 的 seeded replay 900 ticks。seed 为 `0x5eed0001`、`02`、`03`。
+- canonical frame：50 个值以 big-endian IEEE-754 Float64 顺序进入 SHA-256；quantized 路径先四舍五入到 1e-6。输入 9 字段另有三个稳定 hash，六车共享相同 input bytes。
+- 首次结果：每个 car/scenario 的 3 次运行没有 `firstDivergence`；缺 baseline 时按设计退出 2 并输出候选，而不是静默自我批准。
+- baseline：用 apply_patch 登记 18 个 exact、18 个 quantized、18 个 input hash 及 reset samples；全新 Node 进程复跑 `PASS vehicle determinism cars=6 scenarios=3 repeats=3 traces=18`。
+- reset 信息：MX-5/M3/GT3 RS 为 sample `1→3`，LP700 `2→4`，AMG GT3 `2→5`，M5 `2→4`；车型差异进入状态证据。
+- 回归：加入 `pnpm verify` 后完整通过，secret guard versionable count 102；六车健康指标、90 外部边界、54 内部恢复、Rust/WASM scheduler、audio/assets/build 均保持绿色。
+
+结论：当前环境内未发现确定性分歧；已有可定位输入变更与首个状态字段的 baseline，但还没有浏览器/平台或 Rust replay 一致性证据。
+
+## 下一实验
+
+问题：能否把 replay 的 canonical Float64、1e-6 quantization 和增量 digest 作为 Rust 共享核心的纯函数，同时在 native 与 raw WASM 中逐值一致，而不迁移 JS/Rapier 模拟？
+
+可观测量：特殊 Float64（±0、正常值、极值）的 canonical bits、quantized 值、rolling digest；native Rust、Node JS oracle、真实 WASM export 三方逐 push 一致；格式版本固定。
+
+停止条件：Rust API 无状态、无分配、无 unsafe；native 单测和真实 WASM 对照通过；只有 digest owner 跨边界，不把 SHA-256 fixture 或 Rapier state 复制进 Rust。
