@@ -1,8 +1,9 @@
 use std::process::ExitCode;
 
 use streetrush_core::{
-    FIXED_DT_SECONDS, REPLAY_DIGEST_OFFSET_BASIS, REPLAY_FORMAT_VERSION, REPLAY_QUANTUM,
-    quantize_replay_value, replay_digest_push_f64, simulate_render_frames,
+    FIXED_DT_SECONDS, Medal, REPLAY_DIGEST_OFFSET_BASIS, REPLAY_FORMAT_VERSION, REPLAY_QUANTUM,
+    RaceProgress, RaceStatus, quantize_replay_value, replay_digest_push_f64, resolve_medal_ms,
+    simulate_render_frames,
 };
 
 const REPLAY_PROBE_EXACT_DIGEST: u64 = 0x0248_d935_4f12_6505;
@@ -19,6 +20,30 @@ fn digest(values: &[f64], quantize: bool) -> u64 {
             };
             replay_digest_push_f64(state, value)
         })
+}
+
+fn run_timing_oracle() -> bool {
+    let mut progress = RaceProgress::new(2, 3, &[1, 2, 3]).expect("valid timing probe config");
+    progress.start();
+    for (delta_ms, checkpoint) in [
+        (1000.0, 1),
+        (2000.0, 2),
+        (3000.0, 0),
+        (900.0, 1),
+        (1900.0, 2),
+        (2900.0, 0),
+    ] {
+        progress
+            .advance(delta_ms)
+            .expect("valid timing probe delta");
+        progress
+            .pass_checkpoint(checkpoint)
+            .expect("valid timing probe checkpoint");
+    }
+    let snapshot = progress.snapshot();
+    snapshot.status == RaceStatus::Finished
+        && snapshot.run_time_ms.to_bits() == 11_700.0_f64.to_bits()
+        && resolve_medal_ms(snapshot.run_time_ms, 12_000.0, 15_000.0, 18_000.0) == Medal::Gold
 }
 
 fn main() -> ExitCode {
@@ -82,6 +107,13 @@ fn main() -> ExitCode {
         passed = false;
     } else {
         println!("PASS native canonical replay digest oracle");
+    }
+
+    if run_timing_oracle() {
+        println!("PASS native race progress and medal oracle");
+    } else {
+        eprintln!("FAIL native race progress and medal oracle");
+        passed = false;
     }
 
     if passed {

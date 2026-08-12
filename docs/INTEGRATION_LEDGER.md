@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已经有明确 JS oracle 的固定步调度和 replay 数值格式逐段交给 Rust 共享核心。真实六车 trace 已接入 Rust/WASM digest；下一步评估测试充分且边界清楚的比赛计时状态机，先分离纯规则与浏览器持久化，再决定是否切换 owner。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。真实六车 trace 已接入 Rust/WASM digest，native 已有状态化比赛进度 owner；网页仍由 JS 持有 PB/persistence/event，下一步应让 scheduler 与 timing 共享一次 WASM 实例并做 capability 分层，避免为继续整合复制 loader 或实例。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -91,13 +91,25 @@
 - 固定 oracle：13 个边界值覆盖 ±0、±1.5、±half quantum、最大有限值、±最小次正规数、±Infinity 与两个不同 NaN payload；exact 固定为 `0248d9354f126505`，quantized 固定为 `0603ecb87904c881`。
 - 真实 trace 接线：`scripts/test-vehicle-determinism.mjs` 只复用每个场景已有的 reference frames，不重跑第二套车辆模拟；在 774,000 个 tick/field 位置分别比较 exact 与 quantized 的 JS/WASM rolling state，失败信息含 car/scenario/tick/field/value/state。
 - baseline：新增独立 `data/vehicle-replay-fnv-baseline.json`，登记 18 条 exact/quantized FNV 和 50-field schema SHA-256；原 `vehicle-replay-baseline.json` 的 SHA-256/input/reset fixture 未改。缺失 WASM 有显式失败探针，不静默用 JS 自证。
-- 结果：13 个 Rust 单测、native 固定摘要、native/WASM Clippy `-D warnings`、特殊向量和 18 条真实 trace 的 release WASM/独立 JS 对照全部通过；当前 WASM 为 3,658 bytes，完整 `pnpm verify` 保持绿色。
+- 结果：replay 当批的 13 个 Rust 单测、native 固定摘要、native/WASM Clippy `-D warnings`、特殊向量和 18 条真实 trace 的 release WASM/独立 JS 对照全部通过；加入 timing ABI 前 WASM 为 3,658 bytes，完整 `pnpm verify` 保持绿色。
 - 限制：FNV 只用于快速确定性比较，不是安全/防篡改摘要；证据仍限于当前 Windows + Node/Rapier WASM 环境，未证明浏览器、其他 CPU 或版本一致。
+
+### Rust 比赛进度与计时规则核
+
+- 来源 oracle：当前 `src/race-timing.js`、9 个 timing tests、medal tests 和 `main.fixedUpdate` 的 `advance → invalidate → checkpoint` 顺序；没有复制外部来源。
+- 红测试：先加入真实 WASM shadow sequence，旧 core 明确失败于缺少 `streetrush_timing_contract_version`；实现前测试不是自始为绿。
+- Rust native owner：`RaceProgress` 持有 status、exact ms、lap/sector 起点、checkpoint/sector 进度和当前圈有效性；校验 laps/checkpoints/sector config，非法 delta/index 返回错误且不改状态。原生程序完成 2 圈 11,700 ms 并判定 gold。
+- raw WASM 边界：contract v1 只暴露无全局状态的 exact advance、JS-compatible duration round、expected/ordinal、checkpoint event flags 和 medal rule；JS shadow 持有同一标量状态，不使用 Rust 指针或隐藏 mutable singleton。
+- JS 保留：track/car identity、localStorage、invalid reason 字符串/去重、PB/sector/race record mutation、save 时机、完整 event/snapshot 对象和 UI 均未迁移；因此当前网页 timing owner 没有切换。
+- 对照序列：31 个 action snapshots 覆盖 120 Hz fractional accumulation、错序 checkpoint、首次/重复 invalidation、invalid+valid lap、sector/lap/run flags、restart、PB 已存在后的 valid run 和 gold boundary；每步对照 JS `RaceTimingSession` 的纯进度投影及 event duration/validity。
+- 结果：Rust 单测由 13 增至 17，native probe、workspace/wasm32 Clippy、真实 WASM shadow 和完整 `pnpm verify` 全部通过。
+- 资产边界：release WASM 从 3,658 增至 4,864 bytes，超过 Vite 4 KiB inline 阈值；构建正确输出 `assets/streetrush_core-*.wasm`，24-file freshness/public-asset/Cloudflare 检查通过，scheduler owner 仍走真实 WASM。
+- 限制：shadow 证明规则一致，不等于网页 timing owner 已切换；PB/persistence/save event 尚无 Rust 数据协议，不能把它们默认为可直接迁移。
 
 ### 网页 Rust/WASM scheduler owner
 
 - 来源：本仓库已提交 `streetrush-core` raw WASM ABI 和 JS fixed-step oracle；本批没有再复制外部代码。
-- 生成边界：`scripts/build-core-wasm.mjs` 用锁文件构建 release `wasm32-unknown-unknown`，复制到忽略的 `src/generated/`；scheduler-only 当批产物为 2,533 bytes，加入 replay ABI 后当前为 3,658 bytes，仍因小于 4 KiB 被 Vite 作为 data URL 内联，不提交二进制。
+- 生成边界：`scripts/build-core-wasm.mjs` 用锁文件构建 release `wasm32-unknown-unknown`，复制到忽略的 `src/generated/`；scheduler-only 为 2,533 bytes，加入 replay ABI 后为 3,658 bytes，加入 timing ABI 后当前为 4,864 bytes 并由 Vite 输出独立 hashed WASM；生成物不提交。
 - owner 接口：JS 与 Rust/WASM 都提供状态化 `advance()`/`reset()`、owner 名称、fallback 原因和同形 `{ steps, remainderSeconds, alpha }`；主循环不再拥有第二份 accumulator。
 - 握手与回退：加载时核对 fixed dt、最大 frame dt、最大 steps 和五个必需导出；fetch、1.5 秒 timeout、instantiate、缺导出或契约不符均返回结构化原因的 JS owner，不让启动收到 rejected promise。
 - 初始化时序：WASM 加载与 Rapier/车辆/场景加载并行，在第一次 `requestAnimationFrame` 前固定 owner；`html[data-physics-scheduler-owner]` 和可选 fallback code 提供运行时观测。
@@ -204,9 +216,10 @@
 - 证实：六车 owner scalar/cache 污染不会靠下一步自然消失；入口局部 fallback 可与显式 oracle 一致。Rapier 的 NaN rotation setter 在本环境保持有限，不能把所有坏 setter 统一描述为 body poison。
 - 证实：当前 JS/Rapier 六车在三类固定 seed 状态序列中可逐 tick exact 重现，并能跨新 Node 进程匹配登记 hash；证据范围尚不跨浏览器/平台。
 - 证实：canonical Float64、JS 兼容 1e-6 quantization 与 FNV-1a 64 增量摘要可由同一 Rust 纯函数在 native/raw WASM 使用；特殊向量和现有 18 条六车 trace 均与独立 JS oracle 逐 push 一致。
+- 证实：比赛进度可拆成 Rust 状态 owner/native API 与无全局状态 raw WASM rule ABI；31 个 JS/WASM action snapshot 一致。PB、持久化和 UI event 是独立 JS 边界，尚未切换。
 
 ## 当前最值得继续的方向
 
-1. 复核 `src/race-timing.js` 和 9 个现有 timing tests，把纯 tick/checkpoint/lap/medal 规则与 localStorage/UI 副作用分开；先建立 JS/native/WASM 事件序列 oracle，再决定 owner 切换；
+1. 抽出一次实例化的 shared-core loader，为 scheduler/replay/timing 分层做 capability handshake；验证 timing 缺失只回退 timing、scheduler 缺失仍按原契约回退，并避免两个 WASM instance；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。

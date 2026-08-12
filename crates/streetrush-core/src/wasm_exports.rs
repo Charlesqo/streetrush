@@ -4,10 +4,78 @@ use crate::scheduling::{
     FIXED_DT_SECONDS, MAX_FRAME_DT_SECONDS, MAX_PHYSICS_STEPS, accumulate_physics_time,
     clamp_frame_delta, plan_frame, simulate_render_frames,
 };
+use crate::timing::{
+    TIMING_CONTRACT_VERSION, advance_race_time_exact_ms, checkpoint_ordinal, classify_checkpoint,
+    expected_checkpoint_index, resolve_medal_ms, round_duration_ms,
+};
 use crate::{
     REPLAY_DIGEST_OFFSET_BASIS, REPLAY_FORMAT_VERSION, REPLAY_QUANTUM, canonical_f64_bits,
     quantize_replay_value, replay_digest_push_f64,
 };
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_timing_contract_version() -> u32 {
+    TIMING_CONTRACT_VERSION
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_timing_advance_exact_ms(
+    status: u32,
+    current_ms: f64,
+    delta_ms: f64,
+) -> f64 {
+    advance_race_time_exact_ms(status, current_ms, delta_ms)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_timing_round_duration_ms(value: f64) -> f64 {
+    round_duration_ms(value)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_timing_expected_checkpoint_index(
+    checkpoints_passed: u32,
+    checkpoint_count: u32,
+) -> u32 {
+    expected_checkpoint_index(checkpoints_passed, checkpoint_count)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_timing_checkpoint_ordinal(
+    checkpoints_passed: u32,
+    checkpoint_count: u32,
+) -> u32 {
+    checkpoint_ordinal(checkpoints_passed, checkpoint_count)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_timing_checkpoint_flags(
+    status: u32,
+    checkpoints_passed: u32,
+    total_laps: u32,
+    checkpoint_count: u32,
+    next_sector_checkpoint: u32,
+    checkpoint_index: u32,
+) -> u32 {
+    classify_checkpoint(
+        status,
+        checkpoints_passed,
+        total_laps,
+        checkpoint_count,
+        next_sector_checkpoint,
+        checkpoint_index,
+    )
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_timing_resolve_medal(
+    time_ms: f64,
+    gold_ms: f64,
+    silver_ms: f64,
+    bronze_ms: f64,
+) -> u32 {
+    resolve_medal_ms(time_ms, gold_ms, silver_ms, bronze_ms) as u32
+}
 
 #[unsafe(no_mangle)]
 pub extern "C" fn streetrush_replay_format_version() -> u32 {

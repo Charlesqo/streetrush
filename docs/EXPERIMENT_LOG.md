@@ -336,10 +336,29 @@
 
 结论：Rust replay 数值契约已接触真实车辆状态，不再只由合成边界值证明；但模拟仍由 JS/Rapier 运行，FNV 也不是安全摘要，因此不能把结果外推成浏览器/平台确定性。
 
-## 下一实验
+## Rust 比赛进度与计时规则核实验结果
 
 问题：当前比赛计时的 tick、checkpoint 顺序、lap/sector/PB/medal 状态中，哪些是可由 Rust native/WASM 共享的纯状态机，哪些必须继续由 JS 持有 localStorage 和 UI 副作用？
 
 可观测量：现有 9 个 timing 测试的输入事件与逐事件 snapshot；非法 checkpoint、fractional fixed steps、restart、invalid lap 和 PB persistence；JS 与 Rust 对同一序列的差异。
 
 停止条件：先抽取并固定事件协议和允许误差；Rust native/raw WASM 对照通过前不改网页 owner；localStorage 只保留在 JS adapter；若状态机依赖浏览器副作用无法清晰拆分，则记录反证并转向 telemetry schema。
+
+- 边界复核：纯状态为 status、exact clock、lap/sector start、checkpoint/sector progress 和 current-lap validity；identity、reason strings、record normalization/mutation、save、event object 与 DOM 消费均可独立留在 JS。
+- red evidence：先构建并运行 shadow test，旧 3,658-byte WASM 退出 1，首错为 `missing timing export streetrush_timing_contract_version`。
+- native：新增 generic `RaceProgress`，sector ordinals 严格递增且必须以 finish 结束；negative/non-finite delta 和越界 checkpoint 返回 typed error 并保持 snapshot；2 圈/3 checkpoint probe 为 11,700 ms gold。
+- WASM：contract v1 采用 scalar functions/event bit flags，不分配 opaque handle、不使用全局 mutable state；duration rounding 固定 JS 正半值语义，checkpoint accepted/sector/lap/run 可组合。
+- shadow oracle：同一 JS `RaceTimingSession` 与 WASM rule state 经 31 个 snapshots 对照，覆盖三次 `1000/3`、wrong checkpoint、重复 invalidation、invalid first lap、valid second lap、restart、两圈 valid PB 和 medal。
+- owner 判断：Rust native 真正使用状态化 owner；WASM 目前只在测试 shadow 中决定纯规则，网页 `RaceTimingSession` 仍是 live owner。测试明确打印 persistence/reason/PB/UI 仍 JS-owned。
+- 验证：Rust 17/17；native/WASM Clippy `-D warnings`；native scheduler/replay/timing probes；真实 WASM shadow；完整 `pnpm verify` 全通过。
+- 构建反应：core 为 4,864 bytes，跨过 Vite 4 KiB inline limit 后产出独立 hashed `.wasm`（gzip 1.78 KiB）；构建 24 files，freshness/public assets/Cloudflare 检查通过，未破坏现有 scheduler loader。
+
+结论：计时纯规则可以共享，假设得到支持；但 PB/persistence/event adapter 仍是明确未迁移面，shadow parity 不能被记录成网页 owner 切换。下一步先解决共享实例与 capability 所有权，再考虑 live timing adapter。
+
+## 下一实验
+
+问题：现有 scheduler loader 能否演化为一次实例化的 shared-core capability owner，让 scheduler 与 timing 分别握手和回退，而不复制 fetch/timeout/instantiate 生命周期？
+
+可观测量：同一启动的 fetch/instantiate 次数；scheduler-only、timing-only、完整、缺导出、contract mismatch 与 timeout 的分层结果；现有 scheduler frame parity；timing 31-snapshot parity；构建后的独立 WASM URL。
+
+停止条件：一次实例化、能力失败互不误伤、现有结构化 fallback reason 保持；main live timing owner 仍不切换，直到 shared loader 和 shadow adapter 在失败注入下通过；若 capability 分层使 loader 明显复杂化，则保留单 owner loader 并记录成本。
