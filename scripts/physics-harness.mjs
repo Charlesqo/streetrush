@@ -47,7 +47,11 @@ export class FlatTrack {
   }
 }
 
-export function createVehicleRig(config, { groundHalfExtent = 12000, trackWidth = 10000 } = {}) {
+export function createVehicleRig(config, {
+  groundHalfExtent = 12000,
+  trackWidth = 10000,
+  visual = new THREE.Group(),
+} = {}) {
   const world = new RAPIER.World({ x: 0, y: -GRAVITY, z: 0 });
   world.integrationParameters.dt = FIXED_DT;
   const ground = world.createRigidBody(RAPIER.RigidBodyDesc.fixed().setTranslation(0, -0.3, 0));
@@ -56,8 +60,6 @@ export function createVehicleRig(config, { groundHalfExtent = 12000, trackWidth 
     ground,
   );
   const scene = new THREE.Scene();
-  const visual = new THREE.Group();
-  visual.userData.wheelNodes = [];
   const vehicle = new VehicleSystem({
     RAPIER,
     world,

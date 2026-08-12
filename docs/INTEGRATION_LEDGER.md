@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。input identity/reconnect 与 touch/blur 的三个独立失败已吸收，下一步转向六车实际 GLB 结构与现有 production adapter 的离线对照，先固定 node/mesh/wheel/bounds 证据，再决定是否需要运行时适配。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega；下一步应验证 source wheel branches 与 static merge 的资源边界，再决定 MX-5/M3/GT3 是否能保留动态部件，不能凭嘈杂名字把 adapter 泛化到六车。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -56,6 +56,25 @@
 - 未复制：来源同一 input diff 中已经单独整合的 fixed-pulse 代码和其余重复测试没有再次覆盖；没有吸收任何 `main.js`、HUD 或计时改动。
 - 结果：三个新增回归与既有 input suite 通过；完整 `pnpm verify` 保持 12 项资产、18 条六车 deterministic/WASM FNV、1,320-action timing soak、六车物理/恢复和音频生命周期绿色；build 仍为 34 modules、4,864-byte shared WASM、24 files。
 - 证据边界：自动 fixture 证明对象替换与 pointer ownership 契约；实际浏览器若每次 `getGamepads()` 都返回新 wrapper，引用身份策略需要重新评估。当前 Browser URL policy 仍阻止补做真实设备/六车运行验证。
+
+### 六车 production GLB 结构 baseline
+
+- 当前对象：`public/cars` 六个文件均与 NAS clean HEAD Git blob 一致；新增依赖为零的 `scripts/car-model-structure.mjs`，直接校验 GLB v2/JSON chunk、SHA-256、scene/node/mesh/primitive/accessor、extension、name digest 和候选轮组/灯光名称。
+- bounds 方法：只遍历 default scene，用静态 node matrix/TRS 变换 POSITION accessor min/max 的八个角，得到 conservative world AABB；不执行 skin、morph 或 animation。六车无 skin，只有 MX-5 报告 1 个 animation，因此 baseline 明确不是动画后包围盒。
+- research 对照：MX-5、M3、GT3 RS、LP700 的 public GLB 与 `multi_car_model_research` SHA-256 完全相同；M5/AMG 的研究 hash 则与 NAS `source-models` 和 `赛车游戏素材/runtime/cars` 完全相同。现有文档/manifest 明确 public M5/AMG 是网页优化派生，不是来源漂移。
+- derivative 证据：M5 source→public 为 `5,806→28 nodes`、`1,169→28 meshes`，AMG 为 `540→51 nodes`、`166→51 meshes`；两者 triangle counts 各自保持 790,738/302,492，public generator 为 `glTF-Transform v4.4.1`。
+- 结构结果：新进程复跑得到 `cars=6 researchExact=4 wheelNamed=4`。LP700/M5 没有名字候选；GT3 的 102 个 wheel 命中大量来自 `rubbertrim`，说明名称 regex 只能作漂移探针，不能作为六车 runtime binding oracle。
+- baseline：`data/car-model-structure-baseline.json` 固定当前 hash、counts、extensions、name/candidate digests、static bounds 与 production target-length normalization；测试加入 `pnpm verify`，模型字节或 config 尺寸变化必须显式重新评估。
+- 纠错：NAS dirty raw diff 中 4 个 public GLB、2 个纹理和 2 个 source GLB 都是 `100755→100644` mode-only；HEAD/index/worktree blob 相同。此前把这些状态描述成“同大小但内容不同”已被推翻。
+
+### M3 generated-wheel 动态 adapter
+
+- 来源：M3 `wheel_binding.json` SHA-256 `A81DC71F99989C301CFA6C5F26C2E3D2121F6C5354A3B8465D6EF67036AA76D0`；`unresolved_items.json` SHA-256 `5239D6A9470A4916476497FC6B5FF1298BA40F09CC9FEF89AAE98891286FE258`。两者把 generated wheels 未接 `VehicleSystem` 列为 P0。
+- red evidence：现有 `calibrated-wheels` 只是 8 个扁平 tire/rim meshes；第一个断言即失败为 `FL has a steer/suspension pivot`，证明 production 没有可绑定的四轮层级。
+- 实际变化：按 physics `FL/FR/RL/RR` 建立 steer/suspension 外 pivot 和 roll 内 pivot；clone 后用稳定 name + primitive userData version 发现，不把 Object3D 引用塞入会 JSON-clone 的 `userData`。
+- runtime：`VehicleSystem` 只在完整 v1 generated set 存在时绑定；front pivot 写 `steerAngle`，四轮 Y 写 `baseY + compression`，roll angle 由 `omega * fixed dt` 积分并按 render alpha 插值。角度有长期 rebase 与非有限恢复，reset 清除 previous/current angle。
+- 结果：真实 Rapier rig 验证 clone 后四轮顺序、嵌套轴、steer/compression/roll、fixedUpdate 接线、NaN/Infinity 恢复和 reset；完整 `pnpm verify` 保持 18 条六车 WASM replay、1,320-action timing soak、六车物理/恢复、音频、12 项资产生命周期和 GLB baseline 绿色；build 仍为 34 modules、4,864-byte WASM、24 files。
+- 未解决：M3 retained Brake_Disc/Brembo_Calipers 仍带约 28.68° baked front steer 并会进入 static merge；其动态分组/隐藏策略需要独立视觉与 draw-call 证据。其他五车没有获得生成轮组或名字猜测 adapter。
 
 ### 六车 reset 状态清理
 
@@ -250,7 +269,7 @@
 
 ## 待分批吸收的 NAS 脏改动
 
-来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
+来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。其中 4 个 public GLB、2 个纹理和 2 个 source GLB 的 dirty 状态已确认只是 Windows mode-only，blob 未变；六车结构另由当前项目 hash baseline 守护。
 
 建议批次：
 
@@ -258,12 +277,12 @@
 2. 多车音频 shared registry/播放图与真实 bank 接线（选择、loader、context recovery 和 pause gate 已独立整合）；
 3. 资产 visual cache 预算与 pending 时 late result 的 deferred reference graph（request/preload/独立 late scene 已整合）；
 4. 计时并发存储、路线 HUD、布局和 renderer lifecycle；
-5. 车辆 GLB、source model 和纹理的二进制差异。
+5. M3 source brake/caliper 与其他车型 source wheel branches 在 static merge 前的动态分区；public/source derivative 关系已固定，不再把 mode-only 当内容 diff。
 
 ## 当前仅参考或候选
 
 - 旧 `E:\Codex\street-rush`：采样音频和较短兼容实现；没有独立提交历史。
-- 六车模型研究：报告和隔离测试作为视觉适配器 oracle；生产适配器尚未实现。
+- 六车模型研究：production GLB 结构 baseline 和 M3 generated-wheel adapter 已采用；source brake/caliper、其余车型 wheel/light/camera binding 仍是候选，M5/AMG source 报告不能直接按 node id 套到优化 public derivative。
 - 多车音频：bank 选择/发布与严格 manifest/decode loader 已采用；权威 data/schema、shared decoded registry 和样本播放图仍是强候选，不复制 3.14 GB 隔离副本和 vendor。
 - C++ 物理核心：算法和实验是强 oracle；现有生产 `Vehicle` 与研究 `SharedWheelRide` 仍有明确耦合/状态边界。
 - 六车物理数据：只采用带 provenance、field-scoped eligible 的值；冲突和缺失保持显式。
@@ -277,7 +296,7 @@
 - 证实：多车音频候选已覆盖取消、stale、fallback、重试、车库重入和释放；仍缺目标设备成本及完整系统 suspend/resume 证据。
 - 证实：物理数据完整度不足以支持六车真实参数声称。
 - 推翻：`vehicle-physics-core` 现存测试二进制通过不能代表当前源码全量通过；二进制早于新增 `shared_wheel_force_assembly` 测试并少报告一组 suite。
-- 推翻：相同文件大小不能证明 NAS 脏二进制资产没有变化；Git 已报告内容差异。
+- 推翻：NAS 的二进制 dirty status 不是内容变化；raw diff 对 8 个 asset 路径均为 `100755→100644`，HEAD/index/worktree blob 相同。文件大小本身仍不是证据，本次结论来自 blob/hash。
 - 推翻：首次 baseline `verify` 的资产失败不只是“新仓库还没有 HEAD”；创建 HEAD 后仍复现，真正根因是 Windows `\\` 与 manifest `/` 的路径比较。
 - 证实：clean 输入层会在没有 physics step 的 sub-fixed render frame 提前消费离散脉冲；延迟到 fixed owner 消费可以保持一次性语义。
 - 证实：clean `reset()` 没有清除多个自己拥有的车辆、轮胎和 telemetry 状态；六车的遗漏字段形状一致，能用独立 reset-only 修复消除。
@@ -300,9 +319,11 @@
 - 证实：authoritative WASM/fallback progress owner 可保持完整 JS event/record/save API 且无 legacy 进度双写；开发构建已使用 owner，production 仍需运行期证据。
 - 证实：4-seed/1,320-action timing lifecycle 中 legacy/WASM/fallback owner 每一步 exact 一致；短 fixture 未暴露的 restart/save/PB 顺序也保持。
 - 证实：gamepad 不断连但对象身份替换会绕过 reconnect rearm；元素 blur 也不是物理 pointer terminal。身份握手和键盘/物理指针所有权拆分可消除三个独立失败，同时保留 window 级全量释放。
+- 证实：六车 public 模型结构并不共享可靠命名；4 车与研究字节一致，M5/AMG 是已声明的 source-model 优化派生。当前 GLB/hash/TRS bounds 必须独立固定，不能把 source node id 机械用于 public。
+- 证实：M3 已生成的四轮缺少 runtime owner；建立 FL/FR/RL/RR 两级 pivot 后，现有 steer/compression/omega 可在不改物理状态契约的前提下驱动视觉并安全 reset。
 
 ## 当前最值得继续的方向
 
-1. 离线对照六辆实际 GLB 的 node/mesh/wheel/bounds 与 production `AssetStore` 适配路径，先固定结构 baseline，再判断 wheel/灯光/相机 adapter 是否有可复现缺口；
-2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
-3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据；真实 gamepad wrapper 身份语义也在同一条件下复核。
+1. 为 static merge 建立动态部件排除/保留实验，先验证 M3 brake/caliper 和 MX-5/M3/GT3 source wheel branches 的 clone、draw-call、销毁与 pivot 语义；
+2. M5/AMG 的优化 public GLB 已合并到 28/51 mesh，若要独立轮组应回到只读 source model 复制后建立可重复优化 pipeline，不能运行时猜分割；
+3. 实际六车 READY/visual loop 和真实 gamepad wrapper 身份需等 Browser URL policy 允许；shared decoded audio bank registry 继续等待真实重复 bank 需求。

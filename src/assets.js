@@ -243,15 +243,34 @@ export class AssetManager {
     tireGeometry.rotateZ(Math.PI * 0.5);
     rimGeometry.rotateZ(Math.PI * 0.5);
     const wheelY = -config.model.groundOffset + config.wheelRadius;
-    for (const x of [-config.trackWidth * 0.5, config.trackWidth * 0.5]) {
-      for (const z of [-config.wheelbase * 0.5, config.wheelbase * 0.5]) {
-        const tire = new THREE.Mesh(tireGeometry, tireMaterial);
-        const rim = new THREE.Mesh(rimGeometry, rimMaterial);
-        tire.position.set(x, wheelY, z);
-        rim.position.copy(tire.position);
-        group.add(tire, rim);
-      }
+    const halfTrack = config.trackWidth * 0.5;
+    const halfBase = config.wheelbase * 0.5;
+    const wheels = [
+      { id: 'FL', x: -halfTrack, z: halfBase },
+      { id: 'FR', x: halfTrack, z: halfBase },
+      { id: 'RL', x: -halfTrack, z: -halfBase },
+      { id: 'RR', x: halfTrack, z: -halfBase },
+    ];
+    for (const { id, x, z } of wheels) {
+      const steer = new THREE.Group();
+      steer.name = `visual-wheel-${id}-steer`;
+      steer.position.set(x, wheelY, z);
+      steer.userData.visualWheelId = id;
+      steer.userData.visualWheelRole = 'steer-suspension';
+      const roll = new THREE.Group();
+      roll.name = `visual-wheel-${id}-roll`;
+      roll.userData.visualWheelId = id;
+      roll.userData.visualWheelRole = 'roll';
+      const tire = new THREE.Mesh(tireGeometry, tireMaterial);
+      tire.name = `visual-wheel-${id}-tire`;
+      const rim = new THREE.Mesh(rimGeometry, rimMaterial);
+      rim.name = `visual-wheel-${id}-rim`;
+      roll.add(tire, rim);
+      steer.add(roll);
+      group.add(steer);
     }
+    group.userData.visualWheelBindingVersion = 1;
+    group.userData.visualWheelOrder = wheels.map(({ id }) => id);
     return group;
   }
 

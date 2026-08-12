@@ -112,6 +112,7 @@ export class VehicleSystem {
     };
     this.createBody();
     this.createWheels();
+    this.visualWheelBindings = this.bindVisualWheels();
     this.drivenWheels = this.wheels.filter((wheel) => wheel.driven);
     this.lockedInput = {
       steer: 0, throttle: 0, brake: 0, handbrake: 0,
@@ -176,7 +177,36 @@ export class VehicleSystem {
       springForce: 0,
       hit: null,
       surface: 'asphalt',
+      previousVisualAngle: 0,
+      visualAngle: 0,
     }));
+  }
+
+  bindVisualWheels() {
+    const wheelSet = this.visual.getObjectByName('calibrated-wheels');
+    if (wheelSet?.userData?.visualWheelBindingVersion !== 1) return [];
+    const bindings = this.wheels.map(({ id }) => {
+      const steer = wheelSet.getObjectByName(`visual-wheel-${id}-steer`);
+      const roll = wheelSet.getObjectByName(`visual-wheel-${id}-roll`);
+      if (!steer || !roll || roll.parent !== steer) return null;
+      return { id, steer, roll, baseY: steer.position.y };
+    });
+    return bindings.every(Boolean) ? bindings : [];
+  }
+
+  advanceVisualWheelAngles(dt) {
+    const safeDt = Number.isFinite(dt) && dt > 0 ? dt : 0;
+    for (const wheel of this.wheels) {
+      if (!Number.isFinite(wheel.visualAngle)) wheel.visualAngle = 0;
+      if (!Number.isFinite(wheel.previousVisualAngle)) wheel.previousVisualAngle = wheel.visualAngle;
+      wheel.previousVisualAngle = wheel.visualAngle;
+      wheel.visualAngle += finiteOr(wheel.omega) * safeDt;
+      if (Math.abs(wheel.visualAngle) > Math.PI * 4096) {
+        const offset = Math.trunc(wheel.visualAngle / (Math.PI * 2)) * Math.PI * 2;
+        wheel.visualAngle -= offset;
+        wheel.previousVisualAngle -= offset;
+      }
+    }
   }
 
   requestShift(delta) {
@@ -215,6 +245,8 @@ export class VehicleSystem {
       wheel.springForce = 0;
       wheel.hit = null;
       wheel.surface = 'asphalt';
+      wheel.previousVisualAngle = 0;
+      wheel.visualAngle = 0;
     }
     this.gear = 1;
     this.reverse = false;
@@ -574,6 +606,7 @@ export class VehicleSystem {
       this.reset(this.safeSample);
       return;
     }
+    this.advanceVisualWheelAngles(safeDt);
 
     const trackInfo = this.track.nearestInfo(tmp.position, this.trackHint);
     this.trackHint = trackInfo.index;
@@ -607,6 +640,13 @@ export class VehicleSystem {
   syncVisual(alpha = 1) {
     this.visual.position.lerpVectors(this.previousPose.position, this.currentPose.position, alpha);
     this.visual.quaternion.slerpQuaternions(this.previousPose.rotation, this.currentPose.rotation, alpha);
+    for (let index = 0; index < this.visualWheelBindings.length; index += 1) {
+      const binding = this.visualWheelBindings[index];
+      const wheel = this.wheels[index];
+      binding.steer.position.y = binding.baseY + wheel.compression;
+      binding.steer.rotation.y = wheel.front ? this.steerAngle : 0;
+      binding.roll.rotation.x = THREE.MathUtils.lerp(wheel.previousVisualAngle, wheel.visualAngle, alpha);
+    }
   }
 
   destroy() {

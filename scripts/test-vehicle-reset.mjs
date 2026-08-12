@@ -41,6 +41,8 @@ function dirtyResetOwnedState(vehicle) {
     wheel.springForce = 999;
     wheel.hit = { stale: true };
     wheel.surface = 'gravel';
+    wheel.previousVisualAngle = 11;
+    wheel.visualAngle = 12;
   }
 
   for (const key of telemetryNumbers) vehicle.telemetry[key] = 17;
@@ -95,6 +97,8 @@ function collectResetMismatches(vehicle) {
     expect(`${path}.springForce`, wheel.springForce, 0);
     expect(`${path}.hit`, wheel.hit, null);
     expect(`${path}.surface`, wheel.surface, 'asphalt');
+    expect(`${path}.previousVisualAngle`, wheel.previousVisualAngle, 0);
+    expect(`${path}.visualAngle`, wheel.visualAngle, 0);
   }
 
   const telemetryExpected = {

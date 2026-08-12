@@ -487,10 +487,45 @@
 
 结论：三个来源候选都能形成独立失败且根因一致地落在输入 owner/lifecycle 边界；采用的是可解释的最小子集，不是整批认可 NAS dirty input。
 
-## 下一实验
+## 六车 production GLB 结构 probe 结果
 
 问题：六辆 production GLB 的实际 node/mesh/wheel/bounds 结构，与模型研究报告和当前 `AssetStore` 的通用 scale/offset 路径有哪些稳定差异？这些差异是否足以支持一个可测试的 wheel/灯光/相机 adapter，而不是按车型写视觉猜测？
 
-可观测量：每车 GLB/GLTF JSON 的 scene/node/mesh/skin/animation 数、node names、local/world transform、accessor bounds、疑似 wheel nodes、当前 config scale/offset/wheelbase/track；文件 SHA-256 和研究 oracle 来源。
+可观测量：每车 GLB JSON 的 scene/node/mesh/skin/animation 数、name digest、static node TRS/accessor bounds、wheel/light 候选、config normalization、文件 SHA-256 和 research/source-model 关系。
 
 停止条件：先做只读离线结构 probe 并固定 baseline；六车数据不足或命名不稳定时只记录参考，不改运行时；只有发现能复现当前 adapter 错位的明确 invariant，才写失败测试和最小 adapter。
+
+- parser：依赖为零，验证 GLB magic/version/declared length/JSON chunk；遍历 default scene，组合 column-major node matrix/TRS，并变换每个 POSITION accessor min/max 的八角。
+- method boundary：结果是 static conservative AABB，不 decode vertex、不执行 skin/morph/animation。六车无 skin，MX-5 有 1 animation，其余为 0。
+- source identity：public 六车都与 NAS clean HEAD blob 相同。MX-5/M3/GT3/LP700 与研究 hash exact；M5/AMG 研究 hash 与 NAS `source-models`/素材库 exact，而 public manifest 明确标为 optimized derivative。
+- derivative delta：M5 `5,806→28 nodes`、`1,169→28 meshes`，AMG `540→51 nodes`、`166→51 meshes`；triangle counts 各自仍为 790,738/302,492，public generator 是 glTF-Transform 4.4.1。
+- name evidence：结果为 `cars=6 researchExact=4 wheelNamed=4`。LP700/M5 为 0；GT3 的 102 个 wheel hits 混入大量 `rubbertrim`，反证通用 regex binding。
+- baseline：登记六车 byte hash、counts、extensions、node/mesh/material 与 candidate digests、bounds、target-length scale；新 Node 进程 exact 通过并加入 `verify`。
+- source-status correction：NAS 4 GLB、2 texture、2 source GLB 的 raw diff 全是 `100755→100644`；旧的“相同大小但内容变了”判断来自误读 status，已推翻。
+
+结论：结构 probe 有信息增量，且阻止了把 M5/AMG source node id 套到 public derivative；目前没有六车共享 wheel binding invariant，运行时只能从已存在且明确的生成轮组开始。
+
+## M3 generated-wheel adapter 结果
+
+问题：当前专为 M3 生成的四个轮胎/轮毂是否真的由 `VehicleSystem` 的 steer、compression 和 omega 驱动，且 clone/reset/异常数值下保持 owner 一致？
+
+可观测量：生成对象层级与 FL/FR/RL/RR 顺序；front Y steer、四轮 suspension Y、nested X roll；fixed-step angle、render alpha、clone 后 binding、reset 和非有限值。
+
+停止条件：只接现有 M3 generated set；不解析其他车嘈杂名字；不改变 tyre force/physics/replay schema；缺任一 pivot 时整套 adapter fail closed。
+
+- source：M3 wheel binding 报告要求 generated outer-Y steer + nested-X roll；unresolved P0 明确指出当前 main 只同步 wrapper pose。
+- red：旧 set 是 8 个 flat meshes，首错 `FL has a steer/suspension pivot`。
+- hierarchy：生成 `visual-wheel-{FL,FR,RL,RR}-steer/roll`；primitive version/order 保存在可 clone userData，运行时 Object3D 引用重新按 name 发现。
+- state：wheel previous/current visual angle 在 fixed update 用 omega 积分；render alpha 线性插值，长期角度 rebase；non-finite 自动归零；reset 明确清除。
+- green：clone 后 4 bindings、axis/order、steer/compression/roll、fixedUpdate wiring、NaN/Infinity 和 reset 全通过；完整 `pnpm verify` 保持 18 条六车 WASM replay、1,320-action timing soak、六车物理/恢复、音频、12 asset tests、GLB baseline 和 production build 全绿。
+- unresolved：source Brake_Disc/Brembo_Calipers 仍 static/baked steer；没有真实浏览器视觉证据，所以没有在本批隐藏或重分组。
+
+结论：M3 generated wheels 现在有真实动态 owner，且范围严格受结构 marker 限制；这是可验证的小步，不代表其他五车轮组已经接入。
+
+## 下一实验
+
+问题：`mergeStaticCarMeshes()` 能否显式排除动态 source branches，同时保持 clone、材质/几何所有权、draw-call 合并和销毁契约？先以 M3 brake/caliper 与字节一致的 MX-5/M3/GT3 wheel reports 为 oracle。
+
+可观测量：merge 前后保留节点 identity、dynamic/static mesh counts、material/geometry sharing、clone independence、dispose 次数、pivot center/axis，以及 M3 retained brake baked steer。
+
+停止条件：先构造合成 scene 复现“动态节点被 merge 消失”；没有完整资源 owner 和车型级绑定表就不加载 source node ids；M5/AMG public derivative 没有 source hierarchy，本实验不得声称覆盖它们。
