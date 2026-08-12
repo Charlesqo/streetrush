@@ -46,13 +46,21 @@
 - 未吸收：同一 NAS input diff 中的 gamepad 对象身份重连和多指 blur 行为；同一 `main.js` 大 diff 中的计时、生命周期、HUD 等改动。
 - 结果：三类输入均跨两个 sub-fixed render frames 保留，在下一 physics frame 可见，消费后不重复；针对性测试、完整 `pnpm verify`、Rust 单测和 JS/WASM scheduler 对照均通过。
 
+### 六车 reset 状态清理
+
+- 来源参考：NAS 未跟踪 `scripts/test-vehicle-finite.mjs` 的 reset 部分，以及 HEAD `5fdea84` 之上的未提交 `src/vehicle.js`；测试在本仓库重写为不依赖 NAS 新增内部字段的 `scripts/test-vehicle-reset.mjs`。
+- 原始问题：clean `reset()` 已清理刚体速度和部分传动标量，但保留转向/负载、轮胎接触缓存和上一帧 telemetry，导致 reset 后 HUD、音频或下一物理步可能观察到旧状态。
+- 失败证据：用有限值污染后，6/6 车型均在相同字段簇失败：`steerAngle`、`engineLoad`、四轮 grounded/compression/force/hit/surface，以及整套 vehicle/wheel telemetry。
+- 实际变化：只补全 `reset()` 拥有的现有运行状态，并抽出 `resetTelemetry()`；没有新增轮胎内部字段，没有加入无效 `dt`/输入防护，也没有吸收同一 NAS diff 的 texture 释放或 destroy 幂等。
+- 结果：6/6 reset 回归、完整 `pnpm verify`、既有六车 smoke/regression、Rust 单测和 JS/WASM scheduler 对照全部通过；新回归已进入 `verify`。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
 
 建议批次：
 
-1. finite/reset 与对应失败测试（fixed-update 输入脉冲已独立整合）；
+1. 无效输入/`dt` finite guard 与对应失败测试（reset 和 fixed-update 输入脉冲已独立整合）；
 2. 音频 pause/resume/recovery 与生命周期测试；
 3. 资产超时、取消、缓存、引用安全释放与六车切换测试；
 4. 计时并发存储、路线 HUD、布局和 renderer lifecycle；
@@ -78,9 +86,10 @@
 - 推翻：相同文件大小不能证明 NAS 脏二进制资产没有变化；Git 已报告内容差异。
 - 推翻：首次 baseline `verify` 的资产失败不只是“新仓库还没有 HEAD”；创建 HEAD 后仍复现，真正根因是 Windows `\\` 与 manifest `/` 的路径比较。
 - 证实：clean 输入层会在没有 physics step 的 sub-fixed render frame 提前消费离散脉冲；延迟到 fixed owner 消费可以保持一次性语义。
+- 证实：clean `reset()` 没有清除多个自己拥有的车辆、轮胎和 telemetry 状态；六车的遗漏字段形状一致，能用独立 reset-only 修复消除。
 
 ## 当前最值得继续的方向
 
-1. 把 NAS finite/reset 测试拆成“reset 清理完整性”和“无效输入/`dt` 防毒”两个用例，先确认 clean baseline 的独立失败类别；
+1. 为无效输入/`dt` 防毒建立独立六车测试，区分调用边界清理、已污染 runtime scalar 和刚体非有限状态三类恢复策略；
 2. 为 Rust scheduler 定义网页 owner 切换门槛：加载失败回退、初始化时序和 JS/WASM 双路径一致性，证据足够后才替换主循环 owner；
 3. 随后优先评估音频 pause/resume 或资产取消/释放簇，按可观测资源生命周期选择下一批。

@@ -161,12 +161,21 @@ export class VehicleSystem {
     this.body.setAngvel({ x: 0, y: 0, z: 0 }, true);
     this.body.resetForces(true);
     this.body.resetTorques(true);
-    for (const wheel of this.wheels) wheel.omega = 0;
+    for (const wheel of this.wheels) {
+      wheel.omega = 0;
+      wheel.grounded = false;
+      wheel.compression = 0;
+      wheel.springForce = 0;
+      wheel.hit = null;
+      wheel.surface = 'asphalt';
+    }
     this.gear = 1;
     this.reverse = false;
     this.reverseHold = 0;
     this.shiftTimer = 0;
     this.engineRpm = this.config.idle;
+    this.engineLoad = 0;
+    this.steerAngle = 0;
     this.trackHint = pose.sampleIndex;
     this.previousLongSpeed = 0;
     this.smoothedLongAcceleration = 0;
@@ -175,6 +184,34 @@ export class VehicleSystem {
     this.afterPhysics();
     this.previousPose.position.copy(this.currentPose.position);
     this.previousPose.rotation.copy(this.currentPose.rotation);
+    this.resetTelemetry();
+  }
+
+  resetTelemetry() {
+    this.telemetry.speedKmh = 0;
+    this.telemetry.signedSpeedKmh = 0;
+    this.telemetry.rpm = this.config.idle;
+    this.telemetry.gear = 1;
+    this.telemetry.reverse = false;
+    this.telemetry.throttle = 0;
+    this.telemetry.brake = 0;
+    this.telemetry.steer = 0;
+    this.telemetry.longitudinalAcceleration = 0;
+    this.telemetry.lateralAcceleration = 0;
+    this.telemetry.surface = 'asphalt';
+    this.telemetry.absActive = false;
+    this.telemetry.tcsActive = false;
+    this.telemetry.stabilityActive = false;
+    for (const wheel of this.telemetry.wheels) {
+      wheel.grounded = false;
+      wheel.load = 0;
+      wheel.suspension = 0;
+      wheel.slipRatio = 0;
+      wheel.slipAngle = 0;
+      wheel.slipPower = 0;
+      wheel.surface = 'asphalt';
+      wheel.contactPoint.set(0, 0, 0);
+    }
   }
 
   torqueCurve(rpm) {

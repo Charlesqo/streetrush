@@ -105,10 +105,27 @@
 
 结论：fixed-update 输入脉冲是有直接失败证据的独立根因，已用小于 NAS 原 diff 的范围整合。finite/reset 尚未得到同等粒度的失败分类，不能和本批混合。
 
-## 下一实验
+## 六车 reset-only 实验结果
 
 问题：clean vehicle reset 究竟遗漏了哪些运行状态；只补 reset 完整性是否足以消除污染，还是必须同时加入 update-time finite guard？
 
 可观测量：六车 reset 后的传动、转向、引擎负载、轮胎接触、telemetry 数值和标志；分别记录 assertion failure 与异常，而不是把所有失败归为“非有限值”。
 
 停止条件：先写不依赖 NAS 新增内部字段的 reset-only 测试并在 clean code 上失败；若修复后六车现有物理回归保持通过，再独立设计 NaN/Infinity 输入测试，避免把资源释放改动混入车辆状态批次。
+
+- 测试来源与变化：参考 NAS 未跟踪 `scripts/test-vehicle-finite.mjs`，重写为只使用 clean baseline 已存在字段的 `scripts/test-vehicle-reset.mjs`；所有污染值均为有限值。
+- clean 结果：退出码 1；`mx5,m3e30,gt3rs,lp700,amggt3,m5g90` 六车失败形状一致。
+- 已经正确清理：刚体线/角速度、wheel omega、gear/reverse、reverse hold、shift timer、engine RPM、纵向速度历史、平滑加速度、stuck timer。
+- 证实遗漏：steer angle、engine load、四轮接触/悬挂缓存，以及 vehicle/wheel telemetry 的数值、surface、ABS/TCS/stability 标志与 contact point。
+- 最小修复后：`pnpm test:vehicle-reset` 为 6/6 PASS；该测试已加入 `pnpm verify`。
+- 回归：完整 `pnpm verify`、既有六车 smoke/regression、`cargo test --workspace` 和 `scripts/test-core-wasm.mjs` 均退出码 0。
+
+结论：reset 完整性是独立于 finite guard 的真实缺陷；只补现有 owner 状态即可修复，没有理由在本批扩大到无效数值恢复或资源生命周期。
+
+## 下一实验
+
+问题：无效 `input`/`dt` 和已污染车辆标量分别如何扩散为非有限刚体或 telemetry，最小边界清理应放在 JS vehicle owner 还是未来 Rust 接口前？
+
+可观测量：六车对 `null` input、NaN/±Infinity 控制量、NaN/±Infinity/0/极大 `dt` 的异常类型和首个非有限字段；将“拒绝/替换调用参数”与“恢复已污染内部状态”分开统计。
+
+停止条件：先建立只覆盖调用参数的最小失败矩阵；若同一 sanitize 规则能让六车通过且不改变正常 120 Hz 结果，再考虑内部状态 poison 和刚体恢复，不能一次加入所有 NAS guard。
