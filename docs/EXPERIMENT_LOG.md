@@ -148,7 +148,7 @@
 停止条件：先实现可注入 loader 和 JS fallback 的独立测试；成功路径必须实例化真实 Rust `.wasm`，失败路径不得发出未处理 rejection；只有双路径对照通过后才修改 `main.js` owner。
 
 - loader：JS/WASM 同形状态化接口；exact 常量握手、必需导出检查、invalid plan 防护、1.5 秒初始化超时和结构化 fallback reason。
-- 可复现生成：package scripts 调用 `scripts/build-core-wasm.mjs`；从干净源码构建 release WASM 到忽略目录，当前 2,533 bytes。
+- 可复现生成：package scripts 调用 `scripts/build-core-wasm.mjs`；从干净源码构建 release WASM 到忽略目录，当批 scheduler-only 产物为 2,533 bytes。
 - Node 成功路径：真实 Rust WASM 在不规则帧序列上与 JS 的 steps/remainder/alpha 逐帧一致。
 - Node 失败路径：404 fetch、永不完成的 instantiate、`CompileError`、空 exports、fixed-dt 契约不匹配都得到 JS owner；各 fallback 在独立帧序列继续与 JS oracle 一致。
 - main owner 切换：删除主循环 accumulator/step-budget 所有权；比赛、暂停、模态和返回车库都 reset scheduler owner；owner 在场景加载期间并行初始化、首帧前固定。
@@ -300,10 +300,28 @@
 
 结论：当前环境内未发现确定性分歧；已有可定位输入变更与首个状态字段的 baseline，但还没有浏览器/平台或 Rust replay 一致性证据。
 
-## 下一实验
+## Rust replay 数值契约实验结果
 
 问题：能否把 replay 的 canonical Float64、1e-6 quantization 和增量 digest 作为 Rust 共享核心的纯函数，同时在 native 与 raw WASM 中逐值一致，而不迁移 JS/Rapier 模拟？
 
 可观测量：特殊 Float64（±0、正常值、极值）的 canonical bits、quantized 值、rolling digest；native Rust、Node JS oracle、真实 WASM export 三方逐 push 一致；格式版本固定。
 
 停止条件：Rust API 无状态、无分配、无 unsafe；native 单测和真实 WASM 对照通过；只有 digest owner 跨边界，不把 SHA-256 fixture 或 Rapier state 复制进 Rust。
+
+- format v1：big-endian canonical `f64`；所有 NaN payload 归一为 quiet NaN `0x7ff8000000000000`，但 ±0/±Infinity 保留原 bits。
+- quantization：Rust 实现 JS `Math.round` 的 half-to-`+∞` 与 signed-zero 语义；首轮测试促使修正“缩放下溢返回原值”的错误假设，最终 ±最小次正规数 / 最大 quantum 得到 ±0，与 JS 一致。
+- 异常策略：value 或 quantum 非有限、quantum 非正时保持 value；有限 value / quantum 缩放溢出时保持原值，避免量化制造 infinity。
+- digest：无状态 FNV-1a 64，逐个 canonical big-endian byte 更新；无分配、无全局状态，raw WASM `i64` 由 JS `BigInt.asUintN(64)` 解释。
+- oracle：13 个特殊值逐 bits、quantized value、逐 push state 对照；两个不同符号/payload 的 NaN 得到同一 canonical bits。固定 exact `0248d9354f126505`，quantized `0603ecb87904c881`。
+- 验证：Rust 13/13 单测；native probe 同时保留五种 scheduler case 并匹配上述摘要；workspace/all-target 和 wasm32 Clippy `-D warnings` 通过；release WASM 3,658 bytes，独立 JS oracle 对照通过。
+- 边界：没有改变网页 owner 或现有 SHA-256 replay baseline；特殊向量证明数值 ABI，不代表 18 个实际六车 trace 已经跨边界运行。
+
+结论：假设得到支持，且下溢 signed-zero 反例证明逐值对照确实增加了信息。Rust 已拥有可复用 replay 数值边界，但不是模拟 owner；下一步应连接实际 trace，而不是扩大算法范围。
+
+## 下一实验
+
+问题：现有 6 车 × 3 场景的 50-field trace 能否在生成时同时通过独立 JS 与真实 Rust/WASM FNV digest，并登记稳定 baseline，而不重复运行或复制一套车辆模拟？
+
+可观测量：每个 trace 的 exact/quantized JS FNV 与 WASM FNV、首个不同 tick/field/value/state、现有 SHA-256/input hash 是否保持不变、WASM 缺失时独立测试是否明确失败。
+
+停止条件：只复用一次 trace 生成；18/18 trace 的逐 push state 一致并登记 baseline；现有 54-run exact 重现和完整回归保持通过；不让 digest parity 伪装成浏览器/CPU 确定性证明。

@@ -33,6 +33,7 @@
     "test:asset-license": "node scripts/test-asset-license-check.mjs",
     "test:scheduling": "node scripts/test-physics-scheduling.mjs",
     "test:scheduler-owner": "pnpm build:core-wasm && node scripts/test-physics-scheduler-owner.mjs",
+    "test:replay-core": "pnpm build:core-wasm && node scripts/test-replay-core-wasm.mjs",
     "test:vehicle-reset": "node scripts/test-vehicle-reset.mjs",
     "test:vehicle-boundaries": "node scripts/test-vehicle-input-boundaries.mjs",
     "test:vehicle-recovery": "node scripts/test-vehicle-internal-recovery.mjs",
@@ -41,7 +42,7 @@
     "test:physics:smoke": "node scripts/smoke-physics.mjs",
     "test:physics:regression": "node scripts/regression-physics.mjs",
     "calibrate": "node scripts/calibrate-physics.mjs",
-    "verify": "pnpm test:timing && pnpm test:medals && pnpm test:input && pnpm test:audio-context && pnpm test:audio-pause && pnpm test:audio-bank && pnpm test:audio-bank-loader && pnpm test:telemetry && pnpm test:orientation && pnpm test:track && pnpm test:route && pnpm test:assets && pnpm test:asset-license && pnpm test:scheduling && pnpm test:scheduler-owner && pnpm test:vehicle-reset && pnpm test:vehicle-boundaries && pnpm test:vehicle-recovery && pnpm test:determinism && pnpm check:goal-calibration && pnpm test:physics && pnpm build && pnpm check:cloudflare && pnpm check:secrets && pnpm check:assets",
+    "verify": "pnpm test:timing && pnpm test:medals && pnpm test:input && pnpm test:audio-context && pnpm test:audio-pause && pnpm test:audio-bank && pnpm test:audio-bank-loader && pnpm test:telemetry && pnpm test:orientation && pnpm test:track && pnpm test:route && pnpm test:assets && pnpm test:asset-license && pnpm test:scheduling && pnpm test:scheduler-owner && pnpm test:replay-core && pnpm test:vehicle-reset && pnpm test:vehicle-boundaries && pnpm test:vehicle-recovery && pnpm test:determinism && pnpm check:goal-calibration && pnpm test:physics && pnpm build && pnpm check:cloudflare && pnpm check:secrets && pnpm check:assets",
     "check:release:public": "pnpm verify && pnpm check:assets:public && pnpm check:git-release",
     "check:release:commercial": "pnpm verify && pnpm check:assets:commercial && pnpm check:git-release"
   },

@@ -51,4 +51,4 @@ const destination = join(projectRoot, 'src', 'generated', 'streetrush_core.wasm'
 await mkdir(dirname(destination), { recursive: true });
 await copyFile(source, destination);
 const { size } = await stat(destination);
-console.log(`PASS generated Rust scheduler WASM ${size} bytes`);
+console.log(`PASS generated Rust shared-core WASM ${size} bytes`);

@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，同时先把固定步调度与计时等边界清楚、容易对照的逻辑放入 Rust 共享核心。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已经有明确 JS oracle 的固定步调度和 replay 数值格式逐段交给 Rust 共享核心。下一步应让真实六车 trace 使用这份 Rust/WASM digest 契约，而不是提前迁移 Rapier 模拟。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -82,10 +82,20 @@
 - 限制：只证明当前 Windows + Node 24 + 当前 Rapier WASM 在同环境的同/跨进程重现；未证明浏览器、不同 CPU/版本或 Rust 物理一致。quantized hash 是未来比较边界，不是已有跨平台证明。
 - 结果：18 traces × 3 repeats = 54 runs 通过，并进入 `pnpm verify`；完整六车、Rust/WASM scheduler、audio/assets/build 门禁保持通过。
 
+### Rust replay 数值契约 v1
+
+- 来源：本仓库已登记的六车 replay 字段顺序与 JS `Float64`/1e-6 quantization 契约；本批没有复制外部代码，也没有迁移 Rapier 状态。
+- 格式：`REPLAY_FORMAT_VERSION=1`；所有数值按 canonical big-endian IEEE-754 bytes 摘要。NaN payload 统一为 `0x7ff8000000000000`，`+0/-0` 和正负无穷保持可区分。
+- 量化：默认 quantum 为 `1e-6`，精确遵循 JS `Math.round` 的 half-toward-positive-infinity 与负零行为；非法 quantum/非有限 value 保持原值，缩放溢出不把有限 value 变成 infinity，缩放下溢保留结果的 signed zero。
+- digest owner：`streetrush-core` 提供无状态、无分配的 FNV-1a 64 `push_f64(state, value)`；没有加入全局 mutable state。native 和 raw WASM 使用同一函数，WASM `u64` 在 JS 侧按 unsigned 64-bit BigInt 解释。
+- 固定 oracle：13 个边界值覆盖 ±0、±1.5、±half quantum、最大有限值、±最小次正规数、±Infinity 与两个不同 NaN payload；exact 固定为 `0248d9354f126505`，quantized 固定为 `0603ecb87904c881`。
+- 结果：13 个 Rust 单测、native 固定摘要、native/WASM Clippy `-D warnings`、真实 release WASM 与独立 JS 逐值/逐 push 对照全部通过；当前 WASM 为 3,658 bytes。
+- 限制：本批只固定数值与 ABI，不替代现有 SHA-256 baseline，也尚未证明实际 18 个六车 trace 已经过 Rust/WASM digest；这是下一实验的明确输入。
+
 ### 网页 Rust/WASM scheduler owner
 
 - 来源：本仓库已提交 `streetrush-core` raw WASM ABI 和 JS fixed-step oracle；本批没有再复制外部代码。
-- 生成边界：`scripts/build-core-wasm.mjs` 用锁文件构建 release `wasm32-unknown-unknown`，复制到忽略的 `src/generated/`；当前产物 2,533 bytes，Vite 因小于 4 KiB 把它作为 data URL 内联，不提交二进制。
+- 生成边界：`scripts/build-core-wasm.mjs` 用锁文件构建 release `wasm32-unknown-unknown`，复制到忽略的 `src/generated/`；scheduler-only 当批产物为 2,533 bytes，加入 replay ABI 后当前为 3,658 bytes，仍因小于 4 KiB 被 Vite 作为 data URL 内联，不提交二进制。
 - owner 接口：JS 与 Rust/WASM 都提供状态化 `advance()`/`reset()`、owner 名称、fallback 原因和同形 `{ steps, remainderSeconds, alpha }`；主循环不再拥有第二份 accumulator。
 - 握手与回退：加载时核对 fixed dt、最大 frame dt、最大 steps 和五个必需导出；fetch、1.5 秒 timeout、instantiate、缺导出或契约不符均返回结构化原因的 JS owner，不让启动收到 rejected promise。
 - 初始化时序：WASM 加载与 Rapier/车辆/场景加载并行，在第一次 `requestAnimationFrame` 前固定 owner；`html[data-physics-scheduler-owner]` 和可选 fallback code 提供运行时观测。
@@ -191,9 +201,10 @@
 - 证实：late GLTF 只有在未挂载、无 pending、与全部已知资源 identity 不重叠时才可局部安全回收；共享判断不足时应保留而不是猜测 dispose。
 - 证实：六车 owner scalar/cache 污染不会靠下一步自然消失；入口局部 fallback 可与显式 oracle 一致。Rapier 的 NaN rotation setter 在本环境保持有限，不能把所有坏 setter 统一描述为 body poison。
 - 证实：当前 JS/Rapier 六车在三类固定 seed 状态序列中可逐 tick exact 重现，并能跨新 Node 进程匹配登记 hash；证据范围尚不跨浏览器/平台。
+- 证实：canonical Float64、JS 兼容 1e-6 quantization 与 FNV-1a 64 增量摘要可由同一 Rust 纯函数在 native/raw WASM 使用，并与独立 JS 边界 oracle 位级一致；实际六车 trace 尚未接入。
 
 ## 当前最值得继续的方向
 
-1. 将 replay canonical Float64/quantization/rolling digest 做成 `streetrush-core` 的无状态纯函数，由 native 与 raw WASM 对同一 trace 对照；车辆模拟仍留在 JS/Rapier；
+1. 将现有 18 个六车 deterministic traces 逐字段送入 JS 与真实 Rust/WASM digest，登记 exact/quantized FNV baseline 和首个分歧定位；车辆模拟仍留在 JS/Rapier；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。

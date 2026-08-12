@@ -4,6 +4,40 @@ use crate::scheduling::{
     FIXED_DT_SECONDS, MAX_FRAME_DT_SECONDS, MAX_PHYSICS_STEPS, accumulate_physics_time,
     clamp_frame_delta, plan_frame, simulate_render_frames,
 };
+use crate::{
+    REPLAY_DIGEST_OFFSET_BASIS, REPLAY_FORMAT_VERSION, REPLAY_QUANTUM, canonical_f64_bits,
+    quantize_replay_value, replay_digest_push_f64,
+};
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_replay_format_version() -> u32 {
+    REPLAY_FORMAT_VERSION
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_replay_quantum() -> f64 {
+    REPLAY_QUANTUM
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_replay_digest_offset_basis() -> u64 {
+    REPLAY_DIGEST_OFFSET_BASIS
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_replay_canonical_f64_bits(value: f64) -> u64 {
+    canonical_f64_bits(value)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_quantize_replay_value(value: f64, quantum: f64) -> f64 {
+    quantize_replay_value(value, quantum)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn streetrush_replay_digest_push_f64(state: u64, value: f64) -> u64 {
+    replay_digest_push_f64(state, value)
+}
 
 #[unsafe(no_mangle)]
 pub extern "C" fn streetrush_fixed_dt_seconds() -> f64 {
