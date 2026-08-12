@@ -1,0 +1,86 @@
+{
+  "formatVersion": 1,
+  "generator": "timing-lifecycle-soak-v1",
+  "cases": [
+    {
+      "seed": 1908604929,
+      "actionCount": 319,
+      "actionSha256": "1043ebfb590a19042dd6e822875911b583681ecaced515c81807b3f0cacd66ff",
+      "resultSha256": "fb0458a33ff1b87ca53e370fe706264e1a58bcb43a872902c8cd06502fd12d24",
+      "eventCounts": {
+        "run-started": 15,
+        "checkpoint-completed": 81,
+        "checkpoint-rejected": 19,
+        "sector-completed": 54,
+        "lap-completed": 27,
+        "run-completed": 12,
+        "lap-invalidated": 5
+      },
+      "completedRuns": 12,
+      "validRuns": 8,
+      "storageWrites": 22,
+      "bestLapMs": 2356,
+      "bestRaceMs": 6145
+    },
+    {
+      "seed": 1908604930,
+      "actionCount": 342,
+      "actionSha256": "82b154c8630b44495543b6fa5b73f1fa1dbb2b0685e1d680917aa81e28d900c9",
+      "resultSha256": "f2cad4afef0a366bd77d989ea52256850a60e2f9c933cc6a9eaf3ee27f0efc52",
+      "eventCounts": {
+        "run-started": 15,
+        "checkpoint-completed": 81,
+        "checkpoint-rejected": 24,
+        "sector-completed": 54,
+        "lap-completed": 27,
+        "run-completed": 12,
+        "lap-invalidated": 5
+      },
+      "completedRuns": 12,
+      "validRuns": 8,
+      "storageWrites": 22,
+      "bestLapMs": 1656,
+      "bestRaceMs": 6960
+    },
+    {
+      "seed": 1908604931,
+      "actionCount": 316,
+      "actionSha256": "dfe7a7fb558103ebccec51243e18922a1e4156bd38dae2f12ef12f5d21c02dd0",
+      "resultSha256": "9501ac1acad0e66a4d4897d86845efd8006363f04c87a63eecc225bd88bd135f",
+      "eventCounts": {
+        "run-started": 15,
+        "checkpoint-rejected": 17,
+        "checkpoint-completed": 81,
+        "sector-completed": 54,
+        "lap-completed": 27,
+        "run-completed": 12,
+        "lap-invalidated": 5
+      },
+      "completedRuns": 12,
+      "validRuns": 8,
+      "storageWrites": 22,
+      "bestLapMs": 1772,
+      "bestRaceMs": 4110
+    },
+    {
+      "seed": 1908604932,
+      "actionCount": 343,
+      "actionSha256": "adf7af021e3a539443b0490bf5fac33e23f605216ecae548ec1210a924d9a4d2",
+      "resultSha256": "eeabdc25ffec007bd85b66067f541164fb4141117bd5ce507dd0e2ff73f2ce81",
+      "eventCounts": {
+        "run-started": 15,
+        "checkpoint-rejected": 22,
+        "checkpoint-completed": 81,
+        "sector-completed": 54,
+        "lap-completed": 27,
+        "run-completed": 12,
+        "lap-invalidated": 5
+      },
+      "completedRuns": 12,
+      "validRuns": 8,
+      "storageWrites": 22,
+      "bestLapMs": 2344,
+      "bestRaceMs": 6800
+    }
+  ]
+}

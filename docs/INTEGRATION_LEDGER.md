@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页现已一次实例化 shared WASM，并让 scheduler/timing capability 独立握手；开发期 live `RaceTimingSession` 已由 staged WASM/fallback wrapper authoritative 驱动纯进度，PB/persistence/event 仍由 JS 单写。下一步应做长序列 lifecycle soak 与 failure sequence，积累 production 切换证据，而不是继续扩大 timing 功能。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。下一步回到尚未吸收的输入生命周期候选，先复现 gamepad identity/reconnect 与 touch/blur terminal state，避免在 timing 上无证据扩张。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -161,6 +161,16 @@
 - 结果：targeted 与完整 `pnpm verify` 通过；WASM 4,864 bytes、Vite 34 modules、build 24 files、secret guard 116 files。
 - 限制：自动/构建证据充分但还没有新的实际浏览器 lifecycle soak；production 未切换，不能记录为全部网页环境已由 Rust timing 驱动。
 
+### timing lifecycle 固定 seed soak
+
+- 生成器：4 seeds `0x71c30001..4`，每个 12 次目标完赛；固定加入 3 次中途 restart、valid/invalid runs、错序 checkpoint、重复/第二原因 invalidation、fractional advance 和 finish 后噪声。不是重复同一 action list。
+- 三 owner：每个 action 后比较 legacy、Rust/WASM owner、JS fallback owner 的返回值、完整 snapshot、record、summary 和 storage write count；差异消息包含 seed/action index/type/owner。
+- 首轮：共 1,320 actions、48 completed runs；每 seed 15 run-started、81 accepted checkpoints、17–24 rejected、54 sectors、27 laps、12 completed、5 invalidated events；8 valid/4 invalid runs，22 writes。
+- baseline：`data/timing-lifecycle-baseline.json` 登记每 seed action/result SHA-256、event counts、runs/writes、best lap/race；候选登记后新 Node 进程复跑匹配，不在同一进程自我批准。
+- 信息量：seed 间 action count 为 316–343，best lap 为 1,656–2,356 ms、best race 为 4,110–6,960 ms；restart 后可再次产生 invalid event，解释 4 invalid runs 对应 5 invalidation events。
+- 结果：soak 加入 `verify`；完整回归通过，WASM 4,864 bytes、Vite 34 modules、secret guard 118 files。
+- 限制：这是 session lifecycle，不含 DOM/track/visibility/audio；不能替代此前受 Browser URL policy 阻止的实际六车浏览器循环。
+
 ### 网页 Rust/WASM scheduler owner
 
 - 来源：本仓库已提交 `streetrush-core` raw WASM ABI 和 JS fixed-step oracle；本批没有再复制外部代码。
@@ -277,9 +287,10 @@
 - 证实：shadow 可嵌入完整 `RaceTimingSession` 而不改变 35-action event/record/save 结果；同时证实 checkpoint event 需要 staged snapshot，不能直接用原子 outcome 机械替换。
 - 证实：prepare/sector/lap/run staged transaction 可重现 46 个 legacy 中间 snapshot；current lap 必须由已提交 lap 数拥有，而不能只由 checkpoint 数推导。
 - 证实：authoritative WASM/fallback progress owner 可保持完整 JS event/record/save API 且无 legacy 进度双写；开发构建已使用 owner，production 仍需运行期证据。
+- 证实：4-seed/1,320-action timing lifecycle 中 legacy/WASM/fallback owner 每一步 exact 一致；短 fixture 未暴露的 restart/save/PB 顺序也保持。
 
 ## 当前最值得继续的方向
 
-1. 增加 timing lifecycle soak：固定 seed 生成 advance/wrong/valid checkpoint/invalidate/restart/finished-after-input 序列，legacy/WASM/fallback owner 长序列逐 action 对照并按首个差异聚类；
+1. 复核 NAS dirty input 变更的 gamepad identity/reconnect 与 touch/blur terminal state，先从当前实现建立失败序列，按根因拆批；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。

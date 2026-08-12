@@ -450,10 +450,28 @@
 
 结论：开发期网页的纯比赛进度已有真实 Rust/WASM authoritative 路径与 JS fallback，且 PB/event adapter 单写已被测试证明；production 切换仍需 lifecycle soak/运行证据，当前不做无证据扩大。
 
-## 下一实验
+## timing lifecycle 固定 seed soak 结果
 
 问题：长序列随机但可重放的 race lifecycle 是否会暴露短 fixture 未覆盖的 staged transaction、restart、finished 输入或 PB/save 分歧？
 
 可观测量：固定 seed action trace；legacy/WASM/fallback owner 每 action result/snapshot/record/save；首个 divergence action；有效/无效 run、wrong checkpoint、重复 invalidation、restart 与 finish 后噪声数量。
 
 停止条件：多 seed 各增加不同顺序而非重复日志；先固定生成器与 action hash；所有路径 exact equality；失败按首个 action/field 聚类；不需要实际 DOM/物理即可先验证 session lifecycle。
+
+- generator：xorshift32 seeds `0x71c30001..4`；每 seed 12 run，固定 3 个 half-run restart，并让 advance count/duration、wrong checkpoint 位置随 seed 变化。
+- coverage：run `mod 3` 控制 invalid；同一次 invalid run 包含重复同 reason 和第二 reason；每完成 run 后再送 advance/checkpoint/invalidate 噪声。
+- first candidate：action counts 319/342/316/343，rejected checkpoints 19/24/17/22；每 seed 12 completed、8 valid、22 writes，证明路径不是空转。
+- equality：1,320 actions 中 legacy、Rust/WASM owner、fallback owner 的 result/snapshot/record/summary/write count 每一步 exact，无首个 divergence。
+- baseline：登记四个 action SHA 和 result SHA，以及 event/run/PB 统计；全新 Node 进程复跑 `PASS ... seeds=4 actions=1320 completedRuns=48`。
+- results：best lap 随 seed 为 2,356/1,656/1,772/2,344 ms；best race 为 6,145/6,960/4,110/6,800 ms；每 seed 15 starts、27 laps、5 invalidated events。
+- 回归：加入 `pnpm verify` 后完整通过；timing short/staged/shadow、六车 replay/physics/recovery、audio/assets/build 全部保持绿色。
+
+结论：长 session sequence 未发现 staged owner、PB 或 save 顺序漂移；timing 下一步的增量价值低于回到未整合 input lifecycle，因此 production 切换继续等待实际浏览器条件。
+
+## 下一实验
+
+问题：NAS dirty input 中 gamepad 对象身份重连与 pointer/blur terminal cleanup，哪些能在当前基线形成独立失败，哪些已被现有 `releaseAll`/pointer capture 测试覆盖？
+
+可观测量：same index/new object、disconnect/reconnect、held/pulse edge rearm、multi-pointer owner、blur/visibility/pointercancel 后 hold/pulse/capture maps；keyboard/gamepad/touch source isolation。
+
+停止条件：先读取来源实际 diff/test hash；只采用能复现当前失败的最小变化；不整批复制 input 大 diff；完整 input、six-car、Rust/WASM/timing soak 回归保持。
