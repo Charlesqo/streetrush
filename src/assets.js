@@ -12,13 +12,31 @@ export class AssetManager {
     this.visualCache = new Map();
     this.pendingVisuals = new Map();
     this.preloadScheduled = new Set();
+    this.preloadScheduleTokens = new Map();
+    this.preloadRequests = new Map();
     this.carLoadTimeoutMs = 15_000;
+    this.preloadTimeoutMs = 15_000;
     this.cityGroup = new THREE.Group();
     this.cityGroup.name = 'safe-scenery';
     scene.add(this.cityGroup);
   }
 
+  cancelPreload(id) {
+    this.preloadScheduled.delete(id);
+    this.preloadScheduleTokens.delete(id);
+    const request = this.preloadRequests.get(id);
+    if (!request) return;
+    this.preloadRequests.delete(id);
+    clearTimeout(request.timeoutId);
+    try {
+      request.controller?.abort();
+    } catch {
+      // Cancellation is best effort; the formal load must still proceed.
+    }
+  }
+
   fetchCar(config, onProgress) {
+    this.cancelPreload(config.id);
     if (this.carCache.has(config.id)) return Promise.resolve(this.carCache.get(config.id));
     if (this.pendingCars.has(config.id)) return this.pendingCars.get(config.id);
     let request;
@@ -32,11 +50,8 @@ export class AssetManager {
       loadPromise,
       new Promise((_, reject) => {
         timeoutId = setTimeout(() => {
-          try {
-            this.loader.manager?.abort?.();
-          } catch {
-            // A custom test/deployment loader may not expose an abortable manager.
-          }
+          // GLTFLoader's LoadingManager is shared. Aborting it here would also
+          // cancel unrelated car requests; only reject this request's owner.
           reject(new Error(`Timed out loading car ${config.id}`));
         }, timeoutMs);
       }),
@@ -295,20 +310,70 @@ export class AssetManager {
         || this.visualCache.has(config.id)
         || this.pendingVisuals.has(config.id)
       ) continue;
+      const scheduleToken = {};
       this.preloadScheduled.add(config.id);
+      this.preloadScheduleTokens.set(config.id, scheduleToken);
       schedule(() => {
+        if (
+          this.preloadScheduleTokens.get(config.id) !== scheduleToken
+          || !this.preloadScheduled.has(config.id)
+        ) return;
         if (
           this.carCache.has(config.id)
           || this.pendingCars.has(config.id)
           || this.visualCache.has(config.id)
           || this.pendingVisuals.has(config.id)
         ) {
+          this.preloadScheduleTokens.delete(config.id);
           this.preloadScheduled.delete(config.id);
           return;
         }
-        fetch(`/cars/${config.file}`, { cache: 'force-cache' })
+        const controller = typeof globalThis.AbortController === 'function'
+          ? new globalThis.AbortController()
+          : null;
+        const request = {
+          controller,
+          scheduleToken,
+          timeoutId: null,
+        };
+        const isCurrent = () => (
+          this.preloadRequests.get(config.id) === request
+          && this.preloadScheduleTokens.get(config.id) === scheduleToken
+        );
+        const cleanup = () => {
+          if (!isCurrent()) return;
+          this.preloadRequests.delete(config.id);
+          this.preloadScheduleTokens.delete(config.id);
+          this.preloadScheduled.delete(config.id);
+          clearTimeout(request.timeoutId);
+        };
+        this.preloadRequests.set(config.id, request);
+        const timeoutMs = Math.max(
+          1,
+          Number.isFinite(this.preloadTimeoutMs) ? this.preloadTimeoutMs : 15_000,
+        );
+        request.timeoutId = setTimeout(() => {
+          if (!isCurrent()) return;
+          try {
+            controller?.abort();
+          } catch {
+            // Timeout cleanup still releases the scheduling slot.
+          }
+          cleanup();
+        }, timeoutMs);
+        let preload;
+        try {
+          preload = fetch(`/cars/${config.file}`, {
+            cache: 'force-cache',
+            ...(controller ? { signal: controller.signal } : {}),
+          });
+        } catch {
+          cleanup();
+          return;
+        }
+        Promise.resolve(preload)
           .catch(() => {})
-          .finally(() => this.preloadScheduled.delete(config.id));
+          .finally(cleanup);
       });
     }
   }

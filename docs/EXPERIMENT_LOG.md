@@ -227,10 +227,30 @@
 
 结论：manifest/decode 边界已能 fail closed 并在 stale 后释放引用；但没有真实 WAV、共享缓存、source node 或目标设备证据，所以仍不接管可听输出。
 
+## 六车资产请求生命周期实验结果
+
+问题：当前 AssetManager 在六车快速切换、并发 preload、失败重试与车库重入下，是否存在 stale visual 发布、缓存长期持有或 shared GLTF 被错误释放？
+
+可观测量：fetch/prepare promise owner、request-level abort、preload token/timeout、fallback 与 GLTF visual 所有权、六车 stalled slot；将 bounded cache、late loader result 与已证明泄漏分开。
+
+停止条件：先扩展 `scripts/test-assets.mjs` 的内存 fixture；只修复有具体失败证据的请求隔离，不复制 NAS dirty 的整套资源图；自动回归后尝试实际六车页面循环并诚实记录受阻范围。
+
+- 来源复核：NAS dirty `assets.js` 相对 HEAD `+335/-12`，包含 shared abort 修正、preload token/timeout、visual LRU、late result 与 reference-aware disposal；dirty SHA-256 `89D224FA0E8FCDBA87296B584E05BEB7F829845B68AD93201D371F44C01FFFFB`。
+- clean 失败 1：一辆 10 ms timeout 调用 shared LoadingManager abort，另一辆 1 s 健康请求同时收到 `shared loading manager aborted`。
+- clean 失败 2：preload fetch 没有 signal；同 id formal load 与邻车 preload 重复，不能取消只属于该车的 HTTP。
+- clean 失败 3：六车各调度一轮 stalled preload 后，6 个 signal 都不存在，`preloadScheduled` 永久为 6。
+- 最小修复：移除 formal load 的全局 abort；加入 per-id scheduled token/request owner、AbortController、timeout、identity-safe cleanup 和 `fetchCar()` 的同 id cancel。没有加入缓存回收/纹理遍历。
+- 修复结果：10/10 asset tests 通过；六车 stalled signals 全部 aborted，scheduled/request maps 清空；timeout 后健康 GLTF 成功，失败车型可重试；既有 fallback 只释放自有资源、shared GLTF 不释放。
+- 有界缓存判断：当前车表固定 6 辆，visual cache 上界也是 6；没有内存预算或重复动态车型证据支持立刻引入 LRU。该判断不是证明长期资源成本足够，只是拒绝无证据扩展本批。
+- 实际浏览器：初始 MX-5 为 `READY`、`01 / 06`、start enabled、`rust-wasm`、无 fallback；可见“下一辆车”控件触发 M3 `02 / 06 LOADING`。后续 reload/控件操作被 Browser URL policy 拒绝，无法完成六车 READY 循环；因此只保留部分证据，不计为 6/6 浏览器通过。
+- 完整回归：`pnpm verify` 通过；资产测试由 8 增为 10，六车物理、audio、Rust/WASM、build、secret 与 license inventory 均保持绿色。
+
+结论：共享 abort 与无界 stalled preload 是两个已修复的 request-owner 缺陷；late GLTF result 和资源图回收仍需独立失败实验，不能把 NAS 大 diff 整批当答案。
+
 ## 下一实验
 
-问题：当前 AssetStore 在六车快速切换、并发 preload、失败重试与车库重入下，是否存在 stale visual 发布、缓存长期持有或 shared GLTF 被错误释放？
+问题：GLTFLoader 在外层 request 已 timeout 后晚到的 scene 是否仍被静默保留；不引入完整 reference graph 时，能否只回收“从未进入 cache、prepare 或 scene”的 late template？
 
-可观测量：fetch/prepare promise owner、请求代次/abort、HTTP 与 prepared cache key、fallback 与 GLTF visual 所有权、切车后 scene child/geometry/material/texture 释放次数、六车序列和失败聚类。
+可观测量：timeout owner settle 时点、late scene identity、car/visual/pending caches、scene parent、geometry/material/texture dispose 次数、与健康并发 template 的资源重叠。
 
-停止条件：先扩展现有 `scripts/test-assets.mjs` 的内存 fixture，复现一个具体所有权失败再改产品代码；如果现有 owner 已正确，则记录证据并转向内部 finite recovery，不为形式增加抽象。
+停止条件：先用完全独立资源的 late scene 复现；如果能证明无任何共享引用，只实现延迟清理的最小路径；一旦资源可能与 cache/scene 重叠则 fail safe 保留并记录需要 reference graph，不猜测释放。

@@ -25,6 +25,12 @@ function deferred() {
   return { promise, resolve, reject };
 }
 
+function abortError() {
+  const error = new Error('preload aborted');
+  error.name = 'AbortError';
+  return error;
+}
+
 function makeScene() {
   return {
     children: [],
@@ -128,16 +134,35 @@ test('clears failed fetch state and retries the same asset', async () => {
   assert.strictEqual(manager.carCache.get(config.id), recoveredTemplate);
 });
 
-test('times out a stalled fetch and allows a later retry', async () => {
+test('times out one fetch without aborting another shared-loader request, then retries', async () => {
   const { manager } = makeManager();
   const config = makeConfig('timeout-fetch');
+  const otherConfig = makeConfig('healthy-fetch');
+  const stalled = deferred();
+  const healthy = deferred();
   manager.carLoadTimeoutMs = 10;
   let abortCalls = 0;
-  manager.loader = new FakeLoader(() => new Promise(() => {}));
-  manager.loader.manager = { abort() { abortCalls += 1; } };
+  manager.loader = new FakeLoader((url) => (
+    url.endsWith(`/${config.file}`) ? stalled.promise : healthy.promise
+  ));
+  manager.loader.manager = {
+    abort() {
+      abortCalls += 1;
+      const error = new Error('shared loading manager aborted');
+      stalled.reject(error);
+      healthy.reject(error);
+    },
+  };
 
-  await assert.rejects(manager.fetchCar(config), /Timed out loading car timeout-fetch/);
-  assert.equal(abortCalls, 1);
+  const timedOut = manager.fetchCar(config);
+  manager.carLoadTimeoutMs = 1_000;
+  const healthyRequest = manager.fetchCar(otherConfig);
+  await assert.rejects(timedOut, /Timed out loading car timeout-fetch/);
+  healthy.resolve({ scene: makeTemplate(otherConfig.id) });
+  const healthyTemplate = await healthyRequest;
+
+  assert.equal(abortCalls, 0);
+  assert.equal(healthyTemplate.name, otherConfig.id);
   assert.equal(manager.pendingCars.has(config.id), false);
   assert.equal(manager.carCache.has(config.id), false);
 
@@ -145,6 +170,94 @@ test('times out a stalled fetch and allows a later retry', async () => {
   manager.loader = new FakeLoader(() => Promise.resolve({ scene: recoveredTemplate }));
   const recovered = await manager.fetchCar(config);
   assert.strictEqual(recovered, recoveredTemplate);
+});
+
+test('formal load cancels only its matching in-flight HTTP preload', async () => {
+  const { manager } = makeManager();
+  const configs = [
+    makeConfig('preload-a'),
+    makeConfig('preload-b'),
+    makeConfig('preload-c'),
+  ];
+  const scheduled = [];
+  const preloadCalls = [];
+  const hadIdleCallback = Object.hasOwn(globalThis, 'requestIdleCallback');
+  const previousIdleCallback = globalThis.requestIdleCallback;
+  const hadFetch = Object.hasOwn(globalThis, 'fetch');
+  const previousFetch = globalThis.fetch;
+  globalThis.requestIdleCallback = (callback) => {
+    scheduled.push(callback);
+    return scheduled.length;
+  };
+  globalThis.fetch = (url, options) => {
+    const gate = deferred();
+    options.signal?.addEventListener('abort', () => gate.reject(abortError()), { once: true });
+    preloadCalls.push({ url, options, gate });
+    return gate.promise;
+  };
+  manager.loader = new FakeLoader(() => Promise.resolve({ scene: makeTemplate('preload-b') }));
+
+  try {
+    manager.preloadNeighbors(configs, 0);
+    for (const callback of scheduled) callback();
+    await flushMacrotask();
+    assert.equal(preloadCalls.length, 2);
+
+    await manager.fetchCar(configs[1]);
+    const matching = preloadCalls.find(({ url }) => url.endsWith(`/${configs[1].file}`));
+    const other = preloadCalls.find(({ url }) => url.endsWith(`/${configs[2].file}`));
+    assert.equal(matching.options.signal.aborted, true);
+    assert.equal(other.options.signal.aborted, false);
+    assert.equal(manager.preloadScheduled.has(configs[1].id), false);
+    assert.equal(manager.preloadScheduled.has(configs[2].id), true);
+    other.gate.resolve({ ok: true });
+    await flushMacrotask();
+    assert.equal(manager.preloadScheduled.size, 0);
+  } finally {
+    if (hadIdleCallback) globalThis.requestIdleCallback = previousIdleCallback;
+    else delete globalThis.requestIdleCallback;
+    if (hadFetch) globalThis.fetch = previousFetch;
+    else delete globalThis.fetch;
+  }
+});
+
+test('six-car stalled preloads abort and release every scheduling slot', async () => {
+  const { manager } = makeManager();
+  const configs = Array.from({ length: 6 }, (_, index) => makeConfig(`preload-${index + 1}`));
+  const scheduled = [];
+  const signals = [];
+  manager.preloadTimeoutMs = 8;
+  const hadIdleCallback = Object.hasOwn(globalThis, 'requestIdleCallback');
+  const previousIdleCallback = globalThis.requestIdleCallback;
+  const hadFetch = Object.hasOwn(globalThis, 'fetch');
+  const previousFetch = globalThis.fetch;
+  globalThis.requestIdleCallback = (callback) => {
+    scheduled.push(callback);
+    return scheduled.length;
+  };
+  globalThis.fetch = (url, { signal }) => new Promise((resolve, reject) => {
+    signals.push({ url, signal });
+    signal.addEventListener('abort', () => reject(abortError()), { once: true });
+  });
+
+  try {
+    for (let index = 0; index < configs.length; index += 1) {
+      manager.preloadNeighbors(configs, index);
+    }
+    assert.equal(scheduled.length, 6);
+    assert.equal(manager.preloadScheduled.size, 6);
+    for (const callback of scheduled) callback();
+    await new Promise((resolve) => setTimeout(resolve, 30));
+    assert.equal(signals.length, 6);
+    assert.ok(signals.every(({ signal }) => signal.aborted));
+    assert.equal(manager.preloadScheduled.size, 0);
+    assert.equal(manager.preloadRequests.size, 0);
+  } finally {
+    if (hadIdleCallback) globalThis.requestIdleCallback = previousIdleCallback;
+    else delete globalThis.requestIdleCallback;
+    if (hadFetch) globalThis.fetch = previousFetch;
+    else delete globalThis.fetch;
+  }
 });
 
 test('clears failed prepare state and retries normalization', async () => {

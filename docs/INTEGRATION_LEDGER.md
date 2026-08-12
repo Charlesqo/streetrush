@@ -113,6 +113,15 @@
 - coordinator 边界：loader 只返回未发布 value；上一批 coordinator 决定是否发布。切到 procedural 时 active decoded value 会被释放，职责没有合并成第二套 AudioContext/播放图。
 - 结果：success、manifest HTTP/JSON/空层、candidate quality/bank loop/layer loop、坏层、WAV HTTP、decode failure、fetch 前 abort、不可取消 decode 后 abort、prototype 与 coordinator release 均通过；候选 metadata 错误在 WAV fetch/decode 前 fail closed。
 
+### 六车资产请求隔离与 preload 生命周期
+
+- 来源参考：NAS dirty `src/assets.js`，读取时 26,606 bytes，SHA-256 `89D224FA0E8FCDBA87296B584E05BEB7F829845B68AD93201D371F44C01FFFFB`；其 clean HEAD blob 为 `ee8ba685a4522d5cf5db80064ef21809b2f31017`，dirty 相对 HEAD `+335/-12` 且未提交。
+- 失败证据：扩展现有资产 fixture 后 3/10 失败。单车 timeout 调用共享 `LoadingManager.abort()`，使并发健康请求也以 `shared loading manager aborted` 失败；preload 没有 AbortSignal/timeout，正式加载不能取消匹配的重复 HTTP，六车 stalled preload 永久占据 scheduling slot。
+- 实际变化：formal GLTF timeout 只拒绝该 request owner，不再 abort 共享 manager；preload 以 per-car token、AbortController、15 秒可配置 timeout 和 identity-safe cleanup 管理，`fetchCar(id)` 只取消同 id preload。
+- 保持暂缓：未采用 NAS dirty 的 visual LRU、reference graph、late GLTF scene disposal 和纹理递归回收。六份 visual cache 是当前固定车表的有界缓存，尚无目标设备预算证据证明必须 LRU；timeout 后底层 GLTF 晚到的资源回收仍是明确候选。
+- 自动结果：健康并发不受另一请求 timeout 影响；formal load 只 abort 同 id preload；六车 stalled preload 全部 abort 并释放 6/6 slots；既有 pending 复用、retry、fallback/GLTF ownership 和邻车 preload 回归保持通过，共 10/10。
+- 浏览器证据边界：实际页确认 MX-5 `01 / 06 READY`、start enabled、scheduler `rust-wasm`、无 fallback；单次可见控件切换观察到 M3 `02 / 06 LOADING`。后续本地页操作被 Browser URL policy 阻止，因此没有声称完成实际六车循环；该验证保持待办。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
@@ -152,9 +161,10 @@
 - 证实：`requestId + abort + post-load discard` 能同时覆盖可取消 fetch 和不可取消 decode；晚到结果会释放，不能覆盖新车辆 bank。
 - 证实：来源六车 profile 没有 exact bank；family candidate/proxy 不能被记录为已完成的六车真实声音。
 - 证实：candidate 与 prototype manifest 的 loop 契约不同；只对 candidate 双重 fail-closed 可在不破坏 prototype fallback 的前提下阻止未批准层进入 decode。
+- 证实：GLTFLoader 的 LoadingManager 是共享 owner，单请求 timeout 不能用全局 abort；per-car preload token/signal 能隔离六车重复请求并有界释放 stalled slots。
 
 ## 当前最值得继续的方向
 
-1. 复核当前 AssetStore 在六车快速切换/失败/车库重入中的 fetch、prepare cache 与 visual 释放，先找能复现的泄漏或 stale 所有权；
+1. 为 GLTF timeout 后不可取消的 late result 建立最小失败测试，固定“未发布 scene 的 geometry/material/texture 何时可安全释放”而不先复制 NAS 200 行 reference graph；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与资源生命周期混合。
