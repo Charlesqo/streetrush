@@ -210,10 +210,27 @@
 
 结论：最小发布协议值得采用，并已形成独立可回退边界；完整 runtime 的 AudioContext/node graph 暂时没有足够证据替换已工作的 procedural owner。
 
-## 下一实验
+## 严格音频 bank loader 实验结果
 
 问题：在不复制真实大 WAV 的条件下，能否为协调器加入严格的小型 manifest/layer loader，提前固定 HTTP、JSON、loop approval、decode 后释放和错误分类契约？
 
-可观测量：manifest/WAV fetch 次数与顺序、AbortSignal、层数、candidate bank/layer 双重 loop gate、decode 完成后的 value dispose、错误 code；保持当前 procedural 可听 owner 不变。
+可观测量：manifest/WAV fetch 次数与顺序、assetVersion URL、AbortSignal、层数、candidate bank/layer 双重 loop gate、decode 完成后的 value dispose、错误 code；保持当前 procedural 可听 owner 不变。
 
-停止条件：使用内存 WAV bytes 与 fake decode，不加入真实资产；先让缺层、坏 JSON/HTTP、bank 或任一 layer 未批准失败，再实现 loader；成功/失败/stale 均通过总回归后才考虑复制最小 profile/manifest 数据。
+停止条件：使用内存 bytes 与 fake decode；缺层、坏 JSON/HTTP、bank 或任一 layer 未批准必须 fail closed；prototype 不因缺 candidate-only loop 元数据被误拒；成功/失败/abort/release 通过总回归后提交。
+
+- 真实抽查：Mazda BP-ZE candidate manifest 为 schema v2、6 层、bank/layer 全部 loop-approved，SHA-256 `90BEC41E53072B8AC932EC4C357A5BB37571EB3B2AE9687565AB37A7EA4903D8`；基础 V8 prototype 为 6 层且没有 loop，SHA-256 `CC4FD3532EA4F29E814978875AB66958DBF4B4CD6A0D907C86E7DE3816E19994`。
+- 失败优先：`scripts/test-audio-bank-loader.mjs` 在实现加入前因缺少模块以 `ERR_MODULE_NOT_FOUND` 退出 1。
+- fixture：成功路径只使用 4-byte 内存值，检查 manifest → WAV 顺序、`assetVersion=fixture-v1`、同一 signal、一次 decode 和 dispose 幂等；没有把占位 bytes 描述成音频质量证据。
+- 失败聚类：manifest HTTP/JSON/空层；candidate quality/bank loop/layer loop；层字段/WAV HTTP/decode；fetch 前 abort 与 decode 已开始后的 abort。每类都有稳定 code，candidate metadata 错误只产生一次 manifest fetch、零 decode。
+- prototype 对照：没有 loop 的 source V8 fixture 成功，证明 candidate gate 没有扩成所有 bank 的错误硬要求。
+- 组合结果：真实 coordinator 发布 loader value 后切到无 bank profile，active value 被 dispose 且 layer 引用清空；loader 不自行决定发布。
+
+结论：manifest/decode 边界已能 fail closed 并在 stale 后释放引用；但没有真实 WAV、共享缓存、source node 或目标设备证据，所以仍不接管可听输出。
+
+## 下一实验
+
+问题：当前 AssetStore 在六车快速切换、并发 preload、失败重试与车库重入下，是否存在 stale visual 发布、缓存长期持有或 shared GLTF 被错误释放？
+
+可观测量：fetch/prepare promise owner、请求代次/abort、HTTP 与 prepared cache key、fallback 与 GLTF visual 所有权、切车后 scene child/geometry/material/texture 释放次数、六车序列和失败聚类。
+
+停止条件：先扩展现有 `scripts/test-assets.mjs` 的内存 fixture，复现一个具体所有权失败再改产品代码；如果现有 owner 已正确，则记录证据并转向内部 finite recovery，不为形式增加抽象。

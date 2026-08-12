@@ -104,6 +104,15 @@
 - 诚实映射：来源六车 profile 当前均没有 exact bank；其 fallback 是 family candidate 或 compatibility proxy，所以本批只证明选择和所有权协议，不声称已有六车真实声音。
 - 结果：批准/拒绝、6/6 兼容回退、失败后重试、abort、decode 晚到销毁和 dispose 契约通过，并接入 `pnpm verify`。
 
+### 严格音频 bank manifest/decode loader
+
+- 来源参考：同一 `vehicle-audio-runtime.js` 的 URL/fetch/decode 顺序，以及两个真实 manifest：approved Mazda candidate SHA-256 `90BEC41E53072B8AC932EC4C357A5BB37571EB3B2AE9687565AB37A7EA4903D8`；V8 prototype SHA-256 `CC4FD3532EA4F29E814978875AB66958DBF4B4CD6A0D907C86E7DE3816E19994`。
+- 真实差异：candidate manifest 的 bank 与 6 层各自携带 approved loop；prototype manifest 只有 family/6 层，没有 loop。新 loader 只对 `bank.candidate.*` 执行 bank + layer 双重门槛，保留显式 prototype fallback。
+- 失败证据：实现前新增测试以 `ERR_MODULE_NOT_FOUND` 退出 1；测试使用 4-byte 内存占位和 fake decode，没有复制/伪造可听 WAV。
+- 实际变化：`createDecodedAudioBankLoader()` 负责 assetVersion URL、manifest/WAV HTTP、JSON/层结构、candidate loop、逐层 decode、稳定 error code 与 AbortError 归一化；decode 后再次检查 signal，成功 value 提供幂等 `dispose()` 清空 buffer 引用。
+- coordinator 边界：loader 只返回未发布 value；上一批 coordinator 决定是否发布。切到 procedural 时 active decoded value 会被释放，职责没有合并成第二套 AudioContext/播放图。
+- 结果：success、manifest HTTP/JSON/空层、candidate quality/bank loop/layer loop、坏层、WAV HTTP、decode failure、fetch 前 abort、不可取消 decode 后 abort、prototype 与 coordinator release 均通过；候选 metadata 错误在 WAV fetch/decode 前 fail closed。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
@@ -120,7 +129,7 @@
 
 - 旧 `E:\Codex\street-rush`：采样音频和较短兼容实现；没有独立提交历史。
 - 六车模型研究：报告和隔离测试作为视觉适配器 oracle；生产适配器尚未实现。
-- 多车音频：bank 选择与异步发布契约已采用；权威 data/schema、decoded registry 和样本播放图仍是强候选，不复制 3.14 GB 隔离副本和 vendor。
+- 多车音频：bank 选择/发布与严格 manifest/decode loader 已采用；权威 data/schema、shared decoded registry 和样本播放图仍是强候选，不复制 3.14 GB 隔离副本和 vendor。
 - C++ 物理核心：算法和实验是强 oracle；现有生产 `Vehicle` 与研究 `SharedWheelRide` 仍有明确耦合/状态边界。
 - 六车物理数据：只采用带 provenance、field-scoped eligible 的值；冲突和缺失保持显式。
 - 网络/轨迹/ESP32/城市模块：保留为未来能力，不进入近期集成。
@@ -142,9 +151,10 @@
 - 证实：clean pause/modal 帧继续更新 WebAudio 参数；独立 pause gate 能冻结连续值和瞬态，浏览器实际 pause/resume 接线与 Rust scheduler 共存。
 - 证实：`requestId + abort + post-load discard` 能同时覆盖可取消 fetch 和不可取消 decode；晚到结果会释放，不能覆盖新车辆 bank。
 - 证实：来源六车 profile 没有 exact bank；family candidate/proxy 不能被记录为已完成的六车真实声音。
+- 证实：candidate 与 prototype manifest 的 loop 契约不同；只对 candidate 双重 fail-closed 可在不破坏 prototype fallback 的前提下阻止未批准层进入 decode。
 
 ## 当前最值得继续的方向
 
-1. 为已通过的 bank 协调器定义小型 manifest/layer loader fixture，验证 HTTP/JSON/loop gate 和 decoded value 的释放，不引入大 WAV；
-2. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与调用边界清理混合；
-3. 随后评估资产取消/释放与六车切换簇，按可观测资源生命周期选择下一批。
+1. 复核当前 AssetStore 在六车快速切换/失败/车库重入中的 fetch、prepare cache 与 visual 释放，先找能复现的泄漏或 stale 所有权；
+2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
+3. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与资源生命周期混合。
