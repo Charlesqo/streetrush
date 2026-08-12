@@ -522,10 +522,27 @@
 
 结论：M3 generated wheels 现在有真实动态 owner，且范围严格受结构 marker 限制；这是可验证的小步，不代表其他五车轮组已经接入。
 
+## static merge 显式动态 branch 分区结果
+
+问题：`mergeStaticCarMeshes()` 能否显式排除动态 source branches，同时保持 clone、材质/几何所有权、draw-call 合并和变换契约？
+
+可观测量：merge 前后节点 identity、dynamic/static mesh counts、world transform、material/geometry sharing 和 clone independence。
+
+停止条件：先构造合成 scene 复现“动态节点被 merge 消失”；没有车型级 pivot/axis 证据就不加载 production node ids；M5/AMG public derivative 不得声称覆盖。
+
+- red：9 static + 2 dynamic meshes 的 scene 中，旧 merge 完全吞掉带 v1 marker 的 `dynamic-FL-brake`；新增测试唯一失败为 `dynamic pivot survives static batching`。
+- partition：只收集最外层 `{dynamicCarPart:{version:1,id}}` branch；其 meshes 排除在 static batches 外，并以原 parent world matrix 作为手动 base 深拷贝层级。
+- result：9 个 static draw calls 合为 1，2 个 dynamic 保持 2，总 draw calls 为 3；branch world position 误差 `<1e-9`。
+- ownership：canonical 与 instance 的 marker pivot 对象独立，geometry 继续共享；无 marker、unsupported static 和不足 8 个 static meshes 的原 fail-closed 行为不变。
+- research gate：MX-5 报告要求按 tire centroid 新建 outer-Y/inner-X pivot；M3 有 baked front steer；GT3 只在 source hierarchy isolation 验证。保留 branch 不等于正确运动，因此没有给 production 模型添加 marker。
+- regression：资产生命周期测试 13/13；完整 `pnpm verify` 通过，保持 18 条六车 deterministic/WASM replay、1,320-action timing soak、六车物理/恢复、34 modules、4,864-byte WASM 和 24-file build。
+
+结论：通用资源分区机制有独立价值，但车型级 wheel manifest 是运行时接入的必要前置条件；M5/AMG 的 public derivative 仍需 source-copy 优化 pipeline，不能靠 marker 逆拆。
+
 ## 下一实验
 
-问题：`mergeStaticCarMeshes()` 能否显式排除动态 source branches，同时保持 clone、材质/几何所有权、draw-call 合并和销毁契约？先以 M3 brake/caliper 与字节一致的 MX-5/M3/GT3 wheel reports 为 oracle。
+问题：能否为与 public GLB hash 完全一致的 MX-5 建立一个可离线验证、遇到 hash/name/part role 漂移即失败的 wheel manifest？
 
-可观测量：merge 前后保留节点 identity、dynamic/static mesh counts、material/geometry sharing、clone independence、dispose 次数、pivot center/axis，以及 M3 retained brake baked steer。
+可观测量：四个 wheel roots、rim/tire/brake-disc part roles、各 part accessor bounds、tire centroid、outer steer/inner roll 轴、原始 world transform，以及 manifest 与 public GLB/research report 的双重 hash。
 
-停止条件：先构造合成 scene 复现“动态节点被 merge 消失”；没有完整资源 owner 和车型级绑定表就不加载 source node ids；M5/AMG public derivative 没有 source hierarchy，本实验不得声称覆盖它们。
+停止条件：先只生成/校验数据，不改 production runtime；任一 root/part/axis 无法由 GLB 和报告共同支持则保留为候选；通过后仍需纯 scene pivot fixture 才能考虑添加 marker。

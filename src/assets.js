@@ -310,10 +310,27 @@ export class AssetManager {
 
   mergeStaticCarMeshes(model) {
     model.updateMatrixWorld(true);
+    const dynamicRoots = [];
+    model.traverse((object) => {
+      if (object === model || object.userData?.dynamicCarPart?.version !== 1) return;
+      let ancestor = object.parent;
+      while (ancestor && ancestor !== model) {
+        if (ancestor.userData?.dynamicCarPart?.version === 1) return;
+        ancestor = ancestor.parent;
+      }
+      dynamicRoots.push(object);
+    });
+    const dynamicObjects = new Set();
+    for (const root of dynamicRoots) root.traverse((object) => dynamicObjects.add(object));
     const sourceMeshes = [];
+    const dynamicMeshes = [];
     let unsupported = false;
     model.traverse((object) => {
       if (!object.isMesh || !object.visible) return;
+      if (dynamicObjects.has(object)) {
+        dynamicMeshes.push(object);
+        return;
+      }
       if (object.isSkinnedMesh || object.morphTargetInfluences || Array.isArray(object.material)) unsupported = true;
       sourceMeshes.push(object);
     });
@@ -348,8 +365,28 @@ export class AssetManager {
         for (const sourceGeometry of batch.geometries) sourceGeometry.dispose();
       }
     }
-    optimized.userData.sourceDrawCalls = sourceMeshes.length;
-    optimized.userData.batchedDrawCalls = optimized.children.length;
+    const staticBatchedDrawCalls = optimized.children.length;
+    if (dynamicRoots.length > 0) {
+      const dynamicGroup = new THREE.Group();
+      dynamicGroup.name = 'dynamic-car-parts';
+      for (const root of dynamicRoots) {
+        const base = new THREE.Group();
+        base.name = `${root.name || root.userData.dynamicCarPart.id}-world-base`;
+        base.userData.dynamicCarPartBase = {
+          version: 1,
+          id: root.userData.dynamicCarPart.id,
+        };
+        base.matrixAutoUpdate = false;
+        base.matrix.copy(root.parent?.matrixWorld || new THREE.Matrix4());
+        base.add(root.clone(true));
+        dynamicGroup.add(base);
+      }
+      optimized.add(dynamicGroup);
+    }
+    optimized.userData.sourceDrawCalls = sourceMeshes.length + dynamicMeshes.length;
+    optimized.userData.staticSourceDrawCalls = sourceMeshes.length;
+    optimized.userData.dynamicDrawCalls = dynamicMeshes.length;
+    optimized.userData.batchedDrawCalls = staticBatchedDrawCalls + dynamicMeshes.length;
     return optimized;
   }
 

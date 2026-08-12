@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega；下一步应验证 source wheel branches 与 static merge 的资源边界，再决定 MX-5/M3/GT3 是否能保留动态部件，不能凭嘈杂名字把 adapter 泛化到六车。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega，static merge 也能显式保留动态 branch；下一步应先为与 public hash 完全一致的 MX-5 建立离线可验证的 wheel manifest，固定 root、part role、pivot centroid 和轴，再决定是否接运行时。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -75,6 +75,18 @@
 - runtime：`VehicleSystem` 只在完整 v1 generated set 存在时绑定；front pivot 写 `steerAngle`，四轮 Y 写 `baseY + compression`，roll angle 由 `omega * fixed dt` 积分并按 render alpha 插值。角度有长期 rebase 与非有限恢复，reset 清除 previous/current angle。
 - 结果：真实 Rapier rig 验证 clone 后四轮顺序、嵌套轴、steer/compression/roll、fixedUpdate 接线、NaN/Infinity 恢复和 reset；完整 `pnpm verify` 保持 18 条六车 WASM replay、1,320-action timing soak、六车物理/恢复、音频、12 项资产生命周期和 GLB baseline 绿色；build 仍为 34 modules、4,864-byte WASM、24 files。
 - 未解决：M3 retained Brake_Disc/Brembo_Calipers 仍带约 28.68° baked front steer 并会进入 static merge；其动态分组/隐藏策略需要独立视觉与 draw-call 证据。其他五车没有获得生成轮组或名字猜测 adapter。
+
+### static merge 的显式动态 branch 分区
+
+- 来源参考：M3 wheel binding 同上；MX-5 `wheel_binding.json` SHA-256 `5879DC06C16289E221CF93032C98C9A5123BF99060A84B8F27F383C91F00A786`；GT3 `wheel_binding.json` SHA-256 `ADBE84417FA19F14B036C2E857C74E14F3AD95014F1842D7BFAE7206735A064B`。三者都指出 canonical static merge 会移除 source hierarchy。
+- red evidence：合成 9 static + 2 dynamic meshes，dynamic root 带 `{version:1,id}` marker；旧 merge 后 `dynamic-FL-brake` 完全不存在，13 项资产测试唯一失败为 `dynamic pivot survives static batching`。
+- 实际变化：只识别显式 v1 marker 的最上层 branch；其 meshes 不进入 static batches。输出用原 parent world matrix 的手动 base 包住 deep clone，从而保留 marker root 自己的 local pivot、子层级与共享 geometry/material。
+- fail-closed：无 marker 路径仍执行原 merge；静态部分不满足原门槛或含 unsupported mesh 时仍返回原 model；nested marker 只保留最外层，避免重复 clone。diagnostic 分开记录 static source、dynamic 和总 batched draw calls。
+- 合成结果：9 static draw calls 合为 1，2 dynamic 保持 2，总数 3；branch world position 误差 `<1e-9`，canonical/instance pivot 对象独立，geometry 仍共享。既有 pending/retry/timeout/late disposal/preload/fallback tests 保持通过，资产测试为 13/13。
+- 回归：完整 `pnpm verify` 通过；18 条六车 deterministic/WASM replay、1,320-action timing soak、六车物理/恢复、音频与 Rust/WASM owner 均保持；build 为 34 modules、4,864-byte WASM、24 files。
+- 暂缓 production marker：MX-5 虽有 `Circle.002..005` 稳定 roots，但报告要求按 tire centroid 新建 outer-Y/inner-X pivot；M3 brake/caliper 需处理 baked front steer；GT3 状态明确是 source hierarchy only in isolation。仅保留 branch 还不足以得到正确轮组运动。
+- derivative 限制：M5/AMG public 模型已合并为 28/51 meshes，不存在 source hierarchy；本机制不能逆向拆 mesh。若未来采用，必须从 source copy 建立保留 dynamic partitions 的可重复优化 pipeline。
+- 结论边界：本实验只证明显式 branch 可跨静态合并保存资源与变换所有权；它没有证明该 branch 已有正确的 wheel centroid、steer/roll 轴或 caliper 归属，车型级 manifest 仍是接入前置条件。
 
 ### 六车 reset 状态清理
 
@@ -277,7 +289,7 @@
 2. 多车音频 shared registry/播放图与真实 bank 接线（选择、loader、context recovery 和 pause gate 已独立整合）；
 3. 资产 visual cache 预算与 pending 时 late result 的 deferred reference graph（request/preload/独立 late scene 已整合）；
 4. 计时并发存储、路线 HUD、布局和 renderer lifecycle；
-5. M3 source brake/caliper 与其他车型 source wheel branches 在 static merge 前的动态分区；public/source derivative 关系已固定，不再把 mode-only 当内容 diff。
+5. source wheel branches 的车型级 manifest 与 pivot/axis 适配；static merge 的显式动态分区已整合，但尚未给 production GLB 添加 marker。
 
 ## 当前仅参考或候选
 
@@ -321,9 +333,10 @@
 - 证实：gamepad 不断连但对象身份替换会绕过 reconnect rearm；元素 blur 也不是物理 pointer terminal。身份握手和键盘/物理指针所有权拆分可消除三个独立失败，同时保留 window 级全量释放。
 - 证实：六车 public 模型结构并不共享可靠命名；4 车与研究字节一致，M5/AMG 是已声明的 source-model 优化派生。当前 GLB/hash/TRS bounds 必须独立固定，不能把 source node id 机械用于 public。
 - 证实：M3 已生成的四轮缺少 runtime owner；建立 FL/FR/RL/RR 两级 pivot 后，现有 steer/compression/omega 可在不改物理状态契约的前提下驱动视觉并安全 reset。
+- 证实：static merge 可按显式 v1 marker 排除动态 branch，并在 canonical/clone 间保持 world transform、对象独立与共享 geometry；仅保留 branch 不足以证明 wheel pivot/axis 正确。
 
 ## 当前最值得继续的方向
 
-1. 为 static merge 建立动态部件排除/保留实验，先验证 M3 brake/caliper 和 MX-5/M3/GT3 source wheel branches 的 clone、draw-call、销毁与 pivot 语义；
-2. M5/AMG 的优化 public GLB 已合并到 28/51 mesh，若要独立轮组应回到只读 source model 复制后建立可重复优化 pipeline，不能运行时猜分割；
-3. 实际六车 READY/visual loop 和真实 gamepad wrapper 身份需等 Browser URL policy 允许；shared decoded audio bank registry 继续等待真实重复 bank 需求。
+1. 以 exact-public MX-5 为第一辆车，建立 hash-scoped wheel manifest，离线验证 root/part role、centroid、steer/roll 轴和四轮顺序；验证前不写 production marker；
+2. 用纯 scene fixture 验证 manifest 生成 outer-steer/inner-roll pivot 后的 world transform、caliper 归属、clone 和销毁语义，再决定是否接入 MX-5 runtime；
+3. M5/AMG 若要独立轮组应回到只读 source model 复制后建立可重复优化 pipeline；实际六车 visual loop 与真实 gamepad wrapper 身份仍等待 Browser URL policy 允许。

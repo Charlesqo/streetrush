@@ -71,6 +71,39 @@ function makeTemplateWithResources(name, resources) {
   return root;
 }
 
+function makeDynamicMergeTemplate() {
+  const root = new THREE.Group();
+  root.name = 'dynamic-merge-car';
+  root.position.set(1.5, -0.2, 2.4);
+  const staticGeometry = new THREE.BoxGeometry(0.4, 0.25, 0.6);
+  const staticMaterial = new THREE.MeshBasicMaterial({ color: 0x334455 });
+  for (let index = 0; index < 9; index += 1) {
+    const mesh = new THREE.Mesh(staticGeometry, staticMaterial);
+    mesh.name = `static-${index}`;
+    mesh.position.set(index * 0.12, 0, -index * 0.08);
+    root.add(mesh);
+  }
+  const carrier = new THREE.Group();
+  carrier.name = 'dynamic-carrier';
+  carrier.position.set(-0.7, 0.3, 1.1);
+  carrier.rotation.y = 0.19;
+  const pivot = new THREE.Group();
+  pivot.name = 'dynamic-FL-brake';
+  pivot.position.set(-0.4, 0.2, 0.65);
+  pivot.userData.dynamicCarPart = { version: 1, id: 'FL-brake' };
+  const dynamicMaterial = new THREE.MeshBasicMaterial({ color: 0xaa4422 });
+  for (let index = 0; index < 2; index += 1) {
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.3, 0.1), dynamicMaterial);
+    mesh.name = `dynamic-detail-${index}`;
+    mesh.position.x = index * 0.16;
+    pivot.add(mesh);
+  }
+  carrier.add(pivot);
+  root.add(carrier);
+  root.updateMatrixWorld(true);
+  return { root, pivot };
+}
+
 function makeConfig(id = 'test-car', file = `${id}.glb`) {
   return {
     id,
@@ -189,6 +222,34 @@ test('times out one fetch without aborting another shared-loader request, then r
   manager.loader = new FakeLoader(() => Promise.resolve({ scene: recoveredTemplate }));
   const recovered = await manager.fetchCar(config);
   assert.strictEqual(recovered, recoveredTemplate);
+});
+
+test('preserves explicitly marked dynamic branches while batching static meshes', () => {
+  const { manager } = makeManager();
+  const { root, pivot } = makeDynamicMergeTemplate();
+  const before = pivot.getObjectByName('dynamic-detail-0').getWorldPosition(new THREE.Vector3());
+
+  const optimized = manager.mergeStaticCarMeshes(root);
+  const preserved = optimized.getObjectByName('dynamic-FL-brake');
+  assert.ok(preserved, 'dynamic pivot survives static batching');
+  optimized.updateMatrixWorld(true);
+  const after = preserved.getObjectByName('dynamic-detail-0').getWorldPosition(new THREE.Vector3());
+  assert.ok(after.distanceTo(before) < 1e-9, 'preserved branch keeps its world transform');
+  assert.deepEqual(preserved.userData.dynamicCarPart, { version: 1, id: 'FL-brake' });
+  assert.equal(optimized.userData.sourceDrawCalls, 11);
+  assert.equal(optimized.userData.staticSourceDrawCalls, 9);
+  assert.equal(optimized.userData.dynamicDrawCalls, 2);
+  assert.equal(optimized.userData.batchedDrawCalls, 3);
+
+  const instance = optimized.clone(true);
+  const instancePivot = instance.getObjectByName('dynamic-FL-brake');
+  assert.notStrictEqual(instancePivot, preserved);
+  assert.strictEqual(
+    instancePivot.getObjectByName('dynamic-detail-0').geometry,
+    preserved.getObjectByName('dynamic-detail-0').geometry,
+  );
+  instancePivot.rotation.y = 0.5;
+  assert.notEqual(instancePivot.rotation.y, preserved.rotation.y);
 });
 
 test('disposes a timed-out GLTF scene that arrives late with independent resources', async () => {
