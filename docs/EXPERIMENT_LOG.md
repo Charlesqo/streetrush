@@ -375,10 +375,27 @@
 
 结论：capability 分层没有造成跨能力耦合，且消除了继续扩展时的第二实例需求；网页 live timing 仍未切换，下一步可以在同一 loader 之上实验 state wrapper，而无需再改资源生命周期。
 
-## 下一实验
+## RaceProgressSession 双路径 wrapper 实验结果
 
 问题：能否用一个可注入的 JS `RaceProgressSession` 包装 scalar Rust/WASM capability，并与现有 `RaceTimingSession` 在同一 action 流双运行，从而把进度 mutation 的 owner 切换条件固定下来，同时不碰 PB/persistence/event adapter？
 
 可观测量：start/restart/advance/invalidate/checkpoint 后的纯进度 snapshot；sector/lap/run outcome；WASM capability 和 JS fallback wrapper；重复 invalidation、错序 checkpoint、finish 后输入；existing record/save/event tests。
 
 停止条件：wrapper 不直接访问 storage/DOM，不重复 instantiate；Rust 与 fallback 两条路径都匹配 legacy 事件序列；先只在测试注入，完整回归通过前不改 live `RaceTimingSession` mutation。
+
+- red evidence：测试最初因缺少 `src/race-progress-session.js` 退出 1。
+- API：`reset/start/restart/advance/invalidate/passCheckpoint/snapshot`；checkpoint 返回 rejected/accepted/ordinal/sector/lap/valid/run 的 compact outcome，不构造 UI/record event。
+- injected core：WASM wrapper 取自已验证的 shared instance；JS fallback core 实现同一 7-rule surface，并保留 `{code,message}` fallback reason。
+- action sequence：invalid run（3 × `1000/3`、错序、首次/重复 invalidation、invalid lap、valid finish）、restart 后 11,700 ms gold run、finished 后 advance/checkpoint/invalidate，以及非法 delta/index。
+- 结果：WASM wrapper、fallback wrapper 与 legacy 在 34 个 snapshot/outcome 上一致；legacy summary 仍负责 valid/medal，wrapper 未读取 record/storage。
+- 回归：新增测试进入 `pnpm verify`；9 timing tests、6-car medal、shared loader/replay/physics/audio/assets/build 全通过；WASM/模块数不变。
+
+结论：纯进度 owner 已有双路径兼容层，可进入可选委托实验；但本批没有改 live `RaceTimingSession`，因此仍不声称网页计时由 Rust 驱动。
+
+## 下一实验
+
+问题：`RaceTimingSession` 是否能把纯进度 mutation 委托给注入的 `RaceProgressSession`，同时完全保持现有 event/record/save/medal API，并在 WASM capability 失败时自动使用 JS fallback core？
+
+可观测量：现有 9 timing tests 与 6-car medal tests；注入 WASM/fallback 后的完整 event/snapshot/record equality；save 次数/时机；main 新 session owner metadata；finish/restart/pause 时序。
+
+停止条件：默认构造保持兼容；注入和 fallback 完整测试通过；不把 reason strings/PB/storage 移入 Rust；任何 event/save 差异先作为失败，不用 tolerance 掩盖。

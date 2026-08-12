@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页现已一次实例化 shared WASM，并让 scheduler/timing capability 独立握手；下一步应把 race-progress scalar wrapper 注入 `RaceTimingSession` 做双运行对照，再决定是否切换纯进度 owner。PB/persistence/event 继续留在 JS。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页现已一次实例化 shared WASM，并让 scheduler/timing capability 独立握手；WASM/JS 双路径 `RaceProgressSession` 已匹配 legacy，下一步可把它作为可回退的纯进度 owner 注入 `RaceTimingSession`，同时让 PB/persistence/event 继续留在 JS。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -118,6 +118,16 @@
 - 结果：shared/legacy/timing targeted tests 和完整 `pnpm verify` 通过；Vite 33 modules、单个 4,864-byte hashed WASM，Cloudflare/public assets/secret guard 均通过。
 - 限制：自动测试证明实例与失败隔离；此前 Browser URL policy 已阻止继续本地浏览器循环，本批未把构建测试描述为新的实际浏览器证据。
 
+### RaceProgressSession 双路径 wrapper
+
+- 红测试：先以真实 shared core 和 fallback capability 导入不存在的 `race-progress-session.js`，稳定得到 `ERR_MODULE_NOT_FOUND`。
+- wrapper owner：持有 exact clock、lap/sector 起点、checkpoint/sector 进度和 current-lap validity；通过注入 core 调用 advance/round/expected/ordinal/flags。输出只含 11-field progress snapshot 和 compact checkpoint outcome。
+- JS fallback：`createJavaScriptRaceProgressCore` 从 metadata fallback 补成完整同形 rule capability；保留 fallback reason，同时 `available=true` 表示纯规则可用，不把 WASM 缺失变成 timing 不可用。
+- legacy 对照：同一 action 流并行运行 legacy、WASM wrapper、fallback wrapper；34 个 snapshots 覆盖 fractional tick、错序、重复 invalidation、invalid/valid laps、restart、finish 后输入和非法调用。sector/lap/run outcome 逐字段一致。
+- 隔离：wrapper 不知道 track/car identity、invalid reason、PB、record、storage、save、medal targets、完整 event 或 DOM；这些仍由 `RaceTimingSession` 拥有。
+- 结果：wrapper test 加入 `verify`；完整回归通过，Vite 33 modules、单个 4,864-byte WASM、secret guard 114 files。
+- 限制：本批只证明可注入 owner 的行为，不改 `RaceTimingSession` 或 main fixedUpdate；live 网页仍未由 Rust/WASM progress mutation 驱动。
+
 ### 网页 Rust/WASM scheduler owner
 
 - 来源：本仓库已提交 `streetrush-core` raw WASM ABI 和 JS fixed-step oracle；本批没有再复制外部代码。
@@ -230,9 +240,10 @@
 - 证实：canonical Float64、JS 兼容 1e-6 quantization 与 FNV-1a 64 增量摘要可由同一 Rust 纯函数在 native/raw WASM 使用；特殊向量和现有 18 条六车 trace 均与独立 JS oracle 逐 push 一致。
 - 证实：比赛进度可拆成 Rust 状态 owner/native API 与无全局状态 raw WASM rule ABI；31 个 JS/WASM action snapshot 一致。PB、持久化和 UI event 是独立 JS 边界，尚未切换。
 - 证实：scheduler 与 timing 不需要两个 WASM instance；通用 lifecycle + capability-specific contract 能让 partial failure 互不误伤，同时保留旧 scheduler API。
+- 证实：同一 `RaceProgressSession` 可在 Rust/WASM 与 JS fallback capability 上运行，并与 legacy 纯进度/compact outcome 一致；record/event adapter 尚未委托。
 
 ## 当前最值得继续的方向
 
-1. 实现可注入的 JS race-progress session wrapper，在 timing tests 中让 legacy `RaceTimingSession` 与 Rust/WASM wrapper 双运行；先比较逐 action snapshot/event，再考虑把 live 纯进度 mutation 委托给 wrapper；
+1. 为 `RaceTimingSession` 增加可选 `progressCore` 注入，让 start/advance/invalidate/checkpoint/snapshot 的纯进度委托 wrapper；record/event/persistence 保留 JS，并以无 WASM 默认路径保持 API 兼容；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。
