@@ -23,6 +23,7 @@
     "test:input": "node scripts/test-input.mjs",
     "test:audio-context": "node scripts/test-audio-context.mjs",
     "test:audio-pause": "node scripts/test-audio-pause.mjs",
+    "test:audio-bank": "node scripts/test-audio-bank-coordinator.mjs",
     "test:telemetry": "node scripts/test-dev-telemetry.mjs",
     "test:orientation": "node scripts/test-orientation.mjs",
     "test:track": "node scripts/test-track-markers.mjs",
@@ -37,7 +38,7 @@
     "test:physics:smoke": "node scripts/smoke-physics.mjs",
     "test:physics:regression": "node scripts/regression-physics.mjs",
     "calibrate": "node scripts/calibrate-physics.mjs",
-    "verify": "pnpm test:timing && pnpm test:medals && pnpm test:input && pnpm test:audio-context && pnpm test:audio-pause && pnpm test:telemetry && pnpm test:orientation && pnpm test:track && pnpm test:route && pnpm test:assets && pnpm test:asset-license && pnpm test:scheduling && pnpm test:scheduler-owner && pnpm test:vehicle-reset && pnpm test:vehicle-boundaries && pnpm check:goal-calibration && pnpm test:physics && pnpm build && pnpm check:cloudflare && pnpm check:secrets && pnpm check:assets",
+    "verify": "pnpm test:timing && pnpm test:medals && pnpm test:input && pnpm test:audio-context && pnpm test:audio-pause && pnpm test:audio-bank && pnpm test:telemetry && pnpm test:orientation && pnpm test:track && pnpm test:route && pnpm test:assets && pnpm test:asset-license && pnpm test:scheduling && pnpm test:scheduler-owner && pnpm test:vehicle-reset && pnpm test:vehicle-boundaries && pnpm check:goal-calibration && pnpm test:physics && pnpm build && pnpm check:cloudflare && pnpm check:secrets && pnpm check:assets",
     "check:release:public": "pnpm verify && pnpm check:assets:public && pnpm check:git-release",
     "check:release:commercial": "pnpm verify && pnpm check:assets:commercial && pnpm check:git-release"
   },

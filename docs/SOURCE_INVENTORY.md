@@ -10,7 +10,7 @@
 | `E:\Codex\street-rush` | 不是独立仓库；位于无提交历史的 `E:\Codex` 外层仓库，整个项目未跟踪 | 较早的六车实现、外部素材布局、V6/V8/V10 采样音频路径、较短的兼容对照 | 参考 | 需要核对旧调用兼容或采样音频来源时逐文件采用 |
 | `E:\Codex\赛车游戏素材` | 无独立 Git 历史；约 215 MB 的资产快照 | 六车 GLB、18 层基础引擎 WAV、downtown city 模块和车辆授权记录 | 六车/音频：候选；城市：暂缓 | 生产适配器接口稳定；资产哈希、结构、授权和生命周期测试通过 |
 | `E:\Codex\autonomous_runs\multi_car_model_research` | 无独立 Git 历史；六车 14/14 报告和浏览器隔离证据齐全 | 轮组结构、转向/滚动/悬挂所有权、灯光、碰撞体、相机、性能和逐车未决项 | 候选/参考 | 先以 M3 生成轮验证统一视觉适配器，再以 MX-5 验证保留原层级；其余车逐类接入 |
-| `E:\Codex\autonomous_runs\multi_car_audio` | 无单一权威 Git 历史；包含候选、隔离副本、vendor 和重复构建，约 3.14 GB | 共享 AudioContext/decoded bank registry、切车取消、stale 防发布、fallback/retry、garage/reenter、dispose、六车 profile/manifest/schema 和浏览器契约 | 强候选 | 只复制权威 runtime/data/schema/必要测试；补真实 suspend/resume/visibility 顺序测试后接入 |
+| `E:\Codex\autonomous_runs\multi_car_audio` | 不是独立仓库；外层 `E:\Codex` 无提交且该目录 untracked；包含候选、隔离副本、vendor 和重复构建，约 3.14 GB | 共享 AudioContext/decoded bank registry、切车取消、stale 防发布、fallback/retry、garage/reenter、dispose、六车 profile/manifest/schema 和浏览器契约 | bank 选择/发布协议：当前使用；data/schema/播放图：强候选；大 WAV/vendor：参考不复制 | 用小型 manifest/decode fixture 固定双重 loop gate 和释放后，再决定复制最小数据；目标设备与 exact bank 证据仍 fail-closed |
 | `E:\Codex\autonomous_runs\multi_car_physics_data` | 位于无提交历史的 `E:\Codex`；六车证据包 | 身份绑定、字段 provenance、schema、冲突报告和验收目标 | 候选数据/参考 | 只采用 field-scoped eligible 数据；缺失 owner、曲线、表面和同步 trace 时不升级为目标车参数 |
 | `E:\Codex\vehicle-audio-lab` | 位于无提交历史的 `E:\Codex`；内含 Engine Simulator detached HEAD `80a9075...` | 离线 Engine Simulator 导出器和 V6/V8/V10 基础 bank 生成方法 | 参考 | 需要重导或原生音频工具时复制最小接口；不复制 build/third-party 整树 |
 | `E:\Codex\vehicle-physics-core` | 位于无提交历史的 `E:\Codex`；C++20 研究核心 | TMeasy/Fiala、共享质量/垂向/14 速度研究模型、能量账本、测试和 CSV 实验 | 强候选/参考 oracle | 移植前固定输入输出、误差与状态所有权；不得把 generic fixture 当目标车验证 |

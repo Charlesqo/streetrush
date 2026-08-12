@@ -193,10 +193,27 @@
 
 结论：pause 是音频参数与瞬态的 owner 边界，不等同于 context suspend；用独立 gain gate 可保留已有节点图并避免恢复爆音/假换挡。NAS main 的其他 400 行改动仍未混入。
 
+## 音频 bank 协调器实验结果
+
+问题：`multi_car_audio` 的权威 runtime/data/schema 能否裁剪成与现有 `ProceduralAudio` 并存的最小 bank adapter，并对缺 bank、加载失败和切车 stale 给出确定性 fallback？
+
+可观测量：bank eligibility、profile/vehicle 映射、promise owner、abort signal、单调 request id、晚到 value 的 dispose、active/pending bank id、fallback reason；exact 六车 bank 缺失必须显式报告。
+
+停止条件：只追踪 7/7 Node 场景的直接依赖；只采用接口和内存 fixture；一车 success、缺失回退、失败重试、可取消 fetch 和不可取消 decode 晚到均通过前，不接可听链路。
+
+- 来源定位：Node 入口是 `tools/test-runtime-contract.mjs`，直接导入 29,559-byte runtime、3,660-byte Street Rush adapter 和 1,964-byte routing invariants；它另读两份约 29 KiB 数据及所有真实 bank WAV。
+- 原始状态：来源目录由无提交外层仓库覆盖且整体 untracked；主 runtime SHA-256 为 `C60A8CC740913ACFD04D1BE3E976428AA1C0C5B6417829D896277F1818621B2A`。profiles、manifest、源测试哈希分别为 `52A7B6323FB279936B5F4EF4197BBFCD4EFF2717187F42069522E2A3F19114C2`、`CC3798FA6B81B7CA44AFC2B8065AFA382603D359EC7A299153E11C7FE9CDBCB7`、`B5A7C3DA05B559E6A26A94C6ACC417C53F9D59CC27A7135DDD61E2BB5D6203B5`。
+- 失败优先：契约测试先加入，首次运行因 `src/audio-bank-coordinator.js` 不存在而以 `ERR_MODULE_NOT_FOUND` 失败。
+- 最小采用：复制并收窄纯选择规则；新协调器只接收注入的 `loadBank()`，不拥有 WebAudio 图。每次 setProfile 先 abort pending、释放 active，再以 request id 决定是否发布；不可取消的晚到 value 也调用 `dispose()`。
+- fixture 结果：批准 candidate 可选、未批准 candidate 被拒；现有 6/6 配置在无详细 profile 时走 procedural；HTTP-like 首次失败降级、第二次重试 ready；slow I4 被 fast V8 替换后 signal 已 aborted，晚到 I4 被销毁，最终 active 保持 V8；dispose 中止 pending。
+- 数据判断：六份权威 profile 都没有 exact bank，使用 family candidate/proxy；因此 data/schema 仍为候选，WAV 未复制，本批不改变实际可听输出。
+
+结论：最小发布协议值得采用，并已形成独立可回退边界；完整 runtime 的 AudioContext/node graph 暂时没有足够证据替换已工作的 procedural owner。
+
 ## 下一实验
 
-问题：`multi_car_audio` 的权威 runtime/data/schema 能否裁剪成与现有 `ProceduralAudio` 并存的最小 bank adapter，并对缺 bank、切车 stale、暂停恢复给出确定性 fallback？
+问题：在不复制真实大 WAV 的条件下，能否为协调器加入严格的小型 manifest/layer loader，提前固定 HTTP、JSON、loop approval、decode 后释放和错误分类契约？
 
-可观测量：bank id/vehicle id 映射、加载 promise owner、abort/stale token、decoded buffer 引用、切车后活跃 source 数、fallback reason；exact 六车 bank 缺失必须显式报告而非伪装完成。
+可观测量：manifest/WAV fetch 次数与顺序、AbortSignal、层数、candidate bank/layer 双重 loop gate、decode 完成后的 value dispose、错误 code；保持当前 procedural 可听 owner 不变。
 
-停止条件：先只读定位 7/7 Node 场景所调用的最小源文件和数据；只复制接口与最小 fixture，不复制 vendor/缓存/大 WAV；没有一车成功 + 缺失回退 + stale 切车测试前，不替换当前 procedural runtime。
+停止条件：使用内存 WAV bytes 与 fake decode，不加入真实资产；先让缺层、坏 JSON/HTTP、bank 或任一 layer 未批准失败，再实现 loader；成功/失败/stale 均通过总回归后才考虑复制最小 profile/manifest 数据。

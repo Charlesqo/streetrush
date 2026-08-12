@@ -94,6 +94,16 @@
 - 浏览器结果：真实流程“开始比赛 → 比赛菜单 → 继续比赛”依次得到 `false → true → false`，scheduler 同时保持 `rust-wasm`，无 console warning/error。
 - 回归：完整 `pnpm verify`、六车物理、真实 WASM owner、构建和资产检查全部通过。
 
+### 音频 bank 选择与异步发布契约
+
+- 来源：`E:\Codex\autonomous_runs\multi_car_audio\runtime\vehicle-audio-runtime.js`；来源目录不是独立仓库，外层 `E:\Codex` 是无提交的 `master`，该目录整体 untracked。采用时原文件 29,559 bytes，SHA-256 `C60A8CC740913ACFD04D1BE3E976428AA1C0C5B6417829D896277F1818621B2A`。
+- 依赖边界：7/7 Node 场景还直接读取 23,628-byte 测试、21,960-byte profiles、7,575-byte bank manifest 及真实 WAV。当前没有复制这些数据、schema、vendor、candidate WAV 或 3.14 GB 隔离树；它们保持候选/证据。
+- 失败证据：先加入 success、missing、retry、快速切车、不可取消 decode 晚到和 dispose 契约；实现前测试稳定以 `ERR_MODULE_NOT_FOUND` 退出 1。
+- 实际变化：`src/audio-bank-coordinator.js` 提炼 candidate approval、exact/family/procedural 选择，以及 `requestId + AbortController + post-load stale discard` 协议；loader 返回值可带 `dispose()`，过期发布和切换后的 active bank 都会释放。
+- 保守边界：协调器不创建 AudioContext、不创建/播放 sample node，也未替换 `ProceduralAudio`。没有显式采用详细 profile 时，现有六车兼容配置全部保持 procedural-only，不能仅凭 `family` 猜测候选录音。
+- 诚实映射：来源六车 profile 当前均没有 exact bank；其 fallback 是 family candidate 或 compatibility proxy，所以本批只证明选择和所有权协议，不声称已有六车真实声音。
+- 结果：批准/拒绝、6/6 兼容回退、失败后重试、abort、decode 晚到销毁和 dispose 契约通过，并接入 `pnpm verify`。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
@@ -110,7 +120,7 @@
 
 - 旧 `E:\Codex\street-rush`：采样音频和较短兼容实现；没有独立提交历史。
 - 六车模型研究：报告和隔离测试作为视觉适配器 oracle；生产适配器尚未实现。
-- 多车音频：权威 runtime/data/schema 是强候选；不复制 3.14 GB 隔离副本和 vendor。
+- 多车音频：bank 选择与异步发布契约已采用；权威 data/schema、decoded registry 和样本播放图仍是强候选，不复制 3.14 GB 隔离副本和 vendor。
 - C++ 物理核心：算法和实验是强 oracle；现有生产 `Vehicle` 与研究 `SharedWheelRide` 仍有明确耦合/状态边界。
 - 六车物理数据：只采用带 provenance、field-scoped eligible 的值；冲突和缺失保持显式。
 - 网络/轨迹/ESP32/城市模块：保留为未来能力，不进入近期集成。
@@ -130,9 +140,11 @@
 - 证实：调用边界的非有限值会跨 wheel/telemetry 进入 Rapier；入口规范化能让 90 个配对 case 与明确 oracle 一致，并保持正常 120 Hz 回归。
 - 证实：clean audio 并发 init 会重复 resume；单飞恢复能吞吐拒绝、节流 statechange retry，同时保持节点图和静音状态。
 - 证实：clean pause/modal 帧继续更新 WebAudio 参数；独立 pause gate 能冻结连续值和瞬态，浏览器实际 pause/resume 接线与 Rust scheduler 共存。
+- 证实：`requestId + abort + post-load discard` 能同时覆盖可取消 fetch 和不可取消 decode；晚到结果会释放，不能覆盖新车辆 bank。
+- 证实：来源六车 profile 没有 exact bank；family candidate/proxy 不能被记录为已完成的六车真实声音。
 
 ## 当前最值得继续的方向
 
-1. 从 `multi_car_audio` 权威 runtime/data/schema 中裁剪最小 bank adapter 接口，先验证一车成功、缺 bank 回退和切车 stale/abort，不复制 3.14 GB 隔离树；
+1. 为已通过的 bank 协调器定义小型 manifest/layer loader fixture，验证 HTTP/JSON/loop gate 和 decoded value 的释放，不引入大 WAV；
 2. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与调用边界清理混合；
 3. 随后评估资产取消/释放与六车切换簇，按可观测资源生命周期选择下一批。
