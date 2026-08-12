@@ -260,6 +260,63 @@ controller.releaseAll();
 const throttle = elements.get('touch-throttle');
 const reset = elements.get('touch-reset');
 
+const FIXED_DT = 1 / 120;
+function assertPulseSurvivesSubFixedFrames({ label, field, prepare, trigger, release }) {
+  controller.releaseAll();
+  gamepads = [];
+  controller.update(0, 0, { deferFixedPulses: true });
+  prepare?.();
+  trigger();
+
+  const renderDt = FIXED_DT * 0.4;
+  for (const frameNumber of [1, 2]) {
+    const frame = controller.update(renderDt, 0, { deferFixedPulses: true });
+    assert.equal(frame[field], true, `${label}: sub-fixed frame ${frameNumber} retains pulse`);
+  }
+
+  const fixedStepFrame = controller.update(renderDt, 0, { deferFixedPulses: true });
+  assert.equal(fixedStepFrame[field], true, `${label}: next fixed step receives pulse`);
+  controller.consumeFixedPulses();
+  assert.equal(controller.frame[field], false, `${label}: fixed step consumes pulse once`);
+  assert.equal(
+    controller.update(renderDt, 0, { deferFixedPulses: true })[field],
+    false,
+    `${label}: consumed pulse does not repeat`,
+  );
+
+  release?.();
+  gamepads = [];
+  controller.releaseAll();
+}
+
+assertPulseSurvivesSubFixedFrames({
+  label: 'keyboard shift-up',
+  field: 'shiftUp',
+  trigger: () => windowTarget.dispatchEvent(makeKeyEvent('KeyE')),
+  release: () => windowTarget.dispatchEvent({ type: 'keyup', code: 'KeyE', target: canvas }),
+});
+
+assertPulseSurvivesSubFixedFrames({
+  label: 'touch reset',
+  field: 'reset',
+  trigger: () => reset.dispatchEvent(makePointerEvent('pointerdown', 'deferred-touch-reset')),
+  release: () => reset.dispatchEvent(makePointerEvent('pointerup', 'deferred-touch-reset')),
+});
+
+let pulsePad;
+assertPulseSurvivesSubFixedFrames({
+  label: 'gamepad reset',
+  field: 'reset',
+  prepare: () => {
+    pulsePad = makeGamepad();
+    gamepads = [pulsePad];
+    controller.update(0, 0, { deferFixedPulses: true });
+  },
+  trigger: () => {
+    pulsePad.buttons[3] = { value: 1, pressed: true };
+  },
+});
+
 throttle.dispatchEvent(makePointerEvent('pointerdown', 1));
 assert.equal(controller.touch.throttle, 1);
 assert.equal(throttle.classList.contains('pressed'), true);
@@ -372,5 +429,6 @@ for (const [name, trigger] of lifecycleReleases) {
 
 console.log('PASS keyboard shortcuts respect interactive targets and modifiers');
 console.log('PASS releaseAll and gamepad reconnects rearm keyboard and gamepad sources');
+console.log('PASS fixed-step pulse handoff retains keyboard, touch, and gamepad pulses across sub-fixed render frames');
 console.log('PASS hold and pulse pointer captures release on pointerup and lifecycle events');
 console.log('PASS touch hold controls rearm after local and global pointer and keyboard terminal events');

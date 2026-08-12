@@ -89,10 +89,26 @@
 
 结论：假设得到支持。固定步调度是一个足够小、接口清楚且能跨原生/WASM 复用的首个 Rust owner 候选；但游戏主循环仍使用 JS，下一次 owner 切换必须先验证 WASM 加载失败和初始化时序，不能只凭编译成功替换。
 
-## 下一实验
+## 固定步输入脉冲实验结果
 
 问题：NAS 脏工作区的 fixed-update 输入脉冲和 finite/reset 改动分别修复了哪些可独立复现的当前基线失败，是否能拆成比现有大 diff 更小的安全批次？
 
 可观测量：一次 render frame 内多次 physics step 对 shift/toggle/reset 脉冲的消费次数；NaN/Infinity 进入车辆 update、reset 和 telemetry 后的状态；对应 NAS 测试在 clean baseline 上的失败类别。
 
 停止条件：先复制或重写最小失败测试；按共同根因聚类；只采用能让失败测试通过且不改变无关玩法的最小代码；完整 `pnpm verify` 和 Rust/WASM 对照保持通过。
+
+- 差异拆分：NAS `src/vehicle.js` 的 181 行差异同时包含 finite guard、reset 清理、fallback texture 释放和 destroy 幂等，暂缓整批采用；输入脉冲可独立切出。
+- 最小失败测试：键盘 `KeyE`、触屏 reset、手柄 reset 均先经历两个 `0.4 * FIXED_DT` render frames，再由第三帧形成 physics step。
+- clean baseline 结果：退出码 1；首个失败为第二个键盘 sub-fixed frame，期望 `true`、实际 `false`，证明脉冲在无 physics step 时已被消费。
+- 修复后：三类来源均在前两帧和 physics frame 保持 `true`；`consumeFixedPulses()` 后立即为 `false`，再一次 defer update 仍为 `false`。
+- 回归：`pnpm test:input`、完整 `pnpm verify`、`cargo test --workspace` 和 `scripts/test-core-wasm.mjs` 均退出码 0；六车 physics smoke/regression 保持通过。
+
+结论：fixed-update 输入脉冲是有直接失败证据的独立根因，已用小于 NAS 原 diff 的范围整合。finite/reset 尚未得到同等粒度的失败分类，不能和本批混合。
+
+## 下一实验
+
+问题：clean vehicle reset 究竟遗漏了哪些运行状态；只补 reset 完整性是否足以消除污染，还是必须同时加入 update-time finite guard？
+
+可观测量：六车 reset 后的传动、转向、引擎负载、轮胎接触、telemetry 数值和标志；分别记录 assertion failure 与异常，而不是把所有失败归为“非有限值”。
+
+停止条件：先写不依赖 NAS 新增内部字段的 reset-only 测试并在 clean code 上失败；若修复后六车现有物理回归保持通过，再独立设计 NaN/Infinity 输入测试，避免把资源释放改动混入车辆状态批次。

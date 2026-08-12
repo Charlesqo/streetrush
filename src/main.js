@@ -804,8 +804,16 @@ function updateCheckpoints() {
 
 function fixedUpdate(frameInput) {
   if (!vehicle) return;
-  if (state === 'menu' || state === 'finish' || state === 'paused') return;
+  if (state === 'menu' || state === 'finish' || state === 'paused') {
+    input.consumeFixedPulses();
+    return;
+  }
   devFixedStepIndex += 1;
+  if (state === 'race' && frameInput.reset) {
+    invalidateCurrentLap('manual-reset', 'RESET · LAP INVALID');
+    recordDevEvent('manual-reset', { reason: 'manual-reset' });
+    vehicle.reset(vehicle.safeSample);
+  }
   if (state === 'countdown') {
     countdown -= FIXED_DT;
     const nextNumber = Math.ceil(countdown);
@@ -833,6 +841,7 @@ function fixedUpdate(frameInput) {
     if (beyondKerb) invalidateCurrentLap('track-limits');
     updateCheckpoints();
   }
+  input.consumeFixedPulses();
 }
 
 function updateHUD() {
@@ -914,28 +923,16 @@ function animate(now) {
     renderer.render(scene, camera);
     return;
   }
-  const frameInput = input.update(frameDt, vehicle.telemetry.speedKmh);
+  const frameInput = input.update(frameDt, vehicle.telemetry.speedKmh, { deferFixedPulses: true });
   if (input.consumePulse('KeyP')) {
     performanceVisible = !performanceVisible;
     $('perf').classList.toggle('hidden', !performanceVisible);
   }
-  if (frameInput.reset && state === 'race') {
-    invalidateCurrentLap('manual-reset', 'RESET · LAP INVALID');
-    recordDevEvent('manual-reset', { reason: 'manual-reset' });
-    vehicle.reset(vehicle.safeSample);
-  }
   accumulator = accumulatePhysicsTime(accumulator, frameDt);
   const physicsStart = performance.now();
-  let firstStep = true;
   let physicsSteps = 0;
   while (accumulator >= FIXED_DT && physicsSteps < MAX_PHYSICS_STEPS) {
     fixedUpdate(frameInput);
-    if (firstStep) {
-      frameInput.shiftUp = false;
-      frameInput.shiftDown = false;
-      frameInput.toggleTransmission = false;
-      firstStep = false;
-    }
     accumulator -= FIXED_DT;
     physicsSteps += 1;
   }

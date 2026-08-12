@@ -5,6 +5,19 @@ const GAMEPLAY_PREVENT_DEFAULT_CODES = new Set(['ArrowUp', 'ArrowDown', 'ArrowLe
 const GAMEPAD_STICK_DEADZONE = 0.08;
 const GAMEPAD_BUTTON_DEADZONE = 0.05;
 const GAMEPAD_INPUT_BUTTONS = [0, 3, 4, 5, 6, 7];
+const FIXED_PULSE_CODES = [
+  'KeyE',
+  'KeyQ',
+  'KeyC',
+  'KeyR',
+  'PadShiftUp',
+  'PadShiftDown',
+  'PadReset',
+  'TouchShiftUp',
+  'TouchShiftDown',
+  'TouchTransmission',
+  'TouchReset',
+];
 
 function gamepadButtonIsActive(pad, index) {
   const button = pad?.buttons?.[index];
@@ -341,7 +354,15 @@ export class InputController {
     return hit;
   }
 
-  update(dt, speedKmh = 0) {
+  consumeFixedPulses() {
+    for (const code of FIXED_PULSE_CODES) this.pulses.delete(code);
+    this.frame.shiftUp = false;
+    this.frame.shiftDown = false;
+    this.frame.toggleTransmission = false;
+    this.frame.reset = false;
+  }
+
+  update(dt, speedKmh = 0, { deferFixedPulses = false } = {}) {
     let rawSteer = (this.keys.has('KeyA') || this.keys.has('ArrowLeft') ? 1 : 0)
       - (this.keys.has('KeyD') || this.keys.has('ArrowRight') ? 1 : 0);
     let rawThrottle = this.keys.has('KeyW') || this.keys.has('ArrowUp') ? 1 : 0;
@@ -388,10 +409,11 @@ export class InputController {
     this.frame.throttle = updatePedal(this.frame.throttle, rawThrottle, 4.3, 7.5, dt);
     this.frame.brake = updatePedal(this.frame.brake, rawBrake, 7.5, 11, dt);
     this.frame.handbrake = THREE.MathUtils.damp(this.frame.handbrake, rawHandbrake, 14, dt);
-    this.frame.shiftUp = this.consumePulse('KeyE') || this.consumePulse('PadShiftUp') || this.consumePulse('TouchShiftUp');
-    this.frame.shiftDown = this.consumePulse('KeyQ') || this.consumePulse('PadShiftDown') || this.consumePulse('TouchShiftDown');
-    this.frame.toggleTransmission = this.consumePulse('KeyC') || this.consumePulse('TouchTransmission');
-    this.frame.reset = this.consumePulse('KeyR') || this.consumePulse('PadReset') || this.consumePulse('TouchReset');
+    const pulse = (code) => deferFixedPulses ? this.pulses.has(code) : this.consumePulse(code);
+    this.frame.shiftUp = pulse('KeyE') || pulse('PadShiftUp') || pulse('TouchShiftUp');
+    this.frame.shiftDown = pulse('KeyQ') || pulse('PadShiftDown') || pulse('TouchShiftDown');
+    this.frame.toggleTransmission = pulse('KeyC') || pulse('TouchTransmission');
+    this.frame.reset = pulse('KeyR') || pulse('PadReset') || pulse('TouchReset');
     return this.frame;
   }
 }
