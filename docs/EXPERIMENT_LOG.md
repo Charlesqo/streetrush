@@ -247,10 +247,27 @@
 
 结论：共享 abort 与无界 stalled preload 是两个已修复的 request-owner 缺陷；late GLTF result 和资源图回收仍需独立失败实验，不能把 NAS 大 diff 整批当答案。
 
-## 下一实验
+## late GLTF 安全回收实验结果
 
 问题：GLTFLoader 在外层 request 已 timeout 后晚到的 scene 是否仍被静默保留；不引入完整 reference graph 时，能否只回收“从未进入 cache、prepare 或 scene”的 late template？
 
-可观测量：timeout owner settle 时点、late scene identity、car/visual/pending caches、scene parent、geometry/material/texture dispose 次数、与健康并发 template 的资源重叠。
+可观测量：timeout owner settle 时点、late scene identity、car/visual/pending caches、scene parent、geometry/material/texture dispose 次数、与健康 cache/scene 的资源 identity 重叠。
 
-停止条件：先用完全独立资源的 late scene 复现；如果能证明无任何共享引用，只实现延迟清理的最小路径；一旦资源可能与 cache/scene 重叠则 fail safe 保留并记录需要 reference graph，不猜测释放。
+停止条件：先用完全独立资源的 late scene 复现；共享任一资源必须零释放；只实现无需 deferred ownership 推断的即时安全路径，完整回归后提交。
+
+- clean 失败：timeout request 已从 pending/car/visual cache 消失后，独立 late scene 的 geometry/material/texture dispose 均为 0；测试退出 1。
+- 对照：另一个 late scene 与已知 visual 共用同一 geometry/material/texture，clean 的三类 dispose 也为 0，作为不得误释放的 guard。
+- 最小实现：raw load promise 只在 outer timeout 后观察 scene；收集 mesh geometry、material 及嵌套 texture identity，与当前 scene、car cache、visual cache 合并集合比较；使用 WeakSet 保证 dispose 幂等。
+- 通过：独立 late scene 得到 `{geometry:1, material:1, texture:1}`；共享对照保持全 0；scene 未挂载且未进入 cache。
+- 保守条件：任何 pending car/visual 都直接保留，资源任一重叠也整棵保留。本批没有队列化到 pending 结束后再判断，因此把“可能残留”显式留作未来 reference graph 需求，而不是扩大释放。
+- 回归：12/12 assets、完整 `pnpm verify` 通过；build 30 modules，main bundle 约 452.27 KiB，仍只有既有 >500 KiB chunk warning。
+
+结论：可证明独立的 late result 已有安全回收路径；无法证明独立的结果仍 fail-safe，不把内存优化置于共享资源正确性之上。
+
+## 下一实验
+
+问题：公开调用边界已能阻止坏 input/dt，但若车辆内部标量、wheel cache 或 Rapier body 已经变成 NaN/Infinity，下一帧能否确定性恢复，还是必须 reset/rebuild？
+
+可观测量：首次污染字段、fixedUpdate/world.step 后扩散路径、reset 前后 body pose/velocity、owned scalar/wheel/telemetry 有限性；六车分别统计“入口恢复”“reset 恢复”“必须重建”。
+
+停止条件：先参考 NAS finite 测试建立内部污染矩阵，不混入外部 input；只对 owner 明确且 reset 可恢复的字段修复，Rapier 内部若无法可靠 set 回则记录 rebuild 条件，不用任意零值掩盖。

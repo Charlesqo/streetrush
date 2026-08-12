@@ -52,6 +52,25 @@ function makeTemplate(name = 'fake-car') {
   return root;
 }
 
+function makeTrackedResources() {
+  const counts = { geometry: 0, material: 0, texture: 0 };
+  const geometry = new THREE.BoxGeometry(2, 1, 4);
+  const material = new THREE.MeshBasicMaterial({ color: 0x445566 });
+  const texture = new THREE.Texture();
+  material.map = texture;
+  geometry.dispose = () => { counts.geometry += 1; };
+  material.dispose = () => { counts.material += 1; };
+  texture.dispose = () => { counts.texture += 1; };
+  return { counts, geometry, material, texture };
+}
+
+function makeTemplateWithResources(name, resources) {
+  const root = new THREE.Group();
+  root.name = name;
+  root.add(new THREE.Mesh(resources.geometry, resources.material));
+  return root;
+}
+
 function makeConfig(id = 'test-car', file = `${id}.glb`) {
   return {
     id,
@@ -170,6 +189,50 @@ test('times out one fetch without aborting another shared-loader request, then r
   manager.loader = new FakeLoader(() => Promise.resolve({ scene: recoveredTemplate }));
   const recovered = await manager.fetchCar(config);
   assert.strictEqual(recovered, recoveredTemplate);
+});
+
+test('disposes a timed-out GLTF scene that arrives late with independent resources', async () => {
+  const { manager } = makeManager();
+  const config = makeConfig('late-independent');
+  const gate = deferred();
+  const resources = makeTrackedResources();
+  const lateTemplate = makeTemplateWithResources(config.id, resources);
+  manager.carLoadTimeoutMs = 8;
+  manager.loader = new FakeLoader(() => gate.promise);
+
+  await assert.rejects(manager.fetchCar(config), /Timed out loading car late-independent/);
+  assert.equal(manager.pendingCars.size, 0);
+  assert.equal(manager.carCache.size, 0);
+  assert.equal(manager.visualCache.size, 0);
+  gate.resolve({ scene: lateTemplate });
+  await flushMacrotask();
+  await flushMacrotask();
+
+  assert.deepEqual(resources.counts, { geometry: 1, material: 1, texture: 1 });
+  assert.equal(manager.carCache.size, 0);
+  assert.equal(manager.visualCache.size, 0);
+  assert.equal(lateTemplate.parent, null);
+});
+
+test('retains every late GLTF resource when any identity is already known', async () => {
+  const { manager } = makeManager();
+  const config = makeConfig('late-shared');
+  const gate = deferred();
+  const resources = makeTrackedResources();
+  const known = makeTemplateWithResources('known-visual', resources);
+  known.userData.source = 'gltf';
+  manager.visualCache.set('known-visual', known);
+  const lateTemplate = makeTemplateWithResources(config.id, resources);
+  manager.carLoadTimeoutMs = 8;
+  manager.loader = new FakeLoader(() => gate.promise);
+
+  await assert.rejects(manager.fetchCar(config), /Timed out loading car late-shared/);
+  gate.resolve({ scene: lateTemplate });
+  await flushMacrotask();
+  await flushMacrotask();
+
+  assert.deepEqual(resources.counts, { geometry: 0, material: 0, texture: 0 });
+  assert.strictEqual(manager.visualCache.get('known-visual'), known);
 });
 
 test('formal load cancels only its matching in-flight HTTP preload', async () => {

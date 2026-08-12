@@ -14,6 +14,7 @@ export class AssetManager {
     this.preloadScheduled = new Set();
     this.preloadScheduleTokens = new Map();
     this.preloadRequests = new Map();
+    this.disposedResources = new WeakSet();
     this.carLoadTimeoutMs = 15_000;
     this.preloadTimeoutMs = 15_000;
     this.cityGroup = new THREE.Group();
@@ -40,6 +41,7 @@ export class AssetManager {
     if (this.carCache.has(config.id)) return Promise.resolve(this.carCache.get(config.id));
     if (this.pendingCars.has(config.id)) return this.pendingCars.get(config.id);
     let request;
+    let timedOut = false;
     const loadPromise = Promise.resolve()
       .then(() => this.loader.loadAsync(`/cars/${config.file}`, (event) => {
         if (event.total) onProgress?.(event.loaded / event.total);
@@ -50,12 +52,18 @@ export class AssetManager {
       loadPromise,
       new Promise((_, reject) => {
         timeoutId = setTimeout(() => {
+          timedOut = true;
           // GLTFLoader's LoadingManager is shared. Aborting it here would also
           // cancel unrelated car requests; only reject this request's owner.
           reject(new Error(`Timed out loading car ${config.id}`));
         }, timeoutMs);
       }),
     ]).finally(() => clearTimeout(timeoutId));
+    loadPromise.then((gltf) => {
+      if (timedOut && gltf?.scene) this.disposeUnreferencedLateScene(gltf.scene);
+    }, () => {
+      // timedLoad owns the observable loader error.
+    });
     request = timedLoad
       .then((gltf) => {
         if (this.pendingCars.get(config.id) === request) {
@@ -73,6 +81,86 @@ export class AssetManager {
       });
     this.pendingCars.set(config.id, request);
     return request;
+  }
+
+  collectMaterialTextures(material, textures) {
+    const visited = new Set();
+    const collect = (value) => {
+      if (!value || typeof value !== 'object') return;
+      if (value.isTexture) {
+        textures.add(value);
+        return;
+      }
+      if (visited.has(value)) return;
+      visited.add(value);
+      for (const nested of Object.values(value)) collect(nested);
+    };
+    collect(material);
+  }
+
+  collectVisualResources(root) {
+    const resources = {
+      geometries: new Set(),
+      materials: new Set(),
+      textures: new Set(),
+    };
+    root?.traverse?.((object) => {
+      if (!object.isMesh) return;
+      if (object.geometry) resources.geometries.add(object.geometry);
+      const materials = Array.isArray(object.material) ? object.material : [object.material];
+      for (const material of materials) {
+        if (!material) continue;
+        resources.materials.add(material);
+        this.collectMaterialTextures(material, resources.textures);
+      }
+    });
+    return resources;
+  }
+
+  mergeVisualResources(target, source) {
+    for (const geometry of source.geometries) target.geometries.add(geometry);
+    for (const material of source.materials) target.materials.add(material);
+    for (const texture of source.textures) target.textures.add(texture);
+  }
+
+  collectKnownVisualResources() {
+    const resources = {
+      geometries: new Set(),
+      materials: new Set(),
+      textures: new Set(),
+    };
+    const collectRoot = (root) => this.mergeVisualResources(
+      resources,
+      this.collectVisualResources(root),
+    );
+    if (typeof this.scene?.traverse === 'function') collectRoot(this.scene);
+    else for (const child of this.scene?.children ?? []) collectRoot(child);
+    for (const root of this.carCache.values()) collectRoot(root);
+    for (const root of this.visualCache.values()) collectRoot(root);
+    return resources;
+  }
+
+  visualResourcesOverlap(left, right) {
+    for (const geometry of left.geometries) if (right.geometries.has(geometry)) return true;
+    for (const material of left.materials) if (right.materials.has(material)) return true;
+    for (const texture of left.textures) if (right.textures.has(texture)) return true;
+    return false;
+  }
+
+  disposeResource(resource) {
+    if (typeof resource?.dispose !== 'function' || this.disposedResources.has(resource)) return;
+    resource.dispose();
+    this.disposedResources.add(resource);
+  }
+
+  disposeUnreferencedLateScene(root) {
+    if (!root || root.parent || this.pendingCars.size || this.pendingVisuals.size) return false;
+    const late = this.collectVisualResources(root);
+    if (this.visualResourcesOverlap(late, this.collectKnownVisualResources())) return false;
+    for (const texture of late.textures) this.disposeResource(texture);
+    for (const material of late.materials) this.disposeResource(material);
+    for (const geometry of late.geometries) this.disposeResource(geometry);
+    return true;
   }
 
   createFallback(config) {

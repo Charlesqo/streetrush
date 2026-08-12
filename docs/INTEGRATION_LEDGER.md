@@ -122,6 +122,13 @@
 - 自动结果：健康并发不受另一请求 timeout 影响；formal load 只 abort 同 id preload；六车 stalled preload 全部 abort 并释放 6/6 slots；既有 pending 复用、retry、fallback/GLTF ownership 和邻车 preload 回归保持通过，共 10/10。
 - 浏览器证据边界：实际页确认 MX-5 `01 / 06 READY`、start enabled、scheduler `rust-wasm`、无 fallback；单次可见控件切换观察到 M3 `02 / 06 LOADING`。后续本地页操作被 Browser URL policy 阻止，因此没有声称完成实际六车循环；该验证保持待办。
 
+### timeout 后 late GLTF 安全回收
+
+- 失败证据：外层 `fetchCar()` 已 timeout 且 caches/pending 全清后，让不可取消的 loader 晚到一个独立 scene；其 texture/material/geometry dispose 计数均为 0。共享资源对照也为 0，证明当前行为安全但独立 late 资源没有显式回收。
+- 实际变化：只观察 timeout 后的原始 load promise；late scene 必须未挂载、当时没有任何 pending car/visual，且其 geometry/material/texture identity 与 scene、car cache、visual cache 完全不重叠，才按 texture → material → geometry 顺序幂等释放。
+- fail-safe：任一资源 identity 重叠时整棵 late scene 保留；任一 pending 请求存在也保留。没有建立 deferred queue 或猜测未来 loader 是否共享资源，因此仍可能保守残留，但不会因本批误释放健康实例。
+- 结果：独立 late scene 三类资源各释放 1 次；共享 identity 三类均为 0；pending/retry、preload、fallback、GLTF clone 既有测试保持通过，资产测试 12/12、完整 `pnpm verify` 通过。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
@@ -162,9 +169,10 @@
 - 证实：来源六车 profile 没有 exact bank；family candidate/proxy 不能被记录为已完成的六车真实声音。
 - 证实：candidate 与 prototype manifest 的 loop 契约不同；只对 candidate 双重 fail-closed 可在不破坏 prototype fallback 的前提下阻止未批准层进入 decode。
 - 证实：GLTFLoader 的 LoadingManager 是共享 owner，单请求 timeout 不能用全局 abort；per-car preload token/signal 能隔离六车重复请求并有界释放 stalled slots。
+- 证实：late GLTF 只有在未挂载、无 pending、与全部已知资源 identity 不重叠时才可局部安全回收；共享判断不足时应保留而不是猜测 dispose。
 
 ## 当前最值得继续的方向
 
-1. 为 GLTF timeout 后不可取消的 late result 建立最小失败测试，固定“未发布 scene 的 geometry/material/texture 何时可安全释放”而不先复制 NAS 200 行 reference graph；
+1. 为已污染 runtime scalar 与非有限 Rapier body 建立独立恢复矩阵，区分可由 reset 恢复的 owner 字段与必须重建刚体/车辆的状态；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
-3. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与资源生命周期混合。
+3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。
