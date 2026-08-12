@@ -226,6 +226,7 @@ export class RaceTimingSession {
     medalTargetsMs = null,
     store = new TimingStore(),
     progressCore = null,
+    progressMode = 'shadow',
   }) {
     this.identity = {
       trackId: requireIdentifier(trackId, 'trackId'),
@@ -240,7 +241,10 @@ export class RaceTimingSession {
     }
     this.store = store;
     this.record = this.store.load(this.identity, this.sectorCheckpoints.length);
-    this.progressShadow = progressCore
+    if (progressCore && progressMode !== 'shadow' && progressMode !== 'owner') {
+      throw new RangeError('progressMode must be shadow or owner');
+    }
+    this.progressSession = progressCore
       ? new RaceProgressSession({
         totalLaps: this.totalLaps,
         checkpointCount: this.checkpointCount,
@@ -248,8 +252,14 @@ export class RaceTimingSession {
         core: progressCore,
       })
       : null;
-    this.progressOwner = this.progressShadow ? `${progressCore.owner}-shadow` : 'legacy';
+    this.progressMode = this.progressSession ? progressMode : 'legacy';
+    this.progressShadow = this.progressMode === 'shadow' ? this.progressSession : null;
+    this.progressOwner = this.progressSession ? `${progressCore.owner}-${progressMode}` : 'legacy';
     this.reset();
+  }
+
+  get progressOwned() {
+    return this.progressMode === 'owner';
   }
 
   reset() {
@@ -264,15 +274,19 @@ export class RaceTimingSession {
     this.currentInvalidReasons = [];
     this.laps = [];
     this.summary = null;
-    this.progressShadow?.reset();
+    this.progressSession?.reset();
     this.assertProgressShadow('reset');
     return this.snapshot();
   }
 
   start() {
     this.reset();
-    this.status = 'running';
-    this.progressShadow?.start();
+    if (this.progressOwned) {
+      this.progressSession.start();
+    } else {
+      this.status = 'running';
+      this.progressShadow?.start();
+    }
     this.assertProgressShadow('start');
     return {
       type: 'run-started',
@@ -288,22 +302,36 @@ export class RaceTimingSession {
     if (!isFiniteNonNegative(deltaMs)) {
       throw new RangeError('deltaMs must be a finite non-negative number');
     }
-    if (this.status === 'running') this.runTimeExactMs += deltaMs;
-    this.progressShadow?.advance(deltaMs);
+    if (this.progressOwned) {
+      this.progressSession.advance(deltaMs);
+    } else {
+      if (this.status === 'running') this.runTimeExactMs += deltaMs;
+      this.progressShadow?.advance(deltaMs);
+    }
     this.assertProgressShadow('advance');
     return this.snapshot();
   }
 
   invalidate(reason = 'track-limits') {
-    if (this.status !== 'running') {
+    const running = this.progressOwned
+      ? this.progressSession.snapshot().status === 'running'
+      : this.status === 'running';
+    if (!running) {
+      if (this.progressOwned) this.progressSession.invalidate();
       const shadowChanged = this.progressShadow?.invalidate() ?? false;
       if (shadowChanged) throw new Error('race progress shadow invalidated outside a running race');
       this.assertProgressShadow('invalidate-idle');
       return null;
     }
     const normalizedReason = typeof reason === 'string' && reason.trim() ? reason.trim() : 'invalid';
-    const wasValid = this.currentLapValid;
-    this.currentLapValid = false;
+    const wasValid = this.progressOwned
+      ? this.progressSession.snapshot().currentLapValid
+      : this.currentLapValid;
+    if (this.progressOwned) {
+      this.progressSession.invalidate();
+    } else {
+      this.currentLapValid = false;
+    }
     if (!this.currentInvalidReasons.includes(normalizedReason)) {
       this.currentInvalidReasons.push(normalizedReason);
     }
@@ -325,6 +353,7 @@ export class RaceTimingSession {
     if (!Number.isInteger(checkpointIndex) || checkpointIndex < 0 || checkpointIndex >= this.checkpointCount) {
       throw new RangeError(`checkpointIndex must be between 0 and ${this.checkpointCount - 1}`);
     }
+    if (this.progressOwned) return this.passCheckpointOwned(checkpointIndex);
     const shadowOutcome = this.progressShadow?.passCheckpoint(checkpointIndex) ?? null;
     if (this.status !== 'running') {
       this.assertCheckpointShadow([], shadowOutcome, 'checkpoint-idle');
@@ -360,6 +389,100 @@ export class RaceTimingSession {
     }
     this.assertCheckpointShadow(events, shadowOutcome, 'checkpoint-accepted');
     return events;
+  }
+
+  passCheckpointOwned(checkpointIndex) {
+    const prepared = this.progressSession.prepareCheckpoint(checkpointIndex);
+    if (!prepared.accepted) {
+      if (!prepared.rejected) return [];
+      return [{
+        type: 'checkpoint-rejected',
+        checkpointIndex,
+        expectedCheckpointIndex: this.expectedCheckpointIndex,
+        snapshot: this.snapshot(),
+      }];
+    }
+
+    const checkpointSnapshot = this.progressSession.snapshot();
+    const events = [{
+      type: 'checkpoint-completed',
+      checkpointIndex,
+      checkpointOrdinal: prepared.checkpointOrdinal,
+      lapNumber: checkpointSnapshot.currentLapNumber,
+      snapshot: this.snapshot(),
+    }];
+
+    const sectorTimeMs = this.progressSession.commitSector();
+    if (sectorTimeMs !== null) {
+      events.push(this.completeSectorOwned(sectorTimeMs, checkpointSnapshot));
+    }
+
+    const lapOutcome = this.progressSession.commitLap();
+    if (lapOutcome) {
+      events.push(this.completeLapOwned(lapOutcome, checkpointSnapshot.currentLapNumber));
+    }
+
+    const runCompleted = this.progressSession.commitRun();
+    if (runCompleted) events.push(this.completeRun());
+    this.progressSession.finishCheckpoint();
+    return events;
+  }
+
+  completeSectorOwned(sectorTimeMs, checkpointSnapshot) {
+    const sectorIndex = checkpointSnapshot.currentSectorNumber - 1;
+    const bestSectorMs = this.record.bestSectorsMs[sectorIndex];
+    this.currentSectorsMs.push(sectorTimeMs);
+    return {
+      type: 'sector-completed',
+      lapNumber: checkpointSnapshot.currentLapNumber,
+      sectorNumber: checkpointSnapshot.currentSectorNumber,
+      timeMs: sectorTimeMs,
+      deltaMs: !checkpointSnapshot.currentLapValid || bestSectorMs == null
+        ? null
+        : sectorTimeMs - bestSectorMs,
+      valid: checkpointSnapshot.currentLapValid,
+      snapshot: this.snapshot(),
+    };
+  }
+
+  completeLapOwned({ timeMs, valid }, lapNumber) {
+    const previousBestLapMs = this.record.bestLapMs;
+    const lap = {
+      number: lapNumber,
+      timeMs,
+      sectorsMs: [...this.currentSectorsMs],
+      valid,
+      invalidReasons: [...this.currentInvalidReasons],
+      deltaMs: !valid || previousBestLapMs == null ? null : timeMs - previousBestLapMs,
+      newBest: false,
+    };
+
+    if (lap.valid) {
+      if (previousBestLapMs == null || lap.timeMs < previousBestLapMs) {
+        this.record.bestLapMs = lap.timeMs;
+        lap.newBest = true;
+      }
+      lap.sectorsMs.forEach((sectorTimeMs, index) => {
+        const previous = this.record.bestSectorsMs[index];
+        if (previous == null || sectorTimeMs < previous) this.record.bestSectorsMs[index] = sectorTimeMs;
+      });
+    }
+    this.laps.push(lap);
+    const finalLap = this.laps.length >= this.totalLaps;
+    if (!finalLap) {
+      if (lap.valid) this.store.save(this.identity, this.record);
+      this.currentSectorsMs = [];
+      this.currentInvalidReasons = [];
+    }
+    return {
+      type: 'lap-completed',
+      lap: {
+        ...lap,
+        sectorsMs: [...lap.sectorsMs],
+        invalidReasons: [...lap.invalidReasons],
+      },
+      snapshot: this.snapshot(),
+    };
   }
 
   assertProgressShadow(label) {
@@ -465,8 +588,10 @@ export class RaceTimingSession {
   }
 
   completeRun() {
-    this.status = 'finished';
-    const raceTimeMs = roundedDuration(this.runTimeExactMs);
+    if (!this.progressOwned) this.status = 'finished';
+    const raceTimeMs = this.progressOwned
+      ? this.progressSession.snapshot().runTimeMs
+      : roundedDuration(this.runTimeExactMs);
     const valid = this.laps.every((lap) => lap.valid);
     const raceKey = String(this.totalLaps);
     const previousBestRaceMs = this.record.bestRaceMsByLaps[raceKey] ?? null;
@@ -498,14 +623,17 @@ export class RaceTimingSession {
   }
 
   get currentLapNumber() {
+    if (this.progressOwned) return this.progressSession.snapshot().currentLapNumber;
     return Math.min(this.laps.length + 1, this.totalLaps);
   }
 
   get expectedCheckpointIndex() {
+    if (this.progressOwned) return this.progressSession.snapshot().expectedCheckpointIndex;
     return (this.checkpointsPassed + 1) % this.checkpointCount;
   }
 
   get checkpointOrdinal() {
+    if (this.progressOwned) return this.progressSession.snapshot().checkpointOrdinal;
     const withinLap = this.checkpointsPassed % this.checkpointCount;
     if (this.checkpointsPassed === 0) return 0;
     return withinLap === 0 ? this.checkpointCount : withinLap;
@@ -528,6 +656,21 @@ export class RaceTimingSession {
   }
 
   snapshot() {
+    if (this.progressOwned) {
+      return {
+        ...this.progressSession.snapshot(),
+        totalLaps: this.totalLaps,
+        invalidReasons: [...this.currentInvalidReasons],
+        bestLapMs: this.record.bestLapMs,
+        bestSectorsMs: [...this.record.bestSectorsMs],
+        bestRaceMs: this.record.bestRaceMsByLaps[String(this.totalLaps)] ?? null,
+        laps: this.laps.map((lap) => ({
+          ...lap,
+          sectorsMs: [...lap.sectorsMs],
+          invalidReasons: [...lap.invalidReasons],
+        })),
+      };
+    }
     const running = this.status === 'running';
     const lapTimeExactMs = running ? this.runTimeExactMs - this.lapStartedAtExactMs : 0;
     const sectorTimeExactMs = running ? this.runTimeExactMs - this.sectorStartedAtExactMs : 0;

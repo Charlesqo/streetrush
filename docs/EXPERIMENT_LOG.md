@@ -430,10 +430,30 @@
 
 结论：已知 checkpoint event staging 阻碍被建模和验证，且暴露并修正了 lap owner 的隐藏差异；下一步可以做 authoritative wrapper 实验，但仍必须以完整 event/save equality 阻止双写。
 
-## 下一实验
+## authoritative RaceTimingSession progress owner 实验结果
 
 问题：`RaceTimingSession` 能否在 authoritative 模式只让 `RaceProgressSession` 写纯进度，而 JS adapter 仅写 reasons/laps/record/events，同时保持 default legacy 和 JS fallback 两条路径？
 
 可观测量：legacy vs WASM-owner vs fallback-owner 的完整 35-action result、event 中间 snapshot、summary/record、3 次 save；内部 legacy progress 字段是否停止 mutation；owner metadata；finished/restart 行为。
 
 停止条件：禁止双写；默认无 core 构造继续 legacy；WASM/fallback owner 深比较完全一致；DEV 可先使用 authoritative+shadow diagnostic，production 切换需再通过实际浏览器或等价运行证据。
+
+- red evidence：fixture 请求 owner 后实际仍为 `rust-wasm-shadow`，owner metadata 断言退出 1。
+- modes：constructor 新增 `progressMode=shadow|owner`；没有 core 时仍 legacy。owner reset 只初始化旧字段，后续 progress mutation 全委托 wrapper；snapshot/getters 从 wrapper 读取。
+- checkpoint：prepare 构造 checkpoint event；commitSector 返回 time 供 sector record adapter；commitLap 返回 `{timeMs,valid}` 供 lap/PB adapter；commitRun 后生成 summary/save；finish 清 transaction。
+- no-double-write：两条 owner scenario 结束后旧 7-field progress state 仍是 idle/0/true reset tuple，而公开 snapshot 已完成 11,700 ms gold run。
+- equality：legacy + 2 shadow + 2 owner 五条路径的 35 complete action results、nested event snapshots、summary、record、save count 完全一致。
+- sparse-sector：`checkpointCount=3, sector=[2,3]` 的 1-lap fixture只有 2 个 sector events；WASM/fallback owner 与 legacy 全相同，覆盖 accepted-but-no-sector adapter 路径。
+- compatibility：原 9 timing tests/default constructor 与 6-car medal tests不注入 core，继续通过；atomic/staged/shadow tests 继续通过。
+- runtime：DEV main 注入 owner，并发布 session owner dataset；production build不注入，保留 legacy。shared scheduler/timing WASM 仍只实例化一次。
+- 回归：完整 `pnpm verify` 通过；34 modules、4,864-byte WASM、六车 replay/physics/recovery、audio/assets/build 门禁均保持。
+
+结论：开发期网页的纯比赛进度已有真实 Rust/WASM authoritative 路径与 JS fallback，且 PB/event adapter 单写已被测试证明；production 切换仍需 lifecycle soak/运行证据，当前不做无证据扩大。
+
+## 下一实验
+
+问题：长序列随机但可重放的 race lifecycle 是否会暴露短 fixture 未覆盖的 staged transaction、restart、finished 输入或 PB/save 分歧？
+
+可观测量：固定 seed action trace；legacy/WASM/fallback owner 每 action result/snapshot/record/save；首个 divergence action；有效/无效 run、wrong checkpoint、重复 invalidation、restart 与 finish 后噪声数量。
+
+停止条件：多 seed 各增加不同顺序而非重复日志；先固定生成器与 action hash；所有路径 exact equality；失败按首个 action/field 聚类；不需要实际 DOM/物理即可先验证 session lifecycle。

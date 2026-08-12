@@ -31,7 +31,7 @@ const fallbackCore = createJavaScriptRaceProgressCore({
   fallbackReason: { code: 'injected-fallback', message: 'fixture' },
 });
 
-function createSession(progressCore) {
+function createSession(progressCore, progressMode) {
   const storage = new MemoryStorage();
   const session = new RaceTimingSession({
     trackId: 'timing-shadow-oracle',
@@ -44,13 +44,13 @@ function createSession(progressCore) {
       storage,
       now: () => '2026-08-13T00:00:00.000Z',
     }),
-    ...(progressCore ? { progressCore } : {}),
+    ...(progressCore ? { progressCore, progressMode } : {}),
   });
   return { session, storage };
 }
 
-function runScenario(progressCore) {
-  const { session, storage } = createSession(progressCore);
+function runScenario(progressCore, progressMode = 'shadow') {
+  const { session, storage } = createSession(progressCore, progressMode);
   const actions = [];
   const capture = (name, result) => {
     actions.push({ name, result, snapshot: session.snapshot(), record: session.getRecord() });
@@ -93,23 +93,79 @@ function runScenario(progressCore) {
     summary: session.getSummary(),
     record: session.getRecord(),
     storageWrites: storage.writeCount,
+    legacyProgressFields: {
+      status: session.status,
+      runTimeExactMs: session.runTimeExactMs,
+      lapStartedAtExactMs: session.lapStartedAtExactMs,
+      sectorStartedAtExactMs: session.sectorStartedAtExactMs,
+      checkpointsPassed: session.checkpointsPassed,
+      currentSector: session.currentSector,
+      currentLapValid: session.currentLapValid,
+    },
   };
 }
 
 const legacy = runScenario(null);
 const wasmShadow = runScenario(sharedCore.raceProgress);
 const fallbackShadow = runScenario(fallbackCore);
+const wasmOwner = runScenario(sharedCore.raceProgress, 'owner');
+const fallbackOwner = runScenario(fallbackCore, 'owner');
 
 assert.equal(legacy.progressOwner, 'legacy');
 assert.equal(wasmShadow.progressOwner, 'rust-wasm-shadow');
 assert.equal(fallbackShadow.progressOwner, 'javascript-shadow');
+assert.equal(wasmOwner.progressOwner, 'rust-wasm-owner');
+assert.equal(fallbackOwner.progressOwner, 'javascript-owner');
 
-for (const candidate of [wasmShadow, fallbackShadow]) {
+for (const candidate of [wasmShadow, fallbackShadow, wasmOwner, fallbackOwner]) {
   assert.deepEqual(candidate.actions, legacy.actions);
   assert.deepEqual(candidate.summary, legacy.summary);
   assert.deepEqual(candidate.record, legacy.record);
   assert.equal(candidate.storageWrites, legacy.storageWrites);
 }
+
+const resetLegacyFields = {
+  status: 'idle',
+  runTimeExactMs: 0,
+  lapStartedAtExactMs: 0,
+  sectorStartedAtExactMs: 0,
+  checkpointsPassed: 0,
+  currentSector: 0,
+  currentLapValid: true,
+};
+assert.deepEqual(wasmOwner.legacyProgressFields, resetLegacyFields);
+assert.deepEqual(fallbackOwner.legacyProgressFields, resetLegacyFields);
+
+function runSparseSectorScenario(progressCore, progressMode) {
+  const session = new RaceTimingSession({
+    trackId: 'timing-sparse-sector-oracle',
+    carId: 'mx5',
+    totalLaps: 1,
+    checkpointCount: 3,
+    sectorCheckpoints: [2, 3],
+    medalTargetsMs: { gold: 4000, silver: 5000, bronze: 6000 },
+    store: new TimingStore({ storage: null }),
+    ...(progressCore ? { progressCore, progressMode } : {}),
+  });
+  const actions = [session.start()];
+  for (const [index, deltaMs] of [1000, 1100, 1200].entries()) {
+    actions.push(session.advance(deltaMs));
+    actions.push(session.passCheckpoint(index === 2 ? 0 : index + 1));
+  }
+  return { actions, summary: session.getSummary(), record: session.getRecord() };
+}
+
+const sparseLegacy = runSparseSectorScenario(null);
+for (const candidate of [
+  runSparseSectorScenario(sharedCore.raceProgress, 'owner'),
+  runSparseSectorScenario(fallbackCore, 'owner'),
+]) {
+  assert.deepEqual(candidate, sparseLegacy);
+}
+assert.equal(
+  sparseLegacy.actions.flat().filter(({ type }) => type === 'sector-completed').length,
+  2,
+);
 
 assert.equal(legacy.storageWrites, 3);
 assert.equal(legacy.summary.timeMs, 11700);
@@ -117,3 +173,5 @@ assert.equal(legacy.summary.medal, 'gold');
 
 console.log(`PASS injected timing shadows preserve ${legacy.actions.length} full legacy action results`);
 console.log('PASS WASM and fallback shadows preserve record state, event snapshots, and save count');
+console.log('PASS WASM and fallback owners preserve events and records without legacy progress writes');
+console.log('PASS authoritative owners preserve accepted checkpoints without sector events');

@@ -574,8 +574,11 @@ function resetRaceState() {
     sectorCheckpoints: LONGWAN_TIME_ATTACK.sectorCheckpoints,
     medalTargetsMs: medalTargetsForCar(vehicle.config.id),
     store: timingStore,
-    ...(import.meta.env.DEV && raceProgressCore ? { progressCore: raceProgressCore } : {}),
+    ...(import.meta.env.DEV && raceProgressCore
+      ? { progressCore: raceProgressCore, progressMode: 'owner' }
+      : {}),
   });
+  document.documentElement.dataset.raceTimingProgressOwner = timing.progressOwner;
   lastSectorEvent = null;
   lastLapEvent = null;
   const snapshot = timing.snapshot();
