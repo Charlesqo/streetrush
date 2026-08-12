@@ -1,0 +1,65 @@
+STREET RUSH - THIRD-PARTY NOTICES
+Last reviewed: 2026-07-28
+
+This notice records the evidence shipped with the current build. It does not
+grant trademark rights and does not replace the full terms of each license.
+
+RUNTIME LIBRARIES
+
+three.js
+Copyright (c) 2010-2025 three.js authors
+License: MIT
+Source: https://github.com/mrdoob/three.js
+License: https://opensource.org/license/mit
+
+Rapier JavaScript bindings
+Copyright Dimforge and contributors
+License: Apache-2.0
+Source: https://github.com/dimforge/rapier.js
+License: https://www.apache.org/licenses/LICENSE-2.0
+
+VEHICLE MODELS
+
+[FREE] BMW M3 E30
+Author: Martin Trafas
+Source: https://sketchfab.com/3d-models/free-bmw-m3-e30-ac3c7013434e403e8faff87948caf422
+License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
+
+BMW M5 G90 2024 | www.vecarz.com
+Author: vecarz
+Source: https://sketchfab.com/3d-models/bmw-m5-g90-2024-wwwvecarzcom-b2dd13e63c2649c3be90da30e6670a46
+License: CC BY-NC-SA 4.0 - https://creativecommons.org/licenses/by-nc-sa/4.0/
+The runtime GLB is an optimized derivative. Commercial use is prohibited and
+modified versions remain subject to the same license.
+
+Mazda Miata MX-5 NA
+Author: Lexyc16
+Source: https://sketchfab.com/3d-models/mazda-miata-mx-5-na-d51fcd44b74f4daf8012c41e0400c041
+License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
+
+Mercedes-AMG GT3 | www.vecarz.com
+Author: vecarz
+Source: https://sketchfab.com/3d-models/mercedes-amg-gt3-wwwvecarzcom-6a3f7e3455064721b74b7f0b66427a07
+License: CC BY-NC-SA 4.0 - https://creativecommons.org/licenses/by-nc-sa/4.0/
+The runtime GLB is an optimized derivative. Commercial use is prohibited and
+modified versions remain subject to the same license.
+
+Porsche GT3 RS
+Author: Black Snow
+Source: https://sketchfab.com/3d-models/porsche-gt3-rs-e738eae819c34d19a31dd066c45e0f3d
+License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
+
+Lamborghini Aventador LP700
+Source, author and license: NOT RECORDED
+This asset is not cleared for public redistribution or commercial use. Replace
+it or record verifiable source and license evidence before the next release.
+
+SURFACE TEXTURES
+
+Two base-color textures are from the free Downtown City MegaKit by Quaternius.
+Source: https://quaternius.com
+License: CC0 1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+
+Vehicle and manufacturer names may be trademarks of their respective owners.
+The asset licenses above cover the recorded files; they do not themselves
+provide sponsorship, endorsement, trade-dress or trademark permission.

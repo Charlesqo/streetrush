@@ -1,0 +1,45 @@
+export const GRAVITY = 9.81;
+export const AIR_DENSITY = 1.225;
+export const AERO_MIN_SPEED_SQUARED = 0.04;
+
+export const DRIVETRAIN_EFFICIENCY = Object.freeze({
+  AWD: 0.82,
+  FWD: 0.88,
+  RWD: 0.88,
+});
+
+export const SHIFT_DURATION = 0.18;
+export const SHIFT_TORQUE_FACTOR = 0.08;
+
+export const TORQUE_CURVE = Object.freeze({
+  idleFactor: 0.56,
+  redlineFactor: 0.74,
+  limiterRatio: 1.018,
+});
+
+const clamp01 = (value) => Math.max(0, Math.min(1, value));
+const lerp = (start, end, alpha) => start + (end - start) * alpha;
+
+export function torqueCurveFactor(config, rpm) {
+  if (rpm >= config.redline * TORQUE_CURVE.limiterRatio) return 0;
+  const rise = clamp01((rpm - config.idle) / Math.max(1, config.peakRpm - config.idle));
+  const fall = clamp01((rpm - config.peakRpm) / Math.max(1, config.redline - config.peakRpm));
+  return rpm <= config.peakRpm
+    ? lerp(TORQUE_CURVE.idleFactor, 1, Math.sin(rise * Math.PI * 0.5))
+    : lerp(1, TORQUE_CURVE.redlineFactor, fall);
+}
+
+export function drivetrainEfficiency(drivetrain) {
+  return DRIVETRAIN_EFFICIENCY[drivetrain] ?? DRIVETRAIN_EFFICIENCY.RWD;
+}
+
+export function roadWheelRpm(speedMps, wheelRadius) {
+  return Math.abs(speedMps) / Math.max(Number.EPSILON, wheelRadius) * 60 / (2 * Math.PI);
+}
+
+// Multiplying a velocity vector by this scalar produces a force opposite to
+// that velocity with magnitude 0.5 * rho * CdA * speed^2.
+export function aerodynamicDragScale(cdA, speedSquared) {
+  if (speedSquared <= AERO_MIN_SPEED_SQUARED) return 0;
+  return -0.5 * AIR_DENSITY * cdA * Math.sqrt(speedSquared);
+}

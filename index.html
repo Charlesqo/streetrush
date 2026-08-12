@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#080b12" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>晴空环线 · Street Rush</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="game" tabindex="-1" aria-label="Street Rush 游戏画面"></canvas>
+
+  <div id="loading" class="loading">
+    <div class="loading-mark">SR</div>
+    <div class="loading-copy">
+      <span>准备发车</span>
+      <strong id="loading-status" role="status" aria-live="polite">载入城市…</strong>
+    </div>
+    <div class="loading-bar"><i id="loading-progress"></i></div>
+    <button id="boot-retry-button" class="boot-retry hidden" type="button">刷新重试</button>
+  </div>
+
+  <header class="topbar">
+    <div class="brand"><b>STREET</b><span>RUSH</span></div>
+    <div class="route"><i></i><span>龙湾国际赛道</span><small>午后 · 干地</small></div>
+    <div class="topbar-actions">
+      <button id="race-menu-button" class="fullscreen-toggle hidden" type="button" aria-label="比赛菜单">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 5h12M4 10h12M4 15h12"></path>
+        </svg>
+      </button>
+      <button id="fullscreen-button" class="fullscreen-toggle" type="button" aria-label="进入全屏">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 3H3v4"></path><path d="M13 3h4v4"></path>
+          <path d="M7 17H3v-4"></path><path d="M13 17h4v-4"></path>
+        </svg>
+      </button>
+      <button id="sound-button" class="icon-button" aria-label="切换声音" aria-pressed="true">SOUND ON</button>
+    </div>
+  </header>
+
+  <main id="menu" class="menu">
+    <div class="eyebrow">晴空试车计划 / 01</div>
+    <h1>今天，<br><em>跑哪一台？</em></h1>
+    <p class="lede">六台真车模型，一条封闭城市赛道。控制轮胎负载，跑出三圈稳定节奏。</p>
+
+    <section class="garage">
+      <button id="prev-car" class="nav-button" aria-label="上一辆车">←</button>
+      <div class="car-meta">
+        <small id="car-index">01 / 06</small>
+        <h2 id="car-name">MAZDA MX-5 NA</h2>
+        <div id="garage-status" class="garage-status">READY</div>
+        <div class="stats">
+          <span>极速 <b id="stat-speed">184</b></span>
+          <span>加速 <b id="stat-accel">82</b></span>
+          <span>操控 <b id="stat-grip">94</b></span>
+        </div>
+        <div id="garage-goal" class="garage-goal">三圈奖牌目标 · 载入中</div>
+        <div class="garage-records" aria-live="polite">
+          <span>本机最佳单圈 <b id="garage-best-lap">--:--.---</b></span>
+          <span>三圈 PB <b id="garage-best-race">--:--.---</b></span>
+        </div>
+      </div>
+      <button id="next-car" class="nav-button" aria-label="下一辆车">→</button>
+    </section>
+
+    <div class="actions">
+      <button id="start-button" class="start-button"><span>开始比赛</span><b>ENTER</b></button>
+      <button id="retry-car-button" class="retry-car-button hidden" type="button">重新加载车辆</button>
+      <span class="hint">WASD / 方向键驾驶 · 空格手刹 · C 自动/手动 · Q/E 换挡</span>
+    </div>
+  </main>
+
+  <aside id="hud" class="hud hidden">
+    <div class="lap"><small>LAP</small><strong><span id="lap-now">1</span>/3</strong></div>
+    <div class="time"><small>TOTAL</small><strong id="race-time">00:00.000</strong></div>
+    <div class="position"><small>CHECKPOINT</small><strong><span id="checkpoint-now">0</span>/10</strong></div>
+    <div class="timing-board" aria-label="圈速与分段计时">
+      <div class="timing-primary">
+        <small>LAP TIME</small>
+        <strong id="lap-time">00:00.000</strong>
+        <b id="lap-valid-state" class="lap-valid" aria-live="polite">VALID</b>
+      </div>
+      <div>
+        <small>SECTOR <span id="sector-now">1</span>/3</small>
+        <strong id="sector-time">00:00.000</strong>
+        <b id="sector-delta" class="timing-delta">NO DATA</b>
+      </div>
+      <div>
+        <small>PERSONAL BEST</small>
+        <strong id="best-lap">--:--.---</strong>
+        <b id="lap-delta" class="timing-delta">FIRST RUN</b>
+      </div>
+      <div class="timing-goal">
+        <small id="race-target-label">下一目标 · 铜牌</small>
+        <strong id="race-target">--:--.---</strong>
+        <b id="race-target-delta" class="timing-delta">首个检查点后计算</b>
+      </div>
+    </div>
+    <div class="speed"><strong id="speed">0</strong><span>KM/H</span></div>
+    <div class="gearbox">
+      <div><small>GEAR</small><strong id="gear">1</strong></div>
+      <div><small>RPM</small><strong id="rpm">1000</strong></div>
+      <div><small>MODE</small><strong id="shift-mode">AT</strong></div>
+    </div>
+    <div class="nitro"><span>THROTTLE</span><i><b id="throttle-bar"></b></i></div>
+    <div class="brake"><span>BRAKE</span><i><b id="brake-bar"></b></i></div>
+    <div class="chassis-state"><span>4-WHEEL CONTACT</span><b id="drive-mode">ASPHALT</b><span>ASSIST</span><b id="assist-state">READY</b><span>C 自动/手动 · Q/E 换挡 · P 性能</span></div>
+    <div id="race-message" class="race-message" role="status" aria-live="polite" aria-atomic="true"></div>
+    <button id="invalid-lap-restart-button" class="invalid-lap-restart hidden" type="button" aria-hidden="true" aria-keyshortcuts="R">
+      <span>重开本次挑战</span><b>R</b>
+    </button>
+  </aside>
+
+  <div id="mobile-controls" class="mobile-controls" aria-label="触摸驾驶控制">
+    <div class="touch-steering" aria-label="左右转向">
+      <button id="touch-left" class="touch-direction" type="button" aria-label="向左转">
+        <b>‹</b><span>LEFT</span>
+      </button>
+      <button id="touch-right" class="touch-direction" type="button" aria-label="向右转">
+        <b>›</b><span>RIGHT</span>
+      </button>
+    </div>
+    <div class="touch-utilities">
+      <button id="touch-reset" class="touch-utility" type="button"><b>↺</b><span>重置</span></button>
+      <button id="touch-mode" class="touch-utility" type="button"><b id="mobile-mode">AT</b><span>档位</span></button>
+      <button id="touch-handbrake" class="touch-utility touch-handbrake" type="button"><b>!</b><span>手刹</span></button>
+    </div>
+    <div class="touch-shift" aria-label="手动换挡">
+      <button id="touch-shift-down" type="button" aria-label="降档">−</button>
+      <span>SHIFT</span>
+      <button id="touch-shift-up" type="button" aria-label="升档">＋</button>
+    </div>
+    <div class="touch-pedals">
+      <button id="touch-brake" class="touch-pedal touch-brake" type="button"><b>BRAKE</b><span>刹车 / 倒车</span></button>
+      <button id="touch-throttle" class="touch-pedal touch-throttle" type="button"><b>GAS</b><span>油门</span></button>
+    </div>
+  </div>
+
+  <div id="orientation-hint" class="orientation-hint hidden" aria-live="polite" role="dialog" aria-modal="true" aria-labelledby="orientation-hint-title" aria-hidden="true">
+    <div class="phone-rotate">↻</div>
+    <strong id="orientation-hint-title">请横屏驾驶</strong>
+    <span>转动手机，方向键和踏板会自动就位</span>
+    <button id="orientation-fullscreen" class="orientation-fullscreen" type="button">进入全屏</button>
+  </div>
+
+  <section id="fullscreen-help" class="fullscreen-help hidden" role="dialog" aria-modal="true" aria-labelledby="fullscreen-help-title" aria-hidden="true">
+    <div class="fullscreen-help-panel">
+      <button id="fullscreen-help-close" class="fullscreen-help-close" type="button" aria-label="关闭全屏提示">×</button>
+      <small>MOBILE FULLSCREEN</small>
+      <h2 id="fullscreen-help-title">需要添加到主屏幕</h2>
+      <p>iPhone Safari 不能用网页按钮把整个互动游戏直接全屏。添加到主屏幕后，再从桌面图标打开，就会以无地址栏的全屏模式运行。</p>
+      <ol>
+        <li>点击 Safari 底部或顶部的分享按钮</li>
+        <li>选择“添加到主屏幕”</li>
+        <li>从主屏幕上的 Street Rush 图标重新打开</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="pause-menu" class="pause-menu hidden" role="dialog" aria-modal="true" aria-labelledby="pause-menu-title" aria-hidden="true">
+    <div class="pause-menu-panel">
+      <small>RACE MENU</small>
+      <h2 id="pause-menu-title">暂停驾驶</h2>
+      <button id="resume-button" class="pause-primary" type="button">继续比赛</button>
+      <button id="race-restart-button" type="button">重新开始</button>
+      <button id="race-garage-button" type="button">退出到主菜单</button>
+    </div>
+  </section>
+
+  <section id="finish" class="finish hidden" role="dialog" aria-modal="true" aria-labelledby="finish-title" aria-describedby="finish-copy" aria-hidden="true">
+    <small id="finish-kicker">环线挑战完成</small>
+    <h2 id="finish-title">漂亮收车。</h2>
+    <div class="result-time" id="finish-time">00:00.000</div>
+    <div class="result-summary">
+      <div><small>VALID LAPS</small><strong id="finish-valid-laps">0 / 3</strong></div>
+      <div><small>BEST LAP</small><strong id="finish-best-lap">--:--.---</strong></div>
+      <div><small>RACE PB</small><strong id="finish-race-best">--:--.---</strong></div>
+    </div>
+    <div class="result-goals" aria-label="奖牌与个人最佳差值">
+      <div><small>奖牌</small><strong id="finish-medal" class="medal-value unverified">未认证</strong></div>
+      <div><small>相对个人最佳</small><strong id="finish-race-delta" class="timing-delta">首次挑战</strong></div>
+      <div><small>当前目标</small><strong id="finish-target">--:--.---</strong></div>
+    </div>
+    <ol id="finish-laps" class="result-laps" aria-label="逐圈成绩"></ol>
+    <p id="finish-copy">数据已记录，下一圈继续压榨极限。</p>
+    <button id="restart-button" class="start-button"><span>再跑一次</span><b>R</b></button>
+    <button id="garage-button" class="text-button">退出到主菜单</button>
+  </section>
+
+  <div class="corner-links">
+    <span class="corner-note">SIMCADE FOUNDATION · v0.3</span>
+    <button id="about-button" class="corner-button" type="button">说明</button>
+  </div>
+
+  <section id="about" class="about hidden" role="dialog" aria-modal="true" aria-labelledby="about-title" aria-hidden="true">
+    <div class="about-panel">
+      <button id="about-close" class="about-close" type="button" aria-label="关闭说明">×</button>
+      <small>PERSONAL WEB EXPERIMENT</small>
+      <h2 id="about-title">只是一个非商业驾驶实验。</h2>
+      <p>这不是正式发行的游戏，不收费，也不提供任何商业服务。只是个人用来研究浏览器 3D、车辆物理和交互手感的小项目。</p>
+      <div class="about-credits">
+        <h3>素材署名</h3>
+        <p>
+          Mazda MX-5 NA — Lexyc16 · CC BY 4.0<br>
+          BMW M3 E30 — Martin Trafas · CC BY 4.0<br>
+          Porsche GT3 RS — Black Snow · CC BY 4.0<br>
+          BMW M5 G90 / Mercedes-AMG GT3 — vecarz · CC BY-NC-SA 4.0<br>
+          Downtown City MegaKit — Quaternius · CC0
+        </p>
+        <a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener">完整第三方署名与来源</a>
+      </div>
+      <span class="about-footnote">车辆名称与商标归各自权利人所有。本页面仅作个人技术演示。</span>
+    </div>
+  </section>
+
+  <div id="perf" class="perf hidden">-- FPS · PHYS --ms</div>
+  <script type="module">
+    const bootRetry = document.getElementById('boot-retry-button');
+    bootRetry?.addEventListener('click', () => location.reload());
+    import('/src/main.js').catch((error) => {
+      console.error('[Street Rush] boot failed', error);
+      document.getElementById('loading')?.classList.remove('hidden');
+      const status = document.getElementById('loading-status');
+      if (status) {
+        status.textContent = '启动失败 · 请刷新重试';
+        status.setAttribute('role', 'alert');
+      }
+      bootRetry?.classList.remove('hidden');
+      bootRetry?.focus();
+    });
+  </script>
+</body>
+</html>

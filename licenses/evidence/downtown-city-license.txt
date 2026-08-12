@@ -1,0 +1,13 @@
+Imported from Downtown City MegaKit License_Standard.txt on 2026-07-28.
+
+This is the standard FREE version of the Downtown City MegaKit, which only
+contains a portion of the models. The source package is available from:
+https://quaternius.com
+
+License:
+CC0 1.0 Universal (CC0 1.0)
+Public Domain Dedication
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Models by @Quaternius
+https://www.patreon.com/quaternius

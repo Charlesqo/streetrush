@@ -1,0 +1,44 @@
+{
+  "name": "street-rush",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "check:cloudflare": "node scripts/check-cloudflare.mjs",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "check:git-release": "node scripts/check-git-release.mjs",
+    "check:assets": "node scripts/check-asset-licenses.mjs --mode=inventory",
+    "check:assets:public": "node scripts/check-asset-licenses.mjs --mode=public",
+    "check:assets:commercial": "node scripts/check-asset-licenses.mjs --mode=commercial",
+    "check:goal-calibration": "node scripts/check-goal-calibration.mjs",
+    "test:timing": "node scripts/test-race-timing.mjs",
+    "test:medals": "node scripts/test-medal-goals.mjs",
+    "test:input": "node scripts/test-input.mjs",
+    "test:telemetry": "node scripts/test-dev-telemetry.mjs",
+    "test:orientation": "node scripts/test-orientation.mjs",
+    "test:track": "node scripts/test-track-markers.mjs",
+    "test:route": "node scripts/test-route-guidance.mjs",
+    "test:assets": "node scripts/test-assets.mjs",
+    "test:scheduling": "node scripts/test-physics-scheduling.mjs",
+    "test:physics": "node scripts/smoke-physics.mjs && node scripts/regression-physics.mjs",
+    "test:physics:smoke": "node scripts/smoke-physics.mjs",
+    "test:physics:regression": "node scripts/regression-physics.mjs",
+    "calibrate": "node scripts/calibrate-physics.mjs",
+    "verify": "pnpm test:timing && pnpm test:medals && pnpm test:input && pnpm test:telemetry && pnpm test:orientation && pnpm test:track && pnpm test:route && pnpm test:assets && pnpm test:scheduling && pnpm check:goal-calibration && pnpm test:physics && pnpm build && pnpm check:cloudflare && pnpm check:secrets && pnpm check:assets",
+    "check:release:public": "pnpm verify && pnpm check:assets:public && pnpm check:git-release",
+    "check:release:commercial": "pnpm verify && pnpm check:assets:commercial && pnpm check:git-release"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.19.0",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7"
+  }
+}

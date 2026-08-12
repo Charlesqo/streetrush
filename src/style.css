@@ -1,0 +1,336 @@
+:root {
+  font-family: "Noto Sans SC", system-ui, sans-serif;
+  color: #f5f7fb;
+  background: #070910;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+@supports (height: 100dvh) { html, body { height: 100dvh; } }
+html { overscroll-behavior: none; }
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 2;
+  background: linear-gradient(90deg, rgba(7,12,20,.58) 0%, rgba(7,12,20,.28) 38%, transparent 72%),
+    radial-gradient(circle at 65% 55%, transparent 42%, rgba(18,29,42,.12) 100%);
+}
+#game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+@supports (height: 100dvh) { #game { height: 100dvh; } }
+button { font: inherit; color: inherit; }
+.hidden { visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
+
+.loading { position: fixed; z-index: 20; inset: 0; display: grid; place-content: center; gap: 20px; background: #080a10; transition: opacity .7s; }
+.loading-mark { width: 76px; height: 76px; display: grid; place-items: center; border: 1px solid #ebff00; color: #ebff00; font: 800 30px "Barlow Condensed"; transform: skew(-7deg); }
+.loading-copy { display: flex; justify-content: space-between; gap: 80px; text-transform: uppercase; font: 600 13px "Barlow Condensed"; letter-spacing: .16em; }
+.loading-copy strong { color: #9da3af; font-weight: 500; }
+.loading-bar { width: 340px; height: 2px; background: #252934; overflow: hidden; }
+.loading-bar i { display: block; width: 8%; height: 100%; background: #ebff00; transition: width .3s; }
+.boot-retry { justify-self: center; min-height: 40px; padding: 0 18px; border: 1px solid rgba(235,255,0,.62); border-radius: 4px; background: rgba(12,16,23,.9); color: #ebff00; font: 700 11px "Barlow Condensed", "Noto Sans SC", sans-serif; letter-spacing: .08em; cursor: pointer; }
+.boot-retry:hover { border-color: #ebff00; background: rgba(29,35,43,.95); color: #fff; }
+
+.topbar { position: fixed; z-index: 4; left: 0; right: 0; top: 0; height: 82px; display: flex; align-items: center; padding: 0 48px; border-bottom: 1px solid rgba(255,255,255,.18); background: linear-gradient(#182435c9, transparent); }
+.brand { font: 800 22px "Barlow Condensed"; letter-spacing: .05em; transform: skew(-6deg); }
+.brand b { color: #ebff00; margin-right: 5px; }
+.route { margin-left: auto; margin-right: auto; display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.route i { width: 6px; height: 6px; border-radius: 50%; background: #ebff00; box-shadow: 0 0 14px #ebff00; }
+.route small { color: #7f8694; }
+.topbar-actions { display: flex; align-items: center; gap: 16px; }
+.icon-button { border: 0; background: transparent; color: #a6adba; font: 600 11px "Barlow Condensed"; letter-spacing: .14em; cursor: pointer; }
+.icon-button:hover { color: #ebff00; }
+.fullscreen-toggle { width: 38px; height: 38px; display: inline-grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(7,11,18,.42); color: #dfe4eb; backdrop-filter: blur(16px); cursor: pointer; transition: color .18s, border-color .18s, background .18s; }
+.fullscreen-toggle:hover, .fullscreen-toggle.active { color: #ebff00; border-color: rgba(235,255,0,.58); background: rgba(34,40,17,.64); }
+.fullscreen-toggle svg { width: 18px; height: 18px; }
+
+.menu { position: fixed; z-index: 4; left: 7vw; top: 19vh; width: min(540px, 44vw); transition: opacity .45s, transform .45s; }
+.menu.hidden { transform: translateX(-35px); }
+.eyebrow { color: #ebff00; font: 700 12px "Barlow Condensed"; letter-spacing: .24em; }
+h1 { margin: 13px 0 15px; font: 800 clamp(52px, 6.3vw, 100px)/.78 "Barlow Condensed"; letter-spacing: -.035em; text-transform: uppercase; }
+h1 em { color: transparent; -webkit-text-stroke: 1px #f5f7fb; font-style: normal; }
+.lede { max-width: 430px; color: #a4aab5; font-size: 13px; line-height: 1.8; }
+.garage { margin-top: 28px; width: min(500px, 90%); display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,.17); border-bottom: 1px solid rgba(255,255,255,.17); }
+.nav-button { width: 52px; height: 78px; border: 0; background: transparent; font-size: 22px; cursor: pointer; transition: color .2s, background .2s; }
+.nav-button:hover { color: #ebff00; background: rgba(255,255,255,.04); }
+.car-meta { position: relative; flex: 1; padding: 12px 17px; border-left: 1px solid rgba(255,255,255,.1); border-right: 1px solid rgba(255,255,255,.1); }
+.car-meta small { color: #737b89; font: 600 10px "Barlow Condensed"; letter-spacing: .15em; }
+.car-meta h2 { margin: 2px 0 8px; font: 700 23px "Barlow Condensed"; letter-spacing: .04em; }
+.stats { display: flex; gap: 23px; color: #767e8b; font: 500 10px "Barlow Condensed"; letter-spacing: .08em; }
+.stats b { color: #e4e6ea; margin-left: 5px; }
+.garage-goal { margin-top: 8px; color: #a7b05c; font: 600 9px/1.4 "Barlow Condensed", "Noto Sans SC", sans-serif; letter-spacing: .04em; }
+.garage-records { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 7px; color: #8f98a4; font: 600 9px/1.35 "Barlow Condensed", "Noto Sans SC", sans-serif; letter-spacing: .04em; }
+.garage-records b { color: #dfe4eb; font-weight: 700; }
+.garage-status { position: absolute; right: 16px; top: 13px; color: #59616e; font: 600 8px "Barlow Condensed"; letter-spacing: .15em; transition: color .2s; }
+.garage-status.active { color: #ebff00; }
+.actions { display: flex; align-items: center; gap: 18px; margin-top: 28px; }
+.start-button { min-width: 190px; border: 0; background: #ebff00; color: #0a0b0d; padding: 15px 17px; display: flex; justify-content: space-between; gap: 25px; font-weight: 800; cursor: pointer; text-transform: uppercase; clip-path: polygon(0 0, 94% 0, 100% 22%, 100% 100%, 0 100%); transition: filter .2s, transform .2s; }
+.start-button:hover { filter: brightness(1.18); transform: translateY(-2px); }
+.start-button:disabled { filter: grayscale(.8); opacity: .55; cursor: wait; transform: none; }
+.start-button b { font: 700 10px "Barlow Condensed"; border: 1px solid #0a0b0d66; padding: 3px 5px; }
+.retry-car-button { min-height: 42px; padding: 0 15px; border: 1px solid rgba(255,99,63,.62); border-radius: 4px; background: rgba(8,12,19,.72); color: #ff8a70; font: 700 11px "Barlow Condensed", "Noto Sans SC", sans-serif; cursor: pointer; }
+.retry-car-button:hover { border-color: #ff8a70; color: #fff; background: rgba(27,17,19,.9); }
+.hint { max-width: 180px; color: #777f8c; font-size: 10px; line-height: 1.6; }
+
+.hud { position: fixed; z-index: 4; inset: 0; pointer-events: none; transition: opacity .4s; }
+.lap, .time, .position { position: absolute; top: 102px; }
+.lap { left: 48px; }.time { left: 135px; }.position { right: 48px; text-align: right; }
+.hud small { display: block; color: #858c98; font: 600 10px "Barlow Condensed"; letter-spacing: .18em; }
+.hud strong { font: 700 23px "Barlow Condensed"; }
+.lap strong span, .position strong span { color: #ebff00; }
+.timing-board { position: absolute; left: 48px; top: 157px; width: 238px; border-top: 1px solid rgba(255,255,255,.22); background: linear-gradient(90deg, rgba(6,10,16,.58), transparent); }
+.timing-board > div { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2px 12px; padding: 9px 8px 9px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+.timing-board small { grid-column: 1 / -1; font-size: 8px; }
+.timing-board small span { color: #d8dde4; }
+.timing-board strong { display: block; font: 700 19px "Barlow Condensed"; letter-spacing: .045em; }
+.timing-board .timing-primary strong { color: #f5f7fb; font-size: 25px; }
+.timing-board b { align-self: center; color: #7f8793; font: 700 9px "Barlow Condensed"; letter-spacing: .1em; }
+.timing-board .lap-valid { color: #ebff00; }
+.timing-board .lap-valid.invalid { color: #ff633f; }
+.timing-board .timing-goal strong { color: #ebff00; }
+.timing-board .timing-delta.ahead { color: #7cff79; }
+.timing-board .timing-delta.behind { color: #ff8a70; }
+.speed { position: absolute; right: 48px; bottom: 42px; text-align: right; }
+.speed strong { display: block; font: 700 80px/.7 "Barlow Condensed"; letter-spacing: -.04em; }
+.speed span { color: #ebff00; font: 700 12px "Barlow Condensed"; letter-spacing: .18em; }
+.nitro { position: absolute; right: 48px; bottom: 130px; display: flex; align-items: center; gap: 10px; color: #bfc5ce; font: 600 9px "Barlow Condensed"; letter-spacing: .12em; }
+.nitro i { width: 130px; height: 4px; background: #303540; }
+.nitro b { display: block; width: 100%; height: 100%; background: #ebff00; box-shadow: 0 0 12px #ebff0066; }
+.brake { position: absolute; right: 48px; bottom: 112px; display: flex; align-items: center; gap: 10px; color: #bfc5ce; font: 600 9px "Barlow Condensed"; letter-spacing: .12em; }
+.brake i { width: 130px; height: 4px; background: #303540; }
+.brake b { display: block; width: 0; height: 100%; background: #ff633f; box-shadow: 0 0 12px #ff633f55; }
+.gearbox { position: absolute; right: 48px; bottom: 175px; display: flex; gap: 24px; text-align: right; }
+.gearbox div { min-width: 44px; }
+.gearbox strong { display: block; color: #f5f7fb; font: 700 22px "Barlow Condensed"; }
+.gearbox div:first-child strong { color: #ebff00; font-size: 34px; line-height: .85; }
+.chassis-state { position: absolute; left: 48px; bottom: 57px; display: flex; gap: 10px; color: #737b88; font: 600 9px "Barlow Condensed"; letter-spacing: .14em; }
+.chassis-state b { color: #ebff00; }
+.race-message { position: absolute; left: 50%; top: 27%; transform: translate(-50%, -50%) skew(-5deg); font: 800 72px "Barlow Condensed"; text-transform: uppercase; text-shadow: 0 4px 22px #000; color: #ebff00; transition: opacity .25s, transform .25s; }
+.invalid-lap-restart { position: absolute; left: 48px; top: 364px; min-width: 238px; min-height: 42px; display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; padding: 10px 14px; border: 1px solid rgba(255,99,63,.58); border-left: 3px solid #ff633f; background: rgba(8,12,19,.86); color: #f5f7fb; font-weight: 800; cursor: pointer; pointer-events: auto; box-shadow: 0 8px 24px #0005; }
+.invalid-lap-restart:hover { border-color: #ff8a70; background: rgba(27,17,19,.92); color: #fff; }
+.invalid-lap-restart:focus-visible { outline: 2px solid #ebff00; outline-offset: 3px; }
+.invalid-lap-restart b { color: #ff8a70; font: 700 10px "Barlow Condensed"; border: 1px solid #ff633f88; padding: 3px 5px; }
+
+.finish { position: fixed; z-index: 6; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: auto; padding: 90px 22px 26px; background: rgba(3,5,9,.72); backdrop-filter: blur(9px); transition: opacity .5s; }
+.finish small { color: #ebff00; font: 700 12px "Barlow Condensed"; letter-spacing: .25em; }
+.finish h2 { margin: 3px 0; font: 800 66px "Barlow Condensed"; text-transform: uppercase; }
+.result-time { font: 600 32px "Barlow Condensed"; letter-spacing: .08em; }
+.result-summary { width: min(540px, 100%); display: grid; grid-template-columns: repeat(3, 1fr); margin: 19px 0 10px; border-top: 1px solid rgba(255,255,255,.16); border-bottom: 1px solid rgba(255,255,255,.16); }
+.result-summary > div { padding: 10px 18px; text-align: center; }
+.result-summary > div + div { border-left: 1px solid rgba(255,255,255,.1); }
+.result-summary small { color: #747c88; font-size: 8px; letter-spacing: .18em; }
+.result-summary strong { display: block; margin-top: 3px; color: #edf0f4; font: 700 18px "Barlow Condensed"; letter-spacing: .04em; }
+.result-goals { width: min(540px, 100%); display: grid; grid-template-columns: repeat(3, 1fr); margin: 0 0 10px; border-bottom: 1px solid rgba(255,255,255,.16); }
+.result-goals > div { padding: 8px 14px; text-align: center; }
+.result-goals > div + div { border-left: 1px solid rgba(255,255,255,.1); }
+.result-goals small { display: block; color: #747c88; font: 600 8px "Barlow Condensed", "Noto Sans SC", sans-serif; letter-spacing: .12em; }
+.result-goals strong { display: block; margin-top: 3px; color: #edf0f4; font: 700 17px "Barlow Condensed", "Noto Sans SC", sans-serif; letter-spacing: .04em; }
+.result-goals .timing-delta.ahead { color: #7cff79; }
+.result-goals .timing-delta.behind { color: #ff8a70; }
+.result-goals .medal-value.gold { color: #ffdc66; }
+.result-goals .medal-value.silver { color: #dce5ed; }
+.result-goals .medal-value.bronze { color: #d5955c; }
+.result-goals .medal-value.none, .result-goals .medal-value.unverified { color: #9aa2ae; }
+.result-laps { width: min(430px, 100%); margin: 0; padding: 0; list-style: none; color: #9aa2ae; font: 600 11px "Barlow Condensed"; letter-spacing: .08em; }
+.result-laps li { display: grid; grid-template-columns: 58px 1fr auto; gap: 12px; padding: 5px 9px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.result-laps li span:nth-child(2) { color: #e9edf2; }
+.result-laps li.invalid span:last-child { color: #ff7558; }
+.result-laps li.valid span:last-child { color: #91a06b; }
+.finish p { color: #959ca8; font-size: 12px; margin: 14px 0 19px; }
+.finish .start-button { margin-bottom: 14px; }
+.text-button { border: 0; border-bottom: 1px solid #7e8590; background: transparent; color: #adb3bd; font-size: 11px; padding: 5px; cursor: pointer; }
+.corner-links { position: fixed; z-index: 5; left: 48px; bottom: 28px; display: flex; align-items: center; gap: 9px; color: #5e6571; font: 600 9px "Barlow Condensed"; letter-spacing: .18em; }
+.race-active .corner-links { display: none; }
+.corner-note { white-space: nowrap; }
+.corner-button { border: 0; border-left: 1px solid #4b515c; padding: 0 0 0 9px; background: transparent; color: #6e7582; font: inherit; letter-spacing: inherit; cursor: pointer; }
+.corner-button:hover { color: #ebff00; }
+.perf { position: fixed; z-index: 8; top: 92px; left: 50%; transform: translateX(-50%); padding: 6px 9px; color: #dfe5ec; background: rgba(4,8,13,.72); border: 1px solid rgba(255,255,255,.14); font: 600 9px "Barlow Condensed"; letter-spacing: .12em; pointer-events: none; }
+
+.about { position: fixed; z-index: 30; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(3,5,9,.78); backdrop-filter: blur(12px); transition: opacity .25s; }
+.about-panel { position: relative; width: min(560px, 100%); max-height: min(680px, calc(100vh - 48px)); overflow: auto; padding: 34px 36px; border: 1px solid rgba(255,255,255,.16); background: linear-gradient(145deg, rgba(18,24,34,.97), rgba(8,11,17,.98)); box-shadow: 0 24px 80px #000a; }
+.about-panel::before { content: ""; position: absolute; left: 0; top: 0; width: 72px; height: 3px; background: #ebff00; }
+.about-panel > small { color: #ebff00; font: 700 10px "Barlow Condensed"; letter-spacing: .2em; }
+.about-panel h2 { margin: 7px 36px 16px 0; font: 800 34px/1.05 "Barlow Condensed"; text-transform: uppercase; }
+.about-panel p { color: #a8afb9; font-size: 12px; line-height: 1.8; }
+.about-close { position: absolute; right: 18px; top: 14px; border: 0; background: transparent; color: #8d95a2; font: 300 26px/1 sans-serif; cursor: pointer; }
+.about-close:hover { color: #fff; }
+.about-credits { margin: 24px 0 18px; padding: 18px 20px; border-left: 2px solid #ebff00; background: rgba(255,255,255,.035); }
+.about-credits h3 { margin: 0 0 7px; color: #e9edf2; font: 700 13px "Noto Sans SC"; }
+.about-credits p { margin: 0; font: 500 11px/1.9 "Barlow Condensed", "Noto Sans SC"; letter-spacing: .03em; }
+.about-credits a { display: inline-block; margin-top: 10px; color: #cfd96e; font-size: 10px; text-underline-offset: 3px; }
+.about-credits a:hover { color: #ebff00; }
+.about-footnote { color: #626a77; font-size: 10px; line-height: 1.6; }
+
+.mobile-controls, .orientation-hint { display: none; }
+.touch-ui .mobile-controls { position: fixed; z-index: 9; inset: 0; pointer-events: none; user-select: none; -webkit-user-select: none; touch-action: none; opacity: 0; transition: opacity .22s; }
+.touch-ui .mobile-controls.active { display: block; opacity: 1; }
+.touch-steering { position: absolute; left: max(18px, env(safe-area-inset-left)); bottom: max(18px, env(safe-area-inset-bottom)); display: flex; align-items: end; gap: 12px; pointer-events: auto; }
+.touch-direction { width: 88px; height: 94px; border: 1px solid rgba(255,255,255,.3); border-radius: 18px 8px 8px 18px; background: linear-gradient(180deg, rgba(29,37,50,.62), rgba(7,11,18,.82)); color: #e3e7ed; box-shadow: inset 0 -18px 32px #0005, 0 8px 24px #0004; touch-action: none; }
+.touch-direction + .touch-direction { border-radius: 8px 18px 18px 8px; }
+.touch-direction b { display: block; height: 47px; font: 600 62px/40px "Barlow Condensed"; }
+.touch-direction span { display: block; margin-top: 9px; color: #848c98; font: 700 9px "Barlow Condensed"; letter-spacing: .15em; }
+.touch-direction.pressed { color: #0b0d10; border-color: #ebff00; background: #ebff00; transform: translateY(4px); box-shadow: 0 0 28px rgba(235,255,0,.18); }
+.touch-direction.pressed span { color: #30350b; }
+
+.touch-pedals { position: absolute; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); display: flex; align-items: end; gap: 12px; pointer-events: auto; }
+.touch-pedal { position: relative; width: 78px; border: 1px solid rgba(255,255,255,.3); border-radius: 8px 8px 18px 18px; color: #dfe4eb; background: linear-gradient(180deg, rgba(31,39,52,.65), rgba(8,12,19,.84)); box-shadow: inset 0 -14px 30px #0006, 0 8px 24px #0004; touch-action: none; }
+.touch-pedal b { display: block; font: 800 18px "Barlow Condensed"; letter-spacing: .06em; }
+.touch-pedal span { display: block; margin-top: 4px; color: #818995; font-size: 8px; }
+.touch-throttle { height: 128px; border-color: rgba(235,255,0,.55); }
+.touch-throttle b { color: #ebff00; }
+.touch-brake { height: 105px; border-color: rgba(255,99,63,.55); }
+.touch-brake b { color: #ff704e; }
+.touch-pedal.pressed { transform: translateY(4px); filter: brightness(1.45); box-shadow: inset 0 18px 34px rgba(235,255,0,.1), 0 0 28px rgba(235,255,0,.13); }
+.touch-brake.pressed { box-shadow: inset 0 18px 34px rgba(255,99,63,.14), 0 0 28px rgba(255,99,63,.15); }
+
+.touch-utilities { position: absolute; right: max(20px, env(safe-area-inset-right)); bottom: calc(max(18px, env(safe-area-inset-bottom)) + 144px); display: flex; gap: 9px; pointer-events: auto; }
+.touch-utility { width: 50px; height: 43px; border: 1px solid rgba(255,255,255,.24); border-radius: 7px; background: rgba(7,11,18,.62); color: #bec5cf; touch-action: none; }
+.touch-utility b { display: block; color: #f1f3f6; font: 700 16px/1 "Barlow Condensed"; }
+.touch-utility span { display: block; margin-top: 4px; color: #777f8b; font-size: 8px; }
+.touch-utility.pressed { color: #ebff00; border-color: #ebff00; background: rgba(38,44,18,.75); transform: translateY(2px); }
+.touch-handbrake b { color: #ff704e; }
+
+.touch-shift { position: absolute; left: 50%; bottom: max(22px, env(safe-area-inset-bottom)); transform: translateX(-50%); display: none; align-items: center; gap: 7px; color: #737b87; font: 700 8px "Barlow Condensed"; letter-spacing: .15em; pointer-events: auto; }
+.mobile-controls.manual .touch-shift { display: flex; }
+.touch-shift button { width: 46px; height: 38px; border: 1px solid rgba(255,255,255,.25); border-radius: 7px; background: rgba(7,11,18,.58); color: #dce1e8; font: 600 22px/1 "Barlow Condensed"; touch-action: none; }
+.touch-shift button.pressed { color: #0a0b0d; border-color: #ebff00; background: #ebff00; transform: translateY(2px); }
+
+.touch-ui body.race-active { touch-action: none; }
+.touch-ui body.race-active .corner-links { display: none; }
+
+.fullscreen-help { position: fixed; z-index: 42; inset: 0; display: grid; place-items: center; padding: max(22px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(22px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); background: rgba(3,5,9,.78); backdrop-filter: blur(14px) saturate(120%); transition: opacity .2s; }
+.fullscreen-help-panel { position: relative; width: min(440px, 100%); padding: 25px 24px 23px; border: 1px solid rgba(235,255,0,.28); border-radius: 12px; background: rgba(18,24,28,.96); box-shadow: 0 20px 70px #000b, inset 0 1px rgba(255,255,255,.12); }
+.fullscreen-help-panel::before { content: ""; position: absolute; left: 0; top: 0; width: 64px; height: 3px; background: #ebff00; }
+.fullscreen-help-panel small { color: #ebff00; font: 700 9px "Barlow Condensed"; letter-spacing: .2em; }
+.fullscreen-help-panel h2 { margin: 6px 42px 11px 0; font: 800 24px "Noto Sans SC"; }
+.fullscreen-help-panel p, .fullscreen-help-panel li { color: #b8bec8; font-size: 12px; line-height: 1.7; }
+.fullscreen-help-panel p { margin: 0 0 12px; }
+.fullscreen-help-panel ol { margin: 0; padding-left: 20px; }
+.fullscreen-help-close { position: absolute; right: 12px; top: 12px; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; background: rgba(255,255,255,.08); color: #c8ced7; font: 300 24px/1 sans-serif; cursor: pointer; }
+.fullscreen-help-close:hover { color: #fff; }
+
+.pause-menu { position: fixed; z-index: 41; inset: 0; display: grid; place-items: center; padding: 22px; background: rgba(3,5,9,.76); backdrop-filter: blur(12px); transition: opacity .2s; }
+.pause-menu-panel { width: min(360px, 100%); padding: 28px; border: 1px solid rgba(255,255,255,.17); border-radius: 12px; background: linear-gradient(145deg, rgba(18,24,34,.98), rgba(8,11,17,.99)); box-shadow: 0 22px 70px #000b; }
+.pause-menu-panel small { color: #ebff00; font: 700 9px "Barlow Condensed"; letter-spacing: .2em; }
+.pause-menu-panel h2 { margin: 6px 0 19px; font: 800 30px "Noto Sans SC"; }
+.pause-menu-panel button { width: 100%; min-height: 46px; margin-top: 9px; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: rgba(255,255,255,.055); color: #dfe4eb; font-weight: 700; cursor: pointer; }
+.pause-menu-panel button:hover { border-color: rgba(235,255,0,.55); color: #ebff00; }
+.pause-menu-panel .pause-primary { margin-top: 0; border-color: #ebff00; background: #ebff00; color: #090b0e; }
+.pause-menu-panel .pause-primary:hover { color: #090b0e; filter: brightness(1.1); }
+
+@media (max-width: 760px) {
+  .topbar { height: 62px; padding: 0 20px; }.route { display: none; }
+  .topbar-actions { margin-left: auto; gap: 12px; }.menu { left: 20px; top: 14vh; width: calc(100vw - 40px); }
+  h1 { font-size: 61px; }.lede { width: 85%; }.garage { width: 100%; }.hint { display: none; }
+  .corner-links { left: 20px; bottom: 15px; }.lap { left: 20px; top: 78px; }.time { left: 95px; top: 78px; }.position { right: 20px; top: 78px; }
+  .timing-board { left: 20px; top: 132px; width: 210px; }
+  .invalid-lap-restart { left: 20px; top: 340px; min-width: 210px; }
+  .speed { right: 20px; bottom: 30px; }.nitro { right: 20px; bottom: 108px; }.brake { right: 20px; bottom: 92px; }.gearbox { right: 20px; bottom: 148px; }.race-message { font-size: 52px; }
+  .chassis-state { left: 20px; bottom: 42px; }
+  .finish h2 { font-size: 52px; }
+  .result-summary > div { padding: 9px 7px; }
+  .result-goals > div { padding: 7px 5px; }
+}
+
+@media (orientation: portrait) {
+  .touch-ui body.race-active .orientation-hint { position: fixed; z-index: 40; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 30px; text-align: center; background: rgba(5,8,13,.96); }
+  .orientation-hint .phone-rotate { width: 56px; height: 82px; display: grid; place-items: center; border: 2px solid #ebff00; border-radius: 10px; color: #ebff00; font-size: 28px; animation: rotate-phone 1.8s ease-in-out infinite; }
+  .orientation-hint strong { margin-top: 15px; font: 800 26px "Noto Sans SC"; }
+  .orientation-hint span { color: #858d99; font-size: 12px; }
+  .orientation-fullscreen { min-width: 150px; margin-top: 14px; padding: 12px 18px; border: 1px solid #ebff00; border-radius: 8px; background: #ebff00; color: #090b0e; font-weight: 800; }
+}
+
+@keyframes rotate-phone {
+  0%, 20% { transform: rotate(0deg); }
+  60%, 100% { transform: rotate(90deg); }
+}
+
+@media (orientation: landscape) and (max-height: 560px) {
+  .touch-ui .topbar { height: 54px; padding: 0 max(20px, env(safe-area-inset-right)) 0 max(20px, env(safe-area-inset-left)); }
+  .touch-ui .route { display: none; }
+  .touch-ui .topbar-actions { margin-left: auto; }
+  .touch-ui .menu { left: max(24px, env(safe-area-inset-left)); top: 64px; width: min(430px, 52vw); }
+  .touch-ui .eyebrow { font-size: 9px; }
+  .touch-ui h1 { margin: 7px 0 8px; font-size: clamp(38px, 12vh, 47px); line-height: .82; }
+  .touch-ui .lede { display: none; }
+  .touch-ui .garage { margin-top: 11px; width: 100%; }
+  .touch-ui .nav-button { height: 60px; }
+  .touch-ui .car-meta { padding: 6px 13px; }
+  .touch-ui .car-meta h2 { margin-bottom: 3px; font-size: 18px; }
+  .touch-ui .actions { margin-top: 11px; }
+  .touch-ui .start-button { min-width: 170px; padding: 11px 15px; }
+  .touch-ui .hint { display: none; }
+  .touch-ui .corner-links { left: max(24px, env(safe-area-inset-left)); bottom: max(10px, env(safe-area-inset-bottom)); }
+  .touch-ui .lap, .touch-ui .time, .touch-ui .position { top: 66px; }
+  .touch-ui .lap { left: max(18px, env(safe-area-inset-left)); }
+  .touch-ui .time { left: max(88px, calc(env(safe-area-inset-left) + 88px)); }
+  .touch-ui .position { right: max(18px, env(safe-area-inset-right)); }
+  .touch-ui .hud strong { font-size: 18px; }
+  .touch-ui .timing-board { left: max(18px, env(safe-area-inset-left)); top: 113px; width: 188px; }
+  .touch-ui .timing-board > div { padding: 5px 5px 5px 0; }
+  .touch-ui .timing-board .timing-primary strong { font-size: 19px; }
+  .touch-ui .timing-board strong { font-size: 15px; }
+  .touch-ui .invalid-lap-restart { left: 50%; right: auto; top: 62px; transform: translateX(-50%); min-width: 210px; }
+  .touch-ui .speed { right: max(202px, calc(env(safe-area-inset-right) + 202px)); bottom: 26px; }
+  .touch-ui .speed strong { font-size: 54px; }
+  .touch-ui .nitro, .touch-ui .brake, .touch-ui .chassis-state { display: none; }
+  .touch-ui .gearbox { right: max(202px, calc(env(safe-area-inset-right) + 202px)); bottom: 87px; gap: 12px; }
+  .touch-ui .gearbox div:nth-child(2) { display: none; }
+  .touch-ui .race-message { top: 35%; font-size: 44px; }
+  .touch-ui .finish { justify-content: flex-start; padding-top: 58px; }
+  .touch-ui .finish h2 { font-size: 43px; }
+  .touch-ui .result-time { font-size: 25px; }
+  .touch-ui .result-summary { margin: 8px 0 5px; }
+  .touch-ui .result-summary > div { padding: 5px 10px; }
+  .touch-ui .result-goals { margin-bottom: 5px; }
+  .touch-ui .result-goals > div { padding: 4px 6px; }
+  .touch-ui .result-laps li { padding: 3px 8px; }
+  .touch-ui .finish p { margin: 5px 0 8px; }
+  .touch-ui .finish .start-button { margin-bottom: 7px; padding: 9px 14px; }
+  .touch-ui .about-panel { width: min(680px, calc(100vw - 80px)); max-height: calc(100vh - 30px); padding: 24px 30px; }
+  .touch-ui .about-panel h2 { font-size: 28px; margin-bottom: 10px; }
+  .touch-ui .about-credits { margin: 14px 0 10px; padding: 12px 16px; }
+}
+
+/* Keep the primary action and the driving readouts inside very short
+   landscape viewports (for example 568x320 phones and embedded previews). */
+@media (max-width: 760px) and (max-height: 480px) {
+  .menu { top: 64px; }
+  h1 { margin: 7px 0 8px; font-size: 44px; line-height: .82; }
+  .lede { display: none; }
+  .garage { margin-top: 11px; }
+  .nav-button { height: 58px; }
+  .car-meta { padding: 7px 12px; }
+  .car-meta h2 { margin: 2px 0 3px; font-size: 19px; }
+  .stats { gap: 12px; }
+  .garage-goal { display: none; }
+  .actions { margin-top: 10px; }
+  .start-button { min-width: 170px; padding: 10px 14px; }
+  .corner-links { display: none; }
+
+  .timing-board { left: 18px; top: 106px; width: 190px; }
+  .timing-board > div { padding: 5px 5px 5px 0; }
+  .timing-board > div:nth-child(2),
+  .timing-board > div:nth-child(3) { display: none; }
+  .timing-board .timing-primary strong { font-size: 20px; }
+  .timing-board strong { font-size: 16px; }
+  .timing-board small { font-size: 7px; }
+  .invalid-lap-restart { top: 222px; }
+
+  .touch-ui .menu { top: 56px; }
+  .touch-ui .garage { margin-top: 11px; }
+  .touch-ui .garage-goal { display: block; margin-top: 5px; font-size: 8px; line-height: 1.4; white-space: nowrap; }
+  .touch-ui .garage-records { display: none; }
+  .touch-ui .actions { margin-top: 10px; }
+  .touch-ui .corner-links { display: none; }
+  .touch-ui .timing-board { left: max(18px, env(safe-area-inset-left)); top: 106px; width: 190px; }
+  .touch-ui .invalid-lap-restart { left: 50%; right: auto; top: 62px; transform: translateX(-50%); min-width: 210px; }
+  .touch-ui .timing-board > div:nth-child(2),
+  .touch-ui .timing-board > div:nth-child(3) { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

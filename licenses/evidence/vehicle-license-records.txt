@@ -1,0 +1,77 @@
+Imported from the adjacent asset library on 2026-07-28.
+These records came with the downloaded Sketchfab packages.
+
+========================================================================
+[FREE] BMW M3 E30
+========================================================================
+Model Information:
+* title: [FREE] BMW M3 E30
+* source: https://sketchfab.com/3d-models/free-bmw-m3-e30-ac3c7013434e403e8faff87948caf422
+* author: Martin Trafas (https://sketchfab.com/Bexxie)
+
+Model License:
+* license type: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements: Author must be credited. Commercial use is allowed.
+
+Credit supplied with the package:
+This work is based on "[FREE] BMW M3 E30" (https://sketchfab.com/3d-models/free-bmw-m3-e30-ac3c7013434e403e8faff87948caf422) by Martin Trafas (https://sketchfab.com/Bexxie) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+========================================================================
+BMW M5 G90 2024 | www.vecarz.com
+========================================================================
+Model Information:
+* title: BMW M5 G90 2024 | www.vecarz.com
+* source: https://sketchfab.com/3d-models/bmw-m5-g90-2024-wwwvecarzcom-b2dd13e63c2649c3be90da30e6670a46
+* author: vecarz (https://sketchfab.com/heynic)
+
+Model License:
+* license type: CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements: Author must be credited. No commercial use. Modified versions must have the same license.
+
+Credit supplied with the package:
+This work is based on "BMW M5 G90 2024 | www.vecarz.com" (https://sketchfab.com/3d-models/bmw-m5-g90-2024-wwwvecarzcom-b2dd13e63c2649c3be90da30e6670a46) by vecarz (https://sketchfab.com/heynic) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+========================================================================
+Mazda Miata MX-5 NA
+========================================================================
+Model Information:
+* title: Mazda Miata MX-5 NA
+* source: https://sketchfab.com/3d-models/mazda-miata-mx-5-na-d51fcd44b74f4daf8012c41e0400c041
+* author: Lexyc16 (https://sketchfab.com/Lexyc16)
+
+Model License:
+* license type: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements: Author must be credited. Commercial use is allowed.
+
+Credit supplied with the package:
+This work is based on "Mazda Miata MX-5 NA" (https://sketchfab.com/3d-models/mazda-miata-mx-5-na-d51fcd44b74f4daf8012c41e0400c041) by Lexyc16 (https://sketchfab.com/Lexyc16) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+========================================================================
+Mercedes-AMG GT3 | www.vecarz.com
+========================================================================
+Model Information:
+* title: Mercedes-AMG GT3 | www.vecarz.com
+* source: https://sketchfab.com/3d-models/mercedes-amg-gt3-wwwvecarzcom-6a3f7e3455064721b74b7f0b66427a07
+* author: vecarz (https://sketchfab.com/heynic)
+
+Model License:
+* license type: CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+* requirements: Author must be credited. No commercial use. Modified versions must have the same license.
+
+Credit supplied with the package:
+This work is based on "Mercedes-AMG GT3 | www.vecarz.com" (https://sketchfab.com/3d-models/mercedes-amg-gt3-wwwvecarzcom-6a3f7e3455064721b74b7f0b66427a07) by vecarz (https://sketchfab.com/heynic) licensed under CC-BY-NC-SA-4.0 (http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+========================================================================
+Porsche GT3 RS
+========================================================================
+Model Information:
+* title: Porsche GT3 RS
+* source: https://sketchfab.com/3d-models/porsche-gt3-rs-e738eae819c34d19a31dd066c45e0f3d
+* author: Black Snow (https://sketchfab.com/BlackSnow02)
+
+Model License:
+* license type: CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements: Author must be credited. Commercial use is allowed.
+
+Credit supplied with the package:
+This work is based on "Porsche GT3 RS" (https://sketchfab.com/3d-models/porsche-gt3-rs-e738eae819c34d19a31dd066c45e0f3d) by Black Snow (https://sketchfab.com/BlackSnow02) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

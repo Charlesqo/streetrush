@@ -1,0 +1,1085 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "title": "Street Rush vehicle evidence and calibration baseline",
+    "accessedAt": "2026-07-28",
+    "configSnapshot": "src/config.js",
+    "simulationSnapshotCommand": "pnpm calibrate",
+    "simulationSnapshotConditions": "Production VehicleSystem, flat asphalt, automatic transmission, full throttle, 120 Hz fixed step, 60 seconds",
+    "sourcePolicy": "Manufacturer-owned websites and manufacturer technical documents only. No forums, wikis, magazines, aggregators, or inferred values from similar trims.",
+    "nullSemantics": "null means that an approved source for the exact model/version was not located; it never means zero.",
+    "importantRuntimeNotes": [
+      "config.speed is a garage display number and is not a physics speed limiter.",
+      "config.power is currently not consumed by VehicleSystem; config.torque is.",
+      "trackWidth and wheelRadius are single game scalars, while real vehicles can have different front and rear values.",
+      "The 60-second peak is a repeatable simulation measurement, not a measured terminal velocity."
+    ]
+  },
+  "sourceGrades": {
+    "A": "Manufacturer technical sheet for the exact model/version.",
+    "B": "Manufacturer press, history, or product page that identifies the model but is not a complete homologation sheet.",
+    "C": "A transparent calculation from grade A or B manufacturer values.",
+    "U": "Unknown under the approved-source policy."
+  },
+  "sources": {
+    "bmw-m3-2006-tech": {
+      "publisher": "BMW Group PressClub",
+      "title": "BMW Youngtimer anniversary press dossier — technical data for BMW M3",
+      "url": "https://www.press.bmwgroup.com/italy/article/attachment/T0015168IT/31610",
+      "accessedAt": "2026-07-28",
+      "grade": "A",
+      "notes": "Italian-language BMW dossier dated 03/2006; the technical table identifies the 200 PS, 2,302 cc base E30 M3."
+    },
+    "bmw-m3-classic": {
+      "publisher": "BMW Group Classic",
+      "title": "BMW M3 E30 model description",
+      "url": "https://www.bmwgroup-classic.com/en/models/bmw-classics/product-description-page.ad-239-1.bmw-m3-e30.html",
+      "accessedAt": "2026-07-28",
+      "grade": "B",
+      "notes": "Useful for generation/variant context; it lists several outputs and a generic 230 km/h figure, so it is not used to overwrite the exact technical table."
+    },
+    "bmw-m5-2024-tech": {
+      "publisher": "BMW Group PressClub",
+      "title": "The all-new BMW M5 — specifications",
+      "url": "https://www.press.bmwgroup.com/global/article/attachment/T0443252EN/621216",
+      "accessedAt": "2026-07-28",
+      "grade": "A",
+      "notes": "BMW media specification sheet dated 06/2024 for the G90 sedan."
+    },
+    "bmw-m5-2024-press": {
+      "publisher": "BMW Group PressClub",
+      "title": "The all-new BMW M5",
+      "url": "https://www.press.bmwgroup.com/global/article/detail/T0443252EN/the-all-new-bmw-m5?language=en",
+      "accessedAt": "2026-07-28",
+      "grade": "B",
+      "notes": "Confirms 535 kW/727 hp, 1,000 Nm, 3.5 s, and the standard/optional top-speed distinction."
+    },
+    "porsche-992-gt3rs-tech": {
+      "publisher": "Porsche Newsroom",
+      "title": "911 GT3 RS technical data, MY P 08/2022",
+      "url": "https://download.newsroom.porsche.com/dam/jcr%3A1d390f77-93c3-49c0-89c7-634f5f02b26a/S22_3515_en.pdf",
+      "accessedAt": "2026-07-28",
+      "grade": "A",
+      "notes": "EU/Germany technical data for the 992-generation 911 GT3 RS."
+    },
+    "porsche-992-gt3rs-press": {
+      "publisher": "Porsche Newsroom",
+      "title": "Consistently designed for maximum performance: the new Porsche 911 GT3 RS",
+      "url": "https://newsroom.porsche.com/de/2022/produkte/porsche-911-gt3-rs-weltpremiere-29178.html",
+      "accessedAt": "2026-07-28",
+      "grade": "B",
+      "notes": "Confirms 525 PS, 1,450 kg DIN, 3.2 s, 296 km/h, and tire sizes."
+    },
+    "porsche-9912-gt3rs-tech": {
+      "publisher": "Porsche Newsroom",
+      "title": "2019 911 GT3 RS technical specifications",
+      "url": "https://newsroom.porsche.com/dam/jcr%3Ae00c2789-42c7-4dab-a818-a732003194b0/2019_911_GT3_RS_Technical_Specifications.pdf",
+      "accessedAt": "2026-07-28",
+      "grade": "A",
+      "notes": "Older 991.2 document retained only to identify cross-generation values; it is not the target vehicle source."
+    },
+    "mercedes-amg-gt3-product": {
+      "publisher": "Mercedes-AMG Customer Racing",
+      "title": "The Mercedes-AMG GT3",
+      "url": "https://customerracing.mercedes-amg.com/en/mercedes-amg-gt3",
+      "accessedAt": "2026-07-28",
+      "grade": "B",
+      "notes": "Current manufacturer product page for the 2019 evolution model."
+    },
+    "mercedes-amg-gt3-brochure": {
+      "publisher": "Mercedes-AMG Customer Racing",
+      "title": "Mercedes-AMG GT3 & GT4 brochure",
+      "url": "https://customerracing.mercedes-amg.com/media/files/e64bc3b65b061813a1b8754734dce54aa0a9ff63.pdf?dl=",
+      "accessedAt": "2026-07-28",
+      "grade": "A",
+      "notes": "Editorial deadline 03/2022. GT3 weight is explicitly conditional on Balance of Performance."
+    },
+    "lamborghini-v12-history": {
+      "publisher": "Automobili Lamborghini",
+      "title": "Lamborghini V12: an engine that made history",
+      "url": "https://www.lamborghini.com/en-en/news/lamborghini-v12-an-engine-that-made-history",
+      "accessedAt": "2026-07-28",
+      "grade": "B",
+      "notes": "Identifies the 2011 Aventador launch, 6.5-litre V12, 700 CV, 2.9 s, and 350 km/h."
+    },
+    "lamborghini-milestones": {
+      "publisher": "Automobili Lamborghini",
+      "title": "Milestones — Aventador: V12 evolution",
+      "url": "https://www.lamborghini.com/en-en/history/milestones",
+      "accessedAt": "2026-07-28",
+      "grade": "B",
+      "notes": "Confirms the 2011 Aventador LP 700-4 identity, all-wheel drive, carbon-fibre chassis, and 700 CV."
+    },
+    "mazda-na-cup": {
+      "publisher": "Mazda Motor Nederland",
+      "title": "Conrad nieuwe naamgevende hoofdsponsor Mazda MaX5 Cup",
+      "url": "https://nl.mazda-press.com/news/2017/conrad-nieuwe-naamgevende-hoofdsponsor-mazda-max5-cup/",
+      "accessedAt": "2026-07-28",
+      "grade": "B",
+      "notes": "Identifies first-generation NA 1990–1993 race-cup cars as 1.6 litre, 116 pk, 135 Nm, and five-speed manual. Its 960 kg minimum includes the driver and is not a road curb mass."
+    },
+    "mazda-2016-press-kit": {
+      "publisher": "Mazda North American Operations",
+      "title": "2016 Mazda MX-5 press kit",
+      "url": "https://news.mazdausa.com/download/2016_Mazda_MX-5_Press_Kit.pdf",
+      "accessedAt": "2026-07-28",
+      "grade": "B",
+      "notes": "States that the 2,332 lb 2016 manual car is 182 lb heavier than the original 1990 model; the resulting 2,150 lb figure is approximate and derived."
+    },
+    "mazda-2005-tech": {
+      "publisher": "Mazda North American Operations",
+      "title": "2005 MX-5 Miata specifications",
+      "url": "https://news.mazdausa.com/download/cur_mspeed_specs.pdf",
+      "accessedAt": "2026-07-28",
+      "grade": "A",
+      "notes": "Later NB-generation source retained only because its five-speed ratios and final drive exactly match the current game config; it is not valid evidence for an NA."
+    }
+  },
+  "vehicles": [
+    {
+      "id": "mx5",
+      "identity": {
+        "gameLabel": "MAZDA MX-5 NA",
+        "proposedLock": "1990 Mazda MX-5 Miata, North American base car, 1.6 litre, five-speed manual",
+        "status": "provisional_market_mix",
+        "notes": "The visual filename says Miata, while the direct power/torque evidence is European and the approximate mass evidence is North American. Market and model year must be frozen before production calibration."
+      },
+      "gameConfig": {
+        "displaySpeedKph": 185,
+        "massKg": 990,
+        "power": 116,
+        "torqueNm": 136,
+        "wheelbaseM": 2.27,
+        "trackWidthM": 1.42,
+        "wheelRadiusM": 0.29,
+        "gearRatios": [3.136, 1.888, 1.33, 1.0, 0.814],
+        "finalDrive": 4.3,
+        "cdA": 0.66
+      },
+      "manufacturerFacts": {
+        "massKg": {
+          "value": null,
+          "definition": "road curb mass for the locked trim",
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": [],
+          "notes": "Do not use the Mazda MaX5 Cup 960 kg minimum because it includes the driver and race preparation."
+        },
+        "power": {
+          "value": 116,
+          "unit": "pk",
+          "status": "official_retrospective",
+          "sourceIds": ["mazda-na-cup"],
+          "notes": "European first-generation 1990–1993 cup-car description; not yet a locked North American road-car specification."
+        },
+        "torqueNm": {
+          "value": 135,
+          "status": "official_retrospective",
+          "sourceIds": ["mazda-na-cup"],
+          "notes": "Same version caveat as power."
+        },
+        "wheelbaseM": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "trackWidthM": {
+          "front": null,
+          "rear": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "tires": {
+          "front": null,
+          "rear": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "gearRatios": {
+          "value": null,
+          "status": "unknown_for_na",
+          "sourceIds": [],
+          "notes": "The exact current array appears in Mazda's 2005 NB specification, which cannot validate a 1990 NA."
+        },
+        "finalDrive": {
+          "value": null,
+          "status": "unknown_for_na",
+          "sourceIds": [],
+          "notes": "The current 4.300 appears in Mazda's 2005 NB specification, which cannot validate a 1990 NA."
+        },
+        "dragCoefficient": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "frontalAreaM2": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "zeroToHundredS": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "topSpeedKph": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        }
+      },
+      "derivedFacts": {
+        "approximateOriginal1990MassKg": {
+          "value": 975.22,
+          "status": "derived_from_rounded_manufacturer_comparison",
+          "sourceIds": ["mazda-2016-press-kit"],
+          "formula": "(2332 lb - 182 lb) × 0.45359237",
+          "notes": "Useful as a sanity check only; not a trim-specific curb-weight specification."
+        },
+        "nominalTireRadiusM": {
+          "front": null,
+          "rear": null,
+          "status": "unknown_without_approved_tire_size"
+        },
+        "cdA": {
+          "value": null,
+          "status": "unknown_without_cd_and_area"
+        }
+      },
+      "simulationSnapshot": {
+        "zeroToHundredS": 12.61,
+        "zeroToTwoHundredS": null,
+        "speedAt60SecondsKph": 128,
+        "peakSpeedIn60SecondsKph": 128,
+        "gearAtEnd": 4,
+        "rpmAtEnd": 5045,
+        "distanceIn60SecondsKm": 1.83
+      },
+      "audit": {
+        "overall": "identity_and_driveline_provenance_unresolved",
+        "deviations": [
+          {
+            "field": "torqueNm",
+            "game": 136,
+            "reference": 135,
+            "differencePercent": 0.74,
+            "severity": "low"
+          },
+          {
+            "field": "massKg",
+            "game": 990,
+            "reference": 975.22,
+            "differencePercent": 1.52,
+            "severity": "informational",
+            "notes": "Reference is approximate, not an exact trim fact."
+          }
+        ],
+        "provenanceWarnings": [
+          "The current five gear ratios and 4.300 final drive exactly match Mazda's official 2005 NB sheet, not an approved NA source.",
+          "Wheelbase, track, tire radius, CdA, 0–100, and top speed remain unverified under the strict policy."
+        ],
+        "nextCalibrationPriority": 1
+      }
+    },
+    {
+      "id": "m3e30",
+      "identity": {
+        "gameLabel": "BMW M3 E30",
+        "proposedLock": "BMW M3 E30 base 2.3 litre, 200 PS, five-speed manual",
+        "status": "locked_by_exact_spec",
+        "notes": "Do not silently substitute Evolution, Sport Evolution, catalytic, or market-specific variants."
+      },
+      "gameConfig": {
+        "displaySpeedKph": 230,
+        "massKg": 1200,
+        "power": 200,
+        "torqueNm": 240,
+        "wheelbaseM": 2.56,
+        "trackWidthM": 1.43,
+        "wheelRadiusM": 0.31,
+        "gearRatios": [3.72, 2.4, 1.77, 1.26, 1.0],
+        "finalDrive": 3.25,
+        "cdA": 0.68
+      },
+      "manufacturerFacts": {
+        "massKg": {
+          "value": 1200,
+          "definition": "weight in BMW 03/2006 historical technical table",
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "power": {
+          "value": 200,
+          "unit": "CV/PS",
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "torqueNm": {
+          "value": 240,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "wheelbaseM": {
+          "value": 2.562,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "trackWidthM": {
+          "front": 1.412,
+          "rear": 1.433,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "tires": {
+          "front": "205/55 VR 15",
+          "rear": "205/55 VR 15",
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "gearRatios": {
+          "value": [3.72, 2.4, 1.77, 1.26, 1.0],
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "finalDrive": {
+          "value": 3.25,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "dragCoefficient": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "frontalAreaM2": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "zeroToHundredS": {
+          "value": 6.7,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "topSpeedKph": {
+          "value": 235,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m3-2006-tech"],
+          "notes": "BMW Classic's generic E30 page lists 230 km/h across a broader range; the exact 200 PS table is preferred."
+        }
+      },
+      "derivedFacts": {
+        "nominalTireRadiusM": {
+          "front": 0.30325,
+          "rear": 0.30325,
+          "status": "derived_from_official_tire_size",
+          "sourceIds": ["bmw-m3-2006-tech"],
+          "formula": "(15 × 25.4 + 2 × 205 × 0.55) / 2000",
+          "notes": "Nominal unloaded geometry, not loaded rolling radius."
+        },
+        "averageTrackWidthM": {
+          "value": 1.4225,
+          "status": "derived_from_official_front_rear_tracks",
+          "sourceIds": ["bmw-m3-2006-tech"]
+        },
+        "cdA": {
+          "value": null,
+          "status": "unknown_without_cd_and_area"
+        }
+      },
+      "simulationSnapshot": {
+        "zeroToHundredS": 9.53,
+        "zeroToTwoHundredS": null,
+        "speedAt60SecondsKph": 155,
+        "peakSpeedIn60SecondsKph": 155,
+        "gearAtEnd": 4,
+        "rpmAtEnd": 5428,
+        "distanceIn60SecondsKm": 2.17
+      },
+      "audit": {
+        "overall": "strong_mechanical_baseline_slow_longitudinal_model",
+        "deviations": [
+          {
+            "field": "wheelbaseM",
+            "game": 2.56,
+            "reference": 2.562,
+            "differencePercent": -0.08,
+            "severity": "negligible"
+          },
+          {
+            "field": "trackWidthM_vs_average",
+            "game": 1.43,
+            "reference": 1.4225,
+            "differencePercent": 0.53,
+            "severity": "low"
+          },
+          {
+            "field": "wheelRadiusM_vs_nominal",
+            "game": 0.31,
+            "reference": 0.30325,
+            "differencePercent": 2.23,
+            "severity": "medium"
+          },
+          {
+            "field": "displaySpeedKph",
+            "game": 230,
+            "reference": 235,
+            "differencePercent": -2.13,
+            "severity": "low",
+            "notes": "Display-only field."
+          },
+          {
+            "field": "zeroToHundredS",
+            "game": 9.53,
+            "reference": 6.7,
+            "differencePercent": 42.24,
+            "severity": "high",
+            "notes": "Simulation time is slower; launch and longitudinal force model require calibration."
+          }
+        ],
+        "provenanceWarnings": [
+          "CdA 0.68 remains a game calibration parameter."
+        ],
+        "nextCalibrationPriority": 4
+      }
+    },
+    {
+      "id": "gt3rs",
+      "identity": {
+        "gameLabel": "PORSCHE GT3 RS",
+        "proposedLock": "Porsche 911 GT3 RS, 992 generation, EU/Germany, MY P 08/2022",
+        "status": "locked_by_power_mass_performance",
+        "notes": "The current 525 PS, 465 Nm, 1,450 kg, and 296 km/h identify the 992, but some calibration values resemble the older 991.2."
+      },
+      "gameConfig": {
+        "displaySpeedKph": 296,
+        "massKg": 1450,
+        "power": 525,
+        "torqueNm": 465,
+        "wheelbaseM": 2.46,
+        "trackWidthM": 1.62,
+        "wheelRadiusM": 0.335,
+        "gearRatios": [3.75, 2.29, 1.72, 1.34, 1.11, 0.96, 0.84],
+        "finalDrive": 4.25,
+        "cdA": 0.78
+      },
+      "manufacturerFacts": {
+        "massKg": {
+          "value": 1450,
+          "definition": "DIN unladen weight",
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech", "porsche-992-gt3rs-press"]
+        },
+        "power": {
+          "value": 525,
+          "unit": "PS",
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "torqueNm": {
+          "value": 465,
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "wheelbaseM": {
+          "value": 2.457,
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "trackWidthM": {
+          "front": 1.63,
+          "rear": 1.582,
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "tires": {
+          "front": "275/35 ZR 20",
+          "rear": "335/30 ZR 21",
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech", "porsche-992-gt3rs-press"]
+        },
+        "gearRatios": {
+          "value": [3.75, 2.38, 1.72, 1.34, 1.11, 0.96, 0.84],
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "finalDrive": {
+          "value": 4.27,
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "dragCoefficient": {
+          "value": 0.39,
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "frontalAreaM2": {
+          "value": 2.21,
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "zeroToHundredS": {
+          "value": 3.2,
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech", "porsche-992-gt3rs-press"]
+        },
+        "topSpeedKph": {
+          "value": 296,
+          "status": "verified_exact_model",
+          "sourceIds": ["porsche-992-gt3rs-tech", "porsche-992-gt3rs-press"]
+        }
+      },
+      "derivedFacts": {
+        "nominalTireRadiusM": {
+          "front": 0.35025,
+          "rear": 0.3672,
+          "status": "derived_from_official_tire_size",
+          "sourceIds": ["porsche-992-gt3rs-tech"],
+          "formulaFront": "(20 × 25.4 + 2 × 275 × 0.35) / 2000",
+          "formulaRear": "(21 × 25.4 + 2 × 335 × 0.30) / 2000",
+          "notes": "Nominal unloaded geometry, not loaded rolling radius."
+        },
+        "averageTrackWidthM": {
+          "value": 1.606,
+          "status": "derived_from_official_front_rear_tracks",
+          "sourceIds": ["porsche-992-gt3rs-tech"]
+        },
+        "cdA": {
+          "value": 0.8619,
+          "status": "derived_from_official_cd_and_area",
+          "sourceIds": ["porsche-992-gt3rs-tech"],
+          "formula": "0.39 × 2.21"
+        }
+      },
+      "simulationSnapshot": {
+        "zeroToHundredS": 5.79,
+        "zeroToTwoHundredS": 21.63,
+        "speedAt60SecondsKph": 216,
+        "peakSpeedIn60SecondsKph": 216,
+        "gearAtEnd": 5,
+        "rpmAtEnd": 8074,
+        "distanceIn60SecondsKm": 3.07
+      },
+      "audit": {
+        "overall": "cross_generation_calibration_and_slow_longitudinal_model",
+        "deviations": [
+          {
+            "field": "secondGear",
+            "game": 2.29,
+            "reference": 2.38,
+            "differencePercent": -3.78,
+            "severity": "medium"
+          },
+          {
+            "field": "finalDrive",
+            "game": 4.25,
+            "reference": 4.27,
+            "differencePercent": -0.47,
+            "severity": "low"
+          },
+          {
+            "field": "wheelRadiusM_vs_front_nominal",
+            "game": 0.335,
+            "reference": 0.35025,
+            "differencePercent": -4.35,
+            "severity": "high"
+          },
+          {
+            "field": "wheelRadiusM_vs_rear_nominal",
+            "game": 0.335,
+            "reference": 0.3672,
+            "differencePercent": -8.77,
+            "severity": "high"
+          },
+          {
+            "field": "cdA",
+            "game": 0.78,
+            "reference": 0.8619,
+            "differencePercent": -9.5,
+            "severity": "high"
+          },
+          {
+            "field": "zeroToHundredS",
+            "game": 5.79,
+            "reference": 3.2,
+            "differencePercent": 80.94,
+            "severity": "high"
+          }
+        ],
+        "provenanceWarnings": [
+          "The current 0.78 CdA is close to the older 2019 991.2 value of about 0.7704 (Cd 0.36 × 2.14 m²), not the 992 value.",
+          "A single wheel radius cannot represent the 992's staggered front/rear tire diameters."
+        ],
+        "nextCalibrationPriority": 2
+      }
+    },
+    {
+      "id": "lp700",
+      "identity": {
+        "gameLabel": "LAMBORGHINI LP700",
+        "proposedLock": "2011 Lamborghini Aventador LP 700-4 coupé",
+        "status": "locked_by_manufacturer_history",
+        "notes": "The approved first-party pages identify the model and headline performance but do not provide a complete downloadable exact-trim technical table."
+      },
+      "gameConfig": {
+        "displaySpeedKph": 350,
+        "massKg": 1680,
+        "power": 700,
+        "torqueNm": 690,
+        "wheelbaseM": 2.7,
+        "trackWidthM": 1.72,
+        "wheelRadiusM": 0.345,
+        "gearRatios": [3.91, 2.44, 1.81, 1.46, 1.19, 0.97, 0.84],
+        "finalDrive": 3.73,
+        "cdA": 0.72
+      },
+      "manufacturerFacts": {
+        "massKg": {
+          "value": null,
+          "definition": "exact comparable curb/DIN mass",
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "power": {
+          "value": 700,
+          "unit": "CV",
+          "status": "official_retrospective",
+          "sourceIds": ["lamborghini-v12-history", "lamborghini-milestones"]
+        },
+        "torqueNm": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": [],
+          "notes": "690 Nm is plausible and present in the game, but no exact LP 700-4 first-party technical table was accepted into this baseline."
+        },
+        "wheelbaseM": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "trackWidthM": {
+          "front": null,
+          "rear": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "tires": {
+          "front": null,
+          "rear": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "gearRatios": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "finalDrive": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "dragCoefficient": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "frontalAreaM2": {
+          "value": null,
+          "status": "unknown_no_exact_approved_source",
+          "sourceIds": []
+        },
+        "zeroToHundredS": {
+          "value": 2.9,
+          "status": "official_retrospective",
+          "sourceIds": ["lamborghini-v12-history"]
+        },
+        "topSpeedKph": {
+          "value": 350,
+          "status": "official_retrospective",
+          "sourceIds": ["lamborghini-v12-history"]
+        }
+      },
+      "derivedFacts": {
+        "nominalTireRadiusM": {
+          "front": null,
+          "rear": null,
+          "status": "unknown_without_approved_tire_size"
+        },
+        "cdA": {
+          "value": null,
+          "status": "unknown_without_cd_and_area"
+        }
+      },
+      "simulationSnapshot": {
+        "zeroToHundredS": 5.28,
+        "zeroToTwoHundredS": 16.84,
+        "speedAt60SecondsKph": 228,
+        "peakSpeedIn60SecondsKph": 228,
+        "gearAtEnd": 6,
+        "rpmAtEnd": 6341,
+        "distanceIn60SecondsKm": 3.27
+      },
+      "audit": {
+        "overall": "headline_identity_valid_but_mechanical_data_unproven",
+        "deviations": [
+          {
+            "field": "zeroToHundredS",
+            "game": 5.28,
+            "reference": 2.9,
+            "differencePercent": 82.07,
+            "severity": "high"
+          },
+          {
+            "field": "displaySpeedKph",
+            "game": 350,
+            "reference": 350,
+            "differencePercent": 0,
+            "severity": "none",
+            "notes": "Display-only field."
+          }
+        ],
+        "provenanceWarnings": [
+          "Mass, torque, wheelbase, tracks, tires, gear ratios, final drive, and CdA must remain calibration data until an exact first-party sheet is archived.",
+          "Do not treat the 350 km/h garage display as a physics limiter or proof that the current force model can reach 350 km/h."
+        ],
+        "nextCalibrationPriority": 5
+      }
+    },
+    {
+      "id": "amggt3",
+      "identity": {
+        "gameLabel": "MERCEDES AMG GT3",
+        "proposedLock": "Mercedes-AMG GT3 evolution introduced in 2019, 6.3 litre V8, current Customer Racing specification",
+        "status": "locked_by_manufacturer_product_page",
+        "notes": "Race-car values vary by Balance of Performance and event gearing; exact race series and BoP package are part of the identity."
+      },
+      "gameConfig": {
+        "displaySpeedKph": 310,
+        "massKg": 1285,
+        "power": 550,
+        "torqueNm": 650,
+        "wheelbaseM": 2.63,
+        "trackWidthM": 1.76,
+        "wheelRadiusM": 0.33,
+        "gearRatios": [2.92, 2.08, 1.59, 1.27, 1.06, 0.9],
+        "finalDrive": 3.67,
+        "cdA": 0.96
+      },
+      "manufacturerFacts": {
+        "massKg": {
+          "value": 1285,
+          "definition": "brochure vehicle weight depending on BoP classification",
+          "status": "verified_bop_conditional",
+          "sourceIds": ["mercedes-amg-gt3-brochure"]
+        },
+        "power": {
+          "value": 404,
+          "unit": "kW",
+          "status": "verified_current_product",
+          "sourceIds": ["mercedes-amg-gt3-product"]
+        },
+        "torqueNm": {
+          "value": 650,
+          "status": "verified_current_product",
+          "sourceIds": ["mercedes-amg-gt3-product"]
+        },
+        "wheelbaseM": {
+          "value": null,
+          "status": "unknown_no_public_exact_source",
+          "sourceIds": []
+        },
+        "trackWidthM": {
+          "front": null,
+          "rear": null,
+          "status": "unknown_no_public_exact_source",
+          "sourceIds": []
+        },
+        "tires": {
+          "front": "325/680-18",
+          "rear": "325/705-18",
+          "status": "verified_current_product",
+          "sourceIds": ["mercedes-amg-gt3-brochure"],
+          "notes": "Race-tire notation includes nominal outer diameter."
+        },
+        "gearRatios": {
+          "value": null,
+          "status": "unknown_no_public_exact_source",
+          "sourceIds": [],
+          "notes": "The manufacturer publicly confirms only a sequential six-speed racing transmission."
+        },
+        "finalDrive": {
+          "value": null,
+          "status": "unknown_no_public_exact_source",
+          "sourceIds": []
+        },
+        "dragCoefficient": {
+          "value": null,
+          "status": "unknown_no_public_exact_source",
+          "sourceIds": []
+        },
+        "frontalAreaM2": {
+          "value": null,
+          "status": "unknown_no_public_exact_source",
+          "sourceIds": []
+        },
+        "zeroToHundredS": {
+          "value": 3.0,
+          "status": "verified_current_product",
+          "sourceIds": ["mercedes-amg-gt3-product"]
+        },
+        "topSpeedKph": {
+          "value": null,
+          "status": "unknown_bop_and_gearing_dependent",
+          "sourceIds": []
+        }
+      },
+      "derivedFacts": {
+        "powerPs": {
+          "value": 549.3,
+          "status": "derived_from_official_kw",
+          "sourceIds": ["mercedes-amg-gt3-product"],
+          "formula": "404 kW × 1.359621617"
+        },
+        "nominalTireRadiusM": {
+          "front": 0.34,
+          "rear": 0.3525,
+          "status": "derived_from_official_race_tire_outer_diameter",
+          "sourceIds": ["mercedes-amg-gt3-brochure"],
+          "formulaFront": "680 mm / 2000",
+          "formulaRear": "705 mm / 2000",
+          "notes": "Nominal race-tire outer diameter; loaded rolling radius will be smaller."
+        },
+        "cdA": {
+          "value": null,
+          "status": "unknown_without_cd_and_area"
+        }
+      },
+      "simulationSnapshot": {
+        "zeroToHundredS": 5.34,
+        "zeroToTwoHundredS": 15.15,
+        "speedAt60SecondsKph": 228,
+        "peakSpeedIn60SecondsKph": 228,
+        "gearAtEnd": 6,
+        "rpmAtEnd": 6045,
+        "distanceIn60SecondsKm": 3.29
+      },
+      "audit": {
+        "overall": "bop_conditional_and_unverified_gearing",
+        "deviations": [
+          {
+            "field": "power_vs_derived_ps",
+            "game": 550,
+            "reference": 549.3,
+            "differencePercent": 0.13,
+            "severity": "none"
+          },
+          {
+            "field": "wheelRadiusM_vs_front_nominal",
+            "game": 0.33,
+            "reference": 0.34,
+            "differencePercent": -2.94,
+            "severity": "medium"
+          },
+          {
+            "field": "wheelRadiusM_vs_rear_nominal",
+            "game": 0.33,
+            "reference": 0.3525,
+            "differencePercent": -6.38,
+            "severity": "high"
+          },
+          {
+            "field": "zeroToHundredS",
+            "game": 5.34,
+            "reference": 3.0,
+            "differencePercent": 78.0,
+            "severity": "high"
+          }
+        ],
+        "provenanceWarnings": [
+          "The 1,285 kg figure is conditional on BoP and must not be presented as a universal invariant.",
+          "Wheelbase, track width, individual ratios, final drive, CdA, and 310 km/h are unverified game calibration values."
+        ],
+        "nextCalibrationPriority": 6
+      }
+    },
+    {
+      "id": "m5g90",
+      "identity": {
+        "gameLabel": "BMW M5 G90",
+        "proposedLock": "2024 BMW M5 G90 sedan, EU specification, optional M Driver's Package for 305 km/h display",
+        "status": "locked_by_exact_spec",
+        "notes": "Without the optional package, the manufacturer-limited top speed is 250 km/h."
+      },
+      "gameConfig": {
+        "displaySpeedKph": 305,
+        "massKg": 2435,
+        "power": 727,
+        "torqueNm": 1000,
+        "wheelbaseM": 3.01,
+        "trackWidthM": 1.7,
+        "wheelRadiusM": 0.36,
+        "gearRatios": [5.0, 3.2, 2.143, 1.72, 1.314, 1.0, 0.823, 0.64],
+        "finalDrive": 3.15,
+        "cdA": 0.7
+      },
+      "manufacturerFacts": {
+        "massKg": {
+          "value": 2435,
+          "definition": "DIN unladen weight",
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "power": {
+          "value": 727,
+          "unit": "hp as published by BMW",
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech", "bmw-m5-2024-press"]
+        },
+        "torqueNm": {
+          "value": 1000,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech", "bmw-m5-2024-press"]
+        },
+        "wheelbaseM": {
+          "value": 3.006,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "trackWidthM": {
+          "front": 1.684,
+          "rear": 1.66,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "tires": {
+          "front": "285/40 ZR 20",
+          "rear": "295/35 ZR 21",
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "gearRatios": {
+          "value": [5.0, 3.2, 2.143, 1.72, 1.297, 1.0, 0.833, 0.64],
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "finalDrive": {
+          "value": 3.308,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "dragCoefficient": {
+          "value": 0.32,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "frontalAreaM2": {
+          "value": 2.55,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "zeroToHundredS": {
+          "value": 3.5,
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech", "bmw-m5-2024-press"]
+        },
+        "topSpeedKph": {
+          "value": 250,
+          "optionalValue": 305,
+          "option": "M Driver's Package",
+          "status": "verified_exact_model",
+          "sourceIds": ["bmw-m5-2024-tech", "bmw-m5-2024-press"]
+        }
+      },
+      "derivedFacts": {
+        "nominalTireRadiusM": {
+          "front": 0.368,
+          "rear": 0.36995,
+          "status": "derived_from_official_tire_size",
+          "sourceIds": ["bmw-m5-2024-tech"],
+          "formulaFront": "(20 × 25.4 + 2 × 285 × 0.40) / 2000",
+          "formulaRear": "(21 × 25.4 + 2 × 295 × 0.35) / 2000",
+          "notes": "Nominal unloaded geometry, not loaded rolling radius."
+        },
+        "averageTrackWidthM": {
+          "value": 1.672,
+          "status": "derived_from_official_front_rear_tracks",
+          "sourceIds": ["bmw-m5-2024-tech"]
+        },
+        "cdA": {
+          "value": 0.816,
+          "status": "derived_from_official_cd_and_area",
+          "sourceIds": ["bmw-m5-2024-tech"],
+          "formula": "0.32 × 2.55"
+        }
+      },
+      "simulationSnapshot": {
+        "zeroToHundredS": 6.35,
+        "zeroToTwoHundredS": 23.88,
+        "speedAt60SecondsKph": 207,
+        "peakSpeedIn60SecondsKph": 215,
+        "gearAtEnd": 6,
+        "rpmAtEnd": 4805,
+        "distanceIn60SecondsKm": 2.99
+      },
+      "audit": {
+        "overall": "good_identity_bad_gearing_aero_and_launch_match",
+        "deviations": [
+          {
+            "field": "wheelRadiusM_vs_front_nominal",
+            "game": 0.36,
+            "reference": 0.368,
+            "differencePercent": -2.17,
+            "severity": "medium"
+          },
+          {
+            "field": "wheelRadiusM_vs_rear_nominal",
+            "game": 0.36,
+            "reference": 0.36995,
+            "differencePercent": -2.69,
+            "severity": "medium"
+          },
+          {
+            "field": "fifthGear",
+            "game": 1.314,
+            "reference": 1.297,
+            "differencePercent": 1.31,
+            "severity": "low"
+          },
+          {
+            "field": "seventhGear",
+            "game": 0.823,
+            "reference": 0.833,
+            "differencePercent": -1.2,
+            "severity": "low"
+          },
+          {
+            "field": "finalDrive",
+            "game": 3.15,
+            "reference": 3.308,
+            "differencePercent": -4.78,
+            "severity": "high"
+          },
+          {
+            "field": "cdA",
+            "game": 0.7,
+            "reference": 0.816,
+            "differencePercent": -14.22,
+            "severity": "high"
+          },
+          {
+            "field": "zeroToHundredS",
+            "game": 6.35,
+            "reference": 3.5,
+            "differencePercent": 81.43,
+            "severity": "high"
+          }
+        ],
+        "provenanceWarnings": [
+          "The 305 km/h garage number is valid only with the optional M Driver's Package.",
+          "A single 1.70 m track scalar is wider than both official tracks; front/rear geometry should be separated before high-fidelity handling work."
+        ],
+        "nextCalibrationPriority": 3
+      }
+    }
+  ]
+}

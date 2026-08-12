@@ -1,0 +1,1064 @@
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import RAPIER from '@dimforge/rapier3d-compat';
+import './style.css';
+import { CARS, FIXED_DT, TOTAL_LAPS, TRACK_CONFIG } from './config.js';
+import { InputController } from './input.js';
+import { TrackSystem } from './track.js';
+import { AssetManager } from './assets.js';
+import { VehicleSystem, disposeOwnedVisual } from './vehicle.js';
+import { ProceduralAudio } from './audio.js';
+import { ChaseCamera, TireEffects } from './effects.js';
+import { RaceTimingSession, TimingStore, formatRaceDelta, formatRaceTime } from './race-timing.js';
+import { getLiveRaceGoal, LONGWAN_TIME_ATTACK, MIN_LIVE_GOAL_CHECKPOINTS } from './race-goals.js';
+import { accumulatePhysicsTime, clampFrameDelta, MAX_PHYSICS_STEPS } from './physics-scheduling.js';
+import { initializeRapier } from './rapier-init.js';
+import { getOrientationUiState, ORIENTATIONS, shouldFreezeRace } from './orientation.js';
+
+const $ = (id) => document.getElementById(id);
+const MEDAL_LABELS = { gold: '金牌', silver: '银牌', bronze: '铜牌' };
+const touchCapable = matchMedia('(pointer: coarse)').matches
+  || navigator.maxTouchPoints > 0
+  || new URLSearchParams(location.search).has('touch');
+document.documentElement.classList.toggle('touch-ui', touchCapable);
+const standaloneMode = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const canvas = $('game');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+const MAX_RENDER_SCALE = touchCapable ? 1.5 : 1.35;
+const PIXEL_BUDGET = touchCapable ? 1_300_000 : 3_200_000;
+const getRenderScaleLimit = () => Math.min(
+  devicePixelRatio,
+  MAX_RENDER_SCALE,
+  Math.max(0.72, Math.sqrt(PIXEL_BUDGET / Math.max(1, innerWidth * innerHeight))),
+);
+let renderScale = getRenderScaleLimit();
+renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+renderer.setSize(innerWidth, innerHeight);
+// The supplied car models are far denser than typical web-game assets. A small
+// contact shadow keeps them grounded visually without rendering the whole scene
+// a second time into a realtime shadow map.
+renderer.shadowMap.enabled = false;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.08;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xa9c8dc);
+scene.fog = new THREE.FogExp2(0xb8cbd3, 0.00072);
+// A prefiltered static environment gives metallic paint and glass something to
+// reflect without bringing realtime reflections back into the frame budget.
+const environmentGenerator = new THREE.PMREMGenerator(renderer);
+const roomEnvironment = new RoomEnvironment();
+scene.environment = environmentGenerator.fromScene(roomEnvironment, 0.04).texture;
+scene.environmentIntensity = 0.72;
+roomEnvironment.dispose();
+environmentGenerator.dispose();
+const camera = new THREE.PerspectiveCamera(58, innerWidth / innerHeight, 0.1, 1300);
+
+scene.add(new THREE.HemisphereLight(0xdcefff, 0x66705a, 1.72));
+scene.add(new THREE.AmbientLight(0xaebdca, 0.26));
+const sun = new THREE.DirectionalLight(0xffe6bc, 4.25);
+sun.position.set(-180, 260, 110);
+scene.add(sun);
+await initializeRapier(RAPIER);
+const physicsWorld = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
+physicsWorld.integrationParameters.dt = FIXED_DT;
+const track = new TrackSystem(TRACK_CONFIG, scene, renderer, RAPIER, physicsWorld);
+const assets = new AssetManager(scene, track);
+const input = new InputController();
+const audio = new ProceduralAudio();
+const effects = new TireEffects(scene);
+const chaseCamera = new ChaseCamera(camera);
+const timingStore = new TimingStore();
+
+let carIndex = 0;
+let vehicle = null;
+let vehicleLoadToken = 0;
+let vehicleLoadPending = false;
+let queuedVehicleIndex = null;
+let retryCarIndex = null;
+let state = 'menu';
+let stateBeforePause = 'race';
+let accumulator = 0;
+let lastFrame = performance.now();
+let countdown = 0;
+let countdownShown = 0;
+let timing = null;
+let lastSectorEvent = null;
+let lastLapEvent = null;
+let startLightsTimer = null;
+let performanceVisible = false;
+let fpsAccumulator = 0;
+let fpsFrames = 0;
+let physicsCost = 0;
+let slowFrameWindows = 0;
+let fullscreenHelpShown = false;
+let devTelemetry = null;
+let devFixedStepIndex = 0;
+const MODAL_DIALOG_IDS = ['orientation-hint', 'fullscreen-help', 'pause-menu', 'finish', 'about'];
+const dialogReturnFocus = new Map();
+
+const devToolsRequested = import.meta.env.DEV && new URLSearchParams(location.search).has('devtools');
+if (devToolsRequested) {
+  const { DevTelemetryBuffer } = await import('./dev-telemetry.js');
+  devTelemetry = new DevTelemetryBuffer({ capacity: 2048 });
+}
+
+function getDevReadiness() {
+  const selectedCar = CARS[carIndex];
+  const vehicleMatchesSelection = Boolean(vehicle && selectedCar && vehicle.config.id === selectedCar.id);
+  const startableState = state === 'menu' || state === 'finish' || state === 'paused';
+  const restartable = state === 'race' && timing?.snapshot().currentLapValid === false;
+  return {
+    assetSource: vehicle?.visual?.userData?.source ?? null,
+    vehicleLoadPending,
+    selectedCarId: selectedCar?.id ?? null,
+    state,
+    restartable,
+    startable: Boolean(startableState && !vehicleLoadPending && vehicleMatchesSelection && vehicle?.visual?.userData?.source === 'gltf'),
+  };
+}
+
+function recordDevEvent(type, details = {}) {
+  if (!devTelemetry) return false;
+  try {
+    return devTelemetry.record({
+      type,
+      state,
+      fixedStepIndex: devFixedStepIndex,
+      ...details,
+    });
+  } catch (error) {
+    console.warn('[dev-telemetry] ignored event', error);
+    return false;
+  }
+}
+
+if (devToolsRequested) {
+  globalThis.__STREET_RUSH_DEV__ = Object.freeze({
+    getReadiness: getDevReadiness,
+    record: (event) => {
+      try {
+        return devTelemetry.record(event);
+      } catch (error) {
+        console.warn('[dev-telemetry] ignored event', error);
+        return false;
+      }
+    },
+    snapshot: () => devTelemetry.snapshot(),
+    clear: () => devTelemetry.clear(),
+    serialize: () => devTelemetry.serialize(),
+  });
+}
+
+function focusVisibleElement(element) {
+  if (!(element instanceof HTMLElement)
+    || !element.isConnected
+    || element.disabled
+    || element.closest('.hidden')
+    || getComputedStyle(element).visibility === 'hidden'
+    || getComputedStyle(element).display === 'none') return false;
+  element.focus({ preventScroll: true });
+  return true;
+}
+
+function openModalDialog(id, trigger = document.activeElement) {
+  const dialog = $(id);
+  if (!dialog) return;
+  for (const otherId of MODAL_DIALOG_IDS) {
+    if (otherId !== id) closeModalDialog(otherId, false);
+  }
+  const returnTarget = trigger instanceof HTMLElement ? trigger : document.activeElement;
+  const canRestoreFocus = returnTarget instanceof HTMLElement
+    && returnTarget !== dialog
+    && !returnTarget.closest('.hidden')
+    && getComputedStyle(returnTarget).display !== 'none'
+    && getComputedStyle(returnTarget).visibility !== 'hidden';
+  if (canRestoreFocus) dialogReturnFocus.set(id, returnTarget);
+  dialog.classList.remove('hidden');
+  dialog.setAttribute('aria-hidden', 'false');
+  const firstFocusable = Array.from(dialog.querySelectorAll('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])'))
+    .find((element) => !element.disabled && getComputedStyle(element).visibility !== 'hidden');
+  firstFocusable?.focus({ preventScroll: true });
+}
+
+function closeModalDialog(id, restoreFocus = true) {
+  const dialog = $(id);
+  if (!dialog) return;
+  dialog.classList.add('hidden');
+  dialog.setAttribute('aria-hidden', 'true');
+  if (id === 'fullscreen-help') {
+    fullscreenHelpShown = false;
+    input.releaseAll();
+    accumulator = 0;
+    lastFrame = performance.now();
+  }
+  if (id === 'orientation-hint') dialog.setAttribute('inert', '');
+  if (!restoreFocus) {
+    dialogReturnFocus.delete(id);
+    return;
+  }
+  const returnTarget = dialogReturnFocus.get(id);
+  dialogReturnFocus.delete(id);
+  focusVisibleElement(returnTarget);
+}
+
+function closeAllModalDialogs(restoreFocus = false) {
+  for (const id of MODAL_DIALOG_IDS) closeModalDialog(id, restoreFocus);
+}
+
+function getOpenModalDialog() {
+  return MODAL_DIALOG_IDS
+    .map((id) => $(id))
+    .find((dialog) => dialog && !dialog.classList.contains('hidden')) ?? null;
+}
+
+function trapModalFocus(event) {
+  const dialog = getOpenModalDialog();
+  if (!dialog || event.code !== 'Tab') return false;
+  const focusable = Array.from(dialog.querySelectorAll('button, a[href], input, textarea, select, [tabindex]:not([tabindex="-1"])'))
+    .filter((element) => !element.disabled && getComputedStyle(element).visibility !== 'hidden');
+  if (focusable.length === 0) return false;
+  const currentIndex = focusable.indexOf(document.activeElement);
+  const nextIndex = event.shiftKey
+    ? currentIndex <= 0 ? focusable.length - 1 : currentIndex - 1
+    : currentIndex === focusable.length - 1 ? 0 : currentIndex + 1;
+  event.preventDefault();
+  focusable[nextIndex].focus({ preventScroll: true });
+  return true;
+}
+
+for (const id of MODAL_DIALOG_IDS) $(id)?.setAttribute('aria-hidden', 'true');
+
+function isAppleTouchDevice() {
+  const classicIOS = /iPad|iPhone|iPod/i.test(navigator.userAgent);
+  const touchMac = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  return classicIOS || touchMac;
+}
+
+function fullscreenElement() {
+  return document.fullscreenElement || document.webkitFullscreenElement;
+}
+
+function syncFullscreenButton() {
+  const active = Boolean(fullscreenElement());
+  $('fullscreen-button').hidden = isAppleTouchDevice() && standaloneMode;
+  $('fullscreen-button').classList.toggle('active', active);
+  $('fullscreen-button').setAttribute('aria-label', active ? '退出全屏' : '进入全屏');
+  $('orientation-fullscreen').hidden = standaloneMode;
+}
+
+function syncOrientationHint() {
+  const hint = $('orientation-hint');
+  if (!hint) return;
+  const orientationState = getOrientationUiState({
+    touchCapable,
+    raceActive: state === 'race' || state === 'countdown',
+    orientation: matchMedia('(orientation: portrait)').matches ? ORIENTATIONS.PORTRAIT : ORIENTATIONS.LANDSCAPE,
+    fullscreenHelpOpen: fullscreenHelpShown,
+  });
+  const raceActive = state === 'race' || state === 'countdown';
+  const openModal = getOpenModalDialog();
+  const blockedByAnotherModal = openModal && openModal.id !== 'orientation-hint';
+  const shouldShow = orientationState.orientationHintVisible && raceActive && !blockedByAnotherModal;
+  if (!shouldShow) {
+    if (!hint.classList.contains('hidden')) {
+      closeModalDialog('orientation-hint');
+      input.releaseAll();
+      accumulator = 0;
+      lastFrame = performance.now();
+    }
+    else {
+      hint.setAttribute('aria-hidden', 'true');
+      hint.setAttribute('inert', '');
+    }
+    return;
+  }
+  if (hint.classList.contains('hidden') || hint.getAttribute('aria-hidden') !== 'false') {
+    input.releaseAll();
+    accumulator = 0;
+    lastFrame = performance.now();
+    hint.removeAttribute('inert');
+    openModalDialog('orientation-hint', document.activeElement);
+  }
+}
+
+function isRaceBlockedByModal() {
+  const openModal = getOpenModalDialog();
+  return shouldFreezeRace({
+    touchCapable,
+    raceActive: state === 'race' || state === 'countdown',
+    orientation: matchMedia('(orientation: portrait)').matches ? ORIENTATIONS.PORTRAIT : ORIENTATIONS.LANDSCAPE,
+    modalId: openModal?.id ?? null,
+  });
+}
+
+function showFullscreenHelp() {
+  if (fullscreenHelpShown) return;
+  fullscreenHelpShown = true;
+  openModalDialog('fullscreen-help');
+}
+
+async function lockLandscape() {
+  try {
+    await screen.orientation?.lock?.('landscape');
+  } catch {
+    // Orientation lock is best-effort and is not exposed by every browser.
+  }
+}
+
+async function requestPageFullscreen() {
+  if (standaloneMode || fullscreenElement()) {
+    if (touchCapable) await lockLandscape();
+    return;
+  }
+  if (isAppleTouchDevice()) {
+    showFullscreenHelp();
+    return;
+  }
+  const request = document.documentElement.requestFullscreen
+    || document.documentElement.webkitRequestFullscreen;
+  if (!request) {
+    showFullscreenHelp();
+    return;
+  }
+  try {
+    await request.call(document.documentElement);
+    if (touchCapable) await lockLandscape();
+  } catch (error) {
+    console.warn('Fullscreen request failed', error);
+    showFullscreenHelp();
+  }
+}
+
+async function togglePageFullscreen() {
+  if (standaloneMode) return;
+  if (fullscreenElement()) {
+    const exit = document.exitFullscreen || document.webkitExitFullscreen;
+    try {
+      await exit?.call(document);
+    } catch (error) {
+      console.warn('Fullscreen exit failed', error);
+    }
+  } else {
+    await requestPageFullscreen();
+  }
+  syncFullscreenButton();
+}
+
+function showMessage(text, duration = 760) {
+  const element = $('race-message');
+  element.textContent = text;
+  element.style.opacity = 1;
+  element.style.transform = 'translate(-50%, -50%) skew(-5deg) scale(1)';
+  clearTimeout(showMessage.timer);
+  showMessage.timer = setTimeout(() => {
+    element.style.opacity = 0;
+    element.style.transform = 'translate(-50%, -50%) skew(-5deg) scale(1.12)';
+  }, duration);
+}
+
+function syncInvalidLapRestart(snapshot = timing?.snapshot()) {
+  const button = $('invalid-lap-restart-button');
+  if (!button) return;
+  const visible = state === 'race' && snapshot?.currentLapValid === false;
+  button.classList.toggle('hidden', !visible);
+  button.setAttribute('aria-hidden', String(!visible));
+}
+
+function setStartLights(lightState, autoOffMs = 0) {
+  clearTimeout(startLightsTimer);
+  track.setStartLights(lightState);
+  if (autoOffMs > 0) {
+    startLightsTimer = setTimeout(() => track.setStartLights('off'), autoOffMs);
+  }
+}
+
+function setDeltaUI(element, deltaMs, fallback) {
+  const hasDelta = Number.isFinite(deltaMs);
+  element.textContent = hasDelta ? formatRaceDelta(deltaMs) : fallback;
+  element.classList.toggle('ahead', hasDelta && deltaMs < 0);
+  element.classList.toggle('behind', hasDelta && deltaMs > 0);
+}
+
+function medalTargetsForCar(carId) {
+  return LONGWAN_TIME_ATTACK.medalTargetsMs?.[carId] ?? null;
+}
+
+function updateRaceGoalUI(snapshot) {
+  const label = $('race-target-label');
+  const target = $('race-target');
+  const delta = $('race-target-delta');
+  const goal = getLiveRaceGoal({
+    targets: medalTargetsForCar(vehicle?.config.id),
+    checkpointsPassed: snapshot.checkpointsPassed,
+    totalCheckpoints: TOTAL_LAPS * TRACK_CONFIG.checkpoints,
+    runTimeMs: snapshot.runTimeMs,
+    currentLapValid: snapshot.currentLapValid,
+    laps: snapshot.laps,
+  });
+  if (goal?.invalid) {
+    label.textContent = '本场已无效';
+    target.textContent = '不计奖牌';
+    delta.textContent = '完成仍可看单圈';
+    delta.classList.remove('ahead', 'behind');
+    return;
+  }
+  if (!goal) {
+    label.textContent = '下一目标';
+    target.textContent = '--:--.---';
+    delta.textContent = '目标待定';
+    delta.classList.remove('ahead', 'behind');
+    return;
+  }
+
+  label.textContent = `下一目标 · ${MEDAL_LABELS[goal.medal]}`;
+  target.textContent = formatRaceTime(goal.targetMs);
+  const hasDelta = Number.isFinite(goal.deltaMs);
+  delta.textContent = hasDelta ? `预测 ${formatRaceDelta(goal.deltaMs)}` : `完成 ${MIN_LIVE_GOAL_CHECKPOINTS} 个检查点后计算`;
+  delta.classList.toggle('ahead', hasDelta && goal.deltaMs < 0);
+  delta.classList.toggle('behind', hasDelta && goal.deltaMs > 0);
+}
+
+function updateCarUI() {
+  const config = CARS[carIndex];
+  const setTextIfPresent = (id, value) => {
+    const element = $(id);
+    if (element) element.textContent = value;
+  };
+  setTextIfPresent('car-index', `${String(carIndex + 1).padStart(2, '0')} / ${String(CARS.length).padStart(2, '0')}`);
+  setTextIfPresent('car-name', config.name);
+  setTextIfPresent('stat-speed', config.speed);
+  setTextIfPresent('stat-accel', config.accel);
+  setTextIfPresent('stat-grip', config.grip);
+  const targets = medalTargetsForCar(config.id);
+  setTextIfPresent('garage-goal', targets
+    ? `三圈奖牌目标 · 金 ${formatRaceTime(targets.gold)} / 银 ${formatRaceTime(targets.silver)} / 铜 ${formatRaceTime(targets.bronze)}`
+    : '三圈奖牌目标 · 待定');
+  const record = timingStore.load(
+    { trackId: LONGWAN_TIME_ATTACK.id, carId: config.id },
+    LONGWAN_TIME_ATTACK.sectorCheckpoints.length,
+  );
+  setTextIfPresent('garage-best-lap', formatRaceTime(record.bestLapMs));
+  setTextIfPresent('garage-best-race', formatRaceTime(record.bestRaceMsByLaps[String(TOTAL_LAPS)]));
+}
+
+async function mountVehicle(index, initial = false) {
+  if (vehicleLoadPending) {
+    if (state === 'menu') queuedVehicleIndex = index;
+    return false;
+  }
+  const token = ++vehicleLoadToken;
+  const config = CARS[index];
+  vehicleLoadPending = true;
+  $('garage-status').textContent = `LOADING ${config.name}`;
+  $('garage-status').classList.add('active');
+  $('start-button').disabled = true;
+  $('retry-car-button').classList.add('hidden');
+  retryCarIndex = null;
+  if (initial) $('loading-status').textContent = `载入 ${config.name}…`;
+  let visual = null;
+  let visualHandedOff = false;
+  try {
+    visual = await assets.instantiateCar(config, (progress) => {
+      if (initial) $('loading-progress').style.width = `${10 + progress * 76}%`;
+    });
+    if (token !== vehicleLoadToken || state !== 'menu') {
+      disposeOwnedVisual(visual);
+      return false;
+    }
+    if (visual.userData?.source !== 'gltf') {
+      throw new Error(`Playable vehicle asset unavailable for ${config.id}`);
+    }
+    const nextVehicle = new VehicleSystem({
+      RAPIER,
+      world: physicsWorld,
+      scene,
+      track,
+      config,
+      visual,
+      onAutomaticReset: (reason) => {
+        if (state === 'race') {
+          invalidateCurrentLap(reason, 'RECOVERY · LAP INVALID');
+          recordDevEvent('automatic-reset', { reason });
+        }
+      },
+    });
+    nextVehicle.body.setEnabled(false);
+    const previous = vehicle;
+    vehicle = nextVehicle;
+    visualHandedOff = true;
+    previous?.destroy();
+    audio.setVehicle(config);
+    if (visual.userData.source === 'gltf') assets.preloadNeighbors(CARS, index);
+    chaseCamera.snap(vehicle.currentPose.position, vehicle.currentPose.rotation);
+    return true;
+  } catch (error) {
+    if (visual && !visualHandedOff) {
+      scene.remove(visual);
+      disposeOwnedVisual(visual);
+    }
+    if (token === vehicleLoadToken) {
+      retryCarIndex = index;
+      const mountedIndex = CARS.findIndex((candidate) => candidate.id === vehicle?.config.id);
+      if (mountedIndex >= 0) {
+        carIndex = mountedIndex;
+        updateCarUI();
+      }
+      console.warn(`Vehicle load failed for ${config.id}`, error);
+    }
+    return false;
+  } finally {
+    if (token === vehicleLoadToken) {
+      const nextIndex = queuedVehicleIndex;
+      queuedVehicleIndex = null;
+      if (state === 'menu' && nextIndex !== null && nextIndex !== index) {
+        vehicleLoadPending = false;
+        carIndex = nextIndex;
+        updateCarUI();
+        return mountVehicle(nextIndex, initial);
+      }
+      vehicleLoadPending = false;
+      const selectionReady = vehicle?.config.id === CARS[carIndex].id
+        && vehicle.visual?.userData?.source === 'gltf';
+      $('garage-status').classList.remove('active');
+      $('garage-status').textContent = selectionReady ? 'READY' : 'LOAD FAILED';
+      $('start-button').disabled = !selectionReady;
+      $('retry-car-button').classList.toggle('hidden', retryCarIndex === null);
+    }
+  }
+}
+
+async function selectCar(direction) {
+  if (state !== 'menu') return;
+  carIndex = (carIndex + direction + CARS.length) % CARS.length;
+  updateCarUI();
+  if (vehicleLoadPending) {
+    $('garage-status').textContent = `LOADING ${CARS[carIndex].name}`;
+    $('garage-status').classList.add('active');
+    $('start-button').disabled = true;
+    queuedVehicleIndex = carIndex;
+    return;
+  }
+  await mountVehicle(carIndex);
+}
+
+function resetRaceState() {
+  timing = new RaceTimingSession({
+    trackId: LONGWAN_TIME_ATTACK.id,
+    carId: vehicle.config.id,
+    totalLaps: TOTAL_LAPS,
+    checkpointCount: TRACK_CONFIG.checkpoints,
+    sectorCheckpoints: LONGWAN_TIME_ATTACK.sectorCheckpoints,
+    medalTargetsMs: medalTargetsForCar(vehicle.config.id),
+    store: timingStore,
+  });
+  lastSectorEvent = null;
+  lastLapEvent = null;
+  const snapshot = timing.snapshot();
+  $('lap-now').textContent = '1';
+  $('checkpoint-now').textContent = '0';
+  $('race-time').textContent = '00:00.000';
+  $('lap-time').textContent = '00:00.000';
+  $('sector-now').textContent = '1';
+  $('sector-time').textContent = '00:00.000';
+  $('best-lap').textContent = formatRaceTime(snapshot.bestLapMs);
+  $('lap-valid-state').textContent = 'VALID';
+  $('lap-valid-state').classList.remove('invalid');
+  setDeltaUI($('sector-delta'), null, snapshot.bestSectorsMs[0] == null ? 'NO DATA' : 'TARGET SET');
+  setDeltaUI($('lap-delta'), null, snapshot.bestLapMs == null ? 'FIRST RUN' : 'PB LOADED');
+  updateRaceGoalUI(snapshot);
+  syncInvalidLapRestart(snapshot);
+  track.setCheckpointHighlight(snapshot.expectedCheckpointIndex);
+}
+
+function startRace() {
+  const restartingInvalidLap = state === 'race' && timing?.snapshot().currentLapValid === false;
+  if (state !== 'menu' && state !== 'finish' && state !== 'paused' && !restartingInvalidLap) return;
+  if (
+    !vehicle
+    || vehicleLoadPending
+    || vehicle.config.id !== CARS[carIndex].id
+    || vehicle.visual?.userData?.source !== 'gltf'
+  ) return;
+  closeAllModalDialogs(false);
+  input.releaseAll();
+  accumulator = 0;
+  lastFrame = performance.now();
+  if (standaloneMode && touchCapable) lockLandscape();
+  audio.init().catch((error) => console.warn('Audio initialization failed', error));
+  state = 'countdown';
+  document.body.classList.add('race-active');
+  $('mobile-controls').classList.add('active');
+  $('race-menu-button').classList.remove('hidden');
+  $('pause-menu').classList.add('hidden');
+  input.setTouchEnabled(touchCapable);
+  $('menu').classList.add('hidden');
+  $('finish').classList.add('hidden');
+  $('hud').classList.remove('hidden');
+  vehicle.body.setEnabled(true);
+  vehicle.reset(0);
+  resetRaceState();
+  countdown = 3;
+  countdownShown = 3;
+  setStartLights('three');
+  showMessage('3', 650);
+  devFixedStepIndex = 0;
+  recordDevEvent('run-requested', { carId: vehicle.config.id, trackId: LONGWAN_TIME_ATTACK.id });
+  focusVisibleElement($('game'));
+  syncOrientationHint();
+}
+
+function renderFinishSummary(summary) {
+  $('finish-kicker').textContent = summary?.valid ? '环线挑战完成' : '本次成绩未认证';
+  $('finish-title').textContent = summary?.newBestRace
+    ? '刷新纪录。'
+    : summary?.valid
+      ? '漂亮收车。'
+      : '还有下一圈。';
+  $('finish-time').textContent = formatRaceTime(summary?.timeMs);
+  $('finish-best-lap').textContent = formatRaceTime(summary?.bestLapMs);
+  $('finish-race-best').textContent = formatRaceTime(summary?.bestRaceMs);
+  const validLaps = summary?.laps?.filter((lap) => lap.valid).length ?? 0;
+  $('finish-valid-laps').textContent = `${validLaps} / ${TOTAL_LAPS}`;
+
+  const medalElement = $('finish-medal');
+  const medal = summary?.valid && summary.medal ? summary.medal : null;
+  medalElement.textContent = !summary?.valid
+    ? '未认证'
+    : medal
+      ? MEDAL_LABELS[medal]
+      : '未达标';
+  medalElement.className = `medal-value ${medal ?? (summary?.valid ? 'none' : 'unverified')}`;
+
+  const raceDelta = summary?.valid && Number.isFinite(summary.deltaMs) ? summary.deltaMs : null;
+  setDeltaUI($('finish-race-delta'), raceDelta, summary?.valid ? '首次挑战' : '未认证');
+
+  const targets = medalTargetsForCar(vehicle?.config.id);
+  if (!summary?.valid) {
+    $('finish-target').textContent = '未认证';
+  } else if (targets) {
+    const targetMedal = summary.medal ?? 'bronze';
+    $('finish-target').textContent = `${MEDAL_LABELS[targetMedal]} ${formatRaceTime(targets[targetMedal])}`;
+  } else {
+    $('finish-target').textContent = '--:--.---';
+  }
+
+  const lapList = $('finish-laps');
+  lapList.replaceChildren();
+  for (const lap of summary?.laps ?? []) {
+    const row = document.createElement('li');
+    row.className = lap.valid ? 'valid' : 'invalid';
+    const label = document.createElement('span');
+    const time = document.createElement('span');
+    const status = document.createElement('span');
+    label.textContent = `LAP ${lap.number}`;
+    time.textContent = formatRaceTime(lap.timeMs);
+    status.textContent = lap.valid ? (lap.newBest ? 'NEW PB' : formatRaceDelta(lap.deltaMs)) : 'INVALID';
+    row.append(label, time, status);
+    lapList.append(row);
+  }
+  $('finish-copy').textContent = !summary?.valid
+    ? '本次包含无效圈，总成绩不会写入 PB；其中的有效单圈仍已保存。'
+    : summary.newBestRace
+      ? '新的三圈个人最佳已保存在本机。按 R 可以立即再跑。'
+      : '成绩与有效单圈已保存在本机。按 R 可以立即再跑。';
+}
+
+function finishRace(summary = timing?.getSummary()) {
+  state = 'finish';
+  track.setCheckpointHighlight(null);
+  closeAllModalDialogs(false);
+  input.releaseAll();
+  setStartLights('off');
+  document.body.classList.remove('race-active');
+  $('mobile-controls').classList.remove('active');
+  $('race-menu-button').classList.add('hidden');
+  $('pause-menu').classList.add('hidden');
+  input.setTouchEnabled(false);
+  vehicle.body.setLinvel({ x: 0, y: 0, z: 0 }, true);
+  vehicle.body.setAngvel({ x: 0, y: 0, z: 0 }, true);
+  vehicle.body.setEnabled(false);
+  vehicle.telemetry.speedKmh = 0;
+  vehicle.telemetry.throttle = 0;
+  renderFinishSummary(summary);
+  $('finish').classList.remove('hidden');
+  $('hud').classList.add('hidden');
+  syncInvalidLapRestart();
+  openModalDialog('finish', $('race-menu-button'));
+}
+
+function returnGarage() {
+  state = 'menu';
+  track.setCheckpointHighlight(null);
+  closeAllModalDialogs(false);
+  input.releaseAll();
+  accumulator = 0;
+  lastFrame = performance.now();
+  setStartLights('off');
+  document.body.classList.remove('race-active');
+  $('mobile-controls').classList.remove('active');
+  $('race-menu-button').classList.add('hidden');
+  $('pause-menu').classList.add('hidden');
+  input.setTouchEnabled(false);
+  $('finish').classList.add('hidden');
+  $('hud').classList.add('hidden');
+  $('menu').classList.remove('hidden');
+  updateCarUI();
+  syncInvalidLapRestart();
+  vehicle.reset(0);
+  vehicle.body.setEnabled(false);
+  vehicle.telemetry.speedKmh = 0;
+  vehicle.telemetry.throttle = 0;
+  chaseCamera.snap(vehicle.currentPose.position, vehicle.currentPose.rotation);
+  timing = null;
+  focusVisibleElement($('start-button'));
+}
+
+function openRaceMenu() {
+  if (state !== 'race' && state !== 'countdown') return;
+  stateBeforePause = state;
+  state = 'paused';
+  input.releaseAll();
+  input.setTouchEnabled(false);
+  $('mobile-controls').classList.remove('active');
+  syncInvalidLapRestart();
+  openModalDialog('pause-menu', $('race-menu-button'));
+}
+
+function pauseOnLifecycleLoss() {
+  if (state !== 'race' && state !== 'countdown') return;
+  openRaceMenu();
+}
+
+function handleVisibilityChange() {
+  if (document.hidden) pauseOnLifecycleLoss();
+}
+
+function resumeRace() {
+  if (state !== 'paused') return;
+  state = stateBeforePause;
+  accumulator = 0;
+  lastFrame = performance.now();
+  input.setTouchEnabled(touchCapable);
+  $('mobile-controls').classList.add('active');
+  closeModalDialog('pause-menu', false);
+  syncInvalidLapRestart();
+  focusVisibleElement($('game'));
+  syncOrientationHint();
+}
+
+function handleTimingEvents(events) {
+  for (const event of events) {
+    recordDevEvent(event.type, { event });
+    if (event.type === 'checkpoint-completed') {
+      const checkpointLabel = event.checkpointOrdinal === TRACK_CONFIG.checkpoints
+        ? 'FINISH GATE'
+        : `CHECKPOINT ${String(event.checkpointOrdinal).padStart(2, '0')}`;
+      showMessage(checkpointLabel, 520);
+    } else if (event.type === 'sector-completed') {
+      lastSectorEvent = event;
+    } else if (event.type === 'lap-completed') {
+      lastLapEvent = event;
+      lastSectorEvent = null;
+      if (event.lap.number < TOTAL_LAPS) {
+        const label = event.lap.valid
+          ? event.lap.newBest
+            ? 'NEW PERSONAL BEST'
+            : `LAP ${event.lap.number} · ${formatRaceTime(event.lap.timeMs)}`
+          : `LAP ${event.lap.number} INVALID`;
+        showMessage(label, 1100);
+      }
+    } else if (event.type === 'run-completed') {
+      finishRace(event.summary);
+    }
+  }
+  track.setCheckpointHighlight(state === 'race' || state === 'countdown'
+    ? timing?.snapshot().expectedCheckpointIndex
+    : null);
+}
+
+function invalidateCurrentLap(reason, message = 'LAP INVALID') {
+  const event = timing?.invalidate(reason);
+  syncInvalidLapRestart();
+  if (event) {
+    recordDevEvent('lap-invalidated', { reason, event });
+    showMessage(message, 950);
+  }
+}
+
+function updateCheckpoints() {
+  if (state !== 'race' || !timing) return;
+  const expectedCheckpoint = timing.snapshot().expectedCheckpointIndex;
+  const sampleCount = track.samples.length;
+  const targetIndex = Math.floor((expectedCheckpoint % TRACK_CONFIG.checkpoints) / TRACK_CONFIG.checkpoints * sampleCount);
+  let difference = vehicle.trackHint - targetIndex;
+  if (difference > sampleCount / 2) difference -= sampleCount;
+  if (difference < -sampleCount / 2) difference += sampleCount;
+  const checkpointTrackInfo = track.nearestInfo(vehicle.currentPose.position, vehicle.trackHint);
+  const onRoad = Math.abs(checkpointTrackInfo.offset) < TRACK_CONFIG.width * 0.5;
+  if (Math.abs(difference) > 7 || !onRoad || vehicle.telemetry.signedSpeedKmh < 8) return;
+  const events = timing.passCheckpoint(expectedCheckpoint);
+  handleTimingEvents(events);
+}
+
+function fixedUpdate(frameInput) {
+  if (!vehicle) return;
+  if (state === 'menu' || state === 'finish' || state === 'paused') return;
+  devFixedStepIndex += 1;
+  if (state === 'countdown') {
+    countdown -= FIXED_DT;
+    const nextNumber = Math.ceil(countdown);
+    if (nextNumber > 0 && nextNumber !== countdownShown) {
+      countdownShown = nextNumber;
+      setStartLights(nextNumber === 3 ? 'three' : nextNumber === 2 ? 'two' : 'one');
+      showMessage(String(nextNumber), 650);
+    }
+    if (countdown <= 0) {
+      state = 'race';
+      const runStarted = timing.start();
+      recordDevEvent('run-started', { event: runStarted, carId: vehicle.config.id, trackId: LONGWAN_TIME_ATTACK.id });
+      setStartLights('go', 1100);
+      showMessage('GO!', 800);
+    }
+  }
+  const active = state === 'race';
+  vehicle.fixedUpdate(frameInput, !active, FIXED_DT);
+  physicsWorld.step();
+  vehicle.afterPhysics();
+  if (active) {
+    timing.advance(FIXED_DT * 1000);
+    const trackInfo = track.nearestInfo(vehicle.currentPose.position, vehicle.trackHint);
+    const beyondKerb = Math.abs(trackInfo.offset) > TRACK_CONFIG.width * 0.5 + 1.05;
+    if (beyondKerb) invalidateCurrentLap('track-limits');
+    updateCheckpoints();
+  }
+}
+
+function updateHUD() {
+  if (!vehicle) return;
+  const telemetry = vehicle.telemetry;
+  const timingSnapshot = timing?.snapshot();
+  if (timingSnapshot) {
+    $('race-time').textContent = formatRaceTime(timingSnapshot.runTimeMs);
+    $('lap-now').textContent = String(timingSnapshot.currentLapNumber);
+    $('checkpoint-now').textContent = String(timingSnapshot.checkpointInLap);
+    $('lap-time').textContent = formatRaceTime(timingSnapshot.lapTimeMs);
+    $('sector-now').textContent = String(timingSnapshot.currentSectorNumber);
+    $('sector-time').textContent = formatRaceTime(timingSnapshot.sectorTimeMs);
+    $('best-lap').textContent = formatRaceTime(timingSnapshot.bestLapMs);
+    $('lap-valid-state').textContent = timingSnapshot.currentLapValid ? 'VALID' : 'INVALID';
+    $('lap-valid-state').classList.toggle('invalid', !timingSnapshot.currentLapValid);
+    syncInvalidLapRestart(timingSnapshot);
+    setDeltaUI(
+      $('sector-delta'),
+      lastSectorEvent?.deltaMs,
+      timingSnapshot.bestSectorsMs[timingSnapshot.currentSectorNumber - 1] == null ? 'NO DATA' : 'TARGET SET',
+    );
+    const completedLap = lastLapEvent?.lap;
+    const lapFallback = completedLap?.newBest
+      ? 'NEW PB'
+      : completedLap && !completedLap.valid
+        ? 'INVALID'
+        : timingSnapshot.bestLapMs == null
+          ? 'FIRST RUN'
+          : 'PB ACTIVE';
+    setDeltaUI($('lap-delta'), completedLap?.deltaMs, lapFallback);
+    updateRaceGoalUI(timingSnapshot);
+  }
+  $('speed').textContent = String(Math.round(telemetry.speedKmh));
+  $('gear').textContent = telemetry.reverse ? 'R' : String(telemetry.gear);
+  $('rpm').textContent = String(Math.round(telemetry.rpm / 100) * 100);
+  $('shift-mode').textContent = vehicle.transmissionMode;
+  $('mobile-mode').textContent = vehicle.transmissionMode;
+  $('mobile-controls').classList.toggle('manual', vehicle.transmissionMode === 'MT');
+  $('throttle-bar').style.width = `${telemetry.throttle * 100}%`;
+  $('brake-bar').style.width = `${telemetry.brake * 100}%`;
+  const assist = telemetry.absActive ? 'ABS' : telemetry.tcsActive ? 'TCS' : telemetry.stabilityActive ? 'ESC' : 'READY';
+  $('assist-state').textContent = assist;
+  $('drive-mode').textContent = telemetry.reverse ? 'REVERSE' : telemetry.surface.toUpperCase();
+}
+
+function updatePerformance(frameDt) {
+  fpsAccumulator += frameDt;
+  fpsFrames += 1;
+  if (fpsAccumulator < 0.5) return;
+  const fps = Math.round(fpsFrames / fpsAccumulator);
+  $('perf').textContent = `${fps} FPS · PHYS ${physicsCost.toFixed(2)}ms · ${renderer.info.render.calls} DRAWS · ${renderer.info.render.triangles.toLocaleString()} TRI`;
+  fpsAccumulator = 0;
+  fpsFrames = 0;
+  slowFrameWindows = fps < 48 ? slowFrameWindows + 1 : Math.max(0, slowFrameWindows - 1);
+  if (slowFrameWindows >= 3 && renderScale > 0.72) {
+    renderScale = Math.max(0.72, renderScale - 0.12);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+    slowFrameWindows = 0;
+  } else if (fps > 57 && renderScale < getRenderScaleLimit()) {
+    renderScale = Math.min(getRenderScaleLimit(), renderScale + 0.05);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+  }
+}
+
+function animate(now) {
+  requestAnimationFrame(animate);
+  const frameDt = clampFrameDelta((now - lastFrame) / 1000);
+  lastFrame = now;
+  if (!vehicle) return;
+  if (isRaceBlockedByModal()) {
+    input.releaseAll();
+    accumulator = 0;
+    vehicle.syncVisual(1);
+    chaseCamera.update(frameDt, vehicle.visual.position, vehicle.visual.quaternion, vehicle.telemetry, false);
+    audio.update(vehicle.telemetry);
+    updateHUD();
+    updatePerformance(frameDt);
+    renderer.render(scene, camera);
+    return;
+  }
+  const frameInput = input.update(frameDt, vehicle.telemetry.speedKmh);
+  if (input.consumePulse('KeyP')) {
+    performanceVisible = !performanceVisible;
+    $('perf').classList.toggle('hidden', !performanceVisible);
+  }
+  if (frameInput.reset && state === 'race') {
+    invalidateCurrentLap('manual-reset', 'RESET · LAP INVALID');
+    recordDevEvent('manual-reset', { reason: 'manual-reset' });
+    vehicle.reset(vehicle.safeSample);
+  }
+  accumulator = accumulatePhysicsTime(accumulator, frameDt);
+  const physicsStart = performance.now();
+  let firstStep = true;
+  let physicsSteps = 0;
+  while (accumulator >= FIXED_DT && physicsSteps < MAX_PHYSICS_STEPS) {
+    fixedUpdate(frameInput);
+    if (firstStep) {
+      frameInput.shiftUp = false;
+      frameInput.shiftDown = false;
+      frameInput.toggleTransmission = false;
+      firstStep = false;
+    }
+    accumulator -= FIXED_DT;
+    physicsSteps += 1;
+  }
+  physicsCost = THREE.MathUtils.damp(physicsCost, performance.now() - physicsStart, 5, frameDt);
+  const alpha = accumulator / FIXED_DT;
+  vehicle.syncVisual(alpha);
+  const menuMode = state === 'menu';
+  chaseCamera.update(frameDt, vehicle.visual.position, vehicle.visual.quaternion, vehicle.telemetry, menuMode);
+  if (!menuMode) effects.update(frameDt, vehicle.telemetry, vehicle.visual.quaternion);
+  audio.update(vehicle.telemetry);
+  if (!menuMode) updateHUD();
+  updatePerformance(frameDt);
+  renderer.render(scene, camera);
+}
+
+$('prev-car').onclick = () => selectCar(-1);
+$('next-car').onclick = () => selectCar(1);
+$('start-button').onclick = startRace;
+$('restart-button').onclick = startRace;
+$('invalid-lap-restart-button').onclick = startRace;
+$('garage-button').onclick = returnGarage;
+$('race-menu-button').onclick = openRaceMenu;
+$('resume-button').onclick = resumeRace;
+$('race-restart-button').onclick = startRace;
+$('race-garage-button').onclick = returnGarage;
+$('fullscreen-button').onclick = togglePageFullscreen;
+$('orientation-fullscreen').onclick = requestPageFullscreen;
+$('retry-car-button').onclick = () => {
+  const index = retryCarIndex ?? carIndex;
+  carIndex = index;
+  updateCarUI();
+  mountVehicle(index);
+};
+$('fullscreen-help-close').onclick = () => {
+  closeModalDialog('fullscreen-help');
+  syncOrientationHint();
+};
+$('fullscreen-help').onclick = (event) => {
+  if (event.target === $('fullscreen-help')) {
+    closeModalDialog('fullscreen-help');
+    syncOrientationHint();
+  }
+};
+$('about-button').onclick = (event) => {
+  if (state !== 'menu') return;
+  openModalDialog('about', event.currentTarget);
+};
+$('about-close').onclick = () => closeModalDialog('about');
+$('about').onclick = (event) => {
+  if (event.target === $('about')) closeModalDialog('about');
+};
+$('sound-button').onclick = () => {
+  audio.init().catch((error) => console.warn('Audio initialization failed', error));
+  audio.setEnabled(!audio.enabled);
+  $('sound-button').textContent = audio.enabled ? 'SOUND ON' : 'SOUND OFF';
+  $('sound-button').setAttribute('aria-pressed', String(audio.enabled));
+};
+addEventListener('keydown', (event) => {
+  if (trapModalFocus(event)) return;
+  const target = event.target;
+  const isInteractiveTarget = target instanceof HTMLElement
+    && (target.matches('button, a, input, textarea, select, [contenteditable="true"]')
+      || target.isContentEditable);
+  const hasModifier = event.ctrlKey || event.metaKey || event.altKey;
+  const isRestartShortcutTarget = target instanceof HTMLElement
+    && Boolean(target.closest('#restart-button, #race-restart-button, #invalid-lap-restart-button'));
+  if (event.code === 'Enter' && state === 'menu' && !isInteractiveTarget && !hasModifier) startRace();
+  if (event.code === 'KeyR'
+    && (!isInteractiveTarget || isRestartShortcutTarget)
+    && (state === 'finish'
+      || state === 'paused'
+      || (state === 'race' && timing?.snapshot().currentLapValid === false))
+    && !hasModifier) {
+    event.preventDefault();
+    startRace();
+    return;
+  }
+  if (event.code === 'Escape') {
+    const openDialog = getOpenModalDialog();
+    if (openDialog) {
+      if (openDialog.id === 'orientation-hint') {
+        openRaceMenu();
+      } else if (openDialog.id === 'pause-menu') {
+        resumeRace();
+      } else if (openDialog.id === 'finish') {
+        returnGarage();
+      } else {
+        closeModalDialog(openDialog.id);
+        if (openDialog.id === 'fullscreen-help') syncOrientationHint();
+      }
+    } else if (state === 'paused') {
+      resumeRace();
+    } else if (state === 'race' || state === 'countdown') {
+      openRaceMenu();
+    }
+  }
+});
+window.addEventListener('blur', pauseOnLifecycleLoss);
+window.addEventListener('pagehide', pauseOnLifecycleLoss);
+document.addEventListener('visibilitychange', handleVisibilityChange);
+function resizeRenderer() {
+  renderScale = Math.min(renderScale, getRenderScaleLimit());
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+  syncOrientationHint();
+}
+addEventListener('resize', resizeRenderer);
+window.visualViewport?.addEventListener('resize', resizeRenderer);
+addEventListener('fullscreenchange', syncFullscreenButton);
+addEventListener('webkitfullscreenchange', syncFullscreenButton);
+addEventListener('orientationchange', syncOrientationHint);
+matchMedia('(orientation: portrait)').addEventListener?.('change', syncOrientationHint);
+syncFullscreenButton();
+syncOrientationHint();
+
+updateCarUI();
+$('loading-status').textContent = '建立赛道与车辆物理…';
+const sceneryPromise = assets.loadScenery().catch((error) => console.warn('Scenery failed to load', error));
+await mountVehicle(carIndex, true);
+await sceneryPromise;
+$('loading-progress').style.width = '100%';
+setTimeout(() => $('loading').classList.add('hidden'), 320);
+lastFrame = performance.now();
+requestAnimationFrame(animate);

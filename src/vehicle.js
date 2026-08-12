@@ -1,0 +1,482 @@
+import * as THREE from 'three';
+import { FIXED_DT, SURFACES } from './config.js';
+import {
+  GRAVITY,
+  SHIFT_DURATION,
+  SHIFT_TORQUE_FACTOR,
+  aerodynamicDragScale,
+  drivetrainEfficiency,
+  roadWheelRpm,
+  torqueCurveFactor,
+} from './vehicle-physics.js';
+
+const clamp = THREE.MathUtils.clamp;
+const damp = THREE.MathUtils.damp;
+
+export function disposeOwnedVisual(root) {
+  if (!root || root.userData?.source !== 'fallback') return false;
+  const geometries = new Set();
+  const materials = new Set();
+  root.traverse((object) => {
+    if (!object.isMesh) return;
+    if (object.geometry) geometries.add(object.geometry);
+    const objectMaterials = Array.isArray(object.material) ? object.material : [object.material];
+    for (const material of objectMaterials) if (material) materials.add(material);
+  });
+  for (const geometry of geometries) geometry.dispose();
+  for (const material of materials) material.dispose();
+  return true;
+}
+
+export class VehicleSystem {
+  constructor({ RAPIER, world, scene, track, config, visual, onAutomaticReset = null }) {
+    this.RAPIER = RAPIER;
+    this.world = world;
+    this.scene = scene;
+    this.track = track;
+    this.config = config;
+    this.visual = visual;
+    this.onAutomaticReset = typeof onAutomaticReset === 'function' ? onAutomaticReset : null;
+    this.visual.name = `vehicle-${config.id}`;
+    scene.add(this.visual);
+    this.transmissionMode = 'AT';
+    this.gear = 1;
+    this.reverse = false;
+    this.reverseHold = 0;
+    this.shiftTimer = 0;
+    this.engineRpm = config.idle;
+    this.engineLoad = 0;
+    this.previousLongSpeed = 0;
+    this.smoothedLongAcceleration = 0;
+    this.safeSample = 0;
+    this.trackHint = 0;
+    this.stuckTimer = 0;
+    this.steerAngle = 0;
+    this.wheelInertia = 1.25;
+    this.currentPose = { position: new THREE.Vector3(), rotation: new THREE.Quaternion() };
+    this.previousPose = { position: new THREE.Vector3(), rotation: new THREE.Quaternion() };
+    this.tmp = {
+      position: new THREE.Vector3(), quaternion: new THREE.Quaternion(), forward: new THREE.Vector3(),
+      right: new THREE.Vector3(), up: new THREE.Vector3(), origin: new THREE.Vector3(),
+      worldUp: new THREE.Vector3(0, 1, 0),
+      down: new THREE.Vector3(), point: new THREE.Vector3(),
+      bodyVelocity: new THREE.Vector3(), velocity: new THREE.Vector3(),
+      force: new THREE.Vector3(), wheelForward: new THREE.Vector3(), wheelRight: new THREE.Vector3(),
+    };
+    this.createBody();
+    this.createWheels();
+    this.drivenWheels = this.wheels.filter((wheel) => wheel.driven);
+    this.lockedInput = {
+      steer: 0, throttle: 0, brake: 0, handbrake: 0,
+      shiftUp: false, shiftDown: false, toggleTransmission: false, reset: false, driveIntent: 0,
+    };
+    this.telemetry = {
+      speedKmh: 0, signedSpeedKmh: 0, rpm: config.idle, gear: 1, reverse: false,
+      throttle: 0, brake: 0, steer: 0, longitudinalAcceleration: 0, lateralAcceleration: 0,
+      surface: 'asphalt', absActive: false, tcsActive: false, stabilityActive: false,
+      wheels: this.wheels.map(() => ({
+        grounded: false, load: 0, suspension: 0, slipRatio: 0, slipAngle: 0,
+        slipPower: 0, surface: 'asphalt', contactPoint: new THREE.Vector3(),
+      })),
+    };
+  }
+
+  createBody() {
+    const pose = this.track.getResetPose(0);
+    pose.position.y = this.config.model.groundOffset + 0.025;
+    const yawRotation = { x: 0, y: Math.sin(pose.yaw * 0.5), z: 0, w: Math.cos(pose.yaw * 0.5) };
+    const desc = this.RAPIER.RigidBodyDesc.dynamic()
+      .setTranslation(pose.position.x, pose.position.y, pose.position.z)
+      .setRotation(yawRotation)
+      // Rolling resistance and aerodynamic drag are modeled explicitly below.
+      // Rapier damping is mass-scaled, so enabling it here adds a second hidden
+      // speed-dependent resistance and disproportionately slows heavier cars.
+      .setLinearDamping(0)
+      .setAngularDamping(0.72)
+      .setCcdEnabled(true)
+      .setCanSleep(false);
+    this.body = this.world.createRigidBody(desc);
+    const halfLength = Math.max(1.75, this.config.wheelbase * 0.72);
+    const collider = this.RAPIER.ColliderDesc.cuboid(this.config.trackWidth * 0.52, 0.28, halfLength)
+      .setTranslation(0, -0.09, 0)
+      .setMass(this.config.mass)
+      .setFriction(0.28)
+      .setRestitution(0.04);
+    this.collider = this.world.createCollider(collider, this.body);
+    this.currentPose.position.copy(pose.position);
+    this.previousPose.position.copy(pose.position);
+    this.currentPose.rotation.set(yawRotation.x, yawRotation.y, yawRotation.z, yawRotation.w);
+    this.previousPose.rotation.copy(this.currentPose.rotation);
+  }
+
+  createWheels() {
+    const halfTrack = this.config.trackWidth * 0.5;
+    const halfBase = this.config.wheelbase * 0.5;
+    const anchorHeight = this.config.wheelRadius + this.config.suspension.restLength
+      - this.config.mass * GRAVITY / (4 * this.config.suspension.springRate)
+      - this.config.model.groundOffset;
+    const drivenFront = this.config.drivetrain === 'AWD' || this.config.drivetrain === 'FWD';
+    const drivenRear = this.config.drivetrain === 'AWD' || this.config.drivetrain === 'RWD';
+    this.wheels = [
+      { id: 'FL', anchor: new THREE.Vector3(-halfTrack, anchorHeight, halfBase), front: true, driven: drivenFront, omega: 0 },
+      { id: 'FR', anchor: new THREE.Vector3(halfTrack, anchorHeight, halfBase), front: true, driven: drivenFront, omega: 0 },
+      { id: 'RL', anchor: new THREE.Vector3(-halfTrack, anchorHeight, -halfBase), front: false, driven: drivenRear, omega: 0 },
+      { id: 'RR', anchor: new THREE.Vector3(halfTrack, anchorHeight, -halfBase), front: false, driven: drivenRear, omega: 0 },
+    ].map((wheel) => ({
+      ...wheel,
+      grounded: false,
+      compression: 0,
+      springForce: 0,
+      hit: null,
+      surface: 'asphalt',
+    }));
+  }
+
+  requestShift(delta) {
+    const next = clamp(this.gear + delta, 1, this.config.gears.length);
+    if (next !== this.gear && this.shiftTimer <= 0) {
+      this.gear = next;
+      this.shiftTimer = SHIFT_DURATION;
+    }
+  }
+
+  setReverseState(reverse, longSpeed = 0) {
+    if (this.reverse === reverse) return;
+    this.reverse = reverse;
+    this.reverseHold = 0;
+    this.gear = 1;
+    this.shiftTimer = 0.08;
+    const rollingOmega = longSpeed / this.config.wheelRadius;
+    for (const wheel of this.wheels) wheel.omega = rollingOmega;
+    this.engineRpm = Math.max(this.config.idle, Math.min(this.engineRpm, this.config.idle * 1.35));
+  }
+
+  reset(sampleIndex = this.safeSample) {
+    const pose = this.track.getResetPose(sampleIndex);
+    pose.position.y = this.config.model.groundOffset + 0.025;
+    const rotation = { x: 0, y: Math.sin(pose.yaw * 0.5), z: 0, w: Math.cos(pose.yaw * 0.5) };
+    this.body.setTranslation(pose.position, true);
+    this.body.setRotation(rotation, true);
+    this.body.setLinvel({ x: 0, y: 0, z: 0 }, true);
+    this.body.setAngvel({ x: 0, y: 0, z: 0 }, true);
+    this.body.resetForces(true);
+    this.body.resetTorques(true);
+    for (const wheel of this.wheels) wheel.omega = 0;
+    this.gear = 1;
+    this.reverse = false;
+    this.reverseHold = 0;
+    this.shiftTimer = 0;
+    this.engineRpm = this.config.idle;
+    this.trackHint = pose.sampleIndex;
+    this.previousLongSpeed = 0;
+    this.smoothedLongAcceleration = 0;
+    this.safeSample = pose.sampleIndex;
+    this.stuckTimer = 0;
+    this.afterPhysics();
+    this.previousPose.position.copy(this.currentPose.position);
+    this.previousPose.rotation.copy(this.currentPose.rotation);
+  }
+
+  torqueCurve(rpm) {
+    return torqueCurveFactor(this.config, rpm);
+  }
+
+  updateTransmission(input, dt, longSpeed) {
+    if (input.toggleTransmission) this.transmissionMode = this.transmissionMode === 'AT' ? 'MT' : 'AT';
+    if (this.transmissionMode === 'MT') {
+      if (input.shiftUp) this.requestShift(1);
+      if (input.shiftDown) this.requestShift(-1);
+    }
+    // W and S are directional requests, not two pedals whose meaning depends on
+    // a sticky mode. W always asks for forward; S brakes a forward-moving car,
+    // then selects reverse only once the driveline is almost stationary.
+    const switchSpeed = 0.22;
+    const explicitIntent = Number.isFinite(input.driveIntent);
+    const driveIntent = explicitIntent
+      ? Math.sign(input.driveIntent)
+      : (input.throttle > 0.055 ? 1 : input.brake > 0.055 ? -1 : 0);
+    const wantsForward = driveIntent > 0;
+    const wantsReverse = driveIntent < 0;
+    let driveThrottle = 0;
+    let serviceBrake = 0;
+
+    if (wantsForward) {
+      this.reverseHold = 0;
+      if (longSpeed < -switchSpeed) {
+        serviceBrake = input.throttle;
+      } else {
+        if (this.reverse) this.setReverseState(false, longSpeed);
+        driveThrottle = input.throttle;
+      }
+    } else if (wantsReverse) {
+      if (longSpeed > switchSpeed) {
+        this.reverseHold = 0;
+        serviceBrake = input.brake;
+      } else if (this.reverse) {
+        driveThrottle = input.brake;
+      } else {
+        this.reverseHold += dt;
+        if (this.reverseHold >= 0.16) {
+          this.setReverseState(true, longSpeed);
+          driveThrottle = input.brake;
+        }
+      }
+    } else {
+      this.reverseHold = 0;
+    }
+    return { driveThrottle, serviceBrake };
+  }
+
+  fixedUpdate(input, controlsLocked = false, dt = FIXED_DT) {
+    this.body.resetForces(false);
+    this.body.resetTorques(false);
+    const t = this.body.translation();
+    const r = this.body.rotation();
+    const tmp = this.tmp;
+    tmp.position.set(t.x, t.y, t.z);
+    tmp.quaternion.set(r.x, r.y, r.z, r.w);
+    tmp.forward.set(0, 0, 1).applyQuaternion(tmp.quaternion);
+    tmp.forward.y = 0;
+    tmp.forward.normalize();
+    tmp.right.set(1, 0, 0).applyQuaternion(tmp.quaternion);
+    tmp.right.y = 0;
+    tmp.right.normalize();
+    tmp.up.set(0, 1, 0).applyQuaternion(tmp.quaternion).normalize();
+    tmp.down.set(0, -1, 0);
+    const linvel = this.body.linvel();
+    // Keep the center-of-mass velocity separate. tmp.velocity is reused below
+    // for contact-point velocities and must never become the aerodynamic input.
+    tmp.bodyVelocity.set(linvel.x, linvel.y, linvel.z);
+    const longSpeed = tmp.bodyVelocity.dot(tmp.forward);
+    const lateralSpeed = tmp.bodyVelocity.dot(tmp.right);
+    const speedKmh = Math.abs(longSpeed) * 3.6;
+    const activeInput = controlsLocked ? this.lockedInput : input;
+    const pedals = this.updateTransmission(activeInput, dt, longSpeed);
+    this.steerAngle = damp(this.steerAngle, activeInput.steer * this.config.steer * THREE.MathUtils.lerp(1, 0.28, clamp(speedKmh / 190, 0, 1)), 9, dt);
+    this.shiftTimer = Math.max(0, this.shiftTimer - dt);
+
+    const ratio = this.reverse ? 3.25 : this.config.gears[this.gear - 1];
+    const drivenWheels = this.drivenWheels;
+    // The road speed determines driveline RPM. Reading it from simulated wheel
+    // spin made every launch or kerb strike look like an impossible gear change.
+    const roadWheelRpmValue = roadWheelRpm(longSpeed, this.config.wheelRadius);
+    const coupledRpm = roadWheelRpmValue * ratio * this.config.finalDrive;
+    const freeRpm = this.config.idle + pedals.driveThrottle * (this.config.redline - this.config.idle) * 0.38;
+    const clutchDemand = clamp(0.18 + speedKmh / 11 + pedals.driveThrottle * 0.32, 0.18, 1);
+    let clutchCoupling = clutchDemand;
+    if (!this.reverse && this.transmissionMode === 'AT' && this.gear === 1 && pedals.driveThrottle > 0) {
+      // The automatic clutch may carry torque while it is still slipping, but
+      // it must not kinematically lock before road speed can sustain launch RPM.
+      const launchRpm = this.config.idle
+        + pedals.driveThrottle * (this.config.redline - this.config.idle) * 0.24;
+      if (coupledRpm < launchRpm) {
+        const launchClutchLimit = (freeRpm - launchRpm) / Math.max(1, freeRpm - coupledRpm);
+        clutchCoupling = Math.min(clutchDemand, clamp(launchClutchLimit, 0.18, 1));
+      }
+    }
+    const targetRpm = Math.max(this.config.idle, THREE.MathUtils.lerp(freeRpm, coupledRpm, clutchCoupling));
+    this.engineRpm = damp(this.engineRpm, targetRpm, this.shiftTimer > 0 ? 5 : 13, dt);
+    if (!this.reverse && this.transmissionMode === 'AT' && this.shiftTimer <= 0) {
+      const throttleDemand = pedals.driveThrottle;
+      const upshiftRpm = this.config.redline * THREE.MathUtils.lerp(0.68, 0.91, throttleDemand);
+      const downshiftRpm = this.config.redline * THREE.MathUtils.lerp(0.31, 0.43, throttleDemand);
+      const lowerRatio = this.config.gears[Math.max(0, this.gear - 2)];
+      const lowerGearRpm = roadWheelRpmValue * lowerRatio * this.config.finalDrive;
+      if (speedKmh < 5 && this.gear > 1) this.requestShift(1 - this.gear);
+      else if (this.engineRpm > upshiftRpm && this.gear < this.config.gears.length) this.requestShift(1);
+      else if (this.gear > 1 && this.engineRpm < downshiftRpm && lowerGearRpm < this.config.redline * 0.92) this.requestShift(-1);
+    }
+    const engineTorque = this.config.torque * this.torqueCurve(this.engineRpm) * pedals.driveThrottle;
+    const efficiency = drivetrainEfficiency(this.config.drivetrain);
+    let totalDriveTorque = engineTorque * ratio * this.config.finalDrive * efficiency * clutchDemand;
+    if (this.reverse) {
+      totalDriveTorque *= -0.72;
+      if (speedKmh > 38) totalDriveTorque *= clamp((43 - speedKmh) / 5, 0, 1);
+    }
+    if (this.shiftTimer > 0) totalDriveTorque *= SHIFT_TORQUE_FACTOR;
+    const driveTorquePerWheel = totalDriveTorque / Math.max(1, drivenWheels.length);
+
+    const suspension = this.config.suspension;
+    const maxRay = suspension.restLength + suspension.travel + this.config.wheelRadius;
+    for (let index = 0; index < this.wheels.length; index += 1) {
+      const wheel = this.wheels[index];
+      tmp.origin.copy(wheel.anchor).applyQuaternion(tmp.quaternion).add(tmp.position);
+      const ray = new this.RAPIER.Ray(tmp.origin, tmp.down);
+      const hit = this.world.castRayAndGetNormal(ray, maxRay, false, undefined, undefined, undefined, this.body);
+      wheel.hit = hit;
+      wheel.grounded = Boolean(hit);
+      wheel.compression = 0;
+      wheel.springForce = 0;
+      if (!hit) continue;
+      const suspensionLength = hit.timeOfImpact - this.config.wheelRadius;
+      wheel.compression = clamp(suspension.restLength - suspensionLength, 0, suspension.travel);
+      tmp.point.copy(tmp.origin).addScaledVector(tmp.down, hit.timeOfImpact);
+      const pointVelocity = this.body.velocityAtPoint(tmp.point);
+      const compressionVelocity = -pointVelocity.y;
+      const damper = compressionVelocity >= 0 ? suspension.damperBump : suspension.damperRebound;
+      const rawSpringForce = wheel.compression * suspension.springRate + compressionVelocity * damper;
+      const maximumWheelLoad = this.config.mass * GRAVITY * 0.72;
+      wheel.springForce = clamp(rawSpringForce, 0, maximumWheelLoad);
+      wheel.contactPoint = wheel.contactPoint || new THREE.Vector3();
+      wheel.contactPoint.copy(tmp.point);
+      wheel.surface = this.track.getSurface(tmp.point, this.trackHint).id;
+    }
+
+    for (const [leftIndex, rightIndex] of [[0, 1], [2, 3]]) {
+      const left = this.wheels[leftIndex];
+      const right = this.wheels[rightIndex];
+      if (!left.grounded || !right.grounded) continue;
+      const antiRoll = (left.compression - right.compression) * suspension.antiRoll;
+      const maximumWheelLoad = this.config.mass * GRAVITY * 0.72;
+      left.springForce = clamp(left.springForce + antiRoll, 0, maximumWheelLoad);
+      right.springForce = clamp(right.springForce - antiRoll, 0, maximumWheelLoad);
+    }
+
+    let absActive = false;
+    let tcsActive = false;
+    let groundedCount = 0;
+    let averageSurface = 'asphalt';
+    for (let index = 0; index < this.wheels.length; index += 1) {
+      const wheel = this.wheels[index];
+      const telemetry = this.telemetry.wheels[index];
+      telemetry.grounded = wheel.grounded;
+      telemetry.load = 0;
+      telemetry.suspension = wheel.compression;
+      telemetry.slipRatio = 0;
+      telemetry.slipAngle = 0;
+      telemetry.slipPower = 0;
+      if (!wheel.grounded) {
+        wheel.omega *= 0.998;
+        continue;
+      }
+      groundedCount += 1;
+      averageSurface = wheel.surface;
+      const normal = wheel.springForce;
+      telemetry.load = normal;
+      telemetry.surface = wheel.surface;
+      telemetry.contactPoint.copy(wheel.contactPoint);
+      tmp.force.set(0, normal, 0);
+      this.body.addForceAtPoint(tmp.force, wheel.contactPoint, true);
+
+      tmp.wheelForward.copy(tmp.forward);
+      if (wheel.front) tmp.wheelForward.applyAxisAngle(tmp.worldUp, this.steerAngle);
+      tmp.wheelRight.crossVectors(tmp.worldUp, tmp.wheelForward).normalize();
+      const pointVelocity = this.body.velocityAtPoint(wheel.contactPoint);
+      tmp.velocity.set(pointVelocity.x, pointVelocity.y, pointVelocity.z);
+      const wheelLongSpeed = tmp.velocity.dot(tmp.wheelForward);
+      const wheelLateralSpeed = tmp.velocity.dot(tmp.wheelRight);
+      const slipRatio = (wheel.omega * this.config.wheelRadius - wheelLongSpeed) / Math.max(3.5, Math.abs(wheelLongSpeed));
+      const slipAngle = Math.atan2(wheelLateralSpeed, Math.max(2.2, Math.abs(wheelLongSpeed)));
+      const surface = SURFACES[wheel.surface];
+      const muLoad = normal * this.config.tire.mu * surface.grip;
+      let longitudinalForce = Math.tanh(slipRatio * this.config.tire.longStiffness) * muLoad;
+      let lateralForce = -Math.tanh(slipAngle * this.config.tire.lateralStiffness) * muLoad;
+      const magnitude = Math.hypot(longitudinalForce, lateralForce);
+      if (magnitude > muLoad && magnitude > 0) {
+        const scale = muLoad / magnitude;
+        longitudinalForce *= scale;
+        lateralForce *= scale;
+      }
+      const rolling = Math.abs(wheelLongSpeed) > 0.25
+        ? -Math.sign(wheelLongSpeed) * normal * this.config.tire.rollingResistance * surface.rolling
+        : 0;
+      longitudinalForce += rolling;
+      tmp.force.copy(tmp.wheelForward).multiplyScalar(longitudinalForce).addScaledVector(tmp.wheelRight, lateralForce);
+      this.body.addForceAtPoint(tmp.force, wheel.contactPoint, true);
+
+      let wheelDriveTorque = wheel.driven ? driveTorquePerWheel : 0;
+      if (pedals.driveThrottle > 0.05 && Math.abs(slipRatio) > 0.11) {
+        wheelDriveTorque *= clamp(0.11 / Math.abs(slipRatio), 0.16, 1);
+        tcsActive = true;
+      }
+      let brakeTorque = pedals.serviceBrake * this.config.brakeTorque * (wheel.front ? 0.31 : 0.19);
+      if (!wheel.front) brakeTorque += activeInput.handbrake * this.config.brakeTorque * 0.62;
+      if (brakeTorque > 0 && slipRatio < -0.17) {
+        brakeTorque *= clamp(0.17 / Math.abs(slipRatio), 0.2, 1);
+        absActive = true;
+      }
+      const brakeDirection = Math.sign(Math.abs(wheel.omega) > 0.2 ? wheel.omega : wheelLongSpeed);
+      const angularTorque = wheelDriveTorque - longitudinalForce * this.config.wheelRadius - brakeDirection * brakeTorque;
+      wheel.omega += angularTorque / this.wheelInertia * dt;
+      if (brakeTorque > 0 && Math.sign(wheel.omega) !== Math.sign(wheel.omega - angularTorque / this.wheelInertia * dt)) wheel.omega = 0;
+      wheel.omega = clamp(wheel.omega, -420, 420);
+      telemetry.slipRatio = slipRatio;
+      telemetry.slipAngle = slipAngle;
+      telemetry.slipPower = (Math.abs(longitudinalForce * (wheel.omega * this.config.wheelRadius - wheelLongSpeed)) + Math.abs(lateralForce * wheelLateralSpeed)) / 10000;
+    }
+    const dragScale = aerodynamicDragScale(this.config.cdA, tmp.bodyVelocity.lengthSq());
+    if (dragScale !== 0) {
+      tmp.force.copy(tmp.bodyVelocity).multiplyScalar(dragScale);
+      this.body.addForce(tmp.force, true);
+    }
+    const targetYawRate = longSpeed / Math.max(2, this.config.wheelbase) * Math.tan(this.steerAngle);
+    const angularVelocity = this.body.angvel();
+    const stabilityError = targetYawRate - angularVelocity.y;
+    const stabilityActive = Math.abs(stabilityError) > 0.16 && speedKmh > 14 && !activeInput.handbrake;
+    if (stabilityActive) {
+      const correctionTorque = clamp(
+        stabilityError * this.config.mass * this.config.wheelbase * 1.65,
+        -this.config.mass * 8,
+        this.config.mass * 8,
+      );
+      this.body.addTorque({ x: 0, y: correctionTorque, z: 0 }, true);
+    }
+
+    this.engineLoad = damp(this.engineLoad, pedals.driveThrottle, 7, dt);
+    this.telemetry.speedKmh = Math.abs(longSpeed) * 3.6;
+    this.telemetry.signedSpeedKmh = longSpeed * 3.6;
+    this.telemetry.rpm = this.engineRpm;
+    this.telemetry.gear = this.gear;
+    this.telemetry.reverse = this.reverse;
+    this.telemetry.throttle = pedals.driveThrottle;
+    this.telemetry.brake = pedals.serviceBrake;
+    this.telemetry.steer = activeInput.steer;
+    this.smoothedLongAcceleration = damp(this.smoothedLongAcceleration, (longSpeed - this.previousLongSpeed) / dt, 5, dt);
+    this.telemetry.longitudinalAcceleration = this.smoothedLongAcceleration;
+    this.telemetry.lateralAcceleration = longSpeed * angularVelocity.y;
+    this.telemetry.surface = averageSurface;
+    this.telemetry.absActive = absActive;
+    this.telemetry.tcsActive = tcsActive;
+    this.telemetry.stabilityActive = stabilityActive;
+    this.previousLongSpeed = longSpeed;
+
+    const trackInfo = this.track.nearestInfo(tmp.position, this.trackHint);
+    this.trackHint = trackInfo.index;
+    if (groundedCount >= 3 && Math.abs(trackInfo.offset) < this.track.config.width * 0.5 && Math.abs(r.x) < 0.42 && Math.abs(r.z) < 0.42) {
+      this.safeSample = trackInfo.index;
+    }
+    const nearlyStoppedWithInput = this.telemetry.speedKmh < 1.2 && pedals.driveThrottle > 0.5;
+    this.stuckTimer = nearlyStoppedWithInput ? this.stuckTimer + dt : 0;
+    const resetReason = tmp.position.y < -4
+      ? 'fell-below-world'
+      : Math.abs(r.x) > 0.78 || Math.abs(r.z) > 0.78
+        ? 'vehicle-overturned'
+        : this.stuckTimer > 8
+          ? 'vehicle-stuck'
+          : null;
+    if (resetReason) {
+      this.reset(this.safeSample);
+      this.onAutomaticReset?.(resetReason);
+    }
+  }
+
+  afterPhysics() {
+    this.previousPose.position.copy(this.currentPose.position);
+    this.previousPose.rotation.copy(this.currentPose.rotation);
+    const translation = this.body.translation();
+    const rotation = this.body.rotation();
+    this.currentPose.position.set(translation.x, translation.y, translation.z);
+    this.currentPose.rotation.set(rotation.x, rotation.y, rotation.z, rotation.w);
+  }
+
+  syncVisual(alpha = 1) {
+    this.visual.position.lerpVectors(this.previousPose.position, this.currentPose.position, alpha);
+    this.visual.quaternion.slerpQuaternions(this.previousPose.rotation, this.currentPose.rotation, alpha);
+  }
+
+  destroy() {
+    this.scene.remove(this.visual);
+    this.world.removeRigidBody(this.body);
+    disposeOwnedVisual(this.visual);
+  }
+}
