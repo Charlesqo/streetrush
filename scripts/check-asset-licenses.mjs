@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFile, readdir } from 'node:fs/promises';
-import { join, relative } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const projectRoot = fileURLToPath(new URL('../', import.meta.url));
@@ -18,7 +18,7 @@ async function walk(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     const path = join(directory, entry.name);
     if (entry.isDirectory()) files.push(...await walk(path));
-    else if (entry.isFile()) files.push(relative(projectRoot, path));
+    else if (entry.isFile()) files.push(relative(projectRoot, path).split(sep).join('/'));
   }
   return files;
 }
