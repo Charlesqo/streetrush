@@ -83,6 +83,17 @@
 - 保持不变：恢复不重建/重启节点图，不改变 enabled 开关或 mute gain；pause gate、暂停时 telemetry 冻结和 main lifecycle wiring 留到下一批。
 - 结果：gesture gate、并发 init、初次拒绝、系统挂起、重复 update、节流重试、mute/node identity 断言通过；完整 `pnpm verify`、六车物理和真实 Rust/WASM owner 测试通过。
 
+### 音频 pause gate 与主循环接线
+
+- 来源参考：NAS 未跟踪 `scripts/test-audio.mjs` 的 pause 部分，以及未提交 `src/audio.js`/`src/main.js` 中的 `setPaused()` 接线；没有吸收倒计时消息或其他 main 大 diff。
+- 原始问题：clean 主循环在 pause/modal 分支仍调用 `audio.update()`，使 engine/road/wind/tire 参数继续跟随冻结后的 telemetry，也没有阻止换挡 tone/noise transient。
+- 失败证据：独立 owner 测试首先在 `audio.setPaused is not a function` 失败；这证明 baseline 没有 pause 所有权，而不是 fake graph 的数值差异。
+- 实际变化：compressor 与 destination 之间加入 60 ms 平滑 pause gate；paused 时 update/tone/noise 全部短路，恢复时重置 previous gear/reverse 观察点；重复 pause/resume 不重复调度 gain。
+- main 接线：start/garage/resume/active 打开 gate，paused 或受阻 modal 关闭 gate并跳过 `audio.update()`；根元素 `data-audio-paused` 作为只读运行时观测。
+- 自动结果：暂停前后 AudioParam target 数、临时 oscillator/buffer source 数、gate gain/time constant、幂等和恢复首帧无 stale shift transient 均通过；context recovery 测试保持通过。
+- 浏览器结果：真实流程“开始比赛 → 比赛菜单 → 继续比赛”依次得到 `false → true → false`，scheduler 同时保持 `rust-wasm`，无 console warning/error。
+- 回归：完整 `pnpm verify`、六车物理、真实 WASM owner、构建和资产检查全部通过。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
@@ -90,7 +101,7 @@
 建议批次：
 
 1. 已污染内部标量/刚体 finite recovery 与对应失败测试（调用边界、reset 和输入脉冲已独立整合）；
-2. 音频 pause gate/telemetry freeze 与 main 生命周期测试（context recovery 已独立整合）；
+2. 多车音频 bank/runtime adapter、失败回退与车辆切换（context recovery 和 pause gate 已独立整合）；
 3. 资产超时、取消、缓存、引用安全释放与六车切换测试；
 4. 计时并发存储、路线 HUD、布局和 renderer lifecycle；
 5. 车辆 GLB、source model 和纹理的二进制差异。
@@ -118,9 +129,10 @@
 - 证实：clean `reset()` 没有清除多个自己拥有的车辆、轮胎和 telemetry 状态；六车的遗漏字段形状一致，能用独立 reset-only 修复消除。
 - 证实：调用边界的非有限值会跨 wheel/telemetry 进入 Rapier；入口规范化能让 90 个配对 case 与明确 oracle 一致，并保持正常 120 Hz 回归。
 - 证实：clean audio 并发 init 会重复 resume；单飞恢复能吞吐拒绝、节流 statechange retry，同时保持节点图和静音状态。
+- 证实：clean pause/modal 帧继续更新 WebAudio 参数；独立 pause gate 能冻结连续值和瞬态，浏览器实际 pause/resume 接线与 Rust scheduler 共存。
 
 ## 当前最值得继续的方向
 
-1. 建立独立 audio pause gate 测试，验证暂停时不跟随 RPM/slip/speed、瞬态不触发，并在 main pause/resume/modal 路径正确接线；
+1. 从 `multi_car_audio` 权威 runtime/data/schema 中裁剪最小 bank adapter 接口，先验证一车成功、缺 bank 回退和切车 stale/abort，不复制 3.14 GB 隔离树；
 2. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与调用边界清理混合；
 3. 随后评估资产取消/释放与六车切换簇，按可观测资源生命周期选择下一批。

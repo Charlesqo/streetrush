@@ -175,10 +175,28 @@
 
 结论：AudioContext recovery 是独立且有失败证据的 owner 问题；不需要重建 oscillator graph，也不应借恢复改变用户 mute 意图。pause gate 尚未验证，继续保持候选。
 
-## 下一实验
+## 音频 pause gate 实验结果
 
 问题：比赛 pause/modal/visibility 路径是否继续让 engine/road/wind/tire 参数追随冻结后的 stale telemetry，并可能在恢复时错误触发换挡瞬态？
 
 可观测量：pause gate gain，暂停前后各 AudioParam target 数量，tone/noise 临时 source 数，previous gear/reverse，重复 pause/resume 幂等，以及 main 的 paused/modal/active 三种路径。
 
 停止条件：先在 audio owner 层复现 stale telemetry 更新；只在 owner 通过后接 main lifecycle，避免把倒计时消息、renderer 或其他 NAS main diff 带入。
+
+- owner clean 失败：首次调用 `setPaused(true)` 抛 `TypeError`；baseline 完全没有 pause owner。
+- fake graph 扩展：记录 AudioParam cancel、创建的 oscillator 和 buffer source；它只服务测试，不改变产品代码。
+- 最小实现：单独 pause gain 位于 compressor 后；pause/resume 使用 `setTargetAtTime` 和 0.06 秒时间常量；paused update、tone、noise 和 transient 全部不执行。
+- stale 防护：恢复时 previous gear 置空、reverse 归 false；第一次恢复 telemetry 不生成暂停期间积累的假换挡声音。
+- main 接线：显式 helper 同步 audio owner 和 `data-audio-paused`；paused/受阻 modal 分支不再调用 update，active 分支重新打开 gate。
+- 实际浏览器：开始比赛 `false`，打开比赛菜单 `true`，继续比赛 `false`；同时 `data-physics-scheduler-owner=rust-wasm`，console 0 warning/error。
+- 回归：`pnpm test:audio-context`、`pnpm test:audio-pause` 和完整 `pnpm verify` 均通过；六车物理、Rust/WASM 和资产门禁保持绿色。
+
+结论：pause 是音频参数与瞬态的 owner 边界，不等同于 context suspend；用独立 gain gate 可保留已有节点图并避免恢复爆音/假换挡。NAS main 的其他 400 行改动仍未混入。
+
+## 下一实验
+
+问题：`multi_car_audio` 的权威 runtime/data/schema 能否裁剪成与现有 `ProceduralAudio` 并存的最小 bank adapter，并对缺 bank、切车 stale、暂停恢复给出确定性 fallback？
+
+可观测量：bank id/vehicle id 映射、加载 promise owner、abort/stale token、decoded buffer 引用、切车后活跃 source 数、fallback reason；exact 六车 bank 缺失必须显式报告而非伪装完成。
+
+停止条件：先只读定位 7/7 Node 场景所调用的最小源文件和数据；只复制接口与最小 fixture，不复制 vendor/缓存/大 WAV；没有一车成功 + 缺失回退 + stale 切车测试前，不替换当前 procedural runtime。

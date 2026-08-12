@@ -2,6 +2,7 @@ export class FakeAudioParam {
   constructor(value = 0) {
     this.value = value;
     this.targets = [];
+    this.cancelCalls = [];
   }
 
   setTargetAtTime(value, startTime, timeConstant) {
@@ -19,7 +20,9 @@ export class FakeAudioParam {
     this.targets.push({ value, endTime });
   }
 
-  cancelScheduledValues() {}
+  cancelScheduledValues(startTime) {
+    this.cancelCalls.push(startTime);
+  }
 }
 
 export class FakeAudioNode {
@@ -72,6 +75,8 @@ export class FakeAudioContext {
     this.destination = new FakeAudioNode();
     this.listeners = new Map();
     this.resumeCalls = 0;
+    this.createdOscillators = [];
+    this.createdBufferSources = [];
     const resumeBehaviorFactory = FakeAudioContext.resumeBehaviorFactory;
     FakeAudioContext.resumeBehaviorFactory = null;
     this.resumeBehavior = resumeBehaviorFactory
@@ -118,7 +123,9 @@ export class FakeAudioContext {
   }
 
   createOscillator() {
-    return new FakeAudioNode();
+    const oscillator = new FakeAudioNode();
+    this.createdOscillators.push(oscillator);
+    return oscillator;
   }
 
   createWaveShaper() {
@@ -133,6 +140,7 @@ export class FakeAudioContext {
     const source = new FakeAudioNode();
     source.loop = false;
     source.buffer = null;
+    this.createdBufferSources.push(source);
     return source;
   }
 

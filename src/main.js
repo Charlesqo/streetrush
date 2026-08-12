@@ -76,6 +76,7 @@ const track = new TrackSystem(TRACK_CONFIG, scene, renderer, RAPIER, physicsWorl
 const assets = new AssetManager(scene, track);
 const input = new InputController();
 const audio = new ProceduralAudio();
+document.documentElement.dataset.audioPaused = 'false';
 const effects = new TireEffects(scene);
 const chaseCamera = new ChaseCamera(camera);
 const timingStore = new TimingStore();
@@ -109,6 +110,11 @@ const dialogReturnFocus = new Map();
 
 function resetPhysicsScheduler() {
   physicsScheduler?.reset();
+}
+
+function setAudioPaused(paused) {
+  audio.setPaused(paused);
+  document.documentElement.dataset.audioPaused = String(audio.paused);
 }
 
 const devToolsRequested = import.meta.env.DEV && new URLSearchParams(location.search).has('devtools');
@@ -601,6 +607,7 @@ function startRace() {
   resetPhysicsScheduler();
   lastFrame = performance.now();
   if (standaloneMode && touchCapable) lockLandscape();
+  setAudioPaused(false);
   audio.init().catch((error) => console.warn('Audio initialization failed', error));
   state = 'countdown';
   document.body.classList.add('race-active');
@@ -705,6 +712,7 @@ function finishRace(summary = timing?.getSummary()) {
 
 function returnGarage() {
   state = 'menu';
+  setAudioPaused(false);
   track.setCheckpointHighlight(null);
   closeAllModalDialogs(false);
   input.releaseAll();
@@ -734,6 +742,7 @@ function openRaceMenu() {
   if (state !== 'race' && state !== 'countdown') return;
   stateBeforePause = state;
   state = 'paused';
+  setAudioPaused(true);
   input.releaseAll();
   input.setTouchEnabled(false);
   $('mobile-controls').classList.remove('active');
@@ -753,6 +762,7 @@ function handleVisibilityChange() {
 function resumeRace() {
   if (state !== 'paused') return;
   state = stateBeforePause;
+  setAudioPaused(false);
   resetPhysicsScheduler();
   lastFrame = performance.now();
   input.setTouchEnabled(touchCapable);
@@ -927,12 +937,12 @@ function animate(now) {
   const frameDt = clampFrameDelta((now - lastFrame) / 1000);
   lastFrame = now;
   if (!vehicle) return;
-  if (isRaceBlockedByModal()) {
+  if (state === 'paused' || isRaceBlockedByModal()) {
+    setAudioPaused(true);
     input.releaseAll();
     resetPhysicsScheduler();
     vehicle.syncVisual(1);
     chaseCamera.update(frameDt, vehicle.visual.position, vehicle.visual.quaternion, vehicle.telemetry, false);
-    audio.update(vehicle.telemetry);
     updateHUD();
     updatePerformance(frameDt);
     renderer.render(scene, camera);
@@ -953,6 +963,7 @@ function animate(now) {
   const menuMode = state === 'menu';
   chaseCamera.update(frameDt, vehicle.visual.position, vehicle.visual.quaternion, vehicle.telemetry, menuMode);
   if (!menuMode) effects.update(frameDt, vehicle.telemetry, vehicle.visual.quaternion);
+  setAudioPaused(false);
   audio.update(vehicle.telemetry);
   if (!menuMode) updateHUD();
   updatePerformance(frameDt);

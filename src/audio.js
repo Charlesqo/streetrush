@@ -1,5 +1,6 @@
 const CONTEXT_RESUME_RETRY_MS = 500;
 const AUDIO_MIN_GAIN = 0.0001;
+const AUDIO_GATE_TIME_CONSTANT = 0.06;
 
 export class ProceduralAudio {
   constructor() {
@@ -10,6 +11,7 @@ export class ProceduralAudio {
     this.contextResumePromise = null;
     this.lastContextResumeAt = -Infinity;
     this.contextStateChangeHandler = null;
+    this.paused = false;
     this.previousTelemetry = {
       gear: null,
       reverse: false,
@@ -101,7 +103,9 @@ export class ProceduralAudio {
     compressor.ratio.value = 5;
     compressor.attack.value = 0.006;
     compressor.release.value = 0.16;
-    master.connect(compressor).connect(context.destination);
+    const pauseGate = context.createGain();
+    pauseGate.gain.value = this.paused ? AUDIO_MIN_GAIN : 1;
+    master.connect(compressor).connect(pauseGate).connect(context.destination);
 
     const sourceBus = context.createGain();
     const osc = context.createOscillator();
@@ -182,7 +186,7 @@ export class ProceduralAudio {
     noise.start();
     tireOsc.start();
     this.nodes = {
-      master, osc, sub, mechanical, engineGain, drive, tone, resonators, resonanceGains,
+      master, pauseGate, osc, sub, mechanical, engineGain, drive, tone, resonators, resonanceGains,
       exhaustNoiseGain, roadNoiseGain, windGain, tireOsc, tireFilter, tireGain,
       noiseBuffer: noise.buffer,
     };
@@ -195,8 +199,27 @@ export class ProceduralAudio {
     if (this.nodes) this.nodes.master.gain.setTargetAtTime(enabled ? 0.28 : AUDIO_MIN_GAIN, this.context.currentTime, 0.04);
   }
 
+  setPaused(paused) {
+    const nextPaused = Boolean(paused);
+    if (this.paused === nextPaused) return;
+    const wasPaused = this.paused;
+    this.paused = nextPaused;
+    if (!this.nodes || !this.context) return;
+    const now = this.context.currentTime;
+    this.nodes.pauseGate.gain.cancelScheduledValues?.(now);
+    this.nodes.pauseGate.gain.setTargetAtTime(
+      nextPaused ? AUDIO_MIN_GAIN : 1,
+      now,
+      AUDIO_GATE_TIME_CONSTANT,
+    );
+    if (wasPaused && !nextPaused) {
+      this.previousTelemetry.gear = null;
+      this.previousTelemetry.reverse = false;
+    }
+  }
+
   playTone(frequency, duration, gain, type = 'sine') {
-    if (!this.enabled || !this.context || !this.nodes) return;
+    if (this.paused || !this.enabled || !this.context || !this.nodes) return;
     const now = this.context.currentTime;
     const oscillator = this.context.createOscillator();
     const envelope = this.context.createGain();
@@ -212,7 +235,7 @@ export class ProceduralAudio {
   }
 
   playNoiseBurst(duration, gain, centerFrequency = 520) {
-    if (!this.enabled || !this.context || !this.nodes?.noiseBuffer) return;
+    if (this.paused || !this.enabled || !this.context || !this.nodes?.noiseBuffer) return;
     const now = this.context.currentTime;
     const source = this.context.createBufferSource();
     source.buffer = this.nodes.noiseBuffer;
@@ -230,6 +253,7 @@ export class ProceduralAudio {
   }
 
   updateTransientEvents(telemetry) {
+    if (this.paused) return;
     const now = this.context.currentTime;
     const previous = this.previousTelemetry;
     const shifted = previous.gear !== null
@@ -245,7 +269,7 @@ export class ProceduralAudio {
   }
 
   update(telemetry) {
-    if (!this.context || !this.nodes || !this.config || this.context.state === 'closed') return;
+    if (this.paused || !this.context || !this.nodes || !this.config || this.context.state === 'closed') return;
     this.resumeContext();
     const now = this.context.currentTime;
     const profile = this.config.audio;
