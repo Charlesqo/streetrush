@@ -1,9 +1,15 @@
+const CONTEXT_RESUME_RETRY_MS = 500;
+const AUDIO_MIN_GAIN = 0.0001;
+
 export class ProceduralAudio {
   constructor() {
     this.context = null;
     this.enabled = true;
     this.config = null;
     this.nodes = null;
+    this.contextResumePromise = null;
+    this.lastContextResumeAt = -Infinity;
+    this.contextStateChangeHandler = null;
     this.previousTelemetry = {
       gear: null,
       reverse: false,
@@ -48,17 +54,47 @@ export class ProceduralAudio {
     return buffer;
   }
 
+  resumeContext(force = false) {
+    const context = this.context;
+    if (this.contextResumePromise) return this.contextResumePromise;
+    if (!context || context.state === 'closed' || context.state === 'running') return Promise.resolve(false);
+    const canResume = context.state === 'suspended' || context.state === 'interrupted';
+    if (!force && !canResume) return Promise.resolve(false);
+
+    const now = Date.now();
+    if (!force && now - this.lastContextResumeAt < CONTEXT_RESUME_RETRY_MS) return Promise.resolve(false);
+    this.lastContextResumeAt = now;
+
+    let resumeResult;
+    try {
+      resumeResult = context.resume();
+    } catch {
+      return Promise.resolve(false);
+    }
+
+    this.contextResumePromise = Promise.resolve(resumeResult)
+      .then(() => true, () => false)
+      .finally(() => {
+        this.contextResumePromise = null;
+      });
+    return this.contextResumePromise;
+  }
+
   async init() {
     if (this.context) {
-      await this.context.resume();
+      await this.resumeContext();
       return;
     }
     const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
     if (!AudioContextCtor) return;
     const context = new AudioContextCtor({ latencyHint: 'interactive' });
     this.context = context;
+    this.contextStateChangeHandler = () => {
+      this.resumeContext();
+    };
+    context.addEventListener?.('statechange', this.contextStateChangeHandler);
     const master = context.createGain();
-    master.gain.value = 0.28;
+    master.gain.value = this.enabled ? 0.28 : AUDIO_MIN_GAIN;
     const compressor = context.createDynamicsCompressor();
     compressor.threshold.value = -18;
     compressor.knee.value = 18;
@@ -136,10 +172,10 @@ export class ProceduralAudio {
     tireGain.gain.value = 0.0001;
     tireOsc.connect(tireFilter).connect(tireGain).connect(master);
 
-    engineGain.gain.value = 0.0001;
-    exhaustNoiseGain.gain.value = 0.0001;
-    roadNoiseGain.gain.value = 0.0001;
-    windGain.gain.value = 0.0001;
+    engineGain.gain.value = AUDIO_MIN_GAIN;
+    exhaustNoiseGain.gain.value = AUDIO_MIN_GAIN;
+    roadNoiseGain.gain.value = AUDIO_MIN_GAIN;
+    windGain.gain.value = AUDIO_MIN_GAIN;
     osc.start();
     sub.start();
     mechanical.start();
@@ -151,12 +187,12 @@ export class ProceduralAudio {
       noiseBuffer: noise.buffer,
     };
     this.setVehicle(this.config);
-    await context.resume();
+    await this.resumeContext(true);
   }
 
   setEnabled(enabled) {
     this.enabled = enabled;
-    if (this.nodes) this.nodes.master.gain.setTargetAtTime(enabled ? 0.28 : 0.0001, this.context.currentTime, 0.04);
+    if (this.nodes) this.nodes.master.gain.setTargetAtTime(enabled ? 0.28 : AUDIO_MIN_GAIN, this.context.currentTime, 0.04);
   }
 
   playTone(frequency, duration, gain, type = 'sine') {
@@ -209,7 +245,8 @@ export class ProceduralAudio {
   }
 
   update(telemetry) {
-    if (!this.context || !this.nodes || !this.config) return;
+    if (!this.context || !this.nodes || !this.config || this.context.state === 'closed') return;
+    this.resumeContext();
     const now = this.context.currentTime;
     const profile = this.config.audio;
     const rpm = Math.max(this.config.idle, telemetry.rpm);

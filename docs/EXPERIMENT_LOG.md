@@ -159,10 +159,26 @@
 
 结论：同一 Rust 调度核心已成为真实网页主循环 owner，同时原生探针仍使用同一 crate；失败回退、启动时序和运行时可观测性都有自动与浏览器证据。Rust 不再只是编译空壳。
 
-## 下一实验
+## AudioContext 单飞恢复实验结果
 
 问题：NAS 音频 pause/resume/recovery 脏改动中，哪些现有 baseline 生命周期会导致 AudioContext、oscillator 或 gain owner 泄漏、错误恢复或状态不同步？
 
 可观测量：init/start/stop/pause/resume 的调用序列，visibility/pagehide 后 context 状态，重复 resume、初始化失败和车辆切换后的活跃节点/连接数；将 WebAudio 模拟测试与浏览器限制分开记录。
 
 停止条件：先从 NAS `scripts/test-audio.mjs` 和 `src/audio.js` 拆出最小失败序列；只采用能用 owner 状态断言证明的变化，完整网页、六车、Rust/WASM 回归必须继续通过。
+
+- 拆分：把 context init/recovery 与 pause gate 分开；本批测试不要求 `setPaused()`，避免一次吸收 NAS 87 行 audio diff。
+- clean 失败：两个并发 `init()` 创建 1 个 context、1 套节点，但发出 2 次 `resume()`；首个断言退出码 1，实际 2、期望 1。
+- 追加边界：初次 resume rejection 不得拒绝 init；statechange 挂起与连续 update 只能共享一次恢复；失败 500 ms 内不重试，之后可重试；mute gain、enabled 和节点对象保持不变。
+- 最小实现：`resumeContext(force)` 只为 suspended/interrupted context 工作，使用 promise 单飞并将同步/异步 resume 失败转换为 `false`；context 创建仍只发生在 `init()` 用户手势路径。
+- 修复后：针对性测试退出码 0，并进入 `pnpm verify`；完整逻辑、六车物理、真实 Rust/WASM owner、构建和资产检查全部通过。
+
+结论：AudioContext recovery 是独立且有失败证据的 owner 问题；不需要重建 oscillator graph，也不应借恢复改变用户 mute 意图。pause gate 尚未验证，继续保持候选。
+
+## 下一实验
+
+问题：比赛 pause/modal/visibility 路径是否继续让 engine/road/wind/tire 参数追随冻结后的 stale telemetry，并可能在恢复时错误触发换挡瞬态？
+
+可观测量：pause gate gain，暂停前后各 AudioParam target 数量，tone/noise 临时 source 数，previous gear/reverse，重复 pause/resume 幂等，以及 main 的 paused/modal/active 三种路径。
+
+停止条件：先在 audio owner 层复现 stale telemetry 更新；只在 owner 通过后接 main lifecycle，避免把倒计时消息、renderer 或其他 NAS main diff 带入。

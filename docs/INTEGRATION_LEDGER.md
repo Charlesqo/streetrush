@@ -74,6 +74,15 @@
 - 浏览器验证：真实路径报告 `rust-wasm`、无 fallback/console error；开始比赛后 HUD 可见、菜单隐藏、计时推进。开发期 missing-WASM 注入报告 `javascript`/`wasm-instantiate-failed` 并完成启动；Vite 对未知路径返回 HTML，故该实测分类是 instantiate 而非 404 fetch。
 - 结果：完整 `pnpm verify`、Rust fmt/native+WASM Clippy、Rust 单测均通过；构建模块数由 29 增至 30，保留既有大 chunk warning。
 
+### AudioContext 单飞恢复
+
+- 来源参考：NAS 未跟踪 `scripts/test-audio.mjs` 的 gesture/init/recovery 部分，以及 HEAD `5fdea84` 之上的未提交 `src/audio.js`；fake WebAudio 被裁剪为本仓库 `scripts/audio-test-harness.mjs`。
+- 原始问题：clean `init()` 在已有 context 时直接再次 `resume()`；并发 init 对同一 context 发出两次请求，resume rejection 会拒绝 init，系统 statechange 挂起后也没有受控恢复。
+- 失败证据：并发 init 测试在 clean 实现稳定得到 `resumeCalls=2`，期望 1。
+- 实际变化：加入单飞 `resumeContext()`、suspended/interrupted statechange 监听、500 ms 失败重试节流与 rejection 吞吐；update 只在 context 已存在时尝试恢复，仍保持用户手势创建 context 的门槛。
+- 保持不变：恢复不重建/重启节点图，不改变 enabled 开关或 mute gain；pause gate、暂停时 telemetry 冻结和 main lifecycle wiring 留到下一批。
+- 结果：gesture gate、并发 init、初次拒绝、系统挂起、重复 update、节流重试、mute/node identity 断言通过；完整 `pnpm verify`、六车物理和真实 Rust/WASM owner 测试通过。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
@@ -81,7 +90,7 @@
 建议批次：
 
 1. 已污染内部标量/刚体 finite recovery 与对应失败测试（调用边界、reset 和输入脉冲已独立整合）；
-2. 音频 pause/resume/recovery 与生命周期测试；
+2. 音频 pause gate/telemetry freeze 与 main 生命周期测试（context recovery 已独立整合）；
 3. 资产超时、取消、缓存、引用安全释放与六车切换测试；
 4. 计时并发存储、路线 HUD、布局和 renderer lifecycle；
 5. 车辆 GLB、source model 和纹理的二进制差异。
@@ -108,9 +117,10 @@
 - 证实：clean 输入层会在没有 physics step 的 sub-fixed render frame 提前消费离散脉冲；延迟到 fixed owner 消费可以保持一次性语义。
 - 证实：clean `reset()` 没有清除多个自己拥有的车辆、轮胎和 telemetry 状态；六车的遗漏字段形状一致，能用独立 reset-only 修复消除。
 - 证实：调用边界的非有限值会跨 wheel/telemetry 进入 Rapier；入口规范化能让 90 个配对 case 与明确 oracle 一致，并保持正常 120 Hz 回归。
+- 证实：clean audio 并发 init 会重复 resume；单飞恢复能吞吐拒绝、节流 statechange retry，同时保持节点图和静音状态。
 
 ## 当前最值得继续的方向
 
-1. 审查 NAS 音频 pause/resume/recovery 改动与 `scripts/test-audio.mjs`，先复现 visibility/pause 生命周期的最小失败；
+1. 建立独立 audio pause gate 测试，验证暂停时不跟随 RPM/slip/speed、瞬态不触发，并在 main pause/resume/modal 路径正确接线；
 2. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与调用边界清理混合；
 3. 随后评估资产取消/释放与六车切换簇，按可观测资源生命周期选择下一批。
