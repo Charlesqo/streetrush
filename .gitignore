@@ -9,6 +9,7 @@ dist/
 
 # Rust workspace build output.
 target/
+src/generated/
 
 # Local environment files and Cloudflare development secrets.
 .env

@@ -139,10 +139,30 @@
 
 结论：防毒应先放在当前 JS vehicle owner 的公开调用边界；这既保护现有网页，也定义了未来 Rust FFI 输入契约。内部状态与刚体 recovery 是另一个故障模型，保持候选而非本批范围。
 
-## 下一实验
+## 网页 Rust/WASM scheduler owner 实验结果
 
 问题：网页能否在不阻塞现有启动的前提下选择 Rust/WASM scheduler owner，并在 WASM 缺失、编译/实例化失败或导出不完整时确定性回退到 JS？
 
 可观测量：owner 标识、初始化完成时点、常量握手、逐帧 step/remainder、每一种失败注入后的 fallback 原因，以及主循环开始前 owner 是否已经固定。
 
 停止条件：先实现可注入 loader 和 JS fallback 的独立测试；成功路径必须实例化真实 Rust `.wasm`，失败路径不得发出未处理 rejection；只有双路径对照通过后才修改 `main.js` owner。
+
+- loader：JS/WASM 同形状态化接口；exact 常量握手、必需导出检查、invalid plan 防护、1.5 秒初始化超时和结构化 fallback reason。
+- 可复现生成：package scripts 调用 `scripts/build-core-wasm.mjs`；从干净源码构建 release WASM 到忽略目录，当前 2,533 bytes。
+- Node 成功路径：真实 Rust WASM 在不规则帧序列上与 JS 的 steps/remainder/alpha 逐帧一致。
+- Node 失败路径：404 fetch、永不完成的 instantiate、`CompileError`、空 exports、fixed-dt 契约不匹配都得到 JS owner；各 fallback 在独立帧序列继续与 JS oracle 一致。
+- main owner 切换：删除主循环 accumulator/step-budget 所有权；比赛、暂停、模态和返回车库都 reset scheduler owner；owner 在场景加载期间并行初始化、首帧前固定。
+- 构建：Vite 处理 30 个模块；2,533-byte WASM 小于默认 4 KiB inline 门槛，被编码进 main bundle；不产生需提交的独立二进制。
+- 实际浏览器成功路径：`data-physics-scheduler-owner=rust-wasm`、无 fallback、无新增 warning/error；点击开始后 `race-active`，HUD 可见、菜单隐藏、比赛计时推进到 `00:00.858`。
+- 实际浏览器失败注入：missing-WASM 得到 `javascript` + `wasm-instantiate-failed` 并完成加载。Vite dev server 对未知路径回 SPA HTML，因此不是 HTTP 404；该差异已记录而未伪装为 fetch failure。
+- 完整回归：`pnpm verify`、Rust fmt check、native/WASM Clippy `-D warnings` 和 6 个 Rust 单测全部通过；仍只有既有 Vite 大 chunk warning。
+
+结论：同一 Rust 调度核心已成为真实网页主循环 owner，同时原生探针仍使用同一 crate；失败回退、启动时序和运行时可观测性都有自动与浏览器证据。Rust 不再只是编译空壳。
+
+## 下一实验
+
+问题：NAS 音频 pause/resume/recovery 脏改动中，哪些现有 baseline 生命周期会导致 AudioContext、oscillator 或 gain owner 泄漏、错误恢复或状态不同步？
+
+可观测量：init/start/stop/pause/resume 的调用序列，visibility/pagehide 后 context 状态，重复 resume、初始化失败和车辆切换后的活跃节点/连接数；将 WebAudio 模拟测试与浏览器限制分开记录。
+
+停止条件：先从 NAS `scripts/test-audio.mjs` 和 `src/audio.js` 拆出最小失败序列；只采用能用 owner 状态断言证明的变化，完整网页、六车、Rust/WASM 回归必须继续通过。

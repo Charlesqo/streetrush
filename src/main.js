@@ -11,11 +11,20 @@ import { ProceduralAudio } from './audio.js';
 import { ChaseCamera, TireEffects } from './effects.js';
 import { RaceTimingSession, TimingStore, formatRaceDelta, formatRaceTime } from './race-timing.js';
 import { getLiveRaceGoal, LONGWAN_TIME_ATTACK, MIN_LIVE_GOAL_CHECKPOINTS } from './race-goals.js';
-import { accumulatePhysicsTime, clampFrameDelta, MAX_PHYSICS_STEPS } from './physics-scheduling.js';
+import { clampFrameDelta } from './physics-scheduling.js';
+import { loadPhysicsScheduler } from './physics-scheduler-owner.js';
 import { initializeRapier } from './rapier-init.js';
 import { getOrientationUiState, ORIENTATIONS, shouldFreezeRace } from './orientation.js';
 
 const $ = (id) => document.getElementById(id);
+const schedulerFault = import.meta.env.DEV
+  ? new URLSearchParams(location.search).get('scheduler-fault')
+  : null;
+const physicsSchedulerPromise = loadPhysicsScheduler(
+  schedulerFault === 'missing-wasm'
+    ? { wasmUrl: '/__streetrush_missing_core.wasm' }
+    : undefined,
+);
 const MEDAL_LABELS = { gold: '金牌', silver: '银牌', bronze: '铜牌' };
 const touchCapable = matchMedia('(pointer: coarse)').matches
   || navigator.maxTouchPoints > 0
@@ -79,7 +88,7 @@ let queuedVehicleIndex = null;
 let retryCarIndex = null;
 let state = 'menu';
 let stateBeforePause = 'race';
-let accumulator = 0;
+let physicsScheduler = null;
 let lastFrame = performance.now();
 let countdown = 0;
 let countdownShown = 0;
@@ -98,6 +107,10 @@ let devFixedStepIndex = 0;
 const MODAL_DIALOG_IDS = ['orientation-hint', 'fullscreen-help', 'pause-menu', 'finish', 'about'];
 const dialogReturnFocus = new Map();
 
+function resetPhysicsScheduler() {
+  physicsScheduler?.reset();
+}
+
 const devToolsRequested = import.meta.env.DEV && new URLSearchParams(location.search).has('devtools');
 if (devToolsRequested) {
   const { DevTelemetryBuffer } = await import('./dev-telemetry.js');
@@ -113,6 +126,8 @@ function getDevReadiness() {
     assetSource: vehicle?.visual?.userData?.source ?? null,
     vehicleLoadPending,
     selectedCarId: selectedCar?.id ?? null,
+    physicsSchedulerOwner: physicsScheduler?.owner ?? null,
+    physicsSchedulerFallback: physicsScheduler?.fallbackReason ?? null,
     state,
     restartable,
     startable: Boolean(startableState && !vehicleLoadPending && vehicleMatchesSelection && vehicle?.visual?.userData?.source === 'gltf'),
@@ -190,7 +205,7 @@ function closeModalDialog(id, restoreFocus = true) {
   if (id === 'fullscreen-help') {
     fullscreenHelpShown = false;
     input.releaseAll();
-    accumulator = 0;
+    resetPhysicsScheduler();
     lastFrame = performance.now();
   }
   if (id === 'orientation-hint') dialog.setAttribute('inert', '');
@@ -265,7 +280,7 @@ function syncOrientationHint() {
     if (!hint.classList.contains('hidden')) {
       closeModalDialog('orientation-hint');
       input.releaseAll();
-      accumulator = 0;
+      resetPhysicsScheduler();
       lastFrame = performance.now();
     }
     else {
@@ -276,7 +291,7 @@ function syncOrientationHint() {
   }
   if (hint.classList.contains('hidden') || hint.getAttribute('aria-hidden') !== 'false') {
     input.releaseAll();
-    accumulator = 0;
+    resetPhysicsScheduler();
     lastFrame = performance.now();
     hint.removeAttribute('inert');
     openModalDialog('orientation-hint', document.activeElement);
@@ -583,7 +598,7 @@ function startRace() {
   ) return;
   closeAllModalDialogs(false);
   input.releaseAll();
-  accumulator = 0;
+  resetPhysicsScheduler();
   lastFrame = performance.now();
   if (standaloneMode && touchCapable) lockLandscape();
   audio.init().catch((error) => console.warn('Audio initialization failed', error));
@@ -693,7 +708,7 @@ function returnGarage() {
   track.setCheckpointHighlight(null);
   closeAllModalDialogs(false);
   input.releaseAll();
-  accumulator = 0;
+  resetPhysicsScheduler();
   lastFrame = performance.now();
   setStartLights('off');
   document.body.classList.remove('race-active');
@@ -738,7 +753,7 @@ function handleVisibilityChange() {
 function resumeRace() {
   if (state !== 'paused') return;
   state = stateBeforePause;
-  accumulator = 0;
+  resetPhysicsScheduler();
   lastFrame = performance.now();
   input.setTouchEnabled(touchCapable);
   $('mobile-controls').classList.add('active');
@@ -914,7 +929,7 @@ function animate(now) {
   if (!vehicle) return;
   if (isRaceBlockedByModal()) {
     input.releaseAll();
-    accumulator = 0;
+    resetPhysicsScheduler();
     vehicle.syncVisual(1);
     chaseCamera.update(frameDt, vehicle.visual.position, vehicle.visual.quaternion, vehicle.telemetry, false);
     audio.update(vehicle.telemetry);
@@ -928,17 +943,13 @@ function animate(now) {
     performanceVisible = !performanceVisible;
     $('perf').classList.toggle('hidden', !performanceVisible);
   }
-  accumulator = accumulatePhysicsTime(accumulator, frameDt);
   const physicsStart = performance.now();
-  let physicsSteps = 0;
-  while (accumulator >= FIXED_DT && physicsSteps < MAX_PHYSICS_STEPS) {
+  const physicsPlan = physicsScheduler.advance(frameDt);
+  for (let physicsStep = 0; physicsStep < physicsPlan.steps; physicsStep += 1) {
     fixedUpdate(frameInput);
-    accumulator -= FIXED_DT;
-    physicsSteps += 1;
   }
   physicsCost = THREE.MathUtils.damp(physicsCost, performance.now() - physicsStart, 5, frameDt);
-  const alpha = accumulator / FIXED_DT;
-  vehicle.syncVisual(alpha);
+  vehicle.syncVisual(physicsPlan.alpha);
   const menuMode = state === 'menu';
   chaseCamera.update(frameDt, vehicle.visual.position, vehicle.visual.quaternion, vehicle.telemetry, menuMode);
   if (!menuMode) effects.update(frameDt, vehicle.telemetry, vehicle.visual.quaternion);
@@ -1055,6 +1066,20 @@ $('loading-status').textContent = '建立赛道与车辆物理…';
 const sceneryPromise = assets.loadScenery().catch((error) => console.warn('Scenery failed to load', error));
 await mountVehicle(carIndex, true);
 await sceneryPromise;
+physicsScheduler = await physicsSchedulerPromise;
+document.documentElement.dataset.physicsSchedulerOwner = physicsScheduler.owner;
+if (physicsScheduler.fallbackReason) {
+  document.documentElement.dataset.physicsSchedulerFallback = physicsScheduler.fallbackReason.code;
+} else {
+  delete document.documentElement.dataset.physicsSchedulerFallback;
+}
+recordDevEvent('physics-scheduler-ready', {
+  owner: physicsScheduler.owner,
+  fallbackReason: physicsScheduler.fallbackReason,
+});
+if (physicsScheduler.fallbackReason) {
+  console.warn('[physics-scheduler] using JavaScript fallback', physicsScheduler.fallbackReason);
+}
 $('loading-progress').style.width = '100%';
 setTimeout(() => $('loading').classList.add('hidden'), 320);
 lastFrame = performance.now();

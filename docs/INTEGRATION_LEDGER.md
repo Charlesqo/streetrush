@@ -34,7 +34,7 @@
 - 复制与变化：没有机械复制 JS；在 `crates/streetrush-core` 中实现 renderer-independent 状态化 accumulator、单帧计划和固定帧序列探针，并保留 JS 对 NaN、负数和无穷值的边界语义。
 - 原生目标：`apps/streetrush-native` 使用同一 crate 输出五种帧率的步数、模拟秒数和 remainder，并以 oracle 偏差作为退出状态。
 - WASM 接口：`streetrush-core` 同时生成 `cdylib`，以依赖为零的 raw ABI 导出常量、clamp、accumulate、单帧 plan 和序列 probe。稳定符号需要 `unsafe(no_mangle)`，`unsafe_code` lint 例外只允许在 `wasm_exports` 模块，其他 workspace 代码仍为 deny。
-- Web 对照：`scripts/test-core-wasm.mjs` 实际实例化生成的 `.wasm`，逐帧与当前 JS oracle 比较；游戏主循环本轮尚未切换到 WASM owner。
+- Web 对照：`scripts/test-core-wasm.mjs` 实际实例化生成的 `.wasm`，逐帧与当前 JS oracle 比较；后续网页 owner 切换见下节。
 - 结果：Rust 单测、native probe、native/WASM Clippy、wasm32 build 和 Node/WASM 对照全部通过。
 
 ### 固定步输入脉冲交接
@@ -62,6 +62,17 @@
 - 额外证据：使用有效油门/转向后，`Number.MIN_VALUE` 和 `Number.MAX_VALUE` 虽未立即产生 NaN，也都偏离限幅 oracle；因此有限极端值限幅是可观察契约。
 - 实际变化：只在 `VehicleSystem.fixedUpdate()` 入口生成 `safeDt`/`activeInput`，后续仍运行原物理算法；没有处理已污染内部标量或非有限刚体状态。
 - 结果：15 个 input/`dt` 边界 × 6 车型（90 个配对 case）全部通过；完整 `pnpm verify` 的正常 120 Hz 六车加速、刹车、圆周和操稳指标保持原阈值，Rust/WASM scheduler 对照保持通过。
+
+### 网页 Rust/WASM scheduler owner
+
+- 来源：本仓库已提交 `streetrush-core` raw WASM ABI 和 JS fixed-step oracle；本批没有再复制外部代码。
+- 生成边界：`scripts/build-core-wasm.mjs` 用锁文件构建 release `wasm32-unknown-unknown`，复制到忽略的 `src/generated/`；当前产物 2,533 bytes，Vite 因小于 4 KiB 把它作为 data URL 内联，不提交二进制。
+- owner 接口：JS 与 Rust/WASM 都提供状态化 `advance()`/`reset()`、owner 名称、fallback 原因和同形 `{ steps, remainderSeconds, alpha }`；主循环不再拥有第二份 accumulator。
+- 握手与回退：加载时核对 fixed dt、最大 frame dt、最大 steps 和五个必需导出；fetch、1.5 秒 timeout、instantiate、缺导出或契约不符均返回结构化原因的 JS owner，不让启动收到 rejected promise。
+- 初始化时序：WASM 加载与 Rapier/车辆/场景加载并行，在第一次 `requestAnimationFrame` 前固定 owner；`html[data-physics-scheduler-owner]` 和可选 fallback code 提供运行时观测。
+- 自动测试：真实 release WASM 逐帧对照 JS；注入 fetch、timeout、compile、missing export、contract mismatch 后，fallback owner 仍逐帧等价。
+- 浏览器验证：真实路径报告 `rust-wasm`、无 fallback/console error；开始比赛后 HUD 可见、菜单隐藏、计时推进。开发期 missing-WASM 注入报告 `javascript`/`wasm-instantiate-failed` 并完成启动；Vite 对未知路径返回 HTML，故该实测分类是 instantiate 而非 404 fetch。
+- 结果：完整 `pnpm verify`、Rust fmt/native+WASM Clippy、Rust 单测均通过；构建模块数由 29 增至 30，保留既有大 chunk warning。
 
 ## 待分批吸收的 NAS 脏改动
 
@@ -100,6 +111,6 @@
 
 ## 当前最值得继续的方向
 
-1. 为 Rust scheduler 建立网页 owner loader：成功实例化、加载失败回退、初始化时序和 JS/WASM 双路径一致性先有测试，再决定主循环切换；
+1. 审查 NAS 音频 pause/resume/recovery 改动与 `scripts/test-audio.mjs`，先复现 visibility/pause 生命周期的最小失败；
 2. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与调用边界清理混合；
-3. 随后优先评估音频 pause/resume 或资产取消/释放簇，按可观测资源生命周期选择下一批。
+3. 随后评估资产取消/释放与六车切换簇，按可观测资源生命周期选择下一批。

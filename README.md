@@ -26,9 +26,11 @@ cargo test --workspace
 cargo run -p streetrush-native
 cargo build -p streetrush-core --target wasm32-unknown-unknown
 node scripts/test-core-wasm.mjs
+pnpm test:scheduler-owner
+pnpm build
 ```
 
-首个共享切片拥有 120 Hz 固定步调度、50 ms 帧上限和六步 catch-up 契约。原生探针与 raw WASM 测试都和现有 JavaScript oracle 对照；车辆物理仍留在已验证的网页基线，等待独立输入输出和误差门槛后再迁移。
+首个共享切片拥有 120 Hz 固定步调度、50 ms 帧上限和六步 catch-up 契约。原生探针、raw WASM 与网页 owner 都和 JavaScript oracle 对照；网页在 WASM 加载、超时、实例化、导出或契约失败时确定性回退到 JS。车辆物理仍留在已验证的网页基线，等待独立输入输出和误差门槛后再迁移。
 
 ## v0.3 系统
 
