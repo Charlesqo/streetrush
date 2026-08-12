@@ -37,7 +37,7 @@
     "test:vehicle-reset": "node scripts/test-vehicle-reset.mjs",
     "test:vehicle-boundaries": "node scripts/test-vehicle-input-boundaries.mjs",
     "test:vehicle-recovery": "node scripts/test-vehicle-internal-recovery.mjs",
-    "test:determinism": "node scripts/test-vehicle-determinism.mjs",
+    "test:determinism": "pnpm build:core-wasm && node scripts/test-vehicle-determinism.mjs",
     "test:physics": "node scripts/smoke-physics.mjs && node scripts/regression-physics.mjs",
     "test:physics:smoke": "node scripts/smoke-physics.mjs",
     "test:physics:regression": "node scripts/regression-physics.mjs",

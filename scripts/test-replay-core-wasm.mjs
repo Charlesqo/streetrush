@@ -1,61 +1,17 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-
-const FORMAT_VERSION = 1;
-const QUANTUM = 1e-6;
-const OFFSET_BASIS = 0xcbf29ce484222325n;
-const FNV_PRIME = 0x100000001b3n;
-const CANONICAL_NAN_BITS = 0x7ff8000000000000n;
-const U64_MASK = 0xffffffffffffffffn;
-
-const bytes = new ArrayBuffer(8);
-const view = new DataView(bytes);
-
-function numberFromBits(bits) {
-  view.setBigUint64(0, bits, false);
-  return view.getFloat64(0, false);
-}
-
-function canonicalBits(value) {
-  if (Number.isNaN(value)) return CANONICAL_NAN_BITS;
-  view.setFloat64(0, value, false);
-  return view.getBigUint64(0, false);
-}
-
-function quantize(value, quantum) {
-  if (!Number.isFinite(value) || !Number.isFinite(quantum) || quantum <= 0) {
-    return value;
-  }
-  const scaled = value / quantum;
-  if (!Number.isFinite(scaled)) return value;
-  const result = Math.round(scaled) * quantum;
-  return Number.isFinite(result) ? result : value;
-}
-
-function pushDigest(state, value) {
-  let next = state;
-  const bits = canonicalBits(value);
-  for (let shift = 56n; shift >= 0n; shift -= 8n) {
-    next ^= (bits >> shift) & 0xffn;
-    next = (next * FNV_PRIME) & U64_MASK;
-  }
-  return next;
-}
-
-function digest(values, shouldQuantize) {
-  return values.reduce(
-    (state, value) => pushDigest(
-      state,
-      shouldQuantize ? quantize(value, QUANTUM) : value,
-    ),
-    OFFSET_BASIS,
-  );
-}
-
-function asU64(value) {
-  return BigInt.asUintN(64, value);
-}
+import {
+  REPLAY_DIGEST_OFFSET_BASIS as OFFSET_BASIS,
+  REPLAY_FORMAT_VERSION as FORMAT_VERSION,
+  REPLAY_QUANTUM as QUANTUM,
+  asU64,
+  canonicalBits,
+  digest,
+  numberFromBits,
+  pushDigest,
+  quantize,
+} from './replay-digest-oracle.mjs';
 
 function assertSameNumber(actual, expected, label) {
   if (Number.isNaN(expected)) {

@@ -318,10 +318,28 @@
 
 结论：假设得到支持，且下溢 signed-zero 反例证明逐值对照确实增加了信息。Rust 已拥有可复用 replay 数值边界，但不是模拟 owner；下一步应连接实际 trace，而不是扩大算法范围。
 
-## 下一实验
+## 真实六车 trace 的 Rust/WASM digest 实验结果
 
 问题：现有 6 车 × 3 场景的 50-field trace 能否在生成时同时通过独立 JS 与真实 Rust/WASM FNV digest，并登记稳定 baseline，而不重复运行或复制一套车辆模拟？
 
 可观测量：每个 trace 的 exact/quantized JS FNV 与 WASM FNV、首个不同 tick/field/value/state、现有 SHA-256/input hash 是否保持不变、WASM 缺失时独立测试是否明确失败。
 
 停止条件：只复用一次 trace 生成；18/18 trace 的逐 push state 一致并登记 baseline；现有 54-run exact 重现和完整回归保持通过；不让 digest parity 伪装成浏览器/CPU 确定性证明。
+
+- 接线：runner 仍只生成 3 个 repeats，第一份 reference frames 同时供 SHA-256 和 FNV；没有为 Rust 另跑车辆，也没有把 Rapier state 复制到 Rust。
+- 比较粒度：6 车 × `(720+960+900)` ticks × 50 fields = 774,000 个位置；每个位置分别推进 exact/quantized JS 与 WASM state 并立即断言，因此最终 hash 相同之外还能定位首个 car/scenario/tick/field。
+- JS oracle：抽成 `scripts/replay-digest-oracle.mjs`，特殊值测试和实际 trace 共用；固定 13-value 摘要继续钉住其 FNV/Float64 行为，避免两套 JS 实现漂移。
+- baseline：新增独立 format v1 `vehicle-replay-fnv-baseline.json`，算法名、1e-6 quantum、50-field schema hash 和 18 × 2 digest 均登记；已有 SHA-256 baseline 文件没有修改。
+- 失败边界：determinism package script 先从锁定源码重建 release WASM；runner 还用不存在路径执行一次 `assert.rejects`，证明缺 binary 会给出明确 build 指令而不是 fallback。
+- 新进程验证：候选登记后重新启动 Node，得到 `PASS ... traces=18 wasmFnv=18`；原 18 SHA/input/reset baseline 同时匹配。
+- 完整回归：`pnpm verify` 通过；54-run repeat、90 外部边界、54 内部恢复、audio/assets、scheduler/replay WASM、Vite build、secret 与 license inventory 保持绿色。WASM 仍为 3,658 bytes。
+
+结论：Rust replay 数值契约已接触真实车辆状态，不再只由合成边界值证明；但模拟仍由 JS/Rapier 运行，FNV 也不是安全摘要，因此不能把结果外推成浏览器/平台确定性。
+
+## 下一实验
+
+问题：当前比赛计时的 tick、checkpoint 顺序、lap/sector/PB/medal 状态中，哪些是可由 Rust native/WASM 共享的纯状态机，哪些必须继续由 JS 持有 localStorage 和 UI 副作用？
+
+可观测量：现有 9 个 timing 测试的输入事件与逐事件 snapshot；非法 checkpoint、fractional fixed steps、restart、invalid lap 和 PB persistence；JS 与 Rust 对同一序列的差异。
+
+停止条件：先抽取并固定事件协议和允许误差；Rust native/raw WASM 对照通过前不改网页 owner；localStorage 只保留在 JS adapter；若状态机依赖浏览器副作用无法清晰拆分，则记录反证并转向 telemetry schema。

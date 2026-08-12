@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已经有明确 JS oracle 的固定步调度和 replay 数值格式逐段交给 Rust 共享核心。下一步应让真实六车 trace 使用这份 Rust/WASM digest 契约，而不是提前迁移 Rapier 模拟。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已经有明确 JS oracle 的固定步调度和 replay 数值格式逐段交给 Rust 共享核心。真实六车 trace 已接入 Rust/WASM digest；下一步评估测试充分且边界清楚的比赛计时状态机，先分离纯规则与浏览器持久化，再决定是否切换 owner。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -89,8 +89,10 @@
 - 量化：默认 quantum 为 `1e-6`，精确遵循 JS `Math.round` 的 half-toward-positive-infinity 与负零行为；非法 quantum/非有限 value 保持原值，缩放溢出不把有限 value 变成 infinity，缩放下溢保留结果的 signed zero。
 - digest owner：`streetrush-core` 提供无状态、无分配的 FNV-1a 64 `push_f64(state, value)`；没有加入全局 mutable state。native 和 raw WASM 使用同一函数，WASM `u64` 在 JS 侧按 unsigned 64-bit BigInt 解释。
 - 固定 oracle：13 个边界值覆盖 ±0、±1.5、±half quantum、最大有限值、±最小次正规数、±Infinity 与两个不同 NaN payload；exact 固定为 `0248d9354f126505`，quantized 固定为 `0603ecb87904c881`。
-- 结果：13 个 Rust 单测、native 固定摘要、native/WASM Clippy `-D warnings`、真实 release WASM 与独立 JS 逐值/逐 push 对照全部通过；当前 WASM 为 3,658 bytes。
-- 限制：本批只固定数值与 ABI，不替代现有 SHA-256 baseline，也尚未证明实际 18 个六车 trace 已经过 Rust/WASM digest；这是下一实验的明确输入。
+- 真实 trace 接线：`scripts/test-vehicle-determinism.mjs` 只复用每个场景已有的 reference frames，不重跑第二套车辆模拟；在 774,000 个 tick/field 位置分别比较 exact 与 quantized 的 JS/WASM rolling state，失败信息含 car/scenario/tick/field/value/state。
+- baseline：新增独立 `data/vehicle-replay-fnv-baseline.json`，登记 18 条 exact/quantized FNV 和 50-field schema SHA-256；原 `vehicle-replay-baseline.json` 的 SHA-256/input/reset fixture 未改。缺失 WASM 有显式失败探针，不静默用 JS 自证。
+- 结果：13 个 Rust 单测、native 固定摘要、native/WASM Clippy `-D warnings`、特殊向量和 18 条真实 trace 的 release WASM/独立 JS 对照全部通过；当前 WASM 为 3,658 bytes，完整 `pnpm verify` 保持绿色。
+- 限制：FNV 只用于快速确定性比较，不是安全/防篡改摘要；证据仍限于当前 Windows + Node/Rapier WASM 环境，未证明浏览器、其他 CPU 或版本一致。
 
 ### 网页 Rust/WASM scheduler owner
 
@@ -201,10 +203,10 @@
 - 证实：late GLTF 只有在未挂载、无 pending、与全部已知资源 identity 不重叠时才可局部安全回收；共享判断不足时应保留而不是猜测 dispose。
 - 证实：六车 owner scalar/cache 污染不会靠下一步自然消失；入口局部 fallback 可与显式 oracle 一致。Rapier 的 NaN rotation setter 在本环境保持有限，不能把所有坏 setter 统一描述为 body poison。
 - 证实：当前 JS/Rapier 六车在三类固定 seed 状态序列中可逐 tick exact 重现，并能跨新 Node 进程匹配登记 hash；证据范围尚不跨浏览器/平台。
-- 证实：canonical Float64、JS 兼容 1e-6 quantization 与 FNV-1a 64 增量摘要可由同一 Rust 纯函数在 native/raw WASM 使用，并与独立 JS 边界 oracle 位级一致；实际六车 trace 尚未接入。
+- 证实：canonical Float64、JS 兼容 1e-6 quantization 与 FNV-1a 64 增量摘要可由同一 Rust 纯函数在 native/raw WASM 使用；特殊向量和现有 18 条六车 trace 均与独立 JS oracle 逐 push 一致。
 
 ## 当前最值得继续的方向
 
-1. 将现有 18 个六车 deterministic traces 逐字段送入 JS 与真实 Rust/WASM digest，登记 exact/quantized FNV baseline 和首个分歧定位；车辆模拟仍留在 JS/Rapier；
+1. 复核 `src/race-timing.js` 和 9 个现有 timing tests，把纯 tick/checkpoint/lap/medal 规则与 localStorage/UI 副作用分开；先建立 JS/native/WASM 事件序列 oracle，再决定 owner 切换；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。

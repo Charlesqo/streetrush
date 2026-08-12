@@ -1,0 +1,92 @@
+{
+  "formatVersion": 1,
+  "algorithm": "fnv1a64-canonical-f64-be",
+  "quantization": 0.000001,
+  "frameFieldsSha256": "d870ff6fbf581ec0b7766541a678a55ddf97035f25c5c93dbf36809793127787",
+  "traces": {
+    "mx5": {
+      "seeded-steady-v1": {
+        "exactFnv1a64": "c861e1b54259e4f1",
+        "quantizedFnv1a64": "4cd7f5d47f18f6b0"
+      },
+      "shift-direction-v1": {
+        "exactFnv1a64": "a52aa5886493fe1e",
+        "quantizedFnv1a64": "1e3f64ca00587d52"
+      },
+      "reset-replay-v1": {
+        "exactFnv1a64": "8cbf1354b10d3622",
+        "quantizedFnv1a64": "4e56750def1fb4f3"
+      }
+    },
+    "m3e30": {
+      "seeded-steady-v1": {
+        "exactFnv1a64": "97e3ea82859deea2",
+        "quantizedFnv1a64": "4778feade0cf6b2c"
+      },
+      "shift-direction-v1": {
+        "exactFnv1a64": "d63027ab271e8e16",
+        "quantizedFnv1a64": "f8ecb5f7a3079277"
+      },
+      "reset-replay-v1": {
+        "exactFnv1a64": "e97a5b2b12f7d50b",
+        "quantizedFnv1a64": "dd04a94bcac56ada"
+      }
+    },
+    "gt3rs": {
+      "seeded-steady-v1": {
+        "exactFnv1a64": "82dbc6b2bd78ceac",
+        "quantizedFnv1a64": "c3fa69af115f4b41"
+      },
+      "shift-direction-v1": {
+        "exactFnv1a64": "bed4810a098abe0d",
+        "quantizedFnv1a64": "72ae69e9e469acb9"
+      },
+      "reset-replay-v1": {
+        "exactFnv1a64": "b0baafb186a273fd",
+        "quantizedFnv1a64": "28d42c83e9acd531"
+      }
+    },
+    "lp700": {
+      "seeded-steady-v1": {
+        "exactFnv1a64": "3c836285e620323b",
+        "quantizedFnv1a64": "69663e7d2fc13ab8"
+      },
+      "shift-direction-v1": {
+        "exactFnv1a64": "d55b85f666ea1bf0",
+        "quantizedFnv1a64": "98ecb97dafeadd6d"
+      },
+      "reset-replay-v1": {
+        "exactFnv1a64": "1107281a813dd1fa",
+        "quantizedFnv1a64": "3e911cdef2f97b9b"
+      }
+    },
+    "amggt3": {
+      "seeded-steady-v1": {
+        "exactFnv1a64": "2da0546552e4421d",
+        "quantizedFnv1a64": "2d8d774ccadb5bc3"
+      },
+      "shift-direction-v1": {
+        "exactFnv1a64": "c451f3b4da5c6099",
+        "quantizedFnv1a64": "396ad74e745364a6"
+      },
+      "reset-replay-v1": {
+        "exactFnv1a64": "4c0ef7b506f66393",
+        "quantizedFnv1a64": "c80b8a2876fe16bf"
+      }
+    },
+    "m5g90": {
+      "seeded-steady-v1": {
+        "exactFnv1a64": "e17ad9479f3c919f",
+        "quantizedFnv1a64": "4907c3bbb6715fa4"
+      },
+      "shift-direction-v1": {
+        "exactFnv1a64": "121b23f28c9e5fc1",
+        "quantizedFnv1a64": "655c2894a4c780e2"
+      },
+      "reset-replay-v1": {
+        "exactFnv1a64": "f779de0a72ef8d6c",
+        "quantizedFnv1a64": "4fa193b14a5f2fca"
+      }
+    }
+  }
+}
