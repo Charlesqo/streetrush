@@ -257,7 +257,34 @@ assert.equal(controller.frame.shiftUp, true);
 gamepads = [];
 controller.releaseAll();
 
+const replacementPad = makeGamepad({ axis: 0.72, throttle: 1, shiftUp: true });
+gamepads = [pad];
+pad.axes[0] = 0;
+pad.buttons[5] = { value: 0, pressed: false };
+pad.buttons[7] = { value: 0, pressed: false };
+assert.equal(frameStep().driveIntent, 0);
+pad.axes[0] = -0.72;
+pad.buttons[5] = { value: 1, pressed: true };
+pad.buttons[7] = { value: 1, pressed: true };
+assert.ok(frameStep().throttle > 0);
+gamepads = [replacementPad];
+assert.equal(frameStep().driveIntent, 0, 'replacement gamepad waits for a neutral handshake');
+assert.equal(controller.frame.shiftUp, false);
+replacementPad.axes[0] = 0;
+replacementPad.buttons[5] = { value: 0, pressed: false };
+replacementPad.buttons[7] = { value: 0, pressed: false };
+assert.equal(frameStep().driveIntent, 0);
+replacementPad.axes[0] = 0.72;
+replacementPad.buttons[5] = { value: 1, pressed: true };
+replacementPad.buttons[7] = { value: 1, pressed: true };
+assert.equal(frameStep().driveIntent, 1);
+assert.equal(controller.frame.shiftUp, true);
+gamepads = [];
+controller.releaseAll();
+
 const throttle = elements.get('touch-throttle');
+const brake = elements.get('touch-brake');
+const left = elements.get('touch-left');
 const reset = elements.get('touch-reset');
 
 const FIXED_DT = 1 / 120;
@@ -387,6 +414,47 @@ assert.equal(controller.touch.throttle, 1);
 throttle.dispatchEvent(makeKeyboardEvent('keyup', 'Space'));
 assert.equal(controller.touch.throttle, 0);
 
+controller.setTouchEnabled(true);
+throttle.dispatchEvent(makePointerEvent('pointerdown', 'multi-gas-1'));
+throttle.dispatchEvent(makePointerEvent('pointerdown', 'multi-gas-2'));
+brake.dispatchEvent(makePointerEvent('pointerdown', 'multi-brake'));
+left.dispatchEvent(makePointerEvent('pointerdown', 'multi-left'));
+assert.equal(controller.touch.throttle, 1);
+assert.equal(controller.touch.brake, 1);
+assert.equal(controller.touch.steerLeft, 1);
+assert.equal(throttle.hasPointerCapture('multi-gas-1'), true);
+assert.equal(throttle.hasPointerCapture('multi-gas-2'), true);
+
+throttle.dispatchEvent({ type: 'blur' });
+assert.equal(controller.touch.throttle, 1, 'element blur preserves active touch pointers');
+assert.equal(controller.touch.brake, 1);
+assert.equal(controller.touch.steerLeft, 1);
+assert.equal(throttle.hasPointerCapture('multi-gas-1'), true);
+assert.equal(throttle.hasPointerCapture('multi-gas-2'), true);
+
+throttle.dispatchEvent(makePointerEvent('pointerup', 'multi-gas-1'));
+assert.equal(controller.touch.throttle, 1);
+assert.equal(throttle.hasPointerCapture('multi-gas-1'), false);
+assert.equal(throttle.hasPointerCapture('multi-gas-2'), true);
+brake.dispatchEvent(makePointerEvent('pointerup', 'multi-brake'));
+left.dispatchEvent(makePointerEvent('pointerup', 'multi-left'));
+throttle.dispatchEvent(makePointerEvent('pointerup', 'multi-gas-2'));
+assert.equal(controller.touch.throttle, 0);
+assert.equal(controller.touch.brake, 0);
+assert.equal(controller.touch.steerLeft, 0);
+assert.equal(controller.pointerCaptures.size, 0);
+
+reset.dispatchEvent(makePointerEvent('pointerdown', 'pulse-blur'));
+assert.equal(reset.classList.contains('pressed'), true);
+assert.equal(reset.hasPointerCapture('pulse-blur'), true);
+reset.dispatchEvent({ type: 'blur' });
+assert.equal(reset.classList.contains('pressed'), true, 'pulse blur preserves active pointer styling');
+assert.equal(reset.hasPointerCapture('pulse-blur'), true);
+reset.dispatchEvent(makePointerEvent('pointerup', 'pulse-blur'));
+assert.equal(reset.classList.contains('pressed'), false);
+assert.equal(reset.hasPointerCapture('pulse-blur'), false);
+controller.consumeFixedPulses();
+
 reset.dispatchEvent(makeKeyboardEvent('click', 'Enter'));
 assert.equal(controller.pulses.has('TouchReset'), true);
 controller.releaseAll();
@@ -429,6 +497,8 @@ for (const [name, trigger] of lifecycleReleases) {
 
 console.log('PASS keyboard shortcuts respect interactive targets and modifiers');
 console.log('PASS releaseAll and gamepad reconnects rearm keyboard and gamepad sources');
+console.log('PASS gamepad identity replacements require a neutral handshake');
 console.log('PASS fixed-step pulse handoff retains keyboard, touch, and gamepad pulses across sub-fixed render frames');
 console.log('PASS hold and pulse pointer captures release on pointerup and lifecycle events');
 console.log('PASS touch hold controls rearm after local and global pointer and keyboard terminal events');
+console.log('PASS multi-pointer holds and pulse styling survive element blur until terminal pointer events');

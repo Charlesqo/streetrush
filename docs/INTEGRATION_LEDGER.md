@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。下一步回到尚未吸收的输入生命周期候选，先复现 gamepad identity/reconnect 与 touch/blur terminal state，避免在 timing 上无证据扩张。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。input identity/reconnect 与 touch/blur 的三个独立失败已吸收，下一步转向六车实际 GLB 结构与现有 production adapter 的离线对照，先固定 node/mesh/wheel/bounds 证据，再决定是否需要运行时适配。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -43,8 +43,19 @@
 - 原始问题：clean baseline 每个 render frame 都立即消费换挡、变速模式和重置脉冲；当连续渲染帧小于一个 120 Hz physics step 时，脉冲会在没有执行任何物理步的情况下丢失。
 - 失败证据：在本仓库加入键盘换挡、触屏重置和手柄重置的 sub-fixed 回归后，clean 实现稳定失败于第二帧 `keyboard shift-up ... retains pulse`，实际值为 `false`。
 - 实际变化：`InputController.update()` 可选择只观察 fixed pulse；新增显式 `consumeFixedPulses()`，由 `fixedUpdate()` 在第一个实际物理步后统一消费；手动 reset 同步移入 fixed step。旧的即时消费调用仍是默认行为，非主循环调用者保持兼容。
-- 未吸收：同一 NAS input diff 中的 gamepad 对象身份重连和多指 blur 行为；同一 `main.js` 大 diff 中的计时、生命周期、HUD 等改动。
+- 本批当时未吸收：同一 NAS input diff 中的 gamepad 对象身份重连和多指 blur 行为，后续已按独立失败吸收，见下节；同一 `main.js` 大 diff 中的计时、生命周期、HUD 等改动没有随 input 一并复制。
 - 结果：三类输入均跨两个 sub-fixed render frames 保留，在下一 physics frame 可见，消费后不重复；针对性测试、完整 `pnpm verify`、Rust 单测和 JS/WASM scheduler 对照均通过。
+
+### 输入设备身份与触控 blur 生命周期
+
+- 来源状态：NAS `Z:\Temp\street-rush-studio-continuation` 的 `src/input.js` 与 `scripts/test-input.mjs` 均为 unstaged tracked 修改；相对 HEAD 分别为 `+57/-10` 和 `+142/-0`，没有把整个 dirty diff 当作提交版本。
+- 来源指纹：dirty `src/input.js` SHA-256 `C1247332D686F1199930A31517ABBF85AE2F1DACB331F62735B871678A8F1194`；dirty `scripts/test-input.mjs` SHA-256 `7C6BE736B046E22C7029EBD8B6BACE466FAF419A063ACDCD181E349367F1AC71`。
+- 覆盖对照：当前测试已覆盖 disconnect/reconnect、`releaseAll`、window blur/pagehide/visibility、local/global pointer terminal 和 fixed pulse；真正缺少的是 same-slot/new-object gamepad、元素 blur 下的多指 hold、元素 blur 下的 pulse pressed styling。
+- red evidence：替换成仍按住油门的新 gamepad 对象时 `driveIntent` 实际为 1、期望 0；双指油门在元素 blur 后 `touch.throttle` 实际为 0、期望 1；reset 指针仍捕获时 pressed styling 实际为 false、期望 true。
+- 实际变化：只记录当前 gamepad 对象，身份替换与断连一样进入 neutral handshake 并清旧按钮 edge；hold 的元素 blur 只清键盘模拟指针，物理指针继续独立拥有状态；pulse 不再用元素 blur 冒充 terminal event。window/document lifecycle 的全量释放路径保持不变。
+- 未复制：来源同一 input diff 中已经单独整合的 fixed-pulse 代码和其余重复测试没有再次覆盖；没有吸收任何 `main.js`、HUD 或计时改动。
+- 结果：三个新增回归与既有 input suite 通过；完整 `pnpm verify` 保持 12 项资产、18 条六车 deterministic/WASM FNV、1,320-action timing soak、六车物理/恢复和音频生命周期绿色；build 仍为 34 modules、4,864-byte shared WASM、24 files。
+- 证据边界：自动 fixture 证明对象替换与 pointer ownership 契约；实际浏览器若每次 `getGamepads()` 都返回新 wrapper，引用身份策略需要重新评估。当前 Browser URL policy 仍阻止补做真实设备/六车运行验证。
 
 ### 六车 reset 状态清理
 
@@ -288,9 +299,10 @@
 - 证实：prepare/sector/lap/run staged transaction 可重现 46 个 legacy 中间 snapshot；current lap 必须由已提交 lap 数拥有，而不能只由 checkpoint 数推导。
 - 证实：authoritative WASM/fallback progress owner 可保持完整 JS event/record/save API 且无 legacy 进度双写；开发构建已使用 owner，production 仍需运行期证据。
 - 证实：4-seed/1,320-action timing lifecycle 中 legacy/WASM/fallback owner 每一步 exact 一致；短 fixture 未暴露的 restart/save/PB 顺序也保持。
+- 证实：gamepad 不断连但对象身份替换会绕过 reconnect rearm；元素 blur 也不是物理 pointer terminal。身份握手和键盘/物理指针所有权拆分可消除三个独立失败，同时保留 window 级全量释放。
 
 ## 当前最值得继续的方向
 
-1. 复核 NAS dirty input 变更的 gamepad identity/reconnect 与 touch/blur terminal state，先从当前实现建立失败序列，按根因拆批；
+1. 离线对照六辆实际 GLB 的 node/mesh/wheel/bounds 与 production `AssetStore` 适配路径，先固定结构 baseline，再判断 wheel/灯光/相机 adapter 是否有可复现缺口；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
-3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。
+3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据；真实 gamepad wrapper 身份语义也在同一条件下复核。

@@ -468,10 +468,29 @@
 
 结论：长 session sequence 未发现 staged owner、PB 或 save 顺序漂移；timing 下一步的增量价值低于回到未整合 input lifecycle，因此 production 切换继续等待实际浏览器条件。
 
-## 下一实验
+## gamepad identity 与 pointer blur 生命周期结果
 
 问题：NAS dirty input 中 gamepad 对象身份重连与 pointer/blur terminal cleanup，哪些能在当前基线形成独立失败，哪些已被现有 `releaseAll`/pointer capture 测试覆盖？
 
 可观测量：same index/new object、disconnect/reconnect、held/pulse edge rearm、multi-pointer owner、blur/visibility/pointercancel 后 hold/pulse/capture maps；keyboard/gamepad/touch source isolation。
 
 停止条件：先读取来源实际 diff/test hash；只采用能复现当前失败的最小变化；不整批复制 input 大 diff；完整 input、six-car、Rust/WASM/timing soak 回归保持。
+
+- 来源复核：NAS 两个 dirty tracked 文件相对 HEAD 为 input `+57/-10`、test `+142/-0`；dirty SHA-256 分别为 `C1247332D686F1199930A31517ABBF85AE2F1DACB331F62735B871678A8F1194` 和 `7C6BE736B046E22C7029EBD8B6BACE466FAF419A063ACDCD181E349367F1AC71`。
+- 已有覆盖：disconnect/reconnect neutral rearm、`releaseAll`、window blur/pagehide/visibility、local/global pointerup/cancel/lostcapture、键盘 terminal 与 fixed-step pulse 均已通过；不重复复制这些 fixture。
+- gamepad red：旧 pad 活跃后在同一 `getGamepads()` 槽位换成仍活跃的新对象，首帧 `driveIntent=1`，期望 neutral handshake 的 0。
+- hold red：同一油门控件两根物理指针均捕获后触发元素 blur，`touch.throttle=0`，期望仍为 1；其他 brake/steer owner 未受影响。
+- pulse red：reset pointer 仍捕获时触发元素 blur，pressed class 为 false，期望保持 true 直到 pointerup；中心 capture registry 并未释放，说明只是局部状态提前清理。
+- 修复：跟踪 gamepad 引用并在替换时 rearm/reset button edges；hold blur 只清 keyboard pointer；pulse 移除非 terminal 的元素 blur cleanup。三条实际 terminal 与 window lifecycle release 不变。
+- green：三个新增断言与既有 input suites 一起通过；完整 `pnpm verify` 保持 12 项资产、18 条六车 deterministic/WASM FNV、1,320-action timing soak、六车物理/恢复、音频与 production build 全绿；34 modules、4,864-byte shared WASM、24 build files 不变。
+- 边界：fixture 没有证明目标浏览器 `Gamepad` wrapper 跨轮询的身份稳定性；若实测每帧换 wrapper，必须改用 index/id/连接 epoch 协议，不能继续按引用替换解释。
+
+结论：三个来源候选都能形成独立失败且根因一致地落在输入 owner/lifecycle 边界；采用的是可解释的最小子集，不是整批认可 NAS dirty input。
+
+## 下一实验
+
+问题：六辆 production GLB 的实际 node/mesh/wheel/bounds 结构，与模型研究报告和当前 `AssetStore` 的通用 scale/offset 路径有哪些稳定差异？这些差异是否足以支持一个可测试的 wheel/灯光/相机 adapter，而不是按车型写视觉猜测？
+
+可观测量：每车 GLB/GLTF JSON 的 scene/node/mesh/skin/animation 数、node names、local/world transform、accessor bounds、疑似 wheel nodes、当前 config scale/offset/wheelbase/track；文件 SHA-256 和研究 oracle 来源。
+
+停止条件：先做只读离线结构 probe 并固定 baseline；六车数据不足或命名不稳定时只记录参考，不改运行时；只有发现能复现当前 adapter 错位的明确 invariant，才写失败测试和最小 adapter。

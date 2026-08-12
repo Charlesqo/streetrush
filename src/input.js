@@ -94,6 +94,7 @@ export class InputController {
     this.padButtons = { up: false, down: false, reset: false };
     this.gamepadRearmPending = false;
     this.gamepadConnected = false;
+    this.gamepad = null;
     this.touchPointerResets = new Set();
     this.pointerCaptures = new Map();
     this.touchPointerRearm = new Set();
@@ -220,14 +221,18 @@ export class InputController {
       const activePointers = new Set();
       const activeKeyboardCodes = new Set();
       const keyboardRearm = new Set();
-      const clearPointers = () => {
+      const keyboardPointerId = (code) => `keyboard:${id}:${code}`;
+      const clearKeyboardPointers = () => {
         for (const code of activeKeyboardCodes) keyboardRearm.add(code);
+        for (const code of activeKeyboardCodes) activePointers.delete(keyboardPointerId(code));
         activeKeyboardCodes.clear();
+      };
+      const clearPointers = () => {
+        clearKeyboardPointers();
         activePointers.clear();
         this.touch[field] = 0;
         element.classList.remove('pressed');
       };
-      const keyboardPointerId = (code) => `keyboard:${id}:${code}`;
       const releaseKeyboard = (code) => {
         if (!activeKeyboardCodes.has(code) && !keyboardRearm.has(code)) return;
         activeKeyboardCodes.delete(code);
@@ -274,7 +279,13 @@ export class InputController {
       }
       element.addEventListener('keydown', keyboardPress);
       element.addEventListener('keyup', keyboardRelease);
-      element.addEventListener('blur', clearPointers);
+      element.addEventListener('blur', () => {
+        clearKeyboardPointers();
+        if (activePointers.size === 0) {
+          this.touch[field] = 0;
+          element.classList.remove('pressed');
+        }
+      });
     };
 
     const bindPulse = (id, pulse) => {
@@ -314,7 +325,6 @@ export class InputController {
         vibrate(10);
         setTimeout(() => element.classList.remove('pressed'), 80);
       });
-      element.addEventListener('blur', clearPointers);
     };
 
     bindHold('touch-left', 'steerLeft');
@@ -378,8 +388,13 @@ export class InputController {
     }
     const pads = navigator.getGamepads?.() || [];
     const pad = Array.from(pads).find((candidate) => candidate && candidate.connected !== false);
-    if (this.gamepadConnected && !pad) this.gamepadRearmPending = true;
+    const gamepadReplaced = Boolean(pad && this.gamepad && pad !== this.gamepad);
+    if ((this.gamepadConnected && !pad) || gamepadReplaced) {
+      this.gamepadRearmPending = true;
+      this.padButtons = { up: false, down: false, reset: false };
+    }
     this.gamepadConnected = Boolean(pad);
+    this.gamepad = pad || null;
     const activePad = pad && (!this.gamepadRearmPending || !gamepadHasInput(pad)) ? pad : null;
     if (activePad) {
       if (this.gamepadRearmPending) this.gamepadRearmPending = false;
