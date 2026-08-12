@@ -12,7 +12,7 @@ import { ChaseCamera, TireEffects } from './effects.js';
 import { RaceTimingSession, TimingStore, formatRaceDelta, formatRaceTime } from './race-timing.js';
 import { getLiveRaceGoal, LONGWAN_TIME_ATTACK, MIN_LIVE_GOAL_CHECKPOINTS } from './race-goals.js';
 import { clampFrameDelta } from './physics-scheduling.js';
-import { loadPhysicsScheduler } from './physics-scheduler-owner.js';
+import { loadSharedCoreCapabilities } from './shared-core-owner.js';
 import { initializeRapier } from './rapier-init.js';
 import { getOrientationUiState, ORIENTATIONS, shouldFreezeRace } from './orientation.js';
 
@@ -20,7 +20,7 @@ const $ = (id) => document.getElementById(id);
 const schedulerFault = import.meta.env.DEV
   ? new URLSearchParams(location.search).get('scheduler-fault')
   : null;
-const physicsSchedulerPromise = loadPhysicsScheduler(
+const sharedCorePromise = loadSharedCoreCapabilities(
   schedulerFault === 'missing-wasm'
     ? { wasmUrl: '/__streetrush_missing_core.wasm' }
     : undefined,
@@ -90,6 +90,7 @@ let retryCarIndex = null;
 let state = 'menu';
 let stateBeforePause = 'race';
 let physicsScheduler = null;
+let raceProgressCore = null;
 let lastFrame = performance.now();
 let countdown = 0;
 let countdownShown = 0;
@@ -1077,8 +1078,11 @@ $('loading-status').textContent = '建立赛道与车辆物理…';
 const sceneryPromise = assets.loadScenery().catch((error) => console.warn('Scenery failed to load', error));
 await mountVehicle(carIndex, true);
 await sceneryPromise;
-physicsScheduler = await physicsSchedulerPromise;
+const sharedCore = await sharedCorePromise;
+physicsScheduler = sharedCore.scheduler;
+raceProgressCore = sharedCore.raceProgress;
 document.documentElement.dataset.physicsSchedulerOwner = physicsScheduler.owner;
+document.documentElement.dataset.raceProgressCoreOwner = raceProgressCore.owner;
 if (physicsScheduler.fallbackReason) {
   document.documentElement.dataset.physicsSchedulerFallback = physicsScheduler.fallbackReason.code;
 } else {
@@ -1088,8 +1092,16 @@ recordDevEvent('physics-scheduler-ready', {
   owner: physicsScheduler.owner,
   fallbackReason: physicsScheduler.fallbackReason,
 });
+recordDevEvent('race-progress-core-ready', {
+  owner: raceProgressCore.owner,
+  available: raceProgressCore.available,
+  fallbackReason: raceProgressCore.fallbackReason,
+});
 if (physicsScheduler.fallbackReason) {
   console.warn('[physics-scheduler] using JavaScript fallback', physicsScheduler.fallbackReason);
+}
+if (raceProgressCore.fallbackReason) {
+  console.warn('[race-progress-core] Rust shadow capability unavailable', raceProgressCore.fallbackReason);
 }
 $('loading-progress').style.width = '100%';
 setTimeout(() => $('loading').classList.add('hidden'), 320);

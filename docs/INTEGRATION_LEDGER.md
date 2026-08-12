@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。真实六车 trace 已接入 Rust/WASM digest，native 已有状态化比赛进度 owner；网页仍由 JS 持有 PB/persistence/event，下一步应让 scheduler 与 timing 共享一次 WASM 实例并做 capability 分层，避免为继续整合复制 loader 或实例。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页现已一次实例化 shared WASM，并让 scheduler/timing capability 独立握手；下一步应把 race-progress scalar wrapper 注入 `RaceTimingSession` 做双运行对照，再决定是否切换纯进度 owner。PB/persistence/event 继续留在 JS。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -105,6 +105,18 @@
 - 结果：Rust 单测由 13 增至 17，native probe、workspace/wasm32 Clippy、真实 WASM shadow 和完整 `pnpm verify` 全部通过。
 - 资产边界：release WASM 从 3,658 增至 4,864 bytes，超过 Vite 4 KiB inline 阈值；构建正确输出 `assets/streetrush_core-*.wasm`，24-file freshness/public-asset/Cloudflare 检查通过，scheduler owner 仍走真实 WASM。
 - 限制：shadow 证明规则一致，不等于网页 timing owner 已切换；PB/persistence/save event 尚无 Rust 数据协议，不能把它们默认为可直接迁移。
+
+### shared-core 单实例与 capability 隔离
+
+- 原始问题：`physics-scheduler-owner.js` 同时拥有 fetch/AbortController/timeout/instantiate 和 scheduler contract；timing shadow 只能直接再实例化同一 WASM，继续扩展会复制资源生命周期。
+- 红测试：先加入 `test-shared-core-owner.mjs`，旧代码因不存在 `shared-core-owner.js` 以 `ERR_MODULE_NOT_FOUND` 退出 1。
+- 分层：`shared-core-loader.js` 只负责一次 fetch/timeout/instantiate 和 exports object；scheduler 与 race-progress 模块分别验证 required exports/contract 并各自生成 structured fallback；聚合 owner 不合并 capability failure。
+- 隔离矩阵：完整 core instantiate 计数为 1；缺 timing、缺 scheduler、两类 contract mismatch 均只回退对应 capability；fetch 404 与 timeout 才让两者共享 load fallback。scheduler fallback 仍逐帧与 JS oracle 一致。
+- 兼容：既有 `loadPhysicsScheduler()` 继续可调用，但内部复用通用 loader；原 fetch/compile/timeout/missing export/contract mismatch 测试和 fallback code 未改变。
+- main：启动期并行 promise 现在返回 `{scheduler, raceProgress}`；设置两个独立 data owner 并记录 dev events。race-progress 只作为已加载的 shadow capability，`RaceTimingSession` 仍是 live owner。
+- timing shadow：改为从聚合 owner 取 wrapper，断言 scheduler 与 timing 共用一次 real WASM instantiate；31-snapshot oracle 保持通过。
+- 结果：shared/legacy/timing targeted tests 和完整 `pnpm verify` 通过；Vite 33 modules、单个 4,864-byte hashed WASM，Cloudflare/public assets/secret guard 均通过。
+- 限制：自动测试证明实例与失败隔离；此前 Browser URL policy 已阻止继续本地浏览器循环，本批未把构建测试描述为新的实际浏览器证据。
 
 ### 网页 Rust/WASM scheduler owner
 
@@ -217,9 +229,10 @@
 - 证实：当前 JS/Rapier 六车在三类固定 seed 状态序列中可逐 tick exact 重现，并能跨新 Node 进程匹配登记 hash；证据范围尚不跨浏览器/平台。
 - 证实：canonical Float64、JS 兼容 1e-6 quantization 与 FNV-1a 64 增量摘要可由同一 Rust 纯函数在 native/raw WASM 使用；特殊向量和现有 18 条六车 trace 均与独立 JS oracle 逐 push 一致。
 - 证实：比赛进度可拆成 Rust 状态 owner/native API 与无全局状态 raw WASM rule ABI；31 个 JS/WASM action snapshot 一致。PB、持久化和 UI event 是独立 JS 边界，尚未切换。
+- 证实：scheduler 与 timing 不需要两个 WASM instance；通用 lifecycle + capability-specific contract 能让 partial failure 互不误伤，同时保留旧 scheduler API。
 
 ## 当前最值得继续的方向
 
-1. 抽出一次实例化的 shared-core loader，为 scheduler/replay/timing 分层做 capability handshake；验证 timing 缺失只回退 timing、scheduler 缺失仍按原契约回退，并避免两个 WASM instance；
+1. 实现可注入的 JS race-progress session wrapper，在 timing tests 中让 legacy `RaceTimingSession` 与 Rust/WASM wrapper 双运行；先比较逐 action snapshot/event，再考虑把 live 纯进度 mutation 委托给 wrapper；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。

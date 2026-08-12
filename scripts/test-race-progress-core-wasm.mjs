@@ -2,10 +2,21 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 import { RaceTimingSession, TimingStore } from '../src/race-timing.js';
+import { loadSharedCoreCapabilities } from '../src/shared-core-owner.js';
 
 const wasmUrl = new URL('../src/generated/streetrush_core.wasm', import.meta.url);
-const { instance } = await WebAssembly.instantiate(await readFile(wasmUrl));
-const core = instance.exports;
+const wasmBytes = await readFile(wasmUrl);
+let instantiateCount = 0;
+const sharedCore = await loadSharedCoreCapabilities({
+  instantiate: async () => {
+    instantiateCount += 1;
+    return WebAssembly.instantiate(wasmBytes);
+  },
+});
+assert.equal(instantiateCount, 1);
+assert.equal(sharedCore.scheduler.owner, 'rust-wasm');
+assert.equal(sharedCore.raceProgress.owner, 'rust-wasm');
+const core = sharedCore.raceProgress;
 
 const STATUS = Object.freeze({ idle: 0, running: 1, finished: 2 });
 const FLAGS = Object.freeze({
@@ -22,18 +33,7 @@ const config = Object.freeze({
   medalTargetsMs: { gold: 12000, silver: 15000, bronze: 18000 },
 });
 
-for (const name of [
-  'streetrush_timing_contract_version',
-  'streetrush_timing_advance_exact_ms',
-  'streetrush_timing_round_duration_ms',
-  'streetrush_timing_expected_checkpoint_index',
-  'streetrush_timing_checkpoint_ordinal',
-  'streetrush_timing_checkpoint_flags',
-  'streetrush_timing_resolve_medal',
-]) {
-  assert.equal(typeof core[name], 'function', `missing timing export ${name}`);
-}
-assert.equal(core.streetrush_timing_contract_version(), 1);
+assert.equal(core.contractVersion, 1);
 
 const session = new RaceTimingSession({
   trackId: 'timing-wasm-oracle',
@@ -54,18 +54,18 @@ const shadow = {
 let comparisons = 0;
 
 function rounded(value) {
-  return core.streetrush_timing_round_duration_ms(value);
+  return core.roundDurationMs(value);
 }
 
 function expectedCheckpointIndex() {
-  return core.streetrush_timing_expected_checkpoint_index(
+  return core.expectedCheckpointIndex(
     shadow.checkpointsPassed,
     config.checkpointCount,
   );
 }
 
 function checkpointOrdinal() {
-  return core.streetrush_timing_checkpoint_ordinal(
+  return core.checkpointOrdinal(
     shadow.checkpointsPassed,
     config.checkpointCount,
   );
@@ -119,7 +119,7 @@ function start(label = 'start') {
 
 function advance(deltaMs, label = `advance ${deltaMs}`) {
   session.advance(deltaMs);
-  shadow.runTimeExactMs = core.streetrush_timing_advance_exact_ms(
+  shadow.runTimeExactMs = core.advanceExactMs(
     shadow.status,
     shadow.runTimeExactMs,
     deltaMs,
@@ -138,7 +138,7 @@ function invalidate(reason, label = `invalidate ${reason}`) {
 function passCheckpoint(checkpointIndex, label = `checkpoint ${checkpointIndex}`) {
   const nextSectorCheckpoint = config.sectorCheckpoints[shadow.currentSector]
     ?? config.checkpointCount;
-  const flags = core.streetrush_timing_checkpoint_flags(
+  const flags = core.checkpointFlags(
     shadow.status,
     shadow.checkpointsPassed,
     config.totalLaps,
@@ -230,7 +230,7 @@ const completed = finalEvents.find(({ type }) => type === 'run-completed');
 assert.ok(completed);
 assert.equal(completed.summary.timeMs, 11700);
 assert.equal(
-  core.streetrush_timing_resolve_medal(
+  core.resolveMedal(
     completed.summary.timeMs,
     config.medalTargetsMs.gold,
     config.medalTargetsMs.silver,
@@ -240,12 +240,12 @@ assert.equal(
 );
 assert.equal(completed.summary.medal, 'gold');
 
-assert.equal(core.streetrush_timing_advance_exact_ms(STATUS.running, 100, -1), 100);
-assert.equal(core.streetrush_timing_round_duration_ms(-1), 0);
+assert.equal(core.advanceExactMs(STATUS.running, 100, -1), 100);
+assert.equal(core.roundDurationMs(-1), 0);
 assert.equal(
-  core.streetrush_timing_checkpoint_flags(STATUS.idle, 0, 2, 3, 1, 1),
+  core.checkpointFlags(STATUS.idle, 0, 2, 3, 1, 1),
   0,
 );
 
-console.log(`PASS Rust WASM race progress matches JS timing oracle across ${comparisons} snapshots`);
+console.log(`PASS one shared Rust WASM instance matches JS timing across ${comparisons} snapshots`);
 console.log('PASS browser persistence, invalid-reason strings, PB mutation, and UI events remain JS-owned');

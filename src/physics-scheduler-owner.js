@@ -4,8 +4,13 @@ import {
   MAX_PHYSICS_STEPS,
   accumulatePhysicsTime,
 } from './physics-scheduling.js';
+import {
+  DEFAULT_CORE_WASM_URL,
+  fallbackReasonFromError,
+  instantiateSharedCore,
+} from './shared-core-loader.js';
 
-export const DEFAULT_CORE_WASM_URL = new URL('./generated/streetrush_core.wasm', import.meta.url);
+export { DEFAULT_CORE_WASM_URL } from './shared-core-loader.js';
 
 class SchedulerLoadError extends Error {
   constructor(code, message, cause) {
@@ -126,56 +131,6 @@ export function createWasmPhysicsScheduler(source) {
   });
 }
 
-async function instantiateFromFetch(wasmUrl, fetchImpl, signal) {
-  let response;
-  try {
-    response = await fetchImpl(wasmUrl, { signal });
-  } catch (error) {
-    throw new SchedulerLoadError('wasm-fetch-failed', `Failed to fetch ${wasmUrl}`, error);
-  }
-  if (!response?.ok) {
-    throw new SchedulerLoadError(
-      'wasm-fetch-failed',
-      `Failed to fetch ${wasmUrl}: HTTP ${response?.status ?? 'unknown'}`,
-    );
-  }
-  try {
-    return await WebAssembly.instantiate(await response.arrayBuffer());
-  } catch (error) {
-    throw new SchedulerLoadError('wasm-instantiate-failed', `Failed to instantiate ${wasmUrl}`, error);
-  }
-}
-
-function withTimeout(promise, timeoutMs, onTimeout) {
-  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) return promise;
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => {
-      onTimeout?.();
-      reject(new SchedulerLoadError(
-        'wasm-load-timeout',
-        `WASM scheduler did not initialize within ${timeoutMs}ms`,
-      ));
-    }, timeoutMs);
-    Promise.resolve(promise).then(
-      (value) => {
-        clearTimeout(timer);
-        resolve(value);
-      },
-      (error) => {
-        clearTimeout(timer);
-        reject(error);
-      },
-    );
-  });
-}
-
-function fallbackReason(error) {
-  return {
-    code: error instanceof SchedulerLoadError ? error.code : 'wasm-instantiate-failed',
-    message: error instanceof Error ? error.message : String(error),
-  };
-}
-
 export async function loadPhysicsScheduler({
   wasmUrl = DEFAULT_CORE_WASM_URL,
   fetchImpl = globalThis.fetch,
@@ -183,13 +138,11 @@ export async function loadPhysicsScheduler({
   timeoutMs = 1500,
 } = {}) {
   try {
-    const abortController = instantiate ? null : new AbortController();
-    const sourcePromise = instantiate
-      ? instantiate(wasmUrl)
-      : instantiateFromFetch(wasmUrl, fetchImpl, abortController.signal);
-    const source = await withTimeout(sourcePromise, timeoutMs, () => abortController?.abort());
+    const source = await instantiateSharedCore({ wasmUrl, fetchImpl, instantiate, timeoutMs });
     return createWasmPhysicsScheduler(source);
   } catch (error) {
-    return createJavaScriptPhysicsScheduler({ fallbackReason: fallbackReason(error) });
+    return createJavaScriptPhysicsScheduler({
+      fallbackReason: fallbackReasonFromError(error),
+    });
   }
 }

@@ -355,10 +355,30 @@
 
 结论：计时纯规则可以共享，假设得到支持；但 PB/persistence/event adapter 仍是明确未迁移面，shadow parity 不能被记录成网页 owner 切换。下一步先解决共享实例与 capability 所有权，再考虑 live timing adapter。
 
-## 下一实验
+## shared-core 单实例 capability 实验结果
 
 问题：现有 scheduler loader 能否演化为一次实例化的 shared-core capability owner，让 scheduler 与 timing 分别握手和回退，而不复制 fetch/timeout/instantiate 生命周期？
 
 可观测量：同一启动的 fetch/instantiate 次数；scheduler-only、timing-only、完整、缺导出、contract mismatch 与 timeout 的分层结果；现有 scheduler frame parity；timing 31-snapshot parity；构建后的独立 WASM URL。
 
 停止条件：一次实例化、能力失败互不误伤、现有结构化 fallback reason 保持；main live timing owner 仍不切换，直到 shared loader 和 shadow adapter 在失败注入下通过；若 capability 分层使 loader 明显复杂化，则保留单 owner loader 并记录成本。
+
+- red evidence：新增测试先以 `ERR_MODULE_NOT_FOUND: src/shared-core-owner.js` 退出 1，证明聚合 owner 实现前没有假绿色。
+- lifecycle：通用 loader 独占 URL、fetch、AbortController、timeout、instantiate 和 exports-object 检查；自定义 instantiate 的同步/异步错误统一保留 `wasm-instantiate-failed`，HTTP 与 timeout code 保持。
+- capabilities：scheduler 继续检查 fixed dt/max frame/max steps/plan exports；race-progress 检查 timing contract v1 和 7 个 scalar exports。各自错误转为自己的 JS metadata fallback。
+- 矩阵：full=两项 Rust/instantiate 1；timing missing=scheduler Rust；scheduler missing=timing Rust；两种 contract mismatch 只影响相应项；404 fetch 一次和永不完成 instantiate 一次都产生共享 load reason。
+- fixture 修正：首次用 Proxy 隐藏 WebAssembly export 违反宿主对象不变量，错误被归类 instantiate failure；改用普通 exports 浅复制后得到预期 capability missing。该失败属于注入方法，不是产品 loader 缺陷。
+- legacy：`loadPhysicsScheduler()` 保留，对真实 WASM frame parity 与 fetch/compile/timeout/missing/contract 五类回退全部通过。
+- main：`physicsSchedulerPromise` 改为 shared capability promise；同一结果发布 scheduler owner 和 race-progress shadow owner/data/dev event。没有改变 `RaceTimingSession` 构造或 fixedUpdate 时序。
+- timing：31-snapshot 测试从 shared wrapper 获取规则，额外断言同一实例同时提供 Rust scheduler 和 Rust timing；不再直接第二次 instantiate。
+- 回归：完整 `pnpm verify` 通过；18 FNV traces、六车边界/恢复/物理、audio/assets 保持；build 33 modules、一个 4,864-byte WASM、24 files，secret guard 112 files。
+
+结论：capability 分层没有造成跨能力耦合，且消除了继续扩展时的第二实例需求；网页 live timing 仍未切换，下一步可以在同一 loader 之上实验 state wrapper，而无需再改资源生命周期。
+
+## 下一实验
+
+问题：能否用一个可注入的 JS `RaceProgressSession` 包装 scalar Rust/WASM capability，并与现有 `RaceTimingSession` 在同一 action 流双运行，从而把进度 mutation 的 owner 切换条件固定下来，同时不碰 PB/persistence/event adapter？
+
+可观测量：start/restart/advance/invalidate/checkpoint 后的纯进度 snapshot；sector/lap/run outcome；WASM capability 和 JS fallback wrapper；重复 invalidation、错序 checkpoint、finish 后输入；existing record/save/event tests。
+
+停止条件：wrapper 不直接访问 storage/DOM，不重复 instantiate；Rust 与 fallback 两条路径都匹配 legacy 事件序列；先只在测试注入，完整回归通过前不改 live `RaceTimingSession` mutation。
