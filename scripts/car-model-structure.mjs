@@ -22,7 +22,7 @@ function identityMatrix() {
   return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 }
 
-function multiplyMatrices(left, right) {
+export function multiplyMatrices(left, right) {
   const result = new Array(16).fill(0);
   for (let column = 0; column < 4; column += 1) {
     for (let row = 0; row < 4; row += 1) {
@@ -34,7 +34,7 @@ function multiplyMatrices(left, right) {
   return result;
 }
 
-function composeMatrix(node) {
+export function composeMatrix(node) {
   if (Array.isArray(node.matrix) && node.matrix.length === 16) return [...node.matrix];
   const [x, y, z, w] = node.rotation || [0, 0, 0, 1];
   const [sx, sy, sz] = node.scale || [1, 1, 1];
@@ -71,7 +71,7 @@ function composeMatrix(node) {
   ];
 }
 
-function transformPoint(matrix, [x, y, z]) {
+export function transformPoint(matrix, [x, y, z]) {
   return [
     matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12],
     matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13],

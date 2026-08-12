@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega，static merge 也能显式保留动态 branch；下一步应先为与 public hash 完全一致的 MX-5 建立离线可验证的 wheel manifest，固定 root、part role、pivot centroid 和轴，再决定是否接运行时。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega，static merge 也能显式保留动态 branch；MX-5 的 hash-scoped wheel manifest 已离线验证，下一步只做纯 scene pivot 重组实验，先证明 world transform、steer/roll 组合和部件归属，再决定是否接 production runtime。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -87,6 +87,18 @@
 - 暂缓 production marker：MX-5 虽有 `Circle.002..005` 稳定 roots，但报告要求按 tire centroid 新建 outer-Y/inner-X pivot；M3 brake/caliper 需处理 baked front steer；GT3 状态明确是 source hierarchy only in isolation。仅保留 branch 还不足以得到正确轮组运动。
 - derivative 限制：M5/AMG public 模型已合并为 28/51 meshes，不存在 source hierarchy；本机制不能逆向拆 mesh。若未来采用，必须从 source copy 建立保留 dynamic partitions 的可重复优化 pipeline。
 - 结论边界：本实验只证明显式 branch 可跨静态合并保存资源与变换所有权；它没有证明该 branch 已有正确的 wheel centroid、steer/roll 轴或 caliper 归属，车型级 manifest 仍是接入前置条件。
+
+### MX-5 hash-scoped wheel manifest
+
+- 来源状态：只读研究 `E:\Codex\autonomous_runs\multi_car_model_research\mazda-miata-mx5-na\wheel_binding.json` SHA-256 `5879dc06c16289e221cf93032c98c9a5123bf99060a84b8f27f383c91f00a786`，`wheel_validation_summary.json` SHA-256 `1e2f8db932f34f1b385b8a1402db0db1eedb052d157e80ef18e7cba2ee23544f`；报告状态是 isolated-browser 已验证但 canonical adapter 未接入。
+- source identity：当前 `public/cars/mazda-miata-mx5-na.glb` 为 1,925,828 bytes，SHA-256 `a17b3b9edc0997ba77837ae4358e3dfe7b7aa7f59364d7c15b6fb01a3452d26b`，与研究 source byte-identical；manifest 不依赖外部来源目录才能运行，只登记来源路径/指纹。
+- red/new finding：初版按 mesh 顺序猜 FL rim 的 POSITION accessor 为 24，实际 primitive 指向 72，测试首先报 `expected 24, found 72`；因此推翻“accessor 可按 mesh 顺序推导”，改为逐 primitive 解码并显式锁定。
+- 实际变化：新增 v1 `data/car-wheel-manifests/mx5.json` 和只读 GLB BIN accessor validator；固定 FL/FR/RL/RR roots、三种 part role、node/mesh/material、12 个 POSITION accessors/vertex counts、exact transformed vertex bounds、tire vertex centroids 和坐标轴。
+- geometry evidence：accessors 为 FL `72/76/80`、FR `60/64/68`、RL `84/88/92`、RR `48/52/56`；12 组 raw world bounds 与研究报告在 1e-9 舍入下一致。四个 tire centroid 摘要为 `9707b78576e4433d82dd8fbeef9f7cbf64a07337e96781fd78c0d45e58fe9dc3`。
+- axis evidence：四个 raw parent local-Z 转 world 都与 +X 对齐，最大误差 `8.6821e-8`；manifest 明确 runtime outer steer 为 Y、nested roll 为 X，pivot method 是 Material.014 tire POSITION vertex average。
+- fail-closed：source hash/bytes、root、material role、accessor、bounds、axis、pivot centroid 七类漂移均有独立拒绝测试；六车 structure baseline 与 MX-5 manifest 联合通过。
+- 回归：manifest 测试加入 `pnpm verify`；完整回归保持 13 项资产生命周期、18 条六车 deterministic/WASM replay、1,320-action timing soak、六车物理/恢复、34 modules、4,864-byte WASM 和 24-file build。
+- 边界：状态保持 `candidate-offline-validation-runtime-not-integrated`；本批没有给 GLB 节点加 marker、没有移动 mesh、没有改变 `AssetManager` 或 `VehicleSystem` runtime。下一前置条件是纯 scene attach/pivot fixture。
 
 ### 六车 reset 状态清理
 
@@ -294,7 +306,7 @@
 ## 当前仅参考或候选
 
 - 旧 `E:\Codex\street-rush`：采样音频和较短兼容实现；没有独立提交历史。
-- 六车模型研究：production GLB 结构 baseline 和 M3 generated-wheel adapter 已采用；source brake/caliper、其余车型 wheel/light/camera binding 仍是候选，M5/AMG source 报告不能直接按 node id 套到优化 public derivative。
+- 六车模型研究：production GLB 结构 baseline、M3 generated-wheel adapter 和 MX-5 离线 wheel manifest 已采用；MX-5 runtime pivot、source brake/caliper、其余车型 wheel/light/camera binding 仍是候选，M5/AMG source 报告不能直接按 node id 套到优化 public derivative。
 - 多车音频：bank 选择/发布与严格 manifest/decode loader 已采用；权威 data/schema、shared decoded registry 和样本播放图仍是强候选，不复制 3.14 GB 隔离副本和 vendor。
 - C++ 物理核心：算法和实验是强 oracle；现有生产 `Vehicle` 与研究 `SharedWheelRide` 仍有明确耦合/状态边界。
 - 六车物理数据：只采用带 provenance、field-scoped eligible 的值；冲突和缺失保持显式。
@@ -334,9 +346,10 @@
 - 证实：六车 public 模型结构并不共享可靠命名；4 车与研究字节一致，M5/AMG 是已声明的 source-model 优化派生。当前 GLB/hash/TRS bounds 必须独立固定，不能把 source node id 机械用于 public。
 - 证实：M3 已生成的四轮缺少 runtime owner；建立 FL/FR/RL/RR 两级 pivot 后，现有 steer/compression/omega 可在不改物理状态契约的前提下驱动视觉并安全 reset。
 - 证实：static merge 可按显式 v1 marker 排除动态 branch，并在 canonical/clone 间保持 world transform、对象独立与共享 geometry；仅保留 branch 不足以证明 wheel pivot/axis 正确。
+- 证实：MX-5 public 与研究 source 字节一致时，可从 GLB primitive/accessor 独立重算 12 组 part bounds、四个 tire vertex centroids 和 parent roll axis；accessor index 不能从 mesh 顺序推导，必须显式锁定。
 
 ## 当前最值得继续的方向
 
-1. 以 exact-public MX-5 为第一辆车，建立 hash-scoped wheel manifest，离线验证 root/part role、centroid、steer/roll 轴和四轮顺序；验证前不写 production marker；
-2. 用纯 scene fixture 验证 manifest 生成 outer-steer/inner-roll pivot 后的 world transform、caliper 归属、clone 和销毁语义，再决定是否接入 MX-5 runtime；
+1. 用纯 scene fixture 验证 MX-5 manifest 生成 outer-steer/inner-roll pivot 后，tire centroid 在零姿态和组合运动中稳定、悬挂只移动 outer Y；
+2. 验证 rim/tire 随 nested roll、disc 随 steer/suspension 但不 roll 的部件归属，以及 clone、static partition 和销毁语义；通过前不接 production runtime；
 3. M5/AMG 若要独立轮组应回到只读 source model 复制后建立可重复优化 pipeline；实际六车 visual loop 与真实 gamepad wrapper 身份仍等待 Browser URL policy 允许。

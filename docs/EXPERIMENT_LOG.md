@@ -539,10 +539,37 @@
 
 结论：通用资源分区机制有独立价值，但车型级 wheel manifest 是运行时接入的必要前置条件；M5/AMG 的 public derivative 仍需 source-copy 优化 pipeline，不能靠 marker 逆拆。
 
-## 下一实验
+## MX-5 hash-scoped wheel manifest 实验设计
 
 问题：能否为与 public GLB hash 完全一致的 MX-5 建立一个可离线验证、遇到 hash/name/part role 漂移即失败的 wheel manifest？
 
 可观测量：四个 wheel roots、rim/tire/brake-disc part roles、各 part accessor bounds、tire centroid、outer steer/inner roll 轴、原始 world transform，以及 manifest 与 public GLB/research report 的双重 hash。
 
 停止条件：先只生成/校验数据，不改 production runtime；任一 root/part/axis 无法由 GLB 和报告共同支持则保留为候选；通过后仍需纯 scene pivot fixture 才能考虑添加 marker。
+
+## MX-5 hash-scoped wheel manifest 结果
+
+问题：研究报告的四轮 mapping、part roles、tire centroid 和轴，能否由当前 public GLB 独立重算并在漂移时给出局部失败？
+
+可观测量：public/report SHA；root/node/mesh/material；POSITION accessor/count；decoded raw-world bounds/vertex average；parent local-Z world axis；负例错误类别。
+
+停止条件：不依赖外部研究目录运行；不改 runtime；public 与研究 source 必须 byte-identical；正式值由 primitive 实际字段得出，不从索引顺序猜测。
+
+- source：public GLB 1,925,828 bytes，SHA-256 `a17b3b9edc0997ba77837ae4358e3dfe7b7aa7f59364d7c15b6fb01a3452d26b`；binding/validation 报告 SHA 分别为 `5879dc06...00a786`、`1e2f8db9...23544f`。
+- red：初版把 FL rim POSITION accessor 猜成 24，真实 primitive 为 72；第一处失败直接推翻 accessor/mesh 顺序假设。
+- decoder：从 GLB BIN bufferView 按 FLOAT VEC3/stride 读取 POSITION，组合 default scene TRS，逐顶点计算 exact world bounds 与 vertex-average centroid；sparse/non-float/out-of-scene/multi-parent fail closed。
+- manifest：锁定 4 roots × 3 parts；accessors 为 FL `72/76/80`、FR `60/64/68`、RL `84/88/92`、RR `48/52/56`。
+- cross-check：12 组 exact bounds 与研究报告在 1e-9 舍入下一致；四个 tire centroid 摘要 `9707b78576e4433d82dd8fbeef9f7cbf64a07337e96781fd78c0d45e58fe9dc3`。
+- axes：四个 parent local-Z 映射 +X，最大误差 `8.6821e-8`；outer Y steer、nested X roll 和 tire-centroid pivot 作为显式契约登记。
+- drift：source hash、root、material role、accessor、bounds、axis、pivot centroid 七类负例均按局部原因拒绝；六车 structure baseline 联合通过。
+- regression：完整 `pnpm verify` 通过；13 项资产生命周期、18 条六车 deterministic/WASM replay、1,320-action timing soak、六车物理/恢复、34 modules、4,864-byte WASM 与 24-file build 保持。
+
+结论：MX-5 manifest 足以成为纯 scene pivot 实验的输入，但仍未证明 Three `attach()` 后的 tire/rim/disc 运动归属，也没有 production runtime 授权。
+
+## 下一实验
+
+问题：用 MX-5 manifest 对一个与真实层级同构的 Three scene 建立 outer-steer/inner-roll pivots 时，能否在不依赖浏览器渲染的情况下保持零姿态 world transform，并得到正确的组合运动归属？
+
+可观测量：attach 前后每个 part matrix/centroid；front steer + roll 下 tire/rim/disc 轨迹；suspension Y；disc 是否只随 outer；canonical/clone identity、geometry sharing 与 static marker 分区。
+
+停止条件：先实现纯函数和合成/同构 fixture，不接 GLTFLoader/main；tire/rim 必须 nested roll，disc 必须 outer-only；任一零姿态 transform 漂移超过 1e-9 或 clone owner 不清晰就停止 runtime 接入。
