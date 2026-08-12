@@ -122,10 +122,27 @@
 
 结论：reset 完整性是独立于 finite guard 的真实缺陷；只补现有 owner 状态即可修复，没有理由在本批扩大到无效数值恢复或资源生命周期。
 
-## 下一实验
+## 六车 invalid input/dt 实验结果
 
 问题：无效 `input`/`dt` 和已污染车辆标量分别如何扩散为非有限刚体或 telemetry，最小边界清理应放在 JS vehicle owner 还是未来 Rust 接口前？
 
 可观测量：六车对 `null` input、NaN/±Infinity 控制量、NaN/±Infinity/0/极大 `dt` 的异常类型和首个非有限字段；将“拒绝/替换调用参数”与“恢复已污染内部状态”分开统计。
 
 停止条件：先建立只覆盖调用参数的最小失败矩阵；若同一 sanitize 规则能让六车通过且不改变正常 120 Hz 结果，再考虑内部状态 poison 和刚体恢复，不能一次加入所有 NAS guard。
+
+- 第一版 finite-only 矩阵：6/6 车型失败；`null` 抛出 `TypeError`，其余失败扩散到 wheel omega、engine/steer 标量、telemetry，并在 world step 后污染刚体位置、旋转和速度。
+- 仅检查 `Number.isFinite` 不足：给有效油门/转向建立配对 oracle 后，`Number.MIN_VALUE`/`Number.MAX_VALUE` 也产生与 `0.25 * FIXED_DT`/50 ms 规范值不同的输出。
+- 最终矩阵：缺失/非有限输入、有限越界控制量、truthy 非布尔脉冲、NaN/±Infinity/0/最小正数/最大 `dt`，共 15 类；每类在新车辆上与相同初始状态的规范参数执行结果对照。
+- clean 失败：配对版本覆盖 6/6 车型，失败阶段包括 `fixedUpdate`、`worldStep` 和 `sanitizedOracle`。
+- 最小修复：入口 sanitize 数值、严格布尔字段并规范 `dt`；没有改变算法主体，没有加入内部 poison recovery。
+- 修复后：15 × 6 = 90 个 case 通过；测试加入 `pnpm verify`。完整回归保持六车既有 120 Hz 指标，Rust 单测与 JS/WASM 对照也通过。
+
+结论：防毒应先放在当前 JS vehicle owner 的公开调用边界；这既保护现有网页，也定义了未来 Rust FFI 输入契约。内部状态与刚体 recovery 是另一个故障模型，保持候选而非本批范围。
+
+## 下一实验
+
+问题：网页能否在不阻塞现有启动的前提下选择 Rust/WASM scheduler owner，并在 WASM 缺失、编译/实例化失败或导出不完整时确定性回退到 JS？
+
+可观测量：owner 标识、初始化完成时点、常量握手、逐帧 step/remainder、每一种失败注入后的 fallback 原因，以及主循环开始前 owner 是否已经固定。
+
+停止条件：先实现可注入 loader 和 JS fallback 的独立测试；成功路径必须实例化真实 Rust `.wasm`，失败路径不得发出未处理 rejection；只有双路径对照通过后才修改 `main.js` owner。

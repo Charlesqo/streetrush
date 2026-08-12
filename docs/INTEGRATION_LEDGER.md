@@ -54,13 +54,22 @@
 - 实际变化：只补全 `reset()` 拥有的现有运行状态，并抽出 `resetTelemetry()`；没有新增轮胎内部字段，没有加入无效 `dt`/输入防护，也没有吸收同一 NAS diff 的 texture 释放或 destroy 幂等。
 - 结果：6/6 reset 回归、完整 `pnpm verify`、既有六车 smoke/regression、Rust 单测和 JS/WASM scheduler 对照全部通过；新回归已进入 `verify`。
 
+### 车辆调用边界清理
+
+- 来源参考：NAS 未跟踪 `scripts/test-vehicle-finite.mjs` 的 invalid input/`dt` 部分，以及未提交 `src/vehicle.js` 的 `safeUpdateDt()`/`sanitizeInput()`；本仓库把它重写成每个 case 使用独立车辆和配对 oracle 的测试。
+- 原始问题：`fixedUpdate()` 直接解引用/计算外部参数；6/6 车型对 `null`、缺字段、NaN/Infinity 控制量和无效 `dt` 会抛异常或把非有限值扩散到 wheel、telemetry，随后污染 Rapier 刚体。
+- oracle：非有限或非正 `dt` 替换为 `FIXED_DT`，其余限制到 `0.25 * FIXED_DT..50ms`；数值控制量限制到物理范围，非有限值回落为 0，离散字段只接受真正的布尔值。每个异常 case 与同初始状态的规范参数车辆逐字段比较，容差为 `1e-10 * max(1, |expected|)`。
+- 额外证据：使用有效油门/转向后，`Number.MIN_VALUE` 和 `Number.MAX_VALUE` 虽未立即产生 NaN，也都偏离限幅 oracle；因此有限极端值限幅是可观察契约。
+- 实际变化：只在 `VehicleSystem.fixedUpdate()` 入口生成 `safeDt`/`activeInput`，后续仍运行原物理算法；没有处理已污染内部标量或非有限刚体状态。
+- 结果：15 个 input/`dt` 边界 × 6 车型（90 个配对 case）全部通过；完整 `pnpm verify` 的正常 120 Hz 六车加速、刹车、圆周和操稳指标保持原阈值，Rust/WASM scheduler 对照保持通过。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
 
 建议批次：
 
-1. 无效输入/`dt` finite guard 与对应失败测试（reset 和 fixed-update 输入脉冲已独立整合）；
+1. 已污染内部标量/刚体 finite recovery 与对应失败测试（调用边界、reset 和输入脉冲已独立整合）；
 2. 音频 pause/resume/recovery 与生命周期测试；
 3. 资产超时、取消、缓存、引用安全释放与六车切换测试；
 4. 计时并发存储、路线 HUD、布局和 renderer lifecycle；
@@ -87,9 +96,10 @@
 - 推翻：首次 baseline `verify` 的资产失败不只是“新仓库还没有 HEAD”；创建 HEAD 后仍复现，真正根因是 Windows `\\` 与 manifest `/` 的路径比较。
 - 证实：clean 输入层会在没有 physics step 的 sub-fixed render frame 提前消费离散脉冲；延迟到 fixed owner 消费可以保持一次性语义。
 - 证实：clean `reset()` 没有清除多个自己拥有的车辆、轮胎和 telemetry 状态；六车的遗漏字段形状一致，能用独立 reset-only 修复消除。
+- 证实：调用边界的非有限值会跨 wheel/telemetry 进入 Rapier；入口规范化能让 90 个配对 case 与明确 oracle 一致，并保持正常 120 Hz 回归。
 
 ## 当前最值得继续的方向
 
-1. 为无效输入/`dt` 防毒建立独立六车测试，区分调用边界清理、已污染 runtime scalar 和刚体非有限状态三类恢复策略；
-2. 为 Rust scheduler 定义网页 owner 切换门槛：加载失败回退、初始化时序和 JS/WASM 双路径一致性，证据足够后才替换主循环 owner；
+1. 为 Rust scheduler 建立网页 owner loader：成功实例化、加载失败回退、初始化时序和 JS/WASM 双路径一致性先有测试，再决定主循环切换；
+2. 将已污染 runtime scalar 与非有限 Rapier body recovery 保持为独立后续实验，不与调用边界清理混合；
 3. 随后优先评估音频 pause/resume 或资产取消/释放簇，按可观测资源生命周期选择下一批。

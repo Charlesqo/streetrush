@@ -12,6 +12,38 @@ import {
 
 const clamp = THREE.MathUtils.clamp;
 const damp = THREE.MathUtils.damp;
+const MIN_SAFE_UPDATE_DT = FIXED_DT * 0.25;
+const MAX_SAFE_UPDATE_DT = 0.05;
+
+const finiteOr = (value, fallback = 0) => Number.isFinite(value) ? value : fallback;
+
+function safeUpdateDt(dt) {
+  if (!Number.isFinite(dt) || dt <= 0) return FIXED_DT;
+  return clamp(dt, MIN_SAFE_UPDATE_DT, MAX_SAFE_UPDATE_DT);
+}
+
+function sanitizeInput(input) {
+  const source = input && typeof input === 'object' ? input : {};
+  const numberInRange = (value, minimum, maximum) => clamp(
+    finiteOr(value),
+    minimum,
+    maximum,
+  );
+  const safeInput = {
+    steer: numberInRange(source.steer, -1, 1),
+    throttle: numberInRange(source.throttle, 0, 1),
+    brake: numberInRange(source.brake, 0, 1),
+    handbrake: numberInRange(source.handbrake, 0, 1),
+    shiftUp: source.shiftUp === true,
+    shiftDown: source.shiftDown === true,
+    toggleTransmission: source.toggleTransmission === true,
+    reset: source.reset === true,
+  };
+  if (Number.isFinite(source.driveIntent)) {
+    safeInput.driveIntent = clamp(source.driveIntent, -1, 1);
+  }
+  return safeInput;
+}
 
 export function disposeOwnedVisual(root) {
   if (!root || root.userData?.source !== 'fallback') return false;
@@ -265,6 +297,8 @@ export class VehicleSystem {
   }
 
   fixedUpdate(input, controlsLocked = false, dt = FIXED_DT) {
+    const safeDt = safeUpdateDt(dt);
+    const activeInput = sanitizeInput(controlsLocked ? this.lockedInput : input);
     this.body.resetForces(false);
     this.body.resetTorques(false);
     const t = this.body.translation();
@@ -287,10 +321,9 @@ export class VehicleSystem {
     const longSpeed = tmp.bodyVelocity.dot(tmp.forward);
     const lateralSpeed = tmp.bodyVelocity.dot(tmp.right);
     const speedKmh = Math.abs(longSpeed) * 3.6;
-    const activeInput = controlsLocked ? this.lockedInput : input;
-    const pedals = this.updateTransmission(activeInput, dt, longSpeed);
-    this.steerAngle = damp(this.steerAngle, activeInput.steer * this.config.steer * THREE.MathUtils.lerp(1, 0.28, clamp(speedKmh / 190, 0, 1)), 9, dt);
-    this.shiftTimer = Math.max(0, this.shiftTimer - dt);
+    const pedals = this.updateTransmission(activeInput, safeDt, longSpeed);
+    this.steerAngle = damp(this.steerAngle, activeInput.steer * this.config.steer * THREE.MathUtils.lerp(1, 0.28, clamp(speedKmh / 190, 0, 1)), 9, safeDt);
+    this.shiftTimer = Math.max(0, this.shiftTimer - safeDt);
 
     const ratio = this.reverse ? 3.25 : this.config.gears[this.gear - 1];
     const drivenWheels = this.drivenWheels;
@@ -312,7 +345,7 @@ export class VehicleSystem {
       }
     }
     const targetRpm = Math.max(this.config.idle, THREE.MathUtils.lerp(freeRpm, coupledRpm, clutchCoupling));
-    this.engineRpm = damp(this.engineRpm, targetRpm, this.shiftTimer > 0 ? 5 : 13, dt);
+    this.engineRpm = damp(this.engineRpm, targetRpm, this.shiftTimer > 0 ? 5 : 13, safeDt);
     if (!this.reverse && this.transmissionMode === 'AT' && this.shiftTimer <= 0) {
       const throttleDemand = pedals.driveThrottle;
       const upshiftRpm = this.config.redline * THREE.MathUtils.lerp(0.68, 0.91, throttleDemand);
@@ -434,8 +467,8 @@ export class VehicleSystem {
       }
       const brakeDirection = Math.sign(Math.abs(wheel.omega) > 0.2 ? wheel.omega : wheelLongSpeed);
       const angularTorque = wheelDriveTorque - longitudinalForce * this.config.wheelRadius - brakeDirection * brakeTorque;
-      wheel.omega += angularTorque / this.wheelInertia * dt;
-      if (brakeTorque > 0 && Math.sign(wheel.omega) !== Math.sign(wheel.omega - angularTorque / this.wheelInertia * dt)) wheel.omega = 0;
+      wheel.omega += angularTorque / this.wheelInertia * safeDt;
+      if (brakeTorque > 0 && Math.sign(wheel.omega) !== Math.sign(wheel.omega - angularTorque / this.wheelInertia * safeDt)) wheel.omega = 0;
       wheel.omega = clamp(wheel.omega, -420, 420);
       telemetry.slipRatio = slipRatio;
       telemetry.slipAngle = slipAngle;
@@ -459,7 +492,7 @@ export class VehicleSystem {
       this.body.addTorque({ x: 0, y: correctionTorque, z: 0 }, true);
     }
 
-    this.engineLoad = damp(this.engineLoad, pedals.driveThrottle, 7, dt);
+    this.engineLoad = damp(this.engineLoad, pedals.driveThrottle, 7, safeDt);
     this.telemetry.speedKmh = Math.abs(longSpeed) * 3.6;
     this.telemetry.signedSpeedKmh = longSpeed * 3.6;
     this.telemetry.rpm = this.engineRpm;
@@ -468,7 +501,7 @@ export class VehicleSystem {
     this.telemetry.throttle = pedals.driveThrottle;
     this.telemetry.brake = pedals.serviceBrake;
     this.telemetry.steer = activeInput.steer;
-    this.smoothedLongAcceleration = damp(this.smoothedLongAcceleration, (longSpeed - this.previousLongSpeed) / dt, 5, dt);
+    this.smoothedLongAcceleration = damp(this.smoothedLongAcceleration, (longSpeed - this.previousLongSpeed) / safeDt, 5, safeDt);
     this.telemetry.longitudinalAcceleration = this.smoothedLongAcceleration;
     this.telemetry.lateralAcceleration = longSpeed * angularVelocity.y;
     this.telemetry.surface = averageSurface;
@@ -483,7 +516,7 @@ export class VehicleSystem {
       this.safeSample = trackInfo.index;
     }
     const nearlyStoppedWithInput = this.telemetry.speedKmh < 1.2 && pedals.driveThrottle > 0.5;
-    this.stuckTimer = nearlyStoppedWithInput ? this.stuckTimer + dt : 0;
+    this.stuckTimer = nearlyStoppedWithInput ? this.stuckTimer + safeDt : 0;
     const resetReason = tmp.position.y < -4
       ? 'fell-below-world'
       : Math.abs(r.x) > 0.78 || Math.abs(r.z) > 0.78
