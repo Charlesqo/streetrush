@@ -1,5 +1,20 @@
+import { RaceProgressSession } from './race-progress-session.js';
+
 const RECORD_VERSION = 1;
 const DEFAULT_STORAGE_PREFIX = 'street-rush.timing.v1';
+const PROGRESS_FIELDS = [
+  'status',
+  'runTimeMs',
+  'currentLapNumber',
+  'lapTimeMs',
+  'currentSectorNumber',
+  'sectorTimeMs',
+  'checkpointsPassed',
+  'checkpointOrdinal',
+  'checkpointInLap',
+  'expectedCheckpointIndex',
+  'currentLapValid',
+];
 
 function isFiniteNonNegative(value) {
   return Number.isFinite(value) && value >= 0;
@@ -210,6 +225,7 @@ export class RaceTimingSession {
     sectorCheckpoints,
     medalTargetsMs = null,
     store = new TimingStore(),
+    progressCore = null,
   }) {
     this.identity = {
       trackId: requireIdentifier(trackId, 'trackId'),
@@ -224,6 +240,15 @@ export class RaceTimingSession {
     }
     this.store = store;
     this.record = this.store.load(this.identity, this.sectorCheckpoints.length);
+    this.progressShadow = progressCore
+      ? new RaceProgressSession({
+        totalLaps: this.totalLaps,
+        checkpointCount: this.checkpointCount,
+        sectorCheckpoints: this.sectorCheckpoints,
+        core: progressCore,
+      })
+      : null;
+    this.progressOwner = this.progressShadow ? `${progressCore.owner}-shadow` : 'legacy';
     this.reset();
   }
 
@@ -239,12 +264,16 @@ export class RaceTimingSession {
     this.currentInvalidReasons = [];
     this.laps = [];
     this.summary = null;
+    this.progressShadow?.reset();
+    this.assertProgressShadow('reset');
     return this.snapshot();
   }
 
   start() {
     this.reset();
     this.status = 'running';
+    this.progressShadow?.start();
+    this.assertProgressShadow('start');
     return {
       type: 'run-started',
       snapshot: this.snapshot(),
@@ -260,17 +289,29 @@ export class RaceTimingSession {
       throw new RangeError('deltaMs must be a finite non-negative number');
     }
     if (this.status === 'running') this.runTimeExactMs += deltaMs;
+    this.progressShadow?.advance(deltaMs);
+    this.assertProgressShadow('advance');
     return this.snapshot();
   }
 
   invalidate(reason = 'track-limits') {
-    if (this.status !== 'running') return null;
+    if (this.status !== 'running') {
+      const shadowChanged = this.progressShadow?.invalidate() ?? false;
+      if (shadowChanged) throw new Error('race progress shadow invalidated outside a running race');
+      this.assertProgressShadow('invalidate-idle');
+      return null;
+    }
     const normalizedReason = typeof reason === 'string' && reason.trim() ? reason.trim() : 'invalid';
     const wasValid = this.currentLapValid;
     this.currentLapValid = false;
     if (!this.currentInvalidReasons.includes(normalizedReason)) {
       this.currentInvalidReasons.push(normalizedReason);
     }
+    const shadowChanged = this.progressShadow?.invalidate() ?? wasValid;
+    if (shadowChanged !== wasValid) {
+      throw new Error(`race progress shadow invalidation mismatch: expected=${wasValid} actual=${shadowChanged}`);
+    }
+    this.assertProgressShadow('invalidate');
     if (!wasValid) return null;
     return {
       type: 'lap-invalidated',
@@ -284,16 +325,22 @@ export class RaceTimingSession {
     if (!Number.isInteger(checkpointIndex) || checkpointIndex < 0 || checkpointIndex >= this.checkpointCount) {
       throw new RangeError(`checkpointIndex must be between 0 and ${this.checkpointCount - 1}`);
     }
-    if (this.status !== 'running') return [];
+    const shadowOutcome = this.progressShadow?.passCheckpoint(checkpointIndex) ?? null;
+    if (this.status !== 'running') {
+      this.assertCheckpointShadow([], shadowOutcome, 'checkpoint-idle');
+      return [];
+    }
 
     const expectedCheckpointIndex = this.expectedCheckpointIndex;
     if (checkpointIndex !== expectedCheckpointIndex) {
-      return [{
+      const rejected = [{
         type: 'checkpoint-rejected',
         checkpointIndex,
         expectedCheckpointIndex,
         snapshot: this.snapshot(),
       }];
+      this.assertCheckpointShadow(rejected, shadowOutcome, 'checkpoint-rejected');
+      return rejected;
     }
 
     this.checkpointsPassed += 1;
@@ -311,7 +358,42 @@ export class RaceTimingSession {
     if (checkpointOrdinal === this.checkpointCount) {
       events.push(...this.completeLap());
     }
+    this.assertCheckpointShadow(events, shadowOutcome, 'checkpoint-accepted');
     return events;
+  }
+
+  assertProgressShadow(label) {
+    if (!this.progressShadow) return;
+    const legacy = this.snapshot();
+    const expected = Object.fromEntries(PROGRESS_FIELDS.map((field) => [field, legacy[field]]));
+    const actual = this.progressShadow.snapshot();
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+      throw new Error(
+        `race progress shadow mismatch after ${label}: expected=${JSON.stringify(expected)} actual=${JSON.stringify(actual)}`,
+      );
+    }
+  }
+
+  assertCheckpointShadow(events, shadowOutcome, label) {
+    if (!this.progressShadow) return;
+    const checkpoint = events.find(({ type }) => type === 'checkpoint-completed');
+    const sector = events.find(({ type }) => type === 'sector-completed');
+    const lap = events.find(({ type }) => type === 'lap-completed')?.lap;
+    const expected = {
+      rejected: events.some(({ type }) => type === 'checkpoint-rejected'),
+      accepted: Boolean(checkpoint),
+      checkpointOrdinal: checkpoint?.checkpointOrdinal ?? null,
+      sectorTimeMs: sector?.timeMs ?? null,
+      lapTimeMs: lap?.timeMs ?? null,
+      lapValid: lap?.valid ?? null,
+      runCompleted: events.some(({ type }) => type === 'run-completed'),
+    };
+    if (JSON.stringify(shadowOutcome) !== JSON.stringify(expected)) {
+      throw new Error(
+        `race progress shadow outcome mismatch after ${label}: expected=${JSON.stringify(expected)} actual=${JSON.stringify(shadowOutcome)}`,
+      );
+    }
+    this.assertProgressShadow(label);
   }
 
   completeSector() {

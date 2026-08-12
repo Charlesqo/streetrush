@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页现已一次实例化 shared WASM，并让 scheduler/timing capability 独立握手；WASM/JS 双路径 `RaceProgressSession` 已匹配 legacy，下一步可把它作为可回退的纯进度 owner 注入 `RaceTimingSession`，同时让 PB/persistence/event 继续留在 JS。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页现已一次实例化 shared WASM，并让 scheduler/timing capability 独立握手；开发期 live `RaceTimingSession` 已注入 WASM/JS 双路径 shadow 并强校验，下一步需把 checkpoint event 的 pre-sector/pre-lap snapshot 时序建模为 staged outcome，才能安全切换纯进度 mutation owner。PB/persistence/event 继续留在 JS。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -128,6 +128,16 @@
 - 结果：wrapper test 加入 `verify`；完整回归通过，Vite 33 modules、单个 4,864-byte WASM、secret guard 114 files。
 - 限制：本批只证明可注入 owner 的行为，不改 `RaceTimingSession` 或 main fixedUpdate；live 网页仍未由 Rust/WASM progress mutation 驱动。
 
+### RaceTimingSession 开发期 live shadow
+
+- 新约束：legacy `checkpoint-completed.snapshot` 在 sector/lap commit 前生成，而 `RaceProgressSession.passCheckpoint()` 当前原子完成全部进度 mutation。直接委托会改变公开 event snapshot，即使最终 snapshot 相同；因此本批不切 owner。
+- 红测试：完整 legacy/injected scenario 在实现前可运行，但 `progressOwner` 为 `undefined`，稳定失败；这证明构造参数尚未被使用。
+- 可选注入：`RaceTimingSession` 接受 `progressCore`，创建 shadow session；默认构造仍是 `progressOwner=legacy`。每个 reset/start/advance/invalidate 后比较 11-field progress，checkpoint 完成后比较 compact outcome 与最终 progress；差异立即抛错。
+- API 守恒：shadow 不参与 legacy event 构造、record mutation 或 store.save。测试并行跑 legacy、Rust/WASM shadow、JS fallback shadow，35 个完整 action results、所有 event snapshots、summary、record 和 3 次 save 时机逐值相同。
+- main：只在 `import.meta.env.DEV` 注入已加载 race-progress capability；production 不做 120 Hz 双运行/JSON 比较。shared capability metadata 仍在两种构建发布。
+- 结果：9 timing tests、6-car medal tests、shadow test 和完整 `pnpm verify` 通过；Vite 34 modules、单个 4,864-byte WASM，secret guard 115 files。
+- 限制：这是开发期运行断言，不是 production owner；没有新的实际浏览器循环证据，Browser URL policy 受阻仍成立。
+
 ### 网页 Rust/WASM scheduler owner
 
 - 来源：本仓库已提交 `streetrush-core` raw WASM ABI 和 JS fixed-step oracle；本批没有再复制外部代码。
@@ -241,9 +251,10 @@
 - 证实：比赛进度可拆成 Rust 状态 owner/native API 与无全局状态 raw WASM rule ABI；31 个 JS/WASM action snapshot 一致。PB、持久化和 UI event 是独立 JS 边界，尚未切换。
 - 证实：scheduler 与 timing 不需要两个 WASM instance；通用 lifecycle + capability-specific contract 能让 partial failure 互不误伤，同时保留旧 scheduler API。
 - 证实：同一 `RaceProgressSession` 可在 Rust/WASM 与 JS fallback capability 上运行，并与 legacy 纯进度/compact outcome 一致；record/event adapter 尚未委托。
+- 证实：shadow 可嵌入完整 `RaceTimingSession` 而不改变 35-action event/record/save 结果；同时证实 checkpoint event 需要 staged snapshot，不能直接用原子 outcome 机械替换。
 
 ## 当前最值得继续的方向
 
-1. 为 `RaceTimingSession` 增加可选 `progressCore` 注入，让 start/advance/invalidate/checkpoint/snapshot 的纯进度委托 wrapper；record/event/persistence 保留 JS，并以无 WASM 默认路径保持 API 兼容；
+1. 为 progress wrapper 设计 `prepareCheckpoint → commitSector → commitLap` 或等价 staged transaction，使 checkpoint event 能观察 pre-sector/pre-lap snapshot；先以现有 event fixture 对照，再考虑 live owner 切换；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。

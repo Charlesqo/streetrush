@@ -392,10 +392,29 @@
 
 结论：纯进度 owner 已有双路径兼容层，可进入可选委托实验；但本批没有改 live `RaceTimingSession`，因此仍不声称网页计时由 Rust 驱动。
 
-## 下一实验
+## RaceTimingSession 开发期 live shadow 实验结果
 
 问题：`RaceTimingSession` 是否能把纯进度 mutation 委托给注入的 `RaceProgressSession`，同时完全保持现有 event/record/save/medal API，并在 WASM capability 失败时自动使用 JS fallback core？
 
 可观测量：现有 9 timing tests 与 6-car medal tests；注入 WASM/fallback 后的完整 event/snapshot/record equality；save 次数/时机；main 新 session owner metadata；finish/restart/pause 时序。
 
 停止条件：默认构造保持兼容；注入和 fallback 完整测试通过；不把 reason strings/PB/storage 移入 Rust；任何 event/save 差异先作为失败，不用 tolerance 掩盖。
+
+- staging 发现：legacy checkpoint event snapshot 位于 `checkpointsPassed++` 之后、`completeSector/completeLap` 之前；atomic wrapper 会直接越过该可观测状态。本轮判断修正为先 shadow、暂不委托 mutation。
+- red evidence：新测试在未实现注入时跑完 legacy 行为，但断言 `progressOwner=legacy` 得到 `undefined` 并退出 1。
+- shadow：可选 `progressCore` 构造同配置 wrapper；default 完全不创建 shadow。每个 action 后比较纯 progress，checkpoint 后比较 rejected/accepted/ordinal/sector/lap/valid/run outcome。
+- full fixture：invalid fractional run、错序、重复/第二原因 invalidation、invalid+valid lap、finished 后输入、restart 后 11,700 ms gold；共 35 个 action result。
+- storage oracle 修正：首次期望写成 2，实际正确是 3（首场 final、restart 第一圈 PB、restart final）；三条 session 均为 3，测试修正而非产品代码。
+- equality：legacy、Rust/WASM shadow、JS fallback shadow 的完整 events/snapshots/summary/record/save count 全相同；现有 9 timing 与 medal suites 通过。
+- runtime policy：main 只在 DEV 注入 shadow，避免 production 每个 120 Hz tick 双运行和 JSON assertion；capability 仍一次加载并发布 owner metadata。
+- 回归：完整 `pnpm verify` 通过；Vite 34 modules、WASM 4,864 bytes、24 build files，六车 deterministic/physics/recovery、audio/assets 保持绿色。
+
+结论：可选 shadow 已把 shared rule 放进真实 session action 边界，并验证 adapter 不漂移；但 atomic/staged event 差异是实际接管阻碍，需先扩展 transaction 协议，不能仅把 shadow 改名为 owner。
+
+## 下一实验
+
+问题：checkpoint 规则能否拆成无 mutation 的 prepare result 与明确的 sector/lap/run commit 阶段，使 Rust/WASM progress owner 保留 legacy 的 checkpoint-event snapshot 时序？
+
+可观测量：accepted 后 pre-sector snapshot、sector event 后 snapshot、lap event/final run snapshot；wrong/idle/finish；WASM/JS fallback staged state；旧 35-action full event equality。
+
+停止条件：先让 staged wrapper 独立匹配 legacy 中间 snapshot；未证明 event/save 完整一致前不切 `RaceTimingSession`；ABI 增长和 120 Hz call 次数也记录，避免为形式接管增加无证据成本。
