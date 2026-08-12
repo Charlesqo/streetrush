@@ -36,12 +36,12 @@
       "side": "left",
       "axle": "front",
       "physicsAnchor": [-0.71, -0.145192, 1.135],
-      "root": { "node": 28, "name": "Circle.004", "children": [29, 30, 31] },
+      "root": { "node": 28, "name": "Circle.004", "runtimeName": "Circle004", "children": [29, 30, 31] },
       "pivot": { "method": "position-vertex-centroid-world", "partRole": "tire", "expectedRawWorldCentroid": [113.179920131, 64.861141998, 172.779380236] },
       "parts": [
-        { "role": "rim", "node": 29, "nodeName": "Circle.004_Material.015_0", "mesh": 18, "meshName": "Circle.004_Material.015_0", "primitive": 0, "material": 9, "materialName": "Material.015", "positionAccessor": 72, "vertexCount": 1452, "expectedRawWorldBounds": { "min": [105.296698798, 49.598090362, 157.516337036], "max": [115.737642905, 80.124196679, 188.042437774] } },
-        { "role": "tire", "node": 30, "nodeName": "Circle.004_Material.014_0", "mesh": 19, "meshName": "Circle.004_Material.014_0", "primitive": 0, "material": 10, "materialName": "Material.014", "positionAccessor": 76, "vertexCount": 1920, "expectedRawWorldBounds": { "min": [105.376221594, 44.830891314, 152.749131978], "max": [120.179573339, 84.891394031, 192.809631492] } },
-        { "role": "brake-disc-like", "node": 31, "nodeName": "Circle.004_Material.017_0", "mesh": 20, "meshName": "Circle.004_Material.017_0", "primitive": 0, "material": 11, "materialName": "Material.017", "positionAccessor": 80, "vertexCount": 40, "expectedRawWorldBounds": { "min": [115.737552892, 53.774152402, 161.69238759], "max": [115.737642905, 75.948121138, 183.866356678] } }
+        { "role": "rim", "node": 29, "nodeName": "Circle.004_Material.015_0", "runtimeName": "Circle004_Material015_0", "mesh": 18, "meshName": "Circle.004_Material.015_0", "primitive": 0, "material": 9, "materialName": "Material.015", "positionAccessor": 72, "vertexCount": 1452, "expectedRawWorldBounds": { "min": [105.296698798, 49.598090362, 157.516337036], "max": [115.737642905, 80.124196679, 188.042437774] } },
+        { "role": "tire", "node": 30, "nodeName": "Circle.004_Material.014_0", "runtimeName": "Circle004_Material014_0", "mesh": 19, "meshName": "Circle.004_Material.014_0", "primitive": 0, "material": 10, "materialName": "Material.014", "positionAccessor": 76, "vertexCount": 1920, "expectedRawWorldBounds": { "min": [105.376221594, 44.830891314, 152.749131978], "max": [120.179573339, 84.891394031, 192.809631492] } },
+        { "role": "brake-disc-like", "node": 31, "nodeName": "Circle.004_Material.017_0", "runtimeName": "Circle004_Material017_0", "mesh": 20, "meshName": "Circle.004_Material.017_0", "primitive": 0, "material": 11, "materialName": "Material.017", "positionAccessor": 80, "vertexCount": 40, "expectedRawWorldBounds": { "min": [115.737552892, 53.774152402, 161.69238759], "max": [115.737642905, 75.948121138, 183.866356678] } }
       ]
     },
     {
@@ -49,12 +49,12 @@
       "side": "right",
       "axle": "front",
       "physicsAnchor": [0.71, -0.145192, 1.135],
-      "root": { "node": 24, "name": "Circle.003", "children": [25, 26, 27] },
+      "root": { "node": 24, "name": "Circle.003", "runtimeName": "Circle003", "children": [25, 26, 27] },
       "pivot": { "method": "position-vertex-centroid-world", "partRole": "tire", "expectedRawWorldCentroid": [209.042582487, 64.86114889, 172.779379404] },
       "parts": [
-        { "role": "rim", "node": 25, "nodeName": "Circle.003_Material.015_0", "mesh": 15, "meshName": "Circle.003_Material.015_0", "primitive": 0, "material": 9, "materialName": "Material.015", "positionAccessor": 60, "vertexCount": 1452, "expectedRawWorldBounds": { "min": [206.484859045, 49.598098609, 157.516334869], "max": [216.92580382, 80.124204926, 188.042435607] } },
-        { "role": "tire", "node": 26, "nodeName": "Circle.003_Material.014_0", "mesh": 16, "meshName": "Circle.003_Material.014_0", "primitive": 0, "material": 10, "materialName": "Material.014", "positionAccessor": 64, "vertexCount": 1920, "expectedRawWorldBounds": { "min": [202.042929279, 44.830899002, 152.749130362], "max": [216.846281024, 84.891401718, 192.809629877] } },
-        { "role": "brake-disc-like", "node": 27, "nodeName": "Circle.003_Material.017_0", "mesh": 17, "meshName": "Circle.003_Material.017_0", "primitive": 0, "material": 11, "materialName": "Material.017", "positionAccessor": 68, "vertexCount": 40, "expectedRawWorldBounds": { "min": [206.484859045, 53.77415885, 161.692387196], "max": [206.484950319, 75.948127585, 183.866356283] } }
+        { "role": "rim", "node": 25, "nodeName": "Circle.003_Material.015_0", "runtimeName": "Circle003_Material015_0", "mesh": 15, "meshName": "Circle.003_Material.015_0", "primitive": 0, "material": 9, "materialName": "Material.015", "positionAccessor": 60, "vertexCount": 1452, "expectedRawWorldBounds": { "min": [206.484859045, 49.598098609, 157.516334869], "max": [216.92580382, 80.124204926, 188.042435607] } },
+        { "role": "tire", "node": 26, "nodeName": "Circle.003_Material.014_0", "runtimeName": "Circle003_Material014_0", "mesh": 16, "meshName": "Circle.003_Material.014_0", "primitive": 0, "material": 10, "materialName": "Material.014", "positionAccessor": 64, "vertexCount": 1920, "expectedRawWorldBounds": { "min": [202.042929279, 44.830899002, 152.749130362], "max": [216.846281024, 84.891401718, 192.809629877] } },
+        { "role": "brake-disc-like", "node": 27, "nodeName": "Circle.003_Material.017_0", "runtimeName": "Circle003_Material017_0", "mesh": 17, "meshName": "Circle.003_Material.017_0", "primitive": 0, "material": 11, "materialName": "Material.017", "positionAccessor": 68, "vertexCount": 40, "expectedRawWorldBounds": { "min": [206.484859045, 53.77415885, 161.692387196], "max": [206.484950319, 75.948127585, 183.866356283] } }
       ]
     },
     {
@@ -62,12 +62,12 @@
       "side": "left",
       "axle": "rear",
       "physicsAnchor": [-0.71, -0.145192, -1.135],
-      "root": { "node": 32, "name": "Circle.005", "children": [33, 34, 35] },
+      "root": { "node": 32, "name": "Circle.005", "runtimeName": "Circle005", "children": [33, 34, 35] },
       "pivot": { "method": "position-vertex-centroid-world", "partRole": "tire", "expectedRawWorldCentroid": [113.179920026, 64.861144974, 17.58307635] },
       "parts": [
-        { "role": "rim", "node": 33, "nodeName": "Circle.005_Material.015_0", "mesh": 21, "meshName": "Circle.005_Material.015_0", "primitive": 0, "material": 9, "materialName": "Material.015", "positionAccessor": 84, "vertexCount": 1452, "expectedRawWorldBounds": { "min": [105.296698798, 49.598093175, 2.320025709], "max": [115.737642905, 80.124198365, 32.846140268] } },
-        { "role": "tire", "node": 34, "nodeName": "Circle.005_Material.014_0", "mesh": 22, "meshName": "Circle.005_Material.014_0", "primitive": 0, "material": 10, "materialName": "Material.014", "positionAccessor": 88, "vertexCount": 1920, "expectedRawWorldBounds": { "min": [105.376221594, 44.830892999, -2.44716856], "max": [120.179573339, 84.891396844, 37.613319883] } },
-        { "role": "brake-disc-like", "node": 35, "nodeName": "Circle.005_Material.017_0", "mesh": 23, "meshName": "Circle.005_Material.017_0", "primitive": 0, "material": 11, "materialName": "Material.017", "positionAccessor": 92, "vertexCount": 40, "expectedRawWorldBounds": { "min": [115.737552892, 53.774158142, 6.496075981], "max": [115.737642905, 75.948123951, 28.670045069] } }
+        { "role": "rim", "node": 33, "nodeName": "Circle.005_Material.015_0", "runtimeName": "Circle005_Material015_0", "mesh": 21, "meshName": "Circle.005_Material.015_0", "primitive": 0, "material": 9, "materialName": "Material.015", "positionAccessor": 84, "vertexCount": 1452, "expectedRawWorldBounds": { "min": [105.296698798, 49.598093175, 2.320025709], "max": [115.737642905, 80.124198365, 32.846140268] } },
+        { "role": "tire", "node": 34, "nodeName": "Circle.005_Material.014_0", "runtimeName": "Circle005_Material014_0", "mesh": 22, "meshName": "Circle.005_Material.014_0", "primitive": 0, "material": 10, "materialName": "Material.014", "positionAccessor": 88, "vertexCount": 1920, "expectedRawWorldBounds": { "min": [105.376221594, 44.830892999, -2.44716856], "max": [120.179573339, 84.891396844, 37.613319883] } },
+        { "role": "brake-disc-like", "node": 35, "nodeName": "Circle.005_Material.017_0", "runtimeName": "Circle005_Material017_0", "mesh": 23, "meshName": "Circle.005_Material.017_0", "primitive": 0, "material": 11, "materialName": "Material.017", "positionAccessor": 92, "vertexCount": 40, "expectedRawWorldBounds": { "min": [115.737552892, 53.774158142, 6.496075981], "max": [115.737642905, 75.948123951, 28.670045069] } }
       ]
     },
     {
@@ -75,12 +75,12 @@
       "side": "right",
       "axle": "rear",
       "physicsAnchor": [0.71, -0.145192, -1.135],
-      "root": { "node": 20, "name": "Circle.002", "children": [21, 22, 23] },
+      "root": { "node": 20, "name": "Circle.002", "runtimeName": "Circle002", "children": [21, 22, 23] },
       "pivot": { "method": "position-vertex-centroid-world", "partRole": "tire", "expectedRawWorldCentroid": [209.042582592, 64.861151866, 17.583075518] },
       "parts": [
-        { "role": "rim", "node": 21, "nodeName": "Circle.002_Material.015_0", "mesh": 12, "meshName": "Circle.002_Material.015_0", "primitive": 0, "material": 9, "materialName": "Material.015", "positionAccessor": 48, "vertexCount": 1452, "expectedRawWorldBounds": { "min": [206.484859045, 49.598101422, 2.320023542], "max": [216.92580382, 80.124206612, 32.846138101] } },
-        { "role": "tire", "node": 22, "nodeName": "Circle.002_Material.014_0", "mesh": 13, "meshName": "Circle.002_Material.014_0", "primitive": 0, "material": 10, "materialName": "Material.014", "positionAccessor": 52, "vertexCount": 1920, "expectedRawWorldBounds": { "min": [202.042929279, 44.830900687, -2.447170176], "max": [216.846281024, 84.891404532, 37.613318267] } },
-        { "role": "brake-disc-like", "node": 23, "nodeName": "Circle.002_Material.017_0", "mesh": 14, "meshName": "Circle.002_Material.017_0", "primitive": 0, "material": 11, "materialName": "Material.017", "positionAccessor": 56, "vertexCount": 40, "expectedRawWorldBounds": { "min": [206.484859045, 53.77416459, 6.496075587], "max": [206.484950319, 75.948130399, 28.670044674] } }
+        { "role": "rim", "node": 21, "nodeName": "Circle.002_Material.015_0", "runtimeName": "Circle002_Material015_0", "mesh": 12, "meshName": "Circle.002_Material.015_0", "primitive": 0, "material": 9, "materialName": "Material.015", "positionAccessor": 48, "vertexCount": 1452, "expectedRawWorldBounds": { "min": [206.484859045, 49.598101422, 2.320023542], "max": [216.92580382, 80.124206612, 32.846138101] } },
+        { "role": "tire", "node": 22, "nodeName": "Circle.002_Material.014_0", "runtimeName": "Circle002_Material014_0", "mesh": 13, "meshName": "Circle.002_Material.014_0", "primitive": 0, "material": 10, "materialName": "Material.014", "positionAccessor": 52, "vertexCount": 1920, "expectedRawWorldBounds": { "min": [202.042929279, 44.830900687, -2.447170176], "max": [216.846281024, 84.891404532, 37.613318267] } },
+        { "role": "brake-disc-like", "node": 23, "nodeName": "Circle.002_Material.017_0", "runtimeName": "Circle002_Material017_0", "mesh": 14, "meshName": "Circle.002_Material.017_0", "primitive": 0, "material": 11, "materialName": "Material.017", "positionAccessor": 56, "vertexCount": 40, "expectedRawWorldBounds": { "min": [206.484859045, 53.77416459, 6.496075587], "max": [206.484950319, 75.948130399, 28.670044674] } }
       ]
     }
   ]

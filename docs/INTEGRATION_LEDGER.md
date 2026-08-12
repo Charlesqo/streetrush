@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega，static merge 也能显式保留动态 branch；MX-5 的 hash-scoped wheel manifest 已离线验证，下一步只做纯 scene pivot 重组实验，先证明 world transform、steer/roll 组合和部件归属，再决定是否接 production runtime。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega，static merge 也能显式保留动态 branch；MX-5 的 manifest 与 host-space pivot 重组已在同构 Three scene 验证，下一步应验证真实 GLTFLoader 对象名称/几何和 AssetManager 的原子失败回退，再决定是否接 production runtime。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -99,6 +99,18 @@
 - fail-closed：source hash/bytes、root、material role、accessor、bounds、axis、pivot centroid 七类漂移均有独立拒绝测试；六车 structure baseline 与 MX-5 manifest 联合通过。
 - 回归：manifest 测试加入 `pnpm verify`；完整回归保持 13 项资产生命周期、18 条六车 deterministic/WASM replay、1,320-action timing soak、六车物理/恢复、34 modules、4,864-byte WASM 和 24-file build。
 - 边界：状态保持 `candidate-offline-validation-runtime-not-integrated`；本批没有给 GLB 节点加 marker、没有移动 mesh、没有改变 `AssetManager` 或 `VehicleSystem` runtime。下一前置条件是纯 scene attach/pivot fixture。
+
+### MX-5 host-space wheel pivot 候选接口
+
+- 来源复核：研究隔离 harness 的 `makeModel()` 把整个 `Circle00x` wheel root attach 到 nested spin pivot；因此 rim、tire、Material.017 brake-disc-like rotor 都随 X roll。报告同时明确“caliper mesh was not found”；此前计划中的“disc outer-only”判断被推翻，只有未来独立 caliper 才应留在 outer。
+- runtime naming：GLTFLoader 会用 `PropertyBinding.sanitizeNodeName()` 去除句点；manifest 新增 `Circle004`/`Circle004_Material014_0` 等显式 runtime names，离线 validator 同时锁 raw name 与当前 Three sanitizer 输出。
+- direct red：用 actual GLB root TRS、真实 tire vertex centroid 与 production scale `0.015102163` 构造同构 scene；source direct `rotateZ(0.72)` + front `rotateY(0.34)` 使 tire centroid 最大漂移 `0.008845718m`，与研究 7–9mm 量级一致。
+- host boundary：pivot container 必须是 normalized GLB model 的未缩放 sibling，挂在 unit-scale vehicle host；否则 `compression=0.08m` 会再次乘 model scale，误成约 1.2mm。接口对非 unit host、缺 part、重复 binding 均在 mutation 前拒绝。
+- attach finding：Three `Object3D.attach()` 对大 raw translation + 非均匀 wheel root scale 产生 `1.0395e-8` matrix 误差，超过 `<1e-9` 停止条件；改为 `inverse(parentWorld) × childWorld` manual matrix，并让 source root `matrixAutoUpdate=false`，零姿态 matrix error 为 0。
+- bound green：四个 outer-Y / nested-X pivots 的 tire centroid 组合运动漂移 `<2.44e-16m`；全部 12 parts 的 matrix 随 roll，front rim/rotor 的偏置质心随 steer，rear 同轴质心在纯 roll 下保持；0.08m suspension 使 12 parts 精确移动 host Y 0.08m。
+- ownership：`calibrated-wheels` 沿用现有 v1 binding marker；canonical/clone Object3D 独立而 geometry/material 共享，binder 不创建可释放的 GPU resource。失败缺 tire 时四个 source roots 全部保持原 parent；9 个静态 body meshes 仍可合为 1，独立 wheel host 不被吞掉。
+- 回归：新增 pivot test 加入 `pnpm verify`；完整回归保持 13 项资产生命周期、manifest/structure、现有 M3 adapter、18 条六车 deterministic/WASM replay、1,320-action timing soak、六车物理/恢复、34 modules、4,864-byte WASM 和 24-file build。
+- 边界：`src/car-wheel-pivots.js` 目前未被 production assets path 导入，仍是经测试的候选接口；同构 fixture 不能替代对真实 GLTFLoader clone、加载失败和 fallback 生命周期的验证。
 
 ### 六车 reset 状态清理
 
@@ -306,7 +318,7 @@
 ## 当前仅参考或候选
 
 - 旧 `E:\Codex\street-rush`：采样音频和较短兼容实现；没有独立提交历史。
-- 六车模型研究：production GLB 结构 baseline、M3 generated-wheel adapter 和 MX-5 离线 wheel manifest 已采用；MX-5 runtime pivot、source brake/caliper、其余车型 wheel/light/camera binding 仍是候选，M5/AMG source 报告不能直接按 node id 套到优化 public derivative。
+- 六车模型研究：production GLB 结构 baseline、M3 generated-wheel adapter、MX-5 离线 manifest 与纯 host-space pivot 接口已采用；MX-5 production 接线、source brake/caliper、其余车型 wheel/light/camera binding 仍是候选，M5/AMG source 报告不能直接按 node id 套到优化 public derivative。
 - 多车音频：bank 选择/发布与严格 manifest/decode loader 已采用；权威 data/schema、shared decoded registry 和样本播放图仍是强候选，不复制 3.14 GB 隔离副本和 vendor。
 - C++ 物理核心：算法和实验是强 oracle；现有生产 `Vehicle` 与研究 `SharedWheelRide` 仍有明确耦合/状态边界。
 - 六车物理数据：只采用带 provenance、field-scoped eligible 的值；冲突和缺失保持显式。
@@ -347,9 +359,11 @@
 - 证实：M3 已生成的四轮缺少 runtime owner；建立 FL/FR/RL/RR 两级 pivot 后，现有 steer/compression/omega 可在不改物理状态契约的前提下驱动视觉并安全 reset。
 - 证实：static merge 可按显式 v1 marker 排除动态 branch，并在 canonical/clone 间保持 world transform、对象独立与共享 geometry；仅保留 branch 不足以证明 wheel pivot/axis 正确。
 - 证实：MX-5 public 与研究 source 字节一致时，可从 GLB primitive/accessor 独立重算 12 组 part bounds、四个 tire vertex centroids 和 parent roll axis；accessor index 不能从 mesh 顺序推导，必须显式锁定。
+- 证实：MX-5 source root-origin 组合转动会产生 8.85mm tire centroid 漂移；unit host 下的 outer-Y/nested-X manual-matrix 重组可把零姿态/centroid 误差压到实验门槛内，并保持 suspension 的米制语义。
+- 推翻：Material.017 rotor 不应留在 outer-only；隔离源码 attach 整个 wheel root，且模型没有 caliper。也推翻把 Three `attach()` 当作 `<1e-9` 精确 reparent 的假设。
 
 ## 当前最值得继续的方向
 
-1. 用纯 scene fixture 验证 MX-5 manifest 生成 outer-steer/inner-roll pivot 后，tire centroid 在零姿态和组合运动中稳定、悬挂只移动 outer Y；
-2. 验证 rim/tire 随 nested roll、disc 随 steer/suspension 但不 roll 的部件归属，以及 clone、static partition 和销毁语义；通过前不接 production runtime；
+1. 建立真实 MX-5 GLTFLoader scene 的 Node/可注入 loader 测试，确认 sanitizer 后四个 roots/12 meshes、POSITION geometry 和 manual matrix 路径与同构 fixture 一致；
+2. 在 AssetManager 副本路径验证 bind-before-static-merge、clone/cache、缺节点原子失败与 fallback，不通过就保持候选，不接 main/VehicleSystem；
 3. M5/AMG 若要独立轮组应回到只读 source model 复制后建立可重复优化 pipeline；实际六车 visual loop 与真实 gamepad wrapper 身份仍等待 Browser URL policy 允许。

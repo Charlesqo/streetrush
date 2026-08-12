@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
+import { PropertyBinding } from 'three';
 import {
   composeMatrix,
   multiplyMatrices,
@@ -172,6 +173,7 @@ export async function inspectCarWheelManifest({ filePath, manifest, validateExpe
     const rootNode = json.nodes?.[wheel.root.node];
     if (!rootNode) fail(vehicleId, `${wheel.id} root node ${wheel.root.node} is missing`);
     expectEqual(vehicleId, rootNode.name || '', wheel.root.name, `${wheel.id} root name`);
+    expectEqual(vehicleId, wheel.root.runtimeName, PropertyBinding.sanitizeNodeName(wheel.root.name), `${wheel.id} runtime root name`);
     expectEqual(vehicleId, rootNode.children || [], wheel.root.children, `${wheel.id} root children`);
     const rootMatrix = graph.worldMatrices.get(wheel.root.node);
     if (!rootMatrix) fail(vehicleId, `${wheel.id} root is outside the default scene`);
@@ -187,6 +189,7 @@ export async function inspectCarWheelManifest({ filePath, manifest, validateExpe
     expectEqual(vehicleId, roles, ['rim', 'tire', 'brake-disc-like'], `${wheel.id} part roles`);
     const parts = [];
     for (const part of wheel.parts) {
+      expectEqual(vehicleId, part.runtimeName, PropertyBinding.sanitizeNodeName(part.nodeName), `${wheel.id} ${part.role} runtime name`);
       expectEqual(vehicleId, graph.parents.get(part.node), wheel.root.node, `${wheel.id} ${part.role} parent`);
       parts.push({ ...part, ...measurePart(buffer, json, binaryChunk, graph, part, vehicleId, validateExpected) });
     }

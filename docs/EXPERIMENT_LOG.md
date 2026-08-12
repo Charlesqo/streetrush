@@ -570,6 +570,33 @@
 
 问题：用 MX-5 manifest 对一个与真实层级同构的 Three scene 建立 outer-steer/inner-roll pivots 时，能否在不依赖浏览器渲染的情况下保持零姿态 world transform，并得到正确的组合运动归属？
 
-可观测量：attach 前后每个 part matrix/centroid；front steer + roll 下 tire/rim/disc 轨迹；suspension Y；disc 是否只随 outer；canonical/clone identity、geometry sharing 与 static marker 分区。
+可观测量：attach 前后每个 part matrix/centroid；front steer + roll 下 tire/rim/rotor 轨迹；suspension Y；canonical/clone identity、geometry sharing 与 static merge 边界。
 
-停止条件：先实现纯函数和合成/同构 fixture，不接 GLTFLoader/main；tire/rim 必须 nested roll，disc 必须 outer-only；任一零姿态 transform 漂移超过 1e-9 或 clone owner 不清晰就停止 runtime 接入。
+停止条件：先实现纯函数和合成/同构 fixture，不接 GLTFLoader/main；整个 source wheel root 必须 nested roll，模型无 caliper；任一零姿态 transform 漂移超过 1e-9 或 clone owner 不清晰就停止 runtime 接入。
+
+## MX-5 host-space wheel pivot 结果
+
+问题：manifest 驱动的 outer-Y/nested-X 重组是否比 source root-origin 组合旋转更稳定，并保持模型比例、资源与 clone owner？
+
+可观测量：direct/bound tire vertex centroid；12 part world matrices；0.08m suspension delta；Three attach/manual reparent 误差；atomic failure；static batching。
+
+停止条件：同构 fixture 必须使用 actual GLB root TRS、manifest centroids/runtime names 和 production scale；零姿态 matrix error `<1e-9`；不接 AssetManager production。
+
+- ownership correction：隔离源码把整个 `Circle00x` root attach 到 nested spin；Material.017 是随轮 roll 的 rotor，GLB 没有 caliper。此前“disc outer-only”计划被推翻。
+- red：source direct `rotateZ(0.72)` + front `rotateY(0.34)` 的最大 tire centroid drift 为 `0.008845718m`。
+- scale boundary：outer container 必须位于未缩放 unit vehicle host，作为 normalized model sibling；若放进 scale=`0.015102163` 的 model，0.08m suspension 会缩为约 1.2mm。
+- attach red：Three `attach()` 零姿态 matrix error `1.0395e-8`，未达到停止条件；manual `inverse(parentWorld) × childWorld` 且 source root 禁止 auto-update 后误差为 0。
+- motion green：四 tire centroid 在 steer+roll 后最大误差 `<2.44e-16m`；12 part matrices 都旋转，front rim/rotor 偏置质心随 steer，rear 同轴质心在 X roll 下稳定；12 parts suspension delta 都是 `[0,0.08,0]m`。
+- lifecycle：输出沿用 `calibrated-wheels` v1 marker；clone 对象独立但 geometry/material 共享，binder 新增 9 个 Group、0 GPU resources；缺 RR tire、非 unit host、重复绑定均在 mutation 前失败。
+- merge：wheel roots 已脱离 normalized model 后，9 个 static body meshes 仍合成 1；wheel host 作为 sibling 保留。
+- regression：完整 `pnpm verify` 通过；MX-5 manifest/pivot、13 项 assets、M3 visual wheels、18 条六车 replay、1,320-action timing soak、六车物理、34 modules、4,864-byte WASM、24-file build 均保持。
+
+结论：纯 host-space 接口通过，可进入真实 GLTFLoader/AssetManager 副本验证；尚未接入 production，不能把同构 fixture 当成六车视觉运行证据。
+
+## 下一实验
+
+问题：真实 public MX-5 经当前 Three GLTFLoader 解析后，manifest runtime names、12 个 POSITION attributes 和 host-space binder 是否仍 exact；绑定失败能否让 AssetManager 原子 fallback？
+
+可观测量：真实 loader Object3D names/types/counts；bind 前后 matrices/resources；normalize/ground/static merge；cache clone；缺节点/加载异常的 structured fallback。
+
+停止条件：优先 Node/可注入 loader，不规避 Browser URL policy；若纹理解码环境阻塞，记录具体外部条件并改用 AssetManager 注入真实几何 scene；真实对象验证前不接 main/VehicleSystem。
