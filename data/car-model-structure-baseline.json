@@ -1,0 +1,785 @@
+{
+  "formatVersion": 1,
+  "measurement": "default-scene accessor bounds transformed by static node TRS; no skin, morph, or animation evaluation",
+  "researchRoot": "E:/Codex/autonomous_runs/multi_car_model_research",
+  "models": [
+    {
+      "id": "mx5",
+      "file": "public/cars/mazda-miata-mx5-na.glb",
+      "bytes": 1925828,
+      "sha256": "a17b3b9edc0997ba77837ae4358e3dfe7b7aa7f59364d7c15b6fb01a3452d26b",
+      "researchOracle": {
+        "sha256": "a17b3b9edc0997ba77837ae4358e3dfe7b7aa7f59364d7c15b6fb01a3452d26b",
+        "exactByteMatch": true,
+        "relationship": "public-byte-identical"
+      },
+      "glb": {
+        "version": 2,
+        "declaredLength": 1925828,
+        "jsonLength": 26600
+      },
+      "asset": {
+        "version": "2.0",
+        "generator": "Sketchfab-15.27.0"
+      },
+      "counts": {
+        "scenes": 1,
+        "nodes": 36,
+        "namedNodes": 36,
+        "meshes": 24,
+        "meshInstances": 24,
+        "primitives": 24,
+        "vertices": 36397,
+        "triangles": 51316,
+        "materials": 12,
+        "textures": 1,
+        "images": 1,
+        "skins": 0,
+        "animations": 1,
+        "accessors": 98,
+        "bufferViews": 6,
+        "buffers": 1
+      },
+      "extensions": {
+        "used": [
+          "KHR_materials_clearcoat",
+          "KHR_materials_specular",
+          "KHR_materials_transmission"
+        ],
+        "required": [],
+        "draco": false,
+        "meshopt": false,
+        "ktx2": false
+      },
+      "names": {
+        "nodes": "d99d49f3c0c540bab6110557c4e9fc05a4d9b245c7ce99d1cd1ea6f16a4118a8",
+        "meshes": "5509b1fca7273e98b12f5d3b7a8fd01dfc3486660ec835c34215c6aeea0837bd",
+        "materials": "b346a77d614ca3acc5948c6b214cf56bf8e38d9da557f2eec930b04cc9d32183"
+      },
+      "wheelCandidates": {
+        "count": 28,
+        "digest": "cb40467bbf57dd2696959c18d56cb69680bc2346100ec66e310852998e81925d",
+        "names": [
+          "Circle.002",
+          "Circle.002_Material.014_0",
+          "Circle.002_Material.015_0",
+          "Circle.002_Material.017_0",
+          "Circle.003",
+          "Circle.003_Material.014_0",
+          "Circle.003_Material.015_0",
+          "Circle.003_Material.017_0"
+        ],
+        "truncated": true
+      },
+      "lightCandidates": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "names": [],
+        "truncated": false
+      },
+      "embeddedLights": {
+        "definitions": 0,
+        "nodes": 0
+      },
+      "staticScene": {
+        "selectedScene": 0,
+        "rootCount": 1,
+        "rootsDigest": "ce7c0602f95682e80661563af5a41646163d3e0a27b4c358f3fc5d0d3448d57f",
+        "rootNames": [
+          "Sketchfab_model"
+        ],
+        "rootsTruncated": false,
+        "boundedPrimitives": 24,
+        "missingPositionBounds": 0,
+        "bounds": {
+          "min": [
+            98.661622524,
+            -15.099761033,
+            -42.016372059
+          ],
+          "max": [
+            223.000750065,
+            164.800148643,
+            226.157130893
+          ],
+          "size": [
+            124.339127541,
+            179.899909676,
+            268.173502952
+          ],
+          "center": [
+            160.831186295,
+            74.850193805,
+            92.070379417
+          ]
+        }
+      },
+      "productionNormalization": {
+        "targetLength": 4.05,
+        "configuredYaw": 0,
+        "groundOffset": 0.66,
+        "autoRotateY90": false,
+        "scale": 0.015102163,
+        "normalizedSize": [
+          1.877789793,
+          2.716877791,
+          4.05
+        ],
+        "wheelbase": 2.27,
+        "trackWidth": 1.42,
+        "wheelRadius": 0.29
+      }
+    },
+    {
+      "id": "m3e30",
+      "file": "public/cars/bmw-m3-e30.glb",
+      "bytes": 13955660,
+      "sha256": "4af350460ea34b7901c8512adafd2c04faa632629ab6b2bcbbbb48694f902738",
+      "researchOracle": {
+        "sha256": "4af350460ea34b7901c8512adafd2c04faa632629ab6b2bcbbbb48694f902738",
+        "exactByteMatch": true,
+        "relationship": "public-byte-identical"
+      },
+      "glb": {
+        "version": 2,
+        "declaredLength": 13955660,
+        "jsonLength": 38896
+      },
+      "asset": {
+        "version": "2.0",
+        "generator": "Sketchfab-15.22.0"
+      },
+      "counts": {
+        "scenes": 1,
+        "nodes": 54,
+        "namedNodes": 54,
+        "meshes": 30,
+        "meshInstances": 30,
+        "primitives": 30,
+        "vertices": 88561,
+        "triangles": 117261,
+        "materials": 15,
+        "textures": 18,
+        "images": 18,
+        "skins": 0,
+        "animations": 0,
+        "accessors": 137,
+        "bufferViews": 22,
+        "buffers": 1
+      },
+      "extensions": {
+        "used": [
+          "KHR_materials_clearcoat",
+          "KHR_materials_emissive_strength",
+          "KHR_materials_transmission"
+        ],
+        "required": [],
+        "draco": false,
+        "meshopt": false,
+        "ktx2": false
+      },
+      "names": {
+        "nodes": "b00fccac2f37cd2acaccdd0f35c35254be9c7a0bfad8f40ed09788a9e57374f2",
+        "meshes": "05ada8f9d92361ce831a669b13b42e95a8e6becb7f4ebabcf2b96f46b6439a81",
+        "materials": "b0201283916afeade1affde0fb67ed6c7ba56dcf2f7750d9057fcc167687cc39"
+      },
+      "wheelCandidates": {
+        "count": 20,
+        "digest": "3a8ccd8ba6f8def7448a404ca4776b925bf951fb3ae913da64976ba56059d26b",
+        "names": [
+          "BMW_E30_M3_RIM",
+          "BMW_E30_M3_RIM.001_11",
+          "BMW_E30_M3_RIM.002_6",
+          "BMW_E30_M3_RIM.003_16",
+          "BMW_E30_M3_RIM_1",
+          "BMW_E30_M3_TIRE",
+          "BMW_E30_M3_TIRE.001_12",
+          "BMW_E30_M3_TIRE.002_7"
+        ],
+        "truncated": true
+      },
+      "lightCandidates": {
+        "count": 2,
+        "digest": "8dd4131a648a732486b0d79b3761cf526d1ca3037ea0d530cd622f79705a30ed",
+        "names": [
+          "BMW_E30_M3_HEADLIGHT_REFLECTOR",
+          "BMW_E30_M3_TAILLIGHT_REFLECTOR"
+        ],
+        "truncated": false
+      },
+      "embeddedLights": {
+        "definitions": 0,
+        "nodes": 0
+      },
+      "staticScene": {
+        "selectedScene": 0,
+        "rootCount": 1,
+        "rootsDigest": "ce7c0602f95682e80661563af5a41646163d3e0a27b4c358f3fc5d0d3448d57f",
+        "rootNames": [
+          "Sketchfab_model"
+        ],
+        "rootsTruncated": false,
+        "boundedPrimitives": 30,
+        "missingPositionBounds": 0,
+        "bounds": {
+          "min": [
+            -0.956557903,
+            -0.000913441,
+            -2.239906549
+          ],
+          "max": [
+            0.956557903,
+            1.35065937,
+            2.122139692
+          ],
+          "size": [
+            1.913115807,
+            1.351572812,
+            4.362046242
+          ],
+          "center": [
+            0,
+            0.674872965,
+            -0.058883429
+          ]
+        }
+      },
+      "productionNormalization": {
+        "targetLength": 4.35,
+        "configuredYaw": 0,
+        "groundOffset": 0.68,
+        "autoRotateY90": false,
+        "scale": 0.997238397,
+        "normalizedSize": [
+          1.90783254,
+          1.347840304,
+          4.35
+        ],
+        "wheelbase": 2.56,
+        "trackWidth": 1.43,
+        "wheelRadius": 0.31
+      }
+    },
+    {
+      "id": "gt3rs",
+      "file": "public/cars/porsche-gt3-rs.glb",
+      "bytes": 19270544,
+      "sha256": "e1cf7d3e04aaaf27cfec6363de5f6427b87c997993f9de0f54ec5549b68b8f96",
+      "researchOracle": {
+        "sha256": "e1cf7d3e04aaaf27cfec6363de5f6427b87c997993f9de0f54ec5549b68b8f96",
+        "exactByteMatch": true,
+        "relationship": "public-byte-identical"
+      },
+      "glb": {
+        "version": 2,
+        "declaredLength": 19270544,
+        "jsonLength": 336540
+      },
+      "asset": {
+        "version": "2.0",
+        "generator": "Sketchfab-16.95.0"
+      },
+      "counts": {
+        "scenes": 1,
+        "nodes": 408,
+        "namedNodes": 408,
+        "meshes": 291,
+        "meshInstances": 291,
+        "primitives": 291,
+        "vertices": 340726,
+        "triangles": 368800,
+        "materials": 88,
+        "textures": 13,
+        "images": 13,
+        "skins": 0,
+        "animations": 0,
+        "accessors": 1247,
+        "bufferViews": 17,
+        "buffers": 1
+      },
+      "extensions": {
+        "used": [
+          "KHR_materials_specular"
+        ],
+        "required": [],
+        "draco": false,
+        "meshopt": false,
+        "ktx2": false
+      },
+      "names": {
+        "nodes": "f61bffad47be9ade174a42da617ce624087a73f05a3964042a8632cc18a31c37",
+        "meshes": "f22cafdf60e531edd5de466c7200fa5151c664ebf0205f82aed7f89089de10fe",
+        "materials": "5ded724d8ad4330ff6960b64a1196537d9675de9732c6452ccf2e287c6f42a64"
+      },
+      "wheelCandidates": {
+        "count": 102,
+        "digest": "d2ce18f38cedfb97a63c966b166f3c93b224833ec8f5296228a38f25a7d7195f",
+        "names": [
+          "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+          "TwiXeR_992_body.002_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_rubbertrim.004_0",
+          "TwiXeR_992_brakepedal_TwiXeR_992_rubbertrim.008_0",
+          "TwiXeR_992_clutchpedal_TwiXeR_992_rubbertrim.008_0",
+          "TwiXeR_992_dash_9000_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_dash_clock_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_dash_noclock_TwiXeR_992_rubbertrim.011_0"
+        ],
+        "truncated": true
+      },
+      "lightCandidates": {
+        "count": 43,
+        "digest": "3a3303430f5c4340d71c8a39edd1e29f8f703d5c517cb6c15bcb5aad44f2ceb6",
+        "names": [
+          "TwiXeR_992_brakelight_1.002",
+          "TwiXeR_992_fascia_mid_TwiXeR_992_brakelight_1.002_0",
+          "TwiXeR_992_fascia_mid_TwiXeR_992_taillight_running.001_0",
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_headlight.001_0",
+          "TwiXeR_992_gt3rs_sideskirts_L_TwiXeR_992_headlight.001_0",
+          "TwiXeR_992_gt3rs_sideskirts_R_TwiXeR_992_headlight.001_0",
+          "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_brakelight_1.001_0",
+          "TwiXeR_992_headlight_1.001"
+        ],
+        "truncated": true
+      },
+      "embeddedLights": {
+        "definitions": 0,
+        "nodes": 0
+      },
+      "staticScene": {
+        "selectedScene": 0,
+        "rootCount": 1,
+        "rootsDigest": "ce7c0602f95682e80661563af5a41646163d3e0a27b4c358f3fc5d0d3448d57f",
+        "rootNames": [
+          "Sketchfab_model"
+        ],
+        "rootsTruncated": false,
+        "boundedPrimitives": 291,
+        "missingPositionBounds": 0,
+        "bounds": {
+          "min": [
+            -1.014700047,
+            -0.083563621,
+            -2.360899903
+          ],
+          "max": [
+            1.014699999,
+            1.320264048,
+            2.210733883
+          ],
+          "size": [
+            2.029400046,
+            1.403827669,
+            4.571633786
+          ],
+          "center": [
+            -2.4e-8,
+            0.618350213,
+            -0.07508301
+          ]
+        }
+      },
+      "productionNormalization": {
+        "targetLength": 4.55,
+        "configuredYaw": 0,
+        "groundOffset": 0.64,
+        "autoRotateY90": false,
+        "scale": 0.995267822,
+        "normalizedSize": [
+          2.019796563,
+          1.397184506,
+          4.55
+        ],
+        "wheelbase": 2.46,
+        "trackWidth": 1.62,
+        "wheelRadius": 0.335
+      }
+    },
+    {
+      "id": "lp700",
+      "file": "public/cars/lamborghini-aventador-lp700.glb",
+      "bytes": 11269432,
+      "sha256": "6489a80970e15eaa4dcc9aab7e2f43f8f9021bfc15cd9d1081563540f8c85d8a",
+      "researchOracle": {
+        "sha256": "6489a80970e15eaa4dcc9aab7e2f43f8f9021bfc15cd9d1081563540f8c85d8a",
+        "exactByteMatch": true,
+        "relationship": "public-byte-identical"
+      },
+      "glb": {
+        "version": 2,
+        "declaredLength": 11269432,
+        "jsonLength": 43720
+      },
+      "asset": {
+        "version": "2.0",
+        "generator": "Sketchfab-12.66.0"
+      },
+      "counts": {
+        "scenes": 1,
+        "nodes": 42,
+        "namedNodes": 42,
+        "meshes": 40,
+        "meshInstances": 40,
+        "primitives": 40,
+        "vertices": 259185,
+        "triangles": 188836,
+        "materials": 40,
+        "textures": 13,
+        "images": 13,
+        "skins": 0,
+        "animations": 0,
+        "accessors": 160,
+        "bufferViews": 16,
+        "buffers": 1
+      },
+      "extensions": {
+        "used": [
+          "KHR_materials_clearcoat"
+        ],
+        "required": [],
+        "draco": false,
+        "meshopt": false,
+        "ktx2": false
+      },
+      "names": {
+        "nodes": "2861cd212b6df7214728d06b9d5e74de9900c561ddc3e4816741f887e012d64b",
+        "meshes": "0ce7ed3700d887d72d9854741de8268eeda610e1c61ba9b6203d1a41023c4f71",
+        "materials": "97ce907dfb931ebbea8a43d6c1af1ada0d9eb1a1ef5858ee4d027856f75be4cb"
+      },
+      "wheelCandidates": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "names": [],
+        "truncated": false
+      },
+      "lightCandidates": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "names": [],
+        "truncated": false
+      },
+      "embeddedLights": {
+        "definitions": 0,
+        "nodes": 0
+      },
+      "staticScene": {
+        "selectedScene": 0,
+        "rootCount": 1,
+        "rootsDigest": "ce7c0602f95682e80661563af5a41646163d3e0a27b4c358f3fc5d0d3448d57f",
+        "rootNames": [
+          "Sketchfab_model"
+        ],
+        "rootsTruncated": false,
+        "boundedPrimitives": 40,
+        "missingPositionBounds": 0,
+        "bounds": {
+          "min": [
+            -3.658560038,
+            -1.872377992,
+            -8.788074374
+          ],
+          "max": [
+            3.667880058,
+            1.892362058,
+            6.621545434
+          ],
+          "size": [
+            7.326440096,
+            3.76474005,
+            15.409619808
+          ],
+          "center": [
+            0.00466001,
+            0.009992033,
+            -1.08326447
+          ]
+        }
+      },
+      "productionNormalization": {
+        "targetLength": 4.78,
+        "configuredYaw": 0,
+        "groundOffset": 0.65,
+        "autoRotateY90": false,
+        "scale": 0.310195843,
+        "normalizedSize": [
+          2.272631259,
+          1.167806712,
+          4.78
+        ],
+        "wheelbase": 2.7,
+        "trackWidth": 1.72,
+        "wheelRadius": 0.345
+      }
+    },
+    {
+      "id": "amggt3",
+      "file": "public/cars/mercedes-amg-gt3.glb",
+      "bytes": 9636232,
+      "sha256": "af1f95809e31aa2546151857497c99442cf499940030fde8b1c5615f43f1cbf7",
+      "researchOracle": {
+        "sha256": "649ec8573d8c26311fed80f3ca3ada6d6e0e39e458fca7f93552cfcd3a027451",
+        "exactByteMatch": false,
+        "relationship": "public-optimized-derivative-of-source-model"
+      },
+      "glb": {
+        "version": 2,
+        "declaredLength": 9636232,
+        "jsonLength": 57156
+      },
+      "asset": {
+        "version": "2.0",
+        "generator": "glTF-Transform v4.4.1"
+      },
+      "counts": {
+        "scenes": 1,
+        "nodes": 51,
+        "namedNodes": 51,
+        "meshes": 51,
+        "meshInstances": 51,
+        "primitives": 51,
+        "vertices": 236007,
+        "triangles": 302492,
+        "materials": 51,
+        "textures": 36,
+        "images": 36,
+        "skins": 0,
+        "animations": 0,
+        "accessors": 184,
+        "bufferViews": 81,
+        "buffers": 1
+      },
+      "extensions": {
+        "used": [
+          "EXT_texture_webp",
+          "KHR_materials_clearcoat",
+          "KHR_materials_emissive_strength",
+          "KHR_mesh_quantization",
+          "KHR_texture_transform"
+        ],
+        "required": [
+          "EXT_texture_webp",
+          "KHR_mesh_quantization"
+        ],
+        "draco": false,
+        "meshopt": false,
+        "ktx2": false
+      },
+      "names": {
+        "nodes": "a1f2e7708d49d3b7e7cafaaf2dcbe09330bb63bb10a0b1c264bab19d7e7a735b",
+        "meshes": "36f359436494ba04f20edeb33b7ecf3a5f51b3134c662cf11d41ad4bc62272ab",
+        "materials": "e59e0206957bb5fb1ba92bb19ee968dc2325704ec903c433d0dd0d25e479804e"
+      },
+      "wheelCandidates": {
+        "count": 2,
+        "digest": "f0c3a91f645b4501b2a432f0d8acdf1a04fa20a1830c50c4bef1e5b2ac66a277",
+        "names": [
+          "amg_gt3_rims_blur",
+          "amg_gt3_tyres"
+        ],
+        "truncated": false
+      },
+      "lightCandidates": {
+        "count": 6,
+        "digest": "2fc0650f9748572ece12dc19c575f15eef2b31cbb721e53b8a021461557aa61f",
+        "names": [
+          "EXT_Emissive_Light_Front",
+          "EXT_Emissive_Light_Front_0",
+          "EXT_Emissive_Light_Rear",
+          "EXT_Glass_Emissive_Rear",
+          "EXT_Headlight_Glass",
+          "NUMBERPLATE_2018_EMISSIVE_PRO"
+        ],
+        "truncated": false
+      },
+      "embeddedLights": {
+        "definitions": 0,
+        "nodes": 0
+      },
+      "staticScene": {
+        "selectedScene": 0,
+        "rootCount": 51,
+        "rootsDigest": "a1f2e7708d49d3b7e7cafaaf2dcbe09330bb63bb10a0b1c264bab19d7e7a735b",
+        "rootNames": [
+          "Object_8",
+          "Object_44",
+          "Object_50",
+          "Object_54",
+          "Object_57",
+          "Object_60",
+          "Object_66",
+          "Object_69"
+        ],
+        "rootsTruncated": true,
+        "boundedPrimitives": 51,
+        "missingPositionBounds": 0,
+        "bounds": {
+          "min": [
+            -336.932561352,
+            -263.590888621,
+            -786.4487201
+          ],
+          "max": [
+            336.932561352,
+            263.608393161,
+            786.448476639
+          ],
+          "size": [
+            673.865122703,
+            527.199281782,
+            1572.897196739
+          ],
+          "center": [
+            0,
+            0.00875227,
+            -0.000121731
+          ]
+        }
+      },
+      "productionNormalization": {
+        "targetLength": 4.72,
+        "configuredYaw": 0,
+        "groundOffset": 0.63,
+        "autoRotateY90": false,
+        "scale": 0.003000832,
+        "normalizedSize": [
+          2.022155921,
+          1.582036394,
+          4.72
+        ],
+        "wheelbase": 2.63,
+        "trackWidth": 1.76,
+        "wheelRadius": 0.33
+      }
+    },
+    {
+      "id": "m5g90",
+      "file": "public/cars/bmw-m5-g90.glb",
+      "bytes": 18706352,
+      "sha256": "c5ae1be8833983655626eab533f447d3476001c2ad88d8db6b24d64b8322dbd9",
+      "researchOracle": {
+        "sha256": "d6b0b22a1eb4547dbabad925e565a590b2a109c4770358a0ef913328cf68c9b5",
+        "exactByteMatch": false,
+        "relationship": "public-optimized-derivative-of-source-model"
+      },
+      "glb": {
+        "version": 2,
+        "declaredLength": 18706352,
+        "jsonLength": 34604
+      },
+      "asset": {
+        "version": "2.0",
+        "generator": "glTF-Transform v4.4.1"
+      },
+      "counts": {
+        "scenes": 1,
+        "nodes": 28,
+        "namedNodes": 28,
+        "meshes": 28,
+        "meshInstances": 28,
+        "primitives": 28,
+        "vertices": 496129,
+        "triangles": 790738,
+        "materials": 28,
+        "textures": 14,
+        "images": 14,
+        "skins": 0,
+        "animations": 0,
+        "accessors": 117,
+        "bufferViews": 43,
+        "buffers": 1
+      },
+      "extensions": {
+        "used": [
+          "EXT_texture_webp",
+          "KHR_materials_clearcoat",
+          "KHR_materials_emissive_strength",
+          "KHR_materials_specular",
+          "KHR_mesh_quantization",
+          "KHR_texture_transform"
+        ],
+        "required": [
+          "EXT_texture_webp",
+          "KHR_mesh_quantization"
+        ],
+        "draco": false,
+        "meshopt": false,
+        "ktx2": false
+      },
+      "names": {
+        "nodes": "53ffeb0a9120aef2bfae349ca5be50ebc05ecb1c7abb918aae70a64ae019e1fc",
+        "meshes": "d2465389ad264e550093122a5107b414b7b9b972cd0188a99b1c557c54098111",
+        "materials": "5642d66dca6f40e9ea052f37118ba5cbc414b83c86ad0ab5c7c8f0e8ce599da6"
+      },
+      "wheelCandidates": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "names": [],
+        "truncated": false
+      },
+      "lightCandidates": {
+        "count": 0,
+        "digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "names": [],
+        "truncated": false
+      },
+      "embeddedLights": {
+        "definitions": 0,
+        "nodes": 0
+      },
+      "staticScene": {
+        "selectedScene": 0,
+        "rootCount": 28,
+        "rootsDigest": "53ffeb0a9120aef2bfae349ca5be50ebc05ecb1c7abb918aae70a64ae019e1fc",
+        "rootNames": [
+          "Object_14",
+          "Object_28",
+          "Object_35",
+          "Object_56",
+          "Object_5325",
+          "Object_5330",
+          "Object_5352",
+          "Object_5358"
+        ],
+        "rootsTruncated": true,
+        "boundedPrimitives": 28,
+        "missingPositionBounds": 0,
+        "bounds": {
+          "min": [
+            -35419.367884743,
+            -41823.805789213,
+            -84674.704877233
+          ],
+          "max": [
+            35419.367889401,
+            41824.918984812,
+            84673.886433748
+          ],
+          "size": [
+            70838.735774144,
+            83648.724774025,
+            169348.59131098
+          ],
+          "center": [
+            0.000002329,
+            0.5565978,
+            -0.409221742
+          ]
+        }
+      },
+      "productionNormalization": {
+        "targetLength": 5.1,
+        "configuredYaw": 0,
+        "groundOffset": 0.72,
+        "autoRotateY90": false,
+        "scale": 0.000030115,
+        "normalizedSize": [
+          2.133336626,
+          2.519114526,
+          5.1
+        ],
+        "wheelbase": 3.01,
+        "trackWidth": 1.7,
+        "wheelRadius": 0.36
+      }
+    }
+  ]
+}
