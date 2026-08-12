@@ -63,6 +63,15 @@
 - 实际变化：只在 `VehicleSystem.fixedUpdate()` 入口生成 `safeDt`/`activeInput`，后续仍运行原物理算法；没有处理已污染内部标量或非有限刚体状态。
 - 结果：15 个 input/`dt` 边界 × 6 车型（90 个配对 case）全部通过；完整 `pnpm verify` 的正常 120 Hz 六车加速、刹车、圆周和操稳指标保持原阈值，Rust/WASM scheduler 对照保持通过。
 
+### 六车内部数值污染恢复
+
+- 来源参考：NAS 未跟踪 `scripts/test-vehicle-finite.mjs`，读取时 8,853 bytes，SHA-256 `11774364003300A3AAE79DEC422A9FD4F0AA762EA47D2FBF3D2582047B69A163`；原测试混合了已整合的 reset、外部 input/dt 和内部污染，本批只重写第三部分。
+- 配对 oracle：每辆污染 rig 与同初态显式 fallback rig 比较。5 类 owner/cache（controls、transmission timers、history timers、4 wheel omega、悬空 telemetry contact）共 30 对；4 类 body setter 共 24 对。
+- clean 结果：48/54 失败。30/30 scalar/cache 均失败；translation/linvel/angvel 真正写入非有限 body，18/18 失败；6 个 `setRotation(NaN)` 被 Rapier 拒绝/归一成有限状态，与正常一步一致，不能伪记为 reset 缺陷。
+- 实际变化：fixedUpdate 使用 owner 前恢复并限幅 steer/load，恢复 RPM/timers/history/gear/reverse/wheel omega 与非有限 contact cache；读取 body pose/velocity 后先做有限性检查，失败则 `reset(safeSample)` 并立即返回；计算后 telemetry 再做有限性门禁。
+- 恢复语义：owner/cache 与显式局部 fallback 一致；真正非有限 body 与显式 reset oracle 一致；Rapier 已保持有限的 rotation 不做多余 reset。未覆盖 config、wheel anchor 或 collider 内部污染，不声称任意内存损坏可恢复。
+- 结果：30 scalar/cache + 24 body 配对全通过，其中 6 是 Rapier setter-normalized 路径；既有 90 外部边界、六车健康物理指标与完整 `pnpm verify` 保持通过。
+
 ### 网页 Rust/WASM scheduler owner
 
 - 来源：本仓库已提交 `streetrush-core` raw WASM ABI 和 JS fixed-step oracle；本批没有再复制外部代码。
@@ -135,9 +144,9 @@
 
 建议批次：
 
-1. 已污染内部标量/刚体 finite recovery 与对应失败测试（调用边界、reset 和输入脉冲已独立整合）；
-2. 多车音频 bank/runtime adapter、失败回退与车辆切换（context recovery 和 pause gate 已独立整合）；
-3. 资产超时、取消、缓存、引用安全释放与六车切换测试；
+1. vehicle config、wheel anchor/collider 等更深内部污染，仅在出现明确故障证据时继续；owner scalar/body recovery 已独立整合；
+2. 多车音频 shared registry/播放图与真实 bank 接线（选择、loader、context recovery 和 pause gate 已独立整合）；
+3. 资产 visual cache 预算与 pending 时 late result 的 deferred reference graph（request/preload/独立 late scene 已整合）；
 4. 计时并发存储、路线 HUD、布局和 renderer lifecycle；
 5. 车辆 GLB、source model 和纹理的二进制差异。
 
@@ -170,9 +179,10 @@
 - 证实：candidate 与 prototype manifest 的 loop 契约不同；只对 candidate 双重 fail-closed 可在不破坏 prototype fallback 的前提下阻止未批准层进入 decode。
 - 证实：GLTFLoader 的 LoadingManager 是共享 owner，单请求 timeout 不能用全局 abort；per-car preload token/signal 能隔离六车重复请求并有界释放 stalled slots。
 - 证实：late GLTF 只有在未挂载、无 pending、与全部已知资源 identity 不重叠时才可局部安全回收；共享判断不足时应保留而不是猜测 dispose。
+- 证实：六车 owner scalar/cache 污染不会靠下一步自然消失；入口局部 fallback 可与显式 oracle 一致。Rapier 的 NaN rotation setter 在本环境保持有限，不能把所有坏 setter 统一描述为 body poison。
 
 ## 当前最值得继续的方向
 
-1. 为已污染 runtime scalar 与非有限 Rapier body 建立独立恢复矩阵，区分可由 reset 恢复的 owner 字段与必须重建刚体/车辆的状态；
+1. 建立固定输入 trace 的六车重复运行基线，先量化 Rapier/JS 同进程确定性、reset/换向顺序和首个分歧字段，再决定回放接口放在 Rust 还是 JS boundary；
 2. 将 shared decoded bank registry 保留为下一音频候选，等出现多车辆/重复 bank 的实际调用需求再采用，避免提前缓存无可听资产；
 3. 重新尝试实际六车 READY 浏览器循环需等本地 Browser URL policy 允许，不用自动单测替代该未完成证据。

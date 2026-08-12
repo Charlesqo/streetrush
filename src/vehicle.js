@@ -17,6 +17,21 @@ const MAX_SAFE_UPDATE_DT = 0.05;
 
 const finiteOr = (value, fallback = 0) => Number.isFinite(value) ? value : fallback;
 
+function hasFiniteVector(value) {
+  return value
+    && Number.isFinite(value.x)
+    && Number.isFinite(value.y)
+    && Number.isFinite(value.z);
+}
+
+function hasFiniteBodyState(translation, rotation, linearVelocity, angularVelocity) {
+  return hasFiniteVector(translation)
+    && hasFiniteVector(rotation)
+    && Number.isFinite(rotation.w)
+    && hasFiniteVector(linearVelocity)
+    && hasFiniteVector(angularVelocity);
+}
+
 function safeUpdateDt(dt) {
   if (!Number.isFinite(dt) || dt <= 0) return FIXED_DT;
   return clamp(dt, MIN_SAFE_UPDATE_DT, MAX_SAFE_UPDATE_DT);
@@ -299,10 +314,34 @@ export class VehicleSystem {
   fixedUpdate(input, controlsLocked = false, dt = FIXED_DT) {
     const safeDt = safeUpdateDt(dt);
     const activeInput = sanitizeInput(controlsLocked ? this.lockedInput : input);
+    if (!Number.isFinite(this.steerAngle)) this.steerAngle = 0;
+    else this.steerAngle = clamp(this.steerAngle, -this.config.steer, this.config.steer);
+    if (!Number.isFinite(this.engineLoad)) this.engineLoad = 0;
+    else this.engineLoad = clamp(this.engineLoad, 0, 1);
+    if (!Number.isFinite(this.engineRpm)) this.engineRpm = this.config.idle;
+    if (!Number.isFinite(this.reverseHold) || this.reverseHold < 0) this.reverseHold = 0;
+    if (!Number.isFinite(this.shiftTimer) || this.shiftTimer < 0) this.shiftTimer = 0;
+    if (!Number.isFinite(this.previousLongSpeed)) this.previousLongSpeed = 0;
+    if (!Number.isFinite(this.smoothedLongAcceleration)) this.smoothedLongAcceleration = 0;
+    if (!Number.isFinite(this.stuckTimer) || this.stuckTimer < 0) this.stuckTimer = 0;
+    if (!Number.isInteger(this.gear) || this.gear < 1 || this.gear > this.config.gears.length) this.gear = 1;
+    this.reverse = this.reverse === true;
+    for (let index = 0; index < this.wheels.length; index += 1) {
+      const wheel = this.wheels[index];
+      if (!Number.isFinite(wheel.omega)) wheel.omega = 0;
+      const wheelTelemetry = this.telemetry.wheels[index];
+      if (!hasFiniteVector(wheelTelemetry.contactPoint)) wheelTelemetry.contactPoint.set(0, 0, 0);
+    }
     this.body.resetForces(false);
     this.body.resetTorques(false);
     const t = this.body.translation();
     const r = this.body.rotation();
+    const linvel = this.body.linvel();
+    const angularVelocity = this.body.angvel();
+    if (!hasFiniteBodyState(t, r, linvel, angularVelocity)) {
+      this.reset(this.safeSample);
+      return;
+    }
     const tmp = this.tmp;
     tmp.position.set(t.x, t.y, t.z);
     tmp.quaternion.set(r.x, r.y, r.z, r.w);
@@ -314,10 +353,13 @@ export class VehicleSystem {
     tmp.right.normalize();
     tmp.up.set(0, 1, 0).applyQuaternion(tmp.quaternion).normalize();
     tmp.down.set(0, -1, 0);
-    const linvel = this.body.linvel();
     // Keep the center-of-mass velocity separate. tmp.velocity is reused below
     // for contact-point velocities and must never become the aerodynamic input.
     tmp.bodyVelocity.set(linvel.x, linvel.y, linvel.z);
+    if (!Number.isFinite(tmp.bodyVelocity.lengthSq())) {
+      this.reset(this.safeSample);
+      return;
+    }
     const longSpeed = tmp.bodyVelocity.dot(tmp.forward);
     const lateralSpeed = tmp.bodyVelocity.dot(tmp.right);
     const speedKmh = Math.abs(longSpeed) * 3.6;
@@ -480,7 +522,6 @@ export class VehicleSystem {
       this.body.addForce(tmp.force, true);
     }
     const targetYawRate = longSpeed / Math.max(2, this.config.wheelbase) * Math.tan(this.steerAngle);
-    const angularVelocity = this.body.angvel();
     const stabilityError = targetYawRate - angularVelocity.y;
     const stabilityActive = Math.abs(stabilityError) > 0.16 && speedKmh > 14 && !activeInput.handbrake;
     if (stabilityActive) {
@@ -509,6 +550,30 @@ export class VehicleSystem {
     this.telemetry.tcsActive = tcsActive;
     this.telemetry.stabilityActive = stabilityActive;
     this.previousLongSpeed = longSpeed;
+
+    const telemetryFinite = [
+      this.engineRpm,
+      this.engineLoad,
+      this.telemetry.speedKmh,
+      this.telemetry.signedSpeedKmh,
+      this.telemetry.rpm,
+      this.telemetry.throttle,
+      this.telemetry.brake,
+      this.telemetry.steer,
+      this.telemetry.longitudinalAcceleration,
+      this.telemetry.lateralAcceleration,
+    ].every(Number.isFinite)
+      && this.telemetry.wheels.every((wheelTelemetry) => [
+        wheelTelemetry.load,
+        wheelTelemetry.suspension,
+        wheelTelemetry.slipRatio,
+        wheelTelemetry.slipAngle,
+        wheelTelemetry.slipPower,
+      ].every(Number.isFinite) && hasFiniteVector(wheelTelemetry.contactPoint));
+    if (!telemetryFinite) {
+      this.reset(this.safeSample);
+      return;
+    }
 
     const trackInfo = this.track.nearestInfo(tmp.position, this.trackHint);
     this.trackHint = trackInfo.index;

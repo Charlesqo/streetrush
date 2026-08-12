@@ -264,10 +264,28 @@
 
 结论：可证明独立的 late result 已有安全回收路径；无法证明独立的结果仍 fail-safe，不把内存优化置于共享资源正确性之上。
 
-## 下一实验
+## 六车内部数值污染恢复实验结果
 
 问题：公开调用边界已能阻止坏 input/dt，但若车辆内部标量、wheel cache 或 Rapier body 已经变成 NaN/Infinity，下一帧能否确定性恢复，还是必须 reset/rebuild？
 
-可观测量：首次污染字段、fixedUpdate/world.step 后扩散路径、reset 前后 body pose/velocity、owned scalar/wheel/telemetry 有限性；六车分别统计“入口恢复”“reset 恢复”“必须重建”。
+可观测量：首次污染字段、fixedUpdate/world.step 后扩散路径、reset 前后 body pose/velocity、owner scalar/wheel/telemetry 有限性；使用 paired rig 比较局部 fallback、reset 和 Rapier setter-normalized 三条路径。
 
-停止条件：先参考 NAS finite 测试建立内部污染矩阵，不混入外部 input；只对 owner 明确且 reset 可恢复的字段修复，Rapier 内部若无法可靠 set 回则记录 rebuild 条件，不用任意零值掩盖。
+停止条件：只参考 NAS finite 测试的内部污染部分；每个污染 rig 必须与显式 oracle 从同一确定性状态逐字段一致；不混入外部 input/dt 或未测试 config/collider；健康六车回归不能改变。
+
+- 来源：NAS 未跟踪 `scripts/test-vehicle-finite.mjs`，8,853 bytes，SHA-256 `11774364003300A3AAE79DEC422A9FD4F0AA762EA47D2FBF3D2582047B69A163`。其 reset 与 invalid caller 部分已由本仓库两个更小测试覆盖。
+- 初版误差：最初统一假设 4 种坏 body setter 都需 reset，得到 48/54 失败；检查发现 `setRotation(NaN)` 在 Rapier 中没有留下非有限 rotation，强制 reset oracle 本身错误。
+- 校正基线：setter 后实际读取 body 决定 oracle。5 个 scalar/cache 簇 × 6 车为 30/30 失败；translation、linvel、angvel 3 类 × 6 为 18/18 失败；rotation 6/6 由 Rapier 保持有限并正常推进。总计 48/54 真实失败。
+- telemetry 设计：车辆移到 20 m 高、无地面接触，避免 contactPoint 被下一次 ray hit 偶然覆盖；由此 6/6 证明悬空 cache 不自愈。
+- 最小实现：owner scalars/timers/history/gear/reverse/wheel omega 在使用前恢复；contactPoint 只在非有限时清零；body pose/velocity 非有限或 body velocity squared overflow 时 reset+return；输出 telemetry 非有限也 reset+return。
+- 修复结果：`scalar=30 body=24 rapier-normalized=6 total=54`；污染路径与各自显式 oracle 逐字段容差 `1e-9 * max(1, |expected|)` 一致。
+- 健康回归：既有 15 × 6 = 90 外部边界、六车 smoke/regression 指标、完整 `pnpm verify`、Rust/WASM、audio、assets、build 与门禁均通过。
+
+结论：owner scalar/cache 可局部恢复，真正非有限 Rapier pose/velocity 可用现有 reset API 恢复，不需要立即 rebuild；Rapier 已拒绝的坏 rotation 不应触发无证据 reset。更深 config/collider 污染仍未覆盖。
+
+## 下一实验
+
+问题：相同固定输入、同一车辆和相同状态事件序列重复运行时，JS/Rapier 车辆状态能否逐 tick 重现；reset、前进/倒车切换和换挡脉冲中哪个最早引入分歧？
+
+可观测量：六车每 tick 的 body pose/velocity、gear/reverse/RPM、wheel omega 和关键 telemetry；固定输入 trace hash、首个分歧 tick/field、同进程重复次数；不同状态序列分组而非重复同日志。
+
+停止条件：先用现有 JS owner 建立 3 类 trace（稳态、换向/换挡、reset 后重放）与稳定 hash；只有确定性边界清楚后才设计 Rust replay 格式或声称跨 native/WASM 一致，不先搬运大量状态。
