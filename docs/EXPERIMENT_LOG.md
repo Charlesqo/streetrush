@@ -60,7 +60,7 @@
 - 研究续跑记录证明共享 decoded bank、stale/abort、音频资源预算和多项物理 14 状态/事务 owner 接口形状；所有目标设备和目标车声明仍保持 fail-closed。
 - `workstreams/controls_network` 有 Windows ENet loopback 原型；`physics_numerics` CSV 显示能量残差随 120/240/480 Hz 约减半，以及 unilateral road-drop 事件时间收敛；目前均保留参考。
 
-## 下一实验
+## 首个 Rust 实验定义
 
 问题：NAS 已提交固定步调度能否在同一 Rust 逻辑中同时由原生程序与 WebAssembly 调用，并在 60/30/24/20/15 FPS 情形复现现有 JS contract？
 
@@ -72,3 +72,27 @@
 - 原生探针通过 60/30/24/20 FPS 保持 60 秒、15 FPS 明确限制为 45 秒的 oracle；
 - `wasm32-unknown-unknown` 构建成功；
 - Node 实例化生成的 `.wasm` 并得到与原生相同的 case 结果。
+
+## Rust 固定步共享核心结果
+
+- `cargo test --workspace`：6 个 core 单元测试通过，0 失败。
+- `cargo clippy --workspace --all-targets -- -D warnings`：通过。
+- `cargo clippy -p streetrush-core --target wasm32-unknown-unknown -- -D warnings`：通过。
+- `cargo run -p streetrush-native`：
+  - 60/30/24/20 FPS：各 7200 physics steps，60.000000000 秒，remainder 0；
+  - 15 FPS：5400 steps，45.000000000 秒，remainder 0；
+  - 退出码 0。
+- 首次 wasm32 build 被 `unsafe_code=deny` 拒绝 9 个 raw ABI 稳定符号属性；把 `allow(unsafe_code)` 限定在 `wasm_exports` 模块后构建通过，没有开放 unsafe block。
+- `scripts/test-core-wasm.mjs`：raw WASM 成功实例化；60/30/24/20/15 FPS 的 60 秒序列及负数、0、小帧、超大帧和不规则帧序列与 JS 逐步一致，退出码 0。
+- 加入 Rust workspace 后重新运行完整 `pnpm verify`：原有逻辑、六车物理、构建、静态资产、secret guard 和资产清单全部通过；Vite 仍只有既有的大 chunk 警告。
+- 生成物仅存在于忽略的 `target/`：debug native executable 约 159 KiB，debug WASM 约 1.59 MiB；不提交构建产物。
+
+结论：假设得到支持。固定步调度是一个足够小、接口清楚且能跨原生/WASM 复用的首个 Rust owner 候选；但游戏主循环仍使用 JS，下一次 owner 切换必须先验证 WASM 加载失败和初始化时序，不能只凭编译成功替换。
+
+## 下一实验
+
+问题：NAS 脏工作区的 fixed-update 输入脉冲和 finite/reset 改动分别修复了哪些可独立复现的当前基线失败，是否能拆成比现有大 diff 更小的安全批次？
+
+可观测量：一次 render frame 内多次 physics step 对 shift/toggle/reset 脉冲的消费次数；NaN/Infinity 进入车辆 update、reset 和 telemetry 后的状态；对应 NAS 测试在 clean baseline 上的失败类别。
+
+停止条件：先复制或重写最小失败测试；按共同根因聚类；只采用能让失败测试通过且不改变无关玩法的最小代码；完整 `pnpm verify` 和 Rust/WASM 对照保持通过。

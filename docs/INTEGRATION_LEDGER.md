@@ -27,6 +27,16 @@
 - 实际变化：`walk()` 只把 `node:path.relative()` 的平台分隔符归一为 `/`；加入回归脚本并接入 `pnpm verify`。
 - 结果：最小回归和完整 `pnpm verify` 均通过；inventory 正确报告 10 个资产、1 个 public blocker、3 个 commercial blocker。
 
+### Rust 固定步共享核心
+
+- 来源 oracle：NAS clean commit `5fdea84` 中的 `src/config.js`、`src/physics-scheduling.js` 和 `scripts/test-physics-scheduling.mjs`。
+- 原始契约：120 Hz `FIXED_DT`、50 ms `MAX_FRAME_DT`、每帧最多 6 个 physics steps；60/30/24/20 FPS 的 60 秒输入保持 60 秒模拟，15 FPS 因明确限幅得到 45 秒。
+- 复制与变化：没有机械复制 JS；在 `crates/streetrush-core` 中实现 renderer-independent 状态化 accumulator、单帧计划和固定帧序列探针，并保留 JS 对 NaN、负数和无穷值的边界语义。
+- 原生目标：`apps/streetrush-native` 使用同一 crate 输出五种帧率的步数、模拟秒数和 remainder，并以 oracle 偏差作为退出状态。
+- WASM 接口：`streetrush-core` 同时生成 `cdylib`，以依赖为零的 raw ABI 导出常量、clamp、accumulate、单帧 plan 和序列 probe。稳定符号需要 `unsafe(no_mangle)`，`unsafe_code` lint 例外只允许在 `wasm_exports` 模块，其他 workspace 代码仍为 deny。
+- Web 对照：`scripts/test-core-wasm.mjs` 实际实例化生成的 `.wasm`，逐帧与当前 JS oracle 比较；游戏主循环本轮尚未切换到 WASM owner。
+- 结果：Rust 单测、native probe、native/WASM Clippy、wasm32 build 和 Node/WASM 对照全部通过。
+
 ## 待分批吸收的 NAS 脏改动
 
 来源工作区无 staged 内容；有 28 个 tracked 修改和 11 个 untracked 测试，约 `+3108/-252`。二进制模型/纹理虽字节数相同但 Git 内容不同，必须单独审计哈希和结构。
@@ -61,6 +71,6 @@
 
 ## 当前最值得继续的方向
 
-1. 验证 clean baseline 的依赖、逻辑测试与构建，记录任何环境性失败；
-2. 以 NAS 已提交 `src/physics-scheduling.js` 为 oracle，建立无第三方依赖的 Rust workspace、原生探针和 raw WASM 调用对照；
-3. 完成后重新比较 NAS finite/input 脏改动，选择第一个有失败测试支持的稳定性批次。
+1. 对 NAS finite/reset 与 fixed-update 输入脉冲脏改动做最小差异审查，先在新项目复现当前失败，再选择最小吸收范围；
+2. 为 Rust scheduler 定义网页 owner 切换门槛：加载失败回退、初始化时序和 JS/WASM 双路径一致性，证据足够后才替换主循环 owner；
+3. 随后优先评估音频 pause/resume 或资产取消/释放簇，按可观测资源生命周期选择下一批。

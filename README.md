@@ -1,5 +1,7 @@
 # 晴空环线 · Street Rush 1.0 范围（当前构建）
 
+本仓库以现有 Three.js/Rapier 可玩版本为产品基线，正在逐步建立 Rust 共享核心。网页渲染、UI、移动输入和音频暂时保留；跨运行时的状态、规则、计时、遥测、回放和工具逻辑将按可验证的小切片迁入 Rust。
+
 使用 Three.js、Rapier 和现有六辆 GLB 车辆制作的单人浏览器 3D 赛车小游戏。当前版本定位为“拟真骨架、容易上手”的 simcade：一条按当前 Catmull-Rom 赛道几何测得约 2.13km 的现代封闭赛道、三圈计时、六辆差异化车辆和完整车库/比赛/完赛流程。`package.json` 的 `1.0.0` 是本隔离包的版本元数据，界面里的 `v0.3` 保留为系统基线编号。
 
 线上地址：<https://street.charlesq.net>
@@ -10,12 +12,23 @@
 
 ## 工作区边界
 
-- 本目录：网页游戏主仓库。
-- `/Users/charles/Documents/street-rush-game/street-rush-studio/`：原始只读来源；本副本不向它回写。
-- 本目录有独立 Git 历史；不要从 `/Users/charles/Documents/New project/` 外层仓库提交或发布。
-- C++ 车辆物理与音频实验不属于本隔离副本的开发范围。
+- `E:\Projects\streetrush`：唯一可写的长期整合仓库，拥有独立 Git 历史。
+- `Z:\Temp\street-rush-studio-continuation` 和 `E:\Codex` 下列入 `docs/SOURCE_INVENTORY.md` 的项目都是只读来源。
+- 来源代码必须先复制到本仓库，再修改副本并记录原始状态和差异。
+- C++ 车辆物理、音频和模型研究是 Rust/网页接口的 oracle 与候选，不直接回写来源工程。
 
-本副本只维护网页游戏主线；任何外部实验结果都必须通过明确接口或经过裁剪的成品接入。
+任何外部实验结果都必须通过明确、可测试的接口进入；研究 fixture 不自动升级为目标车辆或生产结论。
+
+## Rust 共享核心
+
+```powershell
+cargo test --workspace
+cargo run -p streetrush-native
+cargo build -p streetrush-core --target wasm32-unknown-unknown
+node scripts/test-core-wasm.mjs
+```
+
+首个共享切片拥有 120 Hz 固定步调度、50 ms 帧上限和六步 catch-up 契约。原生探针与 raw WASM 测试都和现有 JavaScript oracle 对照；车辆物理仍留在已验证的网页基线，等待独立输入输出和误差门槛后再迁移。
 
 ## v0.3 系统
 

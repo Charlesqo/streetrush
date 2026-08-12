@@ -1,0 +1,18 @@
+[workspace]
+members = [
+  "apps/streetrush-native",
+  "crates/streetrush-core",
+]
+resolver = "3"
+
+[workspace.package]
+edition = "2024"
+rust-version = "1.97"
+
+[workspace.lints.rust]
+linker_messages = "allow"
+unsafe_code = "deny"
+
+[workspace.lints.clippy]
+all = "warn"
+pedantic = "warn"

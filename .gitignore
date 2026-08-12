@@ -7,6 +7,9 @@ dist/
 .pnpm-store/
 *.log
 
+# Rust workspace build output.
+target/
+
 # Local environment files and Cloudflare development secrets.
 .env
 .env.*
