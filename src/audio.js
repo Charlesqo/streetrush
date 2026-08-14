@@ -1,9 +1,18 @@
+import { AudioBankCoordinator } from './audio-bank-coordinator.js';
+import { createDecodedAudioBankLoader } from './audio-bank-loader.js';
+import { LayeredEngineBankPlayer } from './layered-engine-bank.js';
+
 const CONTEXT_RESUME_RETRY_MS = 500;
 const AUDIO_MIN_GAIN = 0.0001;
 const AUDIO_GATE_TIME_CONSTANT = 0.06;
 
 export class ProceduralAudio {
-  constructor() {
+  constructor({
+    bankDocument = { banks: [] },
+    resolveBankProfile = null,
+    fetchImpl = globalThis.fetch ? globalThis.fetch.bind(globalThis) : undefined,
+    onBankEvent = () => {},
+  } = {}) {
     this.context = null;
     this.enabled = true;
     this.config = null;
@@ -12,6 +21,19 @@ export class ProceduralAudio {
     this.lastContextResumeAt = -Infinity;
     this.contextStateChangeHandler = null;
     this.paused = false;
+    this.bankDocument = bankDocument;
+    this.resolveBankProfile = resolveBankProfile;
+    this.fetchImpl = fetchImpl;
+    this.onBankEvent = onBankEvent;
+    this.bankCoordinator = null;
+    this.bankPlayer = null;
+    this.bankRequestId = 0;
+    this.bankSelectionPromise = Promise.resolve(null);
+    this.bankState = {
+      state: typeof resolveBankProfile === 'function' ? 'pending-init' : 'disabled',
+      resolution: { mode: 'procedural', bankId: null, reason: 'bank runtime not initialized' },
+      error: null,
+    };
     this.previousTelemetry = {
       gear: null,
       reverse: false,
@@ -21,7 +43,7 @@ export class ProceduralAudio {
 
   setVehicle(config) {
     this.config = config;
-    if (!this.nodes) return;
+    if (!this.nodes || !config) return Promise.resolve(this.snapshot().bank);
     const now = this.context.currentTime;
     const profile = config.audio;
     this.nodes.osc.type = profile.family === 'i4' ? 'square' : 'sawtooth';
@@ -32,6 +54,108 @@ export class ProceduralAudio {
     this.nodes.drive.curve = this.makeDriveCurve(profile.drive);
     this.previousTelemetry.gear = null;
     this.previousTelemetry.reverse = false;
+    return this.selectVehicleBank(config);
+  }
+
+  initializeBankRuntime() {
+    if (typeof this.resolveBankProfile !== 'function' || !this.bankDocument?.banks?.length) return;
+    const loadBank = createDecodedAudioBankLoader({
+      context: this.context,
+      fetchImpl: this.fetchImpl,
+    });
+    this.bankPlayer = new LayeredEngineBankPlayer({
+      context: this.context,
+      destination: this.nodes.master,
+    });
+    this.bankCoordinator = new AudioBankCoordinator({
+      loadBank,
+      onEvent: (event) => {
+        try { this.onBankEvent(event); } catch { /* observability must not alter audio */ }
+      },
+    });
+    this.bankState = {
+      state: 'procedural',
+      resolution: { mode: 'procedural', bankId: null, reason: 'no vehicle selected' },
+      error: null,
+    };
+  }
+
+  selectVehicleBank(config) {
+    if (!this.bankCoordinator || !this.bankPlayer || typeof this.resolveBankProfile !== 'function') {
+      return Promise.resolve(this.snapshot().bank);
+    }
+    const requestId = ++this.bankRequestId;
+    this.bankPlayer.detach();
+    this.bankState = {
+      state: 'loading',
+      resolution: { mode: 'procedural', bankId: null, reason: 'selecting vehicle bank' },
+      error: null,
+    };
+    let profile;
+    try {
+      profile = this.resolveBankProfile(config);
+    } catch (error) {
+      this.bankCoordinator.releaseActive();
+      this.bankState = {
+        state: 'degraded',
+        resolution: { mode: 'procedural', bankId: null, reason: 'profile resolution failed' },
+        error: String(error),
+      };
+      this.bankSelectionPromise = Promise.resolve(this.snapshot().bank);
+      return this.bankSelectionPromise;
+    }
+    const selection = this.bankCoordinator.setProfile(profile, this.bankDocument)
+      .then((snapshot) => {
+        if (requestId !== this.bankRequestId) return this.snapshot().bank;
+        if (snapshot.state === 'ready' && this.bankCoordinator.active?.value) {
+          try {
+            this.bankPlayer.attach(this.bankCoordinator.active.value);
+            this.bankPlayer.setEnabled(this.enabled);
+            this.bankState = { state: 'ready', resolution: snapshot.resolution, error: null };
+          } catch (error) {
+            this.bankCoordinator.releaseActive();
+            this.bankState = {
+              state: 'degraded',
+              resolution: { ...snapshot.resolution, mode: 'procedural', reason: 'player attach failed' },
+              error: String(error),
+            };
+          }
+        } else {
+          this.bankState = {
+            state: snapshot.state,
+            resolution: snapshot.resolution,
+            error: snapshot.resolution?.fallbackError ?? null,
+          };
+        }
+        return this.snapshot().bank;
+      }, (error) => {
+        if (requestId !== this.bankRequestId) return this.snapshot().bank;
+        this.bankState = {
+          state: 'degraded',
+          resolution: { mode: 'procedural', bankId: null, reason: 'bank selection failed' },
+          error: String(error),
+        };
+        return this.snapshot().bank;
+      });
+    this.bankSelectionPromise = selection;
+    return selection;
+  }
+
+  whenBankSettled() {
+    return this.bankSelectionPromise;
+  }
+
+  snapshot() {
+    return {
+      enabled: this.enabled,
+      paused: this.paused,
+      contextState: this.context?.state ?? null,
+      bank: {
+        ...this.bankState,
+        player: this.bankPlayer?.snapshot() ?? null,
+        coordinator: this.bankCoordinator?.snapshot() ?? null,
+      },
+    };
   }
 
   makeDriveCurve(amount = 1.3) {
@@ -190,6 +314,7 @@ export class ProceduralAudio {
       exhaustNoiseGain, roadNoiseGain, windGain, tireOsc, tireFilter, tireGain,
       noiseBuffer: noise.buffer,
     };
+    this.initializeBankRuntime();
     this.setVehicle(this.config);
     await this.resumeContext(true);
   }
@@ -197,6 +322,7 @@ export class ProceduralAudio {
   setEnabled(enabled) {
     this.enabled = enabled;
     if (this.nodes) this.nodes.master.gain.setTargetAtTime(enabled ? 0.28 : AUDIO_MIN_GAIN, this.context.currentTime, 0.04);
+    this.bankPlayer?.setEnabled(enabled);
   }
 
   setPaused(paused) {
@@ -288,7 +414,13 @@ export class ProceduralAudio {
     this.nodes.mechanical.frequency.setTargetAtTime(Math.max(45, firing * 2.01), now, 0.018);
     this.nodes.tone.frequency.setTargetAtTime(1250 + rpm * 0.31 + load * 950, now, 0.055);
     const idleLevel = speed < 1 ? 0.018 : 0.023;
-    this.nodes.engineGain.gain.setTargetAtTime(this.enabled ? idleLevel + load * 0.052 : 0.0001, now, 0.045);
+    const bankActive = this.bankPlayer?.snapshot().state === 'ready';
+    this.nodes.engineGain.gain.setTargetAtTime(
+      this.enabled && !bankActive ? idleLevel + load * 0.052 : AUDIO_MIN_GAIN,
+      now,
+      0.045,
+    );
+    this.bankPlayer?.update({ rpm, load, enabled: this.enabled });
     this.nodes.exhaustNoiseGain.gain.setTargetAtTime(this.enabled ? load * load * 0.011 : 0.0001, now, 0.07);
     this.nodes.roadNoiseGain.gain.setTargetAtTime(this.enabled ? Math.min(0.018, speed / 220 * 0.008 + averageSlip * 0.006 + roughSurface * speed / 180 * 0.009) : 0.0001, now, 0.09);
     this.nodes.windGain.gain.setTargetAtTime(this.enabled && speed > 25 ? Math.pow(speed / 320, 2) * 0.018 : 0.0001, now, 0.12);
@@ -302,5 +434,18 @@ export class ProceduralAudio {
       0.035,
     );
     this.updateTransientEvents(telemetry);
+  }
+
+  disposeBankRuntime() {
+    this.bankRequestId += 1;
+    this.bankPlayer?.dispose();
+    this.bankPlayer = null;
+    this.bankCoordinator?.dispose();
+    this.bankCoordinator = null;
+    this.bankState = {
+      state: 'disposed',
+      resolution: { mode: 'procedural', bankId: null, reason: 'audio disposed' },
+      error: null,
+    };
   }
 }

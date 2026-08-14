@@ -661,3 +661,21 @@
 - green：6 vehicles/banks、36 WAV/7,939,584 bytes；PCM16/mono/44.1k、2.5s、非静音、无 full-scale sample、prepared SHA-256 和 seam gates 全通过；21 physics fields count/owner/eligibility 与 coil-not-wheel-rate 边界通过。
 
 结论：salvage 有明确价值并可安全版本化为候选输入；下一步只做一车 decoded bank pilot，失败必须回退当前程序化音频。
+
+## MX-5 分层发动机 bank pilot 结果
+
+问题：已验证的候选 WAV 能否通过当前严格 loader 接进 `ProceduralAudio`，在不破坏路/风/胎噪、pause gate 和程序化 fallback 的前提下形成真实可运行的 RPM/负载分层声音？
+
+可观测量：复制文件 hash；manifest/六 WAV 获取与 decode；BufferSource/loop/playback rate/gain；程序化 engineGain；pause target freeze；切车 release；HTTP 失败；真实浏览器状态和 console。
+
+停止条件：只接 MX-5 一车；candidate loop gate 或任一 decoded layer 不合格则原子拒绝；加载/attach 失败必须有声回退；不凭数学测试声称听感或录音真实性；其余五车不在同批机械铺开。
+
+- asset：`bank.json` 与 6 个 2.5s PCM WAV 复制到 `public/audio-banks/mx5`，所有 SHA-256 与 salvage 一致；license inventory 明确增加 7 个 uncleared prototype blocker。
+- player：三个 RPM anchors 以 cosine/sine 相邻混合，on/off load 以 sqrt 权重混合；播放速率限制 0.45–1.55。候选 bank 与每层 loop 都必须 approved，验证在 detach 前执行；六源 start/stop/disconnect 和 replacement/dispose 有断言。
+- integration：bank ready 时程序化发动机降到 `0.0001`，但 exhaust/road/wind/tire 路径不被替换；pause 时主循环不更新 layer targets，全图由既有 pause gate 静音；切到无 bank 的 GT3/M3 释放 decoded layers 并恢复程序化。
+- failure：fixture manifest HTTP 503 得到 `degraded/procedural`，播放器为空且 engineGain 继续有声；strict loader 原有 manifest/json/layer/decode/abort gates 保持。
+- regression：完整 `pnpm verify` 全绿，含六车物理、18 deterministic replay traces、1,320-action timing soak、模型/轮组、Rust native/WASM；build 为 41 modules、4,864-byte WASM、31 files/78.34 MiB，233 个可版本化文件 secret scan。
+- browser：初始 `pending-init`；开始手势后真实变为 `ready/family`，id=`bank.candidate.i4.mazda-b6-compatibility-proxy`。暂停/恢复保持 ready；切 M3 为 `procedural/none`，切回重新 ready；console 仅有 Vite debug，无 warning/error。
+- evidence boundary：浏览器自动化没有听觉输出分析，也不能保持驾驶输入；本结果证明 decode/graph/state lifecycle，不证明循环无接缝、动态音色自然、设备响度合适或完整驾驶中的听感。
+
+结论：当前接口值得保留，并足以作为其余五车的唯一扩展形状；扩展前最有信息量的是人耳/长时成本检查，而不是重复证明同一 loader 能读取更多同格式文件。

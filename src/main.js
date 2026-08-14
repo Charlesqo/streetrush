@@ -8,6 +8,7 @@ import { TrackSystem } from './track.js';
 import { createGameAssetManager } from './game-assets.js';
 import { VehicleSystem, disposeOwnedVisual } from './vehicle.js';
 import { ProceduralAudio } from './audio.js';
+import { createGameAudioProfile, GAME_AUDIO_BANKS } from './game-audio-banks.js';
 import { ChaseCamera, TireEffects } from './effects.js';
 import { RaceTimingSession, TimingStore, formatRaceDelta, formatRaceTime } from './race-timing.js';
 import { getLiveRaceGoal, LONGWAN_TIME_ATTACK, MIN_LIVE_GOAL_CHECKPOINTS } from './race-goals.js';
@@ -75,7 +76,11 @@ physicsWorld.integrationParameters.dt = FIXED_DT;
 const track = new TrackSystem(TRACK_CONFIG, scene, renderer, RAPIER, physicsWorld);
 const assets = createGameAssetManager(scene, track);
 const input = new InputController();
-const audio = new ProceduralAudio();
+const audio = new ProceduralAudio({
+  bankDocument: GAME_AUDIO_BANKS,
+  resolveBankProfile: createGameAudioProfile,
+  onBankEvent: (event) => recordDevEvent('audio-bank', { event }),
+});
 document.documentElement.dataset.audioPaused = 'false';
 const effects = new TireEffects(scene);
 const chaseCamera = new ChaseCamera(camera);
@@ -118,6 +123,12 @@ function setAudioPaused(paused) {
   document.documentElement.dataset.audioPaused = String(audio.paused);
 }
 
+function initializeAudio() {
+  return audio.init()
+    .then(() => audio.whenBankSettled())
+    .finally(() => publishDevVehicleReadiness());
+}
+
 const devToolsRequested = import.meta.env.DEV && new URLSearchParams(location.search).has('devtools');
 if (devToolsRequested) {
   const { DevTelemetryBuffer } = await import('./dev-telemetry.js');
@@ -130,6 +141,7 @@ function getDevReadiness() {
   const startableState = state === 'menu' || state === 'finish' || state === 'paused';
   const restartable = state === 'race' && timing?.snapshot().currentLapValid === false;
   const visualWheelSet = vehicle?.visual?.getObjectByName?.('calibrated-wheels');
+  const audioBank = audio.snapshot().bank;
   return {
     assetSource: vehicle?.visual?.userData?.source ?? null,
     vehicleLoadPending,
@@ -137,6 +149,10 @@ function getDevReadiness() {
     mountedCarId: vehicle?.config?.id ?? null,
     visualWheelBindingCount: vehicle?.visualWheelBindings?.length ?? 0,
     visualWheelSource: visualWheelSet?.userData?.visualWheelSource ?? null,
+    audioBankState: audioBank.state,
+    audioBankId: audioBank.player?.bankId ?? null,
+    audioBankMode: audioBank.resolution?.mode ?? null,
+    audioBankError: audioBank.error,
     physicsSchedulerOwner: physicsScheduler?.owner ?? null,
     physicsSchedulerFallback: physicsScheduler?.fallbackReason ?? null,
     state,
@@ -148,9 +164,13 @@ function getDevReadiness() {
 function publishDevVehicleReadiness() {
   if (!import.meta.env.DEV) return;
   const visualWheelSet = vehicle?.visual?.getObjectByName?.('calibrated-wheels');
+  const audioBank = audio.snapshot().bank;
   document.documentElement.dataset.mountedCarId = vehicle?.config?.id ?? '';
   document.documentElement.dataset.visualWheelBindingCount = String(vehicle?.visualWheelBindings?.length ?? 0);
   document.documentElement.dataset.visualWheelSource = visualWheelSet?.userData?.visualWheelSource ?? 'none';
+  document.documentElement.dataset.audioBankState = audioBank.state;
+  document.documentElement.dataset.audioBankId = audioBank.player?.bankId ?? 'none';
+  document.documentElement.dataset.audioBankMode = audioBank.resolution?.mode ?? 'procedural';
 }
 
 function recordDevEvent(type, details = {}) {
@@ -523,8 +543,12 @@ async function mountVehicle(index, initial = false) {
     vehicle = nextVehicle;
     visualHandedOff = true;
     previous?.destroy();
+    const audioSelection = audio.setVehicle(config);
     publishDevVehicleReadiness();
-    audio.setVehicle(config);
+    Promise.resolve(audioSelection).then(
+      () => { if (vehicle?.config.id === config.id) publishDevVehicleReadiness(); },
+      () => { if (vehicle?.config.id === config.id) publishDevVehicleReadiness(); },
+    );
     if (visual.userData.source === 'gltf') assets.preloadNeighbors(CARS, index);
     chaseCamera.snap(vehicle.currentPose.position, vehicle.currentPose.rotation);
     return true;
@@ -626,7 +650,7 @@ function startRace() {
   lastFrame = performance.now();
   if (standaloneMode && touchCapable) lockLandscape();
   setAudioPaused(false);
-  audio.init().catch((error) => console.warn('Audio initialization failed', error));
+  initializeAudio().catch((error) => console.warn('Audio initialization failed', error));
   state = 'countdown';
   document.body.classList.add('race-active');
   $('mobile-controls').classList.add('active');
@@ -1025,7 +1049,7 @@ $('about').onclick = (event) => {
   if (event.target === $('about')) closeModalDialog('about');
 };
 $('sound-button').onclick = () => {
-  audio.init().catch((error) => console.warn('Audio initialization failed', error));
+  initializeAudio().catch((error) => console.warn('Audio initialization failed', error));
   audio.setEnabled(!audio.enabled);
   $('sound-button').textContent = audio.enabled ? 'SOUND ON' : 'SOUND OFF';
   $('sound-button').setAttribute('aria-pressed', String(audio.enabled));

@@ -30,6 +30,7 @@ export class FakeAudioNode {
     this.connections = [];
     this.gain = new FakeAudioParam();
     this.frequency = new FakeAudioParam();
+    this.playbackRate = new FakeAudioParam(1);
     this.Q = new FakeAudioParam();
     this.threshold = new FakeAudioParam();
     this.knee = new FakeAudioParam();
@@ -38,6 +39,7 @@ export class FakeAudioNode {
     this.release = new FakeAudioParam();
     this.startCalls = 0;
     this.stopCalls = 0;
+    this.disconnectCalls = 0;
   }
 
   connect(node) {
@@ -52,11 +54,17 @@ export class FakeAudioNode {
   stop() {
     this.stopCalls += 1;
   }
+
+  disconnect() {
+    this.disconnectCalls += 1;
+    this.connections.length = 0;
+  }
 }
 
 class FakeAudioBuffer {
-  constructor(length) {
+  constructor(length, sampleRate) {
     this.data = new Float32Array(length);
+    this.duration = length / sampleRate;
   }
 
   getChannelData() {
@@ -145,7 +153,14 @@ export class FakeAudioContext {
   }
 
   createBuffer(_channels, length) {
-    return new FakeAudioBuffer(length);
+    return new FakeAudioBuffer(length, this.sampleRate);
+  }
+
+  async decodeAudioData(bytes) {
+    return {
+      duration: 2.5,
+      byteLength: bytes.byteLength,
+    };
   }
 }
 

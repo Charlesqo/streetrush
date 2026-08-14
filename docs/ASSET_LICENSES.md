@@ -1,6 +1,6 @@
 # 素材授权台账
 
-审查日期：2026-07-28。机器可核验清单在 `licenses/assets.json`，随网页构建发布的署名在 `public/THIRD_PARTY_NOTICES.txt`，导入时的许可证记录保存在 `licenses/evidence/`。
+审查日期：2026-08-14。机器可核验清单在 `licenses/assets.json`，随网页构建发布的署名在 `public/THIRD_PARTY_NOTICES.txt`，导入时的许可证记录保存在 `licenses/evidence/`。
 
 这份台账只记录当前能找到的来源和许可证证据，不把下载页自动当作完整权利保证。车辆品牌、标志和外观可能另有商标或商业外观问题，模型许可证并不等于品牌方授权。
 
@@ -12,8 +12,9 @@
 | BMW M5 G90 / Mercedes-AMG GT3 | Sketchfab 导出许可证文本，CC BY-NC-SA 4.0 | 可，必须署名并遵守相同方式共享修改版 | **不可** |
 | Lamborghini Aventador LP700 | 没有来源页、作者或许可证文件 | **不可确认，阻塞发布** | **不可确认，阻塞发布** |
 | 两张赛道路面贴图 | Downtown City MegaKit `License_Standard.txt`，CC0 1.0 | 可 | 可 |
+| MX-5 六层 prototype engine bank | Engine Simulator compatibility proxy；上游脚本 URL 已记录，但生成输出的再发布许可未审查 | **不可确认，阻塞发布** | **不可确认，阻塞发布** |
 
-M5 G90 与 AMG GT3 的发布 GLB 是优化后的派生文件；原始 GLB 保留在 `source-models/`。这不会解除署名、非商业和相同方式共享要求。
+M5 G90 与 AMG GT3 的发布 GLB 是优化后的派生文件；原始 GLB 保留在 `source-models/`。这不会解除署名、非商业和相同方式共享要求。MX-5 bank 当前只用于本地可玩 pilot；它通过结构与 loop 测试并不等于获得再发布许可。
 
 ## 自动检查
 

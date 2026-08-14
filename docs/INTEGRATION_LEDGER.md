@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前目标是把可玩游戏所需准备做完整，并明确区分已完成、部分完成和缺失，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 exact wheel manifest 已进入 production 并在 cache 回返后保持四 binding。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；样本音频与其余四车轮组是 P1 完成度工作。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
+当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 exact wheel manifest 已进入 production，六层候选发动机 bank 也已通过真实浏览器获取、解码、暂停、切车释放和重载。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；其余五车样本音频与四车轮组是 P1 完成度工作。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
 
 ## 已整合
 
@@ -392,8 +392,17 @@
 - 原始缺陷：MX-5 I4 与 M5 V8 的 `analysis.json` 均误写 `cylinders:6`，六个派生点火频率随之错误；失败测试先复现。新项目副本只改为 4/8 缸并按 `rpm/60*cylinders/2` 重算，WAV、bank、loop/source records 不变。
 - 结果：六 bank/36 WAV（7,939,584 bytes）和 21 physics fields 全通过；projection 的 UTF-8 BOM 在 reader 边界兼容，不重写 archive。音频仍是候选，不因结构通过升级为精确录音或 production。
 
+### MX-5 分层样本声 production pilot
+
+- 来源与复制：从已版本化 `research-salvage/audio/candidates/i4-mazda-b6-compatibility-proxy/` 机械复制 `bank.json` 和 6 个 WAV 到 `public/audio-banks/mx5/`；7 个文件 SHA-256 与 archive 逐字节一致。archive 继续保持 reference，生产不直接 import 它。
+- 许可状态：7 个生产文件显式登记为 `UNKNOWN-GENERATED-PROTOTYPE`、`blocked-prototype-license-unreviewed`；notice 已更新。门禁因此诚实报告 17 files、public blockers=8、commercial blockers=10，而不是把本地试点误装成可发布资产。
+- 播放接口：新增 `LayeredEngineBankPlayer`，为三个 RPM 锚点建立六个 looped BufferSource，以 cosine/sine 混合相邻转速、平方根混合 on/off load，并限制 playback rate 为 0.45–1.55。只有播放器 ready 时才静音原程序化 engineGain，其他路/风/胎/瞬态仍走现有图。
+- lifecycle：`ProceduralAudio` 组合已有 coordinator/strict loader；开始手势后加载，暂停由既有 pause gate 统一静音且冻结 telemetry targets，切车先 detach 再 release decoded value，失败/无 bank 时确定性回到程序化，`disposeBankRuntime()` 只释放新增的 player/coordinator，避免冒充整个既有 WebAudio 图的销毁 API。
+- 测试：播放器覆盖六源启动、RPM/load、mute、replacement、atomic loop validation 与 dispose；集成覆盖 MX-5 publish、pause freeze、切 GT3 release、HTTP 503 fallback。完整 `pnpm verify` 通过：41 modules、4,864-byte WASM、31 files/78.34 MiB、233-file secret scan。
+- 浏览器：开始后 `ready/family` 且 bank id 正确；暂停/恢复保持 ready；切 M3 为 `procedural/none`，切回 MX-5 重新 ready；console warning/error 为 0。自动证据没有人耳能力，因此循环、过渡、响度、真实性和设备成本仍未升级为已完成。
+
 ## 当前最值得继续的方向
 
 1. 用能保持 keydown/keyup 或实际设备的控制面完成 MX-5 持续驾驶、检查点、三圈/完赛 smoke，并逐车观察材质、相机、朝向和起步；
-2. 验证并版本化 `research-salvage` 的六车 bank/36 WAV 候选；先把一辆主车 decoded layers 接入当前 pause/fallback 图，再扩到六车；
+2. 对 MX-5 pilot 做人耳循环/过渡/响度与长时节点成本验收；证据通过后用同一显式 profile/player 接其余五个已验证 bank，并做六车切换/取消/后台恢复矩阵；
 3. 为 GT3/LP700/AMG/M5 建 exact wheel manifest；无真实 loader 映射证据就保持静态，不用名字猜测。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。

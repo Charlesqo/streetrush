@@ -60,6 +60,15 @@ Two base-color textures are from the free Downtown City MegaKit by Quaternius.
 Source: https://quaternius.com
 License: CC0 1.0 - https://creativecommons.org/publicdomain/zero/1.0/
 
+PROTOTYPE ENGINE AUDIO
+
+The MX-5 layered engine bank is a generated compatibility proxy derived from
+an Engine Simulator community script, not an exact vehicle recording.
+Recorded upstream source:
+https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/Mazda_BP_ZE.mr
+License for redistribution of the generated bank: NOT REVIEWED
+This prototype is not cleared for public redistribution or commercial use.
+
 Vehicle and manufacturer names may be trademarks of their respective owners.
 The asset licenses above cover the recorded files; they do not themselves
 provide sponsorship, endorsement, trade-dress or trademark permission.

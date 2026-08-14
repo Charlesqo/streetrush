@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "version": "candidate-2026-08-13-i4-mazda-b6-compatibility-proxy",
+  "id": "bank.candidate.i4.mazda-b6-compatibility-proxy",
+  "scope": "family",
+  "family": "i4",
+  "source": {
+    "engineSimulator": "0.1.11a isolated exporter",
+    "script": "candidates/i4-mazda-b6-compatibility-proxy/Mazda_B6_ZE_NA8C_compatibility.mr",
+    "engine": "Mazda B6-ZE 1.6L NA8C geometry compatibility proxy",
+    "claim": "Output-only B6 geometry proxy made from the pinned Mazda BP-ZE source: bore/stroke changed to the documented 78.0/83.6 mm B6 dimensions, while the BP-ZE head, cam profiles, flow samples, runner geometry, exhaust IR and other parameters remain inherited. This is a family compatibility candidate, not an exact B6 recording or exact game-asset bank.",
+    "exactCurrentAsset": false,
+    "exactEngineSource": false,
+    "sourceUrl": "https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/Mazda_BP_ZE.mr",
+    "inheritedSourceSha256": "925e7648a902ff3cd85075716831938b4e986d900c00705d6ed492ccdfc13228",
+    "geometryOverride": {
+      "boreMm": 78,
+      "strokeMm": 83.6,
+      "displacementCc": 1597,
+      "source": "1990 MX-5 specification reference"
+    },
+    "inheritedSignals": [
+      "BP-ZE cylinder-head flow",
+      "BP-ZE cam profiles",
+      "BP-ZE intake/exhaust runner geometry",
+      "BP-ZE exhaust impulse response"
+    ],
+    "officialCompatibilityReference": {
+      "sourceUrl": "https://www.miata.net/faq/First%2025%20Years/Pricing%20%26%20Specs%20-%20Model%20Year/Specifications/1990%20MX-5%20Miata%20Specifications.pdf",
+      "engineCode": "B6-ZE",
+      "boreMm": 78,
+      "strokeMm": 83.6,
+      "displacementCc": 1597,
+      "powerHp": 116,
+      "torqueFtLb": 100,
+      "redlineRpm": 7200,
+      "exactCurrentAsset": false
+    }
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "format": "PCM16-WAV",
+  "durationSeconds": 2.5,
+  "quality": "candidate-loop-approved",
+  "loop": {
+    "status": "approved",
+    "loopApproved": true,
+    "loopStart": 0,
+    "loopEnd": 2.5,
+    "method": "offline-tail-head-derivative-crossfade",
+    "crossfadeSamples": 4096
+  },
+  "layers": [
+    {
+      "rpm": 1800,
+      "load": 0.06,
+      "mode": "off",
+      "file": "1800-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 1800,
+      "load": 1,
+      "mode": "on",
+      "file": "1800-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4200,
+      "load": 0.06,
+      "mode": "off",
+      "file": "4200-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4200,
+      "load": 1,
+      "mode": "on",
+      "file": "4200-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 6800,
+      "load": 0.06,
+      "mode": "off",
+      "file": "6800-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 6800,
+      "load": 1,
+      "mode": "on",
+      "file": "6800-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    }
+  ],
+  "registration": {
+    "status": "eligible_for_manifest",
+    "reason": "Selected as the primary MX-5 NA family candidate because the game config 116 hp / 136 Nm / 7000 rpm is closer to the documented 1.6L B6-ZE geometry than to the BP-ZE 1.8L fallback. This remains a non-exact output-only proxy because the GLB does not prove market/year/trim and the head/cam/flow/IR are inherited from BP-ZE."
+  }
+}
