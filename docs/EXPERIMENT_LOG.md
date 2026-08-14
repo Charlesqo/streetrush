@@ -695,3 +695,19 @@
 - build/license：41 modules、4,864-byte WASM、66 files/84.67 MiB；inventory 52 files、public blockers=43、commercial blockers=45。增大的 blocker 数是诚实结果，不通过修改状态把 prototype 伪装成 cleared。
 
 结论：六车音频运行时接线已完成，继续复制相同格式不会增加信息量。剩余声音工作转为人耳听感、后台/移动设备成本、长期资源观测和许可替换；程序化路径继续作为每车失败回退。
+
+## GT3 RS split wheel manifest v2 真实 loader 结果
+
+问题：GT3 的独立 tire/rim/brake 分支能否进入现有 host-space wheel owner，同时让 disc roll、caliper 不 roll，并在 static merge 前保持原子验证？
+
+可观测量：三份 GLB hash；研究报告 hash；真实 GLTFLoader types/parents/geometry；24 个被移动对象；tire centroid/pivot；disc/caliper world matrix；clone/Rapier；失败后 mutation。
+
+停止条件：不按 102 个模糊 wheel 名称猜测；GT3 保持 production 未登记；caliper 若不能与 disc 分 owner 就停止；Node 纹理限制不伪装成视觉通过。
+
+- identity：public/isolation/runtime 三份 19,270,544-byte GLB hash 全同；研究状态为 `validated-in-browser-source-hierarchy-preserved-in-isolation-only`。
+- red：初稿假设 24 个命名对象都是 Mesh，真实 loader 在首个 tire root 得到 Object3D，失败 `'Object3D' !== 'Mesh'`。紧凑 node 表显示 tire root→1 mesh、rim root→2 meshes。
+- schema：v2 锁定 tire/rim branch、branch 几何子名、三个 brake spin mesh、一个 caliper carrier mesh、原 parent 和全局唯一 owner；pivot 从 tire child POSITION centroid 测量。
+- green：8 branch roots、12 branch geometry meshes、12 brake/caliper meshes 通过；四轮 disc world matrix 随 roll 变化，caliper 误差 `<1e-12`；clone、四个 VehicleSystem bindings、steer/compression/omega/reset 边界通过；missing RR caliper 在添加 container 前失败。
+- limitation：Node 记录 13 个可恢复 texture decode limitations；没有据此评价材质或最终画面。manifest 仍是 candidate，production registry 仍只有 MX-5。
+
+结论：split schema 是 GT3 必需且有证据的通用能力，可以进入独立 production lifecycle/browser 批次；LP700/AMG/M5 不能因这一结果自动沿用 v2。

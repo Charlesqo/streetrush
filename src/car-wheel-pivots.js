@@ -2,6 +2,9 @@ import * as THREE from 'three';
 
 const WHEEL_ORDER = Object.freeze(['FL', 'FR', 'RL', 'RR']);
 const PART_ROLES = Object.freeze(['rim', 'tire', 'brake-disc-like']);
+const SPLIT_BRANCH_ROLES = Object.freeze(['tire-root', 'rim-root']);
+const SPLIT_SPIN_ROLES = Object.freeze(['brake-chrome', 'brake-disc', 'brake-detail']);
+const SPLIT_CARRIER_ROLES = Object.freeze(['caliper']);
 
 function fail(vehicleId, message) {
   throw new Error(`${vehicleId || '<unknown-vehicle>'}: ${message}`);
@@ -43,7 +46,7 @@ export function measureMeshWorldVertexCentroid(mesh, target = new THREE.Vector3(
 
 function validateManifestContract(manifest) {
   const vehicleId = manifest?.vehicleId;
-  if (manifest?.schemaVersion !== 1) fail(vehicleId, `unsupported wheel manifest schema ${manifest?.schemaVersion}`);
+  if (![1, 2].includes(manifest?.schemaVersion)) fail(vehicleId, `unsupported wheel manifest schema ${manifest?.schemaVersion}`);
   if (!sameArray(manifest.wheelOrder, WHEEL_ORDER)) fail(vehicleId, 'wheelOrder must be FL/FR/RL/RR');
   if (!sameArray(manifest.coordinates?.runtimeSteerAxis, [0, 1, 0])) fail(vehicleId, 'runtime steer axis must be +Y');
   if (!sameArray(manifest.coordinates?.runtimeRollAxis, [1, 0, 0])) fail(vehicleId, 'runtime roll axis must be +X');
@@ -61,7 +64,77 @@ function collectBindings(host, model, manifest) {
     fail(vehicleId, 'vehicle host scale must remain unit so suspension offsets stay in metres');
   }
   host.updateMatrixWorld(true);
+  const claimedObjects = new Set();
   return manifest.wheels.map((wheel) => {
+    if (manifest.schemaVersion === 2) {
+      if (!sameArray(wheel.spinBranches?.map(({ role }) => role), SPLIT_BRANCH_ROLES)) {
+        fail(vehicleId, `${wheel.id} spinBranches must be tire-root/rim-root`);
+      }
+      if (!sameArray(wheel.spinParts?.map(({ role }) => role), SPLIT_SPIN_ROLES)) {
+        fail(vehicleId, `${wheel.id} spinParts must be brake-chrome/brake-disc/brake-detail`);
+      }
+      if (!sameArray(wheel.carrierParts?.map(({ role }) => role), SPLIT_CARRIER_ROLES)) {
+        fail(vehicleId, `${wheel.id} carrierParts must contain only caliper`);
+      }
+      const collectPart = (part) => {
+        const object = requireUniqueObject(model, part.runtimeName, vehicleId, `${wheel.id} ${part.role}`);
+        if (!object.isMesh || !isDescendantOf(object, model)) {
+          fail(vehicleId, `${wheel.id} ${part.role} must be a mesh inside the normalized model`);
+        }
+        if (part.sourceParentRuntimeName && object.parent?.name !== part.sourceParentRuntimeName) {
+          fail(vehicleId, `${wheel.id} ${part.role} parent must be ${part.sourceParentRuntimeName}`);
+        }
+        if (claimedObjects.has(object)) fail(vehicleId, `${wheel.id} ${part.role} is claimed more than once`);
+        claimedObjects.add(object);
+        return { ...part, object };
+      };
+      const spinBranches = wheel.spinBranches.map((branch) => {
+        const object = requireUniqueObject(model, branch.runtimeName, vehicleId, `${wheel.id} ${branch.role}`);
+        if (!isDescendantOf(object, model) || object === model) {
+          fail(vehicleId, `${wheel.id} ${branch.role} must be an object inside the normalized model`);
+        }
+        if (branch.sourceParentRuntimeName && object.parent?.name !== branch.sourceParentRuntimeName) {
+          fail(vehicleId, `${wheel.id} ${branch.role} parent must be ${branch.sourceParentRuntimeName}`);
+        }
+        if (claimedObjects.has(object)) fail(vehicleId, `${wheel.id} ${branch.role} is claimed more than once`);
+        claimedObjects.add(object);
+        const geometryObjects = branch.geometryRuntimeNames.map((name) => {
+          const geometry = requireUniqueObject(object, name, vehicleId, `${wheel.id} ${branch.role} geometry`);
+          if (!geometry.isMesh || geometry === object || !isDescendantOf(geometry, object)) {
+            fail(vehicleId, `${wheel.id} ${branch.role} geometry ${name} must be a descendant mesh`);
+          }
+          return geometry;
+        });
+        return { ...branch, object, geometryObjects };
+      });
+      const spinParts = wheel.spinParts.map(collectPart);
+      const carrierParts = wheel.carrierParts.map(collectPart);
+      const ownedObjects = [...spinBranches, ...spinParts, ...carrierParts];
+      for (const owner of ownedObjects) {
+        for (const candidate of ownedObjects) {
+          if (owner !== candidate && isDescendantOf(candidate.object, owner.object)) {
+            fail(vehicleId, `${wheel.id} ${owner.role}/${candidate.role} ownership overlaps`);
+          }
+        }
+      }
+      const tireBranch = spinBranches.find(({ role }) => role === wheel.pivot?.branchRole);
+      const tireGeometry = tireBranch?.geometryObjects.find(({ name }) => name === wheel.pivot?.geometryRuntimeName);
+      if (!tireGeometry || wheel.pivot?.method !== 'position-vertex-centroid-world') {
+        fail(vehicleId, `${wheel.id} pivot must use the tire POSITION vertex centroid`);
+      }
+      const centerWorld = measureMeshWorldVertexCentroid(tireGeometry);
+      const centerHost = host.worldToLocal(centerWorld.clone());
+      if (![centerHost.x, centerHost.y, centerHost.z].every(Number.isFinite)) fail(vehicleId, `${wheel.id} pivot centroid is not finite`);
+      return {
+        wheel,
+        spinBranches,
+        spinParts,
+        spinObjects: [...spinBranches, ...spinParts],
+        carrierParts,
+        centerWorld,
+        centerHost,
+      };
+    }
     const root = requireUniqueObject(model, wheel.root?.runtimeName, vehicleId, `${wheel.id} root`);
     if (root === model || !isDescendantOf(root, model)) fail(vehicleId, `${wheel.id} root is outside the normalized model`);
     const roles = wheel.parts?.map(({ role }) => role);
@@ -118,7 +191,12 @@ export function bindManifestVisualWheels(host, model, manifest) {
     steer.add(roll);
     container.add(steer);
     host.updateMatrixWorld(true);
-    reparentPreservingWorldMatrix(root, roll);
+    if (manifest.schemaVersion === 1) {
+      reparentPreservingWorldMatrix(root, roll);
+    } else {
+      for (const { object } of binding.spinObjects) reparentPreservingWorldMatrix(object, roll);
+      for (const { object } of binding.carrierParts) reparentPreservingWorldMatrix(object, steer);
+    }
   }
   host.updateMatrixWorld(true);
   return container;

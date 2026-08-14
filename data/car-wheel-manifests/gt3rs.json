@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 2,
+  "vehicleId": "gt3rs",
+  "status": "candidate-real-loader-validation-production-not-integrated",
+  "source": {
+    "file": "public/cars/porsche-gt3-rs.glb",
+    "sha256": "e1cf7d3e04aaaf27cfec6363de5f6427b87c997993f9de0f54ec5549b68b8f96",
+    "bytes": 19270544,
+    "relationship": "public-byte-identical-to-research-isolation-and-runtime-source"
+  },
+  "researchEvidence": [
+    {
+      "sourcePath": "E:/Codex/autonomous_runs/multi_car_model_research/porsche-gt3-rs/wheel_binding.json",
+      "sha256": "adbe84417fa19f14b036c2e857c74e14f3ad95014f1842d7bfae7206735a064b",
+      "status": "validated-in-browser-source-hierarchy-preserved-in-isolation-only"
+    },
+    {
+      "sourcePath": "E:/Codex/autonomous_runs/multi_car_model_research/porsche-gt3-rs/porsche_validation_summary.json",
+      "sha256": "bf804c6e90d0d95e33aebfb7de754130e56d813773fdcaafe015ed5ee7b931b1",
+      "status": "model-evidence-complete-canonical-runtime-adapter-pending"
+    }
+  ],
+  "coordinates": {
+    "sourceForward": "+Z",
+    "sourceRight": "+X",
+    "runtimeSteerAxis": [0, 1, 0],
+    "runtimeRollAxis": [1, 0, 0]
+  },
+  "wheelOrder": ["FL", "FR", "RL", "RR"],
+  "wheels": [
+    {
+      "id": "FL",
+      "side": "left",
+      "axle": "front",
+      "sourceAxleAxis": [-1, 0, 0],
+      "pivot": { "method": "position-vertex-centroid-world", "branchRole": "tire-root", "geometryRuntimeName": "Object_4002_Scene_-_Root002_0" },
+      "spinBranches": [
+        { "role": "tire-root", "runtimeName": "Object_4002", "sourceParentRuntimeName": "RootNode", "geometryRuntimeNames": ["Object_4002_Scene_-_Root002_0"] },
+        { "role": "rim-root", "runtimeName": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9002", "sourceParentRuntimeName": "RootNode", "geometryRuntimeNames": ["TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9002_TwiXeR_992_GT3RS_black_0", "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9002_TwiXeR_992_wheels_chrome_1_0"] }
+      ],
+      "spinParts": [
+        { "role": "brake-chrome", "runtimeName": "amdb11_brakedisc_FR002_amdb11_misc_chrome002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR002" },
+        { "role": "brake-disc", "runtimeName": "amdb11_brakedisc_FR002_amdb11_brake002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR002" },
+        { "role": "brake-detail", "runtimeName": "amdb11_brakedisc_FR002_amdb11_misc002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR002" }
+      ],
+      "carrierParts": [
+        { "role": "caliper", "runtimeName": "amdb11_brakedisc_FR002_amdb11_caliper002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR002" }
+      ]
+    },
+    {
+      "id": "FR",
+      "side": "right",
+      "axle": "front",
+      "sourceAxleAxis": [1, 0, 0],
+      "pivot": { "method": "position-vertex-centroid-world", "branchRole": "tire-root", "geometryRuntimeName": "Object_4003_Scene_-_Root002_0" },
+      "spinBranches": [
+        { "role": "tire-root", "runtimeName": "Object_4003", "sourceParentRuntimeName": "RootNode", "geometryRuntimeNames": ["Object_4003_Scene_-_Root002_0"] },
+        { "role": "rim-root", "runtimeName": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9", "sourceParentRuntimeName": "RootNode", "geometryRuntimeNames": ["TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9_TwiXeR_992_GT3RS_black_0", "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9_TwiXeR_992_wheels_chrome_1_0"] }
+      ],
+      "spinParts": [
+        { "role": "brake-chrome", "runtimeName": "amdb11_brakedisc_FR003_amdb11_misc_chrome002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR003" },
+        { "role": "brake-disc", "runtimeName": "amdb11_brakedisc_FR003_amdb11_brake002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR003" },
+        { "role": "brake-detail", "runtimeName": "amdb11_brakedisc_FR003_amdb11_misc002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR003" }
+      ],
+      "carrierParts": [
+        { "role": "caliper", "runtimeName": "amdb11_brakedisc_FR003_amdb11_caliper002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR003" }
+      ]
+    },
+    {
+      "id": "RL",
+      "side": "left",
+      "axle": "rear",
+      "sourceAxleAxis": [-1, 0, 0],
+      "pivot": { "method": "position-vertex-centroid-world", "branchRole": "tire-root", "geometryRuntimeName": "Object_4004_Scene_-_Root002_0" },
+      "spinBranches": [
+        { "role": "tire-root", "runtimeName": "Object_4004", "sourceParentRuntimeName": "RootNode", "geometryRuntimeNames": ["Object_4004_Scene_-_Root002_0"] },
+        { "role": "rim-root", "runtimeName": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9003", "sourceParentRuntimeName": "RootNode", "geometryRuntimeNames": ["TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9003_TwiXeR_992_GT3RS_black_0", "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9003_TwiXeR_992_wheels_chrome_1_0"] }
+      ],
+      "spinParts": [
+        { "role": "brake-chrome", "runtimeName": "amdb11_brakedisc_FR004_amdb11_misc_chrome002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR004" },
+        { "role": "brake-disc", "runtimeName": "amdb11_brakedisc_FR004_amdb11_brake002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR004" },
+        { "role": "brake-detail", "runtimeName": "amdb11_brakedisc_FR004_amdb11_misc002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR004" }
+      ],
+      "carrierParts": [
+        { "role": "caliper", "runtimeName": "amdb11_brakedisc_FR004_amdb11_caliper002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR004" }
+      ]
+    },
+    {
+      "id": "RR",
+      "side": "right",
+      "axle": "rear",
+      "sourceAxleAxis": [1, 0, 0],
+      "pivot": { "method": "position-vertex-centroid-world", "branchRole": "tire-root", "geometryRuntimeName": "Object_4001_Scene_-_Root002_0" },
+      "spinBranches": [
+        { "role": "tire-root", "runtimeName": "Object_4001", "sourceParentRuntimeName": "RootNode", "geometryRuntimeNames": ["Object_4001_Scene_-_Root002_0"] },
+        { "role": "rim-root", "runtimeName": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9001", "sourceParentRuntimeName": "RootNode", "geometryRuntimeNames": ["TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9001_TwiXeR_992_GT3RS_black_0", "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9001_TwiXeR_992_wheels_chrome_1_0"] }
+      ],
+      "spinParts": [
+        { "role": "brake-chrome", "runtimeName": "amdb11_brakedisc_FR001_amdb11_misc_chrome002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR001" },
+        { "role": "brake-disc", "runtimeName": "amdb11_brakedisc_FR001_amdb11_brake002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR001" },
+        { "role": "brake-detail", "runtimeName": "amdb11_brakedisc_FR001_amdb11_misc002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR001" }
+      ],
+      "carrierParts": [
+        { "role": "caliper", "runtimeName": "amdb11_brakedisc_FR001_amdb11_caliper002_0", "sourceParentRuntimeName": "amdb11_brakedisc_FR001" }
+      ]
+    }
+  ]
+}

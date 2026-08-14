@@ -41,7 +41,7 @@
 | Rust 原生/WASM | 已有共享骨架 | Cargo workspace、`streetrush-core`、原生 probe、raw WASM；固定步、输入、计时/进度、遥测/回放数据切片有 native/WASM 对照 | Three/Rapier 车辆动力学仍由 JS 拥有；不要为形式重写。生产计时/物理的更多 owner 迁移需逐段证明 | 不阻塞 |
 | 确定性/回放 | 已有核心证据 | 固定步、固定种子、多车 replay、长序列 timing lifecycle、异常数值和 reset 回归 | 还没有玩家可操作的回放 UI；浏览器长时资源占用需观察 | 不阻塞先玩；是长期稳定性工作 |
 | 资源生命周期 | 已有自动证据和短 smoke | GLB pending/cache/preload、加载中止、fallback、视觉资源释放、音频请求所有权都有测试；浏览器六车切换、MX-5 cache 回返、sample bank 切车释放/切回重载和 restart 通过 | 后台/恢复、长时循环后的内存和 WebAudio 节点数未实测 | 不阻塞短局，长时继续验证 |
-| 构建 | 已有 | `pnpm dev`、`pnpm build`、Rust/WASM 构建与一键 `pnpm verify`；当前为 41 modules、4,864-byte WASM、66 files/84.67 MiB | 存在既有大 chunk warning；当前不把部署、发布标签和公共授权当作本地可玩阻塞 | 不阻塞本地游玩 |
+| 构建 | 已有 | `pnpm dev`、`pnpm build`、Rust/WASM 构建与一键 `pnpm verify`；当前为 41 modules、4,864-byte WASM、66 files/84.68 MiB | 存在既有大 chunk warning；当前不把部署、发布标签和公共授权当作本地可玩阻塞 | 不阻塞本地游玩 |
 | 浏览器 smoke | 部分通过 | 本地 Vite 页面零 console warning/error；六车 READY；MX-5 四 wheel bindings；Rust/WASM owners；暂停冻结、恢复、reset invalidation、快速重开、返库均通过 | 自动化无法保持驾驶输入，尚未跑到检查点/完赛；只观察了 MX-5 车库画面 | 持续驾驶/完赛仍是 P0 |
 | 公共发布 | 受阻但非当前目标 | 有尺寸、秘密与素材清单门禁 | 当前 public blockers=43、commercial blockers=45；42 项六车候选音频文件和 Lamborghini 模型未清，另有两车非商业限制 | 不影响本地制作，不在当前优先级 |
 
@@ -51,7 +51,7 @@
 | --- | --- | --- | --- | --- | --- |
 | MX-5 NA | 生产 GLB，真实 loader 结构已锁定 | 990 kg、116 hp、RWD、较软悬挂 | 真实四轮 exact binding 已接生产，待动态视觉观察 | 六层 B6 兼容代理 + 程序化回退 | 非精确、生成型候选；浏览器 decode 通过，听感/授权未验收 |
 | BMW M3 E30 | 生产 GLB | 1200 kg、200 hp、RWD | 生成四轮已接生产 | 六层 S14 家族候选 + 程序化回退 | 浏览器 decode 通过，精确版本/听感/授权未验收 |
-| Porsche GT3 RS | 生产 GLB | 1450 kg、525 hp、RWD、高抓地 | 未绑定，模型轮静态 | 六层 992 flat-six 候选 + 程序化回退 | 浏览器 decode 通过，非当前资产精确录音 |
+| Porsche GT3 RS | 生产 GLB | 1450 kg、525 hp、RWD、高抓地 | split schema v2 + 真实 loader 候选通过，尚未列入 production registry | 六层 992 flat-six 候选 + 程序化回退 | 浏览器 decode 通过，非当前资产精确录音 |
 | Lamborghini LP700 | 生产 GLB | 1680 kg、700 hp、AWD | 未绑定，模型轮静态 | 六层 L539 候选 + 程序化回退 | 浏览器 decode 通过，SVJ 派生且非精确 |
 | Mercedes-AMG GT3 | 优化生产 GLB | 1285 kg、550 hp、RWD、最高抓地 | 未绑定，模型轮静态 | 六层 M159 兼容代理 + 程序化回退 | 浏览器 decode 通过，非精确且授权未验收 |
 | BMW M5 G90 | 优化生产 GLB | 2435 kg、727 hp、AWD | 未绑定，模型轮静态 | 六层 S68 兼容代理 + 程序化回退 | 浏览器 decode 通过，非精确且授权未验收 |
@@ -100,7 +100,7 @@
 
 ### P1：完成六车表现
 
-1. 给剩余四车建立真实模型结构 manifest；只有 exact mapping 通过真实 loader 后才接轮组，不用名字猜测。
+1. GT3 RS 的 split manifest 已通过真实 loader，下一步单独做 production/browser 接线；LP700、AMG、M5 仍需建立真实模型结构 manifest。只有 exact mapping 通过真实 loader 后才接轮组，不用名字猜测。
 2. **六车运行时接入已完成**：六个 decoded bank 已用同一显式接口接入并验证逐车加载、暂停、切换释放、回环重载和 HTTP 失败回退；剩余是人耳听感、后台/移动设备成本和授权验收，不再重复扩展同格式 bank。
 3. 用键盘、常见手柄和一台手机完成一局；记录可重复的设备矩阵和性能降级结果。
 

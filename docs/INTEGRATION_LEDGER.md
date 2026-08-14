@@ -410,8 +410,17 @@
 - 构建/许可：build 为 41 modules、4,864-byte WASM、66 files/84.67 MiB。资产清单为 52 files、public blockers=43、commercial blockers=45；42 个音频文件全部保持 uncleared prototype blocker。
 - 边界：扩展证明同一播放/生命周期接口覆盖六车，不证明循环、人耳过渡、响度、真实性、后台恢复或手机性能。生成候选没有因进入 production 目录而升级成可发布实录。
 
+### GT3 RS split wheel manifest v2 候选
+
+- 来源闭合：当前 public、模型研究 isolation 和 `赛车游戏素材/runtime` 三份 GT3 GLB SHA-256 都是 `e1cf7d3e...68b8f96`；研究 `wheel_binding.json`/`porsche_validation_summary.json` hashes 为 `adbe8441...35a064b`/`bf804c6e...b931b1`。
+- 研究边界：四个 tire roots、四个 rim roots、四个 brake roots 在隔离浏览器验证；每个 brake root 含 caliper 和三个 disc/detail mesh。研究明确要求 caliper 留在 steer/suspension carrier，不能随整个 brake root roll。
+- red：schema v2 初稿把研究的 `tire-root`/`rim-root` 当成 Mesh，真实 loader 首个对象实际为 `Object3D`，测试稳定失败 `'Object3D' !== 'Mesh'`。node records 证明 tire root 有 1 个几何子网格、rim root 有 2 个。
+- 修正：v2 显式区分两个 `spinBranches`、三个独立 `spinParts` 和一个 `carrierPart`；pivot 用 tire branch 内唯一 POSITION mesh 的 vertex centroid，但移动整个 tire/rim branch。所有名字、原父节点、角色和跨轮唯一所有权在 mutation 前验证。
+- real loader：8 branches、12 branch geometry meshes、12 brake/caliper meshes 唯一；tire/rim/disc roll，caliper 不 roll；clone 共享 geometry 但对象独立，VehicleSystem/Rapier steer/compression/omega 接通，缺 RR caliper 时原子失败且不留下 `calibrated-wheels`。
+- 环境限制：Node GLTFLoader 对 13 个纹理产生缺 image decode 的可恢复限制；测试使用完整 geometry scene，不把 Node 纹理结果当浏览器视觉证据。GT3 manifest 尚未加入 `PRODUCTION_WHEEL_MANIFESTS`。
+
 ## 当前最值得继续的方向
 
 1. 用能保持 keydown/keyup 或实际设备的控制面完成 MX-5 持续驾驶、检查点、三圈/完赛 smoke，并逐车观察材质、相机、朝向和起步；
 2. 六车 bank 接线和切换释放已完成；下一步只做人耳循环/过渡/响度、后台恢复与移动设备成本验收，并保留程序化 fallback，不再继续增加同格式候选；
-3. 为 GT3/LP700/AMG/M5 建 exact wheel manifest；无真实 loader 映射证据就保持静态，不用名字猜测。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。
+3. GT3 v2 候选已通过真实 loader，下一批只做其 production/browser 生命周期；LP700/AMG/M5 仍需 exact manifest。无真实 loader 映射证据就保持静态，不用名字猜测。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。
