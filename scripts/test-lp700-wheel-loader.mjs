@@ -9,6 +9,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { AssetManager } from '../src/assets.js';
 import { bindGeometrySplitVisualWheels } from '../src/car-wheel-geometry-split.js';
 import { CARS, FIXED_DT } from '../src/config.js';
+import { createGameAssetManager, PRODUCTION_WHEEL_MANIFESTS } from '../src/game-assets.js';
 import { createVehicleRig, destroyVehicleRig } from './physics-harness.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -73,6 +74,8 @@ for (const part of manifest.geometrySplit.sourceParts) {
   assert.equal(materialName(mesh), part.materialName);
   assert.ok(mesh.geometry.attributes.position.count > 0);
 }
+assert.deepEqual(Object.keys(PRODUCTION_WHEEL_MANIFESTS), ['mx5', 'gt3rs', 'lp700']);
+assert.deepEqual(PRODUCTION_WHEEL_MANIFESTS.lp700, manifest);
 
 let normalizedModel;
 let sourceBounds;
@@ -182,5 +185,45 @@ for (const part of brokenManifest.geometrySplit.sourceParts) {
 
 const geometryBytes = [...splitGeometries].reduce((sum, geometry) => sum + Object.values(geometry.attributes)
   .reduce((attributeSum, attribute) => attributeSum + attribute.array.byteLength, 0), 0);
+
+class SceneLoader {
+  constructor(scene) {
+    this.scene = scene;
+  }
+
+  loadAsync() {
+    return Promise.resolve({ scene: this.scene });
+  }
+}
+
+const productionManager = createGameAssetManager(new THREE.Scene(), null);
+productionManager.loader = new SceneLoader(gltf.scene.clone(true));
+const productionA = await productionManager.instantiateCar(config);
+const productionB = await productionManager.instantiateCar(config);
+assert.equal(productionManager.visualCache.size, 1);
+assert.equal(productionA.userData.source, 'gltf');
+assert.equal(productionB.userData.source, 'gltf');
+assert.equal(findUnique(productionA, 'calibrated-wheels').userData.visualWheelSource, 'manifest:lp700');
+assert.notStrictEqual(findUnique(productionA, 'calibrated-wheels'), findUnique(productionB, 'calibrated-wheels'));
+assert.strictEqual(findUnique(productionA, 'FL-Pneu-split').geometry, findUnique(productionB, 'FL-Pneu-split').geometry);
+
+const fallbackScene = gltf.scene.clone(true);
+findUnique(fallbackScene, manifest.geometrySplit.sourceParts[2].runtimeName).removeFromParent();
+const fallbackManager = createGameAssetManager(new THREE.Scene(), null);
+fallbackManager.loader = new SceneLoader(fallbackScene);
+const previousWarn = console.warn;
+console.warn = () => {};
+let fallback;
+try {
+  fallback = await fallbackManager.instantiateCar(config);
+} finally {
+  console.warn = previousWarn;
+}
+assert.equal(fallback.userData.source, 'fallback');
+assert.match(fallback.userData.fallbackError.message, /rim source runtimeName Object_22 matched 0 objects/);
+assert.equal(fallbackManager.visualCache.size, 0);
+assert.equal(fallbackManager.pendingCars.size, 0);
+assert.equal(fallbackManager.pendingVisuals.size, 0);
+
 console.log(`PASS real LP700 loader sourceParts=4 splitParts=16 geometryBytes=${geometryBytes} splitMs=${splitMilliseconds.toFixed(1)} textureLimitations=${textureErrors.length}`);
-console.log('PASS preserved source bounds, exact wheel pivots/counts, clone sharing, Rapier owner, and atomic count failure');
+console.log('PASS production factory, source bounds, pivots/counts, cache clones, Rapier owner, atomic count failure, and structured fallback');

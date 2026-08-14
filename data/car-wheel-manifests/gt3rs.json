@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "vehicleId": "gt3rs",
-  "status": "candidate-real-loader-validation-production-not-integrated",
+  "status": "production-integrated-real-loader-browser-validated",
   "source": {
     "file": "public/cars/porsche-gt3-rs.glb",
     "sha256": "e1cf7d3e04aaaf27cfec6363de5f6427b87c997993f9de0f54ec5549b68b8f96",

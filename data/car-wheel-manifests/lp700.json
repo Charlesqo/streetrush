@@ -1,7 +1,7 @@
 {
   "schemaVersion": 3,
   "vehicleId": "lp700",
-  "status": "candidate-real-loader-validation-not-production-integrated",
+  "status": "production-integrated-real-loader-browser-validated",
   "source": {
     "file": "public/cars/lamborghini-aventador-lp700.glb",
     "sha256": "6489a80970e15eaa4dcc9aab7e2f43f8f9021bfc15cd9d1081563540f8c85d8a",

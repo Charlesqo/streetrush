@@ -60,7 +60,7 @@ for (const wheel of manifest.wheels) {
   }
 }
 
-assert.deepEqual(Object.keys(PRODUCTION_WHEEL_MANIFESTS), ['mx5', 'gt3rs']);
+assert.deepEqual(Object.keys(PRODUCTION_WHEEL_MANIFESTS), ['mx5', 'gt3rs', 'lp700']);
 assert.deepEqual(PRODUCTION_WHEEL_MANIFESTS.mx5, manifest);
 const manager = createGameAssetManager(new THREE.Scene(), null);
 const canonical = manager.normalizeCar(gltf.scene, config);

@@ -745,3 +745,20 @@
 - regression：最终 LP700、MX-5、GT3 三个真实 loader tests 与完整 `pnpm verify` 通过；Rust/WASM、六车音频/物理、18 deterministic traces、1,320-action timing soak、资产/许可保持。
 
 结论：LP700 已具备值得做浏览器决策的精确候选，但没有被伪装成 production 完成。下一批测真实浏览器加载耗时、16 draw parts 的画面与 cache lifecycle；只有收益/成本可接受才显式 opt-in。
+
+## LP700 production opt-in 与浏览器决策结果
+
+问题：显式启用 LP700 schema v3 后，首次浏览器准备成本、实际画面、比赛/audio/Rust owner、暂停和 cache 往返是否足以支持保留生产接线？
+
+可观测量：三车型 registry/dispatcher；production loader/cache/fallback；点击到 mounted/4 bindings；车库/比赛截图；Rust/WASM owners；V12 bank/pause；三轮 GT3↔LP700；console；最终 bundle。
+
+停止条件：schema v3 只作用于 LP700；MX-5/GT3 回归即撤回；首次加载或 cache 异常、明显画面破损、console error 或 owner 错误则撤回 opt-in；截图不能证明的细节继续列待验收。
+
+- production code：registry 增加 `lp700`；dispatcher 仅把 schema 3 交给 geometry splitter，其余保持原 manifest binder。LP700 production factory、canonical/cache 双实例、Rapier 和缺 `Object_22` structured fallback 通过；MX-5/GT3 loader 回归绿。
+- first browser switch：从已就绪 GT3 点击到 LP700 mounted、`manifest:lp700`、4 bindings、start enabled 的外层测量约 284 ms；相邻 GLB 已由既有 HTTP preload 预取。车库截图中整车/四轮没有明显缺洞或错位。
+- race/lifecycle：开始后 scheduler/progress/timing 均为 Rust/WASM owner，V12 bank 为 `ready/family`；pause/resume 得到 `audioPaused true→false`；返库仍为 LP700/4 bindings。
+- cache soak：三轮 GT3↔LP700 往返分别约 294/280/280 ms，双方始终为正确 manifest/4 bindings，LP700 bank ready；console warning/error=0。
+- final regression：完整 `pnpm verify` 通过；44 modules、main 508.99 kB、4,864-byte WASM、66 files/84.69 MiB、275-file secret scan；六车物理/音频、18 deterministic traces、1,320-action timing soak 和资产许可门禁无回归。既有大 chunk warning 保留为构建优化项。
+- evidence boundary：截图不足以判断 Disk/Frein/Jante/Pneu 的近距离材质、刹车件是否应全部 roll、实际旋转方向、悬挂幅度和驾驶中抖动；自动控制也仍不能持续油门完赛。这些不因 opt-in 通过而消失。
+
+结论：当前加载与生命周期证据支持保留 LP700 production opt-in；六车静态轮组缺口缩小为 AMG/M5 两车。下一批转向这两辆优化派生模型的实际几何分区证据，或优先完成可保持输入的人工一局。

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "vehicleId": "mx5",
-  "status": "candidate-offline-validation-runtime-not-integrated",
+  "status": "production-integrated-real-loader-browser-validated",
   "source": {
     "file": "public/cars/mazda-miata-mx5-na.glb",
     "sha256": "a17b3b9edc0997ba77837ae4358e3dfe7b7aa7f59364d7c15b6fb01a3452d26b",
