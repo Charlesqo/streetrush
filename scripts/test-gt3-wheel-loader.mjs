@@ -6,10 +6,9 @@ import { fileURLToPath } from 'node:url';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-import { AssetManager } from '../src/assets.js';
 import { bindManifestVisualWheels, measureMeshWorldVertexCentroid } from '../src/car-wheel-pivots.js';
 import { CARS, FIXED_DT } from '../src/config.js';
-import { PRODUCTION_WHEEL_MANIFESTS } from '../src/game-assets.js';
+import { createGameAssetManager, PRODUCTION_WHEEL_MANIFESTS } from '../src/game-assets.js';
 import { createVehicleRig, destroyVehicleRig } from './physics-harness.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -80,12 +79,10 @@ for (const wheel of manifest.wheels) {
 }
 assert.equal(sourceObjects.size, 24);
 assert.equal(sourceGeometryObjects.size, 12);
-assert.deepEqual(Object.keys(PRODUCTION_WHEEL_MANIFESTS), ['mx5'], 'GT3 remains outside production during candidate validation');
+assert.deepEqual(Object.keys(PRODUCTION_WHEEL_MANIFESTS), ['mx5', 'gt3rs']);
+assert.deepEqual(PRODUCTION_WHEEL_MANIFESTS.gt3rs, manifest);
 
-const manager = new AssetManager(new THREE.Scene(), null, {
-  wheelManifests: { gt3rs: manifest },
-  bindVisualWheels: bindManifestVisualWheels,
-});
+const manager = createGameAssetManager(new THREE.Scene(), null);
 const canonical = manager.normalizeCar(gltf.scene, config);
 const wheelSet = findUnique(canonical, 'calibrated-wheels');
 assert.equal(wheelSet.userData.visualWheelSource, 'manifest:gt3rs');
@@ -157,5 +154,64 @@ assert.throws(
 );
 assert.equal(overlappingHost.getObjectByName('calibrated-wheels'), undefined, 'overlap failure is atomic');
 
+class SceneLoader {
+  constructor(scene) {
+    this.scene = scene;
+  }
+
+  loadAsync() {
+    return Promise.resolve({ scene: this.scene });
+  }
+}
+
+const fallbackScene = gltf.scene.clone(true);
+findUnique(fallbackScene, manifest.wheels[3].carrierParts[0].runtimeName).removeFromParent();
+const fallbackManager = createGameAssetManager(new THREE.Scene(), null);
+fallbackManager.loader = new SceneLoader(fallbackScene);
+const previousWarn = console.warn;
+console.warn = () => {};
+let fallback;
+try {
+  fallback = await fallbackManager.instantiateCar(config);
+} finally {
+  console.warn = previousWarn;
+}
+assert.equal(fallback.userData.source, 'fallback');
+assert.match(fallback.userData.fallbackError.message, /RR caliper runtimeName .* matched 0 objects/);
+assert.equal(fallbackManager.visualCache.size, 0);
+assert.equal(fallbackManager.pendingCars.size, 0);
+assert.equal(fallbackManager.pendingVisuals.size, 0);
+for (const wheel of manifest.wheels) {
+  assert.equal(findUnique(fallbackScene, wheel.spinBranches[0].runtimeName).parent.name, 'RootNode');
+}
+
+const lifecycleManager = createGameAssetManager(new THREE.Scene(), null);
+lifecycleManager.loader = new SceneLoader(gltf.scene.clone(true));
+const lifecycleA = await lifecycleManager.instantiateCar(config);
+const lifecycleB = await lifecycleManager.instantiateCar(config);
+assert.equal(lifecycleManager.visualCache.size, 1);
+assert.equal(lifecycleA.userData.source, 'gltf');
+assert.equal(lifecycleB.userData.source, 'gltf');
+const lifecycleAWheels = findUnique(lifecycleA, 'calibrated-wheels');
+const lifecycleBWheels = findUnique(lifecycleB, 'calibrated-wheels');
+assert.notStrictEqual(lifecycleAWheels, lifecycleBWheels);
+assert.strictEqual(
+  findUnique(lifecycleA, manifest.wheels[0].pivot.geometryRuntimeName).geometry,
+  findUnique(lifecycleB, manifest.wheels[0].pivot.geometryRuntimeName).geometry,
+);
+const lifecycleRigA = createVehicleRig(config, { visual: lifecycleA });
+const lifecycleRigB = createVehicleRig(config, { visual: lifecycleB });
+lifecycleRigA.vehicle.steerAngle = 0.2;
+lifecycleRigA.vehicle.wheels[0].omega = 11;
+lifecycleRigA.vehicle.advanceVisualWheelAngles(FIXED_DT);
+lifecycleRigA.vehicle.syncVisual(1);
+assert.notEqual(lifecycleRigA.vehicle.visualWheelBindings[0].roll.rotation.x, 0);
+assert.equal(Math.abs(lifecycleRigB.vehicle.visualWheelBindings[0].roll.rotation.x), 0);
+destroyVehicleRig(lifecycleRigA);
+lifecycleRigB.vehicle.reset();
+lifecycleRigB.vehicle.syncVisual(1);
+assert.equal(Math.abs(lifecycleRigB.vehicle.visualWheelBindings[0].steer.rotation.y), 0);
+destroyVehicleRig(lifecycleRigB);
+
 console.log(`PASS real GT3 loader split wheels objects=${sourceObjects.size} textureLimitations=${textureErrors.length}`);
-console.log('PASS tire/rim/disc spin, caliper carrier, clone, Rapier owner, and atomic failure');
+console.log('PASS production factory, tire/rim/disc spin, caliper carrier, cache clones, Rapier owner, and atomic fallbacks');

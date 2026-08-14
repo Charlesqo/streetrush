@@ -8,7 +8,7 @@
 
 项目已经不是空架子：它有一条可运行的 Three.js/Rapier 单人赛道、六车车库、三圈计时、奖牌/PB、重开与暂停、键盘/手柄/触控输入、六车分层候选样本声及逐车程序化回退，以及能同时运行原生和 WASM 的 Rust workspace。`pnpm verify` 已覆盖构建、六车资产、物理、计时、输入、音频加载/播放/回退生命周期、回放和确定性。
 
-真实浏览器关键路径已经实证：六车都能 READY，MX-5 能开始、暂停/恢复、手动重置、无效圈快速重开并返回车库，且 Rust/WASM scheduler 与 progress owner 正常；六套候选 WAV 也都已被浏览器真实获取、解码和逐车发布，车库回环后能重新加载。当前还不能把“完整一局已玩完”视为实证，因为自动化控制面不能保持油门/转向长按，尚未真实驾驶到完赛；四车轮组、人耳听感、后台/移动设备成本和设备矩阵仍不齐。持续驾驶/完赛是 P0 剩余验收，其余项目影响六车完成度而不阻止先玩。
+真实浏览器关键路径已经实证：六车都能 READY，MX-5 能开始、暂停/恢复、手动重置、无效圈快速重开并返回车库，GT3 RS 也能开始、暂停/恢复、返库和缓存往返，且 Rust/WASM scheduler 与 progress owner 正常；六套候选 WAV 也都已被浏览器真实获取、解码和逐车发布，车库回环后能重新加载。当前还不能把“完整一局已玩完”视为实证，因为自动化控制面不能保持油门/转向长按，尚未真实驾驶到完赛；LP700、AMG、M5 三车轮组、人耳听感、后台/移动设备成本和设备矩阵仍不齐。持续驾驶/完赛是 P0 剩余验收，其余项目影响六车完成度而不阻止先玩。
 
 ## 完整目标与完成定义
 
@@ -18,7 +18,7 @@
 | --- | --- | --- |
 | 一局闭环 | 选车、倒计时、驾驶状态、检查点、三圈、奖牌/PB、暂停、重置、重开、返库都有实现和自动测试 | 用可保持输入的键盘/手柄/触控真实跑过检查点和三圈完赛；确认失败、无效圈、PB 保存和再次开局的可见结果 |
 | 六车可用 | 六车均能加载、READY、获得独立物理参数并开始；加载失败有 fallback | 六车逐台实驾，确认朝向、落地、碰撞、相机、材质、性能和起步；不能只凭文件结构判定 |
-| 六车动态视觉 | M3 生成轮组和 MX-5 精确模型轮组已有运行时 owner | 为 GT3 RS、LP700、AMG GT3、M5 建立 hash-scoped 精确映射并验证转向、滚动、悬挂；再检查灯光、刹车件和车身动态是否值得接入 |
+| 六车动态视觉 | M3 生成轮组、MX-5 精确模型轮组和 GT3 RS split 精确轮组已有运行时 owner；GT3 disc 随轮滚动而 caliper 留在 carrier | 为 LP700、AMG GT3、M5 建立 hash-scoped 精确映射并验证转向、滚动、悬挂；人工观察现有动态轮组，再检查灯光、刹车件和车身动态是否值得接入 |
 | 六车声音 | 所有车的六层候选 bank 已显式登记、接入并有逐车程序化失败回退；六车浏览器解码、M5 暂停恢复和多轮切换释放通过 | 人耳验证循环接缝、负载/RPM 过渡、响度与真实性；实测后台恢复和移动设备成本；候选授权未解决前保持本地试验状态 |
 | 驾驶与物理 | 六车 simcade 参数、四轮射线、悬挂/轮胎、ABS/TCS、AT/MT、路面和完整数值回归都在 | 以主车实驾校准起步、制动、转向、抓地极限和恢复；研究数据只有单位、owner、工况和误差门槛明确时才采用 |
 | 输入与设备 | 键盘、手柄、触控、横屏、全屏、失焦/断连/rearm 和 fixed-pulse 契约有测试 | 建立至少键盘、常见手柄、手机横屏三类人工矩阵；完成持续按键、同时转向/油门、后台恢复和触控多指实测 |
@@ -34,7 +34,7 @@
 | 游戏循环 | 已有，关键路径实测通过 | 车库选车、倒计时、三圈、检查点顺序、无效圈、分段/圈速/PB、奖牌、完赛、快速重开；浏览器已验证开始、计时、暂停、重置、重开、返库 | 尚未通过持续驾驶完成三圈，完赛/PB 仍只有自动证据 | 持续驾驶到完赛是剩余 P0 验收 |
 | 赛道 | 已有 | 一条约 2.13 km 封闭赛道、路面/路肩/草地/护栏、10 检查点、刹车点和转向提示 | 没有第二赛道；当前也不需要 | 不阻塞 |
 | 六车加载 | 已有，浏览器 READY 通过 | 六个生产 GLB、缩放/落地校准、缓存、相邻预载、超时/中止/失败回退、结构与资产检查；浏览器逐车切换和返回 MX-5 cache 均成功 | 仍需逐车视觉检查材质、朝向、相机和长时内存 | 不阻塞；视觉验收未完 |
-| 车轮视觉 | 部分 | M3 使用生成轮组；MX-5 使用真实模型的 exact manifest/pivot，并接入生产配置；两者由 VehicleSystem 驱动转向、悬挂和滚动 | GT3 RS、LP700、AMG GT3、M5 的模型轮组仍为静态；MX-5 仍需浏览器视觉确认 | 不阻塞驾驶；影响六车完成度 |
+| 车轮视觉 | 部分 | M3 使用生成轮组；MX-5 使用 schema v1 exact manifest；GT3 RS 使用 schema v2 split tire/rim/disc/caliper manifest；三车均接入生产并由 VehicleSystem 驱动转向、悬挂和滚动 | LP700、AMG GT3、M5 的模型轮组仍为静态；MX-5/GT3 运行状态已由浏览器确认，但动态画面仍需人工观察 | 不阻塞驾驶；影响六车完成度 |
 | 车辆物理 | 已有（simcade） | Rapier 刚体、四轮射线、弹簧/阻尼、防倾、轮胎、ABS/TCS、AT/MT、RWD/AWD、路面差异、六车参数与回归 | 不是工程级实车复现；高阶研究数据没有直接替换生产参数，复杂物理仍在 JS | 不阻塞；主车手感需要实际试玩调校 |
 | 输入 | 已有，部分实测 | 键盘、手柄包装、Pointer Events 多点触控、横屏提示、全屏、pause 时 releaseAll；浏览器触控 reset 已到达比赛并使当前圈无效 | 当前浏览器自动化只能发短脉冲，不能保持油门/转向；键盘/手柄/手机实际试玩矩阵未完成 | 持续驾驶输入是验收阻塞；其他设备随后验证 |
 | 音频 | 部分 | 六车六层 decoded bank 均已接入 RPM/负载混合，逐车保留程序化发动机、风/路/胎噪和换挡瞬态回退；浏览器六车加载/解码/回环、M5 暂停恢复、4 轮六车资源 soak 和 503 重试通过 | 尚无人耳听感、系统后台恢复和移动设备成本验收；候选 WAV 授权未清 | 不阻塞先玩；仍影响声音可信度与公共发布 |
@@ -42,7 +42,7 @@
 | 确定性/回放 | 已有核心证据 | 固定步、固定种子、多车 replay、长序列 timing lifecycle、异常数值和 reset 回归 | 还没有玩家可操作的回放 UI；浏览器长时资源占用需观察 | 不阻塞先玩；是长期稳定性工作 |
 | 资源生命周期 | 已有自动证据和短 smoke | GLB pending/cache/preload、加载中止、fallback、视觉资源释放、音频请求所有权都有测试；浏览器六车切换、MX-5 cache 回返、sample bank 切车释放/切回重载和 restart 通过 | 后台/恢复、长时循环后的内存和 WebAudio 节点数未实测 | 不阻塞短局，长时继续验证 |
 | 构建 | 已有 | `pnpm dev`、`pnpm build`、Rust/WASM 构建与一键 `pnpm verify`；当前为 41 modules、4,864-byte WASM、66 files/84.68 MiB | 存在既有大 chunk warning；当前不把部署、发布标签和公共授权当作本地可玩阻塞 | 不阻塞本地游玩 |
-| 浏览器 smoke | 部分通过 | 本地 Vite 页面零 console warning/error；六车 READY；MX-5 四 wheel bindings；Rust/WASM owners；暂停冻结、恢复、reset invalidation、快速重开、返库均通过 | 自动化无法保持驾驶输入，尚未跑到检查点/完赛；只观察了 MX-5 车库画面 | 持续驾驶/完赛仍是 P0 |
+| 浏览器 smoke | 部分通过 | 本地 Vite 页面零 console warning/error；六车 READY；MX-5 与 GT3 均有四 wheel bindings；Rust/WASM owners；暂停冻结、恢复、reset invalidation、快速重开、返库和 GT3 cache 往返均通过 | 自动化无法保持驾驶输入，尚未跑到检查点/完赛；材质、轮组运动和相机仍缺人工视觉验收 | 持续驾驶/完赛仍是 P0 |
 | 公共发布 | 受阻但非当前目标 | 有尺寸、秘密与素材清单门禁 | 当前 public blockers=43、commercial blockers=45；42 项六车候选音频文件和 Lamborghini 模型未清，另有两车非商业限制 | 不影响本地制作，不在当前优先级 |
 
 ## 六辆车逐车状态
@@ -51,7 +51,7 @@
 | --- | --- | --- | --- | --- | --- |
 | MX-5 NA | 生产 GLB，真实 loader 结构已锁定 | 990 kg、116 hp、RWD、较软悬挂 | 真实四轮 exact binding 已接生产，待动态视觉观察 | 六层 B6 兼容代理 + 程序化回退 | 非精确、生成型候选；浏览器 decode 通过，听感/授权未验收 |
 | BMW M3 E30 | 生产 GLB | 1200 kg、200 hp、RWD | 生成四轮已接生产 | 六层 S14 家族候选 + 程序化回退 | 浏览器 decode 通过，精确版本/听感/授权未验收 |
-| Porsche GT3 RS | 生产 GLB | 1450 kg、525 hp、RWD、高抓地 | split schema v2 + 真实 loader 候选通过，尚未列入 production registry | 六层 992 flat-six 候选 + 程序化回退 | 浏览器 decode 通过，非当前资产精确录音 |
+| Porsche GT3 RS | 生产 GLB，真实 loader 结构已锁定 | 1450 kg、525 hp、RWD、高抓地 | split schema v2 精确四轮已接生产；tire/rim/disc roll，caliper 留在 carrier；浏览器运行 owner 通过 | 六层 992 flat-six 候选 + 程序化回退 | 浏览器 decode 通过，非当前资产精确录音 |
 | Lamborghini LP700 | 生产 GLB | 1680 kg、700 hp、AWD | 未绑定，模型轮静态 | 六层 L539 候选 + 程序化回退 | 浏览器 decode 通过，SVJ 派生且非精确 |
 | Mercedes-AMG GT3 | 优化生产 GLB | 1285 kg、550 hp、RWD、最高抓地 | 未绑定，模型轮静态 | 六层 M159 兼容代理 + 程序化回退 | 浏览器 decode 通过，非精确且授权未验收 |
 | BMW M5 G90 | 优化生产 GLB | 2435 kg、727 hp、AWD | 未绑定，模型轮静态 | 六层 S68 兼容代理 + 程序化回退 | 浏览器 decode 通过，非精确且授权未验收 |
@@ -69,7 +69,7 @@
 ## 2026-08-14 浏览器 smoke 证据
 
 - 本地 `http://127.0.0.1:5173/?devtools=1` 正常打开；车库 MX-5 模型、赛道、UI 和开始按钮可见，console 无 warning/error。
-- 六车按顺序切换均得到 `READY`、正确 mounted id、正确名称和 enabled start；M3/MX-5 各 4 个 visual bindings，GT3/LP700/AMG/M5 为 0，返回 MX-5 后来源仍为 `manifest:mx5`。
+- 六车按顺序切换均得到 `READY`、正确 mounted id、正确名称和 enabled start；初次 baseline 中 M3/MX-5 各 4 个 visual bindings，GT3/LP700/AMG/M5 为 0，返回 MX-5 后来源仍为 `manifest:mx5`。随后 GT3 production 批次把 GT3 升级为 4 个 bindings，证据见下节。
 - 页面实际使用 `physicsSchedulerOwner=rust-wasm`、`raceProgressCoreOwner=rust-wasm`；开始后倒计时结束，比赛计时递增。
 - 暂停前后计时保持 `01:27.183` 且 `audioPaused=true`；恢复后为 `01:28.033` 且 `audioPaused=false`。
 - 触控 reset 后显示 `RESET · LAP INVALID`、圈状态 `INVALID`、快速重开按钮出现；重开后圈状态回到 `VALID`、计时从 `00:01.058` 重新开始。返回车库后 MX-5 仍 READY。
@@ -90,17 +90,25 @@
 - 真实浏览器按 MX-5→M3→GT3 RS→LP700→AMG GT3→M5→MX-5 顺序全部为 `ready/family` 且 bank id 正确；M5 比赛内暂停为 `audioPaused=true`、恢复为 false，bank 始终 ready；console warning/error 为 0。
 - 许可边界同步扩大：机器清单覆盖 52 个素材文件，42 个候选音频文件都明确为 `UNKNOWN-GENERATED-PROTOTYPE`，所以 public/commercial 门禁仍按预期阻止发布。
 
+## 2026-08-14 GT3 RS 轮组 production/browser 证据
+
+- `PRODUCTION_WHEEL_MANIFESTS` 现在只显式登记已通过真实 loader 的 `mx5` 与 `gt3rs`；LP700、AMG、M5 没有因名称相似或研究报告存在而被猜测接入。
+- 真实 GT3 GLB 生产工厂验证四个 wheel binding、缓存双实例对象独立/geometry 共享、VehicleSystem/Rapier owner、reset，以及缺 RR caliper 时结构化原子 fallback；MX-5 schema v1 回归保持通过。
+- 真实浏览器从 MX-5→M3→GT3 切换得到 `mountedCarId=gt3rs`、`visualWheelBindingCount=4`、`visualWheelSource=manifest:gt3rs`。开始 GT3 比赛后 Rust/WASM scheduler、race progress/timing owner 与 flat-six bank 同时 ready。
+- GT3 比赛暂停时 `audioPaused=true`，恢复后为 false 且计时继续；退出车库后 MX-5→GT3 缓存往返仍分别得到 `manifest:mx5`/`manifest:gt3rs` 和 4 bindings；console warning/error 为 0。
+- 证据边界：浏览器诊断证明生产接线和生命周期，不代替人眼判断 tire/rim/disc/caliper 的动态画面、材质、转向方向、悬挂幅度或相机遮挡；这些仍列入逐车实驾验收。
+
 ## 剩余工作与顺序
 
 ### P0：证明一局真的能玩
 
 1. **已完成**：构建并启动当前生产入口；本轮实际使用 Rust/WASM owner，车库未被阻断。
-2. **部分完成**：MX-5 的车库载入、开始、暂停/恢复、重置、重开和返库通过；仍需持续油门/转向/制动并跑到完赛，检查人耳声音与动态轮组。
+2. **部分完成**：MX-5 的车库载入、开始、暂停/恢复、重置、重开和返库通过；GT3 的开始、暂停/恢复、返库和缓存往返也通过。仍需持续油门/转向/制动并跑到完赛，检查人耳声音与动态轮组。
 3. **部分完成**：六个 GLB 都 READY 且可开始；仍需逐车观察材质、朝向、相机并实际起步。
 
 ### P1：完成六车表现
 
-1. GT3 RS 的 split manifest 已通过真实 loader，下一步单独做 production/browser 接线；LP700、AMG、M5 仍需建立真实模型结构 manifest。只有 exact mapping 通过真实 loader 后才接轮组，不用名字猜测。
+1. **GT3 RS production/browser 接线已完成**；LP700、AMG、M5 仍需建立适用于当前生产 GLB 的真实结构 manifest。只有 exact mapping 通过真实 loader 后才接轮组，不用名字猜测；优化派生模型不得直接套用 source node id。
 2. **六车运行时接入已完成**：六个 decoded bank 已用同一显式接口接入并验证逐车加载、暂停、切换释放、回环重载和 HTTP 失败回退；剩余是人耳听感、后台/移动设备成本和授权验收，不再重复扩展同格式 bank。
 3. 用键盘、常见手柄和一台手机完成一局；记录可重复的设备矩阵和性能降级结果。
 

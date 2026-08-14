@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 exact wheel manifest 已进入 production，六车六层候选发动机 bank 也都通过真实浏览器逐车获取、解码、回环重载，M5 暂停/恢复保持正确 owner。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；声音剩余工作是人耳、后台/移动成本与授权，不再是运行时接线。四车轮组仍是 P1 完成度工作。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
+当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 schema v1 与 GT3 RS split schema v2 exact wheel manifests 已进入 production，GT3 的开始、暂停/恢复和 MX-5↔GT3 cache 往返也通过；六车六层候选发动机 bank 均已逐车获取、解码、回环重载。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；声音剩余工作是人耳、后台/移动成本与授权，不再是运行时接线。LP700/AMG/M5 三车轮组仍是 P1 完成度工作。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
 
 ## 已整合
 
@@ -410,17 +410,20 @@
 - 构建/许可：build 为 41 modules、4,864-byte WASM、66 files/84.67 MiB。资产清单为 52 files、public blockers=43、commercial blockers=45；42 个音频文件全部保持 uncleared prototype blocker。
 - 边界：扩展证明同一播放/生命周期接口覆盖六车，不证明循环、人耳过渡、响度、真实性、后台恢复或手机性能。生成候选没有因进入 production 目录而升级成可发布实录。
 
-### GT3 RS split wheel manifest v2 候选
+### GT3 RS split wheel manifest v2 与 production 接线
 
 - 来源闭合：当前 public、模型研究 isolation 和 `赛车游戏素材/runtime` 三份 GT3 GLB SHA-256 都是 `e1cf7d3e...68b8f96`；研究 `wheel_binding.json`/`porsche_validation_summary.json` hashes 为 `adbe8441...35a064b`/`bf804c6e...b931b1`。
 - 研究边界：四个 tire roots、四个 rim roots、四个 brake roots 在隔离浏览器验证；每个 brake root 含 caliper 和三个 disc/detail mesh。研究明确要求 caliper 留在 steer/suspension carrier，不能随整个 brake root roll。
 - red：schema v2 初稿把研究的 `tire-root`/`rim-root` 当成 Mesh，真实 loader 首个对象实际为 `Object3D`，测试稳定失败 `'Object3D' !== 'Mesh'`。node records 证明 tire root 有 1 个几何子网格、rim root 有 2 个。
 - 修正：v2 显式区分两个 `spinBranches`、三个独立 `spinParts` 和一个 `carrierPart`；pivot 用 tire branch 内唯一 POSITION mesh 的 vertex centroid，但移动整个 tire/rim branch。所有名字、原父节点、角色和跨轮唯一所有权在 mutation 前验证。
 - real loader：8 branches、12 branch geometry meshes、12 brake/caliper meshes 唯一；tire/rim/disc roll，caliper 不 roll；clone 共享 geometry 但对象独立，VehicleSystem/Rapier steer/compression/omega 接通，缺 RR caliper 时原子失败且不留下 `calibrated-wheels`。
-- 环境限制：Node GLTFLoader 对 13 个纹理产生缺 image decode 的可恢复限制；测试使用完整 geometry scene，不把 Node 纹理结果当浏览器视觉证据。GT3 manifest 尚未加入 `PRODUCTION_WHEEL_MANIFESTS`。
+- production factory：`PRODUCTION_WHEEL_MANIFESTS` 只增加 `gt3rs`，并与 `mx5` 共用实际 main factory；测试锁定 registry key，验证 GT3 cache 双实例的对象独立/geometry 共享、VehicleSystem/Rapier、reset 与缺 RR caliper 的 structured fallback，MX-5 v1 回归不变。
+- browser：MX-5→M3→GT3 得到 GT3 `mountedCarId=gt3rs`、4 bindings 和 `manifest:gt3rs`；开始后 scheduler/progress/timing 均为 Rust/WASM owner，flat-six bank ready。pause/resume 得到 `audioPaused true→false`，返库后 MX-5→GT3 cache 往返仍各有 4 bindings；console warning/error 为 0。
+- regression：完整 `pnpm verify` 通过；42 modules、4,864-byte WASM、66 files/84.68 MiB，272 个可版本化文件 secret scan；六车音频/物理、18 条 deterministic replay、1,320-action timing soak 和资产许可门禁保持全绿。唯一构建提示仍是既有的大 chunk warning。
+- 环境限制：Node GLTFLoader 对 13 个纹理产生缺 image decode 的可恢复限制；测试使用完整 geometry scene。浏览器证明 production owner/lifecycle，但没有自动判断动态画面的材质、旋转方向、caliper 视觉稳定性、悬挂幅度和相机遮挡，仍需人工逐车验收。
 
 ## 当前最值得继续的方向
 
 1. 用能保持 keydown/keyup 或实际设备的控制面完成 MX-5 持续驾驶、检查点、三圈/完赛 smoke，并逐车观察材质、相机、朝向和起步；
 2. 六车 bank 接线和切换释放已完成；下一步只做人耳循环/过渡/响度、后台恢复与移动设备成本验收，并保留程序化 fallback，不再继续增加同格式候选；
-3. GT3 v2 候选已通过真实 loader，下一批只做其 production/browser 生命周期；LP700/AMG/M5 仍需 exact manifest。无真实 loader 映射证据就保持静态，不用名字猜测。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。
+3. GT3 v2 的 production/browser 生命周期已通过；下一辆只从 LP700/AMG/M5 中选择能对当前 production GLB 形成 exact manifest 的对象。无真实 loader 映射证据就保持静态，M5/AMG 优化派生不得直接套 source id。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。

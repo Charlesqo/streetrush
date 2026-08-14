@@ -711,3 +711,20 @@
 - limitation：Node 记录 13 个可恢复 texture decode limitations；没有据此评价材质或最终画面。manifest 仍是 candidate，production registry 仍只有 MX-5。
 
 结论：split schema 是 GT3 必需且有证据的通用能力，可以进入独立 production lifecycle/browser 批次；LP700/AMG/M5 不能因这一结果自动沿用 v2。
+
+## GT3 RS production 接线与浏览器生命周期结果
+
+问题：把已通过真实 loader 的 GT3 split manifest 加入实际 production factory 后，是否能保持 MX-5 v1、GT3 分部件 owner、cache clone、Rapier、声音和比赛暂停/返库生命周期，而不是只在隔离测试中成立？
+
+可观测量：production registry；MX-5/GT3 真实 loader；GT3 cache 双实例；structured fallback；浏览器 mounted id/binding source/count；Rust/WASM owners；audio bank/pause；返库重载与 console。
+
+停止条件：只登记已验证的 `gt3rs`；MX-5 schema v1 任一回归即停止；浏览器若不是 4 bindings/manifest owner 则回退候选；不以 dataset 代替人工视觉判断。
+
+- expected red：MX-5 loader test 原先锁定 registry 只有 `mx5`，新增 GT3 后以实际 `['mx5','gt3rs']` 失败；断言更新为新的显式 production 契约后两套真实 loader 回归通过。
+- factory green：GT3 真实模型得到 4 bindings；两个 cache instances 共享 geometry、分离 wheel/pivot 对象，A 的运动不污染 B；Rapier fixedUpdate/reset 通过；缺 RR caliper 时返回 structured fallback 且 scene 未留下半绑定 container。
+- browser garage：MX-5 为 `manifest:mx5`/4，M3 为 generated/4，GT3 为 `manifest:gt3rs`/4；开始 GT3 后 physics scheduler、race progress 和 race timing 都报告 Rust/WASM owner，flat-six bank 为 `ready/family`。
+- browser lifecycle：GT3 pause/resume 为 `audioPaused true→false` 且计时继续；退出后往返 MX-5→GT3 cache，两者仍分别为正确 manifest/4 bindings；console warning/error=0。
+- full regression：`pnpm verify` 全绿；42 modules、4,864-byte WASM、66 files/84.68 MiB、272-file secret scan；六车音频/物理、18 条 deterministic replay、1,320-action timing soak 和资产许可门禁均未回归。保留既有大 chunk warning，不在本批无证据拆包。
+- boundary：本轮证明 production 接线、对象归属与浏览器生命周期，不证明人眼看到的轮胎方向、刹车盘/卡钳运动、材质、悬挂幅度和相机均正确；持续驾驶/完赛也继续受当前自动化 hold 能力限制。
+
+结论：GT3 split wheel 已从候选升级为 production；剩余精确轮组是 LP700、AMG、M5 三车，下一步必须重新核对当前 production GLB，而不能把 GT3 schema 或 source 报告机械套用。
