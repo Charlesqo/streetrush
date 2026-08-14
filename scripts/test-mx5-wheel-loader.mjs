@@ -7,6 +7,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { AssetManager } from '../src/assets.js';
 import { bindManifestVisualWheels, measureMeshWorldVertexCentroid } from '../src/car-wheel-pivots.js';
 import { CARS, FIXED_DT } from '../src/config.js';
+import { createGameAssetManager, PRODUCTION_WHEEL_MANIFESTS } from '../src/game-assets.js';
 import { createVehicleRig, destroyVehicleRig } from './physics-harness.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -59,10 +60,9 @@ for (const wheel of manifest.wheels) {
   }
 }
 
-const manager = new AssetManager(new THREE.Scene(), null, {
-  wheelManifests: { mx5: manifest },
-  bindVisualWheels: bindManifestVisualWheels,
-});
+assert.deepEqual(Object.keys(PRODUCTION_WHEEL_MANIFESTS), ['mx5']);
+assert.deepEqual(PRODUCTION_WHEEL_MANIFESTS.mx5, manifest);
+const manager = createGameAssetManager(new THREE.Scene(), null);
 const canonical = manager.normalizeCar(gltf.scene, config);
 assert.equal(canonical.userData.source, 'gltf');
 assert.equal(canonical.userData.groundCalibration, 'shape:12');
@@ -126,10 +126,7 @@ class SceneLoader {
 
 const brokenScene = gltf.scene.clone(true);
 findUnique(brokenScene, manifest.wheels[3].parts[1].runtimeName).removeFromParent();
-const fallbackManager = new AssetManager(new THREE.Scene(), null, {
-  wheelManifests: { mx5: manifest },
-  bindVisualWheels: bindManifestVisualWheels,
-});
+const fallbackManager = createGameAssetManager(new THREE.Scene(), null);
 fallbackManager.loader = new SceneLoader(brokenScene);
 const previousWarn = console.warn;
 console.warn = () => {};
@@ -147,6 +144,34 @@ assert.equal(fallbackManager.pendingCars.size, 0);
 assert.equal(fallbackManager.pendingVisuals.size, 0);
 for (const wheel of manifest.wheels) assert.equal(findUnique(brokenScene, wheel.root.runtimeName).parent.name, 'RootNode');
 
+const lifecycleManager = createGameAssetManager(new THREE.Scene(), null);
+lifecycleManager.loader = new SceneLoader(gltf.scene.clone(true));
+const lifecycleA = await lifecycleManager.instantiateCar(config);
+const lifecycleB = await lifecycleManager.instantiateCar(config);
+assert.equal(lifecycleManager.visualCache.size, 1);
+assert.equal(lifecycleA.userData.source, 'gltf');
+assert.equal(lifecycleB.userData.source, 'gltf');
+const lifecycleAWheels = findUnique(lifecycleA, 'calibrated-wheels');
+const lifecycleBWheels = findUnique(lifecycleB, 'calibrated-wheels');
+assert.notStrictEqual(lifecycleAWheels, lifecycleBWheels);
+assert.strictEqual(
+  findUnique(lifecycleA, manifest.wheels[0].parts[1].runtimeName).geometry,
+  findUnique(lifecycleB, manifest.wheels[0].parts[1].runtimeName).geometry,
+);
+const lifecycleRigA = createVehicleRig(config, { visual: lifecycleA });
+const lifecycleRigB = createVehicleRig(config, { visual: lifecycleB });
+lifecycleRigA.vehicle.steerAngle = 0.19;
+lifecycleRigA.vehicle.wheels[0].omega = 12;
+lifecycleRigA.vehicle.advanceVisualWheelAngles(FIXED_DT);
+lifecycleRigA.vehicle.syncVisual(1);
+assert.notEqual(lifecycleRigA.vehicle.visualWheelBindings[0].roll.rotation.x, 0);
+assert.equal(Math.abs(lifecycleRigB.vehicle.visualWheelBindings[0].roll.rotation.x), 0);
+destroyVehicleRig(lifecycleRigA);
+lifecycleRigB.vehicle.reset();
+lifecycleRigB.vehicle.syncVisual(1);
+assert.equal(Math.abs(lifecycleRigB.vehicle.visualWheelBindings[0].steer.rotation.y), 0);
+destroyVehicleRig(lifecycleRigB);
+
 const missingBinderManager = new AssetManager(new THREE.Scene(), null, { wheelManifests: { mx5: manifest } });
 missingBinderManager.loader = new SceneLoader(gltf.scene);
 console.warn = () => {};
@@ -160,4 +185,4 @@ assert.equal(fallback.userData.fallbackError.message, 'Wheel manifest configured
 assert.equal(missingBinderManager.visualCache.size, 0);
 
 console.log('PASS real MX-5 GLTFLoader roots=4 parts=12 animation=1 recoverableTextureFailures=1');
-console.log('PASS AssetManager injected bind, ground, static merge, cache clone, Rapier visual owner, reset, and atomic fallbacks');
+console.log('PASS production AssetManager bind, ground, static merge, cache clone lifecycle, Rapier owner, reset, and atomic fallbacks');

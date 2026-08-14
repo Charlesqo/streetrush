@@ -627,3 +627,21 @@
 可观测量：main constructor options；production bundle modules/size；MX-5 canonical/instances；其他五车无 manifest；重复实例、reset/destroy/recreate；故障时 readiness source。
 
 停止条件：单车 exact mapping，不建立通用名字猜测；其他五车 output deep/structural 不变；实际浏览器 URL policy 仍阻塞时用 Node lifecycle 增量测试，不伪报视觉验收。
+
+## MX-5 production / 六车浏览器 smoke 结果
+
+问题：测试中的 MX-5 binder 接入实际 main 后，六车切换、WASM owner、比赛 lifecycle 与失败边界是否仍成立？
+
+可观测量：production factory identity；真实 loader/cache 双实例；Vite build；六车 READY/mounted id/binding count；scheduler/progress owner；计时、pause audio gate、reset invalidation、restart、返库与 console。
+
+停止条件：只有 MX-5 启用 exact manifest；其他车 output 不猜测；自动化无法保持输入时如实记录，不用短 pulse 冒充实际驾驶。
+
+- factory：`src/game-assets.js` 只登记 `mx5`，main 与 loader test 共用；missing part/binder 仍 structured fallback。
+- lifecycle：两 cache instances pivots 独立、geometry 共享；A 的 steer/roll 不污染 B；双方 reset/destroy 通过。
+- regression：完整 `pnpm verify` 通过；37 modules、4,864-byte WASM、24 files/77.06 MiB、221-file secret scan，现有六车物理、replay、timing、audio、asset tests 保持。
+- browser garage：六车按顺序和 cache 回返都 `READY`、start enabled；M3/MX-5 分别 4 bindings，其他四车 0；MX-5 source=`manifest:mx5`；console warning/error 为 0。
+- browser core：physics scheduler 与 race progress 都是 `rust-wasm` owner。
+- browser race：倒计时后 time 增长；pause 前后固定在 `01:27.183` 且 audioPaused=true，resume 到 `01:28.033` 且 false；reset 显示 `RESET · LAP INVALID`，restart 后 VALID 且 `00:01.058`，返库 MX-5 仍 READY。
+- input boundary：45 次自动化 GAS short pulse 后 speed=0/rpm=900；该 surface 无 hold 语义，不能证明持续驾驶成功或失败。持续油门/转向、检查点和完赛保留为 P0 未验证。
+
+结论：生产入口与关键 lifecycle 已有真实浏览器证据；下一验收应换用可保持输入的控制面，不继续重复短 pulse。

@@ -8,7 +8,7 @@
 
 这个目录是从原项目复制出的独立 Studio 工作区。原始项目和素材库没有被修改。发布版只打包游戏实际使用的六辆车和两张赛道贴图；BMW M5 G90 与 Mercedes-AMG GT3 使用了网页传输优化副本，未覆盖的原始模型保存在 `source-models/`。
 
-当前 1.0 范围见 `docs/SCOPE.md`，仓库与发布流程见 `docs/RELEASE.md`，素材授权状态见 `docs/ASSET_LICENSES.md`。Lamborghini 模型目前没有可验证许可证，因此新的公开发布被门禁阻止；商业发布还必须解决 Lamborghini 未知授权，并替换两辆 CC BY-NC-SA 车辆。
+当前已做、未做和通向可玩版本的顺序见 `docs/PLAYABLE_READINESS.md`；1.0 范围见 `docs/SCOPE.md`，仓库与发布流程见 `docs/RELEASE.md`，素材授权状态见 `docs/ASSET_LICENSES.md`。Lamborghini 模型目前没有可验证许可证，因此新的公开发布被门禁阻止；商业发布还必须解决 Lamborghini 未知授权，并替换两辆 CC BY-NC-SA 车辆。
 
 ## 工作区边界
 

@@ -5,7 +5,7 @@ import './style.css';
 import { CARS, FIXED_DT, TOTAL_LAPS, TRACK_CONFIG } from './config.js';
 import { InputController } from './input.js';
 import { TrackSystem } from './track.js';
-import { AssetManager } from './assets.js';
+import { createGameAssetManager } from './game-assets.js';
 import { VehicleSystem, disposeOwnedVisual } from './vehicle.js';
 import { ProceduralAudio } from './audio.js';
 import { ChaseCamera, TireEffects } from './effects.js';
@@ -73,7 +73,7 @@ await initializeRapier(RAPIER);
 const physicsWorld = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
 physicsWorld.integrationParameters.dt = FIXED_DT;
 const track = new TrackSystem(TRACK_CONFIG, scene, renderer, RAPIER, physicsWorld);
-const assets = new AssetManager(scene, track);
+const assets = createGameAssetManager(scene, track);
 const input = new InputController();
 const audio = new ProceduralAudio();
 document.documentElement.dataset.audioPaused = 'false';
@@ -129,16 +129,28 @@ function getDevReadiness() {
   const vehicleMatchesSelection = Boolean(vehicle && selectedCar && vehicle.config.id === selectedCar.id);
   const startableState = state === 'menu' || state === 'finish' || state === 'paused';
   const restartable = state === 'race' && timing?.snapshot().currentLapValid === false;
+  const visualWheelSet = vehicle?.visual?.getObjectByName?.('calibrated-wheels');
   return {
     assetSource: vehicle?.visual?.userData?.source ?? null,
     vehicleLoadPending,
     selectedCarId: selectedCar?.id ?? null,
+    mountedCarId: vehicle?.config?.id ?? null,
+    visualWheelBindingCount: vehicle?.visualWheelBindings?.length ?? 0,
+    visualWheelSource: visualWheelSet?.userData?.visualWheelSource ?? null,
     physicsSchedulerOwner: physicsScheduler?.owner ?? null,
     physicsSchedulerFallback: physicsScheduler?.fallbackReason ?? null,
     state,
     restartable,
     startable: Boolean(startableState && !vehicleLoadPending && vehicleMatchesSelection && vehicle?.visual?.userData?.source === 'gltf'),
   };
+}
+
+function publishDevVehicleReadiness() {
+  if (!import.meta.env.DEV) return;
+  const visualWheelSet = vehicle?.visual?.getObjectByName?.('calibrated-wheels');
+  document.documentElement.dataset.mountedCarId = vehicle?.config?.id ?? '';
+  document.documentElement.dataset.visualWheelBindingCount = String(vehicle?.visualWheelBindings?.length ?? 0);
+  document.documentElement.dataset.visualWheelSource = visualWheelSet?.userData?.visualWheelSource ?? 'none';
 }
 
 function recordDevEvent(type, details = {}) {
@@ -511,6 +523,7 @@ async function mountVehicle(index, initial = false) {
     vehicle = nextVehicle;
     visualHandedOff = true;
     previous?.destroy();
+    publishDevVehicleReadiness();
     audio.setVehicle(config);
     if (visual.userData.source === 'gltf') assets.preloadNeighbors(CARS, index);
     chaseCamera.snap(vehicle.currentPose.position, vehicle.currentPose.rotation);

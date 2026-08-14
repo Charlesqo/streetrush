@@ -1,10 +1,10 @@
 # 整合记录
 
-更新日期：2026-08-13
+更新日期：2026-08-14
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega，static merge 也能显式保留动态 branch；MX-5 manifest 已通过真实 GLTFLoader、AssetManager cache/fallback 和 Rapier visual owner，证据支持下一批只给 MX-5 注入 production binding，同时保留失败回退和其他五车原路径。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前目标是把可玩游戏所需准备做完整，并明确区分已完成、部分完成和缺失，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 exact wheel manifest 已进入 production 并在 cache 回返后保持四 binding。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；样本音频与其余四车轮组是 P1 完成度工作。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
 
 ## 已整合
 
@@ -375,8 +375,17 @@
 - 证实：当前 Three GLTFLoader 的 MX-5 runtime names、12 POSITION attributes 和动画与 manifest/research 一致；注入 AssetManager 后仍能保持 cache clone、static merge、structured fallback 和真实 Rapier visual owner。
 - 新限制：Node 可验证 geometry/scene，但嵌入 texture 因缺 createImageBitmap 只得到可恢复失败；ground calibration 当前依赖 `shape:12`，不是语义 tire marker。
 
+### MX-5 production 接线与真实浏览器 smoke
+
+- production owner：新增 `src/game-assets.js`，只有通过真实 loader lifecycle 的 MX-5 manifest 被显式列入；`main` 与测试共用同一个 factory，其他五车不受 manifest 猜测影响。
+- lifecycle：生产 factory 的 canonical cache、两实例独立 pivots/共享 geometry、其中一实例运动不污染另一实例、reset/destroy/recreate 和缺部件 fallback 均通过。
+- build/regression：完整 `pnpm verify` 通过；37 modules、4,864-byte WASM、24-file/77.06 MiB build，221 个可版本化文件 secret scan，六车物理/18 replay/1,320-action timing 保持。
+- browser：本地 Vite 真实页面六车全部 READY 且 start enabled；M3/MX-5 为四 binding，另外四车为零；返回 MX-5 cache 后仍为 `manifest:mx5`。实际 owner 是 `rust-wasm` scheduler/progress。
+- race smoke：开始/倒计时/计时通过；暂停时 race time 冻结、audio gate 为 true，恢复后继续；touch reset 使圈 INVALID，快速重开恢复 VALID 并从约 1 秒重新计时，返库仍 READY；console 无 warning/error。
+- 未验证：浏览器自动化只能发短 pulse，不能保持油门/转向；45 次 pulse 速度仍为零。因此持续驾驶、检查点、完赛和人耳声音必须保留为待验收，不能用物理回归替代。
+
 ## 当前最值得继续的方向
 
-1. 在 main 只注入 MX-5 exact manifest/binder；保持其他五车路径不变，并测试 build 中 manifest identity、MX-5 fallback 与 VehicleSystem 四 binding；
-2. 为 MX-5 production 注入增加切换/restart/clone lifecycle 回归，重点检查 manual matrix root、cache reuse、reset 与销毁后新实例；浏览器 visual 证据仍受 URL policy 限制；
-3. M5/AMG 若要独立轮组应回到只读 source model 复制后建立可重复优化 pipeline；真实 gamepad wrapper 身份也继续等待 Browser URL policy 允许。
+1. 用能保持 keydown/keyup 或实际设备的控制面完成 MX-5 持续驾驶、检查点、三圈/完赛 smoke，并逐车观察材质、相机、朝向和起步；
+2. 验证并版本化 `research-salvage` 的六车 bank/36 WAV 候选；先把一辆主车 decoded layers 接入当前 pause/fallback 图，再扩到六车；
+3. 为 GT3/LP700/AMG/M5 建 exact wheel manifest；无真实 loader 映射证据就保持静态，不用名字猜测。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。
