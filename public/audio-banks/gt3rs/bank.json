@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 2,
+  "version": "candidate-2026-08-13-flat6-porsche-gt3-rs-992-spec",
+  "id": "bank.candidate.flat6.porsche-gt3-992-dacxl",
+  "scope": "family",
+  "family": "flat6",
+  "source": {
+    "engineSimulator": "0.1.11a exporter; output-only 992/9000-rpm source variant",
+    "script": "source_scripts/porsche_992_gt3rs_spec_0.1.11a.mr",
+    "baseScript": "candidates/flat6-porsche-gt3-992-dacxl/gt3_v2.mr",
+    "engine": "Porsche 911 GT3 RS (992.1 specification) 4.0L naturally aspirated flat-six; source-labelled MA1.76/MDG.G-compatible",
+    "claim": "isolated real Engine Simulator exhaust output with official 992 GT3 RS physical constraints; family fallback because the current GLB/config and source do not prove the same exact engine/exhaust recording identity",
+    "exactCurrentAsset": false,
+    "exactEngineSource": false,
+    "sourceUrl": "https://catalog.engine-sim.parts/parts/902",
+    "officialReference": {
+      "sourceUrl": "https://newsroom.porsche.com/en/2022/products/porsche-911-gt3-rs-world-premiere-29177.html",
+      "pressKitUrl": "https://newsroom.porsche.com/dam/jcr%3A46a23375-e7ee-4507-a577-d9761b784d33/992%2520911%2520GT3%2520RS%2520Press%2520Kit%25201.pdf",
+      "target": "2022 Porsche 911 GT3 RS / 992.1 specification",
+      "cylinders": 6,
+      "layout": "flat",
+      "displacementLiters": 4,
+      "aspiration": "naturally_aspirated",
+      "redlineRpm": 9000,
+      "specMatch": true,
+      "exactCurrentAsset": false,
+      "exactEngineSource": false,
+      "reason": "Official Porsche material confirms the physical 4.0-litre naturally aspirated six-cylinder boxer and 9000-rpm constraint, but does not identify the game GLB's exact engine code, exhaust calibration, production year, or sound-recording identity."
+    }
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "format": "PCM16-WAV",
+  "durationSeconds": 2.5,
+  "quality": "candidate-loop-approved",
+  "loop": {
+    "status": "approved",
+    "loopApproved": true,
+    "loopStart": 0,
+    "loopEnd": 2.5,
+    "method": "offline-tail-head-derivative-crossfade",
+    "crossfadeSamples": 4096
+  },
+  "layers": [
+    {
+      "rpm": 1800,
+      "load": 0.06,
+      "mode": "off",
+      "file": "1800-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 1800,
+      "load": 1,
+      "mode": "on",
+      "file": "1800-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4500,
+      "load": 0.06,
+      "mode": "off",
+      "file": "4500-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4500,
+      "load": 1,
+      "mode": "on",
+      "file": "4500-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 9000,
+      "load": 0.06,
+      "mode": "off",
+      "file": "9000-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 9000,
+      "load": 1,
+      "mode": "on",
+      "file": "9000-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    }
+  ]
+}

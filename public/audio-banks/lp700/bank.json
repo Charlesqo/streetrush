@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "version": "candidate-2026-08-13-v12-lamborghini-l539-lp700-spec-coverage",
+  "id": "bank.candidate.v12.lamborghini-l539-dacxl",
+  "scope": "family",
+  "family": "v12",
+  "source": {
+    "engineSimulator": "0.1.11a exporter; output-only LP700-4 coverage variant derived from an SVJ L539 source",
+    "script": "source_scripts/lp700_l539_spec_0.1.11a.mr",
+    "baseScript": "candidates/v12-lamborghini-l539-dacxl/Lamborghini_6_5_SVJ_V2.mr",
+    "engine": "Lamborghini L539 6.5L naturally aspirated V12 (SVJ-derived source; LP700-4 specification coverage)",
+    "claim": "isolated real Engine Simulator exhaust output; V12 family fallback with LP700-4 700 CV / 8,250 rpm reference and 8,500-rpm runtime coverage; not an exact LP700 bank",
+    "exactCurrentAsset": false,
+    "exactEngineSource": false,
+    "sourceUrl": "https://catalog.engine-sim.parts/parts/901",
+    "officialReference": {
+      "sourceUrl": "https://www.lamborghini.com/ko-en/%EB%89%B4%EC%8A%A4/aventador-no-10000-a-new-production-record",
+      "publisher": "Automobili Lamborghini",
+      "target": "Aventador LP700-4 launch specification",
+      "cylinders": 12,
+      "layout": "V",
+      "displacementLiters": 6.5,
+      "aspiration": "naturally_aspirated",
+      "peakPowerCv": 700,
+      "peakPowerRpm": 8250,
+      "runtimeRedlineRpm": 8500,
+      "peakPowerReferenceMatch": true,
+      "exactCurrentAsset": false,
+      "exactEngineSource": false,
+      "reason": "Lamborghini identifies the LP700-4 as a 700 CV naturally aspirated V12 with peak power at 8,250 rpm. The game config/source coverage uses an 8,500-rpm ceiling, but the downloaded source is an SVJ L539 calibration and does not prove the LP700-4's exact engine, exhaust revision, body year or recording identity."
+    }
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "format": "PCM16-WAV",
+  "durationSeconds": 2.5,
+  "quality": "candidate-loop-approved",
+  "loop": {
+    "status": "approved",
+    "loopApproved": true,
+    "loopStart": 0,
+    "loopEnd": 2.5,
+    "method": "offline-tail-head-derivative-crossfade",
+    "crossfadeSamples": 4096
+  },
+  "layers": [
+    {
+      "rpm": 1800,
+      "load": 0.06,
+      "mode": "off",
+      "file": "1800-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 1800,
+      "load": 1,
+      "mode": "on",
+      "file": "1800-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4500,
+      "load": 0.06,
+      "mode": "off",
+      "file": "4500-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4500,
+      "load": 1,
+      "mode": "on",
+      "file": "4500-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 8500,
+      "load": 0.06,
+      "mode": "off",
+      "file": "8500-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 8500,
+      "load": 1,
+      "mode": "on",
+      "file": "8500-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    }
+  ]
+}

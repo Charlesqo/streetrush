@@ -1,5 +1,5 @@
 STREET RUSH - THIRD-PARTY NOTICES
-Last reviewed: 2026-07-28
+Last reviewed: 2026-08-14
 
 This notice records the evidence shipped with the current build. It does not
 grant trademark rights and does not replace the full terms of each license.
@@ -62,12 +62,17 @@ License: CC0 1.0 - https://creativecommons.org/publicdomain/zero/1.0/
 
 PROTOTYPE ENGINE AUDIO
 
-The MX-5 layered engine bank is a generated compatibility proxy derived from
-an Engine Simulator community script, not an exact vehicle recording.
-Recorded upstream source:
+The six layered engine banks are generated Engine Simulator candidates or
+compatibility proxies, not exact recordings of the current vehicle assets.
+Recorded upstream sources and reference pages:
 https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/Mazda_BP_ZE.mr
-License for redistribution of the generated bank: NOT REVIEWED
-This prototype is not cleared for public redistribution or commercial use.
+https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/BMW_S14B23.mr
+https://catalog.engine-sim.parts/parts/901
+https://catalog.engine-sim.parts/parts/902
+https://catalog.engine-sim.parts/parts/2060
+https://mercedes-benz-publicarchive.com/marsClassic/en/instance/ko/SLS-AMG-Coup-2010---2014.xhtml?oid=192608215
+License for redistribution of the generated banks: NOT REVIEWED
+These prototypes are not cleared for public redistribution or commercial use.
 
 Vehicle and manufacturer names may be trademarks of their respective owners.
 The asset licenses above cover the recorded files; they do not themselves

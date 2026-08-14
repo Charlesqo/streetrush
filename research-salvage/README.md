@@ -5,7 +5,7 @@ This directory contains the small reusable remainder from:
 - `E:/Codex/autonomous_runs/multi_car_audio`
 - `E:/Codex/autonomous_runs/multi_car_physics_data`
 
-It is an archive/reference input, not production wiring. Nothing in this directory is imported by the game. The MX-5 pilot copies one manifest and six WAV files into `public/audio-banks/mx5`; those production copies are hash-checked against this archive and have their own license inventory entries.
+It is an archive/reference input, not production wiring. Nothing in this directory is imported by the game. The current six-car runtime copies one manifest and six WAV files per selected bank into `public/audio-banks/<vehicle-id>`; all 42 production files are hash-checked against this archive and have their own license inventory entries.
 
 ## Validation in this repository
 
@@ -28,7 +28,7 @@ The copied 2026-08-14 archive contained two analysis-only metadata errors: the M
 
 Each bank has six 44.1 kHz mono PCM loops: three RPM anchors with off-load and on-load variants. The copied WAV files were independently checked for endpoint discontinuity and full-scale clipping; none was found. They remain prototype/generated audio, not exact recordings of the target vehicles.
 
-`audio/runtime/` keeps the original layered buffer playback, RPM playback-rate control, load blending, and old Street Rush adapter. The current project has now reimplemented the useful playback shape in `src/layered-engine-bank.js` and wired only the MX-5 candidate through the existing loader/coordinator, pause gate, and procedural fallback. The old integration patch remains reference-only and must not be applied wholesale.
+`audio/runtime/` keeps the original layered buffer playback, RPM playback-rate control, load blending, and old Street Rush adapter. The current project has reimplemented the useful playback shape in `src/layered-engine-bank.js` and wires all six selected candidates through the existing loader/coordinator, pause gate, and per-car procedural fallback. The old integration patch remains reference-only and must not be applied wholesale.
 
 `audio/reference/` contains the original uncurated profile/manifest documents and schemas. The original manifest references more candidates than were copied here. Use `audio/selection.json` as the actual salvage list.
 

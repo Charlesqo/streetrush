@@ -679,3 +679,19 @@
 - evidence boundary：浏览器自动化没有听觉输出分析，也不能保持驾驶输入；本结果证明 decode/graph/state lifecycle，不证明循环无接缝、动态音色自然、设备响度合适或完整驾驶中的听感。
 
 结论：当前接口值得保留，并足以作为其余五车的唯一扩展形状；扩展前最有信息量的是人耳/长时成本检查，而不是重复证明同一 loader 能读取更多同格式文件。
+
+## 六车分层 bank 扩展与资源 soak 结果
+
+问题：在不改变已通过的播放图形状时，把其余五个已验证候选显式接入，是否会出现同家族串车、manifest/version 漂移、切换资源累积或真实浏览器 decode 差异？
+
+可观测量：selection/profile/bank 一一映射；42 个 runtime 文件与 archive hash；六车 manifest/version；多轮 fetch/attach/source stop；503 重试；浏览器 bank id、pause 和 console。
+
+停止条件：只接归档已选的现有六车主 bank，不引入 alternate candidates；family 相同也必须逐车显式 id；所有文件登记为未清许可；若一车 browser decode 失败则保留程序化并不宣称六车完成。
+
+- copy gate：新增五车 35 个文件全部 byte-identical；六车 runtime 总计 42 files/7,965,590 bytes。production test 逐车比较目录文件集合、manifest id/family/version/quality 和 archive SHA-256。
+- mapping：MX-5/M3 虽同为 I4、AMG/M5 虽同为 V8，但 profile 各只列自己的 candidate id；六车都解析为唯一 `family` 结果。
+- soak：4 rounds/25 successful attaches/175 successful fetches/150 sample sources；一次 LP700 manifest 503 先 degraded/procedural、下一请求 ready；最终全部 150 源 stopCalls=1 且 disconnectCalls=1。
+- browser：MX-5、M3、GT3 RS、LP700、AMG GT3、M5 及回到 MX-5 均 `ready/family`，id 与映射一致；M5 pause/resume 保持 ready，audioPaused true→false；console warning/error=0。
+- build/license：41 modules、4,864-byte WASM、66 files/84.67 MiB；inventory 52 files、public blockers=43、commercial blockers=45。增大的 blocker 数是诚实结果，不通过修改状态把 prototype 伪装成 cleared。
+
+结论：六车音频运行时接线已完成，继续复制相同格式不会增加信息量。剩余声音工作转为人耳听感、后台/移动设备成本、长期资源观测和许可替换；程序化路径继续作为每车失败回退。

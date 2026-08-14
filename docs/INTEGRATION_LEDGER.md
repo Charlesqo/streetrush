@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 exact wheel manifest 已进入 production，六层候选发动机 bank 也已通过真实浏览器获取、解码、暂停、切车释放和重载。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；其余五车样本音频与四车轮组是 P1 完成度工作。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
+当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 exact wheel manifest 已进入 production，六车六层候选发动机 bank 也都通过真实浏览器逐车获取、解码、回环重载，M5 暂停/恢复保持正确 owner。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；声音剩余工作是人耳、后台/移动成本与授权，不再是运行时接线。四车轮组仍是 P1 完成度工作。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
 
 ## 已整合
 
@@ -401,8 +401,17 @@
 - 测试：播放器覆盖六源启动、RPM/load、mute、replacement、atomic loop validation 与 dispose；集成覆盖 MX-5 publish、pause freeze、切 GT3 release、HTTP 503 fallback。完整 `pnpm verify` 通过：41 modules、4,864-byte WASM、31 files/78.34 MiB、233-file secret scan。
 - 浏览器：开始后 `ready/family` 且 bank id 正确；暂停/恢复保持 ready；切 M3 为 `procedural/none`，切回 MX-5 重新 ready；console warning/error 为 0。自动证据没有人耳能力，因此循环、过渡、响度、真实性和设备成本仍未升级为已完成。
 
+### 六车分层样本声显式扩展
+
+- 复制与来源：其余五车各从对应 `research-salvage/audio/candidates/<bank>/` 机械复制 manifest + 6 WAV；新增 35 个文件与 archive SHA-256 全相同。连同 MX-5，生产为 42 files/7,965,590 bytes，不直接 import archive。
+- 防串车：`GAME_AUDIO_BANK_IDS` 对六个 `CARS.id` 一一登记；每个 bank 保持 family scope，但 profile 只列自己的 bank id，因此两套 I4 和两套 V8 不会因家族相同互换。production test 同时锁定 id/family/version/root URL、文件集合和 archive hash。
+- lifecycle soak：4 轮六车切换得到 25 次成功 attach、175 fetch、150 BufferSource；一次 LP700 manifest 503 得到 degraded/procedural 后重试 ready。切换中的旧源停止，最终 `disposeBankRuntime()` 后全部 150 源恰好 stop/disconnect 一次。
+- browser：实际车库顺序六车和回到 MX-5 均为 `ready/family` 且 bank id 精确；M5 比赛内 pause/resume 保持同一 bank，`audioPaused` true→false；console warning/error 为 0。
+- 构建/许可：build 为 41 modules、4,864-byte WASM、66 files/84.67 MiB。资产清单为 52 files、public blockers=43、commercial blockers=45；42 个音频文件全部保持 uncleared prototype blocker。
+- 边界：扩展证明同一播放/生命周期接口覆盖六车，不证明循环、人耳过渡、响度、真实性、后台恢复或手机性能。生成候选没有因进入 production 目录而升级成可发布实录。
+
 ## 当前最值得继续的方向
 
 1. 用能保持 keydown/keyup 或实际设备的控制面完成 MX-5 持续驾驶、检查点、三圈/完赛 smoke，并逐车观察材质、相机、朝向和起步；
-2. 对 MX-5 pilot 做人耳循环/过渡/响度与长时节点成本验收；证据通过后用同一显式 profile/player 接其余五个已验证 bank，并做六车切换/取消/后台恢复矩阵；
+2. 六车 bank 接线和切换释放已完成；下一步只做人耳循环/过渡/响度、后台恢复与移动设备成本验收，并保留程序化 fallback，不再继续增加同格式候选；
 3. 为 GT3/LP700/AMG/M5 建 exact wheel manifest；无真实 loader 映射证据就保持静态，不用名字猜测。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。
