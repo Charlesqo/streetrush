@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "bank.candidate.v8-mercedes-m159-compression-compatible-proxy",
+  "baseSource": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-race-source-calibrated\\M159_race_source_calibrated.mr",
+  "sourceFile": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\M159_compression_compatibility.mr",
+  "isolatedSource": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-v8-mercedes-m159-compression-compatible-proxy-isolated\\assets\\engines\\m159-compression\\M159_compression_compatibility.mr",
+  "isolatedEngineRoot": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-v8-mercedes-m159-compression-compatible-proxy-isolated",
+  "wrapper": "E:\\Codex\\autonomous_runs\\multi_car_audio\\source_scripts\\v8-mercedes-m159-compression-compatible-proxy-isolated.mr",
+  "sourceRoot": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-v8-mercedes-m159-race-source-calibrated-isolated",
+  "outputOnly": true,
+  "officialCompatibilityReference": {
+    "sourceUrl": "https://mercedes-benz-publicarchive.com/marsClassic/en/instance/ko/SLS-AMG-Coup-2010---2014.xhtml?oid=192608215",
+    "sourceTitle": "Mercedes-Benz Public Archive: SLS AMG Coupé, 2010–2014",
+    "engineCode": "M 159 E 63 / 159.980",
+    "boreMm": 102.2,
+    "strokeMm": 94.6,
+    "displacementCc": 6208,
+    "compressionRatio": 11.3,
+    "drySump": true,
+    "exactCurrentAsset": false
+  },
+  "sourceModification": {
+    "changedParameter": "cylinder_head.chamber_volume",
+    "inheritedValueCc": 28.23,
+    "outputValueCc": 75.34346420115799,
+    "formula": "sweptVolumePerCylinder / (compressionRatio - 1)",
+    "sourceHash": "b3e8e7874249e65368d4d4e7f3556b7487bb9a45d01b31e6e1f2ce7a37b0d564"
+  },
+  "inheritedLineage": {
+    "inheritedCandidate": "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+    "engineCode": "M 159 E 63 / 159.980",
+    "boreMm": 102.2,
+    "strokeMm": 94.6,
+    "cylinders": 8,
+    "displacementCc": 6208.301450175419,
+    "compressionRatio": 11.3,
+    "chamberVolumeCc": 75.34346420115799,
+    "firingOrderReference": "15426378",
+    "exactClaim": false
+  },
+  "inheritedLimitations": [
+    "current AMG GT3 evolution is not identified by the GLB",
+    "race restrictor/cam/exhaust calibration remains unverified",
+    "dry-sump is a mechanical fact, not a separate source-level audio bus",
+    "no exact M159 Engine Simulator source was found"
+  ],
+  "decision": "Selected as the first non-exact AMG M159 family fallback after executable 11.3:1 compression correction, loop approval, waveform-difference proof, and real Chromium playback. This does not claim the current AMG GT3 evolution or an exact M159 source.",
+  "renderLogs": [
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 0.06,
+        "mode": "off",
+        "file": "1800-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\1800-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\1800-off.wav | target=1800 rpm | actual=1800 rpm | load=0.06 | audio-volume=0.36 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 1,
+        "mode": "on",
+        "file": "1800-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\1800-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\1800-on.wav | target=1800 rpm | actual=1800 rpm | load=1 | audio-volume=0.36 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4500,
+        "load": 0.06,
+        "mode": "off",
+        "file": "4500-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\4500-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\4500-off.wav | target=4500 rpm | actual=4500 rpm | load=0.06 | audio-volume=0.36 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4500,
+        "load": 1,
+        "mode": "on",
+        "file": "4500-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\4500-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\4500-on.wav | target=4500 rpm | actual=4500 rpm | load=1 | audio-volume=0.36 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 7600,
+        "load": 0.06,
+        "mode": "off",
+        "file": "7600-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\7600-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\7600-off.wav | target=7600 rpm | actual=7600 rpm | load=0.06 | audio-volume=0.36 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 7600,
+        "load": 1,
+        "mode": "on",
+        "file": "7600-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\7600-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy\\7600-on.wav | target=7600 rpm | actual=7600 rpm | load=1 | audio-volume=0.36 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    }
+  ],
+  "removedStaleWavLayers": []
+}

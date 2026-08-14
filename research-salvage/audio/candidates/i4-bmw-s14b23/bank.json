@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "version": "candidate-2026-08-10-i4-bmw-s14b23",
+  "id": "bank.candidate.i4.bmw-s14b23",
+  "scope": "family",
+  "family": "i4",
+  "source": {
+    "engineSimulator": "0.1.11a isolated exporter",
+    "script": "candidates/i4-bmw-s14b23/BMW_S14B23.mr",
+    "engine": "BMW S14B23 2.3L naturally aspirated inline-four",
+    "claim": "isolated real Engine Simulator exhaust output; source-backed S14B23 family candidate for E30 M3; exact market/Evolution variant remains ambiguous",
+    "exactCurrentAsset": false,
+    "exactEngineSource": false,
+    "sourceUrl": "https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/BMW_S14B23.mr"
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "format": "PCM16-WAV",
+  "durationSeconds": 2.5,
+  "quality": "candidate-loop-approved",
+  "loop": {
+    "status": "approved",
+    "loopApproved": true,
+    "loopStart": 0,
+    "loopEnd": 2.5,
+    "method": "offline-tail-head-derivative-crossfade",
+    "crossfadeSamples": 4096
+  },
+  "layers": [
+    {
+      "rpm": 1800,
+      "load": 0.06,
+      "mode": "off",
+      "file": "1800-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 1800,
+      "load": 1,
+      "mode": "on",
+      "file": "1800-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4200,
+      "load": 0.06,
+      "mode": "off",
+      "file": "4200-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4200,
+      "load": 1,
+      "mode": "on",
+      "file": "4200-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 6800,
+      "load": 0.06,
+      "mode": "off",
+      "file": "6800-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 6800,
+      "load": 1,
+      "mode": "on",
+      "file": "6800-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+import "engine_sim.mr"
+import "themes/default.mr"
+import "engines/dacxl/gt3_v2.mr"
+
+use_default_theme()
+
+set_engine(gt3())
+set_transmission(gt3_transmission())
+set_vehicle(gt3_vehicle())

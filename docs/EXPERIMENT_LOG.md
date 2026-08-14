@@ -642,6 +642,22 @@
 - browser garage：六车按顺序和 cache 回返都 `READY`、start enabled；M3/MX-5 分别 4 bindings，其他四车 0；MX-5 source=`manifest:mx5`；console warning/error 为 0。
 - browser core：physics scheduler 与 race progress 都是 `rust-wasm` owner。
 - browser race：倒计时后 time 增长；pause 前后固定在 `01:27.183` 且 audioPaused=true，resume 到 `01:28.033` 且 false；reset 显示 `RESET · LAP INVALID`，restart 后 VALID 且 `00:01.058`，返库 MX-5 仍 READY。
-- input boundary：45 次自动化 GAS short pulse 后 speed=0/rpm=900；该 surface 无 hold 语义，不能证明持续驾驶成功或失败。持续油门/转向、检查点和完赛保留为 P0 未验证。
+- input boundary：45 次自动化 GAS short pulse 与一次 button-internal pointer drag 后均 speed=0/rpm=900；该 surface 无可用 hold 语义，不能证明持续驾驶成功或失败。持续油门/转向、检查点和完赛保留为 P0 未验证。
 
 结论：生产入口与关键 lifecycle 已有真实浏览器证据；下一验收应换用可保持输入的控制面，不继续重复短 pulse。
+
+## Research salvage 结构与元数据结果
+
+问题：新增 archive 是否内部一致、能被当前六车引用；其声明能否支持后续样本音频 pilot，而不把 prototype 冒充 production？
+
+可观测量：selection→CARS；bank/analysis/loop；36 WAV headers/samples/hash；projection counts/owner；spring boundary。
+
+停止条件：不听感猜测、不改 WAV、不推广 candidate claims；元数据矛盾先失败再只修项目副本。
+
+- red 1：MX-5 `analysis.cylinders=6`，而 bank/game 都是 I4；测试在首个 bank 失败。
+- red 2：横向检查发现 M5 V8 同样写 6；两者的六个 `expectedFiringFrequencyHz` 均按错误缸数派生。
+- fix：MX-5 改 4 缸、M5 改 8 缸，并只重算对应 12 个 firing-frequency fields；WAV、bank、loop/source records 未变。
+- reader boundary：physics projection 带 UTF-8 BOM，原生 `JSON.parse` 失败；test reader 只在解析边界剥离 BOM，保留 archive bytes。
+- green：6 vehicles/banks、36 WAV/7,939,584 bytes；PCM16/mono/44.1k、2.5s、非静音、无 full-scale sample、prepared SHA-256 和 seam gates 全通过；21 physics fields count/owner/eligibility 与 coil-not-wheel-rate 边界通过。
+
+结论：salvage 有明确价值并可安全版本化为候选输入；下一步只做一车 decoded bank pilot，失败必须回退当前程序化音频。

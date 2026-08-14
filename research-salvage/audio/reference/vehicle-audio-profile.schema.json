@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://street-rush.local/schemas/vehicle-audio-profile.schema.json",
+  "title": "VehicleAudioProfile document",
+  "type": "object",
+  "required": ["schemaVersion", "resolutionOrder", "profiles"],
+  "properties": {
+    "schemaVersion": {"type": "integer", "minimum": 1},
+    "resolutionOrder": {"type": "array", "const": ["exact", "family", "procedural"]},
+    "profiles": {"type": "array", "items": {"$ref": "#/$defs/profile"}, "uniqueItems": true}
+  },
+  "$defs": {
+    "evidenceField": {
+      "type": "object",
+      "required": ["value", "status"],
+      "properties": {
+        "value": {},
+      "status": {"enum": ["confirmed", "confirmed_for_base_record", "confirmed_for_992_spec_match", "confirmed_for_config_match", "ambiguous", "unknown"]},
+        "reason": {"type": "string"},
+        "source": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "required": ["id", "displayName", "modelFile", "identity", "engine", "audio"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$"},
+        "displayName": {"type": "string"},
+        "modelFile": {"type": "string"},
+        "identity": {
+          "type": "object",
+          "required": ["make", "model", "chassis", "generation", "year", "sources"],
+          "properties": {
+            "make": {"type": "string"},
+            "model": {"type": "string"},
+            "chassis": {"$ref": "#/$defs/evidenceField"},
+            "generation": {"$ref": "#/$defs/evidenceField"},
+            "year": {"$ref": "#/$defs/evidenceField"},
+            "version": {"$ref": "#/$defs/evidenceField"},
+            "sources": {"type": "array", "items": {"type": "string"}}
+          },
+          "additionalProperties": false
+        },
+        "engine": {
+          "type": "object",
+          "required": ["family", "cylinders", "layout", "aspiration", "displacementLiters", "engineCode", "firingOrder", "crankshaft", "idleRpm", "redlineRpm", "acousticFeatures"],
+          "properties": {
+            "family": {"type": "string"},
+            "cylinders": {"$ref": "#/$defs/evidenceField"},
+            "layout": {"$ref": "#/$defs/evidenceField"},
+            "aspiration": {"$ref": "#/$defs/evidenceField"},
+            "displacementLiters": {"$ref": "#/$defs/evidenceField"},
+            "engineCode": {"$ref": "#/$defs/evidenceField"},
+            "firingOrder": {"$ref": "#/$defs/evidenceField"},
+            "crankshaft": {"$ref": "#/$defs/evidenceField"},
+            "idleRpm": {"$ref": "#/$defs/evidenceField"},
+            "redlineRpm": {"$ref": "#/$defs/evidenceField"},
+            "acousticFeatures": {"type": "array", "items": {"type": "string"}}
+          },
+          "additionalProperties": false
+        },
+        "audio": {
+          "type": "object",
+          "required": ["exactBankId", "familyFallbackBankIds", "proceduralFallback", "signalCapabilities", "compatibilitySignalLayer", "resolutionNote"],
+          "properties": {
+            "exactBankId": {"type": ["string", "null"]},
+            "familyFallbackBankIds": {"type": "array", "items": {"type": "string"}},
+            "proceduralFallback": {"type": "boolean", "description": "Whether runtime may use procedural audio if no eligible bank loads; this is fallback capability, not simultaneous routing. When an exact or family bank is ready, the runtime must mute/disconnect the procedural route."},
+            "proceduralTimbre": {"type": "object"},
+            "signalCapabilities": {
+              "type": "object",
+              "description": "Source/runtime capability boundary; an unavailable bus is not a physical stem, and a baked compatibility overlay is not an exact source bus.",
+              "required": ["exhaust", "intake", "mechanical", "valvetrain", "turbo", "electricMotor"],
+              "properties": {
+                "exhaust": {"$ref": "#/$defs/signalCapability"},
+                "intake": {"$ref": "#/$defs/signalCapability"},
+                "mechanical": {"$ref": "#/$defs/signalCapability"},
+                "valvetrain": {"$ref": "#/$defs/signalCapability"},
+                "turbo": {"$ref": "#/$defs/signalCapability"},
+                "electricMotor": {"$ref": "#/$defs/signalCapability"}
+              },
+              "additionalProperties": false
+            },
+            "compatibilitySignalLayer": {"$ref": "#/$defs/compatibilitySignalLayer"},
+            "resolutionNote": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
+        "runtimeConfig": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "signalCapability": {
+      "type": "object",
+      "required": ["status", "physical", "evidence"],
+      "properties": {
+        "status": {"enum": ["available", "unavailable", "compatibility-overlay-baked"]},
+        "physical": {"type": "boolean"},
+        "evidence": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "compatibilitySignalLayer": {
+      "type": "object",
+      "required": ["mode", "runtimeEnabled", "physical", "signals", "signalGains", "frequencies", "activation", "evidence"],
+      "properties": {
+        "mode": {"enum": ["none", "runtime"]},
+        "runtimeEnabled": {"type": "boolean"},
+        "physical": {"const": false},
+        "signals": {"type": "array", "uniqueItems": true, "items": {"enum": ["turbo", "electricMotor"]}},
+        "signalGains": {
+          "type": "object",
+          "required": ["turbo", "electricMotor"],
+          "properties": {
+            "turbo": {"type": "number", "minimum": 0, "maximum": 0.12},
+            "electricMotor": {"type": "number", "minimum": 0, "maximum": 0.12}
+          },
+          "additionalProperties": false
+        },
+        "frequencies": {
+          "type": "object",
+          "required": ["turbo", "electricMotor"],
+          "properties": {
+            "turbo": {"type": "number", "minimum": 25, "maximum": 2400},
+            "electricMotor": {"type": "number", "minimum": 25, "maximum": 2400}
+          },
+          "additionalProperties": false
+        },
+        "activation": {"const": "bank-ready-only"},
+        "evidence": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {"if": {"properties": {"mode": {"const": "none"}}}, "then": {"properties": {"runtimeEnabled": {"const": false}}}}
+      ],
+      "additionalProperties": false
+    }
+  }
+}

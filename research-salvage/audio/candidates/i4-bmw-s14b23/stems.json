@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "bankId": "bank.candidate.i4.bmw-s14b23",
+  "generatedAt": "2026-08-12T12:21:06.395Z",
+  "stems": [
+    {
+      "id": "exhaust_mix",
+      "status": "available",
+      "files": [
+        "1800-off.wav",
+        "1800-on.wav",
+        "4200-off.wav",
+        "4200-on.wav",
+        "6800-off.wav",
+        "6800-on.wav"
+      ],
+      "provenance": "Engine Simulator 0.1.11a Simulator::readAudioOutput final mono output. Intake/mechanical/valvetrain are not separate source buses."
+    }
+  ],
+  "unavailable": [
+    {
+      "id": "intake",
+      "status": "unavailable_in_source_path"
+    },
+    {
+      "id": "mechanical",
+      "status": "unavailable_in_source_path"
+    },
+    {
+      "id": "valvetrain",
+      "status": "unavailable_in_source_path"
+    }
+  ],
+  "renderLogs": [
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 0.06,
+        "mode": "off",
+        "file": "1800-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\1800-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\1800-off.wav | target=1800 rpm | actual=1800 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 1,
+        "mode": "on",
+        "file": "1800-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\1800-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\1800-on.wav | target=1800 rpm | actual=1800 rpm | load=1 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4200,
+        "load": 0.06,
+        "mode": "off",
+        "file": "4200-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\4200-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\4200-off.wav | target=4200 rpm | actual=4200 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4200,
+        "load": 1,
+        "mode": "on",
+        "file": "4200-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\4200-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\4200-on.wav | target=4200 rpm | actual=4200 rpm | load=1 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 6800,
+        "load": 0.06,
+        "mode": "off",
+        "file": "6800-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\6800-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\6800-off.wav | target=6800 rpm | actual=6800 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 6800,
+        "load": 1,
+        "mode": "on",
+        "file": "6800-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\6800-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-bmw-s14b23\\6800-on.wav | target=6800 rpm | actual=6800 rpm | load=1 | samples=110250",
+      "stderr": ""
+    }
+  ],
+  "isolatedEngineRoot": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-i4-bmw-s14b23-isolated",
+  "sourceEngineRoot": "E:/Codex/vehicle-audio-lab/third_party_work/engine-sim-v0.1.11a-source"
+}

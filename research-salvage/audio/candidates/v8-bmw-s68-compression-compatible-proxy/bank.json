@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 2,
+  "version": "candidate-2026-08-13-v8-bmw-s68-compression-compatible-proxy-s68-compression-reference",
+  "id": "bank.candidate.v8-bmw-s68-compression-compatible-proxy",
+  "scope": "family",
+  "family": "v8",
+  "source": {
+    "engineSimulator": "0.1.11a isolated exporter",
+    "script": "candidates/v8-bmw-s68-compression-compatible-proxy/S63B44_S68_compression_compatibility.mr",
+    "engine": "BMW S68B44T0 compression-ratio compatibility proxy",
+    "claim": "Output-only S68 geometry/ignition family proxy with chamber volume corrected from the inherited 20.0 cc to 57.823848 cc, derived from the documented 89.0 x 88.3 mm geometry and 10.5:1 compression ratio. S62B50/S63-labelled cam, head flow, runner, exhaust and no-turbo/no-hybrid source limitations remain; this is not an exact S68 audio source.",
+    "exactCurrentAsset": false,
+    "exactEngineSource": false,
+    "sourceUrl": "https://catalog.engine-sim.parts/parts/2060",
+    "sourceLineage": {
+      "downloadedLabel": "BMW S63B44",
+      "inheritedExecutableLineage": "S62B50",
+      "outputCompatibilityNode": "S68B44T0_compatibility",
+      "boreMm": 89,
+      "strokeMm": 88.3,
+      "displacementCc": 4394.612485244367,
+      "firingOrder": "15486372",
+      "compressionRatio": 10.5,
+      "chamberVolumeCc": 57.823848490057465,
+      "exactClaim": false
+    },
+    "officialCompatibilityReference": {
+      "sourceUrl": "https://www.press.bmwgroup.com/canada/article/detail/T0447873EN/the-all-new-2025-bmw-m5-touring",
+      "sourceTitle": "BMW Group Canada: The All-New 2025 BMW M5 Touring",
+      "engineCode": "S68B44T0 family reference",
+      "boreMm": 89,
+      "strokeMm": 88.3,
+      "displacementCc": 4395,
+      "compressionRatio": 10.5,
+      "exactCurrentAsset": false
+    },
+    "sourceModification": {
+      "changedParameter": "cylinder_head.chamber_volume",
+      "inheritedValueCc": 20,
+      "outputValueCc": 57.823848490057465,
+      "formula": "sweptVolumePerCylinder / (compressionRatio - 1)",
+      "sourceHash": "fecf8eb5497395f1e4fb4d19d7328ab4bf6830397ea135b1117ceadd35a3aac2"
+    }
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "format": "PCM16-WAV",
+  "durationSeconds": 2.5,
+  "quality": "candidate-loop-approved",
+  "registration": {
+    "status": "eligible_for_manifest",
+    "reason": "Registered as a non-exact secondary family fallback after independent format, clipping, non-silence, six-layer, crossfade-loop, compression-derivation and waveform-difference gates. It remains behind the baked-overlay S68 primary and does not claim an exact S68 source."
+  },
+  "loop": {
+    "status": "approved",
+    "loopApproved": true,
+    "loopStart": 0,
+    "loopEnd": 2.5,
+    "method": "offline-tail-head-derivative-crossfade",
+    "crossfadeSamples": 4096
+  },
+  "compatibilityOverlay": {"mode": "none", "signals": [], "physical": false, "evidence": "Exhaust-only S68-family candidate; runtime compatibility overlay is separate and non-physical."},
+  "layers": [
+    {
+      "rpm": 1800,
+      "load": 0.06,
+      "mode": "off",
+      "file": "1800-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 1800,
+      "load": 1,
+      "mode": "on",
+      "file": "1800-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4500,
+      "load": 0.06,
+      "mode": "off",
+      "file": "4500-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4500,
+      "load": 1,
+      "mode": "on",
+      "file": "4500-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 7200,
+      "load": 0.06,
+      "mode": "off",
+      "file": "7200-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 7200,
+      "load": 1,
+      "mode": "on",
+      "file": "7200-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    }
+  ]
+}

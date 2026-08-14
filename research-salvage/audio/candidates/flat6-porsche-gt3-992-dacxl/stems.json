@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "bankId": "bank.candidate.flat6.porsche-gt3-992-dacxl",
+  "generatedAt": "2026-08-13T13:55:13.929Z",
+  "stems": [
+    {
+      "id": "exhaust_mix",
+      "status": "available",
+      "files": [
+        "1800-off.wav",
+        "1800-on.wav",
+        "4500-off.wav",
+        "4500-on.wav",
+        "9000-off.wav",
+        "9000-on.wav"
+      ],
+      "provenance": "Engine Simulator 0.1.11a Simulator::readAudioOutput final mono output; physical exhaust-system stems require the isolated stems exporter."
+    }
+  ],
+  "unavailable": [
+    {
+      "id": "intake",
+      "status": "unavailable_in_source_path"
+    },
+    {
+      "id": "mechanical",
+      "status": "unavailable_in_source_path"
+    },
+    {
+      "id": "valvetrain",
+      "status": "unavailable_in_source_path"
+    }
+  ],
+  "isolatedEngineRoot": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-flat6-992-gt3rs-spec-isolated",
+  "sourceEngineRoot": "E:/Codex/vehicle-audio-lab/third_party_work/engine-sim-v0.1.11a-source"
+}

@@ -1,0 +1,8 @@
+{
+  "source": "gt3_v2.mr",
+  "outputCopy": "gt3_v2_0.1.11a_port.mr",
+  "reason": "The catalog source uses the 0.1.14a run(...) entrypoint; the local 0.1.11a parser reports R0010 Undefined node type at that block.",
+  "change": "Replace only public node main { run(engine: gt3(), vehicle: gt3_vehicle(), transmission: gt3_transmission()) } main() with the 0.1.11a set_engine/set_vehicle/set_transmission entrypoint.",
+  "unchangedEngineDefinition": true,
+  "compileEvidence": "vendor/engine-sim-v0.1.11a-flat6-isolated/error_log.log"
+}

@@ -1,0 +1,10 @@
+{
+  "sourceUrl": "https://raw.githubusercontent.com/GearheadLydia/Engine-Sim-Engines/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/BMW_S14B23.mr",
+  "repository": "https://github.com/GearheadLydia/Engine-Sim-Engines",
+  "pinnedCommit": "f95625e5b91096bfb9ba6550682f96f0e49c53c2",
+  "downloadedFile": "BMW_S14B23.mr",
+  "downloadedBytes": 13470,
+  "fetchedAt": "2026-08-10T13:29:50.117Z",
+  "license": "repository metadata reports no SPDX license; preserve attribution and do not redistribute outside this run",
+  "repositoryCaveat": "README says most car information is gathered from forums, online shopping sites, or guesses; use the named engine file as a candidate, not engineering validation."
+}

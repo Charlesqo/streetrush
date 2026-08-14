@@ -382,7 +382,15 @@
 - build/regression：完整 `pnpm verify` 通过；37 modules、4,864-byte WASM、24-file/77.06 MiB build，221 个可版本化文件 secret scan，六车物理/18 replay/1,320-action timing 保持。
 - browser：本地 Vite 真实页面六车全部 READY 且 start enabled；M3/MX-5 为四 binding，另外四车为零；返回 MX-5 cache 后仍为 `manifest:mx5`。实际 owner 是 `rust-wasm` scheduler/progress。
 - race smoke：开始/倒计时/计时通过；暂停时 race time 冻结、audio gate 为 true，恢复后继续；touch reset 使圈 INVALID，快速重开恢复 VALID 并从约 1 秒重新计时，返库仍 READY；console 无 warning/error。
-- 未验证：浏览器自动化只能发短 pulse，不能保持油门/转向；45 次 pulse 速度仍为零。因此持续驾驶、检查点、完赛和人耳声音必须保留为待验收，不能用物理回归替代。
+- 未验证：浏览器自动化的 45 次 short pulse 与一次 button-internal pointer drag 都不能保持油门/转向，速度仍为零。因此持续驾驶、检查点、完赛和人耳声音必须保留为待验收，不能用物理回归替代。
+
+### Autonomous research salvage 候选档案
+
+- 来源：用户新增 `research-salvage/README.md` 标明来自 `E:/Codex/autonomous_runs/multi_car_audio` 与 `multi_car_physics_data`，仅为 archive/reference，不被 production import。
+- 内容：91 files/8,779,760 bytes；六个候选 bank、36 个 2.5s WAV、旧 decoded/layered runtime；21 个 field-scoped physics values 和 MX-5 coil-rate derivation。
+- 验证：新增 `test:research-salvage` 实读 selection/bank/analysis/loop、全部 WAV PCM16/mono/44.1k、non-silence/full-scale、prepared hash/seam gate，并检查六车映射、projection counts/owners 和 coil-not-wheel-rate boundary。
+- 原始缺陷：MX-5 I4 与 M5 V8 的 `analysis.json` 均误写 `cylinders:6`，六个派生点火频率随之错误；失败测试先复现。新项目副本只改为 4/8 缸并按 `rpm/60*cylinders/2` 重算，WAV、bank、loop/source records 不变。
+- 结果：六 bank/36 WAV（7,939,584 bytes）和 21 physics fields 全通过；projection 的 UTF-8 BOM 在 reader 边界兼容，不重写 archive。音频仍是候选，不因结构通过升级为精确录音或 production。
 
 ## 当前最值得继续的方向
 

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://street-rush.local/schemas/audio-bank-manifest.schema.json",
+  "title": "Vehicle audio bank manifest",
+  "type": "object",
+  "required": ["schemaVersion", "resolutionOrder", "capabilityContract", "banks"],
+  "properties": {
+    "schemaVersion": {"type": "integer", "minimum": 1},
+    "resolutionOrder": {"type": "array", "const": ["exact", "family", "procedural"]},
+    "capabilityContract": {"$ref": "#/$defs/capabilityContract"},
+    "banks": {"type": "array", "items": {"$ref": "#/$defs/bank"}, "uniqueItems": true}
+  },
+  "$defs": {
+    "bank": {
+      "type": "object",
+      "required": ["id", "scope", "family", "assetVersion", "rootUrl", "manifestFile", "quality"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^bank\\.[a-z0-9.-]+$"},
+        "scope": {"enum": ["exact", "family"]},
+        "vehicleId": {"type": ["string", "null"]},
+        "family": {"type": "string", "minLength": 1},
+        "assetVersion": {"type": "string", "minLength": 1},
+        "rootUrl": {"type": "string", "minLength": 1},
+        "manifestFile": {"type": "string", "minLength": 1},
+        "quality": {"type": "string"},
+        "compatibility": {"type": "string"},
+        "source": {"type": "string"},
+        "compatibilityOverlay": {"$ref": "#/$defs/compatibilityOverlay"}
+      },
+      "allOf": [
+        {"if": {"properties": {"scope": {"const": "exact"}}}, "then": {"required": ["vehicleId"]}},
+        {"if": {"properties": {"scope": {"const": "family"}}}, "then": {"not": {"required": ["vehicleId"]}}}
+      ],
+      "additionalProperties": false
+    },
+    "capabilityContract": {
+      "type": "object",
+      "required": ["physicalBuses", "unavailablePhysicalBuses", "compatibilityOverlayModes", "rule", "evidence"],
+      "properties": {
+        "physicalBuses": {"type": "array", "items": {"type": "string"}},
+        "unavailablePhysicalBuses": {"type": "array", "items": {"type": "string"}},
+        "compatibilityOverlayModes": {"type": "array", "items": {"enum": ["none", "baked", "runtime"]}},
+        "rule": {"type": "string", "minLength": 1},
+        "evidence": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "compatibilityOverlay": {
+      "type": "object",
+      "required": ["mode", "signals", "physical", "evidence"],
+      "properties": {
+        "mode": {"enum": ["none", "baked", "runtime"]},
+        "signals": {"type": "array", "uniqueItems": true, "items": {"enum": ["turbo", "electricMotor"]}},
+        "physical": {"const": false},
+        "evidence": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  }
+}

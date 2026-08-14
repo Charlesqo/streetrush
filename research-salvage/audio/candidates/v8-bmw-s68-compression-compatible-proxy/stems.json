@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "bankId": "bank.candidate.v8-bmw-s68-compression-compatible-proxy",
+  "stems": [
+    {
+      "id": "exhaust_mix",
+      "status": "available",
+      "files": [
+        "1800-off.wav",
+        "1800-on.wav",
+        "4500-off.wav",
+        "4500-on.wav",
+        "7200-off.wav",
+        "7200-on.wav"
+      ],
+      "provenance": "Engine Simulator 0.1.11a exhaust output after output-only compression-ratio correction."
+    }
+  ],
+  "unavailable": [
+    {
+      "id": "turbo",
+      "status": "unavailable_in_engine_sim_0_1_11a_source"
+    },
+    {
+      "id": "hybrid_electric",
+      "status": "unavailable_in_engine_sim_0_1_11a_source"
+    },
+    {
+      "id": "intake",
+      "status": "unavailable_in_source_path"
+    },
+    {
+      "id": "mechanical",
+      "status": "unavailable_in_source_path"
+    },
+    {
+      "id": "valvetrain",
+      "status": "unavailable_in_source_path"
+    }
+  ]
+}

@@ -47,6 +47,7 @@
 - 运行时代码：包含 decoded buffer registry、分层 playback-rate、RPM/负载 blend 和旧 Street Rush adapter。当前项目已经采用了更小的 bank coordinator 与严格 loader；真正缺少的是把已解码层接到当前 master/pause/fallback 图中。旧 adapter 不应整包覆盖当前音频生命周期。
 - 物理：projection 只有 21 个通过原研究筛选的字段，且多数和 `src/config.js` 重合；AMG 为 0 项。MX-5 弹簧推导是 coil rate，不是 wheel rate，缺 motion ratio、安装角、预载、bump stop 和完整力曲线，因此不能直接替换车辆悬挂。
 - 采用条件：样本音频集成时只复制 `selection.json`、六个 `bank.json` 和实际 WAV 到生产资源目录，并为每辆车显式登记；物理值只有在生产 owner、单位、工况和误差测试都明确时才逐字段采用。
+- 验证结果：`pnpm test:research-salvage` 实读六 bank、36 WAV（7,939,584 bytes）、prepared hashes、loop gates、格式/非静音/非满幅，以及 21 个物理字段。测试先抓到 MX-5 I4 和 M5 V8 的 `analysis.json` 都误写为 6 缸并使用错误点火频率；当前项目副本已改为 4/8 缸并重算相关字段，WAV 与 bank claims 未变。
 
 ## 2026-08-14 浏览器 smoke 证据
 
@@ -55,7 +56,7 @@
 - 页面实际使用 `physicsSchedulerOwner=rust-wasm`、`raceProgressCoreOwner=rust-wasm`；开始后倒计时结束，比赛计时递增。
 - 暂停前后计时保持 `01:27.183` 且 `audioPaused=true`；恢复后为 `01:28.033` 且 `audioPaused=false`。
 - 触控 reset 后显示 `RESET · LAP INVALID`、圈状态 `INVALID`、快速重开按钮出现；重开后圈状态回到 `VALID`、计时从 `00:01.058` 重新开始。返回车库后 MX-5 仍 READY。
-- 限制：45 次自动化短油门 pulse 未形成持续输入，速度仍为 0。这说明该控制面不能替代按住操作，不说明游戏输入失败；持续油门/转向和完整一局仍待人工或支持 keydown/keyup 的驱动验收。
+- 限制：45 次自动化短油门 pulse 和一次按钮内 pointer drag 都未形成持续输入，速度仍为 0。这说明该控制面没有可用的按住语义，不说明游戏输入失败；持续油门/转向和完整一局仍待人工或支持 keydown/keyup 的驱动验收。
 
 ## 剩余工作与顺序
 

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "bank.candidate.v8-bmw-s68-compression-compatible-proxy",
+  "sourceFile": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-na-calibrated-proxy\\S63B44_S68_config_proxy.mr",
+  "isolatedSource": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-v8-bmw-s68-compression-compatible-proxy-isolated\\assets\\engines\\s68-proxy\\S63B44_S68_compression_compatibility.mr",
+  "wrapper": "E:\\Codex\\autonomous_runs\\multi_car_audio\\source_scripts\\v8-bmw-s68-compression-compatible-proxy-isolated.mr",
+  "sourceRoot": "E:/Codex/vehicle-audio-lab/third_party_work/engine-sim-v0.1.11a-source",
+  "outputOnly": true,
+  "officialCompatibilityReference": {
+    "sourceUrl": "https://www.press.bmwgroup.com/canada/article/detail/T0447873EN/the-all-new-2025-bmw-m5-touring",
+    "sourceTitle": "BMW Group Canada: The All-New 2025 BMW M5 Touring",
+    "engineCode": "S68B44T0 family reference",
+    "boreMm": 89,
+    "strokeMm": 88.3,
+    "displacementCc": 4395,
+    "compressionRatio": 10.5,
+    "exactCurrentAsset": false
+  },
+  "sourceModification": {
+    "changedParameter": "cylinder_head.chamber_volume",
+    "inheritedValueCc": 20,
+    "outputValueCc": 57.823848490057465,
+    "formula": "sweptVolumePerCylinder / (compressionRatio - 1)",
+    "sourceHash": "fecf8eb5497395f1e4fb4d19d7328ab4bf6830397ea135b1117ceadd35a3aac2"
+  },
+  "inheritedLimitations": [
+    "S62B50/S63-labelled cam/head/flow lineage",
+    "no source-level S68 turbo acoustic bus",
+    "no source-level S68 hybrid/electric acoustic bus",
+    "no exact vehicle recording"
+  ],
+  "decision": "Non-exact secondary family candidate; compare against the existing S68 baked-overlay primary before any runtime order change.",
+  "renderLogs": [
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 0.06,
+        "mode": "off",
+        "file": "1800-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\1800-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\1800-off.wav | target=1800 rpm | actual=1800 rpm | load=0.06 | audio-volume=0.05 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 1,
+        "mode": "on",
+        "file": "1800-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\1800-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\1800-on.wav | target=1800 rpm | actual=1800 rpm | load=1 | audio-volume=0.05 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4500,
+        "load": 0.06,
+        "mode": "off",
+        "file": "4500-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\4500-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\4500-off.wav | target=4500 rpm | actual=4500 rpm | load=0.06 | audio-volume=0.05 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4500,
+        "load": 1,
+        "mode": "on",
+        "file": "4500-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\4500-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\4500-on.wav | target=4500 rpm | actual=4500 rpm | load=1 | audio-volume=0.05 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 7200,
+        "load": 0.06,
+        "mode": "off",
+        "file": "7200-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\7200-off.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\7200-off.wav | target=7200 rpm | actual=7200 rpm | load=0.06 | audio-volume=0.05 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 7200,
+        "load": 1,
+        "mode": "on",
+        "file": "7200-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\7200-on.wav",
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy\\7200-on.wav | target=7200 rpm | actual=7200 rpm | load=1 | audio-volume=0.05 | stem=-1 | pre-sum=0 | samples=110250",
+      "stderr": ""
+    }
+  ],
+  "removedStaleWavLayers": []
+}

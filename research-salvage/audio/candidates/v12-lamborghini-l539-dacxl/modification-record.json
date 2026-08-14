@@ -1,0 +1,8 @@
+{
+  "source": "Lamborghini_6_5_SVJ_V2.mr",
+  "outputCopy": "Lamborghini_6_5_SVJ_V2_0.1.11a_port.mr",
+  "reason": "The catalog source uses the 0.1.14a run(...) entrypoint; the local 0.1.11a parser does not accept that node type.",
+  "change": "Replace only public node main { run(engine: Lamborghini_6_5(), vehicle: SVJ_vehicle(), transmission: SVJ_transmission()) } main() with the 0.1.11a set_engine/set_vehicle/set_transmission entrypoint.",
+  "unchangedEngineDefinition": true,
+  "compileEvidence": "vendor/engine-sim-v0.1.11a-v12-isolated/error_log.log"
+}

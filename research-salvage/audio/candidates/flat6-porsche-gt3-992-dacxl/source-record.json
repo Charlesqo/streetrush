@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "bank.candidate.flat6.porsche-gt3-992-dacxl",
+  "sourceInput": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\gt3_v2.mr",
+  "derivedSource": "E:\\Codex\\autonomous_runs\\multi_car_audio\\source_scripts\\porsche_992_gt3rs_spec_0.1.11a.mr",
+  "isolatedSource": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-flat6-992-gt3rs-spec-isolated\\assets\\engines\\dacxl\\porsche_992_gt3rs_spec_0.1.11a.mr",
+  "changes": [
+    "Port the catalog run(...) entrypoint to the 0.1.11a set_engine/set_vehicle/set_transmission entrypoint.",
+    "Change the output-only engine redline and ignition rev limit from 9050 rpm to the official 9000-rpm 992 GT3 RS constraint.",
+    "Retain the source engine geometry, firing order, cam and exhaust topology; no unverified exact-engine or OEM-exhaust claim is added."
+  ],
+  "officialReference": {
+    "sourceUrl": "https://newsroom.porsche.com/en/2022/products/porsche-911-gt3-rs-world-premiere-29177.html",
+    "pressKitUrl": "https://newsroom.porsche.com/dam/jcr%3A46a23375-e7ee-4507-a577-d9761b784d33/992%2520911%2520GT3%2520RS%2520Press%2520Kit%25201.pdf",
+    "target": "2022 Porsche 911 GT3 RS / 992.1 specification",
+    "cylinders": 6,
+    "layout": "flat",
+    "displacementLiters": 4,
+    "aspiration": "naturally_aspirated",
+    "redlineRpm": 9000,
+    "specMatch": true,
+    "exactCurrentAsset": false,
+    "exactEngineSource": false,
+    "reason": "Official Porsche material confirms the physical 4.0-litre naturally aspirated six-cylinder boxer and 9000-rpm constraint, but does not identify the game GLB's exact engine code, exhaust calibration, production year, or sound-recording identity."
+  },
+  "logs": [
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 0.06,
+        "mode": "off",
+        "file": "1800-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\1800-off.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\1800-off.wav | target=1800 rpm | actual=1800 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 1,
+        "mode": "on",
+        "file": "1800-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\1800-on.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\1800-on.wav | target=1800 rpm | actual=1800 rpm | load=1 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4500,
+        "load": 0.06,
+        "mode": "off",
+        "file": "4500-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\4500-off.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\4500-off.wav | target=4500 rpm | actual=4500 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4500,
+        "load": 1,
+        "mode": "on",
+        "file": "4500-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\4500-on.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\4500-on.wav | target=4500 rpm | actual=4500 rpm | load=1 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 9000,
+        "load": 0.06,
+        "mode": "off",
+        "file": "9000-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\9000-off.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\9000-off.wav | target=9000 rpm | actual=9000 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 9000,
+        "load": 1,
+        "mode": "on",
+        "file": "9000-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\9000-on.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\flat6-porsche-gt3-992-dacxl\\9000-on.wav | target=9000 rpm | actual=9000 rpm | load=1 | samples=110250",
+      "stderr": ""
+    }
+  ]
+}

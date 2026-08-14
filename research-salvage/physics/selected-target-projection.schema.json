@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vehicle-physics-core.local/schema/selected-target-projection-1.0.0.schema.json",
+  "title": "Selected Target Projection",
+  "description": "Machine-readable loading projection. Only evidence-field-level targetEligible=true rows are inputs; nested value eligibility annotations are not independent inputs.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "selectionPolicy",
+    "profileCount",
+    "selectedFieldCount",
+    "vehicles"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "selectionPolicy": {
+      "type": "object",
+      "required": [
+        "authoritativeGate",
+        "nestedValueEligibility",
+        "nestedValueEligibilityRule",
+        "excludedFieldShapes",
+        "futureVehicleRule"
+      ],
+      "properties": {
+        "authoritativeGate": {
+          "const": "evidence-field.targetEligible"
+        },
+        "nestedValueEligibility": {
+          "const": "annotation-only"
+        },
+        "nestedValueEligibilityRule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "excludedFieldShapes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "futureVehicleRule": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "profileCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "selectedFieldCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "vehicles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/vehicleProjection"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "vehicleProjection": {
+      "type": "object",
+      "required": [
+        "vehicleId",
+        "profileId",
+        "selectedFieldCount",
+        "fields"
+      ],
+      "properties": {
+        "vehicleId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selectedFieldCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/selectedField"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "selectedField": {
+      "type": "object",
+      "required": [
+        "vehicleId",
+        "profileId",
+        "fieldPath",
+        "selectedTarget",
+        "value",
+        "units",
+        "coordinateConvention",
+        "vehicleContext",
+        "sourceRefs",
+        "sourceType",
+        "measurementConditions",
+        "status",
+        "confidence",
+        "uncertainty",
+        "targetEligible",
+        "modelInterface"
+      ],
+      "properties": {
+        "vehicleId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profileId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fieldPath": {
+          "type": "string",
+          "pattern": "^fields\\.[^.]+\\.[^.]+$"
+        },
+        "selectedTarget": {
+          "type": [
+            "object",
+            "string"
+          ]
+        },
+        "value": {},
+        "units": {
+          "type": "string"
+        },
+        "coordinateConvention": {
+          "type": "object"
+        },
+        "vehicleContext": {
+          "type": "object"
+        },
+        "sourceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "sourceId",
+              "sourceType",
+              "urlOrFile"
+            ],
+            "properties": {
+              "sourceId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceType": {
+                "type": "string",
+                "minLength": 1
+              },
+              "urlOrFile": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "sourceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measurementConditions": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "direct",
+            "inferred",
+            "conflicting"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "uncertainty": {
+          "type": "object"
+        },
+        "targetEligible": {
+          "const": true
+        },
+        "modelInterface": {
+          "type": "object",
+          "required": [
+            "receivableShape",
+            "currentOwner",
+            "adapter"
+          ],
+          "properties": {
+            "receivableShape": {
+              "type": "string"
+            },
+            "currentOwner": {
+              "type": "string"
+            },
+            "adapter": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

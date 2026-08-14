@@ -1,0 +1,7 @@
+{
+  "source": "BMW_S14B23.mr",
+  "outputCopy": "vendor/engine-sim-v0.1.11a-i4-bmw-s14b23-isolated/assets/engines/gearheadlydia/BMW_S14B23.mr",
+  "change": "No engine-definition edit; only an output-only import wrapper is used because the pinned source already exposes the local 0.1.11a main() entrypoint.",
+  "wrapper": "E:\\Codex\\autonomous_runs\\multi_car_audio\\source_scripts\\i4-bmw-s14b23-isolated.mr",
+  "sourceRoot": "E:/Codex/vehicle-audio-lab/third_party_work/engine-sim-v0.1.11a-source"
+}

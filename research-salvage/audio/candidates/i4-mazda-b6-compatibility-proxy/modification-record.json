@@ -1,0 +1,7 @@
+{
+  "source": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-mazda-bp-ze\\Mazda_BP_ZE.mr",
+  "outputCopy": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-i4-mazda-b6-compatibility-proxy-isolated\\assets\\engines\\mazda\\Mazda_B6_ZE_NA8C_compatibility.mr",
+  "wrapper": "E:\\Codex\\autonomous_runs\\multi_car_audio\\source_scripts\\i4-mazda-b6-compatibility-proxy-isolated.mr",
+  "sourceRoot": "E:/Codex/vehicle-audio-lab/third_party_work/engine-sim-v0.1.11a-source",
+  "change": "Only the output copy changes B6 bore/stroke and node labels; protected source directories remain read-only."
+}

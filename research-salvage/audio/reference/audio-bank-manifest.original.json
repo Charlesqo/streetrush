@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "resolutionOrder": [
+    "exact",
+    "family",
+    "procedural"
+  ],
+  "capabilityContract": {
+    "physicalBuses": ["exhaust"],
+    "unavailablePhysicalBuses": ["intake", "mechanical", "valvetrain", "turbo", "electricMotor"],
+    "compatibilityOverlayModes": ["none", "baked", "runtime"],
+    "rule": "Runtime compatibility audio is allowed only with a ready bank whose bank-level overlay mode is none; baked overlays disable the runtime layer.",
+    "evidence": "evidence/full-engine-sim-capability-scan.json and profile-level signalCapabilities"
+  },
+  "banks": [
+    {
+      "id": "bank.candidate.v8-bmw-s68-hybrid-compression-compatibility-proxy",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "candidate-2026-08-14-v8-bmw-s68-hybrid-compression-compatibility-proxy",
+      "rootUrl": "/candidate-audio/v8-bmw-s68-hybrid-compression-compatibility-proxy",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "Selected non-exact BMW G90 M5 S68 family fallback: official-10.5:1 chamber-corrected S68 geometry proxy with the existing baked RPM/load-linked compatibility overlay; exact turbo, cross-bank manifold, electric-motor acoustics and recording identity remain unverified",
+      "source": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-hybrid-compression-compatibility-proxy",
+      "compatibilityOverlay": {"mode": "baked", "signals": ["turbo", "electricMotor"], "physical": false, "evidence": "Six bank layers contain a deterministic compatibility overlay; no physical S68 turbo/electric bus exists in the scanned source."},
+      "selection": "profile-primary-family-fallback"
+    },
+    {
+      "id": "bank.candidate.v8-bmw-s68-hybrid-compatibility-proxy",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "candidate-2026-08-13-v8-bmw-s68-hybrid-compatibility-proxy-s68-compat-node",
+      "rootUrl": "/candidate-audio/v8-bmw-s68-hybrid-compatibility-proxy",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "S68B44T0 non-exact compatibility proxy: official BMW G90 reference facts (4.4-liter twin-turbo V8, hybrid motor, 7200 rpm) plus real Engine Simulator exhaust and a baked RPM/load-linked turbo/hybrid compatibility overlay in the bank WAV layers; runtime procedural fallback remains muted when ready; exact turbo, cross-bank manifold and electric-motor acoustics remain unverified",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/v8-bmw-s68-hybrid-compatibility-proxy",
+      "compatibilityOverlay": {"mode": "baked", "signals": ["turbo", "electricMotor"], "physical": false, "evidence": "Six bank layers contain the deterministic compatibility overlay; it is not a physical stem."},
+      "selection": "profile-secondary-family-fallback"
+    },
+    {
+      "id": "bank.candidate.v8-mercedes-m159-compression-compatible-proxy",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "candidate-2026-08-13-v8-mercedes-m159-compression-compatible-proxy-m159-reference",
+      "rootUrl": "/candidate-audio/v8-mercedes-m159-compression-compatible-proxy",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "Selected non-exact AMG M159 family fallback: executable 11.3:1 compression-compatible proxy with 102.2/94.6 mm, 6208 cc inherited race source; GT3 evolution and exact source identity remain unverified",
+      "source": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-mercedes-m159-compression-compatible-proxy",
+      "selection": "profile-primary-family-fallback"
+    },
+    {
+      "id": "bank.source.engine-sim.v6",
+      "scope": "family",
+      "family": "v6",
+      "assetVersion": "source-v1",
+      "rootUrl": "/audio/engine-sim/v6",
+      "manifestFile": "bank.json",
+      "quality": "prototype",
+      "compatibility": "family-only; no current V6 vehicle",
+      "source": "E:/Codex/赛车游戏素材/runtime/audio/engine-sim/v6"
+    },
+    {
+      "id": "bank.source.engine-sim.v8",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "source-v1",
+      "rootUrl": "/audio/engine-sim/v8",
+      "manifestFile": "bank.json",
+      "quality": "prototype",
+      "compatibility": "family-only; Ferrari F136 NA V8 retained only as a secondary generic fallback for AMG GT3 and M5 G90",
+      "source": "E:/Codex/赛车游戏素材/runtime/audio/engine-sim/v8"
+    },
+    {
+      "id": "bank.source.engine-sim.v10",
+      "scope": "family",
+      "family": "v10",
+      "assetVersion": "source-v1",
+      "rootUrl": "/audio/engine-sim/v10",
+      "manifestFile": "bank.json",
+      "quality": "prototype",
+      "compatibility": "family-only; no current V10 vehicle",
+      "source": "E:/Codex/赛车游戏素材/runtime/audio/engine-sim/v10"
+    },
+    {
+      "id": "bank.candidate.i4.honda-vtec",
+      "scope": "family",
+      "family": "i4",
+      "assetVersion": "candidate-2026-08-10-i4-honda-vtec",
+      "rootUrl": "/candidate-audio/i4-honda-vtec",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "temporary family fallback for I4 cars; not exact MX-5 or S14",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/i4-honda-vtec"
+    },
+    {
+      "id": "bank.candidate.i4.bmw-s14b23",
+      "scope": "family",
+      "family": "i4",
+      "assetVersion": "candidate-2026-08-10-i4-bmw-s14b23",
+      "rootUrl": "/candidate-audio/i4-bmw-s14b23",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "source-backed BMW S14B23 candidate for E30 M3; exact Evolution/market variant remains ambiguous",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/i4-bmw-s14b23"
+    },
+    {
+      "id": "bank.candidate.i4.mazda-b6-compatibility-proxy",
+      "scope": "family",
+      "family": "i4",
+      "assetVersion": "candidate-2026-08-13-i4-mazda-b6-compatibility-proxy",
+      "rootUrl": "/candidate-audio/i4-mazda-b6-compatibility-proxy",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "Mazda B6-ZE 1.6L 78.0/83.6 mm output-only geometry proxy for MX-5 NA config; inherited BP-ZE head/cam/flow/IR; non-exact",
+      "source": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-mazda-b6-compatibility-proxy"
+    },
+    {
+      "id": "bank.candidate.i4.mazda-bp-ze",
+      "scope": "family",
+      "family": "i4",
+      "assetVersion": "candidate-2026-08-10-i4-mazda-bp-ze",
+      "rootUrl": "/candidate-audio/i4-mazda-bp-ze",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "source-backed Mazda BP-ZE candidate for MX-5 NA; exact market/year/trim remains ambiguous",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/i4-mazda-bp-ze"
+    },
+    {
+      "id": "bank.candidate.flat6.porsche-gt3-992-dacxl",
+      "scope": "family",
+      "family": "flat6",
+      "assetVersion": "candidate-2026-08-13-flat6-porsche-gt3-rs-992-spec",
+      "rootUrl": "/candidate-audio/flat6-porsche-gt3-992-dacxl",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "official-reference-constrained 992 GT3 RS 4.0L naturally aspirated flat-six with 9000-rpm coverage; GLB/config and source recording identity remain unproven, so this is family fallback rather than exact bank",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/flat6-porsche-gt3-992-dacxl"
+    },
+    {
+      "id": "bank.candidate.v12.lamborghini-l539-dacxl",
+      "scope": "family",
+      "family": "v12",
+      "assetVersion": "candidate-2026-08-13-v12-lamborghini-l539-lp700-spec-coverage",
+      "rootUrl": "/candidate-audio/v12-lamborghini-l539-dacxl",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "official-reference-constrained LP700-4 6.5L naturally aspirated V12 family coverage with 8,500-rpm runtime layer; SVJ-derived L539 calibration remains non-exact for LP700 engine/exhaust identity",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/v12-lamborghini-l539-dacxl"
+    },
+    {
+      "id": "bank.candidate.v12.lamborghini-l539-lp700-public-source-8500",
+      "scope": "family",
+      "family": "v12",
+      "assetVersion": "research-2026-08-14-v12-lamborghini-l539-lp700-public-source-8500",
+      "rootUrl": "/candidate-audio/v12-lamborghini-l539-lp700-public-source-8500",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "Explicit 2011 LP700-4-labelled community L539 source with output-only 8500-RPM limiter/redline coverage and calibrated level; source identity is more vehicle-specific than the SVJ-derived primary, but community provenance and output modifications keep it non-exact",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/v12-lamborghini-l539-lp700-public-source-8500"
+    },
+    {
+      "id": "bank.candidate.v12.lamborghini-l539-lp700-public-source",
+      "scope": "family",
+      "family": "v12",
+      "assetVersion": "comparison-2026-08-13-v12-lamborghini-l539-lp700-public-source",
+      "rootUrl": "/candidate-audio/v12-lamborghini-l539-lp700-public-source",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "Explicit LP700-4-labelled community L539 source with 6.5L NA V12 geometry, 1741028639511 firing comment and output-only level calibration; source redline is 8000 RPM so the existing 8500-rpm SVJ-derived bank remains primary; no exact engine/exhaust claim",
+      "source": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-lp700-public-source"
+    },
+    {
+      "id": "bank.candidate.v8.bmw-s63b44t4-source",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "candidate-2026-08-10-v8-bmw-s63b44t4-havok1199",
+      "rootUrl": "/candidate-audio/v8-bmw-s63b44t4-havok1199",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "BMW S63B44T4-labelled source whose executable node is naturally aspirated S62B50 geometry/firing; useful M5-family candidate but not exact G90 S68 turbo/hybrid audio",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/v8-bmw-s63b44t4-havok1199"
+    },
+    {
+      "id": "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+      "scope": "family",
+      "family": "v8",
+      "quality": "candidate-loop-approved",
+      "assetVersion": "candidate-2026-08-13-v8-mercedes-m159-race-source-calibrated-sls-order",
+      "rootUrl": "/candidate-audio/v8-mercedes-m159-race-source-calibrated",
+      "manifestFile": "bank.json",
+      "compatibility": "M159-compatible source-level race V8 calibration: isolated source geometry matches the official 2010 SLS AMG GT3 M 159 E 63 / 159.980 reference (102.2 mm bore, 94.6 mm stroke, 6208 cc), and the source uses the SLS M159 reference firing order 1-5-4-2-6-3-7-8; current asset variant and exact GT3-specific firing/restrictor/cam/exhaust evolution remain unverified",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/v8-mercedes-m159-race-source-calibrated"
+    },
+    {
+      "id": "bank.candidate.v8.mercedes-m159-m156-mild-ir-proxy",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "candidate-2026-08-13-v8-mercedes-m159-m156-mild-ir-proxy",
+      "rootUrl": "/candidate-audio/v8-mercedes-m159-m156-mild-ir-proxy",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "primary AMG GT3 family proxy: M156-derived 6.2L naturally aspirated cross-plane V8 with source-level IR/level calibration; not exact M159 GT3 restrictor/evolution",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/v8-mercedes-m159-m156-mild-ir-proxy"
+    },
+    {
+      "id": "bank.candidate.v8-bmw-s63b44-public-source",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "comparison-2026-08-13-v8-bmw-s63b44-public-source",
+      "rootUrl": "/candidate-audio/v8-bmw-s63b44-public-source",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "Independent community S63B44-labelled 4.4L source with 89.0/88.3 mm geometry, 15486372 firing comment and two physical exhaust-system nodes; executable path is naturally aspirated with no S68 turbo/hybrid/electric bus, so secondary non-exact M5 family candidate only",
+      "source": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s63b44-public-source"
+    },
+    {
+      "id": "bank.candidate.v8-bmw-s68-na-calibrated-proxy",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "candidate-2026-08-13-v8-bmw-s68-na-calibrated-proxy-s68-compat-node",
+      "rootUrl": "/candidate-audio/v8-bmw-s68-na-calibrated-proxy",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "S63-labelled 4.4L NA geometry proxy calibrated to the current G90 7200 RPM profile; no S68 turbo/hybrid bus and not exact",
+      "source": "E:/Codex/autonomous_runs/multi_car_audio/candidates/v8-bmw-s68-na-calibrated-proxy"
+    },
+    {
+      "id": "bank.candidate.v8.bmw-s63-equal-length",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "comparison-2026-08-13-v8-bmw-s63-equal-length",
+      "rootUrl": "/candidate-audio/v8-bmw-s63-equal-length",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "S63-labelled equal-length-header NA comparison source; S62B50 lineage, two exhaust systems, no S68 turbo/hybrid bus, non-exact",
+      "source": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s63-equal-length"
+    },
+    {
+      "id": "bank.candidate.v8-bmw-s68-compression-compatible-proxy",
+      "scope": "family",
+      "family": "v8",
+      "assetVersion": "candidate-2026-08-13-v8-bmw-s68-compression-compatible-proxy-s68-compression-reference",
+      "rootUrl": "/candidate-audio/v8-bmw-s68-compression-compatible-proxy",
+      "manifestFile": "bank.json",
+      "quality": "candidate-loop-approved",
+      "compatibility": "S68-family compression-ratio compatibility proxy; 89.0/88.3 mm, 10.5:1-derived chamber volume, inherited S62B50/S63-labelled acoustic lineage, no exact turbo/hybrid bus",
+      "source": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v8-bmw-s68-compression-compatible-proxy",
+      "compatibilityOverlay": {"mode": "none", "signals": [], "physical": false, "evidence": "Exhaust-only bank; optional runtime compatibility layer is separate and explicitly non-physical."},
+      "selection": "profile-primary-family-fallback"
+    }
+  ]
+}

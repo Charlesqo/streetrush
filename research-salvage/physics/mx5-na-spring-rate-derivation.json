@@ -1,0 +1,36 @@
+{
+  "calculationId": "mx5-na-spring-rate-from-1990-workshop-geometry",
+  "vehicleId": "mx5",
+  "selectedTarget": "mx5-na-my1990-us-package-a",
+  "sourceBundle": "MZ-WSM-CMO-1990",
+  "method": "helical compression spring linear-rate estimate",
+  "formula": "k = G*d^4/(8*D^3*N_a)",
+  "formulaDefinitions": {
+    "G": "assumed steel shear modulus 79.3 GPa",
+    "d": "wire diameter",
+    "D": "mean coil diameter = inner diameter + wire diameter",
+    "N_a": "active-coil count; manual reported coil number is treated as N_a, with N_a-1 as a bounded interpretation"
+  },
+  "importantBoundary": "These are derived coil rates, not factory force-displacement curves and not wheel rates. Motion ratio, spring seat angle, preload, bump stop and nonlinear end-coil behavior remain missing.",
+  "results": {
+    "front": {
+      "wireDiameterM": 0.0108,
+      "innerDiameterM": 0.083,
+      "meanDiameterM": 0.0938,
+      "freeLengthM": 0.2825,
+      "reportedCoilCount": 5.91,
+      "derivedCoilRateNPerM": 27649.2,
+      "boundedCoilRateNPerM": {"low":27649.2,"high":33280.4}
+    },
+    "rear": {
+      "wireDiameterM": 0.0101,
+      "innerDiameterM": 0.083,
+      "meanDiameterM": 0.0931,
+      "freeLengthM": 0.3395,
+      "reportedCoilCount": 7.68,
+      "derivedCoilRateNPerM": 16644.0,
+      "boundedCoilRateNPerM": {"low":16644.0,"high":19135.6}
+    }
+  },
+  "reproducibility": "All dimensions are transcribed from R-4 of the byte-preserved workshop bundle; the numerical calculation uses SI units and the stated G assumption. Recompute only if the source page or active-coil interpretation changes."
+}

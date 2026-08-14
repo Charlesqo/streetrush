@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "bank.candidate.v12.lamborghini-l539-dacxl",
+  "sourceInput": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\Lamborghini_6_5_SVJ_V2.mr",
+  "derivedSource": "E:\\Codex\\autonomous_runs\\multi_car_audio\\source_scripts\\lp700_l539_spec_0.1.11a.mr",
+  "isolatedSource": "E:\\Codex\\autonomous_runs\\multi_car_audio\\vendor\\engine-sim-v0.1.11a-v12-lp700-spec-isolated\\assets\\engines\\dacxl\\lp700_l539_spec_0.1.11a.mr",
+  "officialReference": {
+    "sourceUrl": "https://www.lamborghini.com/ko-en/%EB%89%B4%EC%8A%A4/aventador-no-10000-a-new-production-record",
+    "publisher": "Automobili Lamborghini",
+    "target": "Aventador LP700-4 launch specification",
+    "cylinders": 12,
+    "layout": "V",
+    "displacementLiters": 6.5,
+    "aspiration": "naturally_aspirated",
+    "peakPowerCv": 700,
+    "peakPowerRpm": 8250,
+    "runtimeRedlineRpm": 8500,
+    "peakPowerReferenceMatch": true,
+    "exactCurrentAsset": false,
+    "exactEngineSource": false,
+    "reason": "Lamborghini identifies the LP700-4 as a 700 CV naturally aspirated V12 with peak power at 8,250 rpm. The game config/source coverage uses an 8,500-rpm ceiling, but the downloaded source is an SVJ L539 calibration and does not prove the LP700-4's exact engine, exhaust revision, body year or recording identity."
+  },
+  "changes": [
+    "Port the catalog run(...) entrypoint to the 0.1.11a set_engine/set_vehicle/set_transmission entrypoint.",
+    "Change only the output-copy engine display name to record LP700-4 specification coverage; retain SVJ-derived L539 geometry, firing order, cams, ignition and exhaust topology.",
+    "Replace the old 8000-rpm high layer with an 8500-rpm high layer matching the current game's configured ceiling; retain 8250 rpm as the official LP700-4 peak-power reference rather than claiming it is a redline.",
+    "Keep the bank scope family and exactCurrentAsset/exactEngineSource false."
+  ],
+  "logs": [
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 0.06,
+        "mode": "off",
+        "file": "1800-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\1800-off.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\1800-off.wav | target=1800 rpm | actual=1800 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 1800,
+        "load": 1,
+        "mode": "on",
+        "file": "1800-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\1800-on.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\1800-on.wav | target=1800 rpm | actual=1800 rpm | load=1 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4500,
+        "load": 0.06,
+        "mode": "off",
+        "file": "4500-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\4500-off.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\4500-off.wav | target=4500 rpm | actual=4500 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 4500,
+        "load": 1,
+        "mode": "on",
+        "file": "4500-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\4500-on.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\4500-on.wav | target=4500 rpm | actual=4500 rpm | load=1 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 8500,
+        "load": 0.06,
+        "mode": "off",
+        "file": "8500-off.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\8500-off.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\8500-off.wav | target=8500 rpm | actual=8500 rpm | load=0.06 | samples=110250",
+      "stderr": ""
+    },
+    {
+      "layer": {
+        "rpm": 8500,
+        "load": 1,
+        "mode": "on",
+        "file": "8500-on.wav"
+      },
+      "output": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\8500-on.wav",
+      "code": 0,
+      "signal": null,
+      "stdout": "Exported E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\v12-lamborghini-l539-dacxl\\8500-on.wav | target=8500 rpm | actual=8500 rpm | load=1 | samples=110250",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "bankId": "bank.candidate.i4.mazda-b6-compatibility-proxy",
+  "generatedAt": "2026-08-13T14:33:55.528Z",
+  "sourceScript": "candidates/i4-mazda-b6-compatibility-proxy/Mazda_B6_ZE_NA8C_compatibility.mr",
+  "inheritedSource": "E:\\Codex\\autonomous_runs\\multi_car_audio\\candidates\\i4-mazda-bp-ze\\Mazda_BP_ZE.mr",
+  "inheritedSourceSha256": "925e7648a902ff3cd85075716831938b4e986d900c00705d6ed492ccdfc13228",
+  "transformation": "bore 83.0 -> 78.0 mm; stroke 85.0 -> 83.6 mm; engine node/name and set_engine target renamed; BP-ZE head/cam/flow/runner/IR retained",
+  "exactClaim": false,
+  "outputOnly": true
+}

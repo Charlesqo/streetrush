@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "bankId": "bank.candidate.i4.mazda-b6-compatibility-proxy",
+  "generatedAt": "2026-08-13T20:57:47.388Z",
+  "method": "offline-tail-head-derivative-crossfade",
+  "status": "approved",
+  "layers": [
+    {
+      "file": "1800-off.wav",
+      "rpm": 1800,
+      "mode": "off",
+      "method": "offline-tail-head-derivative-crossfade",
+      "loopStart": 0,
+      "loopEnd": 2.5,
+      "crossfadeSamples": 4096,
+      "lockSamples": 128,
+      "hardLockSamples": 32,
+      "sourceSha256": "12adbff4c3ff246491018a4af204d6a7624799c32df195b508d26e503040aa5a",
+      "preparedSha256": "766c607fbba6bcd6178bd4f9becf5bb4c8bfbc90595e56c595caada4184dca1d",
+      "changedSampleFraction": 0.036199546,
+      "dc": {
+        "meanBefore": 0.00005165,
+        "meanAfter": 0.000051382,
+        "meanDelta": -2.68e-7,
+        "pass": true
+      },
+      "waveform": {
+        "rmsBefore": 0.01332791,
+        "rmsAfter": 0.013346885,
+        "rmsRelativeDelta": 0.00142368,
+        "changedSamples": 3991,
+        "pass": true
+      },
+      "seam": {
+        "before": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.005828857,
+          "lastSample": 0.005828857,
+          "firstSlope": -0.000244141,
+          "lastSlope": -0.000244141
+        },
+        "after": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.005828857,
+          "lastSample": 0.005828857,
+          "firstSlope": -0.000244141,
+          "lastSlope": -0.000244141
+        },
+        "sampleDeltaAbs": 0,
+        "slopeDeltaAbs": 0,
+        "sampleContinuityPass": true,
+        "slopeContinuityPass": true
+      },
+      "pass": true
+    },
+    {
+      "file": "1800-on.wav",
+      "rpm": 1800,
+      "mode": "on",
+      "method": "offline-tail-head-derivative-crossfade",
+      "loopStart": 0,
+      "loopEnd": 2.5,
+      "crossfadeSamples": 4096,
+      "lockSamples": 128,
+      "hardLockSamples": 32,
+      "sourceSha256": "532ab630e118366ee9531ae1d5f2425b80589f1aa1fea0c4397155dbd1cb7a23",
+      "preparedSha256": "9ca2fad4d0dbab9adcd54a0be38df03d30c99ddc2bad190989bcab5f37bbf6ff",
+      "changedSampleFraction": 0.03631746,
+      "dc": {
+        "meanBefore": 0.000046889,
+        "meanAfter": 0.000046626,
+        "meanDelta": -2.64e-7,
+        "pass": true
+      },
+      "waveform": {
+        "rmsBefore": 0.012368791,
+        "rmsAfter": 0.012387812,
+        "rmsRelativeDelta": 0.001537816,
+        "changedSamples": 4004,
+        "pass": true
+      },
+      "seam": {
+        "before": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.000213623,
+          "lastSample": 0.000213623,
+          "firstSlope": -0.000579834,
+          "lastSlope": -0.000579834
+        },
+        "after": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.000213623,
+          "lastSample": 0.000213623,
+          "firstSlope": -0.000579834,
+          "lastSlope": -0.000579834
+        },
+        "sampleDeltaAbs": 0,
+        "slopeDeltaAbs": 0,
+        "sampleContinuityPass": true,
+        "slopeContinuityPass": true
+      },
+      "pass": true
+    },
+    {
+      "file": "4200-off.wav",
+      "rpm": 4200,
+      "mode": "off",
+      "method": "offline-tail-head-derivative-crossfade",
+      "loopStart": 0,
+      "loopEnd": 2.5,
+      "crossfadeSamples": 4096,
+      "lockSamples": 128,
+      "hardLockSamples": 32,
+      "sourceSha256": "9c6f3cffe1913f7a64b996ae50dbc623ac0094709ad8a29938636f5c01a945c9",
+      "preparedSha256": "65e04af1dfd66e33df9f3f307e61d814e6904ee526affac3b59752fa4b566c4f",
+      "changedSampleFraction": 0.035845805,
+      "dc": {
+        "meanBefore": -0.000714505,
+        "meanAfter": -0.000714638,
+        "meanDelta": -1.33e-7,
+        "pass": true
+      },
+      "waveform": {
+        "rmsBefore": 0.075385433,
+        "rmsAfter": 0.075383376,
+        "rmsRelativeDelta": -0.000027291,
+        "changedSamples": 3952,
+        "pass": true
+      },
+      "seam": {
+        "before": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.012481689,
+          "lastSample": 0.012481689,
+          "firstSlope": -0.006866455,
+          "lastSlope": -0.006866455
+        },
+        "after": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.012481689,
+          "lastSample": 0.012481689,
+          "firstSlope": -0.006866455,
+          "lastSlope": -0.006866455
+        },
+        "sampleDeltaAbs": 0,
+        "slopeDeltaAbs": 0,
+        "sampleContinuityPass": true,
+        "slopeContinuityPass": true
+      },
+      "pass": true
+    },
+    {
+      "file": "4200-on.wav",
+      "rpm": 4200,
+      "mode": "on",
+      "method": "offline-tail-head-derivative-crossfade",
+      "loopStart": 0,
+      "loopEnd": 2.5,
+      "crossfadeSamples": 4096,
+      "lockSamples": 128,
+      "hardLockSamples": 32,
+      "sourceSha256": "2652d433ceececd40bf2201cd50f8fc8e3231629aaa6d50da592a822845a93c9",
+      "preparedSha256": "77270610b5e5adb097478035265d389102f90cf3706e108635c7cbc252d91e7c",
+      "changedSampleFraction": 0.035927438,
+      "dc": {
+        "meanBefore": 0.000019623,
+        "meanAfter": 0.000019106,
+        "meanDelta": -5.17e-7,
+        "pass": true
+      },
+      "waveform": {
+        "rmsBefore": 0.068314358,
+        "rmsAfter": 0.068319036,
+        "rmsRelativeDelta": 0.000068484,
+        "changedSamples": 3961,
+        "pass": true
+      },
+      "seam": {
+        "before": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.074493408,
+          "lastSample": 0.074493408,
+          "firstSlope": -0.006958008,
+          "lastSlope": -0.006958008
+        },
+        "after": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.074493408,
+          "lastSample": 0.074493408,
+          "firstSlope": -0.006958008,
+          "lastSlope": -0.006958008
+        },
+        "sampleDeltaAbs": 0,
+        "slopeDeltaAbs": 0,
+        "sampleContinuityPass": true,
+        "slopeContinuityPass": true
+      },
+      "pass": true
+    },
+    {
+      "file": "6800-off.wav",
+      "rpm": 6800,
+      "mode": "off",
+      "method": "offline-tail-head-derivative-crossfade",
+      "loopStart": 0,
+      "loopEnd": 2.5,
+      "crossfadeSamples": 4096,
+      "lockSamples": 128,
+      "hardLockSamples": 32,
+      "sourceSha256": "edc411f18b16175d7edf415f5a2bae0049ce15e188dbb93daa3acaf1adb5656d",
+      "preparedSha256": "0f9f370aacdd6057bf75d885c1c18d37b8f6f11247d5f4b8726d8bc8281651e0",
+      "changedSampleFraction": 0.036489796,
+      "dc": {
+        "meanBefore": 0.000224675,
+        "meanAfter": 0.000224618,
+        "meanDelta": -5.7e-8,
+        "pass": true
+      },
+      "waveform": {
+        "rmsBefore": 0.076481319,
+        "rmsAfter": 0.076548772,
+        "rmsRelativeDelta": 0.000881943,
+        "changedSamples": 4023,
+        "pass": true
+      },
+      "seam": {
+        "before": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.068359375,
+          "lastSample": 0.068359375,
+          "firstSlope": 0.003051758,
+          "lastSlope": 0.003051758
+        },
+        "after": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.068359375,
+          "lastSample": 0.068359375,
+          "firstSlope": 0.003051758,
+          "lastSlope": 0.003051758
+        },
+        "sampleDeltaAbs": 0,
+        "slopeDeltaAbs": 0,
+        "sampleContinuityPass": true,
+        "slopeContinuityPass": true
+      },
+      "pass": true
+    },
+    {
+      "file": "6800-on.wav",
+      "rpm": 6800,
+      "mode": "on",
+      "method": "offline-tail-head-derivative-crossfade",
+      "loopStart": 0,
+      "loopEnd": 2.5,
+      "crossfadeSamples": 4096,
+      "lockSamples": 128,
+      "hardLockSamples": 32,
+      "sourceSha256": "34717eede8ddb16598005189aac0d3423be74dd3328de5157ef1440b0db128ec",
+      "preparedSha256": "f783e5f0f4d115ac60f1960ba8023b204f0efff1e0901d23de22cd8811dc0726",
+      "changedSampleFraction": 0.036535147,
+      "dc": {
+        "meanBefore": 0.00092927,
+        "meanAfter": 0.00092946,
+        "meanDelta": 1.9e-7,
+        "pass": true
+      },
+      "waveform": {
+        "rmsBefore": 0.081520239,
+        "rmsAfter": 0.081606021,
+        "rmsRelativeDelta": 0.001052279,
+        "changedSamples": 4028,
+        "pass": true
+      },
+      "seam": {
+        "before": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.093170166,
+          "lastSample": 0.093170166,
+          "firstSlope": 0.002655029,
+          "lastSlope": 0.002655029
+        },
+        "after": {
+          "seamSampleDelta": 0,
+          "seamSlopeDelta": 0,
+          "firstSample": 0.093170166,
+          "lastSample": 0.093170166,
+          "firstSlope": 0.002655029,
+          "lastSlope": 0.002655029
+        },
+        "sampleDeltaAbs": 0,
+        "slopeDeltaAbs": 0,
+        "sampleContinuityPass": true,
+        "slopeContinuityPass": true
+      },
+      "pass": true
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "prototype-reference-only",
+  "vehicles": [
+    {
+      "vehicleId": "mx5",
+      "bankId": "bank.candidate.i4.mazda-b6-compatibility-proxy",
+      "directory": "candidates/i4-mazda-b6-compatibility-proxy"
+    },
+    {
+      "vehicleId": "m3e30",
+      "bankId": "bank.candidate.i4.bmw-s14b23",
+      "directory": "candidates/i4-bmw-s14b23"
+    },
+    {
+      "vehicleId": "gt3rs",
+      "bankId": "bank.candidate.flat6.porsche-gt3-992-dacxl",
+      "directory": "candidates/flat6-porsche-gt3-992-dacxl"
+    },
+    {
+      "vehicleId": "lp700",
+      "bankId": "bank.candidate.v12.lamborghini-l539-dacxl",
+      "directory": "candidates/v12-lamborghini-l539-dacxl"
+    },
+    {
+      "vehicleId": "amggt3",
+      "bankId": "bank.candidate.v8-mercedes-m159-compression-compatible-proxy",
+      "directory": "candidates/v8-mercedes-m159-compression-compatible-proxy"
+    },
+    {
+      "vehicleId": "m5g90",
+      "bankId": "bank.candidate.v8-bmw-s68-compression-compatible-proxy",
+      "directory": "candidates/v8-bmw-s68-compression-compatible-proxy"
+    }
+  ]
+}

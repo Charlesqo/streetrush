@@ -1,0 +1,725 @@
+{
+  "schemaVersion": 1,
+  "resolutionOrder": [
+    "exact",
+    "family",
+    "procedural"
+  ],
+  "profiles": [
+    {
+      "id": "mx5",
+      "displayName": "MAZDA MX-5 NA",
+      "modelFile": "mazda-miata-mx5-na.glb",
+      "identity": {
+        "make": "Mazda",
+        "model": "MX-5 / Miata",
+        "chassis": {
+          "value": "NA",
+          "status": "confirmed",
+          "source": "GLB title and config.js filename"
+        },
+        "generation": {
+          "value": "first generation",
+          "status": "confirmed",
+          "source": "Mazda official history"
+        },
+        "year": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "The asset identifies NA but not market, trim, or production year."
+        },
+        "version": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "NA variants used more than one displacement and market calibration."
+        },
+        "sources": [
+          "https://www.mazda.com/en/about/history/greatcar/roadster/03/",
+          "https://www.mazda.com/en/about/history/1980-1989/",
+          "https://sketchfab.com/3d-models/mazda-miata-mx-5-na-d51fcd44b74f4daf8012c41e0400c041"
+        ]
+      },
+      "engine": {
+        "family": "i4",
+        "cylinders": {
+          "value": 4,
+          "status": "confirmed",
+          "source": "Mazda official first-generation history"
+        },
+        "layout": {
+          "value": "inline",
+          "status": "confirmed",
+          "source": "Mazda official first-generation history"
+        },
+        "aspiration": {
+          "value": "naturally_aspirated",
+          "status": "confirmed",
+          "source": "Mazda official history states no turbo or supercharger"
+        },
+        "displacementLiters": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Exact NA market/trim is not in the GLB or config.js."
+        },
+        "engineCode": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "No engine-code metadata is present."
+        },
+        "firingOrder": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Do not infer from the family label while the variant is unresolved."
+        },
+        "crankshaft": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Exact engine variant is unresolved."
+        },
+        "idleRpm": {
+          "value": 850,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "redlineRpm": {
+          "value": 7000,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "acousticFeatures": [
+          "small naturally aspirated inline-four family",
+          "linear throttle character",
+          "exact displacement/exhaust unresolved"
+        ]
+      },
+      "audio": {
+        "exactBankId": null,
+        "familyFallbackBankIds": [
+          "bank.candidate.i4.mazda-b6-compatibility-proxy",
+          "bank.candidate.i4.mazda-bp-ze",
+          "bank.candidate.i4.honda-vtec"
+        ],
+        "proceduralFallback": true,
+        "proceduralTimbre": {
+          "family": "i4",
+          "lowHz": 118,
+          "midHz": 920,
+          "highHz": 2450,
+          "drive": 1.25
+        },
+        "compatibilitySignalLayer": {"mode": "none", "runtimeEnabled": false, "physical": false, "signals": [], "signalGains": {"turbo": 0, "electricMotor": 0}, "frequencies": {"turbo": 180, "electricMotor": 520}, "activation": "bank-ready-only", "evidence": "No turbo or electric-motor compatibility layer is declared for this naturally aspirated I4 profile."},
+        "signalCapabilities": {
+          "exhaust": {"status": "available", "physical": true, "evidence": "Pinned Engine Simulator source exposes physical exhaust-system output; runtime bank is the approved final exhaust mix."},
+          "intake": {"status": "unavailable", "physical": false, "evidence": "An intake node exists, but no separate intake acoustic bus or exported intake stem exists in 0.1.11a."},
+          "mechanical": {"status": "unavailable", "physical": false, "evidence": "Mechanical simulation exists, but no separate mechanical acoustic bus or exported stem exists in 0.1.11a."},
+          "valvetrain": {"status": "unavailable", "physical": false, "evidence": "Cam/head simulation exists, but no separate valvetrain acoustic bus or exported stem exists in 0.1.11a."},
+          "turbo": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable turbocharger, supercharger or compressor acoustic node."},
+          "electricMotor": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable hybrid or electric-motor acoustic node."}
+        },
+        "resolutionNote": "B6-ZE 1.6L geometry proxy is the primary I4 fallback because its documented 78.0/83.6 mm, 1597 cc and 116 hp reference aligns more closely with the game config. The GLB does not prove BP-ZE/B6-ZE market, year, trim or exact engine, and the audio source inherits BP-ZE head/cam/flow/IR; BP-ZE and Honda B18C5 remain secondary family fallbacks."
+      },
+      "runtimeConfig": {
+        "idleRpm": 850,
+        "redlineRpm": 7000,
+        "power": 116,
+        "torque": 136
+      }
+    },
+    {
+      "id": "m3e30",
+      "displayName": "BMW M3 E30",
+      "modelFile": "bmw-m3-e30.glb",
+      "identity": {
+        "make": "BMW",
+        "model": "M3",
+        "chassis": {
+          "value": "E30",
+          "status": "confirmed",
+          "source": "BMW Group Classic and GLB title"
+        },
+        "generation": {
+          "value": "first M3 generation",
+          "status": "confirmed",
+          "source": "BMW Group Classic"
+        },
+        "year": {
+          "value": "1986-1990 for the base E30 M3 record",
+          "status": "confirmed",
+          "source": "BMW Group Classic"
+        },
+        "version": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "The file does not identify catalyst market, Evolution, Sport Evolution, or production year."
+        },
+        "sources": [
+          "https://www.bmwgroup-classic.com/en/models/bmw-classics/product-description-page.ad-239-1.bmw-m3-e30.html",
+          "https://sketchfab.com/3d-models/free-bmw-m3-e30-ac3c7013434e403e8faff87948caf422"
+        ]
+      },
+      "engine": {
+        "family": "i4",
+        "cylinders": {
+          "value": 4,
+          "status": "confirmed",
+          "source": "BMW Group Classic"
+        },
+        "layout": {
+          "value": "inline",
+          "status": "confirmed",
+          "source": "BMW Group Classic"
+        },
+        "aspiration": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Exact engine variant is not identified in the game files."
+        },
+        "displacementLiters": {
+          "value": 2.302,
+          "status": "confirmed_for_base_record",
+          "source": "BMW Group Classic S14B23 record"
+        },
+        "engineCode": {
+          "value": "S14B23",
+          "status": "confirmed_for_base_record",
+          "source": "BMW Group Classic"
+        },
+        "firingOrder": {
+          "value": [1, 3, 4, 2],
+          "status": "confirmed_for_base_record",
+          "source": "https://e30mpower.com/M3-techspec.html; pinned BMW_S14B23.mr distributor wiring maps wire1, wire3, wire4, wire2"
+        },
+        "crankshaft": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Variant-specific service data is absent from the game files."
+        },
+        "idleRpm": {
+          "value": 900,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "redlineRpm": {
+          "value": 7250,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "acousticFeatures": [
+          "motorsport-derived high-response four-cylinder family",
+          "exact cam/exhaust/catalyst version unresolved"
+        ]
+      },
+      "audio": {
+        "exactBankId": null,
+        "familyFallbackBankIds": [
+          "bank.candidate.i4.bmw-s14b23",
+          "bank.candidate.i4.honda-vtec"
+        ],
+        "proceduralFallback": true,
+        "proceduralTimbre": {
+          "family": "i4",
+          "lowHz": 126,
+          "midHz": 1080,
+          "highHz": 2700,
+          "drive": 1.35
+        },
+        "compatibilitySignalLayer": {"mode": "none", "runtimeEnabled": false, "physical": false, "signals": [], "signalGains": {"turbo": 0, "electricMotor": 0}, "frequencies": {"turbo": 180, "electricMotor": 520}, "activation": "bank-ready-only", "evidence": "No turbo or electric-motor compatibility layer is declared for this naturally aspirated I4 profile."},
+        "signalCapabilities": {
+          "exhaust": {"status": "available", "physical": true, "evidence": "Pinned Engine Simulator source exposes physical exhaust-system output; runtime bank is the approved final exhaust mix."},
+          "intake": {"status": "unavailable", "physical": false, "evidence": "An intake node exists, but no separate intake acoustic bus or exported intake stem exists in 0.1.11a."},
+          "mechanical": {"status": "unavailable", "physical": false, "evidence": "Mechanical simulation exists, but no separate mechanical acoustic bus or exported stem exists in 0.1.11a."},
+          "valvetrain": {"status": "unavailable", "physical": false, "evidence": "Cam/head simulation exists, but no separate valvetrain acoustic bus or exported stem exists in 0.1.11a."},
+          "turbo": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable turbocharger, supercharger or compressor acoustic node."},
+          "electricMotor": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable hybrid or electric-motor acoustic node."}
+        },
+        "resolutionNote": "Pinned BMW S14B23 output is a closer I4 family fallback for the E30 M3, but the game asset does not prove Evolution/market variant; Honda B18C5 remains the secondary fallback."
+      },
+      "runtimeConfig": {
+        "idleRpm": 900,
+        "redlineRpm": 7250,
+        "power": 200,
+        "torque": 240
+      }
+    },
+    {
+      "id": "gt3rs",
+      "displayName": "PORSCHE 911 GT3 RS",
+      "modelFile": "porsche-gt3-rs.glb",
+      "identity": {
+        "make": "Porsche",
+        "model": "911 GT3 RS",
+        "chassis": {
+          "value": "992",
+          "status": "confirmed_for_992_spec_match",
+          "source": "GLB internal node/material names contain TwiXeR_992, 992_gt3rs and 992 engine/exhaust markers; this is a strong asset-generation signal, not an exact engine-code proof."
+        },
+        "generation": {
+          "value": "992",
+          "status": "confirmed_for_992_spec_match",
+          "source": "evidence/glb-identity-audit.json records repeated 992/992_gt3rs internal names; year and exact powertrain variant remain unresolved."
+        },
+        "year": {
+          "value": "2022 specification match only",
+          "status": "confirmed_for_992_spec_match",
+          "reason": "Official Porsche 2022 reference matches the 992 GT3 RS physical specification; the GLB/config do not prove the actual production year."
+        },
+        "version": {
+          "value": "992 GT3 RS internal naming signal; 992.1 is only a specification match",
+          "status": "confirmed_for_992_spec_match",
+          "source": "GLB internal naming narrows the generation, but does not establish 992.1 model year, engine code or exhaust calibration."
+        },
+        "sources": [
+          "https://www.porsche.com/international/models/911/911-gt3-rs/911-gt3-rs/",
+          "https://dealer.porsche.com/gb/porscheretailgroup/en-GB/News-and-Events/Old-news/2022/The-new-911-GT3-RS-2022",
+          "https://sketchfab.com/3d-models/porsche-gt3-rs-e738eae819c34d19a31dd066c45e0f3d",
+          "https://newsroom.porsche.com/en/2022/products/porsche-911-gt3-rs-world-premiere-29177.html",
+          "https://newsroom.porsche.com/dam/jcr%3A46a23375-e7ee-4507-a577-d9761b784d33/992%2520911%2520GT3%2520RS%2520Press%2520Kit%25201.pdf"
+        ]
+      },
+      "engine": {
+        "family": "flat6",
+        "cylinders": {
+          "value": 6,
+          "status": "confirmed_for_992_spec_match",
+          "source": "Porsche official 911 GT3 RS specification"
+        },
+        "layout": {
+          "value": "flat",
+          "status": "confirmed_for_992_spec_match",
+          "source": "Porsche official 911 GT3 RS specification"
+        },
+        "aspiration": {
+          "value": "naturally_aspirated",
+          "status": "confirmed_for_992_spec_match",
+          "source": "Porsche official 911 GT3 RS specification"
+        },
+        "displacementLiters": {
+          "value": 4,
+          "status": "confirmed_for_992_spec_match",
+          "source": "Porsche official 911 GT3 RS specification"
+        },
+        "engineCode": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Generation/engine code absent from the game files."
+        },
+        "firingOrder": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Do not infer across GT3 RS generations."
+        },
+        "crankshaft": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Do not infer across GT3 RS generations."
+        },
+        "idleRpm": {
+          "value": 900,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "redlineRpm": {
+          "value": 9000,
+          "status": "confirmed_for_992_spec_match",
+          "source": "Porsche official 992 GT3 RS press kit"
+        },
+        "acousticFeatures": [
+          "naturally aspirated horizontally opposed six-cylinder",
+          "high-rev track character for 992 match",
+          "exact generation/exhaust unresolved"
+        ]
+      },
+      "audio": {
+        "exactBankId": null,
+        "familyFallbackBankIds": [
+          "bank.candidate.flat6.porsche-gt3-992-dacxl"
+        ],
+        "proceduralFallback": true,
+        "proceduralTimbre": {
+          "family": "flat6",
+          "lowHz": 102,
+          "midHz": 760,
+          "highHz": 3180,
+          "drive": 1.42
+        },
+        "compatibilitySignalLayer": {"mode": "none", "runtimeEnabled": false, "physical": false, "signals": [], "signalGains": {"turbo": 0, "electricMotor": 0}, "frequencies": {"turbo": 180, "electricMotor": 520}, "activation": "bank-ready-only", "evidence": "No turbo or electric-motor compatibility layer is declared for this naturally aspirated flat-six profile."},
+        "signalCapabilities": {
+          "exhaust": {"status": "available", "physical": true, "evidence": "Pinned Engine Simulator source exposes physical exhaust-system output; runtime bank is the approved final exhaust mix."},
+          "intake": {"status": "unavailable", "physical": false, "evidence": "An intake node exists, but no separate intake acoustic bus or exported intake stem exists in 0.1.11a."},
+          "mechanical": {"status": "unavailable", "physical": false, "evidence": "Mechanical simulation exists, but no separate mechanical acoustic bus or exported stem exists in 0.1.11a."},
+          "valvetrain": {"status": "unavailable", "physical": false, "evidence": "Cam/head simulation exists, but no separate valvetrain acoustic bus or exported stem exists in 0.1.11a."},
+          "turbo": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable turbocharger, supercharger or compressor acoustic node."},
+          "electricMotor": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable hybrid or electric-motor acoustic node."}
+        },
+        "resolutionNote": "Official Porsche 992 reference now matches the candidate's 4.0L naturally aspirated flat-six and 9000-rpm coverage; exact bank remains unresolved because the GLB/config and downloaded source do not prove the same engine code, exhaust calibration, production year, or recording identity."
+      },
+      "runtimeConfig": {
+        "idleRpm": 900,
+        "redlineRpm": 9000,
+        "power": 525,
+        "torque": 465
+      }
+    },
+    {
+      "id": "lp700",
+      "displayName": "LAMBORGHINI AVENTADOR LP700",
+      "modelFile": "lamborghini-aventador-lp700.glb",
+      "identity": {
+        "make": "Lamborghini",
+        "model": "Aventador LP700-4",
+        "chassis": {
+          "value": "Aventador LP700-4",
+          "status": "confirmed",
+          "source": "GLB title and model filename"
+        },
+        "generation": {
+          "value": "LP700-4 specification",
+          "status": "confirmed",
+          "source": "Lamborghini specification source"
+        },
+        "year": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "The asset does not identify body style, market, or production year."
+        },
+        "version": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "The file does not distinguish coupe/roadster or later revisions."
+        },
+        "sources": [
+          "https://preowned.lamborghini.com/en_gb/vdp/25398859-2016-Aventador-LP-700-4-Roadster",
+          "https://sketchfab.com/3d-models/lamborghini-aventador-lp700-67796ac0bfa54c5cbe34dffc9847264d",
+          "https://www.lamborghini.com/ko-en/%EB%89%B4%EC%8A%A4/aventador-no-10000-a-new-production-record"
+        ]
+      },
+      "engine": {
+        "family": "v12",
+        "cylinders": {
+          "value": 12,
+          "status": "confirmed",
+          "source": "Lamborghini specification source"
+        },
+        "layout": {
+          "value": "V",
+          "status": "confirmed",
+          "source": "Lamborghini specification source"
+        },
+        "aspiration": {
+          "value": "naturally_aspirated",
+          "status": "confirmed",
+          "source": "Lamborghini specification source"
+        },
+        "displacementLiters": {
+          "value": 6.5,
+          "status": "confirmed",
+          "source": "Lamborghini specification source"
+        },
+        "engineCode": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "No engine-code metadata is present."
+        },
+        "firingOrder": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "No exact engine service data is present in the game files."
+        },
+        "crankshaft": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "No exact crankshaft data is present in the game files."
+        },
+        "idleRpm": {
+          "value": 850,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "redlineRpm": {
+          "value": 8500,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "acousticFeatures": [
+          "large-displacement naturally aspirated V12",
+          "dense ignition pulse field",
+          "exact exhaust revision unresolved"
+        ]
+      },
+      "audio": {
+        "exactBankId": null,
+        "familyFallbackBankIds": [
+          "bank.candidate.v12.lamborghini-l539-dacxl",
+          "bank.candidate.v12.lamborghini-l539-lp700-public-source-8500",
+          "bank.candidate.v12.lamborghini-l539-lp700-public-source"
+        ],
+        "proceduralFallback": true,
+        "proceduralTimbre": {
+          "family": "v12",
+          "lowHz": 94,
+          "midHz": 690,
+          "highHz": 3900,
+          "drive": 1.48
+        },
+        "compatibilitySignalLayer": {"mode": "none", "runtimeEnabled": false, "physical": false, "signals": [], "signalGains": {"turbo": 0, "electricMotor": 0}, "frequencies": {"turbo": 180, "electricMotor": 520}, "activation": "bank-ready-only", "evidence": "No turbo or electric-motor compatibility layer is declared for this naturally aspirated V12 profile."},
+        "signalCapabilities": {
+          "exhaust": {"status": "available", "physical": true, "evidence": "Pinned Engine Simulator source exposes physical exhaust-system output; runtime bank is the approved final exhaust mix."},
+          "intake": {"status": "unavailable", "physical": false, "evidence": "An intake node exists, but no separate intake acoustic bus or exported intake stem exists in 0.1.11a."},
+          "mechanical": {"status": "unavailable", "physical": false, "evidence": "Mechanical simulation exists, but no separate mechanical acoustic bus or exported stem exists in 0.1.11a."},
+          "valvetrain": {"status": "unavailable", "physical": false, "evidence": "Cam/head simulation exists, but no separate valvetrain acoustic bus or exported stem exists in 0.1.11a."},
+          "turbo": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable turbocharger, supercharger or compressor acoustic node."},
+          "electricMotor": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable hybrid or electric-motor acoustic node."}
+        },
+        "resolutionNote": "The SVJ-derived L539 candidate remains primary because it has the strongest current level/8500 coverage. The new explicit LP700-labelled public L539 source is the first family secondary: its output-only limiter/redline and 0.10 level calibration cover the game ceiling, while its community provenance and source modifications keep it non-exact. The older 8000-rpm LP700-labelled bank remains a later comparison fallback. Exact LP700-4 engine, exhaust revision and recording identity remain unresolved."
+      },
+      "runtimeConfig": {
+        "idleRpm": 850,
+        "redlineRpm": 8500,
+        "power": 700,
+        "torque": 690
+      }
+    },
+    {
+      "id": "amggt3",
+      "displayName": "MERCEDES-AMG GT3",
+      "modelFile": "mercedes-amg-gt3.glb",
+      "identity": {
+        "make": "Mercedes-AMG",
+        "model": "GT3",
+        "chassis": {
+          "value": "GT3 customer race car",
+          "status": "confirmed",
+          "source": "Mercedes-AMG Customer Racing"
+        },
+        "generation": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "The official page documents a 2015 car and 2019 successor; the asset does not identify the evolution."
+        },
+        "year": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "No homologation year is present."
+        },
+        "version": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "No evolution or BoP setup is present."
+        },
+        "sources": [
+          "https://customerracing.mercedes-amg.com/en/mercedes-amg-gt3",
+          "https://sketchfab.com/3d-models/mercedes-amg-gt3-wwwvecarzcom-6a3f7e3455064721b74b7f0b66427a07"
+        ]
+      },
+      "engine": {
+        "family": "v8",
+        "cylinders": {
+          "value": 8,
+          "status": "confirmed",
+          "source": "Mercedes-AMG Customer Racing"
+        },
+        "layout": {
+          "value": "V",
+          "status": "confirmed",
+          "source": "Mercedes-AMG Customer Racing"
+        },
+        "aspiration": {
+          "value": "naturally_aspirated",
+          "status": "confirmed",
+          "source": "Mercedes-AMG Customer Racing"
+        },
+        "displacementLiters": {
+          "value": 6.208,
+          "status": "confirmed",
+          "source": "Mercedes-AMG Customer Racing"
+        },
+        "engineCode": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Public page and game files do not identify the code."
+        },
+        "firingOrder": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Not present in the game files or selected official page."
+        },
+        "crankshaft": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Not present in the game files or selected official page."
+        },
+        "idleRpm": {
+          "value": 1000,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "redlineRpm": {
+          "value": 7600,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "acousticFeatures": [
+          "large naturally aspirated customer-racing V8",
+          "dry-sump race installation",
+          "race exhaust/restrictor evolution unresolved"
+        ]
+      },
+      "audio": {
+        "exactBankId": null,
+        "familyFallbackBankIds": [
+          "bank.candidate.v8-mercedes-m159-compression-compatible-proxy",
+          "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+          "bank.candidate.v8.mercedes-m159-m156-mild-ir-proxy",
+          "bank.source.engine-sim.v8"
+        ],
+        "proceduralFallback": true,
+        "proceduralTimbre": {
+          "family": "v8",
+          "lowHz": 82,
+          "midHz": 620,
+          "highHz": 2260,
+          "drive": 1.62
+        },
+        "compatibilitySignalLayer": {"mode": "none", "runtimeEnabled": false, "physical": false, "signals": [], "signalGains": {"turbo": 0, "electricMotor": 0}, "frequencies": {"turbo": 180, "electricMotor": 520}, "activation": "bank-ready-only", "evidence": "No turbo or electric-motor compatibility layer is declared for this naturally aspirated M159-compatible exhaust profile."},
+        "signalCapabilities": {
+          "exhaust": {"status": "available", "physical": true, "evidence": "Pinned Engine Simulator source exposes physical exhaust-system output; runtime bank is the approved final exhaust mix."},
+          "intake": {"status": "unavailable", "physical": false, "evidence": "An intake node exists, but no separate intake acoustic bus or exported intake stem exists in 0.1.11a."},
+          "mechanical": {"status": "unavailable", "physical": false, "evidence": "Mechanical simulation exists, but no separate mechanical acoustic bus or exported stem exists in 0.1.11a."},
+          "valvetrain": {"status": "unavailable", "physical": false, "evidence": "Cam/head simulation exists, but no separate valvetrain acoustic bus or exported stem exists in 0.1.11a."},
+          "turbo": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable turbocharger, supercharger or compressor acoustic node."},
+          "electricMotor": {"status": "unavailable", "physical": false, "evidence": "Full source scan found no executable hybrid or electric-motor acoustic node."}
+        },
+        "resolutionNote": "The first AMG GT3 family fallback is now the loop-approved M159 compression-compatible proxy: it preserves the isolated 6.208L/102.2x94.6 mm source geometry and corrects the executable chamber volume to the official 11.3:1 SLS M159 reference (75.343464 cc). It remains non-exact because the game asset does not identify the GT3 evolution, restrictor, cams, exhaust calibration, firing-order verification, or recording/source identity. The source-calibrated race variant remains second for A/B comparison and fallback; no exact M159 bank is claimed."
+      },
+      "runtimeConfig": {
+        "idleRpm": 1000,
+        "redlineRpm": 7600,
+        "power": 550,
+        "torque": 650
+      }
+    },
+    {
+      "id": "m5g90",
+      "displayName": "BMW M5 G90",
+      "modelFile": "bmw-m5-g90.glb",
+      "identity": {
+        "make": "BMW",
+        "model": "M5 Sedan",
+        "chassis": {
+          "value": "G90",
+          "status": "confirmed",
+          "source": "GLB title and BMW M official page"
+        },
+        "generation": {
+          "value": "seventh M5 generation",
+          "status": "confirmed",
+          "source": "BMW M official page"
+        },
+        "year": {
+          "value": 2024,
+          "status": "confirmed",
+          "source": "GLB title and BMW M 2024 page"
+        },
+        "version": {
+          "value": "M HYBRID launch specification",
+          "status": "confirmed_for_config_match",
+          "source": "BMW M official page and config output"
+        },
+        "sources": [
+          "https://www.bmw-m.com/en/all-models/overview-m-and-m-performance/bmw-m5-sedan/2024/bmw-m5-sedan.html",
+          "https://sketchfab.com/3d-models/bmw-m5-g90-2024-wwwvecarzcom-b2dd13e63c2649c3be90da30e6670a46"
+        ]
+      },
+      "engine": {
+        "family": "v8",
+        "cylinders": {
+          "value": 8,
+          "status": "confirmed",
+          "source": "BMW M official page"
+        },
+        "layout": {
+          "value": "V",
+          "status": "confirmed",
+          "source": "BMW M official page"
+        },
+        "aspiration": {
+          "value": "twin_turbo",
+          "status": "confirmed",
+          "source": "BMW M official page"
+        },
+        "displacementLiters": {
+          "value": 4.4,
+          "status": "confirmed",
+          "source": "BMW M official page"
+        },
+        "engineCode": {
+          "value": "S68B44T0",
+          "status": "confirmed",
+          "source": "BMW official 2025 M5 press material identifies the G90 M5 V8 as S68B44T0."
+        },
+        "firingOrder": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Not present in the game files or selected official page."
+        },
+        "crankshaft": {
+          "value": null,
+          "status": "ambiguous",
+          "reason": "Not present in the game files or selected official page."
+        },
+        "idleRpm": {
+          "value": 700,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "redlineRpm": {
+          "value": 7200,
+          "status": "confirmed",
+          "source": "street-rush/src/config.js"
+        },
+        "acousticFeatures": [
+          "twin-scroll turbo V8",
+          "plug-in hybrid electric torque fill",
+          "electronically controlled M Sport exhaust",
+          "existing naturally aspirated V8 is acoustically unsuitable as exact"
+        ]
+      },
+      "audio": {
+        "exactBankId": null,
+        "familyFallbackBankIds": [
+          "bank.candidate.v8-bmw-s68-compression-compatible-proxy",
+          "bank.candidate.v8-bmw-s68-hybrid-compression-compatibility-proxy",
+          "bank.candidate.v8-bmw-s68-hybrid-compatibility-proxy",
+          "bank.candidate.v8.bmw-s63-equal-length",
+          "bank.candidate.v8.bmw-s63b44t4-source",
+          "bank.candidate.v8-bmw-s68-na-calibrated-proxy",
+          "bank.source.engine-sim.v8"
+        ],
+        "proceduralFallback": true,
+        "proceduralTimbre": {
+          "family": "v8",
+          "lowHz": 76,
+          "midHz": 540,
+          "highHz": 1880,
+          "drive": 1.58
+        },
+        "compatibilitySignalLayer": {"mode": "runtime", "runtimeEnabled": true, "physical": false, "signals": ["turbo", "electricMotor"], "signalGains": {"turbo": 0.026, "electricMotor": 0.018}, "frequencies": {"turbo": 180, "electricMotor": 620}, "activation": "bank-ready-only", "evidence": "Non-physical compatibility overlay synthesized by the runtime from official S68 twin-turbo/hybrid facts; not a physical Engine Simulator stem."},
+        "signalCapabilities": {
+          "exhaust": {"status": "available", "physical": true, "evidence": "Pinned Engine Simulator source exposes two physical exhaust-system outputs; runtime bank is the approved final mix."},
+          "intake": {"status": "unavailable", "physical": false, "evidence": "An intake node exists, but no separate intake acoustic bus or exported intake stem exists in 0.1.11a."},
+          "mechanical": {"status": "unavailable", "physical": false, "evidence": "Mechanical simulation exists, but no separate mechanical acoustic bus or exported stem exists in 0.1.11a."},
+          "valvetrain": {"status": "unavailable", "physical": false, "evidence": "Cam/head simulation exists, but no separate valvetrain acoustic bus or exported stem exists in 0.1.11a."},
+          "turbo": {"status": "compatibility-overlay-baked", "physical": false, "evidence": "Six-layer deterministic compatibility overlay is baked into the bank; full source scan proves no physical turbo/compressor acoustic node."},
+          "electricMotor": {"status": "compatibility-overlay-baked", "physical": false, "evidence": "Six-layer deterministic compatibility overlay includes electric-motor-like compatibility tones; full source scan proves no physical hybrid/electric acoustic node."}
+        },
+        "resolutionNote": "The first M5 family fallback is the loop-approved S68 compression-corrected exhaust-only proxy; its separate runtime compatibility layer provides non-physical RPM/load-linked turbo/electric compatibility tones. Baked-overlay S68 candidates remain later fallbacks and disable the runtime layer. All remain non-exact because physical turbo, cross-bank manifold and electric-motor acoustic buses and an exact G90 recording are unavailable."
+      },
+      "runtimeConfig": {
+        "idleRpm": 700,
+        "redlineRpm": 7200,
+        "power": 727,
+        "torque": 1000
+      }
+    }
+  ]
+}

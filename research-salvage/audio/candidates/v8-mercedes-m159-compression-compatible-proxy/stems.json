@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "bankId": "bank.candidate.v8-mercedes-m159-compression-compatible-proxy",
+  "stems": [
+    {
+      "id": "exhaust_mix",
+      "status": "available",
+      "files": [
+        "1800-off.wav",
+        "1800-on.wav",
+        "4500-off.wav",
+        "4500-on.wav",
+        "7600-off.wav",
+        "7600-on.wav"
+      ],
+      "provenance": "Engine Simulator 0.1.11a exhaust output after output-only M159 chamber-volume correction."
+    }
+  ],
+  "unavailable": [
+    {
+      "id": "intake",
+      "status": "unavailable_in_source_path"
+    },
+    {
+      "id": "mechanical",
+      "status": "unavailable_in_source_path"
+    },
+    {
+      "id": "valvetrain",
+      "status": "unavailable_in_source_path"
+    }
+  ]
+}

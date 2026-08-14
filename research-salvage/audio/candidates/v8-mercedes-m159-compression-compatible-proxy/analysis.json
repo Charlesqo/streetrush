@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "candidate": "bank.candidate.v8-mercedes-m159-compression-compatible-proxy",
+  "analyzedAt": "2026-08-13T15:18:10.859Z",
+  "engineModel": "Mercedes-AMG M159-compatible 6.208L naturally aspirated GT3 V8 compression-ratio compatibility proxy",
+  "cylinders": 8,
+  "validation": {
+    "allFilesDecoded": true,
+    "expectedFormat": "44100 Hz mono PCM16",
+    "formatPass": true,
+    "clippingPass": true,
+    "nonSilencePass": true,
+    "sixLayerPass": true,
+    "loopPass": true,
+    "rpmCoverage": {
+      "min": 1800,
+      "max": 7600,
+      "requested": [
+        1800,
+        1800,
+        4500,
+        4500,
+        7600,
+        7600
+      ]
+    },
+    "pairCoverage": [
+      {
+        "rpm": 1800,
+        "offRmsDbfs": -20.39,
+        "onRmsDbfs": -20.368,
+        "onMinusOffDb": 0.022
+      },
+      {
+        "rpm": 4500,
+        "offRmsDbfs": -21.298,
+        "onRmsDbfs": -21.367,
+        "onMinusOffDb": -0.069
+      },
+      {
+        "rpm": 7600,
+        "offRmsDbfs": -20.693,
+        "onRmsDbfs": -20.612,
+        "onMinusOffDb": 0.081
+      }
+    ],
+    "targetFiringFrequencyFormula": "rpm / 60 * cylinders / 2 (four-stroke firing events per second)",
+    "targetFiringFrequencyUnit": "Hz",
+    "spectralPeakIsNotProofOfPerceptualPitch": true
+  },
+  "layers": [
+    {
+      "file": "1800-off.wav",
+      "requested": {
+        "rpm": 1800,
+        "load": 0.06,
+        "mode": "off"
+      },
+      "decoded": true,
+      "bytes": 220544,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "frames": 110250,
+      "durationSeconds": 2.5,
+      "peak": 0.184082,
+      "peakDbfs": -14.7,
+      "rms": 0.095607,
+      "rmsDbfs": -20.39,
+      "dcMean": 0.00168489,
+      "clippedSampleCount": 0,
+      "nearSilentFraction": 0.000118,
+      "seam": {
+        "loopApproved": true,
+        "firstSample": -0.050781,
+        "lastSample": -0.050781,
+        "endToStartDelta": 0,
+        "note": "Loop interval was approved by the independent loop-quality gate."
+      },
+      "expectedFiringFrequencyHz": 120,
+      "dominantSpectralPeakHz": 119.778,
+      "dominantToExpectedRatio": 0.998,
+      "fftSize": 32768
+    },
+    {
+      "file": "1800-on.wav",
+      "requested": {
+        "rpm": 1800,
+        "load": 1,
+        "mode": "on"
+      },
+      "decoded": true,
+      "bytes": 220544,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "frames": 110250,
+      "durationSeconds": 2.5,
+      "peak": 0.185852,
+      "peakDbfs": -14.617,
+      "rms": 0.095847,
+      "rmsDbfs": -20.368,
+      "dcMean": 0.00194133,
+      "clippedSampleCount": 0,
+      "nearSilentFraction": 0.0001,
+      "seam": {
+        "loopApproved": true,
+        "firstSample": -0.051422,
+        "lastSample": -0.051422,
+        "endToStartDelta": 0,
+        "note": "Loop interval was approved by the independent loop-quality gate."
+      },
+      "expectedFiringFrequencyHz": 120,
+      "dominantSpectralPeakHz": 119.778,
+      "dominantToExpectedRatio": 0.998,
+      "fftSize": 32768
+    },
+    {
+      "file": "4500-off.wav",
+      "requested": {
+        "rpm": 4500,
+        "load": 0.06,
+        "mode": "off"
+      },
+      "decoded": true,
+      "bytes": 220544,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "frames": 110250,
+      "durationSeconds": 2.5,
+      "peak": 0.193604,
+      "peakDbfs": -14.262,
+      "rms": 0.086123,
+      "rmsDbfs": -21.298,
+      "dcMean": -0.00186277,
+      "clippedSampleCount": 0,
+      "nearSilentFraction": 0.000154,
+      "seam": {
+        "loopApproved": true,
+        "firstSample": -0.078705,
+        "lastSample": -0.078705,
+        "endToStartDelta": 0,
+        "note": "Loop interval was approved by the independent loop-quality gate."
+      },
+      "expectedFiringFrequencyHz": 300,
+      "dominantSpectralPeakHz": 149.387,
+      "dominantToExpectedRatio": 0.498,
+      "fftSize": 32768
+    },
+    {
+      "file": "4500-on.wav",
+      "requested": {
+        "rpm": 4500,
+        "load": 1,
+        "mode": "on"
+      },
+      "decoded": true,
+      "bytes": 220544,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "frames": 110250,
+      "durationSeconds": 2.5,
+      "peak": 0.191956,
+      "peakDbfs": -14.336,
+      "rms": 0.085437,
+      "rmsDbfs": -21.367,
+      "dcMean": -0.00176324,
+      "clippedSampleCount": 0,
+      "nearSilentFraction": 0.000218,
+      "seam": {
+        "loopApproved": true,
+        "firstSample": -0.077026,
+        "lastSample": -0.077026,
+        "endToStartDelta": 0,
+        "note": "Loop interval was approved by the independent loop-quality gate."
+      },
+      "expectedFiringFrequencyHz": 300,
+      "dominantSpectralPeakHz": 149.387,
+      "dominantToExpectedRatio": 0.498,
+      "fftSize": 32768
+    },
+    {
+      "file": "7600-off.wav",
+      "requested": {
+        "rpm": 7600,
+        "load": 0.06,
+        "mode": "off"
+      },
+      "decoded": true,
+      "bytes": 220544,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "frames": 110250,
+      "durationSeconds": 2.5,
+      "peak": 0.17923,
+      "peakDbfs": -14.932,
+      "rms": 0.092335,
+      "rmsDbfs": -20.693,
+      "dcMean": -0.00479947,
+      "clippedSampleCount": 0,
+      "nearSilentFraction": 0.000145,
+      "seam": {
+        "loopApproved": true,
+        "firstSample": -0.13208,
+        "lastSample": -0.13208,
+        "endToStartDelta": 0,
+        "note": "Loop interval was approved by the independent loop-quality gate."
+      },
+      "expectedFiringFrequencyHz": 506.667,
+      "dominantSpectralPeakHz": 189.761,
+      "dominantToExpectedRatio": 0.375,
+      "fftSize": 32768
+    },
+    {
+      "file": "7600-on.wav",
+      "requested": {
+        "rpm": 7600,
+        "load": 1,
+        "mode": "on"
+      },
+      "decoded": true,
+      "bytes": 220544,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "frames": 110250,
+      "durationSeconds": 2.5,
+      "peak": 0.173492,
+      "peakDbfs": -15.214,
+      "rms": 0.093194,
+      "rmsDbfs": -20.612,
+      "dcMean": -0.00432438,
+      "clippedSampleCount": 0,
+      "nearSilentFraction": 0.000145,
+      "seam": {
+        "loopApproved": true,
+        "firstSample": -0.127991,
+        "lastSample": -0.127991,
+        "endToStartDelta": 0,
+        "note": "Loop interval was approved by the independent loop-quality gate."
+      },
+      "expectedFiringFrequencyHz": 506.667,
+      "dominantSpectralPeakHz": 189.761,
+      "dominantToExpectedRatio": 0.375,
+      "fftSize": 32768
+    }
+  ]
+}

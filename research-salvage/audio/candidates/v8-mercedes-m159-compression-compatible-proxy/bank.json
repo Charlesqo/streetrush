@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 2,
+  "version": "candidate-2026-08-13-v8-mercedes-m159-compression-compatible-proxy-m159-reference",
+  "id": "bank.candidate.v8-mercedes-m159-compression-compatible-proxy",
+  "scope": "family",
+  "family": "v8",
+  "source": {
+    "engineSimulator": "0.1.11a isolated exporter",
+    "script": "candidates/v8-mercedes-m159-compression-compatible-proxy/M159_compression_compatibility.mr",
+    "engine": "Mercedes-AMG M159-compatible 6.208L naturally aspirated GT3 V8 compression-ratio compatibility proxy",
+    "claim": "Output-only M159 race-source proxy with chamber volume corrected from 28.23 cc to 75.343464 cc using the official 11.3:1 SLS M159 compression reference and 102.2 x 94.6 mm geometry. The current GT3 evolution, exact race calibration, dry-sump audio bus and exact source identity remain unverified.",
+    "exactCurrentAsset": false,
+    "exactEngineSource": false,
+    "sourceUrl": "https://mercedes-benz-publicarchive.com/marsClassic/en/instance/ko/SLS-AMG-Coup-2010---2014.xhtml?oid=192608215",
+    "sourceLineage": {
+      "inheritedCandidate": "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+      "engineCode": "M 159 E 63 / 159.980",
+      "boreMm": 102.2,
+      "strokeMm": 94.6,
+      "cylinders": 8,
+      "displacementCc": 6208.301450175419,
+      "compressionRatio": 11.3,
+      "chamberVolumeCc": 75.34346420115799,
+      "firingOrderReference": "15426378",
+      "exactClaim": false
+    },
+    "officialCompatibilityReference": {
+      "sourceUrl": "https://mercedes-benz-publicarchive.com/marsClassic/en/instance/ko/SLS-AMG-Coup-2010---2014.xhtml?oid=192608215",
+      "sourceTitle": "Mercedes-Benz Public Archive: SLS AMG Coupé, 2010–2014",
+      "engineCode": "M 159 E 63 / 159.980",
+      "boreMm": 102.2,
+      "strokeMm": 94.6,
+      "displacementCc": 6208,
+      "compressionRatio": 11.3,
+      "drySump": true,
+      "exactCurrentAsset": false
+    },
+    "sourceModification": {
+      "changedParameter": "cylinder_head.chamber_volume",
+      "inheritedValueCc": 28.23,
+      "outputValueCc": 75.34346420115799,
+      "formula": "sweptVolumePerCylinder / (compressionRatio - 1)",
+      "sourceHash": "b3e8e7874249e65368d4d4e7f3556b7487bb9a45d01b31e6e1f2ce7a37b0d564"
+    }
+  },
+  "sampleRate": 44100,
+  "channels": 1,
+  "format": "PCM16-WAV",
+  "durationSeconds": 2.5,
+  "quality": "candidate-loop-approved",
+  "registration": {
+    "status": "eligible_for_manifest",
+    "selectedForProfile": true,
+    "selectedAs": "primary_family_fallback",
+    "reason": "Selected as the first non-exact AMG family fallback after source-level proof of the official 11.3:1 M159 chamber-volume correction, six-layer WAV/loop gates, six-layer hash differences, and real Chromium pair audition. The source-calibrated race variant remains registered as the second M159 fallback; current GT3 evolution and exact audio identity remain unresolved."
+  },
+  "loop": {
+    "status": "approved",
+    "loopApproved": true,
+    "loopStart": 0,
+    "loopEnd": 2.5,
+    "method": "offline-tail-head-derivative-crossfade",
+    "crossfadeSamples": 4096
+  },
+  "layers": [
+    {
+      "rpm": 1800,
+      "load": 0.06,
+      "mode": "off",
+      "file": "1800-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 1800,
+      "load": 1,
+      "mode": "on",
+      "file": "1800-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4500,
+      "load": 0.06,
+      "mode": "off",
+      "file": "4500-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 4500,
+      "load": 1,
+      "mode": "on",
+      "file": "4500-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 7600,
+      "load": 0.06,
+      "mode": "off",
+      "file": "7600-off.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    },
+    {
+      "rpm": 7600,
+      "load": 1,
+      "mode": "on",
+      "file": "7600-on.wav",
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      }
+    }
+  ],
+  "selection": {
+    "profileId": "amggt3",
+    "rank": 0,
+    "previousPrimary": "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+    "referenceCandidate": "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+    "exactClaim": false
+  }
+}
