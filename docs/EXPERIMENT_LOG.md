@@ -728,3 +728,20 @@
 - boundary：本轮证明 production 接线、对象归属与浏览器生命周期，不证明人眼看到的轮胎方向、刹车盘/卡钳运动、材质、悬挂幅度和相机均正确；持续驾驶/完赛也继续受当前自动化 hold 能力限制。
 
 结论：GT3 split wheel 已从候选升级为 production；剩余精确轮组是 LP700、AMG、M5 三车，下一步必须重新核对当前 production GLB，而不能把 GT3 schema 或 source 报告机械套用。
+
+## LP700 schema v3 四材质三角切分候选结果
+
+问题：LP700 没有四个单轮节点、只有四个覆盖全车轮组的材质网格；研究隔离脚本的 triangle split 能否形成 hash-scoped、原子、可释放、可由现有 VehicleSystem 驱动的候选，而不在启用前增加 production bundle？
+
+可观测量：三份 GLB identity；四个源 mesh/material；tire cluster 标签/triangle counts；每轮各材质 vertex counts；union bounds；pivot/正反 roll；临时 geometry dispose；clone/Rapier；split 时间/bytes；production bundle。
+
+停止条件：不按 `Object_n` 猜单轮；四源网格和 exact hash 任一漂移即失败；16 parts 全部验证前不隐藏源；候选不列入 production registry；Node texture failure 不冒充视觉结果。
+
+- identity：public/isolation/runtime 都是 11,269,432 bytes、SHA-256 `6489a809...c85d8a`；研究明确结论为 0 named wheel branches，Disk/Frein/Jante/Pneu 各为全车 mesh。
+- red：加入 schema v3 manifest/test 后，现有 binder 稳定失败 `lp700: unsupported wheel manifest schema 3`，证明当前缺口真实存在。
+- green：独立 splitter 从 Pneu triangle centroids 做 18 轮 k-means，得到 FL/FR/RL/RR 各 675 tire triangles；四材质每轮分别为 29,592/4,668/15,702/2,025 vertices，合计 16 meshes。四种 union bounds、pivot、组合 steer/正反 roll 均在 `<1e-8` 门槛内。
+- lifecycle：canonical clone 共享 geometry 但 wheel objects 独立，VehicleSystem/Rapier steer/compression/omega/reset 通过；错置 Jante expected count 时 container 不存在、源 mesh 全可见，临时 geometries 均 dispose。
+- measured cost：新增 split geometry 6,654,336 bytes，当前 Node runs 约 48–64 ms，13 个纹理 decode limitation 为环境边界。第一次把实现放在 production 已导入的通用 binder，使 main chunk 498.37→504.45 kB；因此立即拆成未被 production import 的模块，build 恢复 498.37 kB、66 files/84.68 MiB。
+- regression：最终 LP700、MX-5、GT3 三个真实 loader tests 与完整 `pnpm verify` 通过；Rust/WASM、六车音频/物理、18 deterministic traces、1,320-action timing soak、资产/许可保持。
+
+结论：LP700 已具备值得做浏览器决策的精确候选，但没有被伪装成 production 完成。下一批测真实浏览器加载耗时、16 draw parts 的画面与 cache lifecycle；只有收益/成本可接受才显式 opt-in。

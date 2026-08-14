@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 schema v1 与 GT3 RS split schema v2 exact wheel manifests 已进入 production，GT3 的开始、暂停/恢复和 MX-5↔GT3 cache 往返也通过；六车六层候选发动机 bank 均已逐车获取、解码、回环重载。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；声音剩余工作是人耳、后台/移动成本与授权，不再是运行时接线。LP700/AMG/M5 三车轮组仍是 P1 完成度工作。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
+当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 schema v1 与 GT3 RS split schema v2 exact wheel manifests 已进入 production，GT3 的开始、暂停/恢复和 MX-5↔GT3 cache 往返也通过；LP700 schema v3 四材质三角切分已通过真实 loader/Rapier，但因成本与画面尚未做浏览器批次而保持 production 未导入；六车六层候选发动机 bank 均已逐车获取、解码、回环重载。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；声音剩余工作是人耳、后台/移动成本与授权。LP700/AMG/M5 三车生产轮组仍是 P1，其中 LP700 已从“无接口”推进到“候选待浏览器决策”。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
 
 ## 已整合
 
@@ -422,8 +422,16 @@
 - regression：完整 `pnpm verify` 通过；42 modules、4,864-byte WASM、66 files/84.68 MiB，272 个可版本化文件 secret scan；六车音频/物理、18 条 deterministic replay、1,320-action timing soak 和资产许可门禁保持全绿。唯一构建提示仍是既有的大 chunk warning。
 - 环境限制：Node GLTFLoader 对 13 个纹理产生缺 image decode 的可恢复限制；测试使用完整 geometry scene。浏览器证明 production owner/lifecycle，但没有自动判断动态画面的材质、旋转方向、caliper 视觉稳定性、悬挂幅度和相机遮挡，仍需人工逐车验收。
 
+### LP700 schema v3 四材质三角切分候选
+
+- 来源闭合：`public/cars`、`multi_car_model_research/.../isolation` 与 `赛车游戏素材/runtime` 三份 GLB 均为 11,269,432 bytes、SHA-256 `6489a809...c85d8a`。研究 `wheel_binding.json`/`wheel_experiments.json`/isolation script hashes 为 `94f1d3c8...c005e9`、`2485f3a0...fbedd4`、`73a07dc6...de7f7`。
+- 结构结论：源没有单轮分支；`Object_6/Disk`、`Object_14/Frein`、`Object_22/Jante`、`Object_37/Pneu` 各自覆盖四轮。研究真实浏览器以 tire triangle X/Z cluster 切分成 16 parts，因此不能复用 GT3 branch schema。
+- red/green：新测试先因现有 binder 拒绝 schema 3 失败。独立 `car-wheel-geometry-split` 后以 18 轮 k-means 找 FL/FR/RL/RR，再把四源网格按最近 cluster 切分；每轮锁定 675 tire triangles 和 `29592/4668/15702/2025` vertex counts，pivot 为 split tire world bounds center、容差 2 µm。
+- real loader/lifecycle：四材质 union bounds 保持 `<1e-8`，组合 steer/正反 roll 的轮心保持 `<1e-8`；16 geometries、四 binding、clone sharing/instance isolation、VehicleSystem/Rapier、suspension/reset 通过。故意错 Jante count 时无 scene mutation、源仍 visible、临时 geometries dispose。
+- 成本与决策：split geometry 6,654,336 bytes；Node 单次约 48–64 ms；Node 仍有 13 个可恢复 texture decode limitations。将候选代码放入通用 production binder 曾使 main chunk 498.37→504.45 kB，故移到未被 production import 的独立模块后恢复 498.37 kB、66 files/84.68 MiB。LP700 当前仍静态，待真实浏览器加载、画面与 cache lifecycle 决策。
+
 ## 当前最值得继续的方向
 
 1. 用能保持 keydown/keyup 或实际设备的控制面完成 MX-5 持续驾驶、检查点、三圈/完赛 smoke，并逐车观察材质、相机、朝向和起步；
 2. 六车 bank 接线和切换释放已完成；下一步只做人耳循环/过渡/响度、后台恢复与移动设备成本验收，并保留程序化 fallback，不再继续增加同格式候选；
-3. GT3 v2 的 production/browser 生命周期已通过；下一辆只从 LP700/AMG/M5 中选择能对当前 production GLB 形成 exact manifest 的对象。无真实 loader 映射证据就保持静态，M5/AMG 优化派生不得直接套 source id。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。
+3. GT3 v2 的 production/browser 生命周期已通过；LP700 schema v3 已通过真实 loader，下一批只做其 production opt-in 前的浏览器加载/画面/cache 决策。AMG/M5 仍无当前优化 GLB exact mapping，不能直接套 source id。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。

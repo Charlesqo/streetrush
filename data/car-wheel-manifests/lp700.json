@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 3,
+  "vehicleId": "lp700",
+  "status": "candidate-real-loader-validation-not-production-integrated",
+  "source": {
+    "file": "public/cars/lamborghini-aventador-lp700.glb",
+    "sha256": "6489a80970e15eaa4dcc9aab7e2f43f8f9021bfc15cd9d1081563540f8c85d8a",
+    "bytes": 11269432,
+    "relationship": "public-byte-identical-to-research-isolation-and-runtime-source"
+  },
+  "researchEvidence": [
+    {
+      "sourcePath": "E:/Codex/autonomous_runs/multi_car_model_research/lamborghini-aventador-lp700/wheel_binding.json",
+      "sha256": "94f1d3c8307334f8583f5f749b54e717c29968fc1623019596cdf935f7c005e9",
+      "status": "model-evidence-complete-canonical-runtime-adapter-pending"
+    },
+    {
+      "sourcePath": "E:/Codex/autonomous_runs/multi_car_model_research/lamborghini-aventador-lp700/wheel_experiments.json",
+      "sha256": "2485f3a07efef88f821920b662947ec8a97779bde25e4e7f1030693165fbedd4",
+      "status": "validated-in-browser-triangle-split-prototype"
+    },
+    {
+      "sourcePath": "E:/Codex/autonomous_runs/multi_car_model_research/lamborghini-aventador-lp700/isolation/test.js",
+      "sha256": "73a07dc6647fd4c109578495d9344967dc711b486493900aaea2b2c5f38de7f7",
+      "status": "reference-only-adapter-prototype"
+    }
+  ],
+  "coordinates": {
+    "sourceForward": "+Z",
+    "sourceRight": "+X",
+    "runtimeSteerAxis": [0, 1, 0],
+    "runtimeRollAxis": [1, 0, 0]
+  },
+  "wheelOrder": ["FL", "FR", "RL", "RR"],
+  "geometrySplit": {
+    "method": "tire-triangle-centroid-kmeans-then-nearest-cluster",
+    "iterations": 18,
+    "frontRule": "+Z",
+    "leftRule": "-X",
+    "pivotMethod": "split-tire-world-bounds-center",
+    "pivotToleranceMeters": 0.000002,
+    "sourceParts": [
+      { "role": "brake-disc", "runtimeName": "Object_6", "materialName": "Disk", "expectedSplitVertexCountPerWheel": 29592 },
+      { "role": "brake-detail", "runtimeName": "Object_14", "materialName": "Frein", "expectedSplitVertexCountPerWheel": 4668 },
+      { "role": "rim", "runtimeName": "Object_22", "materialName": "Jante", "expectedSplitVertexCountPerWheel": 15702 },
+      { "role": "tire", "runtimeName": "Object_37", "materialName": "Pneu", "expectedSplitVertexCountPerWheel": 2025 }
+    ]
+  },
+  "wheels": [
+    { "id": "FL", "side": "left", "axle": "front", "expectedPivot": [-0.877916, -0.304302, 1.26177], "expectedTireTriangles": 675 },
+    { "id": "FR", "side": "right", "axle": "front", "expectedPivot": [0.877916, -0.304302, 1.26177], "expectedTireTriangles": 675 },
+    { "id": "RL", "side": "left", "axle": "rear", "expectedPivot": [-0.852769, -0.304302, -1.450055], "expectedTireTriangles": 675 },
+    { "id": "RR", "side": "right", "axle": "rear", "expectedPivot": [0.851891, -0.304302, -1.44944], "expectedTireTriangles": 675 }
+  ]
+}

@@ -18,7 +18,7 @@
 | --- | --- | --- |
 | 一局闭环 | 选车、倒计时、驾驶状态、检查点、三圈、奖牌/PB、暂停、重置、重开、返库都有实现和自动测试 | 用可保持输入的键盘/手柄/触控真实跑过检查点和三圈完赛；确认失败、无效圈、PB 保存和再次开局的可见结果 |
 | 六车可用 | 六车均能加载、READY、获得独立物理参数并开始；加载失败有 fallback | 六车逐台实驾，确认朝向、落地、碰撞、相机、材质、性能和起步；不能只凭文件结构判定 |
-| 六车动态视觉 | M3 生成轮组、MX-5 精确模型轮组和 GT3 RS split 精确轮组已有运行时 owner；GT3 disc 随轮滚动而 caliper 留在 carrier | 为 LP700、AMG GT3、M5 建立 hash-scoped 精确映射并验证转向、滚动、悬挂；人工观察现有动态轮组，再检查灯光、刹车件和车身动态是否值得接入 |
+| 六车动态视觉 | M3 生成轮组、MX-5 精确模型轮组和 GT3 RS split 精确轮组已有运行时 owner；LP700 的四材质三角切分候选已通过真实 loader，但未进入生产 | 单独验证 LP700 浏览器加载成本/画面后再决定 production；为 AMG GT3、M5 建立适用于优化生产 GLB 的 hash-scoped 映射；人工观察现有动态轮组，再检查灯光、刹车件和车身动态是否值得接入 |
 | 六车声音 | 所有车的六层候选 bank 已显式登记、接入并有逐车程序化失败回退；六车浏览器解码、M5 暂停恢复和多轮切换释放通过 | 人耳验证循环接缝、负载/RPM 过渡、响度与真实性；实测后台恢复和移动设备成本；候选授权未解决前保持本地试验状态 |
 | 驾驶与物理 | 六车 simcade 参数、四轮射线、悬挂/轮胎、ABS/TCS、AT/MT、路面和完整数值回归都在 | 以主车实驾校准起步、制动、转向、抓地极限和恢复；研究数据只有单位、owner、工况和误差门槛明确时才采用 |
 | 输入与设备 | 键盘、手柄、触控、横屏、全屏、失焦/断连/rearm 和 fixed-pulse 契约有测试 | 建立至少键盘、常见手柄、手机横屏三类人工矩阵；完成持续按键、同时转向/油门、后台恢复和触控多指实测 |
@@ -52,7 +52,7 @@
 | MX-5 NA | 生产 GLB，真实 loader 结构已锁定 | 990 kg、116 hp、RWD、较软悬挂 | 真实四轮 exact binding 已接生产，待动态视觉观察 | 六层 B6 兼容代理 + 程序化回退 | 非精确、生成型候选；浏览器 decode 通过，听感/授权未验收 |
 | BMW M3 E30 | 生产 GLB | 1200 kg、200 hp、RWD | 生成四轮已接生产 | 六层 S14 家族候选 + 程序化回退 | 浏览器 decode 通过，精确版本/听感/授权未验收 |
 | Porsche GT3 RS | 生产 GLB，真实 loader 结构已锁定 | 1450 kg、525 hp、RWD、高抓地 | split schema v2 精确四轮已接生产；tire/rim/disc roll，caliper 留在 carrier；浏览器运行 owner 通过 | 六层 992 flat-six 候选 + 程序化回退 | 浏览器 decode 通过，非当前资产精确录音 |
-| Lamborghini LP700 | 生产 GLB | 1680 kg、700 hp、AWD | 未绑定，模型轮静态 | 六层 L539 候选 + 程序化回退 | 浏览器 decode 通过，SVJ 派生且非精确 |
+| Lamborghini LP700 | 生产 GLB，与研究/素材 runtime exact | 1680 kg、700 hp、AWD | schema v3 四材质/16 部件三角切分真实 loader 候选通过；尚未列入 production，当前模型轮仍静态 | 六层 L539 候选 + 程序化回退 | 浏览器 decode 通过，SVJ 派生且非精确 |
 | Mercedes-AMG GT3 | 优化生产 GLB | 1285 kg、550 hp、RWD、最高抓地 | 未绑定，模型轮静态 | 六层 M159 兼容代理 + 程序化回退 | 浏览器 decode 通过，非精确且授权未验收 |
 | BMW M5 G90 | 优化生产 GLB | 2435 kg、727 hp、AWD | 未绑定，模型轮静态 | 六层 S68 兼容代理 + 程序化回退 | 浏览器 decode 通过，非精确且授权未验收 |
 
@@ -98,6 +98,14 @@
 - GT3 比赛暂停时 `audioPaused=true`，恢复后为 false 且计时继续；退出车库后 MX-5→GT3 缓存往返仍分别得到 `manifest:mx5`/`manifest:gt3rs` 和 4 bindings；console warning/error 为 0。
 - 证据边界：浏览器诊断证明生产接线和生命周期，不代替人眼判断 tire/rim/disc/caliper 的动态画面、材质、转向方向、悬挂幅度或相机遮挡；这些仍列入逐车实驾验收。
 
+## 2026-08-14 LP700 三角切分候选证据
+
+- production、模型研究 isolation 与素材 runtime 三份 11,269,432-byte GLB SHA-256 均为 `6489a809...c85d8a`。模型没有四个独立轮分支，而是 `Disk/Frein/Jante/Pneu` 四个各覆盖全车四轮的网格；直接套 schema v1/v2 或名字猜测都不成立。
+- 失败优先测试先稳定得到 `unsupported wheel manifest schema 3`。候选独立模块随后按 tire triangle centroid 做 18 轮 k-means，再用相同四个 cluster 切分四种材质；manifest 锁定源名字/材质、每轮 675 个 tire triangles、四种 split vertex counts 和 2 µm pivot 容差。
+- 真实 GLTFLoader 得到 4 source meshes→16 split meshes，四种材质整体 bounds 误差 `<1e-8`；组合转向/正反滚动轮心误差 `<1e-8`；clone geometry 共享、实例对象独立、VehicleSystem/Rapier、悬挂和 reset 通过。
+- 故意把 Jante 计数改错会在任何 scene mutation 前失败：没有 `calibrated-wheels`、四个源网格仍可见，临时 split geometries 已 dispose。Node 实测新增 geometry 6,654,336 bytes，单次切分约 48–64 ms，13 个纹理限制仍只代表 Node image decode 缺失。
+- 候选 splitter 放在 production 未导入的独立模块。一次试放通用 binder 曾使 main chunk 498.37→504.45 kB；隔离后恢复 498.37 kB、84.68 MiB 构建。LP700 仍保持静态，待独立真实浏览器加载/画面/生命周期批次决定是否采用。
+
 ## 剩余工作与顺序
 
 ### P0：证明一局真的能玩
@@ -108,7 +116,7 @@
 
 ### P1：完成六车表现
 
-1. **GT3 RS production/browser 接线已完成**；LP700、AMG、M5 仍需建立适用于当前生产 GLB 的真实结构 manifest。只有 exact mapping 通过真实 loader 后才接轮组，不用名字猜测；优化派生模型不得直接套用 source node id。
+1. **GT3 RS production/browser 接线已完成**；**LP700 schema v3 候选真实 loader 已完成但未接 production**，下一步只测浏览器成本/画面/lifecycle；AMG、M5 仍需适用于优化生产 GLB 的真实结构映射。只有 exact mapping 通过真实 loader 后才接轮组，不用名字猜测；优化派生模型不得直接套用 source node id。
 2. **六车运行时接入已完成**：六个 decoded bank 已用同一显式接口接入并验证逐车加载、暂停、切换释放、回环重载和 HTTP 失败回退；剩余是人耳听感、后台/移动设备成本和授权验收，不再重复扩展同格式 bank。
 3. 用键盘、常见手柄和一台手机完成一局；记录可重复的设备矩阵和性能降级结果。
 
