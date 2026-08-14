@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega，static merge 也能显式保留动态 branch；MX-5 的 manifest 与 host-space pivot 重组已在同构 Three scene 验证，下一步应验证真实 GLTFLoader 对象名称/几何和 AssetManager 的原子失败回退，再决定是否接 production runtime。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
+当前最有价值的路线是：保留 NAS clean HEAD 的可玩网页基线，把已有明确 JS oracle 的固定步调度、replay 数值格式和比赛进度规则逐段交给 Rust 共享核心。网页 shared WASM、开发期 authoritative timing 和长序列 lifecycle 已有稳定证据；production timing 切换暂缓到实际浏览器运行条件恢复。六车实际 GLB 结构已固定为离线 baseline，M3 生成轮组已接入 steer/compression/omega，static merge 也能显式保留动态 branch；MX-5 manifest 已通过真实 GLTFLoader、AssetManager cache/fallback 和 Rapier visual owner，证据支持下一批只给 MX-5 注入 production binding，同时保留失败回退和其他五车原路径。复杂车辆物理暂不机械翻译；C++ 核心和研究续跑先作为 oracle，等输入、输出、状态所有权和允许误差固定后再移植。
 
 ## 已整合
 
@@ -111,6 +111,17 @@
 - ownership：`calibrated-wheels` 沿用现有 v1 binding marker；canonical/clone Object3D 独立而 geometry/material 共享，binder 不创建可释放的 GPU resource。失败缺 tire 时四个 source roots 全部保持原 parent；9 个静态 body meshes 仍可合为 1，独立 wheel host 不被吞掉。
 - 回归：新增 pivot test 加入 `pnpm verify`；完整回归保持 13 项资产生命周期、manifest/structure、现有 M3 adapter、18 条六车 deterministic/WASM replay、1,320-action timing soak、六车物理/恢复、34 modules、4,864-byte WASM 和 24-file build。
 - 边界：`src/car-wheel-pivots.js` 目前未被 production assets path 导入，仍是经测试的候选接口；同构 fixture 不能替代对真实 GLTFLoader clone、加载失败和 fallback 生命周期的验证。
+
+### 真实 GLTFLoader / AssetManager / Rapier 验证
+
+- loader 环境：Node 直接 `GLTFLoader.parseAsync()` 首先在 `loadImageSource` 因 `self is not defined` 失败；仅提供 `self=globalThis` 后 scene 解析完成。Node 缺 `createImageBitmap`，嵌入纹理产生 1 次 Three 可恢复错误并返回 null texture；没有伪造 texture，测试明确锁定该限制。
+- 真实对象：当前 Three 0.180 输出 `Circle002..005` 四个 Object3D 与 12 个 direct Mesh children；rim/tire/rotor vertex counts 为每轮 1452/1920/40，materials 为 015/014/017，全部与 manifest exact。动画仍是 1 个 `Scene` clip、`Empty005.quaternion` track。
+- AssetManager 接口：constructor 新增可选 `{wheelManifests, bindVisualWheels}` 注入，默认都为空；没有 manifest 时执行原 normalize 路径，候选 binder 仍不会被默认 production import。manifest 存在时 wrapper 先拥有 normalized model，binder 把 wheels 移到 sibling host，再只 merge 剩余 static model。
+- 实际 normalize：MX-5 的 12 wheel meshes 移出后，static `sourceDrawCalls=12`、dynamic=0；canonical clone 的 pivot 对象独立、geometry 共享。真实 tire centroid 与 steer pivot `<1e-8`，manual source roots 保持 `matrixAutoUpdate=false`。
+- ground finding：现有 ground calibration 是 `shape:12`，不是预估的 `wheel:4`；原因是 GLTFLoader sanitizer 去掉点号后 `/circle\.00[2-5]/` 不匹配，12 个 wheel parts 都进入 shape candidates。最低点仍由 tire 提供，本批锁定现状而不扩大名称修复；若模型部件尺寸改变需重新评估。
+- failure atomicity：删掉真实 RR tire 时，binder 在 mutation 前拒绝，source scene 四 roots 仍在 `RootNode`；`instantiateCar()` 返回带具体 missing runtimeName 的 structured fallback，pending/car/visual cache 全清。只配置 manifest 未配置 binder 也明确 fallback，不静默忽略。
+- VehicleSystem：真实 normalized canonical clone 经 Rapier rig 得到 4 个 bindings；front steer、四轮 compression、omega fixed-step/interpolation 和 reset 全到达实际 GLTF pivots，与 M3 generated path 共用现有 owner 接口。
+- 回归：真实 loader test 加入 `pnpm verify`；完整回归保持 13 assets、manifest/pivot/M3、18 条六车 replay、1,320-action timing soak、六车物理/恢复、34 modules、4,864-byte WASM、24 files。默认 build 尚未注入 MX-5 manifest。
 
 ### 六车 reset 状态清理
 
@@ -318,7 +329,7 @@
 ## 当前仅参考或候选
 
 - 旧 `E:\Codex\street-rush`：采样音频和较短兼容实现；没有独立提交历史。
-- 六车模型研究：production GLB 结构 baseline、M3 generated-wheel adapter、MX-5 离线 manifest 与纯 host-space pivot 接口已采用；MX-5 production 接线、source brake/caliper、其余车型 wheel/light/camera binding 仍是候选，M5/AMG source 报告不能直接按 node id 套到优化 public derivative。
+- 六车模型研究：production GLB 结构 baseline、M3 generated-wheel adapter、MX-5 manifest/pivot/真实 loader owner 验证已采用；MX-5 production 注入是下一批候选，source brake/caliper、其余车型 wheel/light/camera binding 仍是候选，M5/AMG source 报告不能直接按 node id 套到优化 public derivative。
 - 多车音频：bank 选择/发布与严格 manifest/decode loader 已采用；权威 data/schema、shared decoded registry 和样本播放图仍是强候选，不复制 3.14 GB 隔离副本和 vendor。
 - C++ 物理核心：算法和实验是强 oracle；现有生产 `Vehicle` 与研究 `SharedWheelRide` 仍有明确耦合/状态边界。
 - 六车物理数据：只采用带 provenance、field-scoped eligible 的值；冲突和缺失保持显式。
@@ -361,9 +372,11 @@
 - 证实：MX-5 public 与研究 source 字节一致时，可从 GLB primitive/accessor 独立重算 12 组 part bounds、四个 tire vertex centroids 和 parent roll axis；accessor index 不能从 mesh 顺序推导，必须显式锁定。
 - 证实：MX-5 source root-origin 组合转动会产生 8.85mm tire centroid 漂移；unit host 下的 outer-Y/nested-X manual-matrix 重组可把零姿态/centroid 误差压到实验门槛内，并保持 suspension 的米制语义。
 - 推翻：Material.017 rotor 不应留在 outer-only；隔离源码 attach 整个 wheel root，且模型没有 caliper。也推翻把 Three `attach()` 当作 `<1e-9` 精确 reparent 的假设。
+- 证实：当前 Three GLTFLoader 的 MX-5 runtime names、12 POSITION attributes 和动画与 manifest/research 一致；注入 AssetManager 后仍能保持 cache clone、static merge、structured fallback 和真实 Rapier visual owner。
+- 新限制：Node 可验证 geometry/scene，但嵌入 texture 因缺 createImageBitmap 只得到可恢复失败；ground calibration 当前依赖 `shape:12`，不是语义 tire marker。
 
 ## 当前最值得继续的方向
 
-1. 建立真实 MX-5 GLTFLoader scene 的 Node/可注入 loader 测试，确认 sanitizer 后四个 roots/12 meshes、POSITION geometry 和 manual matrix 路径与同构 fixture 一致；
-2. 在 AssetManager 副本路径验证 bind-before-static-merge、clone/cache、缺节点原子失败与 fallback，不通过就保持候选，不接 main/VehicleSystem；
-3. M5/AMG 若要独立轮组应回到只读 source model 复制后建立可重复优化 pipeline；实际六车 visual loop 与真实 gamepad wrapper 身份仍等待 Browser URL policy 允许。
+1. 在 main 只注入 MX-5 exact manifest/binder；保持其他五车路径不变，并测试 build 中 manifest identity、MX-5 fallback 与 VehicleSystem 四 binding；
+2. 为 MX-5 production 注入增加切换/restart/clone lifecycle 回归，重点检查 manual matrix root、cache reuse、reset 与销毁后新实例；浏览器 visual 证据仍受 URL policy 限制；
+3. M5/AMG 若要独立轮组应回到只读 source model 复制后建立可重复优化 pipeline；真实 gamepad wrapper 身份也继续等待 Browser URL policy 允许。

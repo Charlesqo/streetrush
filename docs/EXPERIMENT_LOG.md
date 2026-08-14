@@ -600,3 +600,30 @@
 可观测量：真实 loader Object3D names/types/counts；bind 前后 matrices/resources；normalize/ground/static merge；cache clone；缺节点/加载异常的 structured fallback。
 
 停止条件：优先 Node/可注入 loader，不规避 Browser URL policy；若纹理解码环境阻塞，记录具体外部条件并改用 AssetManager 注入真实几何 scene；真实对象验证前不接 main/VehicleSystem。
+
+## 真实 MX-5 loader / AssetManager / Rapier 结果
+
+问题：同构 fixture 的结论能否在当前 Three 实际解析出的 scene 上成立，并保持 AssetManager fallback/cache 与 VehicleSystem owner？
+
+可观测量：parse phase/error；runtime objects/geometry/animation；normalize/ground/static counts；canonical clone；缺 part/binder fallback；Rapier steer/compression/omega/reset。
+
+停止条件：不伪造纹理解码，不改 main；默认 AssetManager 行为不变；任何失败不得污染 source scene 或 cache。
+
+- Node boundary：未定义 `self` 时实际失败于 `GLTFParser.loadImageSource`；设置标准全局别名后 parse 完成，但缺 `createImageBitmap` 使 1 个嵌入 texture 可恢复失败。测试只使用完整返回的 geometry scene，并锁定 1 次 texture limitation。
+- objects：4 个 `Circle002..005` Object3D、12 direct Mesh children exact；每轮 POSITION counts 1452/1920/40，materials 015/014/017；动画为 `Scene → Empty005.quaternion`。
+- injection：AssetManager 只新增默认空的 manifest/binder options；真实 normalize 先 bind wheel sibling，再将其余 12 static source draw calls 合并；默认六车路径未启用。
+- ground：真实值为 `shape:12`，不是预估 `wheel:4`；sanitized names 不匹配带点 regex，但 lowest shape 仍来自 tire。本批记录而不顺带修改。
+- ownership：canonical/instance pivots 独立、geometry 共享；真实 tire centroid 对 pivot `<1e-8`；4 roots 都在 nested roll，manual matrix 被 clone 保留。
+- fallback：删除 RR tire 或只给 manifest 不给 binder，都得到 structured fallback；visual/pending/car cache 清空，原 source roots 未 reparent。
+- Rapier：真实 normalized instance 获得 4 bindings；fixed-step angle、front steer、四轮 compression、插值与 reset 全通过。
+- regression：完整 `pnpm verify` 通过；13 assets、manifest/pivot/M3、18 条六车 replay、1,320-action timing、六车物理、34 modules、4,864-byte WASM、24-file build 保持。
+
+结论：真实对象与 lifecycle 证据支持只给 MX-5 做 production 注入；浏览器纹理/视觉仍不能由 Node 测试替代，失败回退必须保留。
+
+## 下一实验
+
+问题：在 main 只注入 MX-5 manifest/binder 后，build identity、四 binding、六车切换/restart/cache clone 和 fallback 是否保持？
+
+可观测量：main constructor options；production bundle modules/size；MX-5 canonical/instances；其他五车无 manifest；重复实例、reset/destroy/recreate；故障时 readiness source。
+
+停止条件：单车 exact mapping，不建立通用名字猜测；其他五车 output deep/structural 不变；实际浏览器 URL policy 仍阻塞时用 Node lifecycle 增量测试，不伪报视觉验收。

@@ -3,7 +3,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
 export class AssetManager {
-  constructor(scene, track) {
+  constructor(scene, track, { wheelManifests = {}, bindVisualWheels = null } = {}) {
     this.scene = scene;
     this.track = track;
     this.loader = new GLTFLoader();
@@ -14,6 +14,8 @@ export class AssetManager {
     this.preloadScheduled = new Set();
     this.preloadScheduleTokens = new Map();
     this.preloadRequests = new Map();
+    this.wheelManifests = wheelManifests;
+    this.bindVisualWheels = bindVisualWheels;
     this.disposedResources = new WeakSet();
     this.carLoadTimeoutMs = 15_000;
     this.preloadTimeoutMs = 15_000;
@@ -206,7 +208,14 @@ export class AssetManager {
         if (object.isMesh && /BMW_E30_M3_(RIM|TIRE)/i.test(object.name)) object.visible = false;
       });
     }
+    const wheelManifest = this.wheelManifests?.[config.id] ?? this.wheelManifests?.get?.(config.id) ?? null;
+    if (wheelManifest) {
+      if (typeof this.bindVisualWheels !== 'function') throw new Error(`Wheel manifest configured without a binder for ${config.id}`);
+      wrapper.add(model);
+      this.bindVisualWheels(wrapper, model, wheelManifest);
+    }
     const optimized = this.mergeStaticCarMeshes(model);
+    if (model.parent === wrapper) wrapper.remove(model);
     optimized.traverse((object) => {
       if (!object.isMesh) return;
       object.receiveShadow = true;
