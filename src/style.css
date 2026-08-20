@@ -195,6 +195,17 @@ h1 em { color: transparent; -webkit-text-stroke: 1px #f5f7fb; font-style: normal
 .touch-ui body.race-active { touch-action: none; }
 .touch-ui body.race-active .corner-links { display: none; }
 
+/* Touch controls occupy both lower corners on every landscape device, not
+   only short phone viewports. Keep the driving readouts clear on tablets and
+   touch-capable laptops as well. */
+@media (orientation: landscape) {
+  .touch-ui .speed { right: max(202px, calc(env(safe-area-inset-right) + 202px)); bottom: 26px; }
+  .touch-ui .speed strong { font-size: 54px; }
+  .touch-ui .nitro, .touch-ui .brake, .touch-ui .chassis-state { display: none; }
+  .touch-ui .gearbox { right: max(202px, calc(env(safe-area-inset-right) + 202px)); bottom: 87px; gap: 12px; }
+  .touch-ui .gearbox div:nth-child(2) { display: none; }
+}
+
 .fullscreen-help { position: fixed; z-index: 42; inset: 0; display: grid; place-items: center; padding: max(22px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(22px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); background: rgba(3,5,9,.78); backdrop-filter: blur(14px) saturate(120%); transition: opacity .2s; }
 .fullscreen-help-panel { position: relative; width: min(440px, 100%); padding: 25px 24px 23px; border: 1px solid rgba(235,255,0,.28); border-radius: 12px; background: rgba(18,24,28,.96); box-shadow: 0 20px 70px #000b, inset 0 1px rgba(255,255,255,.12); }
 .fullscreen-help-panel::before { content: ""; position: absolute; left: 0; top: 0; width: 64px; height: 3px; background: #ebff00; }
@@ -268,11 +279,6 @@ h1 em { color: transparent; -webkit-text-stroke: 1px #f5f7fb; font-style: normal
   .touch-ui .timing-board .timing-primary strong { font-size: 19px; }
   .touch-ui .timing-board strong { font-size: 15px; }
   .touch-ui .invalid-lap-restart { left: 50%; right: auto; top: 62px; transform: translateX(-50%); min-width: 210px; }
-  .touch-ui .speed { right: max(202px, calc(env(safe-area-inset-right) + 202px)); bottom: 26px; }
-  .touch-ui .speed strong { font-size: 54px; }
-  .touch-ui .nitro, .touch-ui .brake, .touch-ui .chassis-state { display: none; }
-  .touch-ui .gearbox { right: max(202px, calc(env(safe-area-inset-right) + 202px)); bottom: 87px; gap: 12px; }
-  .touch-ui .gearbox div:nth-child(2) { display: none; }
   .touch-ui .race-message { top: 35%; font-size: 44px; }
   .touch-ui .finish { justify-content: flex-start; padding-top: 58px; }
   .touch-ui .finish h2 { font-size: 43px; }
