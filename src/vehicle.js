@@ -15,6 +15,7 @@ const clamp = THREE.MathUtils.clamp;
 const damp = THREE.MathUtils.damp;
 const MIN_SAFE_UPDATE_DT = FIXED_DT * 0.25;
 const MAX_SAFE_UPDATE_DT = 0.05;
+const REVERSE_ENGAGE_HOLD_SECONDS = 0.45;
 
 const finiteOr = (value, fallback = 0) => Number.isFinite(value) ? value : fallback;
 
@@ -332,9 +333,11 @@ export class VehicleSystem {
       } else if (this.reverse) {
         driveThrottle = input.brake;
       } else {
+        serviceBrake = input.brake;
         this.reverseHold += dt;
-        if (this.reverseHold >= 0.16) {
+        if (this.reverseHold >= REVERSE_ENGAGE_HOLD_SECONDS) {
           this.setReverseState(true, longSpeed);
+          serviceBrake = 0;
           driveThrottle = input.brake;
         }
       }
