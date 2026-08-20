@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前目标已收窄为现有 MX-5/现有赛道的真实三圈闭环，六车只要求加载和起步。2026-08-21 真实浏览器已由只生成控制帧的 DEV 路线驾驶器通过 VehicleSystem/Rapier 跑完 3 圈/30 检查点：3/3 valid、`07:58.333`、最佳圈 `02:39.133`、铜牌和 PB；再跑、暂停/恢复、两次重开/返库、刷新持久化和六车逐台开始/加速也通过，console warning/error=0。现有键盘 hold/release 状态机测试通过，但浏览器控制 API 不能保持物理 keydown，所以当前唯一剩余直接证据是一次人工键盘或手柄持续驾驶。精确轮组、人耳声音、移动矩阵、更多 Rust/物理、发布和新研究均不再阻塞本目标。
+当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 schema v1、GT3 RS split schema v2 与 LP700 triangle-split schema v3 wheel manifests 已进入 production，GT3/LP700 的开始、暂停/恢复和 cache 往返也通过；六车六层候选发动机 bank 均已逐车获取、解码、回环重载。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；声音剩余工作是人耳、后台/移动成本与授权。生产动态轮组当前是 4/6；AMG 已从当前优化 public GLB 建立并通过真实 loader 的 exact triangle-split 候选，但尚未接 production/browser，且独立卡钳受优化 palette merge 阻断；M5 仍无候选。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
 
 ## 已整合
 
@@ -444,20 +444,8 @@
 - 成本/回归：派生 geometry 2,642,304 bytes，Node 本轮约 88.3 ms，36 个可恢复 texture decode limitations；完整 `pnpm verify` 全绿，44 modules、main 509.72 kB、4,864-byte WASM、66 files/84.69 MiB、277-file secret scan。LP700/MX-5/GT3、六车音频/物理、18 deterministic replay、1,320-action timing soak 和许可门禁保持。
 - 明确未做/受阻：`amggt3` 没有加入 production registry，浏览器画面、mounted/4、比赛、暂停、音频和 cache soak 均未验证。public 已无 `EXT_Calipers*` 材质，卡钳被合并进更大的 palette mesh，当前无法 exact partition；候选保留原静态卡钳并记录重评条件为可复现 dynamic-partition 优化 pipeline 或新的几何/视觉对照。M5 仍无候选。
 
-### MX-5 三圈物理闭环与六车起步验收
-
-- red：当前浏览器表面只有 press/type，没有 keydown hold；连续 800 个 `w` 超时前没有跨帧形成油门，速度仍为 0。此结果只证明自动化能力不足，不否定已测试的 InputController 持键状态。
-- 最小实现：`src/dev-race-driver.js` 是纯输入函数，按 position/forward、前方赛道目标、offset、曲率和速度输出有界 steer/throttle/brake。main 仅在 `DEV + devtools + acceptance-drive` 下替换 frame input；不暴露位置、计时、圈数或 checkpoint mutation。生产 query 无法启用。
-- red/green 测试：新 runner 初次因模块不存在失败；实现后直线油门、左右 heading、中心线恢复、弯道目标速度/制动、NaN 和零目标拒绝通过，既有 keyboard/rearm/pointer 测试和 production build 通过。
-- 三圈结果：MX-5 顺序通过 30 checkpoints，全程 3/3 valid；总时间 `07:58.333`、best lap `02:39.133`、铜牌、新 PB。页面显示完整 finish summary，返库和 reload 后 PB 仍恢复。
-- lifecycle：第二轮 pause 将计时冻结在 `00:01.875` 且 audio true，resume 后计时继续/audio false；restart 回到 lap 1/checkpoint 0/VALID，返库 start enabled。第三轮再次 start/restart/garage，PB 未丢失。
-- six-car：六车 mounted id 正确并实际加速到 16–29 km/h；四个已生产动态轮车型报告 4 bindings，AMG/M5 允许 0；六车 bank ready，暂停返库成功，console warning/error=0。
-- research-salvage：README 证实当前六车 bank 已逐 hash 接入、旧 runtime 只供参考；物理 projection 只有 21 个大多重合字段，MX-5 coil rate 缺 motion ratio 等必要条件。没有直接解决可玩闭环缺口的新内容，本目标不继续采用。
-- full regression：`pnpm verify` 全绿；45 modules、main 509.79 kB、4,864-byte WASM、66 files/84.69 MiB、279-file secret scan。输入、六车资产/音频/物理、18 deterministic traces、1,320-action timing soak 与许可 inventory 保持。
-- 边界：路线输入与真实 keyboard/gamepad 共享 VehicleSystem 之后的物理/比赛路径，但不共享人工设备来源。它证明完赛系统，不等价于人工持续驾驶；人工一圈/三圈记录仍是唯一未闭合证据。
-
 ## 当前最值得继续的方向
 
-1. 用物理键盘或手柄人工持续驾驶 MX-5，至少通过一圈并优先完成三圈；记录输入来源、有效圈、完赛/PB 和任何真实阻塞。
-2. 若人工驾驶发现阻塞，只修复该阻塞并回归三圈/三轮生命周期；不把轮组、声音真实性、设备矩阵或更多 Rust 工作重新加入完成条件。
-3. 当前浏览器物理闭环、三轮 lifecycle 和六车起步已完成；在人工设备证据前保持目标 active，不用路线驾驶器冒充人工验收。
+1. 用能保持 keydown/keyup 或实际设备的控制面完成 MX-5 持续驾驶、检查点、三圈/完赛 smoke，并逐车观察材质、相机、朝向和起步；
+2. 六车 bank 接线和切换释放已完成；下一步只做人耳循环/过渡/响度、后台恢复与移动设备成本验收，并保留程序化 fallback，不再继续增加同格式候选；
+3. GT3 v2 与 LP700 v3 的 production/browser 生命周期已通过；AMG 当前优化 GLB exact 候选已通过 real loader，下一批做 production/browser 保留或撤回决策，同时诚实保留静态 caliper 边界；M5 仍需从当前优化 GLB 建立映射。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。

@@ -16,12 +16,10 @@ import { clampFrameDelta } from './physics-scheduling.js';
 import { loadSharedCoreCapabilities } from './shared-core-owner.js';
 import { initializeRapier } from './rapier-init.js';
 import { getOrientationUiState, ORIENTATIONS, shouldFreezeRace } from './orientation.js';
-import { computeDevRaceDriverInput } from './dev-race-driver.js';
 
 const $ = (id) => document.getElementById(id);
-const pageParameters = new URLSearchParams(location.search);
 const schedulerFault = import.meta.env.DEV
-  ? pageParameters.get('scheduler-fault')
+  ? new URLSearchParams(location.search).get('scheduler-fault')
   : null;
 const sharedCorePromise = loadSharedCoreCapabilities(
   schedulerFault === 'missing-wasm'
@@ -31,7 +29,7 @@ const sharedCorePromise = loadSharedCoreCapabilities(
 const MEDAL_LABELS = { gold: '金牌', silver: '银牌', bronze: '铜牌' };
 const touchCapable = matchMedia('(pointer: coarse)').matches
   || navigator.maxTouchPoints > 0
-  || pageParameters.has('touch');
+  || new URLSearchParams(location.search).has('touch');
 document.documentElement.classList.toggle('touch-ui', touchCapable);
 const standaloneMode = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 const canvas = $('game');
@@ -113,7 +111,6 @@ let slowFrameWindows = 0;
 let fullscreenHelpShown = false;
 let devTelemetry = null;
 let devFixedStepIndex = 0;
-let lastDevRaceDriverSnapshot = null;
 const MODAL_DIALOG_IDS = ['orientation-hint', 'fullscreen-help', 'pause-menu', 'finish', 'about'];
 const dialogReturnFocus = new Map();
 
@@ -132,9 +129,7 @@ function initializeAudio() {
     .finally(() => publishDevVehicleReadiness());
 }
 
-const devToolsRequested = import.meta.env.DEV && pageParameters.has('devtools');
-const devRaceDriverRequested = devToolsRequested && pageParameters.has('acceptance-drive');
-document.documentElement.dataset.acceptanceRaceDriver = devRaceDriverRequested ? 'route-input' : 'off';
+const devToolsRequested = import.meta.env.DEV && new URLSearchParams(location.search).has('devtools');
 if (devToolsRequested) {
   const { DevTelemetryBuffer } = await import('./dev-telemetry.js');
   devTelemetry = new DevTelemetryBuffer({ capacity: 2048 });
@@ -160,7 +155,6 @@ function getDevReadiness() {
     audioBankError: audioBank.error,
     physicsSchedulerOwner: physicsScheduler?.owner ?? null,
     physicsSchedulerFallback: physicsScheduler?.fallbackReason ?? null,
-    acceptanceRaceDriver: devRaceDriverRequested ? lastDevRaceDriverSnapshot ?? { active: false } : null,
     state,
     restartable,
     startable: Boolean(startableState && !vehicleLoadPending && vehicleMatchesSelection && vehicle?.visual?.userData?.source === 'gltf'),
@@ -917,46 +911,6 @@ function fixedUpdate(frameInput) {
   input.consumeFixedPulses();
 }
 
-const devRaceDriverForward = new THREE.Vector3();
-
-function getDevRaceDriverInput() {
-  const trackInfo = track.nearestInfo(vehicle.currentPose.position, vehicle.trackHint);
-  const sampleCount = track.samples.length;
-  const metersPerSample = track.length / sampleCount;
-  const lookaheadMeters = 8 + Math.min(90, vehicle.telemetry.speedKmh) * 0.22;
-  const lookaheadSamples = Math.max(4, Math.round(lookaheadMeters / metersPerSample));
-  const target = track.samples[(trackInfo.index + lookaheadSamples) % sampleCount];
-  const curvatureTarget = track.samples[(trackInfo.index + lookaheadSamples * 2) % sampleCount];
-  const curvatureRadians = Math.acos(THREE.MathUtils.clamp(
-    trackInfo.tangent.dot(curvatureTarget.tangent),
-    -1,
-    1,
-  ));
-  devRaceDriverForward.set(0, 0, 1).applyQuaternion(vehicle.currentPose.rotation);
-  devRaceDriverForward.y = 0;
-  devRaceDriverForward.normalize();
-  const frameInput = computeDevRaceDriverInput({
-    positionX: vehicle.currentPose.position.x,
-    positionZ: vehicle.currentPose.position.z,
-    forwardX: devRaceDriverForward.x,
-    forwardZ: devRaceDriverForward.z,
-    targetX: target.point.x,
-    targetZ: target.point.z,
-    trackOffset: trackInfo.offset,
-    curvatureRadians,
-    speedKmh: vehicle.telemetry.speedKmh,
-  });
-  lastDevRaceDriverSnapshot = {
-    active: state === 'race',
-    sampleIndex: trackInfo.index,
-    offset: Number(trackInfo.offset.toFixed(3)),
-    targetSpeedKmh: Number(frameInput.targetSpeedKmh.toFixed(1)),
-  };
-  document.documentElement.dataset.acceptanceRaceDriverOffset = String(lastDevRaceDriverSnapshot.offset);
-  document.documentElement.dataset.acceptanceRaceDriverTargetSpeed = String(lastDevRaceDriverSnapshot.targetSpeedKmh);
-  return frameInput;
-}
-
 function updateHUD() {
   if (!vehicle) return;
   const telemetry = vehicle.telemetry;
@@ -1036,10 +990,7 @@ function animate(now) {
     renderer.render(scene, camera);
     return;
   }
-  const playerInput = input.update(frameDt, vehicle.telemetry.speedKmh, { deferFixedPulses: true });
-  const frameInput = devRaceDriverRequested && (state === 'race' || state === 'countdown')
-    ? getDevRaceDriverInput()
-    : playerInput;
+  const frameInput = input.update(frameDt, vehicle.telemetry.speedKmh, { deferFixedPulses: true });
   if (input.consumePulse('KeyP')) {
     performanceVisible = !performanceVisible;
     $('perf').classList.toggle('hidden', !performanceVisible);
