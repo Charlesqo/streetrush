@@ -73,7 +73,7 @@ export const CARS = [
     speed: 296, accel: 96, grip: 98, mass: 1450, power: 525, torque: 465,
     wheelbase: 2.46, trackWidth: 1.62, wheelRadius: 0.335, steer: 0.41,
     idle: 900, redline: 9000, peakRpm: 6300, gears: [3.750, 2.290, 1.720, 1.340, 1.110, 0.960, 0.840],
-    finalDrive: 4.25, drivetrain: 'RWD', cdA: 0.78, brakeTorque: 4550,
+    finalDrive: 4.25, drivetrain: 'RWD', cdA: 0.862, brakeTorque: 4550,
     suspension: { ...baseSuspension, restLength: 0.27, springRate: 44000, damperBump: 5200, damperRebound: 6500, antiRoll: 12500 },
     tire: { ...baseTire, mu: 1.27, longStiffness: 12.5, lateralStiffness: 8.8 },
     model: { targetLength: 4.55, yaw: 0, groundOffset: 0.64 },

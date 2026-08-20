@@ -34,16 +34,16 @@
     },
     "gt3rs": {
       "seeded-steady-v1": {
-        "exactFnv1a64": "82dbc6b2bd78ceac",
-        "quantizedFnv1a64": "c3fa69af115f4b41"
+        "exactFnv1a64": "f34770843fe27e71",
+        "quantizedFnv1a64": "33ac77777e8f9786"
       },
       "shift-direction-v1": {
-        "exactFnv1a64": "bed4810a098abe0d",
-        "quantizedFnv1a64": "72ae69e9e469acb9"
+        "exactFnv1a64": "e6913a3b3e9eebdf",
+        "quantizedFnv1a64": "cdeae4f73a7dde17"
       },
       "reset-replay-v1": {
-        "exactFnv1a64": "b0baafb186a273fd",
-        "quantizedFnv1a64": "28d42c83e9acd531"
+        "exactFnv1a64": "168deec4203643bb",
+        "quantizedFnv1a64": "2d30227eda573285"
       }
     },
     "lp700": {

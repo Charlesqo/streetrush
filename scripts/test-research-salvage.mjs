@@ -169,6 +169,14 @@ for (const vehicle of projection.vehicles) {
   }
 }
 
+const gt3Projection = projection.vehicles.find(({ vehicleId }) => vehicleId === 'gt3rs');
+const gt3CdA = gt3Projection.fields.find(({ fieldPath }) => fieldPath === 'fields.aero.cdA');
+const gt3Config = CARS.find(({ id }) => id === 'gt3rs');
+assert.equal(gt3CdA.status, 'direct');
+assert.equal(gt3CdA.confidence, 'high');
+assert.equal(gt3CdA.units, 'm^2');
+assert.equal(gt3Config.cdA, gt3CdA.value, 'GT3 RS runtime CdA uses the selected direct source field');
+
 const spring = await readJson(salvageRoot, 'physics', 'mx5-na-spring-rate-derivation.json');
 assert.equal(spring.vehicleId, 'mx5');
 assert.match(spring.importantBoundary, /not factory force-displacement curves and not wheel rates/i);
