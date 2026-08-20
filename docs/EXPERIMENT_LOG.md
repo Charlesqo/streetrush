@@ -781,3 +781,23 @@
 - cost/regression：2,642,304 geometry bytes，Node 本轮约 88.3 ms，36 个 recoverable texture limitations；`amggt3` 仍不在 production registry。完整 `pnpm verify` 通过：44 modules、main 509.72 kB、4,864-byte WASM、66 files/84.69 MiB、277-file secret scan，既有六车测试和许可门禁无回归。
 
 结论：AMG 已从“优化模型无映射”升级为“真实 loader 候选通过”；它仍不是 production 完成。下一小轮只做显式 production/browser opt-in 决策，并保留静态 caliper 边界；M5 仍无当前优化 GLB 候选。
+
+## MX-5 三圈可玩闭环实验
+
+问题：现有游戏是否真的能在浏览器中经由车辆物理、路面限制和顺序检查点完成三圈、生成成绩/PB，并在再跑/暂停/重开/返库后保持生命周期，而不是只有孤立计时单测？
+
+可观测量：输入来源；车辆速度和路面；lap/checkpoint/valid；finish summary；medal/PB；pause time/audio gate；restart/garage；reload persistence；六车 mounted/start/acceleration/audio；console。
+
+停止条件：不直接调用 timing/passCheckpoint，不写 vehicle pose/rigid body，不降低检查点速度/道路限制；任一圈 invalid 或漏序即不算完赛；DEV 驾驶器不得在 production 激活；不把自动路线输入写成人工键盘证据。
+
+- automation red：Browser API 的 press/type 没有 keydown hold；800 个连续 `w` 在 selector deadline 前没有跨帧油门，速度 0。它解释了旧 smoke 的短脉冲失败，但不证明生产键盘坏。
+- test red：先加入纯输入测试，稳定失败 `ERR_MODULE_NOT_FOUND src/dev-race-driver.js`。实现后锁定直线全油门、右向目标、偏右回正、弯道降速/制动、NaN 和零距离拒绝；`test:input` 与 build 同时绿。
+- implementation：DEV 路线驾驶器根据真实车辆 pose/forward、track nearest offset、随速度变化的 lookahead 和 tangent curvature 生成输入帧。它经过 `vehicle.fixedUpdate`、Rapier step、`afterPhysics`、track limits 和 `updateCheckpoints`；代码没有 timing/checkpoint/pose mutation 能力。
+- full run：MX-5 首圈约 `02:40.058`，best 最终 `02:39.133`；30 个检查点顺序通过，3/3 valid，`07:58.333` 完赛，显示铜牌/刷新纪录/新三圈 PB。
+- lifecycle round 2：再跑后车辆加速；pause 在 `00:01.875` 冻结 1.5 s，audio `true`；resume 后 `00:03.658`、audio `false`；pause restart 后 lap 1/checkpoint 0/VALID，再 pause garage，start enabled/audio false。
+- lifecycle round 3：再次 start，跑到有效检查点后 restart，再返库；车库仍显示 best `02:39.133`、race PB `07:58.333`。reload 后两值仍存在。
+- six-car：M3/GT3/LP700/AMG/M5 逐台 start 后速度 `16/24/27/29/29` km/h，MX-5 首轮为 17 km/h；mounted id、start enabled 和 bank ready 正确，全部暂停返库。AMG/M5 的 0 wheel bindings 是当前允许 fallback；console warning/error 0。
+- salvage decision：复核 `research-salvage/README.md` 后没有新增采用。音频已接；物理候选不能直接提升当前可玩闭环；旧 runtime patch 明确 reference-only。
+- full regression：完整 `pnpm verify` 通过；45 modules、main 509.79 kB、4,864-byte WASM、66 files/84.69 MiB、279-file secret scan；输入、六车资产/声音/物理、Rust/WASM、18 deterministic traces、1,320-action timing soak 和许可 inventory 无回归。
+
+结论：真实页面的车辆物理→检查点→三圈→结果/PB→再次开始闭环已被证实，六车也满足加载和起步条件。剩余不是代码闭环，而是一次物理键盘或手柄的人工持续驾驶证据；在取得它之前不宣布目标完成，也不转去做六车精细化。
