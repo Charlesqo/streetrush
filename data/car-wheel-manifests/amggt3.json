@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 3,
+  "vehicleId": "amggt3",
+  "status": "candidate-optimized-derivative-real-loader-not-production-integrated",
+  "source": {
+    "file": "public/cars/mercedes-amg-gt3.glb",
+    "sha256": "af1f95809e31aa2546151857497c99442cf499940030fde8b1c5615f43f1cbf7",
+    "bytes": 9636232,
+    "generator": "glTF-Transform v4.4.1",
+    "relationship": "optimized-derivative-of-recorded-source-model"
+  },
+  "sourceModel": {
+    "sha256": "649ec8573d8c26311fed80f3ca3ada6d6e0e39e458fca7f93552cfcd3a027451",
+    "bytes": 33004208,
+    "relationship": "byte-identical-across-nas-source-model-research-isolation-and-runtime-source"
+  },
+  "researchEvidence": [
+    {
+      "sourcePath": "E:/Codex/autonomous_runs/multi_car_model_research/mercedes-amg-gt3/wheel_binding.json",
+      "sha256": "687a100d0124aa81993fcb4f796948e036883fa66cf34021045bc7ccc7c7d0fb",
+      "status": "source-model-browser-validated-production-derivative-not-covered"
+    },
+    {
+      "sourcePath": "E:/Codex/autonomous_runs/multi_car_model_research/mercedes-amg-gt3/wheel_experiments.json",
+      "sha256": "478799688ebc6cea6b809bc33219b72a60c04ce57b9431e08ca5a8a26d5ac12f",
+      "status": "source-model-pivot-disc-caliper-browser-validated"
+    }
+  ],
+  "coordinates": {
+    "sourceForward": "+Z",
+    "sourceRight": "+X",
+    "runtimeSteerAxis": [0, 1, 0],
+    "runtimeRollAxis": [1, 0, 0]
+  },
+  "wheelOrder": ["FL", "FR", "RL", "RR"],
+  "geometrySplit": {
+    "method": "tire-triangle-centroid-kmeans-then-nearest-cluster",
+    "iterations": 18,
+    "frontRule": "+Z",
+    "leftRule": "-X",
+    "pivotMethod": "split-tire-world-bounds-center",
+    "pivotToleranceMeters": 0.000002,
+    "sourceParts": [
+      { "role": "brake-disc", "motion": "spin", "runtimeName": "Object_69", "materialName": "EXT_Disc", "expectedSplitVertexCountPerWheel": 1344 },
+      { "role": "rim", "motion": "spin", "runtimeName": "Object_481", "materialName": "PaletteMaterial003", "expectedSplitVertexCountPerWheel": 24306 },
+      { "role": "rim-blur", "motion": "spin", "runtimeName": "Object_485", "materialName": "amg_gt3_rims_blur", "expectedSplitVertexCountPerWheel": 7200 },
+      { "role": "tire", "motion": "spin", "runtimeName": "Object_477", "materialName": "amg_gt3_tyres", "expectedSplitVertexCounts": { "FL": 3456, "FR": 3456, "RL": 3744, "RR": 3744 } }
+    ],
+    "knownUnboundParts": [
+      {
+        "role": "caliper",
+        "status": "blocked-by-optimizer-palette-merge",
+        "reason": "source EXT_Calipers materials are no longer independently addressable in the production derivative"
+      }
+    ]
+  },
+  "wheels": [
+    { "id": "FL", "side": "left", "axle": "front", "expectedPivot": [-0.815443174, -0.295710032, 1.37873382], "expectedTireTriangles": 1152 },
+    { "id": "FR", "side": "right", "axle": "front", "expectedPivot": [0.815442822, -0.295710032, 1.37873382], "expectedTireTriangles": 1152 },
+    { "id": "RL", "side": "left", "axle": "rear", "expectedPivot": [-0.812249956, -0.280542249, -1.207323392], "expectedTireTriangles": 1248 },
+    { "id": "RR", "side": "right", "axle": "rear", "expectedPivot": [0.812249605, -0.280542249, -1.207323392], "expectedTireTriangles": 1248 }
+  ]
+}

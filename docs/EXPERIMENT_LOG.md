@@ -762,3 +762,22 @@
 - evidence boundary：截图不足以判断 Disk/Frein/Jante/Pneu 的近距离材质、刹车件是否应全部 roll、实际旋转方向、悬挂幅度和驾驶中抖动；自动控制也仍不能持续油门完赛。这些不因 opt-in 通过而消失。
 
 结论：当前加载与生命周期证据支持保留 LP700 production opt-in；六车静态轮组缺口缩小为 AMG/M5 两车。下一批转向这两辆优化派生模型的实际几何分区证据，或优先完成可保持输入的人工一局。
+
+## AMG GT3 优化派生 schema v3 候选结果
+
+问题：AMG source 模型有轮组层级，但当前生产是 glTF-Transform 优化派生；能否只从当前 public 几何建立 hash-scoped、原子、可驱动候选，而不机械复用 source node/pivot，也不把无法分离的卡钳伪装成完成？
+
+可观测量：public/source hash、nodes/meshes/triangles；当前 public material roots；每轮 triangle/vertex count；pivot；source index 守恒；正反 roll/steer 后中心；clone/Rapier/reset；失败前 scene mutation；临时 geometry dispose；候选 geometry bytes/time；production registry；全回归。
+
+停止条件：public identity 或 exact material roots 不符即停；不能得到四个稳定 cluster 或所有 indices 守恒即停；source pivot 只作对比不能直接采用；卡钳若已并入大 palette mesh则显式暂留静态；候选阶段不得进入 production registry，浏览器证据不得预写。
+
+- identity：public/NAS committed public 为 9,636,232 bytes、SHA-256 `af1f9580...cbf7`；source/research/material runtime 为 33,004,208 bytes、`649ec857...451f`。优化将 `540/166` nodes/meshes 变为 `51/51`，302,492 triangles 保持。
+- red 1：首版 AMG manifest 被 LP700 固定 `brake-disc/brake-detail/rim/tire` role validator 拒绝。修正为 2–12 个唯一 role、显式 `spin|carrier` motion、恰好一个 spinning tire，并继续在 mutation 前完成所有校验；LP700 manifest 补齐四个 `motion=spin`，原 production 回归保持。
+- red 2：假设四轮 tyre 各 1,200 triangles，真实 loader 首先报告 FL 只有 1,152；实测后锁定 FL/FR 1,152、RL/RR 1,248，证明逐轮计数是必要契约。
+- red 3：研究 source normalized front X 为 `±0.826071`，当前 public 实测为 `-0.815443174/+0.815442822`，偏约 0.010627858 m；rear 也以 public 为准。manifest 改锁四个 public pivots，容差 2 µm，不把 source 动画报告当 production oracle。
+- green：从 `EXT_Disc`、palette rim、rim-blur、tyre 四个全车网格切出 16 parts；每轮前三种为 `1,344/24,306/7,200` vertices，tyre 前 `3,456`、后 `3,744`。所有 source indices 守恒，中心在 steer/正反 roll 后 `<1e-8`，clone sharing/instance isolation、Rapier owner、悬挂/reset 通过。
+- atomic failure：故意破坏 rim count 后没有 `calibrated-wheels`，四 source mesh 保持可见，临时 geometry dispose；不存在半接入 scene。
+- blocker：source 的独立 `EXT_Calipers*` 在 public 中消失并被 optimizer 并入大型 palette mesh，当前没有 exact partition。候选让 disc/rim/rim-blur/tire roll，原卡钳视觉留在静态车身；重评需要可复现 dynamic-partition optimizer 或精确 palette 分区与真实视觉对照。
+- cost/regression：2,642,304 geometry bytes，Node 本轮约 88.3 ms，36 个 recoverable texture limitations；`amggt3` 仍不在 production registry。完整 `pnpm verify` 通过：44 modules、main 509.72 kB、4,864-byte WASM、66 files/84.69 MiB、277-file secret scan，既有六车测试和许可门禁无回归。
+
+结论：AMG 已从“优化模型无映射”升级为“真实 loader 候选通过”；它仍不是 production 完成。下一小轮只做显式 production/browser opt-in 决策，并保留静态 caliper 边界；M5 仍无当前优化 GLB 候选。

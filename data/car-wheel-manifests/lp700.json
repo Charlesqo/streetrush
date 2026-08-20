@@ -40,10 +40,10 @@
     "pivotMethod": "split-tire-world-bounds-center",
     "pivotToleranceMeters": 0.000002,
     "sourceParts": [
-      { "role": "brake-disc", "runtimeName": "Object_6", "materialName": "Disk", "expectedSplitVertexCountPerWheel": 29592 },
-      { "role": "brake-detail", "runtimeName": "Object_14", "materialName": "Frein", "expectedSplitVertexCountPerWheel": 4668 },
-      { "role": "rim", "runtimeName": "Object_22", "materialName": "Jante", "expectedSplitVertexCountPerWheel": 15702 },
-      { "role": "tire", "runtimeName": "Object_37", "materialName": "Pneu", "expectedSplitVertexCountPerWheel": 2025 }
+      { "role": "brake-disc", "motion": "spin", "runtimeName": "Object_6", "materialName": "Disk", "expectedSplitVertexCountPerWheel": 29592 },
+      { "role": "brake-detail", "motion": "spin", "runtimeName": "Object_14", "materialName": "Frein", "expectedSplitVertexCountPerWheel": 4668 },
+      { "role": "rim", "motion": "spin", "runtimeName": "Object_22", "materialName": "Jante", "expectedSplitVertexCountPerWheel": 15702 },
+      { "role": "tire", "motion": "spin", "runtimeName": "Object_37", "materialName": "Pneu", "expectedSplitVertexCountPerWheel": 2025 }
     ]
   },
   "wheels": [

@@ -4,7 +4,7 @@
 
 ## 当前判断
 
-当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 schema v1、GT3 RS split schema v2 与 LP700 triangle-split schema v3 wheel manifests 已进入 production，GT3/LP700 的开始、暂停/恢复和 cache 往返也通过；六车六层候选发动机 bank 均已逐车获取、解码、回环重载。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；声音剩余工作是人耳、后台/移动成本与授权。AMG/M5 两车生产轮组仍是 P1，二者的优化生产 GLB 不允许直接套 source id。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
+当前目标是把可玩游戏所需的全套准备做完整，并明确列出已完成、部分完成、未完成和受阻项，不再无边界扩展研究。现有网页已在真实浏览器通过六车 READY、Rust/WASM owner、开始/暂停/恢复/reset/快速重开/返库 smoke；MX-5 schema v1、GT3 RS split schema v2 与 LP700 triangle-split schema v3 wheel manifests 已进入 production，GT3/LP700 的开始、暂停/恢复和 cache 往返也通过；六车六层候选发动机 bank 均已逐车获取、解码、回环重载。剩余 P0 是持续驾驶到完赛和逐车视觉/设备验收；声音剩余工作是人耳、后台/移动成本与授权。生产动态轮组当前是 4/6；AMG 已从当前优化 public GLB 建立并通过真实 loader 的 exact triangle-split 候选，但尚未接 production/browser，且独立卡钳受优化 palette merge 阻断；M5 仍无候选。复杂物理和更多 Rust owner 继续以明确接口和对照证据推进，不机械翻译。
 
 ## 已整合
 
@@ -434,8 +434,18 @@
 - final regression：完整 `pnpm verify` 全绿；44 modules、main 508.99 kB、4,864-byte WASM、66 files/84.69 MiB、275-file secret scan；六车物理/音频、18 deterministic replay、1,320-action timing soak 和资产许可门禁均保持。大 chunk warning 已知，不在本批无证据改构建拓扑。
 - 保留边界：截图不能验证刹车细节、轮组旋转方向、悬挂幅度或持续驾驶，因此这些仍待人工；现有加载/lifecycle 证据支持保留 production opt-in，不把视觉未验收写成全部完成。
 
+### AMG GT3 优化派生 schema v3 候选
+
+- 来源身份：当前 public 与 NAS committed public 均为 9,636,232 bytes、SHA-256 `af1f9580...cbf7`；NAS `source-models`、模型研究 isolation 与素材 runtime 均为 33,004,208 bytes、`649ec857...451f`。NAS source repo 有其他未提交变化，所有来源保持只读；候选只锁定 clean committed public identity 和当前新项目副本。
+- 派生差异：glTF-Transform 4.4.1 把 source `540 nodes/166 meshes` 压成 public `51 root nodes/51 meshes`，302,492 triangles 不变。source 的 WHEEL hierarchy、disc/caliper 独立节点不能直接套用；当前 public 的有效分区是 `Object_69/EXT_Disc`、`Object_481/PaletteMaterial003`、`Object_485/amg_gt3_rims_blur`、`Object_477/amg_gt3_tyres`。
+- 被推翻的判断：现有 geometry splitter 只接受 LP700 的四个固定 role，首次 AMG manifest 按预期失败；假设四轮 tire 都是 1,200 triangles 时，真实 FL 以 1,152 失败；复用 source front center `±0.826071` 时相对 public 实测 `±0.815443` 偏 10.6 mm。它们分别推动 role/motion 通用化、逐轮 count map 和生产几何中心锁定。
+- 当前候选：四个 source part 均声明 `motion=spin`；每轮 disc/rim/rim-blur 为 `1,344/24,306/7,200` vertices，tire 为 FL/FR `3,456`、RL/RR `3,744`，轮胎 triangles 为 `1,152/1,152/1,248/1,248`。四个 production pivots 以 2 µm 容差锁定，不复用 source 报告。
+- real loader/lifecycle：4 sources→16 parts，所有 source indices 守恒；转向、正反 roll 后中心误差 `<1e-8`，16 geometries、四 bindings、clone geometry sharing/instance isolation、VehicleSystem/Rapier 和 reset 通过。破坏 rim count 时在 scene mutation 前原子失败、源可见、临时 geometries dispose。
+- 成本/回归：派生 geometry 2,642,304 bytes，Node 本轮约 88.3 ms，36 个可恢复 texture decode limitations；完整 `pnpm verify` 全绿，44 modules、main 509.72 kB、4,864-byte WASM、66 files/84.69 MiB、277-file secret scan。LP700/MX-5/GT3、六车音频/物理、18 deterministic replay、1,320-action timing soak 和许可门禁保持。
+- 明确未做/受阻：`amggt3` 没有加入 production registry，浏览器画面、mounted/4、比赛、暂停、音频和 cache soak 均未验证。public 已无 `EXT_Calipers*` 材质，卡钳被合并进更大的 palette mesh，当前无法 exact partition；候选保留原静态卡钳并记录重评条件为可复现 dynamic-partition 优化 pipeline 或新的几何/视觉对照。M5 仍无候选。
+
 ## 当前最值得继续的方向
 
 1. 用能保持 keydown/keyup 或实际设备的控制面完成 MX-5 持续驾驶、检查点、三圈/完赛 smoke，并逐车观察材质、相机、朝向和起步；
 2. 六车 bank 接线和切换释放已完成；下一步只做人耳循环/过渡/响度、后台恢复与移动设备成本验收，并保留程序化 fallback，不再继续增加同格式候选；
-3. GT3 v2 与 LP700 v3 的 production/browser 生命周期已通过；AMG/M5 仍无当前优化 GLB exact mapping，下一批先检查派生 pipeline 是否保留可验证的材质/几何分区，不能直接套 source id。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。
+3. GT3 v2 与 LP700 v3 的 production/browser 生命周期已通过；AMG 当前优化 GLB exact 候选已通过 real loader，下一批做 production/browser 保留或撤回决策，同时诚实保留静态 caliper 边界；M5 仍需从当前优化 GLB 建立映射。长期物理/Rust 工作继续按 owner、单位和误差门槛推进。

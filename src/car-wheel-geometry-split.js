@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 const WHEEL_ORDER = Object.freeze(['FL', 'FR', 'RL', 'RR']);
-const SOURCE_PART_ROLES = Object.freeze(['brake-disc', 'brake-detail', 'rim', 'tire']);
+const PART_MOTIONS = Object.freeze(['spin', 'carrier']);
 
 function fail(vehicleId, message) {
   throw new Error(`${vehicleId || '<unknown-vehicle>'}: ${message}`);
@@ -210,8 +210,18 @@ function splitGeometryByClusters(sourceMesh, clusters, vehicleId, role) {
 function collectBindings(host, model, manifest, vehicleId) {
   const split = manifest.geometrySplit;
   if (split?.pivotMethod !== 'split-tire-world-bounds-center') fail(vehicleId, 'geometrySplit pivot method is unsupported');
-  if (!sameArray(split?.sourceParts?.map(({ role }) => role), SOURCE_PART_ROLES)) {
-    fail(vehicleId, 'geometrySplit sourceParts must be brake-disc/brake-detail/rim/tire');
+  if (!Array.isArray(split?.sourceParts) || split.sourceParts.length < 2 || split.sourceParts.length > 12) {
+    fail(vehicleId, 'geometrySplit sourceParts must contain 2 to 12 entries');
+  }
+  const roles = split.sourceParts.map(({ role }) => role);
+  if (roles.some((role) => typeof role !== 'string' || role.length === 0) || new Set(roles).size !== roles.length) {
+    fail(vehicleId, 'geometrySplit source part roles must be unique non-empty strings');
+  }
+  if (split.sourceParts.some(({ motion }) => !PART_MOTIONS.includes(motion))) {
+    fail(vehicleId, 'geometrySplit source part motion must be spin or carrier');
+  }
+  if (split.sourceParts.filter(({ role, motion }) => role === 'tire' && motion === 'spin').length !== 1) {
+    fail(vehicleId, 'geometrySplit requires exactly one spinning tire source');
   }
   const sources = split.sourceParts.map((part) => {
     const object = requireUniqueObject(model, part.runtimeName, vehicleId, `${part.role} source`);
@@ -219,8 +229,14 @@ function collectBindings(host, model, manifest, vehicleId) {
       fail(vehicleId, `${part.role} source must be a single-material mesh inside the normalized model`);
     }
     if (materialName(object) !== part.materialName) fail(vehicleId, `${part.role} source material must be ${part.materialName}`);
-    if (!Number.isInteger(part.expectedSplitVertexCountPerWheel) || part.expectedSplitVertexCountPerWheel <= 0) {
-      fail(vehicleId, `${part.role} expected split vertex count is invalid`);
+    const scalarCountIsValid = Number.isInteger(part.expectedSplitVertexCountPerWheel)
+      && part.expectedSplitVertexCountPerWheel > 0;
+    const wheelCountsAreValid = WHEEL_ORDER.every((id) => (
+      Number.isInteger(part.expectedSplitVertexCounts?.[id])
+      && part.expectedSplitVertexCounts[id] > 0
+    ));
+    if (!scalarCountIsValid && !wheelCountsAreValid) {
+      fail(vehicleId, `${part.role} expected split vertex counts are invalid`);
     }
     return { part, object };
   });
@@ -242,8 +258,10 @@ function collectBindings(host, model, manifest, vehicleId) {
       const pieces = splitSources.map(({ part, object, geometries }) => {
         const geometry = geometries[wheelIndex];
         const actualCount = geometry.attributes.position.count;
-        if (actualCount !== part.expectedSplitVertexCountPerWheel) {
-          fail(vehicleId, `${wheel.id} ${part.materialName} split vertex count ${actualCount} != ${part.expectedSplitVertexCountPerWheel}`);
+        const expectedCount = part.expectedSplitVertexCounts?.[wheel.id]
+          ?? part.expectedSplitVertexCountPerWheel;
+        if (actualCount !== expectedCount) {
+          fail(vehicleId, `${wheel.id} ${part.materialName} split vertex count ${actualCount} != ${expectedCount}`);
         }
         return { part, source: object, geometry };
       });
@@ -256,7 +274,10 @@ function collectBindings(host, model, manifest, vehicleId) {
         fail(vehicleId, `${wheel.id} expected pivot is invalid`);
       }
       const error = centerHost.distanceTo(new THREE.Vector3(...wheel.expectedPivot));
-      if (error > tolerance) fail(vehicleId, `${wheel.id} split tire pivot error ${error} > ${tolerance}`);
+      if (error > tolerance) {
+        const actual = centerHost.toArray().map((value) => Number(value.toFixed(9)));
+        fail(vehicleId, `${wheel.id} split tire pivot ${JSON.stringify(actual)} error ${error} > ${tolerance}`);
+      }
       return { wheel, pieces, centerHost };
     });
     return { bindings, sources, createdGeometries };
@@ -291,7 +312,7 @@ export function bindGeometrySplitVisualWheels(host, model, manifest) {
       steer.add(roll);
       container.add(steer);
       const rollWorld = host.matrixWorld.clone().multiply(new THREE.Matrix4().makeTranslation(centerHost.x, centerHost.y, centerHost.z));
-      const worldToRoll = rollWorld.invert();
+      const worldToPivot = rollWorld.invert();
       for (const { part, source, geometry } of pieces) {
         const piece = new THREE.Mesh(geometry, source.material);
         piece.name = `${wheel.id}-${part.materialName}-split`;
@@ -301,8 +322,8 @@ export function bindGeometrySplitVisualWheels(host, model, manifest) {
         piece.frustumCulled = source.frustumCulled;
         piece.layers.mask = source.layers.mask;
         piece.matrixAutoUpdate = false;
-        piece.matrix.copy(worldToRoll).multiply(source.matrixWorld);
-        roll.add(piece);
+        piece.matrix.copy(worldToPivot).multiply(source.matrixWorld);
+        (part.motion === 'carrier' ? steer : roll).add(piece);
       }
     }
     host.add(container);
