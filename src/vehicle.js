@@ -6,6 +6,7 @@ import {
   SHIFT_TORQUE_FACTOR,
   aerodynamicDragScale,
   drivetrainEfficiency,
+  frictionLimitedYawRate,
   roadWheelRpm,
   torqueCurveFactor,
 } from './vehicle-physics.js';
@@ -479,6 +480,8 @@ export class VehicleSystem {
     let absActive = false;
     let tcsActive = false;
     let groundedCount = 0;
+    let supportedLoad = 0;
+    let gripWeightedLoad = 0;
     let averageSurface = 'asphalt';
     for (let index = 0; index < this.wheels.length; index += 1) {
       const wheel = this.wheels[index];
@@ -512,6 +515,8 @@ export class VehicleSystem {
       const slipRatio = (wheel.omega * this.config.wheelRadius - wheelLongSpeed) / Math.max(3.5, Math.abs(wheelLongSpeed));
       const slipAngle = Math.atan2(wheelLateralSpeed, Math.max(2.2, Math.abs(wheelLongSpeed)));
       const surface = SURFACES[wheel.surface];
+      supportedLoad += normal;
+      gripWeightedLoad += normal * surface.grip;
       const muLoad = normal * this.config.tire.mu * surface.grip;
       let longitudinalForce = Math.tanh(slipRatio * this.config.tire.longStiffness) * muLoad;
       let lateralForce = -Math.tanh(slipAngle * this.config.tire.lateralStiffness) * muLoad;
@@ -553,14 +558,25 @@ export class VehicleSystem {
       tmp.force.copy(tmp.bodyVelocity).multiplyScalar(dragScale);
       this.body.addForce(tmp.force, true);
     }
-    const targetYawRate = longSpeed / Math.max(2, this.config.wheelbase) * Math.tan(this.steerAngle);
+    const kinematicYawRate = longSpeed / Math.max(2, this.config.wheelbase) * Math.tan(this.steerAngle);
+    const supportedGrip = supportedLoad > 1 ? gripWeightedLoad / supportedLoad : 0;
+    const targetYawRate = frictionLimitedYawRate(
+      kinematicYawRate,
+      longSpeed,
+      this.config.tire.mu,
+      supportedGrip,
+    );
     const stabilityError = targetYawRate - angularVelocity.y;
-    const stabilityActive = Math.abs(stabilityError) > 0.16 && speedKmh > 14 && !activeInput.handbrake;
+    const stabilityActive = groundedCount >= 2
+      && Math.abs(stabilityError) > 0.16
+      && speedKmh > 14
+      && !activeInput.handbrake;
     if (stabilityActive) {
+      const correctionLimit = this.config.mass * 8 * supportedGrip;
       const correctionTorque = clamp(
         stabilityError * this.config.mass * this.config.wheelbase * 1.65,
-        -this.config.mass * 8,
-        this.config.mass * 8,
+        -correctionLimit,
+        correctionLimit,
       );
       this.body.addTorque({ x: 0, y: correctionTorque, z: 0 }, true);
     }

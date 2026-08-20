@@ -5,6 +5,7 @@ import {
   GRAVITY,
   aerodynamicDragScale,
   drivetrainEfficiency,
+  frictionLimitedYawRate,
   roadWheelRpm,
   torqueCurveFactor,
 } from '../src/vehicle-physics.js';
@@ -36,6 +37,9 @@ function testSharedModel() {
   const forceMagnitude = Math.abs(scale) * speed;
   nearlyEqual(forceMagnitude, 0.5 * AIR_DENSITY * sample.cdA * speed * speed);
   assert.equal(aerodynamicDragScale(sample.cdA, 0), 0);
+  nearlyEqual(frictionLimitedYawRate(0.8, 20, 1, 0.5), GRAVITY * 0.5 / 20);
+  nearlyEqual(frictionLimitedYawRate(-0.8, 20, 1, 0.5), -GRAVITY * 0.5 / 20);
+  nearlyEqual(frictionLimitedYawRate(0.2, 20, 1, 1), 0.2);
 }
 
 function accelerateTo(rig, targetKmh, maximumSeconds, throttle = 1) {
