@@ -95,14 +95,15 @@ controller.setTouchEnabled(true);
 
 const frameStep = () => controller.update(1 / 60);
 
-function makeGamepad({ axis = 0, throttle = 0, brake = 0, handbrake = 0, shiftUp = false, shiftDown = false, reset = false } = {}) {
-  const buttons = Array.from({ length: 8 }, () => ({ value: 0, pressed: false }));
+function makeGamepad({ axis = 0, throttle = 0, brake = 0, handbrake = 0, shiftUp = false, shiftDown = false, reset = false, menu = false } = {}) {
+  const buttons = Array.from({ length: 10 }, () => ({ value: 0, pressed: false }));
   buttons[0] = { value: handbrake, pressed: handbrake > 0.5 };
   buttons[3] = { value: reset ? 1 : 0, pressed: reset };
   buttons[4] = { value: shiftDown ? 1 : 0, pressed: shiftDown };
   buttons[5] = { value: shiftUp ? 1 : 0, pressed: shiftUp };
   buttons[6] = { value: brake, pressed: brake > 0.5 };
   buttons[7] = { value: throttle, pressed: throttle > 0.5 };
+  buttons[9] = { value: menu ? 1 : 0, pressed: menu };
   return { axes: [axis], buttons };
 }
 
@@ -279,6 +280,25 @@ replacementPad.buttons[5] = { value: 1, pressed: true };
 replacementPad.buttons[7] = { value: 1, pressed: true };
 assert.equal(frameStep().driveIntent, 1);
 assert.equal(controller.frame.shiftUp, true);
+gamepads = [];
+controller.releaseAll();
+
+const menuPad = makeGamepad();
+gamepads = [menuPad];
+assert.equal(controller.consumeGamepadMenuPulse(), false, 'neutral gamepad rearms the menu button');
+menuPad.buttons[9] = { value: 1, pressed: true };
+assert.equal(controller.consumeGamepadMenuPulse(), true, 'gamepad menu button emits a rising-edge pulse');
+assert.equal(controller.consumeGamepadMenuPulse(), false, 'held gamepad menu button does not repeat');
+menuPad.buttons[9] = { value: 0, pressed: false };
+assert.equal(controller.consumeGamepadMenuPulse(), false);
+menuPad.buttons[9] = { value: 1, pressed: true };
+assert.equal(controller.consumeGamepadMenuPulse(), true, 'gamepad menu button rearms after release');
+controller.releaseAll();
+assert.equal(controller.consumeGamepadMenuPulse(), false, 'pause entry waits for the held menu button to release');
+menuPad.buttons[9] = { value: 0, pressed: false };
+assert.equal(controller.consumeGamepadMenuPulse(), false);
+menuPad.buttons[9] = { value: 1, pressed: true };
+assert.equal(controller.consumeGamepadMenuPulse(), true, 'a fresh press can resume after pause');
 gamepads = [];
 controller.releaseAll();
 
@@ -497,6 +517,7 @@ for (const [name, trigger] of lifecycleReleases) {
 
 console.log('PASS keyboard shortcuts respect interactive targets and modifiers');
 console.log('PASS releaseAll and gamepad reconnects rearm keyboard and gamepad sources');
+console.log('PASS gamepad menu button emits one pulse per neutral-to-pressed transition');
 console.log('PASS gamepad identity replacements require a neutral handshake');
 console.log('PASS fixed-step pulse handoff retains keyboard, touch, and gamepad pulses across sub-fixed render frames');
 console.log('PASS hold and pulse pointer captures release on pointerup and lifecycle events');

@@ -4,7 +4,7 @@ const INTERACTIVE_KEYBOARD_TAGS = new Set(['button', 'a', 'input', 'textarea', '
 const GAMEPLAY_PREVENT_DEFAULT_CODES = new Set(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space']);
 const GAMEPAD_STICK_DEADZONE = 0.08;
 const GAMEPAD_BUTTON_DEADZONE = 0.05;
-const GAMEPAD_INPUT_BUTTONS = [0, 3, 4, 5, 6, 7];
+const GAMEPAD_INPUT_BUTTONS = [0, 3, 4, 5, 6, 7, 9];
 const FIXED_PULSE_CODES = [
   'KeyE',
   'KeyQ',
@@ -95,6 +95,9 @@ export class InputController {
     this.gamepadRearmPending = false;
     this.gamepadConnected = false;
     this.gamepad = null;
+    this.menuGamepad = null;
+    this.menuGamepadDown = false;
+    this.menuGamepadRearmPending = false;
     this.touchPointerResets = new Set();
     this.pointerCaptures = new Map();
     this.touchPointerRearm = new Set();
@@ -140,6 +143,8 @@ export class InputController {
       this.frame.driveIntent = 0;
       this.padButtons = { up: false, down: false, reset: false };
       this.gamepadRearmPending = true;
+      this.menuGamepadDown = false;
+      this.menuGamepadRearmPending = true;
       this.releaseTouch();
     };
     addEventListener('keydown', this.onKeyDown);
@@ -362,6 +367,32 @@ export class InputController {
     const hit = this.pulses.has(code);
     this.pulses.delete(code);
     return hit;
+  }
+
+  consumeGamepadMenuPulse() {
+    const pads = navigator.getGamepads?.() || [];
+    const pad = Array.from(pads).find((candidate) => candidate && candidate.connected !== false) || null;
+    const replaced = Boolean(pad && this.menuGamepad && pad !== this.menuGamepad);
+    if (!pad) {
+      this.menuGamepad = null;
+      this.menuGamepadDown = false;
+      this.menuGamepadRearmPending = false;
+      return false;
+    }
+    if (replaced) {
+      this.menuGamepadDown = false;
+      this.menuGamepadRearmPending = true;
+    }
+    this.menuGamepad = pad;
+    const down = gamepadButtonIsActive(pad, 9);
+    if (this.menuGamepadRearmPending) {
+      this.menuGamepadDown = down;
+      if (!down) this.menuGamepadRearmPending = false;
+      return false;
+    }
+    const pressed = down && !this.menuGamepadDown;
+    this.menuGamepadDown = down;
+    return pressed;
   }
 
   consumeFixedPulses() {

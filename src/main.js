@@ -108,6 +108,7 @@ let fpsAccumulator = 0;
 let fpsFrames = 0;
 let physicsCost = 0;
 let slowFrameWindows = 0;
+let inputBlockedLastFrame = false;
 let fullscreenHelpShown = false;
 let devTelemetry = null;
 let devFixedStepIndex = 0;
@@ -979,9 +980,16 @@ function animate(now) {
   const frameDt = clampFrameDelta((now - lastFrame) / 1000);
   lastFrame = now;
   if (!vehicle) return;
-  if (state === 'paused' || isRaceBlockedByModal()) {
+  if (input.consumeGamepadMenuPulse()) {
+    if (state === 'menu' || state === 'finish') startRace();
+    else if (state === 'paused') resumeRace();
+    else if (state === 'race' || state === 'countdown') openRaceMenu();
+  }
+  const inputBlocked = state === 'paused' || isRaceBlockedByModal();
+  if (inputBlocked) {
     setAudioPaused(true);
-    input.releaseAll();
+    if (!inputBlockedLastFrame) input.releaseAll();
+    inputBlockedLastFrame = true;
     resetPhysicsScheduler();
     vehicle.syncVisual(1);
     chaseCamera.update(frameDt, vehicle.visual.position, vehicle.visual.quaternion, vehicle.telemetry, false);
@@ -990,6 +998,7 @@ function animate(now) {
     renderer.render(scene, camera);
     return;
   }
+  inputBlockedLastFrame = false;
   const frameInput = input.update(frameDt, vehicle.telemetry.speedKmh, { deferFixedPulses: true });
   if (input.consumePulse('KeyP')) {
     performanceVisible = !performanceVisible;
