@@ -5,6 +5,7 @@ const V3 = () => new THREE.Vector3();
 
 const GUIDANCE_KINDS = new Set(['brake', 'turn']);
 export const ROUTE_MARKER_MAX_LATERAL_OFFSET = 9.2;
+const START_HEADING_LOOKAHEAD_METERS = 60;
 
 function wrapProgress(value) {
   return ((value % 1) + 1) % 1;
@@ -207,9 +208,18 @@ export class TrackSystem {
 
   getResetPose(sampleIndex = 0) {
     const sample = this.samples[((sampleIndex % this.samples.length) + this.samples.length) % this.samples.length];
+    let heading = sample.tangent;
+    if (sample.index === 0 && this.samples.length > 1) {
+      const metresPerSample = this.length / this.samples.length;
+      const lookahead = Math.max(1, Math.round(START_HEADING_LOOKAHEAD_METERS / metresPerSample));
+      const target = this.samples[lookahead % this.samples.length];
+      const forward = target.point.clone().sub(sample.point);
+      forward.y = 0;
+      if (forward.lengthSq() > 1e-8) heading = forward.normalize();
+    }
     return {
       position: sample.point.clone().add(new THREE.Vector3(0, 0.78, 0)),
-      yaw: Math.atan2(sample.tangent.x, sample.tangent.z),
+      yaw: Math.atan2(heading.x, heading.z),
       sampleIndex: sample.index,
     };
   }
