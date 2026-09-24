@@ -14,6 +14,10 @@ body::after {
   background: linear-gradient(90deg, rgba(7,12,20,.58) 0%, rgba(7,12,20,.28) 38%, transparent 72%),
     radial-gradient(circle at 65% 55%, transparent 42%, rgba(18,29,42,.12) 100%);
 }
+/* The garage text scrim must not grade the actual race lighting. */
+body.race-active::after { background: radial-gradient(ellipse at center, transparent 68%, rgba(7,12,20,.06) 100%); }
+/* Material inspection must show the renderer output without the garage scrim. */
+body.circuit-art-camera::after { background: none; }
 #game { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
 @supports (height: 100dvh) { #game { height: 100dvh; } }
 button { font: inherit; color: inherit; }
@@ -40,6 +44,8 @@ button { font: inherit; color: inherit; }
 .fullscreen-toggle { width: 38px; height: 38px; display: inline-grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(7,11,18,.42); color: #dfe4eb; backdrop-filter: blur(16px); cursor: pointer; transition: color .18s, border-color .18s, background .18s; }
 .fullscreen-toggle:hover, .fullscreen-toggle.active { color: #ebff00; border-color: rgba(235,255,0,.58); background: rgba(34,40,17,.64); }
 .fullscreen-toggle svg { width: 18px; height: 18px; }
+.diagnostics-toggle { min-height: 30px; padding: 0 10px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(7,11,18,.42); transition: color .18s, border-color .18s, background .18s; }
+.diagnostics-toggle.active { color: #0a0d10; border-color: #ebff00; background: #ebff00; }
 
 .menu { position: fixed; z-index: 4; left: 7vw; top: 19vh; width: min(540px, 44vw); transition: opacity .45s, transform .45s; }
 .menu.hidden { transform: translateX(-35px); }
@@ -71,11 +77,14 @@ h1 em { color: transparent; -webkit-text-stroke: 1px #f5f7fb; font-style: normal
 
 .hud { position: fixed; z-index: 4; inset: 0; pointer-events: none; transition: opacity .4s; }
 .lap, .time, .position { position: absolute; top: 102px; }
+.race-active .lap, .race-active .time, .race-active .position { padding: 5px 8px; margin: -5px -8px; background: rgba(8,16,24,.48); border-radius: 4px; }
+.race-active .hud { text-shadow: 0 1px 3px rgba(0,0,0,.75); }
 .lap { left: 48px; }.time { left: 135px; }.position { right: 48px; text-align: right; }
 .hud small { display: block; color: #858c98; font: 600 10px "Barlow Condensed"; letter-spacing: .18em; }
 .hud strong { font: 700 23px "Barlow Condensed"; }
 .lap strong span, .position strong span { color: #ebff00; }
-.timing-board { position: absolute; left: 48px; top: 157px; width: 238px; border-top: 1px solid rgba(255,255,255,.22); background: linear-gradient(90deg, rgba(6,10,16,.58), transparent); }
+.timing-board { position: absolute; left: 48px; top: 157px; width: 238px; border-top: 1px solid rgba(255,255,255,.22); background: transparent; }
+.timing-board small { color: #c3cbd5; text-shadow: 0 1px 2px #000, 0 0 4px #000; }
 .timing-board > div { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2px 12px; padding: 9px 8px 9px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
 .timing-board small { grid-column: 1 / -1; font-size: 8px; }
 .timing-board small span { color: #d8dde4; }
@@ -102,6 +111,31 @@ h1 em { color: transparent; -webkit-text-stroke: 1px #f5f7fb; font-style: normal
 .gearbox div:first-child strong { color: #ebff00; font-size: 34px; line-height: .85; }
 .chassis-state { position: absolute; left: 48px; bottom: 57px; display: flex; gap: 10px; color: #737b88; font: 600 9px "Barlow Condensed"; letter-spacing: .14em; }
 .chassis-state b { color: #ebff00; }
+.power-diagnostics { position: absolute; right: 48px; top: 156px; width: 342px; padding: 13px 14px 12px; border: 1px solid rgba(255,255,255,.19); border-left: 3px solid #ebff00; background: linear-gradient(145deg, rgba(7,12,19,.9), rgba(10,14,21,.78)); box-shadow: 0 18px 48px #0008; backdrop-filter: blur(16px); transition: opacity .18s, transform .18s, visibility .18s; }
+.power-diagnostics.hidden { transform: translateY(-7px); }
+.power-diagnostics header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,.13); }
+.power-diagnostics header span { color: #dfe4ea; font: 700 10px "Barlow Condensed"; letter-spacing: .18em; }
+.power-diagnostics header b { color: #7cff79; font: 800 9px "Barlow Condensed"; letter-spacing: .12em; }
+.power-diagnostics header b.limited { color: #ffb24d; }
+.power-diagnostics header b.arbitrated { color: #ff7558; }
+.diagnostic-pedal-grid { display: grid; grid-template-columns: 58px repeat(3, 1fr); align-items: center; gap: 5px 8px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.1); text-align: right; }
+.diagnostic-pedal-grid small { color: #68717e; font: 700 8px "Barlow Condensed", "Noto Sans SC", sans-serif; letter-spacing: .1em; }
+.diagnostic-pedal-grid small:first-child { text-align: left; }
+.diagnostic-pedal-grid > b { color: #abb3be; font: 700 9px "Noto Sans SC", sans-serif; text-align: left; }
+.diagnostic-pedal-grid span, .diagnostic-pedal-grid strong { color: #aab2bd; font: 700 13px "Barlow Condensed"; letter-spacing: .03em; }
+.diagnostic-pedal-grid strong { color: #f1f4f7; }
+.diagnostic-pedal-grid .maximum { color: #ebff00; text-shadow: 0 0 12px rgba(235,255,0,.35); }
+.diagnostic-torque-row { display: grid; grid-template-columns: 1fr auto auto; align-items: end; gap: 3px 9px; padding-top: 9px; }
+.diagnostic-torque-row > span, .diagnostic-handbrake-torque span { color: #78818e; font: 600 8px "Noto Sans SC", sans-serif; letter-spacing: .06em; }
+.diagnostic-torque-row > strong, .diagnostic-handbrake-torque strong { color: #edf1f5; font: 700 13px "Barlow Condensed"; letter-spacing: .035em; }
+.diagnostic-torque-row > b { color: #7cff79; font: 800 10px "Barlow Condensed"; }
+.diagnostic-torque-row > b.limited { color: #ffb24d; }
+.diagnostic-torque-row i { grid-column: 1 / -1; height: 4px; overflow: hidden; background: #29303a; }
+.diagnostic-torque-row i em { display: block; width: 100%; height: 100%; background: #ebff00; box-shadow: 0 0 12px rgba(235,255,0,.4); transition: width .08s linear; }
+.diagnostic-torque-row.brake-output i em { background: #ff633f; box-shadow: 0 0 12px rgba(255,99,63,.35); }
+.diagnostic-handbrake-torque { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 8px; }
+.power-diagnostics footer { margin-top: 9px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,.1); color: #68717d; font: 800 8px "Barlow Condensed"; letter-spacing: .14em; text-align: right; }
+.power-diagnostics footer.maximum { color: #ebff00; }
 .race-message { position: absolute; left: 50%; top: 27%; transform: translate(-50%, -50%) skew(-5deg); font: 800 72px "Barlow Condensed"; text-transform: uppercase; text-shadow: 0 4px 22px #000; color: #ebff00; transition: opacity .25s, transform .25s; }
 .invalid-lap-restart { position: absolute; left: 48px; top: 364px; min-width: 238px; min-height: 42px; display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; padding: 10px 14px; border: 1px solid rgba(255,99,63,.58); border-left: 3px solid #ff633f; background: rgba(8,12,19,.86); color: #f5f7fb; font-weight: 800; cursor: pointer; pointer-events: auto; box-shadow: 0 8px 24px #0005; }
 .invalid-lap-restart:hover { border-color: #ff8a70; background: rgba(27,17,19,.92); color: #fff; }
@@ -204,6 +238,8 @@ h1 em { color: transparent; -webkit-text-stroke: 1px #f5f7fb; font-style: normal
   .touch-ui .nitro, .touch-ui .brake, .touch-ui .chassis-state { display: none; }
   .touch-ui .gearbox { right: max(202px, calc(env(safe-area-inset-right) + 202px)); bottom: 87px; gap: 12px; }
   .touch-ui .gearbox div:nth-child(2) { display: none; }
+  .touch-ui .power-diagnostics { left: 50%; right: auto; top: 105px; width: min(360px, 54vw); transform: translateX(-50%); }
+  .touch-ui .power-diagnostics.hidden { transform: translate(-50%, -7px); }
 }
 
 .fullscreen-help { position: fixed; z-index: 42; inset: 0; display: grid; place-items: center; padding: max(22px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(22px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left)); background: rgba(3,5,9,.78); backdrop-filter: blur(14px) saturate(120%); transition: opacity .2s; }
@@ -218,6 +254,9 @@ h1 em { color: transparent; -webkit-text-stroke: 1px #f5f7fb; font-style: normal
 .fullscreen-help-close:hover { color: #fff; }
 
 .pause-menu { position: fixed; z-index: 41; inset: 0; display: grid; place-items: center; padding: 22px; background: rgba(3,5,9,.76); backdrop-filter: blur(12px); transition: opacity .2s; }
+.pause-menu #pause-menu-status { color: #ffb69d; font-size: 12px; line-height: 1.6; }
+.pause-menu #pause-menu-status.hidden { display: none; }
+.pause-menu button:disabled { opacity: .4; cursor: not-allowed; }
 .pause-menu-panel { width: min(360px, 100%); padding: 28px; border: 1px solid rgba(255,255,255,.17); border-radius: 12px; background: linear-gradient(145deg, rgba(18,24,34,.98), rgba(8,11,17,.99)); box-shadow: 0 22px 70px #000b; }
 .pause-menu-panel small { color: #ebff00; font: 700 9px "Barlow Condensed"; letter-spacing: .2em; }
 .pause-menu-panel h2 { margin: 6px 0 19px; font: 800 30px "Noto Sans SC"; }

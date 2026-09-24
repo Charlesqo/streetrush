@@ -37,6 +37,19 @@ export function roadWheelRpm(speedMps, wheelRadius) {
   return Math.abs(speedMps) / Math.max(Number.EPSILON, wheelRadius) * 60 / (2 * Math.PI);
 }
 
+export function integrateWheelOmegaWithBrakeCapacity(
+  omega,
+  nonBrakeTorque,
+  brakeCapacity,
+  wheelInertia,
+  dt,
+) {
+  const freeOmega = omega + nonBrakeTorque / wheelInertia * dt;
+  const maximumBrakeDelta = Math.max(0, brakeCapacity) / wheelInertia * dt;
+  if (Math.abs(freeOmega) <= maximumBrakeDelta) return 0;
+  return freeOmega - Math.sign(freeOmega) * maximumBrakeDelta;
+}
+
 // Multiplying a velocity vector by this scalar produces a force opposite to
 // that velocity with magnitude 0.5 * rho * CdA * speed^2.
 export function aerodynamicDragScale(cdA, speedSquared) {

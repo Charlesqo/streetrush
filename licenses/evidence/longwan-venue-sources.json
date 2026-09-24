@@ -1,0 +1,1121 @@
+{
+  "date": "2026-09-07",
+  "sources": [
+    {
+      "id": "painted_concrete_02",
+      "title": "Painted Concrete 02",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "source": "https://polyhaven.com/a/painted_concrete_02",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/kerb-refinement/painted_concrete_02/polyhaven-painted_concrete_02-info.json",
+      "source_dimensions_raw_api": [
+        4000,
+        4000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "concrete_floor_painted",
+      "title": "Concrete Floor Painted",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "source": "https://polyhaven.com/a/concrete_floor_painted",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/kerb-refinement/concrete_floor_painted/polyhaven-concrete_floor_painted-info.json",
+      "source_dimensions_raw_api": [
+        2000,
+        2000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "gravel_stones",
+      "title": "Gravel Stones",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "source": "https://polyhaven.com/a/gravel_stones",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-info.json",
+      "source_dimensions_raw_api": [
+        2000,
+        2000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "floor_pavement",
+      "title": "Floor Pavement",
+      "authors": {
+        "Dario Barresi": "processing",
+        "Charlotte Baglioni": "photography"
+      },
+      "source": "https://polyhaven.com/a/floor_pavement",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/polyhaven/floor_pavement/polyhaven-floor_pavement-info.json",
+      "source_dimensions_raw_api": [
+        2000,
+        2000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "rough_concrete",
+      "title": "Rough Concrete",
+      "authors": {
+        "Dimitrios Savva": "All"
+      },
+      "source": "https://polyhaven.com/a/rough_concrete",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/polyhaven/rough_concrete/polyhaven-rough_concrete-info.json",
+      "source_dimensions_raw_api": [
+        1230.0000190734863,
+        1230.0000190734863
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "dry_ground_rocks",
+      "title": "Dry Ground Rocks",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "source": "https://polyhaven.com/a/dry_ground_rocks",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/polyhaven/dry_ground_rocks/polyhaven-dry_ground_rocks-info.json",
+      "source_dimensions_raw_api": [
+        4000,
+        4000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "withered_grass",
+      "title": "Withered Grass",
+      "authors": {
+        "Charlotte Baglioni": "All"
+      },
+      "source": "https://polyhaven.com/a/withered_grass",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-info.json",
+      "source_dimensions_raw_api": [
+        1999.9996423721313,
+        1999.9996423721313
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "asphalt_track",
+      "title": "Asphalt Track",
+      "authors": {
+        "Dimitrios Savva": "All"
+      },
+      "source": "https://polyhaven.com/a/asphalt_track",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-info.json",
+      "source_dimensions_raw_api": [
+        2000,
+        2000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "corrugated_iron_03",
+      "title": "Corrugated Iron 03",
+      "authors": {
+        "Charlotte Baglioni": "All"
+      },
+      "source": "https://polyhaven.com/a/corrugated_iron_03",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-info.json",
+      "source_dimensions_raw_api": [
+        2000,
+        2000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "leafy_grass",
+      "title": "Leafy Grass",
+      "authors": {
+        "Charlotte Baglioni": "All"
+      },
+      "source": "https://polyhaven.com/a/leafy_grass",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/region/leafy_grass/polyhaven-leafy_grass-info.json",
+      "source_dimensions_raw_api": [
+        2000,
+        2000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "asphalt_01",
+      "title": "Asphalt 01",
+      "authors": {
+        "Dario Barresi": "Processing ",
+        "Charlotte Baglioni": "Photography"
+      },
+      "source": "https://polyhaven.com/a/asphalt_01",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/pbr/local-originals/asphalt/polyhaven-asphalt_01-info.json",
+      "source_dimensions_raw_api": [
+        2079.9994468688965,
+        2079.9996852874756
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "modular_electric_cables",
+      "title": "Modular Electric Cables",
+      "authors": {
+        "Kuutti Siitonen": "All"
+      },
+      "source": "https://polyhaven.com/a/modular_electric_cables",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/free-models/modular_electric_cables/polyhaven-modular_electric_cables-info.json",
+      "source_dimensions_raw_api": [
+        2076.6327381134033,
+        214.5041599869728,
+        757.2520458308203
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "concrete_road_barrier",
+      "title": "Concrete Road Barrier",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "source": "https://polyhaven.com/a/concrete_road_barrier",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/free-models/concrete_road_barrier/polyhaven-concrete_road_barrier-info.json",
+      "source_dimensions_raw_api": [
+        1545.3570485115051,
+        640.9457623958588,
+        835.279269143939
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "modular_chainlink_fence",
+      "title": "Modular Chainlink Fence",
+      "authors": {
+        "James Ray Cock": "All",
+        "Amal Kumar": "Fence Wire Material"
+      },
+      "source": "https://polyhaven.com/a/modular_chainlink_fence",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/free-models/modular_chainlink_fence/polyhaven-modular_chainlink_fence-info.json",
+      "source_dimensions_raw_api": [
+        8115.001916885376,
+        2149.1531878709793,
+        2522.9129791259766
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "modular_factory_facade",
+      "title": "Modular Factory Facade",
+      "authors": {
+        "James Ray Cock": "All"
+      },
+      "source": "https://polyhaven.com/a/modular_factory_facade",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/native-models/modular_factory_facade/polyhaven-modular_factory_facade-info.json",
+      "source_dimensions_raw_api": [
+        53329.99801635742,
+        5356.249764561653,
+        29000
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "grass_medium_01",
+      "title": "Grass Medium 01",
+      "authors": {
+        "Rob Tuytel": "Photography",
+        "Rico Cilliers": "Modeling"
+      },
+      "source": "https://polyhaven.com/a/grass_medium_01",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_metadata": "sources/native-models/grass_medium_01/polyhaven-grass_medium_01-info.json",
+      "source_dimensions_raw_api": [
+        7266.327619552612,
+        1259.2098712921143,
+        1177.0583391189575
+      ],
+      "raw_dimension_note": "Original API values retained without assuming units; authored physical texture repeat is recorded on Blender materials.",
+      "acquired_quality_status": "Files acquired; rendered review required",
+      "channels": "diff=sRGB base colour; nor_gl=linear OpenGL normal; arm=linear R ambient occlusion, G roughness, B metallic"
+    },
+    {
+      "id": "kloofendal_48d_partly_cloudy_puresky",
+      "title": "Kloofendal 48d Partly Cloudy (Pure Sky)",
+      "authors": {
+        "Greg Zaal": "original",
+        "Jarod Guest": "sky edit"
+      },
+      "source": "https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "evidence": "Copied byte-for-byte from project original; source recorded in repository licenses/assets.json."
+    },
+    {
+      "id": "Metal038",
+      "title": "Metal 038",
+      "authors": {
+        "ambientCG": "provider"
+      },
+      "source": "https://ambientcg.com/view?id=Metal038",
+      "license": "CC0-1.0",
+      "license_url": "https://docs.ambientcg.com/license/",
+      "technique": "Procedural",
+      "source_metadata": "sources/pbr/ambientcg/Metal038/provenance.json",
+      "acquired_quality_status": "ACQUIRED_PENDING_RENDER_REVIEW",
+      "channels": "Original provider-labelled Color, Roughness, Metalness, NormalGL, NormalDX, Displacement retained; authored scale is recorded on derived material."
+    }
+  ],
+  "preserved_files": [
+    {
+      "file": "sources/free-models/concrete_road_barrier/concrete_road_barrier.bin",
+      "bytes": 1374016,
+      "sha256": "64a4f9bc6e4af64d714a252c3c13428c430a60569deba3d52ca6b7dd3aa70d8c"
+    },
+    {
+      "file": "sources/free-models/concrete_road_barrier/concrete_road_barrier_2k.gltf",
+      "bytes": 2868,
+      "sha256": "9189168735eaf2e91a7d8b9d250f4644f984bf5353a2cc844f8ccef270d743dd"
+    },
+    {
+      "file": "sources/free-models/concrete_road_barrier/polyhaven-concrete_road_barrier-files.json",
+      "bytes": 32970,
+      "sha256": "f920b44d6db97c20407700820853ad32518646229465b88a1aaf25501403497f"
+    },
+    {
+      "file": "sources/free-models/concrete_road_barrier/polyhaven-concrete_road_barrier-info.json",
+      "bytes": 1123,
+      "sha256": "56211dc9e16ab898df3a66aa3c1c7a75772da905a7e7fd288fd7215a14373f6d"
+    },
+    {
+      "file": "sources/free-models/concrete_road_barrier/polyhaven-concrete_road_barrier-page.html",
+      "bytes": 203421,
+      "sha256": "e1cd82b3286f6d8c5797770b8920a53d719743ff2307bf5cab2a9c82ca2f8a83"
+    },
+    {
+      "file": "sources/free-models/concrete_road_barrier/textures/concrete_road_barrier_arm_2k.jpg",
+      "bytes": 2515448,
+      "sha256": "8c17f77897138a5ee0f80d0b5d194fd00554371e33b9f62f6d7b6a4e640094d6"
+    },
+    {
+      "file": "sources/free-models/concrete_road_barrier/textures/concrete_road_barrier_diff_2k.jpg",
+      "bytes": 3189621,
+      "sha256": "51832691e0769a04246b61222e5df1ce7dc22e9c7162f786a314409ac76d643c"
+    },
+    {
+      "file": "sources/free-models/concrete_road_barrier/textures/concrete_road_barrier_nor_gl_2k.jpg",
+      "bytes": 3888469,
+      "sha256": "8e48a287ae58a53030635c585d57a2da72660531a907a8e6cd04836bc60bf3a3"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/modular_chainlink_fence.bin",
+      "bytes": 3168016,
+      "sha256": "be9ea1817089fd35b0927a8271358f6abd2ec80b306a085de435613d936fcb9a"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/modular_chainlink_fence_2k.gltf",
+      "bytes": 41838,
+      "sha256": "9c9c3e7301beff0a0ec8d8f16ba386d7c7aecf3c0c0e75131e4f6077bb064444"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/polyhaven-modular_chainlink_fence-files.json",
+      "bytes": 82674,
+      "sha256": "8635fd523f01613b4bbc4bac7d172a29b7aa586f3ae12e2cc8228a9bcbdf3b75"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/polyhaven-modular_chainlink_fence-info.json",
+      "bytes": 1084,
+      "sha256": "5ff49e676cb2ee31a82647cbe968719158ab35798ee56eaa0897ab69740fc9eb"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/polyhaven-modular_chainlink_fence-page.html",
+      "bytes": 280328,
+      "sha256": "9ea9d7d7025f9b5ab932f810a08ce64efa5e0f14602f95acdbebd4bf6ca436a7"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_posts_arm_2k.jpg",
+      "bytes": 3004035,
+      "sha256": "54da8887d80d86057e1b94818e374515ae8ee585cfe2a0f5351ed45826a14891"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_posts_diff_2k.jpg",
+      "bytes": 2425889,
+      "sha256": "f710dbfd637feb60e69a1c24e04fd6cd03e67684e31511fa5c907929d230c122"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_posts_nor_gl_2k.jpg",
+      "bytes": 1869713,
+      "sha256": "36e6f6c16e13dad18224b1c97a8dd388fd7519b3ee29cff901bd3bdfc206d5d8"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_wire_arm_2k.jpg",
+      "bytes": 2082073,
+      "sha256": "d3e8f0ac72d9177f442d6e2906537f5b4166e50a2dbf74cae9349e7724da2a54"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_wire_diff_2k.jpg",
+      "bytes": 1746959,
+      "sha256": "6d4906f5676f32f53a5089915d5272340d9a33c52659bbdcf7104ab80e830307"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_wire_nor_gl_2k.jpg",
+      "bytes": 1882329,
+      "sha256": "a1b853c5639319d10493aba0e04b67e39186ea5fd98ffde49df6093d29ce4cc0"
+    },
+    {
+      "file": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_wire_opacity_2k.png",
+      "bytes": 285570,
+      "sha256": "0363aa5168a45aaa5c02c1b6224d6a535d32ca60809890470e44bca8770ce3dd"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/modular_electric_cables.bin",
+      "bytes": 1563316,
+      "sha256": "3990f8b60c244ecfc64f80b1242d2a0fef0a3e39288c9ba9fd31becad4734d8a"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/modular_electric_cables_2k.gltf",
+      "bytes": 82607,
+      "sha256": "4fea2727cf11b55d74ba4212bb4e7c64e095da20cc5a5dcf49f4ef75bb543e99"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/polyhaven-modular_electric_cables-files.json",
+      "bytes": 46348,
+      "sha256": "348e117c3dd492c1a96a48992fad061916321da57e7234b26e68162999abb4f3"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/polyhaven-modular_electric_cables-info.json",
+      "bytes": 1055,
+      "sha256": "2a4070714c9ae38c7d0236e9b923d974d9d4c857146b050703b39531fb40a8eb"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/polyhaven-modular_electric_cables-page.html",
+      "bytes": 231349,
+      "sha256": "cdaa7836fb61c3d4db02438677315d781f240036402a2dfcde2610e0f02695a4"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_arm_2k.jpg",
+      "bytes": 2679133,
+      "sha256": "8be46df764812f43ba2c55906ee544b22be81fc416db0467c825a9a0892dceac"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_boxes_arm_2k.jpg",
+      "bytes": 3140374,
+      "sha256": "560fa1d5fe3cb38cdc46118677f6924def4aa5a25895465ddd46a1c6706ef178"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_boxes_diff_2k.jpg",
+      "bytes": 2327515,
+      "sha256": "4efd2dcf8cb6cda3f455b00c7864a38d65b4a3042033aade08e501f1fd9b33e3"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_boxes_nor_gl_2k.jpg",
+      "bytes": 2707023,
+      "sha256": "d88c5e0a576b111b28d82784c1e36213e9e61842db4ea39ee170079aab502ccb"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_diff_2k.jpg",
+      "bytes": 1628766,
+      "sha256": "7332324468d194e83e7e25e380ff865be2dfb9a1601eca00e5a0e71416965e57"
+    },
+    {
+      "file": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_nor_gl_2k.jpg",
+      "bytes": 3532531,
+      "sha256": "ce7d0411d1455aac0266a9b96dae1d1695f8fcfc57dbe7e132f94c8e1b52527c"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/grass_medium_01_1k.blend",
+      "bytes": 1832028,
+      "sha256": "5bbeaf7161508c1de66f137e7fcaec6fdea9c4ac0faa134c384c89c97271bec2"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/polyhaven-grass_medium_01-files.json",
+      "bytes": 33591,
+      "sha256": "daa882bd7a3925042501536763269b064f66c736779dd90fd9bd1cb405cb4d53"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/polyhaven-grass_medium_01-info.json",
+      "bytes": 1125,
+      "sha256": "86ecc9132bdee3cf99317a80edfa00c0d31012ae80fd7525bc86596eda684c63"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/polyhaven-license.html",
+      "bytes": 71934,
+      "sha256": "0c027ff13cb095a3f9c6de523363bba336c6f478790fa37c3f46d4a2768b8017"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/provenance.json",
+      "bytes": 6959,
+      "sha256": "6d0110e08bd5eab004ed688ee3bbada7567554e97d49d995ffbed201d166a59c"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_alpha_1k.png",
+      "bytes": 648718,
+      "sha256": "711a8e49af758d6a6ce1f610db858899a27be19da6d1866bd35c13bc7b8ffeff"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_diff_1k.jpg",
+      "bytes": 395673,
+      "sha256": "71495bd6a11fddcab0aaff38246fea1a7b802a705483f1c7cbca53955daa8050"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_dry_diff_1k.png",
+      "bytes": 2167830,
+      "sha256": "da85639d6eb8f029b50e7920aaf7e649940541bb24fe6ad239dbae7400af2eb2"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_nor_gl_1k.exr",
+      "bytes": 2021011,
+      "sha256": "7e9c4ca6dfca96b67e799a268493a6871ffaa215624dd1ade8b09044095f2a1d"
+    },
+    {
+      "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_rough_1k.exr",
+      "bytes": 900132,
+      "sha256": "79a4d6ac2b567c4b7a394a11e1a57c7823730c02878f792153ce5a41dfacedee"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/modular_factory_facade_2k.blend",
+      "bytes": 2456277,
+      "sha256": "e3914d0ddb70f526b4c4ec84df63bcca7351a7a2761a384d938643ef9f0b7afc"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/polyhaven-modular_factory_facade-files.json",
+      "bytes": 155257,
+      "sha256": "a51c971493c1399dedf19f85b85a880bd3ba5ae4e09d4dd3198e069bb00556dc"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/polyhaven-modular_factory_facade-info.json",
+      "bytes": 1038,
+      "sha256": "e9d4af8f786eb671bd185c5bdf59f13a1711c1a1ed4baa69e59aa8881d3e06d8"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/polyhaven-modular_factory_facade-page.html",
+      "bytes": 382297,
+      "sha256": "fa58f5fee4f53f604874372eae880ef404b7e0aa7cdcbf768d535afe90be2cee"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_brick_diff_2k.png",
+      "bytes": 8843825,
+      "sha256": "0b13e3f7c5abc614d64dbb51bb9df5a7d3b99996a4038bc8d15d1c908123dda2"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_brick_disp_2k.png",
+      "bytes": 7394788,
+      "sha256": "c225fef287072b113ecd821c44ced04a38039f85105fe076aa200a8c9ca6722a"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_brick_nor_gl_2k.png",
+      "bytes": 21548678,
+      "sha256": "ea66f43ba5eb840b3cf35eea04a95f5f4b2de34b5bdf9513ede08301ddbfda16"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_brick_rough_2k.png",
+      "bytes": 9422725,
+      "sha256": "e268bb7dd86d307eb59947509447e4738cda093055a1053d92f5f2044ba058bc"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_doors_diff_2k.png",
+      "bytes": 20333005,
+      "sha256": "5707d503fbf795b0b913a61bb2aabdb158aba72c161e55b3cf1af51afed85607"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_doors_metal_2k.png",
+      "bytes": 1151821,
+      "sha256": "c7e4f07e96f49ae72efefa203e4bd286177fe53875c0093c928d3cf248a5a324"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_doors_nor_gl_2k.png",
+      "bytes": 17055029,
+      "sha256": "06e4c702b2917aa28179725a059e83476725633e8bded600c8660f0ced87ada4"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_doors_rough_2k.png",
+      "bytes": 5687930,
+      "sha256": "2b801f04f2146313fec0b62c2422faae06562bb485c181832c5ce5cc47b608e0"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_garage_diff_2k.png",
+      "bytes": 20424488,
+      "sha256": "01dfbf807981c02e8f2079792557cbf98f11875fe18ff815ced4506011977861"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_garage_metal_2k.png",
+      "bytes": 247243,
+      "sha256": "969d60a9fa5fa6dada20a2a8880d12307148d23feb450d23dd2ebf33ba355c8f"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_garage_nor_gl_2k.png",
+      "bytes": 18209119,
+      "sha256": "320bcd56c10f0cdabd727fa872238506c960d9c215499f3bfd4083d75affaaf4"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_garage_rough_2k.png",
+      "bytes": 5818679,
+      "sha256": "ce0104793e2e34ede789649b026991e6b52d6a6de92a50f07ad54a0828fb127c"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_trim_01_diff_2k.png",
+      "bytes": 24220907,
+      "sha256": "2df9ea84749ee88a4d2f2ecb2013c91a3db45cec5da61f2df11820f4a6e9fa6b"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_trim_01_nor_gl_2k.png",
+      "bytes": 22225169,
+      "sha256": "4aee23b656e2f3b07c062be7ec4a4765f9ee399ba29a1814d33db3298723c94c"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_trim_01_rough_2k.png",
+      "bytes": 7306847,
+      "sha256": "51ca8ed08e115127a0ac7cbc5ea1951f6d334b45adf672dc4e4837dfc7a50c91"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_windows_alpha_2k.png",
+      "bytes": 3251560,
+      "sha256": "60ca7612ca3d3ae2c27b0590a900124af01945303816a40f01bbf961ac52f6c0"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_windows_diff_2k.png",
+      "bytes": 22431211,
+      "sha256": "e1298cc2635bffea1f6ef749692ba7760bc061f115b10e4229cff0565901a6d7"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_windows_nor_gl_2k.png",
+      "bytes": 18850638,
+      "sha256": "ee0ac855947f8e123a4b56918c1e091e8cb38bbfb54d25cea1e8d19803c38dbb"
+    },
+    {
+      "file": "sources/native-models/modular_factory_facade/textures/modular_factory_facade_windows_rough_2k.png",
+      "bytes": 6317273,
+      "sha256": "55595a3f6eeb83ef7e31546e98eb686d10a6020fdc01a59a3b92fdd3889f9591"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038-page.html",
+      "bytes": 28227,
+      "sha256": "30cd8486a83bd8915a1db7b565f0dd1e1dd3238bb167fcd2f27fc4fcca545f6f"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038.png",
+      "bytes": 253636,
+      "sha256": "8ec88342835de32a1c148e564a319408e0b4393d41ff5380e25f0ee1b9a775af"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.blend",
+      "bytes": 1109172,
+      "sha256": "21dbcda362d93a872a5aa93cf81aa3ccc76b69623f24abbbeaf81350c84f7039"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.mtlx",
+      "bytes": 2595,
+      "sha256": "4ea650809ea03cd18220ab94a9d1f36af38a68631ed46fea35ee990b2c180c4b"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.tres",
+      "bytes": 1003,
+      "sha256": "7db6d08ab4f4db76198d836aeb053371ed43cb4a08ad4e1f5ae30355d96c4cb0"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.usdc",
+      "bytes": 2963,
+      "sha256": "327ca41f78e2f81a2291cc10b964ad21fcd110c42e625ce7c7bdb4e4978ae3dc"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.zip",
+      "bytes": 18287653,
+      "sha256": "9c4cd701a53ea208decbc160bcae71e204f6d518e442f6dfcf9d4c9e2af712bf"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Color.jpg",
+      "bytes": 2003658,
+      "sha256": "e1e0deda1119497fa419de496019e04a94d281ad470c6595da0100f063aa1f3c"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Displacement.jpg",
+      "bytes": 1564118,
+      "sha256": "2ea7419f1d2f242ccde6d9b453a7a164093ab35018bcbb5a9c484e3ffffb13a9"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Metalness.jpg",
+      "bytes": 314217,
+      "sha256": "6001a5c8c2e74a39754c64b55699dca6f5884f2272845f2a332a2ac76277238e"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_NormalDX.jpg",
+      "bytes": 5959654,
+      "sha256": "f859c2196bc022a6c3c5e1a9dfeb20039d4ec0de907eba0db866599f095793fc"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_NormalGL.jpg",
+      "bytes": 5957160,
+      "sha256": "a3fbbd22b384bbe94baafa21a01e60f0c27a859a9654637eff18eec5a100127f"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Roughness.jpg",
+      "bytes": 1117305,
+      "sha256": "05b1b86df140c3bace260190af8d64593f95e6f139ed79605c647ea7a6ac0185"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/ambientcg-license.html",
+      "bytes": 34106,
+      "sha256": "60138e09b277c89977841462634b36e99d7bae5b77174777813502069c59461c"
+    },
+    {
+      "file": "sources/pbr/ambientcg/Metal038/provenance.json",
+      "bytes": 7761,
+      "sha256": "cb3646c132a7e0b7642023ccc58803a7cecb0c15cdeaddb6bbbecf1dcf1ba164"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/concrete_floor_painted/concrete_floor_painted_arm_2k.jpg",
+      "bytes": 1138304,
+      "sha256": "4d24c9ae1709fdcfd95c848ada564f0877a6992be041e870872c0d708fc5e9b9"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/concrete_floor_painted/concrete_floor_painted_diff_2k.jpg",
+      "bytes": 2493746,
+      "sha256": "0a2a6983d52d20ef21030c4e03b485ce0ce6d6157b94e905fd2c1ec631c8934c"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/concrete_floor_painted/concrete_floor_painted_disp_2k.png",
+      "bytes": 7902043,
+      "sha256": "a7314e394bc481db023d26c766b640aa5496a95d19b70f99cedd33cc60867cc5"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/concrete_floor_painted/concrete_floor_painted_nor_gl_2k.jpg",
+      "bytes": 4268024,
+      "sha256": "1f57758d80eb90e09738eb94d18518b30c7f9f7453a9c7c45f42e7d751c3731b"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/concrete_floor_painted/polyhaven-concrete_floor_painted-files.json",
+      "bytes": 31572,
+      "sha256": "21802823e691ca0f8268bf8fd922a4b77805cd0561d47c8f4defb2cab0daf839"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/concrete_floor_painted/polyhaven-concrete_floor_painted-info.json",
+      "bytes": 933,
+      "sha256": "369fb1a80405d039e31409cc7442c04e1e7ebd6364aebc7f13efa450bc05e7ba"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/concrete_floor_painted/polyhaven-license.html",
+      "bytes": 71934,
+      "sha256": "0c027ff13cb095a3f9c6de523363bba336c6f478790fa37c3f46d4a2768b8017"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/concrete_floor_painted/provenance.json",
+      "bytes": 6211,
+      "sha256": "ca39d77d330ed2a6a325079886ba2aa48a4c5f0ebe9fa99522b95fa7b72ed0ed"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/painted_concrete_02/painted_concrete_02_arm_2k.jpg",
+      "bytes": 3125588,
+      "sha256": "48b7ef170b2105475ad9be2820caab683a2e0e6200578cbcb2bee0659d7e1775"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/painted_concrete_02/painted_concrete_02_diff_2k.jpg",
+      "bytes": 2103406,
+      "sha256": "cc75f54f23ae7a02230885278cfdc103efefe453941874cda319c7cec54b30aa"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/painted_concrete_02/painted_concrete_02_disp_2k.png",
+      "bytes": 5731235,
+      "sha256": "c21e9dd04fec163cb6e92e791837ea33588e92f8f493ac72f647c1608396484c"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/painted_concrete_02/painted_concrete_02_nor_gl_2k.jpg",
+      "bytes": 3108663,
+      "sha256": "3c6f5701a48c6c164e3b446e26bb355b8f75a1933c8a3ca9dfea580b1b31f995"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/painted_concrete_02/polyhaven-license.html",
+      "bytes": 71934,
+      "sha256": "0c027ff13cb095a3f9c6de523363bba336c6f478790fa37c3f46d4a2768b8017"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/painted_concrete_02/polyhaven-painted_concrete_02-files.json",
+      "bytes": 35371,
+      "sha256": "76547e0d38572642734da36921d8a0da72fdc679ebd719c9fb7028384882013b"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/painted_concrete_02/polyhaven-painted_concrete_02-info.json",
+      "bytes": 978,
+      "sha256": "3244c3a7b00c647a3a189eb9617ce5b87072812be4ca722e9f45dd491a2c79fd"
+    },
+    {
+      "file": "sources/pbr/kerb-refinement/painted_concrete_02/provenance.json",
+      "bytes": 6054,
+      "sha256": "5b94e22bcdd181c3d1e8fb79b6d6ccaf4a1f153dd477ed59538d699c3d2fc06b"
+    },
+    {
+      "file": "sources/pbr/local-originals/asphalt/asphalt_01_arm_1k.jpg",
+      "bytes": 1086945,
+      "sha256": "932de16bf05f7c9058b333d57600fec8584d3129c04d42e39da2539eee749ae3"
+    },
+    {
+      "file": "sources/pbr/local-originals/asphalt/asphalt_01_diff_1k.jpg",
+      "bytes": 739513,
+      "sha256": "99b6f6bdfbd09279f3f550ac9593336df541aa2319537566eeb3e737d8512010"
+    },
+    {
+      "file": "sources/pbr/local-originals/asphalt/asphalt_01_nor_gl_1k.jpg",
+      "bytes": 1237059,
+      "sha256": "b745fd20cfb775ae907786ff0ffe200cedf73f3a6ef4e60c637b85b08e0a4f9a"
+    },
+    {
+      "file": "sources/pbr/local-originals/asphalt/polyhaven-asphalt_01-files.json",
+      "bytes": 24444,
+      "sha256": "a43cf913b46ad7467452cba4b53a6f513b706af8ec4a60127fe3ce2b8a2fe42e"
+    },
+    {
+      "file": "sources/pbr/local-originals/asphalt/polyhaven-asphalt_01-info.json",
+      "bytes": 885,
+      "sha256": "52f42aa61326cac0a9dbc51bf0a58e19167726cdbccedc3ccf76733b2753feec"
+    },
+    {
+      "file": "sources/pbr/local-originals/sky/kloofendal_48d_partly_cloudy_puresky_2k.hdr",
+      "bytes": 5451493,
+      "sha256": "5244534e9cf5b606f2ff513aa00ddb161b0a4826ffd88a0d3bd03ac29247d198"
+    },
+    {
+      "file": "sources/pbr/polyhaven/dry_ground_rocks/dry_ground_rocks_arm_2k.jpg",
+      "bytes": 1122277,
+      "sha256": "b50476ee925418fe81560bc0b2cb709f7f2d0309eed4e4ada89c6f47330f018f"
+    },
+    {
+      "file": "sources/pbr/polyhaven/dry_ground_rocks/dry_ground_rocks_diff_2k.jpg",
+      "bytes": 3428360,
+      "sha256": "ebfb8b98b48a4fcafac354d1e206944824c549e93ea6d977f69664f0dc3dbb6a"
+    },
+    {
+      "file": "sources/pbr/polyhaven/dry_ground_rocks/dry_ground_rocks_nor_gl_2k.jpg",
+      "bytes": 5336020,
+      "sha256": "6e4d9e19c8fb010aaebf7b95105d8b501c08590a0e03e0dbcc8cf98886edae4e"
+    },
+    {
+      "file": "sources/pbr/polyhaven/dry_ground_rocks/polyhaven-dry_ground_rocks-files.json",
+      "bytes": 29426,
+      "sha256": "a079a232342a472f3f1bc81637127dcff233f49ed0cf69a42b02d8abad1928ea"
+    },
+    {
+      "file": "sources/pbr/polyhaven/dry_ground_rocks/polyhaven-dry_ground_rocks-info.json",
+      "bytes": 874,
+      "sha256": "569a7b273a15ac94fbd5d2f161c667e319f74c4f3359cc9296f341bbd9ae5f7e"
+    },
+    {
+      "file": "sources/pbr/polyhaven/floor_pavement/floor_pavement_arm_2k.jpg",
+      "bytes": 2007478,
+      "sha256": "1004b83c6590be25a8259e40db1d36420c4c143aa05ea67b066b15c7bf6bde23"
+    },
+    {
+      "file": "sources/pbr/polyhaven/floor_pavement/floor_pavement_diff_2k.jpg",
+      "bytes": 2704244,
+      "sha256": "87e2f4854e3b954e1e3a891d3d9c480cfd776cd333a08ae2114af0d5e72cc2a3"
+    },
+    {
+      "file": "sources/pbr/polyhaven/floor_pavement/floor_pavement_nor_gl_2k.jpg",
+      "bytes": 2728464,
+      "sha256": "39fb68a180b001855336e98a39f76e8d34c18c3b4627e70e9b01d53ca3be3ffa"
+    },
+    {
+      "file": "sources/pbr/polyhaven/floor_pavement/polyhaven-floor_pavement-files.json",
+      "bytes": 26537,
+      "sha256": "641d08a2ac6fd949086ffe514f05d07e990a37211d7cac665922ad48feb7f326"
+    },
+    {
+      "file": "sources/pbr/polyhaven/floor_pavement/polyhaven-floor_pavement-info.json",
+      "bytes": 935,
+      "sha256": "f880f92b001a13aa88465469358a891697c3d4050a2176a59c1aa0c26500b27c"
+    },
+    {
+      "file": "sources/pbr/polyhaven/gravel_stones/gravel_stones_arm_2k.jpg",
+      "bytes": 3805569,
+      "sha256": "58c21dcfbfcbe7aa423dced4872bb0eff2988aae303cf268e787a102eb80a3dc"
+    },
+    {
+      "file": "sources/pbr/polyhaven/gravel_stones/gravel_stones_diff_2k.jpg",
+      "bytes": 3220057,
+      "sha256": "cacad132d39976f66451271b4eeb1e6ee11ecbff2cd3160f2b9d4323aa2b0136"
+    },
+    {
+      "file": "sources/pbr/polyhaven/gravel_stones/gravel_stones_disp_2k.png",
+      "bytes": 6886225,
+      "sha256": "ad1ef062d9ea77b0bf71624dbbbd9bfc8a9444003877bf39c52648637d529f07"
+    },
+    {
+      "file": "sources/pbr/polyhaven/gravel_stones/gravel_stones_nor_gl_2k.jpg",
+      "bytes": 5469483,
+      "sha256": "13a0218f69539da3e8f9ad805213ce311a936d30c05558d8e42ebb46fde5b7eb"
+    },
+    {
+      "file": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-files.json",
+      "bytes": 32898,
+      "sha256": "65304d52404b19362cadeed752707acc49bd22586d969f69928979703ac961fa"
+    },
+    {
+      "file": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-info.json",
+      "bytes": 959,
+      "sha256": "46ab7867d74f228507e7e6ace4af47d5518bacc175880e811554a98995c02ffd"
+    },
+    {
+      "file": "sources/pbr/polyhaven/rough_concrete/polyhaven-rough_concrete-files.json",
+      "bytes": 26557,
+      "sha256": "293ccc610cbb371fbcda28d28bc32408a41fd471fae8dd41a60d1d1e3bcc8b40"
+    },
+    {
+      "file": "sources/pbr/polyhaven/rough_concrete/polyhaven-rough_concrete-info.json",
+      "bytes": 850,
+      "sha256": "dd62a56ea58bb3fb85536e1c31b8617e832966dcbd7e78c1dd3f9ca1c07d552c"
+    },
+    {
+      "file": "sources/pbr/polyhaven/rough_concrete/rough_concrete_arm_2k.jpg",
+      "bytes": 3432016,
+      "sha256": "014f6ca38e4bbc284789ebda32a97013f3fb9be078cbce629e07b0aa63bc4bb6"
+    },
+    {
+      "file": "sources/pbr/polyhaven/rough_concrete/rough_concrete_diff_2k.jpg",
+      "bytes": 4355641,
+      "sha256": "1c20c0ae8622ff673f6ed76a282f07427fdaaf8c0c073558013fa5c5f3ddbf1f"
+    },
+    {
+      "file": "sources/pbr/polyhaven/rough_concrete/rough_concrete_nor_gl_2k.jpg",
+      "bytes": 5351725,
+      "sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d"
+    },
+    {
+      "file": "sources/pbr/refinement/asphalt_track/asphalt_track_arm_2k.jpg",
+      "bytes": 2469962,
+      "sha256": "064f8469a0f9e2a9581551926f02eb760992a9b3e2a3890ec6f6ac00d582944a"
+    },
+    {
+      "file": "sources/pbr/refinement/asphalt_track/asphalt_track_diff_2k.jpg",
+      "bytes": 3779263,
+      "sha256": "742d1d79560bd661d5871afc857e981e25dcd563bfd24385cbd063ebcaeef06c"
+    },
+    {
+      "file": "sources/pbr/refinement/asphalt_track/asphalt_track_disp_2k.png",
+      "bytes": 6257146,
+      "sha256": "3a8fff49c110c612bfd640d7d5531d7b197967adc76a6bbd548c671eab583b43"
+    },
+    {
+      "file": "sources/pbr/refinement/asphalt_track/asphalt_track_nor_gl_2k.jpg",
+      "bytes": 3694762,
+      "sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd"
+    },
+    {
+      "file": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-files.json",
+      "bytes": 26201,
+      "sha256": "77f30d6289c92b017dd41951a67bc46dbe3c74f04caf66e3772a6100b5423918"
+    },
+    {
+      "file": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-info.json",
+      "bytes": 835,
+      "sha256": "0b88a4092827e5cd2f298845578dcb25d54a4eff492e8acff35c1ea4ecf5a52a"
+    },
+    {
+      "file": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-page.html",
+      "bytes": 190378,
+      "sha256": "46d0d81d3745139d6deae259a3495b910ba71ea943685cbb85d8b15b8da9fc14"
+    },
+    {
+      "file": "sources/pbr/refinement/asphalt_track/provenance.json",
+      "bytes": 4946,
+      "sha256": "e11206dd1466c212050521ff20a95b576f48d919ffd199de87f6abdc5d710138"
+    },
+    {
+      "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_arm_2k.jpg",
+      "bytes": 1193928,
+      "sha256": "67e732253e52fd04089ba16c9757ced090c5331144f29600fc8ffeb32aaf5f2b"
+    },
+    {
+      "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_diff_2k.jpg",
+      "bytes": 1908641,
+      "sha256": "7b3f4f849dd634f54548b3b552ebeae723266f782163341185c94094e2eb7991"
+    },
+    {
+      "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_disp_2k.png",
+      "bytes": 5562796,
+      "sha256": "29314e42351ee43ee248e82d732e997d02da87388558807085ba89e443632c0e"
+    },
+    {
+      "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_nor_gl_2k.jpg",
+      "bytes": 1950629,
+      "sha256": "9f865a4de4753a9cc0987c4e665ec935c7dd28d3c6cd80c4dd2000d64c2fcfc3"
+    },
+    {
+      "file": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-files.json",
+      "bytes": 27859,
+      "sha256": "3c76275ddc4aa85f7335d64d7170a2db7fb6be56f135b81975bba1fa3be841f8"
+    },
+    {
+      "file": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-info.json",
+      "bytes": 868,
+      "sha256": "bef200bc9128b5798bc4a390069ff3f780f1364fe017e447a0082a41b1b9f401"
+    },
+    {
+      "file": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-page.html",
+      "bytes": 192918,
+      "sha256": "bc692d64292bcdcdeec97adcabafe8dd96fc123e0833026469e91cb2588d83eb"
+    },
+    {
+      "file": "sources/pbr/refinement/corrugated_iron_03/provenance.json",
+      "bytes": 5078,
+      "sha256": "7bbe7b56199641ea280a6df10df1fa8a7f619924729ba34f2435bb169cd128d6"
+    },
+    {
+      "file": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-files.json",
+      "bytes": 26569,
+      "sha256": "2e4cffdb00dd75a7929baf27b76283e26993fdfb7c4d3bb2ab8344dc7748ffb2"
+    },
+    {
+      "file": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-info.json",
+      "bytes": 894,
+      "sha256": "75b618334fc4ffbcc2a8d072db9a0d24b2ea99c83c7f4d327d4bf0c019c2ac8d"
+    },
+    {
+      "file": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-page.html",
+      "bytes": 191026,
+      "sha256": "a72c3be8ea2ef37557816d6a9f804e209a81f031d7ca244cb7ee23a90c13d5bd"
+    },
+    {
+      "file": "sources/pbr/refinement/withered_grass/provenance.json",
+      "bytes": 5045,
+      "sha256": "cf57c8461c85cdc3980811e3d3a9a314be00365628fbf917b9fb539dda57f006"
+    },
+    {
+      "file": "sources/pbr/refinement/withered_grass/withered_grass_arm_2k.jpg",
+      "bytes": 4802892,
+      "sha256": "0b4bfb6549a56c48f7239be7f520124b38e7842188b8d1d53b0a376686c40371"
+    },
+    {
+      "file": "sources/pbr/refinement/withered_grass/withered_grass_diff_2k.jpg",
+      "bytes": 4632786,
+      "sha256": "0cf0fca68cbf4277199a2b9b7b3a8013357e4087247b1367f86d4a53b4fafa7e"
+    },
+    {
+      "file": "sources/pbr/refinement/withered_grass/withered_grass_disp_2k.png",
+      "bytes": 7301380,
+      "sha256": "2a7bf2836fd70e443e093f7239f8de3488a8e675c1301771371adba92836ea57"
+    },
+    {
+      "file": "sources/pbr/refinement/withered_grass/withered_grass_nor_gl_2k.jpg",
+      "bytes": 6194953,
+      "sha256": "5fd42baf06224086cb9afcb2f7a3b9f26feddd719bf1f9aed65ec49c586e7ff9"
+    },
+    {
+      "file": "sources/pbr/region/leafy_grass/leafy_grass_arm_2k.jpg",
+      "bytes": 4116600,
+      "sha256": "70d61c669fe9d186a84f5bb50e8a337083014d7e46534306a89d47d48fd5eb0e"
+    },
+    {
+      "file": "sources/pbr/region/leafy_grass/leafy_grass_diff_2k.jpg",
+      "bytes": 4766204,
+      "sha256": "8e1c6d21365d4b89bc5a35ab664da98a78dbc3ab9ba6100474881c8619a5b113"
+    },
+    {
+      "file": "sources/pbr/region/leafy_grass/leafy_grass_disp_2k.png",
+      "bytes": 7311977,
+      "sha256": "506ed7d425d9a73f6881e17f03e2a0d2fa57893bb0555a4b86ad905d2cabe510"
+    },
+    {
+      "file": "sources/pbr/region/leafy_grass/leafy_grass_nor_gl_2k.jpg",
+      "bytes": 6047262,
+      "sha256": "df0cf0ce96e653f033e5b934d5b12995464bda027aa53bd12e329be889aa9f45"
+    },
+    {
+      "file": "sources/pbr/region/leafy_grass/polyhaven-leafy_grass-files.json",
+      "bytes": 29115,
+      "sha256": "705daf71157e399391d094d14cd9e932d5c337bb2c3044bb91823145162afc83"
+    },
+    {
+      "file": "sources/pbr/region/leafy_grass/polyhaven-leafy_grass-info.json",
+      "bytes": 862,
+      "sha256": "6ca1703a50334cacd60e72e4007e31b73fa8c738c41067a30ebb811ccdf7af43"
+    },
+    {
+      "file": "sources/pbr/region/leafy_grass/polyhaven-license.html",
+      "bytes": 71934,
+      "sha256": "0c027ff13cb095a3f9c6de523363bba336c6f478790fa37c3f46d4a2768b8017"
+    },
+    {
+      "file": "sources/pbr/region/leafy_grass/provenance.json",
+      "bytes": 5168,
+      "sha256": "c91dbca6b266c37feebf030c68ac4fa63c57854f34f08ebd2fd58c19d3187e7f"
+    }
+  ],
+  "additionalSources": [
+    {
+      "source": "https://polyhaven.com/a/jacaranda_tree",
+      "license": "CC0-1.0",
+      "author": "Rico Cilliers; Rob Tuytel",
+      "method": "Two orthographic transparent renders of source model; distant crossed-card foliage only",
+      "size": 1024,
+      "bounds": [
+        [
+          -12.92025089263916,
+          -9.200760841369629,
+          -0.146615132689476
+        ],
+        [
+          11.496798515319824,
+          9.953813552856445,
+          19.3222599029541
+        ]
+      ]
+    }
+  ]
+}

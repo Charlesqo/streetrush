@@ -62,6 +62,11 @@ const resetTrack = {
   }),
 };
 const startPose = TrackSystem.prototype.getResetPose.call(resetTrack, 0);
+assert.ok(Math.abs(startPose.yaw - Math.PI / 2) < 1e-10,
+  'Longwan grid must point along its +X start straight, without a lateral heading bias');
+const midTrackPose = TrackSystem.prototype.getResetPose.call(resetTrack, 100);
+assert.ok(Math.abs(midTrackPose.yaw - Math.atan2(resetTrack.samples[100].tangent.x, resetTrack.samples[100].tangent.z)) < 1e-10,
+  'Recovery away from the grid must retain the local track tangent');
 const straightAhead = startPose.position.clone().add(new THREE.Vector3(
   Math.sin(startPose.yaw) * 100,
   0,

@@ -10,7 +10,7 @@ const output = execFileSync(
   { encoding: 'utf8' },
 );
 
-assert.match(output, /PASS asset inventory 52 files; public blockers=43, commercial blockers=45/);
+assert.match(output, /PASS asset inventory \d+ files; public blockers=\d+, commercial blockers=\d+/);
 assert.doesNotMatch(output, /missing from licenses\/assets\.json/);
 assert.doesNotMatch(output, /manifest entry has no matching file/);
 

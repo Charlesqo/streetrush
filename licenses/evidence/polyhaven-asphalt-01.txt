@@ -1,0 +1,10 @@
+Reviewed 2026-09-06
+Source: https://polyhaven.com/a/asphalt_01
+Official license: https://polyhaven.com/license
+Asset page identifies CC0 License and a 2.1 m tall patch.
+Authors: Charlotte Baglioni (photography), Dario Barresi (processing).
+Downloaded 1K JPG Diffuse, nor_gl and arm from the URLs returned by
+https://api.polyhaven.com/files/asphalt_01
+All three files match the MD5 values in that official response.
+SHA-256 and runtime file paths are recorded in licenses/assets.json.
+Files are unmodified. PBR tint, texture repeat and normal strength are runtime parameters.

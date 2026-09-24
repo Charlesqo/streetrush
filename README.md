@@ -8,7 +8,7 @@
 
 这个目录是从原项目复制出的独立 Studio 工作区。原始项目和素材库没有被修改。发布版只打包游戏实际使用的六辆车和两张赛道贴图；BMW M5 G90 与 Mercedes-AMG GT3 使用了网页传输优化副本，未覆盖的原始模型保存在 `source-models/`。
 
-当前已做、未做和通向可玩版本的顺序见 `docs/PLAYABLE_READINESS.md`；1.0 范围见 `docs/SCOPE.md`，仓库与发布流程见 `docs/RELEASE.md`，素材授权状态见 `docs/ASSET_LICENSES.md`。Lamborghini 模型目前没有可验证许可证，因此新的公开发布被门禁阻止；商业发布还必须解决 Lamborghini 未知授权，并替换两辆 CC BY-NC-SA 车辆。
+当前已做、未做和通向可玩版本的顺序见 `docs/PLAYABLE_READINESS.md`；1.0 范围见 `docs/SCOPE.md`，仓库与发布流程见 `docs/RELEASE.md`，素材授权状态见 `docs/ASSET_LICENSES.md`。Lamborghini 模型的 Sketchfab 来源与 CC BY 4.0 授权已记录，六车候选发动机音频为项目内合成输出；商业发布仍需替换两辆 CC BY-NC-SA 车辆。公开整个源代码仓库前还需单独处理第三方研究脚本和大文件历史。
 
 ## 工作区边界
 
@@ -88,7 +88,7 @@ pnpm check:release:public
 pnpm check:release:commercial
 ```
 
-当前门禁会因为素材授权阻塞而失败；不要使用跳过检查或允许脏工作区的参数绕过。授权清理、设备试玩、干净版本标签、回滚构建和固定的部署 CLI 都准备好之后，再按 `docs/RELEASE.md` 执行部署。
+免费公开版的运行时素材检查已通过；完整发布门禁仍需通过 `verify`、干净 Git 状态和设备试玩。商业版素材检查仍会阻止两辆 CC BY-NC-SA 车辆。不要使用跳过检查或允许脏工作区的参数绕过；准备好版本标签、回滚构建和固定的部署 CLI 后，再按 `docs/RELEASE.md` 执行部署。
 
 现有线上域名：
 

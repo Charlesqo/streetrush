@@ -1,5 +1,5 @@
 STREET RUSH - THIRD-PARTY NOTICES
-Last reviewed: 2026-08-14
+Last updated: 2026-09-24 (Lamborghini and generated audio provenance)
 
 This notice records the evidence shipped with the current build. It does not
 grant trademark rights and does not replace the full terms of each license.
@@ -50,9 +50,9 @@ Source: https://sketchfab.com/3d-models/porsche-gt3-rs-e738eae819c34d19a31dd066c
 License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 
 Lamborghini Aventador LP700
-Source, author and license: NOT RECORDED
-This asset is not cleared for public redistribution or commercial use. Replace
-it or record verifiable source and license evidence before the next release.
+Author: David_Holiday
+Source: https://sketchfab.com/3d-models/lamborghini-aventador-lp700-67796ac0bfa54c5cbe34dffc9847264d
+License: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
 
 SURFACE TEXTURES
 
@@ -60,20 +60,32 @@ Two base-color textures are from the free Downtown City MegaKit by Quaternius.
 Source: https://quaternius.com
 License: CC0 1.0 - https://creativecommons.org/publicdomain/zero/1.0/
 
-PROTOTYPE ENGINE AUDIO
+PROJECT-GENERATED ENGINE AUDIO
 
-The six layered engine banks are generated Engine Simulator candidates or
-compatibility proxies, not exact recordings of the current vehicle assets.
-Recorded upstream sources and reference pages:
+The six layered engine banks were synthesized for StreetRush with Engine
+Simulator; they are not third-party vehicle recordings or exact recordings of
+the current vehicle assets. Engine Simulator is MIT licensed:
+https://github.com/ange-yaghi/engine-sim/blob/master/LICENSE
+Upstream engine script inputs and vehicle specification references:
 https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/Mazda_BP_ZE.mr
 https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/BMW_S14B23.mr
 https://catalog.engine-sim.parts/parts/901
 https://catalog.engine-sim.parts/parts/902
 https://catalog.engine-sim.parts/parts/2060
 https://mercedes-benz-publicarchive.com/marsClassic/en/instance/ko/SLS-AMG-Coup-2010---2014.xhtml?oid=192608215
-License for redistribution of the generated banks: NOT REVIEWED
-These prototypes are not cleared for public redistribution or commercial use.
+The generated WAV loops and bank manifests are distributed as StreetRush
+project outputs. Upstream .mr script files are separate source materials.
 
 Vehicle and manufacturer names may be trademarks of their respective owners.
 The asset licenses above cover the recorded files; they do not themselves
 provide sponsorship, endorsement, trade-dress or trademark permission.
+
+Asphalt 01 PBR surface
+Charlotte Baglioni (photography), Dario Barresi (processing) / Poly Haven
+Source: https://polyhaven.com/a/asphalt_01
+License: CC0 1.0 - https://polyhaven.com/license
+Runtime: unmodified 1K JPG diffuse, OpenGL normal, packed AO/roughness/metal.
+
+Kloofendal 48d Partly Cloudy (Pure Sky) HDRI — Greg Zaal / Jarod Guest, Poly Haven. CC0-1.0.
+Source: https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
+License: https://polyhaven.com/license

@@ -14,6 +14,7 @@ const telemetryNumbers = [
   'rpm',
   'throttle',
   'brake',
+  'handbrake',
   'steer',
   'longitudinalAcceleration',
   'lateralAcceleration',
@@ -52,6 +53,9 @@ function dirtyResetOwnedState(vehicle) {
   vehicle.telemetry.absActive = true;
   vehicle.telemetry.tcsActive = true;
   vehicle.telemetry.stabilityActive = true;
+  for (const key of Object.keys(vehicle.telemetry.powertrain)) {
+    vehicle.telemetry.powertrain[key] = 123;
+  }
   for (const wheel of vehicle.telemetry.wheels) {
     wheel.grounded = true;
     wheel.load = 400;
@@ -109,6 +113,7 @@ function collectResetMismatches(vehicle) {
     reverse: false,
     throttle: 0,
     brake: 0,
+    handbrake: 0,
     steer: 0,
     longitudinalAcceleration: 0,
     lateralAcceleration: 0,
@@ -119,6 +124,9 @@ function collectResetMismatches(vehicle) {
   };
   for (const [key, expected] of Object.entries(telemetryExpected)) {
     expect(`telemetry.${key}`, vehicle.telemetry[key], expected);
+  }
+  for (const [key, value] of Object.entries(vehicle.telemetry.powertrain)) {
+    expect(`telemetry.powertrain.${key}`, value, 0);
   }
   for (const [index, wheel] of vehicle.telemetry.wheels.entries()) {
     const path = `telemetry.wheels[${index}]`;

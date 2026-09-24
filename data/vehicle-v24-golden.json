@@ -1,0 +1,1030 @@
+{
+  "componentVectors": {
+    "brakeAssist": {
+      "input": {
+        "bodyUMps": 15.0,
+        "parking": 0.0,
+        "service": 0.45,
+        "streetRushBrakeTorqueNm": 10000.0
+      },
+      "output": {
+        "abs_modulation": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "desired_yaw_rate_rad_s": 0.3,
+        "driver_service_capacity_nm": [
+          1395.0,
+          1395.0,
+          855.0,
+          855.0
+        ],
+        "engine_positive_torque_limit": 1.0,
+        "esc_brake_capacity_nm": [
+          0.0,
+          0.0,
+          180.0,
+          0.0
+        ],
+        "parking_capacity_nm": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "service_capacity_nm": [
+          1395.0,
+          1395.0,
+          1035.0,
+          855.0
+        ],
+        "service_request_capacity_nm": [
+          1395.0,
+          1395.0,
+          1035.0,
+          855.0
+        ],
+        "tcs_brake_capacity_nm": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "total_brake_capacity_nm": [
+          1395.0,
+          1395.0,
+          1035.0,
+          855.0
+        ],
+        "wheel_slip": [
+          -0.008000000000000066,
+          -0.008000000000000066,
+          -0.008000000000000066,
+          -0.008000000000000066
+        ],
+        "yaw_error_rad_s": 0.3
+      }
+    },
+    "lowSpeedHostBoundary": {
+      "exception": "FrictionContactHostRequired",
+      "message": "FRICTION_CONTACT_HOST_REQUIRED: provide the world's free contact velocity and Delassus response; do not run handling force and contact reaction together"
+    },
+    "openDifferential": {
+      "externalWheelTorqueNm": [
+        0.0,
+        0.0,
+        20.0,
+        -20.0
+      ],
+      "independentWheelOmega": [
+        0.0,
+        0.0,
+        40.0,
+        60.0
+      ],
+      "input": {
+        "finalDriveRatio": 3.5,
+        "sideWheels": [
+          2,
+          3
+        ]
+      },
+      "mapping": [
+        0.0,
+        0.0,
+        1.75,
+        1.75
+      ]
+    },
+    "steering": {
+      "input": {
+        "dt": 0.008333333333333333,
+        "kind": "GAMEPAD",
+        "speedMps": 15.0,
+        "value": 0.6
+      },
+      "nextState": {
+        "filtered_ffb_torque_nm": 0.0,
+        "keyboard_axis": 0.0,
+        "rack_q": 0.0017527646969808881,
+        "rack_rate_q_s": 0.2103317636377066
+      },
+      "output": {
+        "curvature_1pm": 0.0002570723045365863,
+        "handwheel_angle_rad": 0.016519418086520094,
+        "intent": {
+          "kind": "GAMEPAD",
+          "shaped_input": 0.4260840482177704,
+          "target_curvature": 0.014486857639404195,
+          "target_handwheel_angle": 0.8187950992501022,
+          "target_virtual_angle": 0.03909458622752184
+        },
+        "rack_q": 0.0017527646969808881,
+        "rack_rate_q_s": 0.2103317636377066,
+        "virtual_angle_rad": 0.0006940951107844851,
+        "wheel_angles": {
+          "left_rad": -3.919518502896557e-06,
+          "right_rad": 0.0013921097795509363
+        }
+      }
+    },
+    "tireAirborne": {
+      "input": {
+        "camber_rad": 0.0,
+        "dt_s": 0.008333333333333333,
+        "effective_radius_m": null,
+        "in_contact": false,
+        "loaded_radius_m": null,
+        "normal_load_n": 0.0,
+        "surface_mu_x": 1.0,
+        "surface_mu_y": 1.0,
+        "velocity_x_mps": 0.0,
+        "velocity_y_mps": 0.0,
+        "wheel_omega_radps": 0.0
+      },
+      "output": {
+        "alpha_observable_rad": 0.0,
+        "contact_power_w": 0.0,
+        "effective_radius_m": 0.31,
+        "force_utilization": 0.0,
+        "force_x_n": 0.0,
+        "force_y_n": 0.0,
+        "force_z_n": 0.0,
+        "gross_contact_loss_proxy_w": 0.0,
+        "kappa_observable": 0.0,
+        "load_was_clamped": false,
+        "model_camber_slip": 0.0,
+        "model_slip_x": 0.0,
+        "model_slip_y": 0.0,
+        "moment_x_nm": 0.0,
+        "moment_y_nm": 0.0,
+        "moment_z_nm": 0.0,
+        "pneumatic_trail_m": 0.0,
+        "raw_slip_velocity_x_mps": 0.0,
+        "raw_slip_velocity_y_mps": 0.0,
+        "regime": "AIRBORNE",
+        "state_next": {
+          "mode": "AIRBORNE",
+          "sgamma": 0.0,
+          "sx": 0.0,
+          "sy": 0.0
+        },
+        "state_was_bounded": false,
+        "transport_speed_mps": 0.0,
+        "wheel_contact_torque_nm": 0.0
+      }
+    },
+    "tireHandling": {
+      "input": {
+        "camber_rad": 0.0,
+        "dt_s": 0.008333333333333333,
+        "effective_radius_m": null,
+        "in_contact": true,
+        "loaded_radius_m": null,
+        "normal_load_n": 4000.0,
+        "surface_mu_x": 1.0,
+        "surface_mu_y": 1.0,
+        "velocity_x_mps": 15.0,
+        "velocity_y_mps": 1.2,
+        "wheel_omega_radps": 52.0
+      },
+      "output": {
+        "alpha_observable_rad": -0.07578067180754941,
+        "contact_power_w": -4200.011901660136,
+        "effective_radius_m": 0.30393939393939395,
+        "force_utilization": 0.5207335252293351,
+        "force_x_n": 1690.4175019950503,
+        "force_y_n": -1734.0410076211094,
+        "force_z_n": 4000.0,
+        "gross_contact_loss_proxy_w": 4200.011901660136,
+        "kappa_observable": 0.050924150625047925,
+        "load_was_clamped": false,
+        "model_camber_slip": 0.0,
+        "model_slip_x": 0.018588350797499247,
+        "model_slip_y": -0.021301027172207082,
+        "moment_x_nm": -0.0,
+        "moment_y_nm": -14.58909090909091,
+        "moment_z_nm": 69.94438035764715,
+        "pneumatic_trail_m": 0.04033605898029033,
+        "raw_slip_velocity_x_mps": 0.8048484848484847,
+        "raw_slip_velocity_y_mps": -1.2,
+        "regime": "HANDLING",
+        "state_next": {
+          "mode": "HANDLING",
+          "sgamma": 0.0,
+          "sx": 0.018588350797499247,
+          "sy": -0.021301027172207082
+        },
+        "state_was_bounded": false,
+        "transport_speed_mps": 15.804848484848485,
+        "wheel_contact_torque_nm": -528.3735619700108
+      },
+      "previousState": {
+        "mode": "HANDLING",
+        "sgamma": 0.0,
+        "sx": 0.0,
+        "sy": 0.0
+      }
+    }
+  },
+  "coordinates": {
+    "axialVectorUsesDeterminantFactor": -1,
+    "oracle": {
+      "forward": "+X",
+      "left": "+Y",
+      "units": "SI",
+      "up": "+Z"
+    },
+    "polarVectorPythonToStreetRush": [
+      [
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "streetRush": {
+      "forward": "+Z",
+      "right": "+X",
+      "units": "SI",
+      "up": "+Y"
+    },
+    "wheelOrder": [
+      "FL",
+      "FR",
+      "RL",
+      "RR"
+    ]
+  },
+  "errorBoundaries": [
+    "FrictionContactHostRequired",
+    "UnifiedDomainError",
+    "RigidBodyDynamicsHostRequired"
+  ],
+  "maneuver120Hz": [
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "body_u_m_s": 14.997466076786834,
+        "body_v_m_s": 5.880241550631995e-07,
+        "brake_regimes": [
+          "OPEN",
+          "OPEN",
+          "OPEN",
+          "OPEN"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -2.938187887435717e-17,
+          -2.7755575615628914e-17,
+          1.0462550964485118e-17,
+          7.101524229780054e-18
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 36,
+        "normal_loads_n": [
+          3785.795435744398,
+          3785.9323432700753,
+          3467.2376895057573,
+          3467.1458235237224
+        ],
+        "peak_row": "corner_2_compliance",
+        "residual_scaled_inf": 4.004737893300442e-12,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=35"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": -1.3272353689169572e-08
+      },
+      "hz": 120,
+      "scenario": "straight_no_brake",
+      "status": "PASS"
+    },
+    {
+      "backend": "DYNAMIC_UNSPRUNG",
+      "details": {
+        "body_u_m_s": 14.997319913016474,
+        "body_v_m_s": 2.436813026627803e-07,
+        "brake_regimes": [
+          "OPEN",
+          "OPEN",
+          "OPEN",
+          "OPEN"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -0.00034885130907088803,
+          -0.00034894234834101877,
+          -0.00031155682936481115,
+          -0.00031148257545063134
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 36,
+        "normal_loads_n": [
+          3788.290924605942,
+          3788.3306177277186,
+          3464.7468658383514,
+          3464.714491131769
+        ],
+        "peak_row": "corner_1_compliance",
+        "residual_scaled_inf": 6.594576366101071e-12,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=35"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": 8.310378577318067e-09
+      },
+      "hz": 120,
+      "scenario": "straight_no_brake",
+      "status": "PASS"
+    },
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "body_u_m_s": 14.957067840696338,
+        "body_v_m_s": 4.833286921032586e-07,
+        "brake_regimes": [
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -8.673617379884035e-19,
+          4.336808689942018e-18,
+          4.85722573273506e-17,
+          4.683753385137379e-17
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 40,
+        "normal_loads_n": [
+          5444.693879192992,
+          5444.807514267267,
+          1809.9200228824977,
+          1809.8300558556648
+        ],
+        "peak_row": "wheel_2_angular_momentum",
+        "residual_scaled_inf": 2.1617917671810614e-11,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=39"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": 1.1103467427740077e-07
+      },
+      "hz": 120,
+      "scenario": "service_brake_0.45",
+      "status": "PASS"
+    },
+    {
+      "backend": "DYNAMIC_UNSPRUNG",
+      "details": {
+        "body_u_m_s": 14.957415881799443,
+        "body_v_m_s": 2.2663207431547662e-07,
+        "brake_regimes": [
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -0.00414044307636164,
+          -0.004140515520004039,
+          0.0034762263911589635,
+          0.0034763086458762344
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 40,
+        "normal_loads_n": [
+          5441.424935144711,
+          5441.456520572797,
+          1813.2733816899859,
+          1813.2375186332554
+        ],
+        "peak_row": "wheel_2_angular_momentum",
+        "residual_scaled_inf": 4.327400791429703e-12,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=39"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": 2.4368268347619396e-08
+      },
+      "hz": 120,
+      "scenario": "service_brake_0.45",
+      "status": "PASS"
+    },
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "body_u_m_s": 14.925607772285412,
+        "body_v_m_s": 2.7440645230412943e-07,
+        "brake_regimes": [
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -1.734723475976807e-17,
+          1.9081958235744878e-17,
+          1.0408340855860843e-17,
+          -1.9081958235744878e-17
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 48,
+        "normal_loads_n": [
+          7160.317274314205,
+          7160.403269045717,
+          93.70553075812504,
+          93.61211709532455
+        ],
+        "peak_row": "wheel_3_angular_momentum",
+        "residual_scaled_inf": 9.311416746772527e-13,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=47"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": 3.5961664007206363e-07
+      },
+      "hz": 120,
+      "scenario": "service_brake_full",
+      "status": "PASS"
+    },
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "body_u_m_s": 14.978327204374128,
+        "body_v_m_s": 4.892117381935656e-07,
+        "brake_regimes": [
+          "OPEN",
+          "OPEN",
+          "KINETIC_POSITIVE",
+          "KINETIC_POSITIVE"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -5.2909066017292616e-17,
+          -4.683753385137379e-17,
+          1.9081958235744878e-17,
+          1.474514954580286e-17
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 42,
+        "normal_loads_n": [
+          5284.523901706811,
+          5284.645480098216,
+          1970.7959013177135,
+          1970.7038181536175
+        ],
+        "peak_row": "wheel_2_angular_momentum",
+        "residual_scaled_inf": 3.0647843309659286e-12,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=41"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": 3.8172324570745984e-07
+      },
+      "hz": 120,
+      "scenario": "parking_brake_15mps",
+      "status": "PASS"
+    },
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "body_u_m_s": 14.999497920539204,
+        "body_v_m_s": 8.162221091003135e-05,
+        "brake_regimes": [
+          "OPEN",
+          "OPEN",
+          "OPEN",
+          "OPEN"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -1.3032110113275763e-16,
+          -2.984266479766351e-16,
+          -8.903468240450962e-16,
+          -1.1338586319853405e-15
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 36,
+        "normal_loads_n": [
+          3749.9433874379943,
+          3754.366925829055,
+          3497.7076712792455,
+          3504.0552936301633
+        ],
+        "peak_row": "corner_3_compliance",
+        "residual_scaled_inf": 1.1136340601850675e-11,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=35"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": 0.00010484753516219042
+      },
+      "hz": 120,
+      "scenario": "position_steering",
+      "status": "PASS"
+    },
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "body_u_m_s": 14.999497918134058,
+        "body_v_m_s": 1.2779788373534336e-05,
+        "brake_regimes": [
+          "OPEN",
+          "OPEN",
+          "OPEN",
+          "OPEN"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -1.612208630485945e-16,
+          -2.714842239903703e-16,
+          -9.151750537950143e-16,
+          -1.0600244640390777e-15
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 38,
+        "normal_loads_n": [
+          3751.764180240088,
+          3752.546193147318,
+          3500.4430007516385,
+          3501.3198478012605
+        ],
+        "peak_row": "corner_3_compliance",
+        "residual_scaled_inf": 1.103720420451721e-11,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=37"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": 1.5755802680537306e-05
+      },
+      "hz": 120,
+      "scenario": "torque_driven_steering",
+      "status": "PASS"
+    },
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "body_u_m_s": 14.997870590130105,
+        "body_v_m_s": 6.52689402121232e-07,
+        "brake_regimes": [
+          "OPEN",
+          "OPEN",
+          "OPEN",
+          "OPEN"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          -1.5092094240998222e-16,
+          -7.193681414441322e-17,
+          -6.391371806802049e-17,
+          8.131516293641283e-18
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 36,
+        "normal_loads_n": [
+          3779.079823806517,
+          3779.2236777574126,
+          3473.945484245629,
+          3473.854835969143
+        ],
+        "peak_row": "corner_2_compliance",
+        "residual_scaled_inf": 6.9671282225446454e-12,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=35"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": 4.39167163634132e-08
+      },
+      "hz": 120,
+      "scenario": "split_mu",
+      "status": "PASS"
+    },
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "body_u_m_s": 14.999089288759805,
+        "body_v_m_s": 2.865468328717017e-05,
+        "brake_regimes": [
+          "OPEN",
+          "OPEN",
+          "OPEN",
+          "OPEN"
+        ],
+        "clutch_regime": "LOCKED",
+        "contact_gaps_m": [
+          2.301761212186726e-16,
+          4.786752591523502e-17,
+          -1.6547093556473769e-15,
+          -1.8628761727645937e-15
+        ],
+        "contact_regimes": [
+          "CONTACT",
+          "CONTACT",
+          "CONTACT",
+          "CONTACT"
+        ],
+        "nonlinear_evaluations": 36,
+        "normal_loads_n": [
+          3759.2026472073057,
+          3758.6638969955097,
+          3493.697293380884,
+          3494.5171517701224
+        ],
+        "peak_row": "wheel_3_angular_momentum",
+        "residual_scaled_inf": 1.687393297160727e-11,
+        "solver_attempts": [
+          "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=35"
+        ],
+        "solver_method": "root-hybr",
+        "transaction": {
+          "aborted": [],
+          "committed": [
+            "engine",
+            "gearbox",
+            "steering",
+            "tires",
+            "mechanics"
+          ],
+          "committed_exactly_once": true,
+          "rolled_back": []
+        },
+        "yaw_rate_rad_s": -0.0002086195174812792
+      },
+      "hz": 120,
+      "scenario": "rear_wheel_differential_external",
+      "status": "PASS"
+    },
+    {
+      "backend": "MAPPED_KC_MASSLESS",
+      "details": {
+        "steps": [
+          {
+            "details": {
+              "body_u_m_s": 14.925607772285412,
+              "body_v_m_s": 2.7440645230412943e-07,
+              "brake_regimes": [
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE"
+              ],
+              "clutch_regime": "LOCKED",
+              "contact_gaps_m": [
+                -1.734723475976807e-17,
+                1.9081958235744878e-17,
+                1.0408340855860843e-17,
+                -1.9081958235744878e-17
+              ],
+              "contact_regimes": [
+                "CONTACT",
+                "CONTACT",
+                "CONTACT",
+                "CONTACT"
+              ],
+              "fsm_direction": "FORWARD",
+              "nonlinear_evaluations": 48,
+              "normal_loads_n": [
+                7160.317274314205,
+                7160.403269045717,
+                93.70553075812504,
+                93.61211709532455
+              ],
+              "peak_row": "wheel_3_angular_momentum",
+              "residual_scaled_inf": 9.311416746772527e-13,
+              "solver_attempts": [
+                "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=47"
+              ],
+              "solver_method": "root-hybr",
+              "step_index": 1,
+              "transaction": {
+                "aborted": [],
+                "committed": [
+                  "engine",
+                  "gearbox",
+                  "steering",
+                  "tires",
+                  "mechanics"
+                ],
+                "committed_exactly_once": true,
+                "rolled_back": []
+              },
+              "wall_time_s": 0.1336613750027027,
+              "yaw_rate_rad_s": 3.5961664007206363e-07
+            },
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "body_u_m_s": 14.834768400079732,
+              "body_v_m_s": 5.251200081750413e-07,
+              "brake_regimes": [
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE"
+              ],
+              "clutch_regime": "LOCKED",
+              "contact_gaps_m": [
+                5.551115123125783e-16,
+                5.655198531684391e-16,
+                7.979727989493313e-17,
+                7.632783294297951e-17
+              ],
+              "contact_regimes": [
+                "CONTACT",
+                "CONTACT",
+                "CONTACT",
+                "CONTACT"
+              ],
+              "fsm_direction": "FORWARD",
+              "nonlinear_evaluations": 38,
+              "normal_loads_n": [
+                6964.098134006007,
+                6964.189644829708,
+                263.4808907211231,
+                263.38368936733605
+              ],
+              "peak_row": "platform_pitch",
+              "residual_scaled_inf": 7.178869054769166e-13,
+              "solver_attempts": [
+                "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=37"
+              ],
+              "solver_method": "root-hybr",
+              "step_index": 2,
+              "transaction": {
+                "aborted": [],
+                "committed": [
+                  "engine",
+                  "gearbox",
+                  "steering",
+                  "tires",
+                  "mechanics"
+                ],
+                "committed_exactly_once": true,
+                "rolled_back": []
+              },
+              "wall_time_s": 0.1064978750073351,
+              "yaw_rate_rad_s": 6.267276711979122e-07
+            },
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "body_u_m_s": 14.746304887099694,
+              "body_v_m_s": 6.831337959556461e-07,
+              "brake_regimes": [
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE",
+                "KINETIC_POSITIVE"
+              ],
+              "clutch_regime": "LOCKED",
+              "contact_gaps_m": [
+                -8.368306048112117e-15,
+                -8.368306048112117e-15,
+                -6.210310043996969e-16,
+                -6.279698983036042e-16
+              ],
+              "contact_regimes": [
+                "CONTACT",
+                "CONTACT",
+                "CONTACT",
+                "CONTACT"
+              ],
+              "fsm_direction": "FORWARD",
+              "nonlinear_evaluations": 37,
+              "normal_loads_n": [
+                6508.800524642721,
+                6508.8971737844695,
+                679.2620945824881,
+                679.1543752518656
+              ],
+              "peak_row": "corner_0_massless_equilibrium",
+              "residual_scaled_inf": 8.238432384205518e-12,
+              "solver_attempts": [
+                "active_set=1:root-hybr:status=1:success=True:in_bounds=True:nfev=36"
+              ],
+              "solver_method": "root-hybr",
+              "step_index": 3,
+              "transaction": {
+                "aborted": [],
+                "committed": [
+                  "engine",
+                  "gearbox",
+                  "steering",
+                  "tires",
+                  "mechanics"
+                ],
+                "committed_exactly_once": true,
+                "rolled_back": []
+              },
+              "wall_time_s": 0.10337216701009311,
+              "yaw_rate_rad_s": 7.553427950321621e-07
+            },
+            "status": "PASS"
+          }
+        ]
+      },
+      "hz": 120,
+      "scenario": "step_driver_F_to_R_full_brake",
+      "status": "PASS"
+    }
+  ],
+  "schema": "streetrush.vehicle-v24.golden.v1",
+  "source": {
+    "delivery": "vehicle_physics_v2_4_standalone_closeout",
+    "maneuverMatrixSha256": "da141d1efec12f9abd28de081a596db91a875cd8f7a2dc3b393861b7ea2d51b3",
+    "matrixCounts": {
+      "EXPECTED_HOST_BOUNDARY": 2,
+      "FAIL": 0,
+      "PASS": 31,
+      "TIMEOUT": 0
+    },
+    "maximumScaledResidual": 3.809468256085954e-11,
+    "validationManifestSha256": "bcf50f41a6c6382b40cf92e7ad4b1a69f6f7978264237e3de01a1a68c1d39e9c"
+  },
+  "transactionContract": {
+    "aggregateEvaluationBudget": 720,
+    "commitExactlyOnce": true,
+    "owners": [
+      "engine",
+      "gearbox",
+      "steering",
+      "tires",
+      "mechanics"
+    ],
+    "preflightBeforeCommit": true,
+    "residualTolerance": 2e-06,
+    "reverseRollbackOnPostCommitFault": true,
+    "singleSolveEvaluationBudget": 120
+  }
+}

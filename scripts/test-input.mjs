@@ -89,7 +89,7 @@ Object.defineProperty(globalThis, 'navigator', {
   value: { getGamepads: () => gamepads, vibrate: () => {} },
 });
 
-const { InputController } = await import('../src/input.js');
+const { InputController, resolveDriveIntent } = await import('../src/input.js');
 const controller = new InputController();
 controller.setTouchEnabled(true);
 
@@ -193,6 +193,14 @@ windowTarget.dispatchEvent({ type: 'keyup', code: 'KeyE', target: canvas });
 windowTarget.dispatchEvent(makeKeyEvent('KeyW'));
 assert.ok(frameStep().throttle > 0);
 controller.releaseAll();
+windowTarget.dispatchEvent(makeKeyEvent('KeyA', { target: canvas }));
+assert.ok(frameStep().steer > 0, 'A enters the shared convention as semantic left-positive');
+windowTarget.dispatchEvent({ type: 'keyup', code: 'KeyA', target: canvas });
+controller.releaseAll();
+windowTarget.dispatchEvent(makeKeyEvent('KeyD', { target: canvas }));
+assert.ok(frameStep().steer < 0, 'D enters the shared convention as semantic right-negative');
+windowTarget.dispatchEvent({ type: 'keyup', code: 'KeyD', target: canvas });
+controller.releaseAll();
 assert.equal(controller.keys.has('KeyW'), false);
 assert.equal(controller.frame.throttle, 0);
 windowTarget.dispatchEvent(makeKeyEvent('KeyW', { repeat: true }));
@@ -207,9 +215,42 @@ assert.ok(frameStep().throttle > 0);
 windowTarget.dispatchEvent({ type: 'keyup', code: 'KeyW', target: canvas });
 controller.releaseAll();
 
+assert.equal(resolveDriveIntent(1, 1), 0, 'equal opposite requests remain directionally neutral');
+windowTarget.dispatchEvent(makeKeyEvent('KeyW', { target: canvas }));
+windowTarget.dispatchEvent(makeKeyEvent('KeyS', { target: canvas }));
+const simultaneousDirections = frameStep();
+assert.equal(simultaneousDirections.driveIntent, 0, 'W+S does not choose a drive direction');
+assert.equal(simultaneousDirections.directionConflict, true, 'W+S preserves the braking conflict for vehicle arbitration');
+assert.equal(simultaneousDirections.rawThrottle, 1, 'W+S exposes the full raw forward request for diagnostics');
+assert.equal(simultaneousDirections.rawBrake, 1, 'W+S exposes the full raw brake request for diagnostics');
+assert.ok(simultaneousDirections.throttle > 0, 'W+S retains the forward pedal value');
+assert.ok(simultaneousDirections.brake > 0, 'W+S retains the reverse/brake pedal value');
+windowTarget.dispatchEvent({ type: 'keyup', code: 'KeyW', target: canvas });
+windowTarget.dispatchEvent({ type: 'keyup', code: 'KeyS', target: canvas });
+controller.releaseAll();
+
+windowTarget.dispatchEvent(makeKeyEvent('Space', { target: canvas }));
+const pressedHandbrake = frameStep();
+assert.ok(pressedHandbrake.handbrake > 0, 'handbrake press reaches the gameplay frame');
+assert.equal(pressedHandbrake.rawHandbrake, 1, 'handbrake diagnostics expose the full raw request');
+windowTarget.dispatchEvent({ type: 'keyup', code: 'Space', target: canvas });
+assert.equal(frameStep().handbrake, 0, 'handbrake release produces an exact zero');
+assert.equal(controller.frame.rawHandbrake, 0, 'handbrake raw diagnostics release to zero');
+controller.releaseAll();
+
 const pad = makeGamepad();
 gamepads = [pad];
 assert.equal(frameStep().throttle, 0);
+pad.buttons[7] = { value: 0.05, pressed: false };
+const deadzoneFrame = frameStep();
+assert.equal(deadzoneFrame.rawThrottle, 0, '5% trigger noise is removed before diagnostics');
+assert.equal(deadzoneFrame.throttle, 0, '5% trigger noise cannot leak into filtered throttle');
+assert.equal(deadzoneFrame.driveIntent, 0, '5% trigger noise cannot create drive intent');
+pad.buttons[7] = { value: 0.525, pressed: false };
+assert.ok(Math.abs(frameStep().rawThrottle - 0.5) < 1e-12, 'trigger travel is remapped after its deadzone');
+controller.releaseAll();
+pad.buttons[7] = { value: 0, pressed: false };
+assert.equal(frameStep().driveIntent, 0, 'neutral trigger rearms gameplay after the deadzone probe');
 pad.axes[0] = 0.72;
 pad.buttons[5] = { value: 1, pressed: true };
 pad.buttons[7] = { value: 1, pressed: true };
@@ -300,11 +341,25 @@ assert.equal(controller.consumeGamepadMenuPulse(), false);
 menuPad.buttons[9] = { value: 1, pressed: true };
 assert.equal(controller.consumeGamepadMenuPulse(), true, 'a fresh press can resume after pause');
 gamepads = [];
+assert.equal(controller.consumeGamepadMenuPulse(), false);
+const reconnectedMenuPad = makeGamepad({ menu: true });
+gamepads = [reconnectedMenuPad];
+assert.equal(
+  controller.consumeGamepadMenuPulse(),
+  false,
+  'a held menu button cannot pulse immediately after reconnect',
+);
+reconnectedMenuPad.buttons[9] = { value: 0, pressed: false };
+assert.equal(controller.consumeGamepadMenuPulse(), false);
+reconnectedMenuPad.buttons[9] = { value: 1, pressed: true };
+assert.equal(controller.consumeGamepadMenuPulse(), true, 'menu reconnect rearms only after neutral');
+gamepads = [];
 controller.releaseAll();
 
 const throttle = elements.get('touch-throttle');
 const brake = elements.get('touch-brake');
 const left = elements.get('touch-left');
+const right = elements.get('touch-right');
 const reset = elements.get('touch-reset');
 
 const FIXED_DT = 1 / 120;
@@ -374,6 +429,15 @@ assert.equal(controller.touch.throttle, 0);
 assert.equal(throttle.classList.contains('pressed'), false);
 assert.equal(throttle.hasPointerCapture(1), false);
 assert.deepEqual(throttle.releasePointerCaptureCalls, [1]);
+
+left.dispatchEvent(makePointerEvent('pointerdown', 'left-steer'));
+assert.ok(controller.update(1 / 60, 0).steer > 0, 'touch left is semantic left-positive');
+left.dispatchEvent(makePointerEvent('pointerup', 'left-steer'));
+controller.releaseAll();
+right.dispatchEvent(makePointerEvent('pointerdown', 'right-steer'));
+assert.ok(controller.update(1 / 60, 0).steer < 0, 'touch right is semantic right-negative');
+right.dispatchEvent(makePointerEvent('pointerup', 'right-steer'));
+controller.releaseAll();
 
 throttle.dispatchEvent(makePointerEvent('pointerdown', 'rearm-pointer'));
 controller.releaseAll();
@@ -503,6 +567,9 @@ for (const [name, trigger] of lifecycleReleases) {
   assert.equal(controller.touch.throttle, 0, name + ' clears hold state');
   assert.equal(controller.frame.throttle, 0, name + ' clears frame throttle');
   assert.equal(controller.frame.brake, 0, name + ' clears frame brake');
+  assert.equal(controller.frame.rawThrottle, 0, name + ' clears raw throttle diagnostics');
+  assert.equal(controller.frame.rawBrake, 0, name + ' clears raw brake diagnostics');
+  assert.equal(controller.frame.rawHandbrake, 0, name + ' clears raw handbrake diagnostics');
   assert.equal(controller.frame.steer, 0, name + ' clears frame steer');
   assert.equal(controller.pulses.has('TouchReset'), false, name + ' clears pulse state');
   assert.equal(throttle.classList.contains('pressed'), false, name + ' clears hold styling');

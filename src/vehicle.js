@@ -7,15 +7,19 @@ import {
   aerodynamicDragScale,
   drivetrainEfficiency,
   frictionLimitedYawRate,
+  integrateWheelOmegaWithBrakeCapacity,
   roadWheelRpm,
   torqueCurveFactor,
 } from './vehicle-physics.js';
+import { VehicleV24AbortError, VehicleV24Runtime } from './vehicle-v24/index.js';
 
 const clamp = THREE.MathUtils.clamp;
 const damp = THREE.MathUtils.damp;
 const MIN_SAFE_UPDATE_DT = FIXED_DT * 0.25;
 const MAX_SAFE_UPDATE_DT = 0.05;
 const REVERSE_ENGAGE_HOLD_SECONDS = 0.45;
+const HANDBRAKE_ACTIVE_THRESHOLD = 0.05;
+const HANDBRAKE_REAR_TORQUE_FACTOR = 0.72;
 
 const finiteOr = (value, fallback = 0) => Number.isFinite(value) ? value : fallback;
 
@@ -51,6 +55,7 @@ function sanitizeInput(input) {
     throttle: numberInRange(source.throttle, 0, 1),
     brake: numberInRange(source.brake, 0, 1),
     handbrake: numberInRange(source.handbrake, 0, 1),
+    directionConflict: source.directionConflict === true,
     shiftUp: source.shiftUp === true,
     shiftDown: source.shiftDown === true,
     toggleTransmission: source.toggleTransmission === true,
@@ -78,7 +83,17 @@ export function disposeOwnedVisual(root) {
 }
 
 export class VehicleSystem {
-  constructor({ RAPIER, world, scene, track, config, visual, onAutomaticReset = null }) {
+  constructor({
+    RAPIER,
+    world,
+    scene,
+    track,
+    config,
+    visual,
+    onAutomaticReset = null,
+    vehiclePhysicsMode = 'legacy',
+    vehicleV24Options = null,
+  }) {
     this.RAPIER = RAPIER;
     this.world = world;
     this.scene = scene;
@@ -86,6 +101,11 @@ export class VehicleSystem {
     this.config = config;
     this.visual = visual;
     this.onAutomaticReset = typeof onAutomaticReset === 'function' ? onAutomaticReset : null;
+    if (!['legacy', 'v24-shadow', 'v24-active'].includes(vehiclePhysicsMode)) {
+      throw new Error(`Unknown vehicle physics mode: ${vehiclePhysicsMode}`);
+    }
+    this.vehiclePhysicsMode = vehiclePhysicsMode;
+    this.vehiclePhysicsReport = null;
     this.visual.name = `vehicle-${config.id}`;
     scene.add(this.visual);
     this.transmissionMode = 'AT';
@@ -118,17 +138,44 @@ export class VehicleSystem {
     this.drivenWheels = this.wheels.filter((wheel) => wheel.driven);
     this.lockedInput = {
       steer: 0, throttle: 0, brake: 0, handbrake: 0,
+      directionConflict: false,
       shiftUp: false, shiftDown: false, toggleTransmission: false, reset: false, driveIntent: 0,
     };
     this.telemetry = {
-      speedKmh: 0, signedSpeedKmh: 0, rpm: config.idle, gear: 1, reverse: false,
-      throttle: 0, brake: 0, steer: 0, longitudinalAcceleration: 0, lateralAcceleration: 0,
+      speedKmh: 0, signedSpeedKmh: 0, rpm: config.idle, gear: 1, reverse: false, driveIntent: 0,
+      throttle: 0, brake: 0, handbrake: 0, steer: 0, longitudinalAcceleration: 0, lateralAcceleration: 0,
       surface: 'asphalt', absActive: false, tcsActive: false, stabilityActive: false,
+      powertrain: {
+        driveTorqueRequestedNm: 0,
+        driveTorqueAppliedNm: 0,
+        wheelDriveTorqueRequestedNm: 0,
+        wheelDriveTorqueAppliedNm: 0,
+        serviceBrakeTorqueRequestedNm: 0,
+        serviceBrakeTorqueAppliedNm: 0,
+        driverServiceBrakeTorqueRequestedNm: 0,
+        driverServiceBrakeTorqueAppliedNm: 0,
+        assistBrakeTorqueRequestedNm: 0,
+        assistBrakeTorqueAppliedNm: 0,
+        handbrakeTorqueRequestedNm: 0,
+        handbrakeTorqueAppliedNm: 0,
+      },
       wheels: this.wheels.map(() => ({
         grounded: false, load: 0, suspension: 0, slipRatio: 0, slipAngle: 0,
         slipPower: 0, surface: 'asphalt', contactPoint: new THREE.Vector3(),
       })),
+      vehiclePhysics: null,
     };
+    this.vehicleV24 = vehiclePhysicsMode === 'legacy'
+      ? null
+      : new VehicleV24Runtime({
+        RAPIER,
+        world,
+        body: this.body,
+        track,
+        config,
+        wheels: this.wheels,
+        options: vehicleV24Options ?? {},
+      });
   }
 
   createBody() {
@@ -146,7 +193,10 @@ export class VehicleSystem {
       .setCcdEnabled(true)
       .setCanSleep(false);
     this.body = this.world.createRigidBody(desc);
-    const halfLength = Math.max(1.75, this.config.wheelbase * 0.72);
+    const configuredLength = Number(this.config.model?.targetLength);
+    const halfLength = Number.isFinite(configuredLength) && configuredLength > 0
+      ? configuredLength * 0.5
+      : Math.max(1.75, this.config.wheelbase * 0.72);
     const collider = this.RAPIER.ColliderDesc.cuboid(this.config.trackWidth * 0.52, 0.28, halfLength)
       .setTranslation(0, -0.09, 0)
       .setMass(this.config.mass)
@@ -219,14 +269,12 @@ export class VehicleSystem {
     }
   }
 
-  setReverseState(reverse, longSpeed = 0) {
+  setReverseState(reverse) {
     if (this.reverse === reverse) return;
     this.reverse = reverse;
     this.reverseHold = 0;
     this.gear = 1;
     this.shiftTimer = 0.08;
-    const rollingOmega = longSpeed / this.config.wheelRadius;
-    for (const wheel of this.wheels) wheel.omega = rollingOmega;
     this.engineRpm = Math.max(this.config.idle, Math.min(this.engineRpm, this.config.idle * 1.35));
   }
 
@@ -262,6 +310,8 @@ export class VehicleSystem {
     this.smoothedLongAcceleration = 0;
     this.safeSample = pose.sampleIndex;
     this.stuckTimer = 0;
+    this.vehicleV24?.reset();
+    this.vehiclePhysicsReport = null;
     this.afterPhysics();
     this.previousPose.position.copy(this.currentPose.position);
     this.previousPose.rotation.copy(this.currentPose.rotation);
@@ -274,8 +324,10 @@ export class VehicleSystem {
     this.telemetry.rpm = this.config.idle;
     this.telemetry.gear = 1;
     this.telemetry.reverse = false;
+    this.telemetry.driveIntent = 0;
     this.telemetry.throttle = 0;
     this.telemetry.brake = 0;
+    this.telemetry.handbrake = 0;
     this.telemetry.steer = 0;
     this.telemetry.longitudinalAcceleration = 0;
     this.telemetry.lateralAcceleration = 0;
@@ -283,6 +335,10 @@ export class VehicleSystem {
     this.telemetry.absActive = false;
     this.telemetry.tcsActive = false;
     this.telemetry.stabilityActive = false;
+    this.telemetry.vehiclePhysics = null;
+    for (const field of Object.keys(this.telemetry.powertrain)) {
+      this.telemetry.powertrain[field] = 0;
+    }
     for (const wheel of this.telemetry.wheels) {
       wheel.grounded = false;
       wheel.load = 0;
@@ -318,12 +374,17 @@ export class VehicleSystem {
     let driveThrottle = 0;
     let serviceBrake = 0;
 
-    if (wantsForward) {
+    if (input.directionConflict) {
+      this.reverseHold = 0;
+      if (longSpeed > switchSpeed) serviceBrake = input.brake;
+      else if (longSpeed < -switchSpeed) serviceBrake = input.throttle;
+      else serviceBrake = this.reverse ? input.throttle : input.brake;
+    } else if (wantsForward) {
       this.reverseHold = 0;
       if (longSpeed < -switchSpeed) {
         serviceBrake = input.throttle;
       } else {
-        if (this.reverse) this.setReverseState(false, longSpeed);
+        if (this.reverse) this.setReverseState(false);
         driveThrottle = input.throttle;
       }
     } else if (wantsReverse) {
@@ -336,7 +397,7 @@ export class VehicleSystem {
         serviceBrake = input.brake;
         this.reverseHold += dt;
         if (this.reverseHold >= REVERSE_ENGAGE_HOLD_SECONDS) {
-          this.setReverseState(true, longSpeed);
+          this.setReverseState(true);
           serviceBrake = 0;
           driveThrottle = input.brake;
         }
@@ -348,6 +409,165 @@ export class VehicleSystem {
   }
 
   fixedUpdate(input, controlsLocked = false, dt = FIXED_DT) {
+    if (this.vehiclePhysicsMode === 'legacy') {
+      return this.fixedUpdateLegacy(input, controlsLocked, dt);
+    }
+    if (this.vehiclePhysicsMode === 'v24-shadow') {
+      const legacyResult = this.fixedUpdateLegacy(input, controlsLocked, dt);
+      const legacySnapshot = {
+        speedKmh: this.telemetry.speedKmh,
+        signedSpeedKmh: this.telemetry.signedSpeedKmh,
+        rpm: this.telemetry.rpm,
+        gear: this.telemetry.gear,
+        reverse: this.telemetry.reverse,
+        wheels: this.telemetry.wheels.map((wheel) => ({
+          grounded: wheel.grounded,
+          load: wheel.load,
+          slipRatio: wheel.slipRatio,
+          slipAngle: wheel.slipAngle,
+        })),
+      };
+      try {
+        const shadow = this.vehicleV24.step({
+          input: sanitizeInput(controlsLocked ? this.lockedInput : input),
+          dt: safeUpdateDt(dt),
+          applyForces: false,
+          mode: 'v24-shadow',
+        });
+        const comparison = {
+          schema: 'streetrush.vehicle-v24.shadow-comparison.v1',
+          legacy: legacySnapshot,
+          v24: shadow.output,
+          delta: {
+            speedKmh: shadow.output.speedKmh - legacySnapshot.speedKmh,
+            signedSpeedKmh: shadow.output.signedSpeed * 3.6 - legacySnapshot.signedSpeedKmh,
+            rpm: shadow.output.engineRpm - legacySnapshot.rpm,
+            wheelLoad: shadow.output.wheels.map((wheel, index) => (
+              wheel.load - legacySnapshot.wheels[index].load
+            )),
+          },
+        };
+        this.vehiclePhysicsReport = { ...shadow.report, shadowComparison: comparison };
+      } catch (error) {
+        if (!(error instanceof VehicleV24AbortError)) throw error;
+        this.vehiclePhysicsReport = {
+          ...error.audit,
+          shadowComparison: { schema: 'streetrush.vehicle-v24.shadow-comparison.v1', legacy: legacySnapshot },
+        };
+      }
+      this.telemetry.vehiclePhysics = this.vehiclePhysicsReport;
+      return legacyResult;
+    }
+    return this.fixedUpdateV24Active(input, controlsLocked, dt);
+  }
+
+  fixedUpdateV24Active(input, controlsLocked = false, dt = FIXED_DT) {
+    const safeDt = safeUpdateDt(dt);
+    const activeInput = sanitizeInput(controlsLocked ? this.lockedInput : input);
+    let output;
+    let report;
+    try {
+      ({ output, report } = this.vehicleV24.step({
+        input: activeInput,
+        dt: safeDt,
+        applyForces: true,
+        mode: 'v24-active',
+      }));
+    } catch (error) {
+      if (error instanceof VehicleV24AbortError) {
+        this.vehiclePhysicsReport = error.audit;
+        this.telemetry.vehiclePhysics = error.audit;
+      }
+      throw error;
+    }
+    this.vehiclePhysicsReport = report;
+    this.transmissionMode = output.transmissionMode;
+    this.gear = output.gear;
+    this.reverse = output.reverse;
+    this.engineRpm = output.engineRpm;
+    this.engineLoad = output.engineLoad;
+    this.steerAngle = output.steerAngle;
+
+    for (let index = 0; index < this.wheels.length; index += 1) {
+      const wheel = this.wheels[index];
+      const source = output.wheels[index];
+      const telemetry = this.telemetry.wheels[index];
+      wheel.omega = output.wheelOmega[index];
+      wheel.grounded = source.grounded;
+      wheel.compression = source.suspension;
+      wheel.springForce = source.load;
+      wheel.surface = source.surface;
+      wheel.contactPoint = wheel.contactPoint || new THREE.Vector3();
+      wheel.contactPoint.set(source.contactPoint.x, source.contactPoint.y, source.contactPoint.z);
+      telemetry.grounded = source.grounded;
+      telemetry.load = source.load;
+      telemetry.suspension = source.suspension;
+      telemetry.slipRatio = source.slipRatio;
+      telemetry.slipAngle = source.slipAngle;
+      telemetry.slipPower = source.slipPower;
+      telemetry.surface = source.surface;
+      telemetry.contactPoint.copy(wheel.contactPoint);
+    }
+
+    this.telemetry.speedKmh = output.speedKmh;
+    this.telemetry.signedSpeedKmh = output.signedSpeed * 3.6;
+    this.telemetry.rpm = output.engineRpm;
+  this.telemetry.gear = output.gear;
+  this.telemetry.reverse = output.reverse;
+  this.telemetry.driveIntent = output.driveIntent;
+    this.telemetry.throttle = output.throttle;
+    this.telemetry.brake = output.brake;
+    this.telemetry.handbrake = output.handbrake;
+    this.telemetry.steer = activeInput.steer;
+    this.smoothedLongAcceleration = damp(
+      this.smoothedLongAcceleration,
+      (output.signedSpeed - this.previousLongSpeed) / safeDt,
+      5,
+      safeDt,
+    );
+    this.telemetry.longitudinalAcceleration = this.smoothedLongAcceleration;
+    const angularVelocity = this.body.angvel();
+    this.telemetry.lateralAcceleration = output.signedSpeed * angularVelocity.y;
+    this.telemetry.surface = output.surface;
+    this.telemetry.absActive = output.absActive;
+    this.telemetry.tcsActive = output.tcsActive;
+    this.telemetry.stabilityActive = output.stabilityActive;
+    Object.assign(this.telemetry.powertrain, output.powertrain);
+    this.telemetry.vehiclePhysics = report;
+    this.previousLongSpeed = output.signedSpeed;
+    this.advanceVisualWheelAngles(safeDt);
+
+    const translation = this.body.translation();
+    const rotation = this.body.rotation();
+    this.tmp.position.set(translation.x, translation.y, translation.z);
+    const trackInfo = this.track.nearestInfo(this.tmp.position, this.trackHint);
+    this.trackHint = trackInfo.index;
+    if (output.groundedCount >= 3
+      && Math.abs(trackInfo.offset) < this.track.config.width * 0.5
+      && Math.abs(rotation.x) < 0.42
+      && Math.abs(rotation.z) < 0.42) {
+      this.safeSample = trackInfo.index;
+    }
+    const nearlyStoppedWithInput = output.speedKmh < 1.2 && output.throttle > 0.5;
+    this.stuckTimer = nearlyStoppedWithInput ? this.stuckTimer + safeDt : 0;
+    const resetReason = this.tmp.position.y < -4
+      ? 'fell-below-world'
+      : Math.abs(rotation.x) > 0.78 || Math.abs(rotation.z) > 0.78
+        ? 'vehicle-overturned'
+        : this.stuckTimer > 8
+          ? 'vehicle-stuck'
+          : null;
+    if (resetReason) {
+      this.reset(this.safeSample);
+      this.onAutomaticReset?.(resetReason);
+    }
+  }
+
+  getVehiclePhysicsReport() {
+    return this.vehiclePhysicsReport;
+  }
+
+  fixedUpdateLegacy(input, controlsLocked = false, dt = FIXED_DT) {
     const safeDt = safeUpdateDt(dt);
     const activeInput = sanitizeInput(controlsLocked ? this.lockedInput : input);
     if (!Number.isFinite(this.steerAngle)) this.steerAngle = 0;
@@ -443,6 +663,12 @@ export class VehicleSystem {
     }
     if (this.shiftTimer > 0) totalDriveTorque *= SHIFT_TORQUE_FACTOR;
     const driveTorquePerWheel = totalDriveTorque / Math.max(1, drivenWheels.length);
+    const driveTorqueRequestedNm = Math.abs(totalDriveTorque);
+    const serviceBrakeTorqueRequestedNm = pedals.serviceBrake * this.config.brakeTorque;
+    const handbrakeTorqueRequestedNm = activeInput.handbrake
+      * this.config.brakeTorque
+      * HANDBRAKE_REAR_TORQUE_FACTOR
+      * 2;
 
     const suspension = this.config.suspension;
     const maxRay = suspension.restLength + suspension.travel + this.config.wheelRadius;
@@ -482,6 +708,9 @@ export class VehicleSystem {
 
     let absActive = false;
     let tcsActive = false;
+    let driveTorqueAppliedNm = 0;
+    let serviceBrakeTorqueAppliedNm = 0;
+    let handbrakeTorqueAppliedNm = 0;
     let groundedCount = 0;
     let supportedLoad = 0;
     let gripWeightedLoad = 0;
@@ -537,20 +766,44 @@ export class VehicleSystem {
       this.body.addForceAtPoint(tmp.force, wheel.contactPoint, true);
 
       let wheelDriveTorque = wheel.driven ? driveTorquePerWheel : 0;
-      if (pedals.driveThrottle > 0.05 && Math.abs(slipRatio) > 0.11) {
-        wheelDriveTorque *= clamp(0.11 / Math.abs(slipRatio), 0.16, 1);
+      const drivenSlip = slipRatio * Math.sign(wheelDriveTorque);
+      if (pedals.driveThrottle > 0.05 && drivenSlip > 0.11) {
+        wheelDriveTorque *= clamp(0.11 / drivenSlip, 0.16, 1);
         tcsActive = true;
       }
-      let brakeTorque = pedals.serviceBrake * this.config.brakeTorque * (wheel.front ? 0.31 : 0.19);
-      if (!wheel.front) brakeTorque += activeInput.handbrake * this.config.brakeTorque * 0.62;
-      if (brakeTorque > 0 && slipRatio < -0.17) {
-        brakeTorque *= clamp(0.17 / Math.abs(slipRatio), 0.2, 1);
+      if (wheel.driven) driveTorqueAppliedNm += Math.abs(wheelDriveTorque);
+      let serviceBrakeTorque = pedals.serviceBrake
+        * this.config.brakeTorque
+        * (wheel.front ? 0.31 : 0.19);
+      const travelDirection = Math.sign(Math.abs(wheelLongSpeed) > 0.05 ? wheelLongSpeed : longSpeed);
+      const brakingSlip = slipRatio * travelDirection;
+      if (serviceBrakeTorque > 0 && brakingSlip < -0.17) {
+        serviceBrakeTorque *= clamp(0.17 / Math.abs(brakingSlip), 0.2, 1);
         absActive = true;
       }
-      const brakeDirection = Math.sign(Math.abs(wheel.omega) > 0.2 ? wheel.omega : wheelLongSpeed);
-      const angularTorque = wheelDriveTorque - longitudinalForce * this.config.wheelRadius - brakeDirection * brakeTorque;
-      wheel.omega += angularTorque / this.wheelInertia * safeDt;
-      if (brakeTorque > 0 && Math.sign(wheel.omega) !== Math.sign(wheel.omega - angularTorque / this.wheelInertia * safeDt)) wheel.omega = 0;
+      const handbrakeTorque = wheel.front
+        ? 0
+        : activeInput.handbrake * this.config.brakeTorque * HANDBRAKE_REAR_TORQUE_FACTOR;
+      serviceBrakeTorqueAppliedNm += serviceBrakeTorque;
+      handbrakeTorqueAppliedNm += handbrakeTorque;
+      const brakeCapacity = serviceBrakeTorque + handbrakeTorque;
+      const nonBrakeTorque = wheelDriveTorque - longitudinalForce * this.config.wheelRadius;
+      // Keep an already locked contact constrained until an applied drive torque
+      // actually exceeds the finite brake capacity. Treating the explicit tire
+      // reaction as breakaway torque here reintroduces the known low-speed
+      // omega/slip sign oscillation; that integration issue is tracked separately.
+      const brakeHoldsStoppedWheel = wheel.omega === 0
+        && brakeCapacity > 0
+        && Math.abs(wheelDriveTorque) <= brakeCapacity;
+      wheel.omega = brakeHoldsStoppedWheel
+        ? 0
+        : integrateWheelOmegaWithBrakeCapacity(
+          wheel.omega,
+          nonBrakeTorque,
+          brakeCapacity,
+          this.wheelInertia,
+          safeDt,
+        );
       wheel.omega = clamp(wheel.omega, -420, 420);
       telemetry.slipRatio = slipRatio;
       telemetry.slipAngle = slipAngle;
@@ -573,7 +826,7 @@ export class VehicleSystem {
     const stabilityActive = groundedCount >= 2
       && Math.abs(stabilityError) > 0.16
       && speedKmh > 14
-      && !activeInput.handbrake;
+      && activeInput.handbrake <= HANDBRAKE_ACTIVE_THRESHOLD;
     if (stabilityActive) {
       const correctionLimit = this.config.mass * 8 * supportedGrip;
       const correctionTorque = clamp(
@@ -592,6 +845,7 @@ export class VehicleSystem {
     this.telemetry.reverse = this.reverse;
     this.telemetry.throttle = pedals.driveThrottle;
     this.telemetry.brake = pedals.serviceBrake;
+    this.telemetry.handbrake = activeInput.handbrake;
     this.telemetry.steer = activeInput.steer;
     this.smoothedLongAcceleration = damp(this.smoothedLongAcceleration, (longSpeed - this.previousLongSpeed) / safeDt, 5, safeDt);
     this.telemetry.longitudinalAcceleration = this.smoothedLongAcceleration;
@@ -600,6 +854,12 @@ export class VehicleSystem {
     this.telemetry.absActive = absActive;
     this.telemetry.tcsActive = tcsActive;
     this.telemetry.stabilityActive = stabilityActive;
+    this.telemetry.powertrain.driveTorqueRequestedNm = driveTorqueRequestedNm;
+    this.telemetry.powertrain.driveTorqueAppliedNm = driveTorqueAppliedNm;
+    this.telemetry.powertrain.serviceBrakeTorqueRequestedNm = serviceBrakeTorqueRequestedNm;
+    this.telemetry.powertrain.serviceBrakeTorqueAppliedNm = serviceBrakeTorqueAppliedNm;
+    this.telemetry.powertrain.handbrakeTorqueRequestedNm = handbrakeTorqueRequestedNm;
+    this.telemetry.powertrain.handbrakeTorqueAppliedNm = handbrakeTorqueAppliedNm;
     this.previousLongSpeed = longSpeed;
 
     const telemetryFinite = [
@@ -610,9 +870,11 @@ export class VehicleSystem {
       this.telemetry.rpm,
       this.telemetry.throttle,
       this.telemetry.brake,
+      this.telemetry.handbrake,
       this.telemetry.steer,
       this.telemetry.longitudinalAcceleration,
       this.telemetry.lateralAcceleration,
+      ...Object.values(this.telemetry.powertrain),
     ].every(Number.isFinite)
       && this.telemetry.wheels.every((wheelTelemetry) => [
         wheelTelemetry.load,
@@ -669,6 +931,7 @@ export class VehicleSystem {
   }
 
   destroy() {
+    this.vehicleV24?.dispose();
     this.scene.remove(this.visual);
     this.world.removeRigidBody(this.body);
     disposeOwnedVisual(this.visual);

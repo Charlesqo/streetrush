@@ -38,9 +38,10 @@ pnpm check:release:public
 pnpm check:release:commercial
 ```
 
-当前两个命令都应当在授权步骤失败，而不是被绕过：
+当前素材门禁状态：
 
-- 免费公开发布被 Lamborghini 模型的未知授权阻塞。
-- 商业发布还被 Lamborghini 模型的未知授权，以及 BMW M5 G90 与 Mercedes-AMG GT3 的 CC BY-NC-SA 4.0 阻塞。
+- 免费公开发布的运行时素材门禁已可通过：Lamborghini 模型按 CC BY 4.0 署名，六车发动机 WAV 为项目内合成输出。
+- 商业发布仍被 BMW M5 G90 与 Mercedes-AMG GT3 的 CC BY-NC-SA 4.0 阻塞。
+- 公开整个 Git 仓库时，另需处理研究目录中的第三方 `.mr` 脚本及超过 GitHub 普通 Git 文件上限的历史对象。
 
 技术检查变绿不代表可以发布。只有在资产台账、人工设备试玩、变更摘要、干净 Git 状态和回滚构建都准备好后，才进入部署。部署 CLI 版本和远端项目也应固定并记录；本仓库目前故意不提供“一键直传生产”的命令。

@@ -1,5 +1,9 @@
+import { kerbAt, KERB_WIDTH, pavedRunoffAt } from './longwan-layout.js';
+import { installTrackKerbs } from './track-kerbs.js';
+import { buildCircuitEnvironment } from './track-environment.js';
 import * as THREE from 'three';
 import { SURFACES } from './config.js';
+import { createAsphaltMaterial } from './rendering.js';
 
 const V3 = () => new THREE.Vector3();
 
@@ -168,14 +172,17 @@ export class TrackSystem {
     this.lastIndex = bestIndex;
     const best = this.samples[bestIndex];
     const offset = (position.x - best.point.x) * best.side.x + (position.z - best.point.z) * best.side.z;
-    const surface = this.surfaceForOffset(offset);
+    const surface = this.surfaceForOffset(offset, best.t);
     return { ...best, offset, distance: Math.sqrt(bestDistSq), surface };
   }
 
-  surfaceForOffset(offset) {
+  surfaceForOffset(offset, progress = 0) {
     const distance = Math.abs(offset);
     if (distance <= this.config.width * 0.5) return 'asphalt';
-    if (distance <= this.config.width * 0.5 + 1.05) return 'kerb';
+    if (this.config.kerbSections) {
+      if (distance <= this.config.width*.5+KERB_WIDTH && kerbAt(this.config.kerbSections,progress,Math.sign(offset))) return 'kerb';
+      if (this.config.sceneryLayout==='longwan-v1' && pavedRunoffAt(progress) && distance<=this.config.width*.5+this.config.runoff) return 'asphalt';
+    } else if (distance <= this.config.width * 0.5 + 1.05) return 'kerb';
     if (distance <= this.config.width * 0.5 + this.config.runoff) return 'gravel';
     return 'grass';
   }
@@ -209,7 +216,15 @@ export class TrackSystem {
   getResetPose(sampleIndex = 0) {
     const sample = this.samples[((sampleIndex % this.samples.length) + this.samples.length) % this.samples.length];
     let heading = sample.tangent;
-    if (sample.index === 0 && this.samples.length > 1) {
+    const [startPoint, nextPoint] = this.config.points ?? [];
+    const startDirection = startPoint && nextPoint
+      ? new THREE.Vector3().fromArray(nextPoint).sub(new THREE.Vector3().fromArray(startPoint)).setY(0)
+      : null;
+    if (sample.index === 0 && startDirection?.lengthSq() > 1e-8) {
+      // Align the grid to its authored first straight. The closed spline's last
+      // corner bends even the 60 m lookahead slightly toward the previous turn.
+      heading = startDirection.normalize();
+    } else if (sample.index === 0 && this.samples.length > 1) {
       const metresPerSample = this.length / this.samples.length;
       const lookahead = Math.max(1, Math.round(START_HEADING_LOOKAHEAD_METERS / metresPerSample));
       const target = this.samples[lookahead % this.samples.length];
@@ -232,14 +247,18 @@ export class TrackSystem {
     const positions = [];
     const uvs = [];
     const indices = [];
-    const lengths = this.curve.getLengths(this.config.samples);
-    const total = lengths[lengths.length - 1];
+    let textureDistance = 0;
+    const previousPoint = new THREE.Vector3();
     for (let i = 0; i <= this.config.samples; i += 1) {
       const sample = this.pointAt(i / this.config.samples);
       const left = sample.point.clone().addScaledVector(sample.side, -halfWidth);
       const right = sample.point.clone().addScaledVector(sample.side, halfWidth);
       positions.push(left.x, left.y + y, left.z, right.x, right.y + y, right.z);
-      const u = (i === this.config.samples ? total : lengths[i]) / 12;
+      // Measure the actual rendered centreline: curve arc-length lookup is
+      // approximate, and its raw parameter spacing stretches short corners.
+      if (i > 0) textureDistance += previousPoint.distanceTo(sample.point);
+      previousPoint.copy(sample.point);
+      const u = textureDistance / 12;
       uvs.push(u, 0, u, 1);
       if (i < this.config.samples) {
         const a = i * 2;
@@ -316,24 +335,22 @@ export class TrackSystem {
   buildVisuals() {
     const textureLoader = new THREE.TextureLoader();
     const base = '/textures/';
-    const asphaltMap = textureLoader.load(`${base}T_Concrete_Asphalt_BaseColor.png`);
     const dirtMap = textureLoader.load(`${base}T_Dirt_BaseColor.png`);
-    for (const texture of [asphaltMap, dirtMap]) {
+    for (const texture of [dirtMap]) {
       texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-      texture.anisotropy = Math.min(4, this.renderer.capabilities.getMaxAnisotropy());
+      texture.anisotropy = Math.min(16, this.renderer.capabilities.getMaxAnisotropy());
     }
-    asphaltMap.colorSpace = THREE.SRGBColorSpace;
     dirtMap.colorSpace = THREE.SRGBColorSpace;
     dirtMap.repeat.set(36, 36);
 
-    const roadMaterial = new THREE.MeshLambertMaterial({ map: asphaltMap, color: 0x777b80 });
-    const runoffMaterial = new THREE.MeshLambertMaterial({ color: 0x777468 });
+    const roadMaterial = createAsphaltMaterial(this.renderer, this.config.width);
+    const runoffMaterial = new THREE.MeshStandardMaterial({ color: 0x777468, roughness: 0.95 });
     this.group.add(this.createBand(this.config.width * 0.5 + 0.04, this.config.width * 0.5 + this.config.runoff, 0.005, runoffMaterial));
     this.group.add(this.createStrip(this.config.width * 0.5, 0.015, roadMaterial));
 
     const ground = new THREE.Mesh(
-      new THREE.CircleGeometry(850, 160),
-      new THREE.MeshLambertMaterial({ map: dirtMap, color: 0x718168 }),
+      new THREE.CircleGeometry(this.config.groundHalfExtent ?? 850, 160),
+      new THREE.MeshStandardMaterial({ map: dirtMap, color: 0xa7b18a, roughness: 1 }),
     );
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = -0.08;
@@ -361,8 +378,10 @@ export class TrackSystem {
         dummy.rotation.set(0, yaw, 0);
         dummy.scale.set(0.78, 0.12, segmentLength);
         dummy.updateMatrix();
-        if (i % 2) curbRed.setMatrixAt(redIndex++, dummy.matrix);
-        else curbWhite.setMatrixAt(whiteIndex++, dummy.matrix);
+        if (!this.config.kerbSections) {
+          if (i % 2) curbRed.setMatrixAt(redIndex++, dummy.matrix);
+          else curbWhite.setMatrixAt(whiteIndex++, dummy.matrix);
+        }
 
         dummy.position.copy(point).addScaledVector(side, sign * (this.config.width * 0.5 - 0.22));
         dummy.position.y += 0.028;
@@ -377,6 +396,8 @@ export class TrackSystem {
         barriers.setMatrixAt(barrierIndex++, dummy.matrix);
       }
     }
+    curbRed.count=redIndex;curbWhite.count=whiteIndex;
+    this.legacyBoundaryMeshes={curbRed,curbWhite,edgeLines,barriers};
     for (const mesh of [curbRed, curbWhite, edgeLines, barriers]) {
       mesh.instanceMatrix.needsUpdate = true;
       mesh.receiveShadow = true;
@@ -482,6 +503,7 @@ export class TrackSystem {
     this.setStartLights('off');
     this.buildTrackFurniture();
     this.buildRouteGuidanceMarkers();
+    if(this.config.sceneryLayout==='longwan-v1')buildCircuitEnvironment(this);
   }
 
   buildRouteGuidanceMarkers() {
@@ -624,7 +646,7 @@ export class TrackSystem {
       garage.position.set(i * 20.5, 2.2, -6.7);
       pit.add(garage);
     }
-    this.group.add(pit);
+    if(this.config.sceneryLayout!=='longwan-v1')this.group.add(pit);
 
     const poleCount = 28;
     const poleGeometry = new THREE.CylinderGeometry(0.08, 0.11, 1, 8);
@@ -655,14 +677,18 @@ export class TrackSystem {
 
   buildPhysics() {
     const RAPIER = this.RAPIER;
+    const groundHalfExtent = this.config.groundHalfExtent ?? 850;
     const groundBody = this.physicsWorld.createRigidBody(RAPIER.RigidBodyDesc.fixed().setTranslation(0, -0.33, 0));
     this.physicsWorld.createCollider(
-      RAPIER.ColliderDesc.cuboid(850, 0.33, 850).setFriction(0.15).setRestitution(0),
+      RAPIER.ColliderDesc.cuboid(groundHalfExtent, 0.33, groundHalfExtent).setFriction(0.15).setRestitution(0),
       groundBody,
     );
 
     // All barriers belong to one static body. Hundreds of separate rigid bodies made
     // the broad phase needlessly expensive even though none of them ever move.
+    for(const mesh of this.kerbMeshes??[]) {
+      this.physicsWorld.createCollider(RAPIER.ColliderDesc.trimesh(mesh.geometry.attributes.position.array, Uint32Array.from(mesh.geometry.index.array)).setTranslation(0,.33,0).setFriction(.8).setRestitution(0),groundBody);
+    }
     const barrierBody = this.physicsWorld.createRigidBody(RAPIER.RigidBodyDesc.fixed());
     const colliderSegments = 192;
     const halfLength = this.length / colliderSegments * 0.51;

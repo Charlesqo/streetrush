@@ -37,6 +37,7 @@
           <path d="M4 5h12M4 10h12M4 15h12"></path>
         </svg>
       </button>
+      <button id="power-diagnostics-button" class="icon-button diagnostics-toggle hidden" type="button" aria-label="显示踏板与动力诊断" aria-pressed="false">踏板 HUD</button>
       <button id="fullscreen-button" class="fullscreen-toggle" type="button" aria-label="进入全屏">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M7 3H3v4"></path><path d="M13 3h4v4"></path>
@@ -114,6 +115,28 @@
     <div class="nitro"><span>THROTTLE</span><i><b id="throttle-bar"></b></i></div>
     <div class="brake"><span>BRAKE</span><i><b id="brake-bar"></b></i></div>
     <div class="chassis-state"><span>4-WHEEL CONTACT</span><b id="drive-mode">ASPHALT</b><span>ASSIST</span><b id="assist-state">READY</b><span>C 自动/手动 · Q/E 换挡 · P 性能</span></div>
+    <section id="power-diagnostics" class="power-diagnostics hidden" aria-label="实时踏板与动力诊断" aria-hidden="true">
+      <header>
+        <span>LIVE INPUT / POWER</span>
+        <b id="diagnostic-limit-state">NO LIMIT</b>
+      </header>
+      <div class="diagnostic-pedal-grid">
+        <small>通道</small><small>请求</small><small>平滑</small><small>车辆</small>
+        <b>油门</b><span id="diagnostic-throttle-request">0%</span><span id="diagnostic-throttle-filtered">0%</span><strong id="diagnostic-throttle-applied">0%</strong>
+        <b>刹车</b><span id="diagnostic-brake-request">0%</span><span id="diagnostic-brake-filtered">0%</span><strong id="diagnostic-brake-applied">0%</strong>
+        <b>手刹</b><span id="diagnostic-handbrake-request">0%</span><span id="diagnostic-handbrake-filtered">0%</span><strong id="diagnostic-handbrake-applied">0%</strong>
+      </div>
+      <div class="diagnostic-torque-row drive-output">
+        <span>驱动轮端 · 实际 / 请求</span><strong id="diagnostic-drive-torque">0 / 0 N·m</strong><b id="diagnostic-drive-limit">100%</b>
+        <i><em id="diagnostic-drive-meter"></em></i>
+      </div>
+      <div class="diagnostic-torque-row brake-output">
+        <span>脚刹扭矩 · 实际 / 请求</span><strong id="diagnostic-brake-torque">0 / 0 N·m</strong><b id="diagnostic-brake-limit">100%</b>
+        <i><em id="diagnostic-brake-meter"></em></i>
+      </div>
+      <div class="diagnostic-handbrake-torque"><span>手刹容量 · 实际 / 请求</span><strong id="diagnostic-handbrake-torque">0 / 0 N·m</strong></div>
+      <footer id="diagnostic-max-state">PEDALS BELOW MAX</footer>
+    </section>
     <div id="race-message" class="race-message" role="status" aria-live="polite" aria-atomic="true"></div>
     <button id="invalid-lap-restart-button" class="invalid-lap-restart hidden" type="button" aria-hidden="true" aria-keyshortcuts="R">
       <span>重开本次挑战</span><b>R</b>
@@ -170,6 +193,7 @@
     <div class="pause-menu-panel">
       <small>RACE MENU</small>
       <h2 id="pause-menu-title">暂停驾驶</h2>
+      <p id="pause-menu-status" class="hidden" role="alert">车辆状态异常，请重新开始或返回主菜单。</p>
       <button id="resume-button" class="pause-primary" type="button">继续比赛</button>
       <button id="race-restart-button" type="button">重新开始</button>
       <button id="race-garage-button" type="button">退出到主菜单</button>

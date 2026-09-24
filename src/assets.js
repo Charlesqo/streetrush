@@ -1,6 +1,27 @@
+import { buildLongwanVenue } from './longwan-venue.js';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { refineCarMaterials, createContactShadowMaterial } from './car-materials.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+
+// KHR_mesh_quantization models (M5 G90, AMG GT3) store POSITION as normalized
+// Int16 in interleaved accessors. The GPU denormalizes it, but a CPU-side
+// applyMatrix4 writes metre-scale values back through BufferAttribute.setXYZ,
+// which re-quantizes into the attribute's original integer array without
+// clamping — anything outside [-1, 1] overflows and wraps. Promote position to
+// a standalone Float32 attribute so the bake never touches the integer buffer
+// (which the geometry clone shares with the source template).
+function dequantizePositionForBake(geometry) {
+  const attribute = geometry.attributes.position;
+  if (!attribute || attribute.array.constructor === Float32Array) return;
+  const floats = new Float32Array(attribute.count * attribute.itemSize);
+  for (let index = 0; index < attribute.count; index += 1) {
+    for (let component = 0; component < attribute.itemSize; component += 1) {
+      floats[index * attribute.itemSize + component] = attribute.getComponent(index, component);
+    }
+  }
+  geometry.setAttribute('position', new THREE.BufferAttribute(floats, attribute.itemSize, false));
+}
 
 export class AssetManager {
   constructor(scene, track, { wheelManifests = {}, bindVisualWheels = null } = {}) {
@@ -208,6 +229,7 @@ export class AssetManager {
         if (object.isMesh && /BMW_E30_M3_(RIM|TIRE)/i.test(object.name)) object.visible = false;
       });
     }
+    refineCarMaterials(model, config.id);
     const wheelManifest = this.wheelManifests?.[config.id] ?? this.wheelManifests?.get?.(config.id) ?? null;
     if (wheelManifest) {
       if (typeof this.bindVisualWheels !== 'function') throw new Error(`Wheel manifest configured without a binder for ${config.id}`);
@@ -219,16 +241,15 @@ export class AssetManager {
     optimized.traverse((object) => {
       if (!object.isMesh) return;
       object.receiveShadow = true;
+      const materials = Array.isArray(object.material) ? object.material : [object.material];
+      object.castShadow = materials.every((m) => !m.transparent || m.alphaTest > 0);
       object.frustumCulled = true;
     });
     wrapper.add(optimized);
     if (config.id === 'm3e30') wrapper.add(this.createCalibratedWheelSet(config));
     const contactShadow = new THREE.Mesh(
       new THREE.CircleGeometry(1, 28),
-      new THREE.MeshBasicMaterial({
-        color: 0x101316, transparent: true, opacity: 0.3, depthWrite: false,
-        polygonOffset: true, polygonOffsetFactor: -1,
-      }),
+      createContactShadowMaterial(),
     );
     contactShadow.name = 'contact-shadow';
     contactShadow.rotation.x = -Math.PI * 0.5;
@@ -274,6 +295,8 @@ export class AssetManager {
       tire.name = `visual-wheel-${id}-tire`;
       const rim = new THREE.Mesh(rimGeometry, rimMaterial);
       rim.name = `visual-wheel-${id}-rim`;
+      tire.castShadow = tire.receiveShadow = true;
+      rim.castShadow = rim.receiveShadow = true;
       roll.add(tire, rim);
       steer.add(roll);
       group.add(steer);
@@ -354,6 +377,7 @@ export class AssetManager {
       const key = `${mesh.material.uuid}|${signature}`;
       if (!batches.has(key)) batches.set(key, { material: mesh.material, geometries: [] });
       const clone = geometry.clone();
+      dequantizePositionForBake(clone);
       clone.applyMatrix4(mesh.matrixWorld);
       batches.get(key).geometries.push(clone);
     }
@@ -532,10 +556,11 @@ export class AssetManager {
   }
 
   async loadScenery() {
+    if(this.track.config.sceneryLayout==='longwan-v1')return buildLongwanVenue(this.cityGroup,this.track);
     const candidates = [
       [-515, -300], [-505, 160], [-180, -425], [135, -430], [505, -280], [505, 145],
     ];
-    const bodyMaterial = new THREE.MeshLambertMaterial({ color: 0x7f8588 });
+    const bodyMaterial = new THREE.MeshStandardMaterial({ color: 0x7f8588, roughness: 0.88 });
     const glassMaterial = new THREE.MeshStandardMaterial({ color: 0x203746, metalness: 0.18, roughness: 0.22 });
     const unitBox = new THREE.BoxGeometry(1, 1, 1);
     const bodies = new THREE.InstancedMesh(unitBox, bodyMaterial, candidates.length);

@@ -14,7 +14,7 @@ import {
   quantize,
 } from './replay-digest-oracle.mjs';
 
-const FORMAT_VERSION = 1;
+const FORMAT_VERSION = 2;
 const QUANTIZATION = 1e-6;
 const REPEATS = 3;
 const baselineUrl = new URL('../data/vehicle-replay-baseline.json', import.meta.url);
@@ -149,7 +149,7 @@ const FRAME_FIELDS = [
 ];
 
 const INPUT_FIELDS = [
-  'steer', 'throttle', 'brake', 'handbrake', 'shiftUp', 'shiftDown',
+  'steer', 'throttle', 'brake', 'handbrake', 'directionConflict', 'shiftUp', 'shiftDown',
   'toggleTransmission', 'reset', 'driveIntent',
 ];
 
@@ -159,6 +159,7 @@ function captureInput(input) {
     input.throttle,
     input.brake,
     input.handbrake,
+    input.directionConflict ? 1 : 0,
     input.shiftUp ? 1 : 0,
     input.shiftDown ? 1 : 0,
     input.toggleTransmission ? 1 : 0,

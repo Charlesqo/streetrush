@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { writeFile } from 'node:fs/promises';
 import { defineConfig } from 'vite';
 import { BUILD_PROVENANCE_FILE, createBuildProvenance } from './scripts/build-provenance.mjs';
+import { straightLineRecorderPlugin } from './scripts/straight-line-recorder-plugin.mjs';
 
 const projectRoot = fileURLToPath(new URL('.', import.meta.url));
 
@@ -18,7 +19,7 @@ function buildProvenancePlugin() {
 }
 
 export default defineConfig({
-  plugins: [buildProvenancePlugin()],
+  plugins: [buildProvenancePlugin(), straightLineRecorderPlugin(projectRoot)],
   publicDir: 'public',
   server: { host: '127.0.0.1' },
   build: {

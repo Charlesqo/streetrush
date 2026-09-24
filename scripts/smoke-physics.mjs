@@ -39,6 +39,20 @@ function yawOf(rotation) {
   );
 }
 
+function signedBodySpeedKmh(vehicle) {
+  const rotation = vehicle.body.rotation();
+  const forward = new THREE.Vector3(0, 0, 1).applyQuaternion(new THREE.Quaternion(
+    rotation.x,
+    rotation.y,
+    rotation.z,
+    rotation.w,
+  ));
+  forward.y = 0;
+  forward.normalize();
+  const velocity = vehicle.body.linvel();
+  return (velocity.x * forward.x + velocity.y * forward.y + velocity.z * forward.z) * 3.6;
+}
+
 function runSteps(vehicle, world, seconds, patch = {}, onStep) {
   const input = { ...zeroInput(), ...patch };
   const steps = Math.round(seconds / FIXED_DT);
@@ -114,11 +128,14 @@ for (const config of CARS) {
     vehicle.afterPhysics();
   };
   for (let i = 0; i < Math.round(6 / FIXED_DT); i += 1) {
+    if (!vehicle.reverse) stoppedSpeed = Math.min(stoppedSpeed, Math.abs(signedBodySpeedKmh(vehicle)));
     stepRawPedals(0, 1);
-    if (!vehicle.telemetry.reverse) stoppedSpeed = Math.min(stoppedSpeed, Math.abs(vehicle.telemetry.signedSpeedKmh));
     if (vehicle.telemetry.reverse) break;
   }
-  for (let i = 0; i < Math.round(2 / FIXED_DT); i += 1) stepRawPedals(0, 1);
+  for (let i = 0; i < Math.round(2 / FIXED_DT); i += 1) {
+    if (!vehicle.reverse) stoppedSpeed = Math.min(stoppedSpeed, Math.abs(signedBodySpeedKmh(vehicle)));
+    stepRawPedals(0, 1);
+  }
   const reverseSpeed = vehicle.telemetry.signedSpeedKmh;
   for (let i = 0; i < Math.round(4 / FIXED_DT); i += 1) stepRawPedals(1, 0);
   const forwardRecoverySpeed = vehicle.telemetry.signedSpeedKmh;
@@ -142,7 +159,7 @@ for (const config of CARS) {
     && recoveredForward && automaticRecoveryPassed
     && maximumGear >= 2 && maximumRpm <= config.redline * 1.04;
   failed ||= !passed;
-  console.log(`${passed ? 'PASS' : 'FAIL'} ${config.name.padEnd(22)} heave=${heave.toFixed(3)}m lift=${launchLift.toFixed(3)}m turn=${yawChange.toFixed(2)}rad forward=${forwardSpeed.toFixed(1)}km/h gear=${maximumGear} reverse=${reverseSpeed.toFixed(1)}km/h recover=${forwardRecoverySpeed.toFixed(1)}km/h`);
+  console.log(`${passed ? 'PASS' : 'FAIL'} ${config.name.padEnd(22)} heave=${heave.toFixed(3)}m lift=${launchLift.toFixed(3)}m turn=${yawChange.toFixed(2)}rad forward=${forwardSpeed.toFixed(1)}km/h stop=${stoppedSpeed.toFixed(1)}km/h gear=${maximumGear} rpm=${maximumRpm.toFixed(0)} reverse=${reverseSpeed.toFixed(1)}km/h recover=${forwardRecoverySpeed.toFixed(1)}km/h`);
   vehicle.destroy();
   world.free();
 }

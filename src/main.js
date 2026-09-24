@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { createOutdoorLighting } from './rendering.js';
+import { createRenderPipeline } from './render-pipeline.js';
 import RAPIER from '@dimforge/rapier3d-compat';
 import './style.css';
 import { CARS, FIXED_DT, TOTAL_LAPS, TRACK_CONFIG } from './config.js';
@@ -16,8 +17,11 @@ import { clampFrameDelta } from './physics-scheduling.js';
 import { loadSharedCoreCapabilities } from './shared-core-owner.js';
 import { initializeRapier } from './rapier-init.js';
 import { getOrientationUiState, ORIENTATIONS, shouldFreezeRace } from './orientation.js';
+import { createStraightLineDiagnostic, straightLineTrackConfig } from './straight-line-diagnostic.js';
 
 const $ = (id) => document.getElementById(id);
+const straightLineParams = new URLSearchParams(location.search);
+const straightLineRequested = import.meta.env.DEV && straightLineParams.has('straightline');
 const schedulerFault = import.meta.env.DEV
   ? new URLSearchParams(location.search).get('scheduler-fault')
   : null;
@@ -34,46 +38,35 @@ document.documentElement.classList.toggle('touch-ui', touchCapable);
 const standaloneMode = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
 const canvas = $('game');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-const MAX_RENDER_SCALE = touchCapable ? 1.5 : 1.35;
-const PIXEL_BUDGET = touchCapable ? 1_300_000 : 3_200_000;
+// Touch support selects controls, not GPU quality. Start with the balanced
+// budget on all devices; the performance controller still reduces AO/scale.
+const MAX_RENDER_SCALE = 1.35;
+const PIXEL_BUDGET = 3_200_000;
 const getRenderScaleLimit = () => Math.min(
   devicePixelRatio,
   MAX_RENDER_SCALE,
   Math.max(0.72, Math.sqrt(PIXEL_BUDGET / Math.max(1, innerWidth * innerHeight))),
 );
+const renderReviewRequested = import.meta.env.DEV && new URLSearchParams(location.search).has('renderreview');
+const circuitReviewRequested = import.meta.env.DEV && ['circuitreview', 'pitpreview'].some(key => new URLSearchParams(location.search).has(key));
+let lastReviewRender = -Infinity;
+let renderReview = null;
 let renderScale = getRenderScaleLimit();
 renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
 renderer.setSize(innerWidth, innerHeight);
-// The supplied car models are far denser than typical web-game assets. A small
-// contact shadow keeps them grounded visually without rendering the whole scene
-// a second time into a realtime shadow map.
-renderer.shadowMap.enabled = false;
-renderer.outputColorSpace = THREE.SRGBColorSpace;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.08;
-
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xa9c8dc);
-scene.fog = new THREE.FogExp2(0xb8cbd3, 0.00072);
-// A prefiltered static environment gives metallic paint and glass something to
-// reflect without bringing realtime reflections back into the frame budget.
-const environmentGenerator = new THREE.PMREMGenerator(renderer);
-const roomEnvironment = new RoomEnvironment();
-scene.environment = environmentGenerator.fromScene(roomEnvironment, 0.04).texture;
-scene.environmentIntensity = 0.72;
-roomEnvironment.dispose();
-environmentGenerator.dispose();
+const lighting = createOutdoorLighting(renderer, scene);
 const camera = new THREE.PerspectiveCamera(58, innerWidth / innerHeight, 0.1, 1300);
+const renderPipeline = createRenderPipeline(renderer, scene, camera, { maxFps: circuitReviewRequested ? 5 : Infinity });
 
-scene.add(new THREE.HemisphereLight(0xdcefff, 0x66705a, 1.72));
-scene.add(new THREE.AmbientLight(0xaebdca, 0.26));
-const sun = new THREE.DirectionalLight(0xffe6bc, 4.25);
-sun.position.set(-180, 260, 110);
-scene.add(sun);
 await initializeRapier(RAPIER);
 const physicsWorld = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
 physicsWorld.integrationParameters.dt = FIXED_DT;
-const track = new TrackSystem(TRACK_CONFIG, scene, renderer, RAPIER, physicsWorld);
+const diagnosticTrackConfig = straightLineRequested ? straightLineTrackConfig(TRACK_CONFIG, {
+  extended: straightLineParams.get('straightline') === 'extended',
+  accelerationSeconds: Number(straightLineParams.get('accelseconds') ?? 35),
+}) : TRACK_CONFIG;
+const track = new TrackSystem(diagnosticTrackConfig, scene, renderer, RAPIER, physicsWorld);
 const assets = createGameAssetManager(scene, track);
 const input = new InputController();
 const audio = new ProceduralAudio({
@@ -82,11 +75,14 @@ const audio = new ProceduralAudio({
   onBankEvent: (event) => recordDevEvent('audio-bank', { event }),
 });
 document.documentElement.dataset.audioPaused = 'false';
-const effects = new TireEffects(scene);
+const effects = new TireEffects(scene, { groundRoot: track.group });
+renderPipeline.setTireEffects(effects, lighting);
 const chaseCamera = new ChaseCamera(camera);
 const timingStore = new TimingStore();
 
-let carIndex = 0;
+let carIndex = straightLineRequested
+  ? Math.max(0, CARS.findIndex((car) => car.id === new URLSearchParams(location.search).get('car')))
+  : 0;
 let vehicle = null;
 let vehicleLoadToken = 0;
 let vehicleLoadPending = false;
@@ -104,14 +100,21 @@ let lastSectorEvent = null;
 let lastLapEvent = null;
 let startLightsTimer = null;
 let performanceVisible = false;
+let powerDiagnosticsVisible = false;
 let fpsAccumulator = 0;
-let fpsFrames = 0;
-let physicsCost = 0;
+let lastMeasuredRenderCount = 0;
 let slowFrameWindows = 0;
+let stableFrameWindows = 0;
+let physicsCost = 0;
 let inputBlockedLastFrame = false;
 let fullscreenHelpShown = false;
+let physicsFault = false;
 let devTelemetry = null;
 let devFixedStepIndex = 0;
+let devLastPhysicsTrace = null;
+let devLastControlTrace = null;
+let devRuntimeOutput = null;
+const devKeyboardEvents = [];
 const MODAL_DIALOG_IDS = ['orientation-hint', 'fullscreen-help', 'pause-menu', 'finish', 'about'];
 const dialogReturnFocus = new Map();
 
@@ -134,7 +137,28 @@ const devToolsRequested = import.meta.env.DEV && new URLSearchParams(location.se
 if (devToolsRequested) {
   const { DevTelemetryBuffer } = await import('./dev-telemetry.js');
   devTelemetry = new DevTelemetryBuffer({ capacity: 2048 });
+  devRuntimeOutput = document.createElement('output');
+  devRuntimeOutput.id = 'streetrush-dev-runtime';
+  devRuntimeOutput.hidden = true;
+  devRuntimeOutput.setAttribute('aria-hidden', 'true');
+  document.body.append(devRuntimeOutput);
+  for (const type of ['keydown', 'keyup']) {
+    addEventListener(type, (event) => {
+      devKeyboardEvents.push({
+        type, code: event.code, repeat: event.repeat, trusted: event.isTrusted,
+        target: event.target?.tagName ?? null, fixedStepIndex: devFixedStepIndex,
+      });
+      if (devKeyboardEvents.length > 8) devKeyboardEvents.shift();
+    });
+  }
 }
+
+const straightLineDiagnostic = straightLineRequested ? createStraightLineDiagnostic({
+  canvas, startRace, getVehicle: () => vehicle, getState: () => state,
+  getReadiness: getDevReadiness, track, fixedDt: FIXED_DT,
+  requestedTargetSpeedKmh: Number(straightLineParams.get('targetkmh') ?? 140),
+  coastSeconds: Number(straightLineParams.get('coastseconds') ?? 1),
+}) : null;
 
 function getDevReadiness() {
   const selectedCar = CARS[carIndex];
@@ -189,9 +213,73 @@ function recordDevEvent(type, details = {}) {
   }
 }
 
+function captureDevPhysicsTrace(phase, frameInput) {
+  if (!devToolsRequested || !vehicle) return null;
+  const bodyPosition = vehicle.body.translation();
+  const bodyRotation = vehicle.body.rotation();
+  const report = vehicle.getVehiclePhysicsReport?.() ?? null;
+  return {
+    phase,
+    fixedStepIndex: devFixedStepIndex,
+    input: { ...frameInput },
+    reportStatus: report?.status ?? null,
+    reportAuthority: report?.authority ?? null,
+    hostCounters: report?.hostCounters ?? null,
+    bodyPose: {
+      position: { x: bodyPosition.x, y: bodyPosition.y, z: bodyPosition.z },
+      rotation: { x: bodyRotation.x, y: bodyRotation.y, z: bodyRotation.z, w: bodyRotation.w },
+    },
+    currentPose: {
+      position: vehicle.currentPose.position.toArray(),
+      rotation: vehicle.currentPose.rotation.toArray(),
+    },
+    speedKmh: vehicle.telemetry.speedKmh,
+    signedSpeedKmh: vehicle.telemetry.signedSpeedKmh,
+    steerAngle: vehicle.steerAngle,
+    driveIntent: vehicle.telemetry.driveIntent,
+    powertrain: { ...vehicle.telemetry.powertrain },
+  };
+}
+
+function getDevRuntimeSnapshot() {
+  const report = vehicle?.getVehiclePhysicsReport?.() ?? null;
+  return {
+    readiness: getDevReadiness(),
+    track: {
+      className: track.constructor.name,
+      sampleCount: track.samples?.length ?? 0,
+      length: track.length ?? track.totalLength ?? null,
+    },
+    state,
+    fixedStepIndex: devFixedStepIndex,
+    vehiclePhysicsMode: vehicle?.vehiclePhysicsMode ?? null,
+    input: { ...input.frame },
+    keyboardEvents: devKeyboardEvents.map((event) => ({ ...event })),
+    telemetry: vehicle ? {
+      speedKmh: vehicle.telemetry.speedKmh,
+      signedSpeedKmh: vehicle.telemetry.signedSpeedKmh,
+      driveIntent: vehicle.telemetry.driveIntent,
+      steer: vehicle.telemetry.steer,
+      throttle: vehicle.telemetry.throttle,
+      brake: vehicle.telemetry.brake,
+      groundedCount: vehicle.telemetry.wheels.filter((wheel) => wheel.grounded).length,
+      powertrain: { ...vehicle.telemetry.powertrain },
+    } : null,
+    report,
+    physicsTrace: devLastPhysicsTrace,
+    lastControlTrace: devLastControlTrace,
+  };
+}
+
+function publishDevRuntimeSnapshot() {
+  if (!devRuntimeOutput) return;
+  devRuntimeOutput.textContent = JSON.stringify(getDevRuntimeSnapshot());
+}
+
 if (devToolsRequested) {
   globalThis.__STREET_RUSH_DEV__ = Object.freeze({
     getReadiness: getDevReadiness,
+    getRuntimeSnapshot: getDevRuntimeSnapshot,
     record: (event) => {
       try {
         return devTelemetry.record(event);
@@ -215,6 +303,28 @@ function focusVisibleElement(element) {
     || getComputedStyle(element).display === 'none') return false;
   element.focus({ preventScroll: true });
   return true;
+}
+
+// Pointer use of an in-race utility returns control to driving. Keyboard
+// activation keeps focus so Tab/Enter navigation remains usable.
+function withRaceFocus(action) {
+  return async (event) => {
+    const trigger = event.currentTarget;
+    const restore = () => {
+      if (event.detail > 0 && (state === 'race' || state === 'countdown')
+        && !getOpenModalDialog()
+        && [trigger, document.body, document.documentElement].includes(document.activeElement)) {
+        focusVisibleElement($('game'));
+      }
+    };
+    try {
+      const result = action(event);
+      restore();
+      await result;
+    } finally {
+      restore();
+    }
+  };
 }
 
 function openModalDialog(id, trigger = document.activeElement) {
@@ -532,7 +642,9 @@ async function mountVehicle(index, initial = false) {
       track,
       config,
       visual,
-      onAutomaticReset: (reason) => {
+      vehiclePhysicsMode: 'v24-active',
+  onAutomaticReset: (reason) => {
+    straightLineDiagnostic?.automaticReset(reason);
         if (state === 'race') {
           invalidateCurrentLap(reason, 'RECOVERY · LAP INVALID');
           recordDevEvent('automatic-reset', { reason });
@@ -653,9 +765,14 @@ function startRace() {
   setAudioPaused(false);
   initializeAudio().catch((error) => console.warn('Audio initialization failed', error));
   state = 'countdown';
+  physicsFault = false;
+  $('resume-button').disabled = false;
+  $('pause-menu-title').textContent = '暂停驾驶';
+  $('pause-menu-status').classList.add('hidden');
   document.body.classList.add('race-active');
   $('mobile-controls').classList.add('active');
   $('race-menu-button').classList.remove('hidden');
+  $('power-diagnostics-button').classList.remove('hidden');
   $('pause-menu').classList.add('hidden');
   input.setTouchEnabled(touchCapable);
   $('menu').classList.add('hidden');
@@ -739,6 +856,7 @@ function finishRace(summary = timing?.getSummary()) {
   document.body.classList.remove('race-active');
   $('mobile-controls').classList.remove('active');
   $('race-menu-button').classList.add('hidden');
+  $('power-diagnostics-button').classList.add('hidden');
   $('pause-menu').classList.add('hidden');
   input.setTouchEnabled(false);
   vehicle.body.setLinvel({ x: 0, y: 0, z: 0 }, true);
@@ -765,6 +883,7 @@ function returnGarage() {
   document.body.classList.remove('race-active');
   $('mobile-controls').classList.remove('active');
   $('race-menu-button').classList.add('hidden');
+  $('power-diagnostics-button').classList.add('hidden');
   $('pause-menu').classList.add('hidden');
   input.setTouchEnabled(false);
   $('finish').classList.add('hidden');
@@ -803,7 +922,7 @@ function handleVisibilityChange() {
 }
 
 function resumeRace() {
-  if (state !== 'paused') return;
+  if (state !== 'paused' || physicsFault) return;
   state = stateBeforePause;
   setAudioPaused(false);
   resetPhysicsScheduler();
@@ -899,9 +1018,24 @@ function fixedUpdate(frameInput) {
     }
   }
   const active = state === 'race';
+  if (devToolsRequested) devLastPhysicsTrace = captureDevPhysicsTrace('vehicle-fixed-update', frameInput);
   vehicle.fixedUpdate(frameInput, !active, FIXED_DT);
+  if (devToolsRequested) devLastPhysicsTrace = captureDevPhysicsTrace('vehicle-fixed-update-complete', frameInput);
   physicsWorld.step();
+  if (devToolsRequested) devLastPhysicsTrace = captureDevPhysicsTrace('rapier-world-step', frameInput);
   vehicle.afterPhysics();
+  straightLineDiagnostic?.afterPhysics(frameInput, devFixedStepIndex);
+  if (devToolsRequested) {
+    devLastPhysicsTrace = captureDevPhysicsTrace('afterPhysics', frameInput);
+    if (active && (Math.abs(frameInput.steer) > 0.01
+      || (frameInput.rawThrottle ?? frameInput.throttle) > 0.01
+      || (frameInput.rawBrake ?? frameInput.brake) > 0.01
+      || (frameInput.rawHandbrake ?? frameInput.handbrake) > 0.01
+      || frameInput.driveIntent !== 0)) {
+      devLastControlTrace = devLastPhysicsTrace;
+    }
+    if (devFixedStepIndex % 6 === 0) publishDevRuntimeSnapshot();
+  }
   if (active) {
     timing.advance(FIXED_DT * 1000);
     const trackInfo = track.nearestInfo(vehicle.currentPose.position, vehicle.trackHint);
@@ -910,6 +1044,107 @@ function fixedUpdate(frameInput) {
     updateCheckpoints();
   }
   input.consumeFixedPulses();
+}
+
+function normalizedDiagnosticValue(value) {
+  return Number.isFinite(value) ? THREE.MathUtils.clamp(value, 0, 1) : 0;
+}
+
+function diagnosticPercent(value) {
+  return `${Math.round(normalizedDiagnosticValue(value) * 100)}%`;
+}
+
+function diagnosticRatio(applied, requested) {
+  if (!Number.isFinite(requested) || requested <= 0.01) return 1;
+  return normalizedDiagnosticValue(applied / requested);
+}
+
+function updateDiagnosticPedal(id, value) {
+  const element = $(id);
+  const normalized = normalizedDiagnosticValue(value);
+  element.textContent = diagnosticPercent(normalized);
+  element.classList.toggle('maximum', normalized >= 0.995);
+}
+
+function updatePowerDiagnostics() {
+  if (!powerDiagnosticsVisible || !vehicle) return;
+  const frame = input.frame;
+  const telemetry = vehicle.telemetry;
+  const powertrain = telemetry.powertrain;
+
+  updateDiagnosticPedal('diagnostic-throttle-request', frame.rawThrottle);
+  updateDiagnosticPedal('diagnostic-throttle-filtered', frame.throttle);
+  updateDiagnosticPedal('diagnostic-throttle-applied', telemetry.throttle);
+  updateDiagnosticPedal('diagnostic-brake-request', frame.rawBrake);
+  updateDiagnosticPedal('diagnostic-brake-filtered', frame.brake);
+  updateDiagnosticPedal('diagnostic-brake-applied', telemetry.brake);
+  updateDiagnosticPedal('diagnostic-handbrake-request', frame.rawHandbrake);
+  updateDiagnosticPedal('diagnostic-handbrake-filtered', frame.handbrake);
+  updateDiagnosticPedal('diagnostic-handbrake-applied', telemetry.handbrake);
+
+  const driveRequested = powertrain.wheelDriveTorqueRequestedNm
+    ?? powertrain.driveTorqueRequestedNm;
+  const driveApplied = powertrain.wheelDriveTorqueAppliedNm
+    ?? powertrain.driveTorqueAppliedNm;
+  const brakeRequested = powertrain.driverServiceBrakeTorqueRequestedNm
+    ?? powertrain.serviceBrakeTorqueRequestedNm;
+  const brakeApplied = powertrain.driverServiceBrakeTorqueAppliedNm
+    ?? powertrain.serviceBrakeTorqueAppliedNm;
+  const driveRatio = diagnosticRatio(
+    driveApplied,
+    driveRequested,
+  );
+  const brakeRatio = diagnosticRatio(
+    brakeApplied,
+    brakeRequested,
+  );
+  $('diagnostic-drive-torque').textContent = `${Math.round(driveApplied)} / ${Math.round(driveRequested)} N·m`;
+  $('diagnostic-brake-torque').textContent = `${Math.round(brakeApplied)} / ${Math.round(brakeRequested)} N·m`;
+  $('diagnostic-handbrake-torque').textContent = `${Math.round(powertrain.handbrakeTorqueAppliedNm)} / ${Math.round(powertrain.handbrakeTorqueRequestedNm)} N·m`;
+  $('diagnostic-drive-limit').textContent = diagnosticPercent(driveRatio);
+  $('diagnostic-brake-limit').textContent = diagnosticPercent(brakeRatio);
+  $('diagnostic-drive-limit').classList.toggle('limited', driveRequested > 0.01 && driveRatio < 0.995);
+  $('diagnostic-brake-limit').classList.toggle('limited', brakeRequested > 0.01 && brakeRatio < 0.995);
+  $('diagnostic-drive-meter').style.width = diagnosticPercent(driveRatio);
+  $('diagnostic-brake-meter').style.width = diagnosticPercent(brakeRatio);
+
+  const maximumPedals = [];
+  if (frame.rawThrottle >= 0.995) maximumPedals.push('油门 MAX');
+  if (frame.rawBrake >= 0.995) maximumPedals.push('刹车 MAX');
+  if (frame.rawHandbrake >= 0.995) maximumPedals.push('手刹 MAX');
+  $('diagnostic-max-state').textContent = maximumPedals.length
+    ? maximumPedals.join(' · ')
+    : 'PEDALS BELOW MAX';
+  $('diagnostic-max-state').classList.toggle('maximum', maximumPedals.length > 0);
+
+  const limitStates = [];
+  if (frame.directionConflict) limitStates.push('W+S → BRAKE');
+  if (telemetry.tcsActive) limitStates.push(`TCS DRIVE ${diagnosticPercent(driveRatio)}`);
+  else if (driveRequested > 0.01 && driveRatio < 0.995) {
+    limitStates.push(`CONTACT DRIVE ${diagnosticPercent(driveRatio)}`);
+  }
+  if (telemetry.absActive) limitStates.push(`ABS BRAKE ${diagnosticPercent(brakeRatio)}`);
+  else if (brakeRequested > 0.01 && brakeRatio < 0.995) {
+    limitStates.push(`CONTACT BRAKE ${diagnosticPercent(brakeRatio)}`);
+  }
+  const limitState = $('diagnostic-limit-state');
+  limitState.textContent = limitStates.length ? limitStates.join(' · ') : 'NO LIMIT';
+  limitState.classList.toggle('arbitrated', frame.directionConflict);
+  limitState.classList.toggle('limited', !frame.directionConflict && limitStates.length > 0);
+}
+
+function setPowerDiagnosticsVisible(visible) {
+  powerDiagnosticsVisible = Boolean(visible);
+  $('power-diagnostics').classList.toggle('hidden', !powerDiagnosticsVisible);
+  $('power-diagnostics').setAttribute('aria-hidden', String(!powerDiagnosticsVisible));
+  $('power-diagnostics-button').classList.toggle('active', powerDiagnosticsVisible);
+  $('power-diagnostics-button').setAttribute('aria-pressed', String(powerDiagnosticsVisible));
+  $('power-diagnostics-button').setAttribute(
+    'aria-label',
+    powerDiagnosticsVisible ? '隐藏踏板与动力诊断' : '显示踏板与动力诊断',
+  );
+  $('power-diagnostics-button').textContent = powerDiagnosticsVisible ? '踏板 ON' : '踏板 HUD';
+  if (powerDiagnosticsVisible) updatePowerDiagnostics();
 }
 
 function updateHUD() {
@@ -954,24 +1189,36 @@ function updateHUD() {
   const assist = telemetry.absActive ? 'ABS' : telemetry.tcsActive ? 'TCS' : telemetry.stabilityActive ? 'ESC' : 'READY';
   $('assist-state').textContent = assist;
   $('drive-mode').textContent = telemetry.reverse ? 'REVERSE' : telemetry.surface.toUpperCase();
+  updatePowerDiagnostics();
 }
 
 function updatePerformance(frameDt) {
+  if (renderReviewRequested) return;
   fpsAccumulator += frameDt;
-  fpsFrames += 1;
   if (fpsAccumulator < 0.5) return;
-  const fps = Math.round(fpsFrames / fpsAccumulator);
-  $('perf').textContent = `${fps} FPS · PHYS ${physicsCost.toFixed(2)}ms · ${renderer.info.render.calls} DRAWS · ${renderer.info.render.triangles.toLocaleString()} TRI`;
+  const count = renderPipeline.renderedFrames;
+  const fps = Math.round((count - lastMeasuredRenderCount) / fpsAccumulator);
+  $('perf').textContent = `${fps}${Number.isFinite(renderPipeline.maxFps) ? `/${renderPipeline.maxFps}` : ''} FPS · ${canvas.width}×${canvas.height} · MSAA ${renderPipeline.msaaSamples}× · AO ${renderPipeline.qualityTier} · PHYS ${physicsCost.toFixed(2)}ms · ${renderer.info.render.calls} DRAWS · ${renderer.info.render.triangles.toLocaleString()} TRI`;
+  lastMeasuredRenderCount = count;
   fpsAccumulator = 0;
-  fpsFrames = 0;
+  // Preview deliberately runs slowly; normal driving keeps adaptive quality.
+  if (circuitReviewRequested) return;
   slowFrameWindows = fps < 48 ? slowFrameWindows + 1 : Math.max(0, slowFrameWindows - 1);
-  if (slowFrameWindows >= 3 && renderScale > 0.72) {
-    renderScale = Math.max(0.72, renderScale - 0.12);
-    renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+  stableFrameWindows = fps > 57 ? stableFrameWindows + 1 : 0;
+  if (slowFrameWindows >= 3) {
+    if (renderPipeline.qualityTier > 0) renderPipeline.setQualityTier(renderPipeline.qualityTier - 1);
+    else if (renderScale > 0.72) {
+      renderScale = Math.max(0.72, renderScale - 0.12);
+      renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+    }
     slowFrameWindows = 0;
-  } else if (fps > 57 && renderScale < getRenderScaleLimit()) {
-    renderScale = Math.min(getRenderScaleLimit(), renderScale + 0.05);
-    renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+    stableFrameWindows = 0;
+  } else if (stableFrameWindows >= 8) {
+    if (renderScale < getRenderScaleLimit()) {
+      renderScale = Math.min(getRenderScaleLimit(), renderScale + 0.05);
+      renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+    } else if (renderPipeline.qualityTier < 2) renderPipeline.setQualityTier(renderPipeline.qualityTier + 1);
+    stableFrameWindows = 0;
   }
 }
 
@@ -991,14 +1238,21 @@ function animate(now) {
     if (!inputBlockedLastFrame) input.releaseAll();
     inputBlockedLastFrame = true;
     resetPhysicsScheduler();
+    if (renderReviewRequested && !renderReview?.measuring && now - lastReviewRender < 200) return;
+    const reviewFrameDt = Math.min(.25, (now - lastReviewRender) / 1000);
     vehicle.syncVisual(1);
     chaseCamera.update(frameDt, vehicle.visual.position, vehicle.visual.quaternion, vehicle.telemetry, false);
+    if (renderReviewRequested && effects.demo) effects.update(reviewFrameDt, vehicle.telemetry, vehicle.visual.quaternion);
     updateHUD();
     updatePerformance(frameDt);
-    renderer.render(scene, camera);
+    lastReviewRender = now;
+    if (!renderPipeline.shouldRender(now)) return;
+    lighting.update(vehicle.visual, now);
+    renderPipeline.render();
     return;
   }
   inputBlockedLastFrame = false;
+  straightLineDiagnostic?.beforeInput();
   const frameInput = input.update(frameDt, vehicle.telemetry.speedKmh, { deferFixedPulses: true });
   if (input.consumePulse('KeyP')) {
     performanceVisible = !performanceVisible;
@@ -1007,7 +1261,20 @@ function animate(now) {
   const physicsStart = performance.now();
   const physicsPlan = physicsScheduler.advance(frameDt);
   for (let physicsStep = 0; physicsStep < physicsPlan.steps; physicsStep += 1) {
-    fixedUpdate(frameInput);
+    try {
+      fixedUpdate(frameInput);
+    } catch (error) {
+      if (error.code !== 'V24_ACTIVE_STEP_ABORTED' || (state !== 'race' && state !== 'countdown')) throw error;
+      console.error('[Street Rush] vehicle simulation paused', error);
+      physicsFault = true;
+      openRaceMenu();
+      resetPhysicsScheduler();
+      $('pause-menu-title').textContent = '车辆模拟已暂停';
+      $('pause-menu-status').classList.remove('hidden');
+      $('resume-button').disabled = true;
+      focusVisibleElement($('race-restart-button'));
+      return;
+    }
   }
   physicsCost = THREE.MathUtils.damp(physicsCost, performance.now() - physicsStart, 5, frameDt);
   vehicle.syncVisual(physicsPlan.alpha);
@@ -1018,7 +1285,11 @@ function animate(now) {
   audio.update(vehicle.telemetry);
   if (!menuMode) updateHUD();
   updatePerformance(frameDt);
-  renderer.render(scene, camera);
+  if (renderReviewRequested && !renderReview?.measuring && now - lastReviewRender < 200) return;
+  lastReviewRender = now;
+  if (!renderPipeline.shouldRender(now)) return;
+  lighting.update(vehicle.visual, now);
+  renderPipeline.render();
 }
 
 $('prev-car').onclick = () => selectCar(-1);
@@ -1031,7 +1302,8 @@ $('race-menu-button').onclick = openRaceMenu;
 $('resume-button').onclick = resumeRace;
 $('race-restart-button').onclick = startRace;
 $('race-garage-button').onclick = returnGarage;
-$('fullscreen-button').onclick = togglePageFullscreen;
+$('power-diagnostics-button').onclick = withRaceFocus(() => setPowerDiagnosticsVisible(!powerDiagnosticsVisible));
+$('fullscreen-button').onclick = withRaceFocus(togglePageFullscreen);
 $('orientation-fullscreen').onclick = requestPageFullscreen;
 $('retry-car-button').onclick = () => {
   const index = retryCarIndex ?? carIndex;
@@ -1057,12 +1329,12 @@ $('about-close').onclick = () => closeModalDialog('about');
 $('about').onclick = (event) => {
   if (event.target === $('about')) closeModalDialog('about');
 };
-$('sound-button').onclick = () => {
+$('sound-button').onclick = withRaceFocus(() => {
   initializeAudio().catch((error) => console.warn('Audio initialization failed', error));
   audio.setEnabled(!audio.enabled);
   $('sound-button').textContent = audio.enabled ? 'SOUND ON' : 'SOUND OFF';
   $('sound-button').setAttribute('aria-pressed', String(audio.enabled));
-};
+});
 addEventListener('keydown', (event) => {
   if (trapModalFocus(event)) return;
   const target = event.target;
@@ -1111,7 +1383,7 @@ function resizeRenderer() {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, renderScale));
+  renderer.setPixelRatio(renderReviewRequested ? (renderReview?.scale ?? Number(new URLSearchParams(location.search).get('reviewscale') || 1)) : Math.min(devicePixelRatio, renderScale));
   syncOrientationHint();
 }
 addEventListener('resize', resizeRenderer);
@@ -1128,6 +1400,21 @@ $('loading-status').textContent = '建立赛道与车辆物理…';
 const sceneryPromise = assets.loadScenery().catch((error) => console.warn('Scenery failed to load', error));
 await mountVehicle(carIndex, true);
 await sceneryPromise;
+if (import.meta.env.DEV && circuitReviewRequested && new URLSearchParams(location.search).has('straightart')) {
+  $('loading-status').textContent = '铺设主直道与扫描素材…';
+  const { installStraightArt } = await import('./dev-straight-art.js');
+  await installStraightArt({ track, renderer });
+}
+lighting.prepareScenery(track.group);
+lighting.prepareScenery(assets.cityGroup);
+try {
+  await lighting.setSkyRotation(-1.1, vehicle?.visual);
+} catch (error) {
+  console.warn('HDR sky unavailable; using procedural daylight.', error);
+  await lighting.setPreset('clear', vehicle?.visual);
+}
+$('loading-status').textContent = '预编译光照与材质…';
+await renderPipeline.warmup();
 const sharedCore = await sharedCorePromise;
 physicsScheduler = sharedCore.scheduler;
 raceProgressCore = sharedCore.raceProgress;
@@ -1157,3 +1444,22 @@ $('loading-progress').style.width = '100%';
 setTimeout(() => $('loading').classList.add('hidden'), 320);
 lastFrame = performance.now();
 requestAnimationFrame(animate);
+
+if (renderReviewRequested) {
+  const { installRenderReview } = await import('./render-review.js');
+  renderReview = await installRenderReview({
+    renderer, camera, scene, renderPipeline, lighting, effects, cars: CARS,
+    getVehicle: () => vehicle, getState: () => state, startRace,
+    pausePreview: () => { openRaceMenu(); if (state === 'paused') closeModalDialog('pause-menu', false); },
+    resumePreview: resumeRace,
+    selectVehicle: async (index) => {
+      returnGarage();
+      await selectCar(index - carIndex);
+    },
+  });
+}
+
+if(import.meta.env.DEV && (new URLSearchParams(location.search).has('pitpreview') || new URLSearchParams(location.search).has('circuitreview'))) {
+  const {installCircuitReview}=await import('./dev-circuit-review.js');
+  installCircuitReview({scene,camera,renderer,renderPipeline,lighting,track,startRace,getVehicle:()=>vehicle,getState:()=>state});
+}

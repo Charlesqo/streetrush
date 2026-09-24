@@ -26,7 +26,7 @@ async function walk(directory) {
 const manifestPath = join(projectRoot, 'licenses', 'assets.json');
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 const entries = manifest.assets ?? [];
-const trackedRoots = ['public/audio-banks', 'public/cars', 'public/textures', 'source-models'];
+const trackedRoots = ['public/audio-banks', 'public/cars', 'public/textures', 'public/scenery', 'source-models'];
 const actualPaths = (await Promise.all(trackedRoots.map((root) => walk(join(projectRoot, root))))).flat().sort();
 const manifestPaths = entries.map((entry) => entry.path).sort();
 const errors = [];

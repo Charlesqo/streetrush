@@ -24,6 +24,12 @@ function gamepadButtonIsActive(pad, index) {
   return Boolean(button?.pressed) || (button?.value || 0) > GAMEPAD_BUTTON_DEADZONE;
 }
 
+export function normalizeGamepadButton(value) {
+  const clamped = THREE.MathUtils.clamp(Number.isFinite(value) ? value : 0, 0, 1);
+  if (clamped <= GAMEPAD_BUTTON_DEADZONE) return 0;
+  return (clamped - GAMEPAD_BUTTON_DEADZONE) / (1 - GAMEPAD_BUTTON_DEADZONE);
+}
+
 function gamepadHasInput(pad) {
   const axis = pad?.axes?.[0] || 0;
   return Math.abs(axis) > GAMEPAD_STICK_DEADZONE
@@ -48,11 +54,12 @@ function shouldIgnoreKeyboardShortcut(event) {
 }
 
 export function updateKeyboardSteer(current, rawSteer, speedKmh, dt) {
-  const highSpeed = THREE.MathUtils.clamp(speedKmh / 240, 0, 1);
-  const keyboardTravel = THREE.MathUtils.lerp(1, 0.48, THREE.MathUtils.clamp(speedKmh / 190, 0, 1));
-  const targetSteer = rawSteer * keyboardTravel;
-  const turningRate = THREE.MathUtils.lerp(1.75, 0.72, highSpeed);
-  const centeringRate = THREE.MathUtils.lerp(3.4, 2.25, highSpeed);
+  // Device response is deliberately speed-independent. v24 steering owns the single
+  // speed-assist curve so keyboard, touch, and gamepad receive identical authority.
+  void speedKmh;
+  const targetSteer = rawSteer;
+  const turningRate = 1.75;
+  const centeringRate = 3.4;
   const reversingDirection = targetSteer !== 0 && Math.sign(targetSteer) !== Math.sign(current);
   const rate = targetSteer === 0 || reversingDirection ? centeringRate : turningRate;
   const maximumChange = rate * dt;
@@ -64,13 +71,13 @@ export function updatePedal(current, target, riseRate, releaseRate, dt) {
 }
 
 export function resolveDriveIntent(rawThrottle, rawBrake) {
-  const forward = rawThrottle > 0.05;
-  const reverse = rawBrake > 0.05;
+  const forward = rawThrottle > 0;
+  const reverse = rawBrake > 0;
   if (forward && !reverse) return 1;
   if (reverse && !forward) return -1;
   if (forward && reverse) {
-    if (rawThrottle > rawBrake + 0.05) return 1;
-    if (rawBrake > rawThrottle + 0.05) return -1;
+    if (rawThrottle > rawBrake + GAMEPAD_BUTTON_DEADZONE) return 1;
+    if (rawBrake > rawThrottle + GAMEPAD_BUTTON_DEADZONE) return -1;
   }
   return 0;
 }
@@ -84,6 +91,10 @@ export class InputController {
       throttle: 0,
       brake: 0,
       handbrake: 0,
+      rawThrottle: 0,
+      rawBrake: 0,
+      rawHandbrake: 0,
+      directionConflict: false,
       shiftUp: false,
       shiftDown: false,
       toggleTransmission: false,
@@ -136,6 +147,10 @@ export class InputController {
       this.frame.throttle = 0;
       this.frame.brake = 0;
       this.frame.handbrake = 0;
+      this.frame.rawThrottle = 0;
+      this.frame.rawBrake = 0;
+      this.frame.rawHandbrake = 0;
+      this.frame.directionConflict = false;
       this.frame.shiftUp = false;
       this.frame.shiftDown = false;
       this.frame.toggleTransmission = false;
@@ -374,9 +389,9 @@ export class InputController {
     const pad = Array.from(pads).find((candidate) => candidate && candidate.connected !== false) || null;
     const replaced = Boolean(pad && this.menuGamepad && pad !== this.menuGamepad);
     if (!pad) {
+      if (this.menuGamepad) this.menuGamepadRearmPending = true;
       this.menuGamepad = null;
       this.menuGamepadDown = false;
-      this.menuGamepadRearmPending = false;
       return false;
     }
     if (replaced) {
@@ -432,9 +447,9 @@ export class InputController {
       const stick = Math.abs(activePad.axes[0] || 0) > GAMEPAD_STICK_DEADZONE ? activePad.axes[0] : 0;
       const shaped = Math.sign(stick) * Math.pow(Math.abs(stick), 1.45);
       if (Math.abs(shaped) > 0 && analogSteer === null) analogSteer = -shaped;
-      rawThrottle = Math.max(rawThrottle, activePad.buttons[7]?.value || 0);
-      rawBrake = Math.max(rawBrake, activePad.buttons[6]?.value || 0);
-      rawHandbrake = Math.max(rawHandbrake, activePad.buttons[0]?.value || 0);
+      rawThrottle = Math.max(rawThrottle, normalizeGamepadButton(activePad.buttons[7]?.value));
+      rawBrake = Math.max(rawBrake, normalizeGamepadButton(activePad.buttons[6]?.value));
+      rawHandbrake = Math.max(rawHandbrake, normalizeGamepadButton(activePad.buttons[0]?.value));
       const padUp = Boolean(activePad.buttons[5]?.pressed);
       const padDown = Boolean(activePad.buttons[4]?.pressed);
       const padReset = Boolean(activePad.buttons[3]?.pressed);
@@ -452,9 +467,16 @@ export class InputController {
       this.frame.steer = updateKeyboardSteer(this.frame.steer, rawSteer, speedKmh, dt);
     }
     this.frame.driveIntent = resolveDriveIntent(rawThrottle, rawBrake);
+    this.frame.rawThrottle = THREE.MathUtils.clamp(rawThrottle, 0, 1);
+    this.frame.rawBrake = THREE.MathUtils.clamp(rawBrake, 0, 1);
+    this.frame.rawHandbrake = THREE.MathUtils.clamp(rawHandbrake, 0, 1);
+    this.frame.directionConflict = rawThrottle > 0 && rawBrake > 0;
     this.frame.throttle = updatePedal(this.frame.throttle, rawThrottle, 4.3, 7.5, dt);
     this.frame.brake = updatePedal(this.frame.brake, rawBrake, 7.5, 11, dt);
-    this.frame.handbrake = THREE.MathUtils.damp(this.frame.handbrake, rawHandbrake, 14, dt);
+    const handbrakeTarget = rawHandbrake > 0 ? rawHandbrake : 0;
+    this.frame.handbrake = handbrakeTarget === 0
+      ? 0
+      : THREE.MathUtils.damp(this.frame.handbrake, handbrakeTarget, 14, dt);
     const pulse = (code) => deferFixedPulses ? this.pulses.has(code) : this.consumePulse(code);
     this.frame.shiftUp = pulse('KeyE') || pulse('PadShiftUp') || pulse('TouchShiftUp');
     this.frame.shiftDown = pulse('KeyQ') || pulse('PadShiftDown') || pulse('TouchShiftDown');

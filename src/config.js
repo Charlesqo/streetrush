@@ -1,3 +1,4 @@
+import { LONGWAN_KERBS } from './longwan-layout.js';
 export const FIXED_DT = 1 / 120;
 export const TOTAL_LAPS = 3;
 
@@ -116,6 +117,8 @@ export const CARS = [
 
 export const TRACK_CONFIG = {
   name: '龙湾国际赛道',
+  sceneryLayout: 'longwan-v1',
+  kerbSections: LONGWAN_KERBS,
   width: 14,
   runoff: 4.5,
   barrierOffset: 11.6,

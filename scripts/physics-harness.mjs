@@ -12,6 +12,7 @@ export const zeroInput = (patch = {}) => ({
   throttle: 0,
   brake: 0,
   handbrake: 0,
+  directionConflict: false,
   shiftUp: false,
   shiftDown: false,
   toggleTransmission: false,
@@ -51,6 +52,8 @@ export function createVehicleRig(config, {
   groundHalfExtent = 12000,
   trackWidth = 10000,
   visual = new THREE.Group(),
+  vehiclePhysicsMode = 'legacy',
+  vehicleV24Options = null,
 } = {}) {
   const world = new RAPIER.World({ x: 0, y: -GRAVITY, z: 0 });
   world.integrationParameters.dt = FIXED_DT;
@@ -67,6 +70,8 @@ export function createVehicleRig(config, {
     track: new FlatTrack({ width: trackWidth }),
     config,
     visual,
+    vehiclePhysicsMode,
+    vehicleV24Options,
   });
   return { vehicle, world };
 }

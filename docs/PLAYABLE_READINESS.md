@@ -25,7 +25,7 @@
 | Rust 共享核心 | Cargo workspace、原生 probe、raw WASM，以及固定步、比赛进度、遥测/回放数值契约已实用化 | 保持同一核心的 native/WASM 一致；按证据迁移更多纯状态规则。原生目标还不是完整渲染游戏，不能把 probe 当成最终原生版本 |
 | 稳定性与可诊断性 | 资产取消/超时/late dispose、音频 stale/fallback、reset、异常数值、固定 seed、长序列 timing soak 都有门禁 | 浏览器长时六车切换/重开/后台恢复，观察内存、WebAudio 节点和帧耗时；建立玩家可取用的遥测/回放入口和失败聚类 |
 | 内容与体验 | 一条 2.13 km 赛道、路线提示、HUD、奖牌目标和说明已在 | 完成真实试玩后的目标时间、相机、提示、默认辅助和声音平衡调整；第二赛道、AI/联网不是本阶段完成条件，只记录为未来候选 |
-| 工程与资料 | 一键 verify、来源台账、实验日志、资产清单、构建/秘密门禁均有 | 每批继续保持小提交和来源记录；公共/商业发布受素材授权阻塞，但发布、部署与商业包装不是当前执行目标 |
+| 工程与资料 | 一键 verify、来源台账、实验日志、资产清单、构建/秘密门禁均有 | 每批继续保持小提交和来源记录；免费公开版运行时素材门禁已通过，商业版仍有两辆非商业模型阻塞；发布、部署与商业包装不是当前执行目标 |
 
 ## 全项目状态
 
@@ -37,13 +37,13 @@
 | 车轮视觉 | 部分 | M3 使用生成轮组；MX-5 使用 schema v1 exact manifest；GT3 RS 使用 schema v2 split tire/rim/disc/caliper；LP700 使用 schema v3 四材质 triangle split；四车均接生产并由 VehicleSystem 驱动转向、悬挂和滚动。AMG 已有 hash-scoped schema v3 候选及真实 loader/Rapier 证据 | AMG 仍未 production/browser opt-in，且卡钳被优化合并、只能暂留静态；M5 尚无候选。MX-5/GT3/LP700 运行 owner 已由浏览器确认，但动态画面仍需人工近看 | 不阻塞驾驶；影响六车完成度 |
 | 车辆物理 | 已有（simcade） | Rapier 刚体、四轮射线、弹簧/阻尼、防倾、轮胎、ABS/TCS、AT/MT、RWD/AWD、路面差异、六车参数与回归 | 不是工程级实车复现；高阶研究数据没有直接替换生产参数，复杂物理仍在 JS | 不阻塞；主车手感需要实际试玩调校 |
 | 输入 | 已有，部分实测 | 键盘、手柄包装、Pointer Events 多点触控、横屏提示、全屏、pause 时 releaseAll；浏览器触控 reset 已到达比赛并使当前圈无效 | 当前浏览器自动化只能发短脉冲，不能保持油门/转向；键盘/手柄/手机实际试玩矩阵未完成 | 持续驾驶输入是验收阻塞；其他设备随后验证 |
-| 音频 | 部分 | 六车六层 decoded bank 均已接入 RPM/负载混合，逐车保留程序化发动机、风/路/胎噪和换挡瞬态回退；浏览器六车加载/解码/回环、M5 暂停恢复、4 轮六车资源 soak 和 503 重试通过 | 尚无人耳听感、系统后台恢复和移动设备成本验收；候选 WAV 授权未清 | 不阻塞先玩；仍影响声音可信度与公共发布 |
+| 音频 | 部分 | 六车六层 decoded bank 均已接入 RPM/负载混合，逐车保留程序化发动机、风/路/胎噪和换挡瞬态回退；浏览器六车加载/解码/回环、M5 暂停恢复、4 轮六车资源 soak 和 503 重试通过；候选 WAV 为项目内合成输出 | 尚无人耳听感、系统后台恢复和移动设备成本验收；不是对应实车的精确录音 | 不阻塞先玩；仍影响声音可信度 |
 | Rust 原生/WASM | 已有共享骨架 | Cargo workspace、`streetrush-core`、原生 probe、raw WASM；固定步、输入、计时/进度、遥测/回放数据切片有 native/WASM 对照 | Three/Rapier 车辆动力学仍由 JS 拥有；不要为形式重写。生产计时/物理的更多 owner 迁移需逐段证明 | 不阻塞 |
 | 确定性/回放 | 已有核心证据 | 固定步、固定种子、多车 replay、长序列 timing lifecycle、异常数值和 reset 回归 | 还没有玩家可操作的回放 UI；浏览器长时资源占用需观察 | 不阻塞先玩；是长期稳定性工作 |
 | 资源生命周期 | 已有自动证据和短 smoke | GLB pending/cache/preload、加载中止、fallback、视觉资源释放、音频请求所有权都有测试；浏览器六车切换、MX-5 cache 回返、sample bank 切车释放/切回重载和 restart 通过 | 后台/恢复、长时循环后的内存和 WebAudio 节点数未实测 | 不阻塞短局，长时继续验证 |
 | 构建 | 已有 | `pnpm dev`、`pnpm build`、Rust/WASM 构建与一键 `pnpm verify`；当前为 44 modules、4,864-byte WASM、66 files/84.69 MiB | 候选通用化后 main 为 509.72 kB、secret scan 为 277 files；仍有既有大 chunk warning。当前不把部署、发布标签和公共授权当作本地可玩阻塞 | 不阻塞本地游玩；后续按实际加载收益判断拆包 |
 | 浏览器 smoke | 部分通过 | 本地 Vite 页面零 console warning/error；六车 READY；MX-5、GT3、LP700 均有四 wheel bindings；Rust/WASM owners；暂停冻结、恢复、reset invalidation、快速重开、返库及 GT3/LP700 cache 往返均通过 | 自动化无法保持驾驶输入，尚未跑到检查点/完赛；材质、轮组运动和相机仍缺人工视觉验收 | 持续驾驶/完赛仍是 P0 |
-| 公共发布 | 受阻但非当前目标 | 有尺寸、秘密与素材清单门禁 | 当前 public blockers=43、commercial blockers=45；42 项六车候选音频文件和 Lamborghini 模型未清，另有两车非商业限制 | 不影响本地制作，不在当前优先级 |
+| 公共发布 | 待仓库整理与人工验收 | 有尺寸、秘密与素材清单门禁；Lamborghini 模型来源与 CC BY 4.0 授权已核验，六车音频为项目内合成 | 运行时素材 public blockers=0、commercial blockers=2；公开整个 Git 仓库前仍需处理第三方研究脚本和大文件历史，两辆非商业模型阻止商业发布 | 不影响本地制作，不在当前优先级 |
 
 ## 六辆车逐车状态
 
@@ -88,7 +88,7 @@
 - production registry 把六个 vehicle id 显式映射到六个 bank id、family、asset version 和独立 URL；测试逐车把 profile 解析到唯一候选，并核对 production/archive 文件集合与 SHA-256。
 - 4 轮六车 runtime soak 完成 25 次成功 attach、175 次实际文件读取和 150 个 BufferSource；插入一次 LP700 manifest HTTP 503 后先回退程序化、随后重试成功。dispose 后 150 个样本源都恰好 stop/disconnect 一次。
 - 真实浏览器按 MX-5→M3→GT3 RS→LP700→AMG GT3→M5→MX-5 顺序全部为 `ready/family` 且 bank id 正确；M5 比赛内暂停为 `audioPaused=true`、恢复为 false，bank 始终 ready；console warning/error 为 0。
-- 许可边界同步扩大：机器清单覆盖 52 个素材文件，42 个候选音频文件都明确为 `UNKNOWN-GENERATED-PROTOTYPE`，所以 public/commercial 门禁仍按预期阻止发布。
+- 当时的许可边界同步扩大：机器清单覆盖 52 个素材文件，42 个候选音频文件曾标为 `UNKNOWN-GENERATED-PROTOTYPE`，所以当时 public/commercial 门禁阻止发布；2026-09-24 已据生成证据更新当前台账。
 
 ## 2026-08-14 GT3 RS 轮组 production/browser 证据
 
