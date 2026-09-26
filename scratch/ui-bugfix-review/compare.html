@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>计时 UI · 同场景对比</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#10151b;color:#eef2f5;font:16px system-ui,sans-serif;padding:24px;width:1080px}h1{font-size:23px;margin:0 0 7px}p{margin:0 0 18px;color:#aab5c0;font-size:13px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}.label{height:34px;font-weight:600}.label.after{color:#eaff31}.crop{height:450px;overflow:hidden;position:relative;border-radius:6px}.crop img{position:absolute;max-width:none;transform:scale(1.5);transform-origin:0 0;left:-12px;top:-120px}.context{margin-top:18px;display:flex;gap:20px}.context a{display:block;flex:1}.context img{width:100%;display:block;border-radius:6px}footer{font-size:12px;color:#8e9ba8;margin-top:16px}a{color:#cad5df}
+</style>
+<h1></h1><p>同一机位、同一帧内容，仅切换计时板样式。上方为 1.5 倍局部对比，下方为完整画面。</p>
+<div class="pair"><section><div class="label">原版</div><div class="crop"><img id="before"></div></section><section><div class="label after">修改版</div><div class="crop"><img id="after"></div></section></div>
+<div class="context"><a id="before-link"><img id="before-full"></a><a id="after-link"><img id="after-full"></a></div>
+<footer>真实游戏渲染截图 · 大屏尺寸验证不等于浏览器 Fullscreen API 验证</footer>
+<script>
+const scenes={sky:['亮天空 · 1280 × 720','sky'],road:['深色路面 · 1280 × 720','road'],desktop:['直道固定机位 · 1920 × 1080','desktop']};
+const [title,prefix]=scenes[new URLSearchParams(location.search).get('scene')]||scenes.sky;
+document.querySelector('h1').textContent=title;
+for(const side of ['before','after']){
+ const src=`${prefix}-${side}.png`;
+ document.getElementById(side).src=src;document.getElementById(`${side}-full`).src=src;document.getElementById(`${side}-link`).href=src;
+}
+</script></html>

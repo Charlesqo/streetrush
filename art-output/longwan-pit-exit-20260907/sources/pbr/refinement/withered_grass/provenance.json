@@ -1,0 +1,130 @@
+{
+  "asset_id": "withered_grass",
+  "title": "Withered Grass",
+  "source_url": "https://polyhaven.com/a/withered_grass",
+  "license": {
+    "name": "CC0-1.0",
+    "url": "https://polyhaven.com/license",
+    "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "evidence_page": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-page.html"
+  },
+  "api": {
+    "info_url": "https://api.polyhaven.com/info/withered_grass",
+    "files_url": "https://api.polyhaven.com/files/withered_grass",
+    "info_metadata": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-info.json",
+    "files_metadata": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-files.json"
+  },
+  "asset_metadata": {
+    "authors": {
+      "Charlotte Baglioni": "All"
+    },
+    "dimensions_api_raw": [
+      1999.9996423721313,
+      1999.9996423721313
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "recommended_surface_scale_m": [
+      2.0,
+      2.0
+    ],
+    "recommended_surface_scale_note": "2.0 m x 2.0 m is the judged conversion of the API dimensions and is a tiling starting point; the source is short sun-bleached ground cover with compacted earth tones.",
+    "max_resolution_api_raw": [
+      8192,
+      8192
+    ],
+    "files_hash": "eb88811d5af353e86750f73f412bf5aea3f7c8ab",
+    "description": "Free 8K texture of withered grass: brittle, fibrous, sun-bleached blades in muted brown and tan with scattered debris and compacted earth tones.",
+    "category": "Ground & Terrain/Grass & Vegetation/Dry & Sparse Grass",
+    "attributes": {
+      "surface_use": "ground",
+      "condition": [
+        "weathered"
+      ],
+      "origin": "natural",
+      "setting": "outdoor"
+    }
+  },
+  "acquisition": {
+    "acquired_date": "2026-09-07",
+    "resolution": "2K",
+    "map_format_policy": "JPEG for colour/packed maps; 16-bit grayscale PNG for displacement",
+    "channels": "diffuse=sRGB base colour; arm=R ambient occlusion, G roughness, B metallic; nor_gl=OpenGL tangent normal; displacement=16-bit height",
+    "map_bytes": 22932011,
+    "within_100mb_batch": true,
+    "files": [
+      {
+        "channel": "diffuse",
+        "file": "sources/pbr/refinement/withered_grass/withered_grass_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/withered_grass/withered_grass_diff_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 4632786,
+        "downloaded_bytes": 4632786,
+        "api_md5": "503d5c7262c46351e5b0acdcc90dd30b",
+        "downloaded_md5": "503d5c7262c46351e5b0acdcc90dd30b",
+        "sha256": "0cf0fca68cbf4277199a2b9b7b3a8013357e4087247b1367f86d4a53b4fafa7e",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "arm",
+        "file": "sources/pbr/refinement/withered_grass/withered_grass_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/withered_grass/withered_grass_arm_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 4802892,
+        "downloaded_bytes": 4802892,
+        "api_md5": "8d649cc74868ffaf11b34970ee2ff058",
+        "downloaded_md5": "8d649cc74868ffaf11b34970ee2ff058",
+        "sha256": "0b4bfb6549a56c48f7239be7f520124b38e7842188b8d1d53b0a376686c40371",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "normal_gl",
+        "file": "sources/pbr/refinement/withered_grass/withered_grass_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/withered_grass/withered_grass_nor_gl_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 6194953,
+        "downloaded_bytes": 6194953,
+        "api_md5": "dd239e55b44c9b9bb0e9f1e145bf3a22",
+        "downloaded_md5": "dd239e55b44c9b9bb0e9f1e145bf3a22",
+        "sha256": "5fd42baf06224086cb9afcb2f7a3b9f26feddd719bf1f9aed65ec49c586e7ff9",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "displacement",
+        "file": "sources/pbr/refinement/withered_grass/withered_grass_disp_2k.png",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/withered_grass/withered_grass_disp_2k.png",
+        "format": "PNG",
+        "mode": "I;16 grayscale",
+        "bit_depth": 16,
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 7301380,
+        "downloaded_bytes": 7301380,
+        "api_md5": "a6d219647337243e13f4ec72ea24c53e",
+        "downloaded_md5": "a6d219647337243e13f4ec72ea24c53e",
+        "sha256": "2a7bf2836fd70e443e093f7239f8de3488a8e675c1301771371adba92836ea57",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      }
+    ]
+  }
+}

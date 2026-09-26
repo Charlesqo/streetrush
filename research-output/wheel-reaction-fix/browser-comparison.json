@@ -1,0 +1,215 @@
+[
+  {
+    "name": "before-left",
+    "summary": {
+      "variant": "before",
+      "direction": "left",
+      "url": "http://127.0.0.1:5192/",
+      "scope": "Normal Longwan game, GT3RS selected through garage UI, trusted Chrome keyboard events, original production input/scheduler/Rapier. Fresh maneuver, not exact user-state replay.",
+      "runtimeHash": "48f86446f1399d2ab1ec4695be985309c5af75234c36c187af215623cfe1f1ad",
+      "baselineFunctionRestoredOnlyInThisBrowser": true,
+      "stopReached": true,
+      "errors": [],
+      "samples": 814,
+      "entrySpeed": 213.70746917724793,
+      "finalSpeed": 0.4680460491630016,
+      "seconds": 6.78333333333346,
+      "pathLength": 186.82356080776523,
+      "maxBeta": 56.61544585359865,
+      "maxYaw": 0.9191988706588745,
+      "minRear": 0,
+      "surfaces": [
+        "asphalt",
+        "gravel",
+        "kerb"
+      ],
+      "keys": [
+        {
+          "type": "keydown",
+          "code": "KeyW",
+          "trusted": true,
+          "wallMs": 8922.699999999255
+        },
+        {
+          "type": "keyup",
+          "code": "KeyW",
+          "trusted": true,
+          "wallMs": 22146.60000000149
+        },
+        {
+          "type": "keydown",
+          "code": "KeyS",
+          "trusted": true,
+          "wallMs": 22259.400000002235
+        },
+        {
+          "type": "keydown",
+          "code": "KeyA",
+          "trusted": true,
+          "wallMs": 23952.199999999255
+        },
+        {
+          "type": "keyup",
+          "code": "KeyA",
+          "trusted": true,
+          "wallMs": 24120.900000002235
+        },
+        {
+          "type": "keyup",
+          "code": "KeyS",
+          "trusted": true,
+          "wallMs": 29040
+        }
+      ],
+      "sourceUnchanged": true
+    },
+    "asphaltPrefix": {
+      "seconds": 3.625,
+      "maxBeta": 29.255208672908932,
+      "maxYaw": 0.9191988706588745,
+      "minRear": 0,
+      "exitSpeed": 95.54263151757466
+    }
+  },
+  {
+    "name": "fixed-left",
+    "summary": {
+      "variant": "fixed",
+      "direction": "left",
+      "url": "http://127.0.0.1:5192/",
+      "scope": "Normal Longwan game, GT3RS selected through garage UI, trusted Chrome keyboard events, original production input/scheduler/Rapier. Fresh maneuver, not exact user-state replay.",
+      "runtimeHash": "48f86446f1399d2ab1ec4695be985309c5af75234c36c187af215623cfe1f1ad",
+      "baselineFunctionRestoredOnlyInThisBrowser": false,
+      "stopReached": true,
+      "errors": [],
+      "samples": 992,
+      "entrySpeed": 213.700204467774,
+      "finalSpeed": 0.4782123379553212,
+      "seconds": 8.266666666666838,
+      "pathLength": 195.25403239280996,
+      "maxBeta": 1.641452365680525,
+      "maxYaw": 0.15135401487350464,
+      "minRear": 806.8487080180629,
+      "surfaces": [
+        "asphalt"
+      ],
+      "keys": [
+        {
+          "type": "keydown",
+          "code": "KeyW",
+          "trusted": true,
+          "wallMs": 8722.099999997765
+        },
+        {
+          "type": "keyup",
+          "code": "KeyW",
+          "trusted": true,
+          "wallMs": 22096.099999997765
+        },
+        {
+          "type": "keydown",
+          "code": "KeyS",
+          "trusted": true,
+          "wallMs": 22210.199999999255
+        },
+        {
+          "type": "keydown",
+          "code": "KeyA",
+          "trusted": true,
+          "wallMs": 23890.29999999702
+        },
+        {
+          "type": "keyup",
+          "code": "KeyA",
+          "trusted": true,
+          "wallMs": 24059.5
+        },
+        {
+          "type": "keyup",
+          "code": "KeyS",
+          "trusted": true,
+          "wallMs": 30467.79999999702
+        }
+      ],
+      "sourceUnchanged": true
+    },
+    "asphaltPrefix": {
+      "seconds": 6.183333333333334,
+      "maxBeta": 1.641452365680525,
+      "maxYaw": 0.15135401487350464,
+      "minRear": 806.8487080180629,
+      "exitSpeed": null
+    }
+  },
+  {
+    "name": "fixed-right",
+    "summary": {
+      "variant": "fixed",
+      "direction": "right",
+      "url": "http://127.0.0.1:5192/",
+      "scope": "Normal Longwan game, GT3RS selected through garage UI, trusted Chrome keyboard events, original production input/scheduler/Rapier. Fresh maneuver, not exact user-state replay.",
+      "runtimeHash": "48f86446f1399d2ab1ec4695be985309c5af75234c36c187af215623cfe1f1ad",
+      "baselineFunctionRestoredOnlyInThisBrowser": false,
+      "stopReached": true,
+      "errors": [],
+      "samples": 775,
+      "entrySpeed": 213.69940795898495,
+      "finalSpeed": 0.45180102301843666,
+      "seconds": 6.458333333333444,
+      "pathLength": 183.1609785341053,
+      "maxBeta": 17.41760349071469,
+      "maxYaw": 3.439617156982422,
+      "minRear": 0,
+      "surfaces": [
+        "asphalt",
+        "gravel"
+      ],
+      "keys": [
+        {
+          "type": "keydown",
+          "code": "KeyW",
+          "trusted": true,
+          "wallMs": 9084.800000000745
+        },
+        {
+          "type": "keyup",
+          "code": "KeyW",
+          "trusted": true,
+          "wallMs": 22457.89999999851
+        },
+        {
+          "type": "keydown",
+          "code": "KeyS",
+          "trusted": true,
+          "wallMs": 22572.199999999255
+        },
+        {
+          "type": "keydown",
+          "code": "KeyD",
+          "trusted": true,
+          "wallMs": 24260
+        },
+        {
+          "type": "keyup",
+          "code": "KeyD",
+          "trusted": true,
+          "wallMs": 24432
+        },
+        {
+          "type": "keyup",
+          "code": "KeyS",
+          "trusted": true,
+          "wallMs": 29026.300000000745
+        }
+      ],
+      "sourceUnchanged": true
+    },
+    "asphaltPrefix": {
+      "seconds": 3.691666666666667,
+      "maxBeta": 1.9734142713719445,
+      "maxYaw": 0.1842494010925293,
+      "minRear": 635.5243914759616,
+      "exitSpeed": 88.29231865687193
+    }
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "scope": "Current-round closeout only",
+  "corrections": [
+    "Ground markings conformed to apron/pit lane, box sides removed",
+    "Concrete apron slope flattened toward the drain",
+    "Overly periodic pavement colour replaced by subtle irregular vertex colour",
+    "Roof main beams lowered under the sheet"
+  ],
+  "edited_markings_and_beams": 34,
+  "game_integration": "NOT_RUN"
+}

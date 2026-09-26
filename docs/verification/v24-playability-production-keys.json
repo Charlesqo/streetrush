@@ -1,0 +1,604 @@
+{
+  "schema": "streetrush.v24-playability.browser-keys.v1",
+  "status": "PARTIAL",
+  "eventSource": "Browser automation emits real DOM keydown/keyup with isTrusted=false; this is not physical-device certification",
+  "scope": "Production InputController -> main fixed scheduler -> VehicleSystem -> v24-active -> Rapier -> afterPhysics; no direct driver-input or vehicle-state injection",
+  "results": [
+    {
+      "key": "w",
+      "status": "PASS",
+      "sample": {
+        "input": {
+          "brake": 0,
+          "directionConflict": false,
+          "driveIntent": 0,
+          "handbrake": 0,
+          "rawBrake": 0,
+          "rawHandbrake": 0,
+          "rawThrottle": 0,
+          "reset": false,
+          "shiftDown": false,
+          "shiftUp": false,
+          "steer": 0,
+          "throttle": 0.013823103266105068,
+          "toggleTransmission": false
+        },
+        "keyboardEvents": [
+          {
+            "code": "KeyW",
+            "fixedStepIndex": 435,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyW",
+            "fixedStepIndex": 437,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          }
+        ],
+        "lastControlTrace": {
+          "bodyPose": {
+            "position": {
+              "x": -320,
+              "y": 0.6549378633499146,
+              "z": 0.0041574640199542046
+            },
+            "rotation": {
+              "w": 0.7016026377677917,
+              "x": -0.000067750814196188,
+              "y": 0.712568461894989,
+              "z": -0.00003745725189219229
+            }
+          },
+          "currentPose": {
+            "position": [
+              -320,
+              0.6549378633499146,
+              0.0041574640199542046
+            ],
+            "rotation": [
+              -0.000067750814196188,
+              0.712568461894989,
+              -0.00003745725189219229,
+              0.7016026377677917
+            ]
+          },
+          "driveIntent": 1,
+          "fixedStepIndex": 437,
+          "hostCounters": {
+            "bodyForceWrites": 5,
+            "bodyTorqueWrites": 5,
+            "groundReactionWrites": 0,
+            "queryCount": 4
+          },
+          "input": {
+            "brake": 0,
+            "directionConflict": false,
+            "driveIntent": 1,
+            "handbrake": 0,
+            "rawBrake": 0,
+            "rawHandbrake": 0,
+            "rawThrottle": 1,
+            "reset": false,
+            "shiftDown": false,
+            "shiftUp": false,
+            "steer": 0,
+            "throttle": 0.0696924048067128,
+            "toggleTransmission": false
+          },
+          "phase": "afterPhysics",
+          "powertrain": {
+            "assistBrakeTorqueAppliedNm": 0,
+            "assistBrakeTorqueRequestedNm": 0,
+            "driveTorqueAppliedNm": 102.71887064675872,
+            "driveTorqueRequestedNm": 1.518842673633901,
+            "driverServiceBrakeTorqueAppliedNm": 0,
+            "driverServiceBrakeTorqueRequestedNm": 0,
+            "handbrakeTorqueAppliedNm": 0,
+            "handbrakeTorqueRequestedNm": 0,
+            "serviceBrakeTorqueAppliedNm": 0,
+            "serviceBrakeTorqueRequestedNm": 0,
+            "wheelDriveTorqueAppliedNm": 102.71887064675872,
+            "wheelDriveTorqueRequestedNm": 20.481289685418428
+          },
+          "reportAuthority": {
+            "legacyForceCalls": 0,
+            "v24ForceCalls": 1,
+            "vehicleForceState": "V24",
+            "world6Dof": "RAPIER"
+          },
+          "reportStatus": "COMMITTED",
+          "signedSpeedKmh": 0.011521680019766835,
+          "speedKmh": 0.011521680019766835,
+          "steerAngle": 0
+        },
+        "readiness": {
+          "assetSource": "gltf",
+          "audioBankError": null,
+          "audioBankId": "bank.candidate.i4.mazda-b6-compatibility-proxy",
+          "audioBankMode": "family",
+          "audioBankState": "ready",
+          "mountedCarId": "mx5",
+          "physicsSchedulerFallback": null,
+          "physicsSchedulerOwner": "rust-wasm",
+          "restartable": false,
+          "selectedCarId": "mx5",
+          "startable": false,
+          "state": "race",
+          "vehicleLoadPending": false,
+          "visualWheelBindingCount": 4,
+          "visualWheelSource": "manifest:mx5"
+        },
+        "state": "race",
+        "track": {
+          "className": "TrackSystem",
+          "length": 2129.954296679656,
+          "sampleCount": 1024
+        }
+      }
+    },
+    {
+      "key": "a",
+      "status": "NOT_OBSERVED",
+      "method": "12 normal short browser key presses; no direct input/state API",
+      "sample": {
+        "fixedStepIndex": 15918,
+        "keyboardEvents": [
+          {
+            "code": "KeyA",
+            "fixedStepIndex": 15896,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyA",
+            "fixedStepIndex": 15896,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyA",
+            "fixedStepIndex": 15896,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyA",
+            "fixedStepIndex": 15896,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyA",
+            "fixedStepIndex": 15898,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyA",
+            "fixedStepIndex": 15898,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyA",
+            "fixedStepIndex": 15898,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyA",
+            "fixedStepIndex": 15898,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          }
+        ],
+        "lastControlTrace": {
+          "bodyPose": {
+            "position": {
+              "x": -320,
+              "y": 0.6549378633499146,
+              "z": 0.0041574640199542046
+            },
+            "rotation": {
+              "w": 0.7016026377677917,
+              "x": -0.000067750814196188,
+              "y": 0.712568461894989,
+              "z": -0.00003745725189219229
+            }
+          },
+          "currentPose": {
+            "position": [
+              -320,
+              0.6549378633499146,
+              0.0041574640199542046
+            ],
+            "rotation": [
+              -0.000067750814196188,
+              0.712568461894989,
+              -0.00003745725189219229,
+              0.7016026377677917
+            ]
+          },
+          "driveIntent": 1,
+          "fixedStepIndex": 437,
+          "hostCounters": {
+            "bodyForceWrites": 5,
+            "bodyTorqueWrites": 5,
+            "groundReactionWrites": 0,
+            "queryCount": 4
+          },
+          "input": {
+            "brake": 0,
+            "directionConflict": false,
+            "driveIntent": 1,
+            "handbrake": 0,
+            "rawBrake": 0,
+            "rawHandbrake": 0,
+            "rawThrottle": 1,
+            "reset": false,
+            "shiftDown": false,
+            "shiftUp": false,
+            "steer": 0,
+            "throttle": 0.0696924048067128,
+            "toggleTransmission": false
+          },
+          "phase": "afterPhysics",
+          "powertrain": {
+            "assistBrakeTorqueAppliedNm": 0,
+            "assistBrakeTorqueRequestedNm": 0,
+            "driveTorqueAppliedNm": 102.71887064675872,
+            "driveTorqueRequestedNm": 1.518842673633901,
+            "driverServiceBrakeTorqueAppliedNm": 0,
+            "driverServiceBrakeTorqueRequestedNm": 0,
+            "handbrakeTorqueAppliedNm": 0,
+            "handbrakeTorqueRequestedNm": 0,
+            "serviceBrakeTorqueAppliedNm": 0,
+            "serviceBrakeTorqueRequestedNm": 0,
+            "wheelDriveTorqueAppliedNm": 102.71887064675872,
+            "wheelDriveTorqueRequestedNm": 20.481289685418428
+          },
+          "reportAuthority": {
+            "legacyForceCalls": 0,
+            "v24ForceCalls": 1,
+            "vehicleForceState": "V24",
+            "world6Dof": "RAPIER"
+          },
+          "reportStatus": "COMMITTED",
+          "signedSpeedKmh": 0.011521680019766835,
+          "speedKmh": 0.011521680019766835,
+          "steerAngle": 0
+        },
+        "state": "race"
+      }
+    },
+    {
+      "key": "d",
+      "status": "NOT_OBSERVED",
+      "method": "12 normal short browser key presses; no direct input/state API",
+      "sample": {
+        "fixedStepIndex": 16020,
+        "keyboardEvents": [
+          {
+            "code": "KeyD",
+            "fixedStepIndex": 16000,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyD",
+            "fixedStepIndex": 16000,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyD",
+            "fixedStepIndex": 16002,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyD",
+            "fixedStepIndex": 16002,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyD",
+            "fixedStepIndex": 16002,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyD",
+            "fixedStepIndex": 16002,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyD",
+            "fixedStepIndex": 16004,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyD",
+            "fixedStepIndex": 16004,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          }
+        ],
+        "lastControlTrace": {
+          "bodyPose": {
+            "position": {
+              "x": -320,
+              "y": 0.6549378633499146,
+              "z": 0.0041574640199542046
+            },
+            "rotation": {
+              "w": 0.7016026377677917,
+              "x": -0.000067750814196188,
+              "y": 0.712568461894989,
+              "z": -0.00003745725189219229
+            }
+          },
+          "currentPose": {
+            "position": [
+              -320,
+              0.6549378633499146,
+              0.0041574640199542046
+            ],
+            "rotation": [
+              -0.000067750814196188,
+              0.712568461894989,
+              -0.00003745725189219229,
+              0.7016026377677917
+            ]
+          },
+          "driveIntent": 1,
+          "fixedStepIndex": 437,
+          "hostCounters": {
+            "bodyForceWrites": 5,
+            "bodyTorqueWrites": 5,
+            "groundReactionWrites": 0,
+            "queryCount": 4
+          },
+          "input": {
+            "brake": 0,
+            "directionConflict": false,
+            "driveIntent": 1,
+            "handbrake": 0,
+            "rawBrake": 0,
+            "rawHandbrake": 0,
+            "rawThrottle": 1,
+            "reset": false,
+            "shiftDown": false,
+            "shiftUp": false,
+            "steer": 0,
+            "throttle": 0.0696924048067128,
+            "toggleTransmission": false
+          },
+          "phase": "afterPhysics",
+          "powertrain": {
+            "assistBrakeTorqueAppliedNm": 0,
+            "assistBrakeTorqueRequestedNm": 0,
+            "driveTorqueAppliedNm": 102.71887064675872,
+            "driveTorqueRequestedNm": 1.518842673633901,
+            "driverServiceBrakeTorqueAppliedNm": 0,
+            "driverServiceBrakeTorqueRequestedNm": 0,
+            "handbrakeTorqueAppliedNm": 0,
+            "handbrakeTorqueRequestedNm": 0,
+            "serviceBrakeTorqueAppliedNm": 0,
+            "serviceBrakeTorqueRequestedNm": 0,
+            "wheelDriveTorqueAppliedNm": 102.71887064675872,
+            "wheelDriveTorqueRequestedNm": 20.481289685418428
+          },
+          "reportAuthority": {
+            "legacyForceCalls": 0,
+            "v24ForceCalls": 1,
+            "vehicleForceState": "V24",
+            "world6Dof": "RAPIER"
+          },
+          "reportStatus": "COMMITTED",
+          "signedSpeedKmh": 0.011521680019766835,
+          "speedKmh": 0.011521680019766835,
+          "steerAngle": 0
+        },
+        "state": "race"
+      }
+    },
+    {
+      "key": "s",
+      "status": "PASS",
+      "method": "12 normal short browser key presses; no direct input/state API",
+      "sample": {
+        "fixedStepIndex": 16128,
+        "keyboardEvents": [
+          {
+            "code": "KeyS",
+            "fixedStepIndex": 16106,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyS",
+            "fixedStepIndex": 16106,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyS",
+            "fixedStepIndex": 16106,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyS",
+            "fixedStepIndex": 16108,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyS",
+            "fixedStepIndex": 16108,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyS",
+            "fixedStepIndex": 16108,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          },
+          {
+            "code": "KeyS",
+            "fixedStepIndex": 16108,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keydown"
+          },
+          {
+            "code": "KeyS",
+            "fixedStepIndex": 16108,
+            "repeat": false,
+            "target": "CANVAS",
+            "trusted": false,
+            "type": "keyup"
+          }
+        ],
+        "lastControlTrace": {
+          "bodyPose": {
+            "position": {
+              "x": -320,
+              "y": 0.6549385786056519,
+              "z": 0.165805384516716
+            },
+            "rotation": {
+              "w": 0.6930621266365051,
+              "x": 0.0000526102157891728,
+              "y": 0.7208778858184814,
+              "z": 0.000050575479690451175
+            }
+          },
+          "currentPose": {
+            "position": [
+              -320,
+              0.6549385786056519,
+              0.165805384516716
+            ],
+            "rotation": [
+              0.0000526102157891728,
+              0.7208778858184814,
+              0.000050575479690451175,
+              0.6930621266365051
+            ]
+          },
+          "driveIntent": -1,
+          "fixedStepIndex": 16108,
+          "hostCounters": {
+            "bodyForceWrites": 5,
+            "bodyTorqueWrites": 5,
+            "groundReactionWrites": 0,
+            "queryCount": 4
+          },
+          "input": {
+            "brake": 0.1190461164596266,
+            "directionConflict": false,
+            "driveIntent": -1,
+            "handbrake": 0,
+            "rawBrake": 1,
+            "rawHandbrake": 0,
+            "rawThrottle": 0,
+            "reset": false,
+            "shiftDown": false,
+            "shiftUp": false,
+            "steer": 0,
+            "throttle": 2e-323,
+            "toggleTransmission": false
+          },
+          "phase": "afterPhysics",
+          "powertrain": {
+            "assistBrakeTorqueAppliedNm": 0,
+            "assistBrakeTorqueRequestedNm": 0,
+            "driveTorqueAppliedNm": 0,
+            "driveTorqueRequestedNm": 2.0463630789890886e-13,
+            "driverServiceBrakeTorqueAppliedNm": 28.614700501348043,
+            "driverServiceBrakeTorqueRequestedNm": 291.66298532608516,
+            "handbrakeTorqueAppliedNm": 0,
+            "handbrakeTorqueRequestedNm": 0,
+            "serviceBrakeTorqueAppliedNm": 28.614700501348043,
+            "serviceBrakeTorqueRequestedNm": 291.66298532608516,
+            "wheelDriveTorqueAppliedNm": 0,
+            "wheelDriveTorqueRequestedNm": 2.759479684755206e-12
+          },
+          "reportAuthority": {
+            "legacyForceCalls": 0,
+            "v24ForceCalls": 1,
+            "vehicleForceState": "V24",
+            "world6Dof": "RAPIER"
+          },
+          "reportStatus": "COMMITTED",
+          "signedSpeedKmh": 0.002245272095598824,
+          "speedKmh": 0.002245272095598824,
+          "steerAngle": 0
+        },
+        "state": "race"
+      }
+    }
+  ],
+  "limits": [
+    "A/D short keydown+keyup pairs were observed at the same fixed-step index and did not yield a sampled steering command; these production maneuvers are NOT_RUN, not PASS.",
+    "Low/mid/high physical left/right steering is separately covered by the 100-check behavior suite.",
+    "Sustained production high-speed driving and wall-recovery feel still require user acceptance."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "before": [
+    -320,
+    0.050000000000000044,
+    0
+  ],
+  "after": [
+    -320,
+    2.0500000000000003,
+    0
+  ],
+  "localY": -0.695,
+  "opacity": 0.36,
+  "explanation": "Visual-root transform only; fixed plane moves up by the same 2 metres."
+}

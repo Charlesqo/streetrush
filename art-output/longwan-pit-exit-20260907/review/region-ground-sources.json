@@ -1,0 +1,12 @@
+{
+  "native_grass_source": "Poly Haven grass_medium_01 / Rob Tuytel and Rico Cilliers / CC0",
+  "grass_source_objects": [
+    "grass_medium_01_mid_b_LOD1",
+    "grass_medium_01_small_b_LOD1",
+    "grass_medium_01_tall_a_LOD1",
+    "grass_medium_01_tiny_a_LOD0"
+  ],
+  "alpha_derivative": "materials/region/grass_medium_01_base_alpha.png",
+  "ground_source": "Poly Haven leafy_grass / Charlotte Baglioni / CC0",
+  "status": "Actual assembled Cycles ground close view inspected. Foliage and terrain remain visually simple as documented."
+}

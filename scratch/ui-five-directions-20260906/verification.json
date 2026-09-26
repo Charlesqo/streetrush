@@ -1,0 +1,206 @@
+{
+  "checkedAt": "2026-09-06T16:26:24.926Z",
+  "errors": [],
+  "evidence": [
+    {
+      "label": "赛道计时 · 主菜单",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "赛道计时 · 选车",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "赛道计时 · 驾驶 HUD",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        false,
+        false
+      ]
+    },
+    {
+      "label": "街头竞速 · 主菜单",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "街头竞速 · 选车",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "街头竞速 · 驾驶 HUD",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        false,
+        false
+      ]
+    },
+    {
+      "label": "经典车会 · 主菜单",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "经典车会 · 选车",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "经典车会 · 驾驶 HUD",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        false,
+        false
+      ]
+    },
+    {
+      "label": "日系街机 · 主菜单",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "日系街机 · 选车",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "日系街机 · 驾驶 HUD",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        false,
+        false
+      ]
+    },
+    {
+      "label": "极简座舱 · 主菜单",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "极简座舱 · 选车",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        true,
+        true
+      ]
+    },
+    {
+      "label": "极简座舱 · 驾驶 HUD",
+      "image": 1600,
+      "frame": [
+        1600,
+        900
+      ],
+      "contentOverflow": [
+        false,
+        false
+      ]
+    }
+  ],
+  "interactions": [
+    "theme switching",
+    "scene switching",
+    "all 15 screen overview",
+    "six-car selection",
+    "long car name across all five themes",
+    "previous car",
+    "selected car preserved on start",
+    "pause",
+    "resume",
+    "settings",
+    "shift mode"
+  ],
+  "widths": [
+    1600,
+    1024,
+    736,
+    390
+  ],
+  "note": "UI-only visual and interaction checks. No game physics or production completion claim."
+}

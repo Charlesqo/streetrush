@@ -1,0 +1,44 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const root=process.cwd();
+const source=path.join(root,'scratch/lighting-review-20260906');
+const destination=path.join(root,'docs/verification/lighting-20260906');
+await fs.mkdir(destination,{recursive:true});
+const cars=[['mx5','Mazda MX-5 NA'],['m3e30','BMW M3 E30'],['gt3rs','Porsche GT3 RS'],['lp700','Lamborghini LP700'],['amggt3','Mercedes-AMG GT3'],['m5g90','BMW M5 G90']];
+const rows=[];
+const earlierRows=[];
+for(const [id,name] of cars){
+ const row={id,name};
+ for(const version of ['before','after']){
+  const file=`${version}-${id}.json`;
+  const data=JSON.parse(await fs.readFile(path.join(source,file),'utf8'));
+  if(data.car!==id||data.state!=='race'||data.source!=='gltf'||String(data.resolution)!=='1280,720')throw Error(`Invalid evidence: ${file}`);
+  row[version]=data;
+  await fs.copyFile(path.join(source,file),path.join(destination,file));
+  await fs.copyFile(path.join(source,`${version}-${id}-hero.png`),path.join(destination,`${version}-${id}-hero.png`));
+ }
+ rows.push(row);
+ const earlier=JSON.parse(await fs.readFile(path.join(source,`before-physical-define-${id}.json`),'utf8'));
+ earlierRows.push({id,name,after:earlier});
+ await fs.writeFile(path.join(destination,`earlier-after-${id}.json`),JSON.stringify(earlier,null,2));
+}
+for(const version of ['before','after']){
+ for(const suffix of ['chase.png','driving.json'])await fs.copyFile(path.join(source,`${version}-mx5-${suffix}`),path.join(destination,`${version}-mx5-${suffix}`));
+}
+await fs.copyFile(path.join(source,'before-physical-define-mx5-driving.json'),path.join(destination,'earlier-after-mx5-driving.json'));
+const manifest={dates:['2026-09-06','2026-09-07'],viewport:[1280,720],previewFps:5,measurementFpsCap:null,warmupSeconds:3,sampleSeconds:12,note:'rows uses the latest six final-version samples. earlierRows preserves the earlier sweep before the final MeshPhysicalMaterial defines compatibility correction. Machine load and browser scheduling were not controlled; differences between sessions must not be attributed solely to code.',rows,earlierRows};
+await fs.writeFile(path.join(destination,'measurements.json'),JSON.stringify(manifest,null,2));
+const number=n=>n.toFixed(2);
+const table=rows.map(r=>`| ${r.name} | ${number(r.before.gpuMs.mean)} → ${number(r.after.gpuMs.mean)} | ${number(r.before.gpuMs.p95)} → ${number(r.after.gpuMs.p95)} | ${number(r.before.frameMs.mean)} → ${number(r.after.frameMs.mean)} | ${number(r.before.frameMs.p95)} → ${number(r.after.frameMs.p95)} | ${Math.round(r.before.drawCalls.mean)} → ${Math.round(r.after.drawCalls.mean)} |`).join('\n');
+await fs.writeFile(path.join(destination,'performance-table.md'),`| 车辆 | GPU 平均 ms | GPU P95 ms | 整帧平均 ms | 整帧 P95 ms | 绘制次数 |\n|---|---:|---:|---:|---:|---:|\n${table}\n`);
+const earlierHtml=earlierRows.map(r=>`<tr><th>${r.name}</th><td>${number(r.after.gpuMs.mean)}</td><td>${number(r.after.frameMs.p95)}</td></tr>`).join('');
+const statsHtml=rows.map(r=>`<tr><th>${r.name}</th><td>${number(r.before.gpuMs.mean)} → <b>${number(r.after.gpuMs.mean)}</b></td><td>${number(r.before.frameMs.p95)} → <b>${number(r.after.frameMs.p95)}</b></td><td>${Math.round(r.before.drawCalls.mean)} → ${Math.round(r.after.drawCalls.mean)}</td></tr>`).join('');
+await fs.writeFile(path.join(destination,'index.html'),`<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>StreetRush · 光照与材质实机对比</title><style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#10161c;color:#e7edf2}*{box-sizing:border-box}body{max-width:1320px;margin:auto;padding:32px 24px 60px}header{display:flex;justify-content:space-between;align-items:end;gap:20px}h1{font-size:28px;letter-spacing:-.04em;margin:0 0 12px}p{line-height:1.7;color:#abb9c4;margin:12px 0}small{color:#d8ef6d}nav{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 18px}button,select{background:#1b2832;color:#ccdae5;border:1px solid #384956;padding:10px 15px;border-radius:8px;cursor:pointer}button.active{background:#d9ef67;color:#182015;border-color:#d9ef67}.compare{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid #3a4954;border-radius:12px;--split:50%}.compare img{position:absolute;width:100%;height:100%;object-fit:contain;inset:0}.before{clip-path:inset(0 calc(100% - var(--split)) 0 0)}.divider{position:absolute;top:0;bottom:0;left:var(--split);width:2px;background:#fff;pointer-events:none}.tag{position:absolute;top:16px;padding:7px 12px;background:#10161ce8;border-radius:5px;font-size:12px}.old{left:14px}.new{right:14px}input[type=range]{width:100%;accent-color:#d9ef67;margin:15px 0 0}section{margin-top:38px}h2{font-size:19px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;padding:14px 10px;border-bottom:1px solid #303c46}thead th{color:#a8bac7;font-weight:500}td b{color:#dceaa2}ul{padding-left:21px;line-height:1.9;color:#b9c7d1}a{color:#d9ef67}.meta{font-size:12px}.table-scroll{overflow:auto}@media(max-width:650px){body{padding:24px 12px}header{display:block}h1{font-size:24px}th,td{padding:10px 8px;white-space:nowrap}.tag{top:8px;font-size:10px;padding:4px 8px}}
+</style><header><div><small>STREET RUSH / RENDER REVIEW</small><h1>光照与材质 · 实机前后对比</h1><p>同一游戏、同一机位。所有图像均为游戏直接截图，没有后期修图。</p></div><span class="meta">Apple M4 · 1280 × 720<br>2026-09-06 — 09-07</span></header><nav id="cars"></nav><div class="compare" id="compare"><img id="after" alt="调整后的实际游戏画面"><img class="before" id="before" alt="调整前的实际游戏画面"><div class="divider"></div><span class="tag old">修改前</span><span class="tag new">修改后</span></div><input id="split" aria-label="拖动比较修改前后" type="range" min="0" max="100" value="50"><p id="caption">拖动滑块查看沥青、车漆和阴影变化。</p><button id="view">MX-5：查看追车机位</button><section><h2>这一轮改了什么</h2><ul><li>Lambert 路面改为 PBR；接入 1K 实拍沥青、OpenGL 法线和 AO/粗糙度，按 2.1 米尺度铺设。</li><li>用统一方向的户外太阳、天空和场地反射替换室内灯箱环境。</li><li>按材质角色修正车漆、玻璃、橡胶、塑料和金属，保留原模型颜色及涂装贴图。</li><li>近车太阳阴影、柔化接地遮蔽和半分辨率 GTAO 共同增加轮胎、车底和环境接缝的层次。</li><li>GTAO 复用主画面的深度，减少重复场景绘制；启动时预编译场景着色器；比赛时移除车库全屏暗色遮罩。</li></ul></section><section><h2>固定渲染条件的分批性能实测</h2><p>每组正常刷新率预热 3 秒、采样 12 秒，固定渲染比例 1，关闭动态分辨率。日常预览限制 5 FPS，测量结束自动恢复。下表为原版样本与最终版本最新样本，耗时越低越好。采样时段不同，本机其他负载未受控。</p><div class="table-scroll"><table><thead><tr><th>车辆</th><th>GPU 平均 / ms</th><th>整帧 P95 / ms</th><th>绘制次数</th></tr></thead><tbody>${statsHtml}</tbody></table></div><p>GPU 计时覆盖场景、阴影和后处理；整帧时间还包含车辆模拟、浏览器调度及本机其他负载。短窗口结果存在波动，不能当作其他设备或长时间驾驶的帧率保证。</p><p>最新复测出现明显波动；不能把跨时段差值全部归因于本轮代码。以下保留上一轮数据（物理材质 defines 兼容修正前），不丢弃较差的新样本。MX-5 行驶 GPU 平均：原版 2.53 ms，上一轮 3.22 ms，最新 4.43 ms；整帧 P99 分别为 9.1 / 10.2 / 44.5 ms。</p><details><summary>查看上一轮六车结果</summary><table><thead><tr><th>车辆</th><th>GPU 平均 / ms</th><th>整帧 P95 / ms</th></tr></thead><tbody>${earlierHtml}</tbody></table></details><p><a href="measurements.json">完整六车测量统计与条件（含两轮）</a> · <a href="before-mx5-driving.json">原版行驶采样</a> · <a href="after-mx5-driving.json">调整后行驶采样</a></p></section><section><h2>保留的边界</h2><p>场地反射为启动时生成的静态 PMREM；没有加入实时屏幕空间反射或光线追踪。GTAO 是屏幕空间效果，有限的接地遮蔽作为补充。移动设备尚未进行实机性能验证。环境几何仍是原有简化场景。</p><p>本轮改动限于渲染、材质和检查工具，车辆物理与输入调度保持原实现。</p><p class="meta">沥青：<a href="https://polyhaven.com/a/asphalt_01">Poly Haven Asphalt 01</a> · <a href="https://polyhaven.com/license">CC0</a>。Charlotte Baglioni / Dario Barresi。</p></section><script>
+const cars=${JSON.stringify(cars)};let car='mx5',view='hero';const before=document.getElementById('before'),after=document.getElementById('after'),nav=document.getElementById('cars'),viewButton=document.getElementById('view');function show(){before.src='before-'+car+'-'+view+'.png';after.src='after-'+car+'-'+view+'.png';for(const b of nav.children)b.classList.toggle('active',b.dataset.car===car);viewButton.hidden=car!=='mx5';viewButton.textContent=view==='hero'?'MX-5：查看追车机位':'MX-5：查看近车机位';document.getElementById('caption').textContent=cars.find(c=>c[0]===car)[1]+' · '+(view==='hero'?'近车材质':'追车')+'机位 · 截图中的比赛计时不同。';}for(const [id,name]of cars){const b=document.createElement('button');b.textContent=name;b.dataset.car=id;b.onclick=()=>{car=id;view='hero';show()};nav.append(b)}document.getElementById('split').oninput=e=>document.getElementById('compare').style.setProperty('--split',e.target.value+'%');viewButton.onclick=()=>{view=view==='hero'?'chase':'hero';show()};show();
+</script></html>`);
+const files=['src/main.js','src/track.js','src/assets.js','src/style.css','src/rendering.js','src/car-materials.js','src/render-pipeline.js','src/render-review.js','scripts/test-render-materials.mjs','package.json'];
+await fs.writeFile(path.join(destination,'source-sha256.json'),JSON.stringify(Object.fromEntries(await Promise.all(files.map(async f=>[f,crypto.createHash('sha256').update(await fs.readFile(f)).digest('hex')]))),null,2));
+console.log(destination);console.log(table);

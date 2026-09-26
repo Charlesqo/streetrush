@@ -1,0 +1,2252 @@
+{
+  "name": "gt3rs-wheel-baseline",
+  "diagnosisVersion": 2,
+  "sequence": 1,
+  "recordedAt": "2026-09-22T09:08:36.595Z",
+  "view": "wheel",
+  "frozen": true,
+  "gameState": "race",
+  "car": "gt3rs",
+  "position": [
+    -320,
+    0.6346104145050049,
+    6.062785828930828e-9
+  ],
+  "quaternion": [
+    2.72238209753084e-9,
+    0.7071068286895752,
+    4.1034318165600325e-9,
+    0.7071068286895752
+  ],
+  "camera": {
+    "position": [
+      -317.6999993888625,
+      0.7346103972775251,
+      2.250000000310159
+    ],
+    "quaternion": [
+      -0.10232369562616274,
+      0.3169694489049748,
+      0.03442053342394278,
+      0.9422714347007938
+    ],
+    "fov": 58,
+    "near": 0.1,
+    "far": 1300,
+    "aspect": 1.7777777777777777
+  },
+  "buffer": [
+    1280,
+    720
+  ],
+  "pixelRatio": 1,
+  "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 Ti (0x00002C05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "lights": {
+    "sun": 3.5,
+    "fill": 0.48,
+    "environment": 0.8,
+    "environmentId": "8be42d65-2018-44b3-9567-0084167cfce7",
+    "direction": [
+      0.5872923826164553,
+      0.741980411720831,
+      -0.323346139521215
+    ]
+  },
+  "shadow": {
+    "enabled": true,
+    "intensity": 1,
+    "type": 2,
+    "map": [
+      2048,
+      2048
+    ],
+    "bias": -0.00024,
+    "normalBias": 0.03,
+    "camera": {
+      "left": -56,
+      "right": 56,
+      "top": 56,
+      "bottom": -56
+    },
+    "sunPosition": [
+      -237.2641175965906,
+      74.83802992346887,
+      -32.307188884509806
+    ],
+    "target": [
+      -295.99335585823616,
+      0.6399887513857763,
+      0.027425067611692215
+    ]
+  },
+  "ao": {
+    "blend": 0.75,
+    "width": 640,
+    "height": 360,
+    "quality": 2
+  },
+  "exposure": 0.9,
+  "msaa": 4,
+  "blob": {
+    "visible": true,
+    "opacity": 0.36,
+    "position": [
+      -319.99999999879884,
+      0.01961041450500489,
+      1.2609288400872067e-10
+    ]
+  },
+  "carMeshes": [
+    {
+      "name": "Object_4002_Scene_-_Root002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "af0d450b-d62b-413d-a61f-92498f098c00"
+      ]
+    },
+    {
+      "name": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9002_TwiXeR_992_GT3RS_black_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "580425d4-d755-4afc-8e68-7ef371fbdc23"
+      ]
+    },
+    {
+      "name": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9002_TwiXeR_992_wheels_chrome_1_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "587a3f38-f1a1-46cb-8784-9bdf90e4991a"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR002_amdb11_misc_chrome002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "78f4721f-36f8-4dcc-a8b9-9fd8ce18c740"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR002_amdb11_brake002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "9f20eb14-8d2f-4576-b776-d93119844e94"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR002_amdb11_misc002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "c9cfb829-179a-47b7-956e-728266c21cc0"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR002_amdb11_caliper002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "e8eea0e2-8873-4419-867d-c38ecae3cb30"
+      ]
+    },
+    {
+      "name": "Object_4003_Scene_-_Root002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "af0d450b-d62b-413d-a61f-92498f098c00"
+      ]
+    },
+    {
+      "name": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9_TwiXeR_992_GT3RS_black_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "580425d4-d755-4afc-8e68-7ef371fbdc23"
+      ]
+    },
+    {
+      "name": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9_TwiXeR_992_wheels_chrome_1_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "587a3f38-f1a1-46cb-8784-9bdf90e4991a"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR003_amdb11_misc_chrome002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "78f4721f-36f8-4dcc-a8b9-9fd8ce18c740"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR003_amdb11_brake002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "9f20eb14-8d2f-4576-b776-d93119844e94"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR003_amdb11_misc002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "c9cfb829-179a-47b7-956e-728266c21cc0"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR003_amdb11_caliper002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "e8eea0e2-8873-4419-867d-c38ecae3cb30"
+      ]
+    },
+    {
+      "name": "Object_4004_Scene_-_Root002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "af0d450b-d62b-413d-a61f-92498f098c00"
+      ]
+    },
+    {
+      "name": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9003_TwiXeR_992_GT3RS_black_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "580425d4-d755-4afc-8e68-7ef371fbdc23"
+      ]
+    },
+    {
+      "name": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9003_TwiXeR_992_wheels_chrome_1_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "587a3f38-f1a1-46cb-8784-9bdf90e4991a"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR004_amdb11_misc_chrome002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "78f4721f-36f8-4dcc-a8b9-9fd8ce18c740"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR004_amdb11_brake002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "9f20eb14-8d2f-4576-b776-d93119844e94"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR004_amdb11_misc002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "c9cfb829-179a-47b7-956e-728266c21cc0"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR004_amdb11_caliper002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "e8eea0e2-8873-4419-867d-c38ecae3cb30"
+      ]
+    },
+    {
+      "name": "Object_4001_Scene_-_Root002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "af0d450b-d62b-413d-a61f-92498f098c00"
+      ]
+    },
+    {
+      "name": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9001_TwiXeR_992_GT3RS_black_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "580425d4-d755-4afc-8e68-7ef371fbdc23"
+      ]
+    },
+    {
+      "name": "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9001_TwiXeR_992_wheels_chrome_1_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "587a3f38-f1a1-46cb-8784-9bdf90e4991a"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR001_amdb11_misc_chrome002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "78f4721f-36f8-4dcc-a8b9-9fd8ce18c740"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR001_amdb11_brake002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "9f20eb14-8d2f-4576-b776-d93119844e94"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR001_amdb11_misc002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "c9cfb829-179a-47b7-956e-728266c21cc0"
+      ]
+    },
+    {
+      "name": "amdb11_brakedisc_FR001_amdb11_caliper002_0",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "e8eea0e2-8873-4419-867d-c38ecae3cb30"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "2789b73f-3b33-428d-88a4-8edfa4ded175"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "3e87d921-b64b-4c0d-842d-fb8c6aae224a"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "8c277136-da46-46ba-9708-5a495d5d3e11"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "3f37ec9b-171f-4f5b-a27e-abdff964aaf7"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "c9cfb829-179a-47b7-956e-728266c21cc0"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "be5b60b2-0a80-46b6-8ede-0664320253b0"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": false,
+      "receiveShadow": true,
+      "materials": [
+        "fe7b2da4-8ce9-4f12-891a-f16dea403c21"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "64e854b0-2e1c-4519-849d-6ea430776fb4"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "736176d6-2e8f-45aa-8e98-1f0eb97711ec"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "ff7e5eb6-2b9a-417f-95ae-6349f64bb21f"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "9435fa8a-14cc-4f75-ba34-7b2cf91042c8"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "d73efd18-6c61-4bcd-9128-d0284397bee5"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "f36c0602-5cd1-4881-83b3-8dfa9f2ce7c4"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "410a0c84-f664-488f-b0fa-56ea74308ace"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "df6ec60e-a997-49fb-9079-7b7deef235ae"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "69d916a9-e829-4172-a38a-d4ef24ac5968"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "8a28db44-a973-47f0-9321-c56547234b1b"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "ca0d4924-4a5a-4dad-bd47-e4ea41ebdf63"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "2fc4ad59-bb84-4fa0-a4cc-e22ebea00bd4"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "afa9d65a-9464-4ee6-aea8-5973ebbf094a"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "bbbcf62d-911c-48ca-9961-263a66d76a19"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "edc185cd-5286-4c60-a27f-899a26cf058b"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "a9fe18e7-7e47-42f8-ab7d-7cac41b0e873"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "526d39f1-6b21-405a-91e5-6afbfdab97db"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "554bc04d-8952-4873-8c54-70d8e81964b0"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "1fb27c32-b212-4e8e-9d61-014c9293e1fb"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "3843e1e0-568c-44d9-aa06-5a253245464e"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "39b6461e-8357-47bc-81d7-cef8d416cf6a"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "d4fc63fd-231d-411e-b189-f0b5da9edd31"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "1fb27c32-b212-4e8e-9d61-014c9293e1fb"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "5da0d982-d1a4-47ed-a278-9bb7b332623f"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "39b6461e-8357-47bc-81d7-cef8d416cf6a"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "f95642d5-d78c-416f-b162-cf1cb8a68d09"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "11858165-65f1-4337-b39d-ec595e1d30f7"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "1079f64e-efa9-4b48-b477-877f76c27d3f"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "135e6886-29da-4803-88e4-1b77f9fdf568"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "ff2c23ce-daf4-4c4c-b5a3-98fd33cb0a3d"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "ea3a97ea-ab65-4a47-a500-23e3f3d8c149"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "28dcd4a3-d60c-44d7-9d98-3690fd662b6d"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "b2adcb4b-fc2d-4b5f-ad32-427ae5c21619"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "44bb2358-e373-4bbc-8b71-9b467ddb68a8"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "0a8db04b-3e0a-4361-9f45-e5941ff38d53"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "b3868dee-ec6a-4fea-a1cf-1b88a7e95f16"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": false,
+      "receiveShadow": true,
+      "materials": [
+        "fc9e4851-81ca-4207-b2d4-d33c9f631b76"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": false,
+      "receiveShadow": true,
+      "materials": [
+        "e0a58742-5f8d-44fc-9946-4cc9c7388c7c"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": false,
+      "receiveShadow": true,
+      "materials": [
+        "04a64b60-8863-4337-b109-13d5121100e1"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "ba9dd934-aca8-4ac9-a5ca-197230ae713b"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "10f45656-ef25-4331-9afc-16e328ef3709"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "9c7083b3-03af-450c-95a8-cdafed8c7b20"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "e2dab303-1c3e-4a5c-9700-25ea0ebc9592"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "6745a45c-47a0-4ac3-87b0-331bcd47c16c"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "c01ba665-5ba0-4ee1-8fc7-885f01a5c4ab"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "bf059894-ce65-456f-827b-6e3b8d95056d"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "5ffe7c92-797b-46ea-a2c8-c608e96ad451"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "31437556-5a59-4783-864e-61940584744a"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "a4649399-cbd2-4854-acc3-4a0854a8121e"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "56a1c2c3-c718-487b-8d2d-4a23c582410a"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "717ea169-9554-48c0-85dc-fe9ba8fefe17"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "9a031dd9-4399-4e0c-a91a-58109b467ea1"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "a00c25d8-71c1-44e8-90e7-64dfcdf1bb7f"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "a9a0f018-0e56-4080-869e-e91164c3e589"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "1480c13c-0df2-4387-b17c-33444b05f7b7"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "45460eab-741e-4d54-906e-d7c4378e3d41"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "4920e964-c191-4d3f-8bb4-d9af1a8a100f"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "35223879-89fe-4957-ab9d-a6f2f0f87260"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "f31139b6-f0be-43d0-b1ac-f2207205f717"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "47fdf5cd-f943-4960-b1bc-f92c826889d9"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "e0a8c923-491a-40c0-b7ba-712ca14a6a0f"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "7782f386-6e88-4b24-b837-4062646a5b82"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "2a352a4c-59dd-431f-a138-5368d8aba3dc"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "c149a585-e07e-4a0b-9a04-f4e472461829"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": false,
+      "receiveShadow": true,
+      "materials": [
+        "c099bf48-fa8a-4479-bf57-db8f2783229a"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "09910b2a-f4aa-4713-af71-f46cf18675d2"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "2258b75d-cdaf-4a12-bc2a-3bc3037ec6d2"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "9aa7779a-3ebe-41c9-98e1-d360e6c65cb8"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": false,
+      "receiveShadow": true,
+      "materials": [
+        "e5af961b-ffa8-48f0-8b3b-2fc863398d55"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "0a008682-17db-4582-a4e4-c9f90f93f5ea"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "ce5d1bcc-e790-4370-8bb4-8e7c3a2fc5a0"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "3fb7f99d-2f2d-465b-81dd-4b1e60d83c6a"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "c0fde68e-b2cd-4ad4-a2be-d625daa22c7b"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "ec2c9d0a-e874-4e02-b186-db7c556d4d0d"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "e18b6f19-4ea2-4cb5-82ec-0b8be0352178"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "5c1979cb-a8b7-4643-abeb-f4d1048bafe1"
+      ]
+    },
+    {
+      "name": "",
+      "castShadow": true,
+      "receiveShadow": true,
+      "materials": [
+        "f85bf115-c573-437d-967e-236b71239d0a"
+      ]
+    },
+    {
+      "name": "contact-shadow",
+      "castShadow": false,
+      "receiveShadow": false,
+      "materials": [
+        "c1a81fd4-114a-49b1-9054-99fe988e8044"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "uuid": "af0d450b-d62b-413d-a61f-92498f098c00",
+      "name": "Scene_-_Root.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "roughness": 0.4713139487880803,
+      "metalness": 0.43123940949153367,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "580425d4-d755-4afc-8e68-7ef371fbdc23",
+      "name": "TwiXeR_992_GT3RS_black",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.15766773041875703,
+        0.15766773041875703,
+        0.15766773041875703
+      ],
+      "roughness": 0.1725689068766686,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "587a3f38-f1a1-46cb-8784-9bdf90e4991a",
+      "name": "TwiXeR_992_wheels_chrome_1",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.1542627968560867,
+        0.1542627968560867,
+        0.1542627968560867
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "78f4721f-36f8-4dcc-a8b9-9fd8ce18c740",
+      "name": "amdb11_misc_chrome.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0486285,
+        0.0486285,
+        0.0486285
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "9f20eb14-8d2f-4576-b776-d93119844e94",
+      "name": "amdb11_brake.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.009615739678686761,
+        0.009615739678686761,
+        0.009615739678686761
+      ],
+      "roughness": 0.16647365020541016,
+      "metalness": 0.7177164730406796,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "c9cfb829-179a-47b7-956e-728266c21cc0",
+      "name": "TwiXeR_992_metal_radiator.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.03282970664197667,
+        0.03282970664197667,
+        0.03282970664197667
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "e8eea0e2-8873-4419-867d-c38ecae3cb30",
+      "name": "amdb11_caliper.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        0,
+        0
+      ],
+      "roughness": 0.11771159683534282,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "2789b73f-3b33-428d-88a4-8edfa4ded175",
+      "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0120399,
+        0.0120399,
+        0.0120399
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "3e87d921-b64b-4c0d-842d-fb8c6aae224a",
+      "name": "TwiXeR_992_carPaint.003",
+      "type": "MeshPhysicalMaterial",
+      "color": [
+        0.6831716576944958,
+        0.6831716576944958,
+        0.6831716576944958
+      ],
+      "roughness": 0.3,
+      "metalness": 0.4,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "8c277136-da46-46ba-9708-5a495d5d3e11",
+      "name": "TwiXeR_992_headlight_1.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.1002182397306339,
+        0.1002182397306339,
+        0.1002182397306339
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "3f37ec9b-171f-4f5b-a27e-abdff964aaf7",
+      "name": "TwiXeR_992_carbon_roof.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.46,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "be5b60b2-0a80-46b6-8ede-0664320253b0",
+      "name": "TwiXeR_992_headlight_1.001_0",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.2518072436030282,
+      "metalness": 0.608001852958028,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "fe7b2da4-8ce9-4f12-891a-f16dea403c21",
+      "name": "TwiXeR_992_glass.002",
+      "type": "MeshPhysicalMaterial",
+      "color": [
+        0.05612849004241121,
+        0.09305896283800832,
+        0.11697066774917994
+      ],
+      "roughness": 0.09,
+      "metalness": 0,
+      "side": 0,
+      "shadowSide": null
+    },
+    {
+      "uuid": "64e854b0-2e1c-4519-849d-6ea430776fb4",
+      "name": "TwiXeR_992_symbols.004",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "roughness": 0,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "736176d6-2e8f-45aa-8e98-1f0eb97711ec",
+      "name": "TwiXeR_992_antichrome.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0326383,
+        0.0326383,
+        0.0326383
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "ff7e5eb6-2b9a-417f-95ae-6349f64bb21f",
+      "name": "TwiXeR_992_red.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.38843,
+        0.38843,
+        0.38843
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "9435fa8a-14cc-4f75-ba34-7b2cf91042c8",
+      "name": "TwiXeR_992_headlight_1.001_1",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 1,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "d73efd18-6c61-4bcd-9128-d0284397bee5",
+      "name": "TwiXeR_992_plastic_mgl.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0738,
+        0.0738,
+        0.0738
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "f36c0602-5cd1-4881-83b3-8dfa9f2ce7c4",
+      "name": "TwiXeR_992_symbols.004_0",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.8211145618000169,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "410a0c84-f664-488f-b0fa-56ea74308ace",
+      "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0307792,
+        0.0307792,
+        0.0307792
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "df6ec60e-a997-49fb-9079-7b7deef235ae",
+      "name": "TwiXeR_992_carpet.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0178284,
+        0.0178284,
+        0.0178284
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "69d916a9-e829-4172-a38a-d4ef24ac5968",
+      "name": "TwiXeR_992_speakers.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0249267,
+        0.0249267,
+        0.0249267
+      ],
+      "roughness": 1,
+      "metalness": 0.9127646865209493,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "8a28db44-a973-47f0-9321-c56547234b1b",
+      "name": "TwiXeR_992_blackGlass.001",
+      "type": "MeshPhysicalMaterial",
+      "color": [
+        0.05612849004241121,
+        0.09305896283800832,
+        0.11697066774917994
+      ],
+      "roughness": 0.09,
+      "metalness": 0,
+      "side": 0,
+      "shadowSide": null
+    },
+    {
+      "uuid": "ca0d4924-4a5a-4dad-bd47-e4ea41ebdf63",
+      "name": "TwiXeR_992_symbols_1.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.8211145618000169,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "2fc4ad59-bb84-4fa0-a4cc-e22ebea00bd4",
+      "name": "TwiXeR_992_symbols.004_1",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.8211145618000169,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "afa9d65a-9464-4ee6-aea8-5973ebbf094a",
+      "name": "TwiXeR_992_ID08_fabric_002.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0718824,
+        0.0718824,
+        0.0718824
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "bbbcf62d-911c-48ca-9961-263a66d76a19",
+      "name": "TwiXeR_992_symbols.004_2",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.8211145618000169,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "edc185cd-5286-4c60-a27f-899a26cf058b",
+      "name": "TwiXeR_992_rivet_001_747474FF.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0222247,
+        0.0222247,
+        0.0222247
+      ],
+      "roughness": 0.9950304060020461,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "a9fe18e7-7e47-42f8-ab7d-7cac41b0e873",
+      "name": "TwiXeR_992_headlight_1.001_2",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.7470177871865296,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "526d39f1-6b21-405a-91e5-6afbfdab97db",
+      "name": "TwiXeR_992_seatbelt.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0487732,
+        0.0487732,
+        0.0487732
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "554bc04d-8952-4873-8c54-70d8e81964b0",
+      "name": "TwiXeR_992_plastic_1.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0573633,
+        0.0573633,
+        0.0573633
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "1fb27c32-b212-4e8e-9d61-014c9293e1fb",
+      "name": "TwiXeR_992_gauges_chrome.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "3843e1e0-568c-44d9-aa06-5a253245464e",
+      "name": "TwiXeR_992_int_chrome.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.6358071275813759,
+        0.6358071275813759,
+        0.6358071275813759
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "39b6461e-8357-47bc-81d7-cef8d416cf6a",
+      "name": "TwiXeR_992.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0736778947237429,
+        0.0736778947237429,
+        0.0736778947237429
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "d4fc63fd-231d-411e-b189-f0b5da9edd31",
+      "name": "TwiXeR_992_exhausttip_antichrome.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.185236,
+        0.185236,
+        0.185236
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "5da0d982-d1a4-47ed-a278-9bb7b332623f",
+      "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.800189,
+        0.800189,
+        0.800189
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "f95642d5-d78c-416f-b162-cf1cb8a68d09",
+      "name": "TwiXeR_992_engine.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0287142,
+        0.0287142,
+        0.0287142
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "11858165-65f1-4337-b39d-ec595e1d30f7",
+      "name": "TwiXeR_992_rubbertrim.008",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.11927,
+        0.11927,
+        0.11927
+      ],
+      "roughness": 0.86,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "1079f64e-efa9-4b48-b477-877f76c27d3f",
+      "name": "TwiXeR_992_int_chrome.005",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0503153,
+        0.0503153,
+        0.0503153
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "135e6886-29da-4803-88e4-1b77f9fdf568",
+      "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "ff2c23ce-daf4-4c4c-b5a3-98fd33cb0a3d",
+      "name": "TwiXeR_992_rubbertrim.009",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.113428,
+        0.113428,
+        0.113428
+      ],
+      "roughness": 0.86,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "ea3a97ea-ab65-4a47-a500-23e3f3d8c149",
+      "name": "TwiXeR_992_Interior_D",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.02638308043037943,
+        0.02638308043037943,
+        0.02638308043037943
+      ],
+      "roughness": 1,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "28dcd4a3-d60c-44d7-9d98-3690fd662b6d",
+      "name": "TwiXeR_992_ID06_stitch_001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.08114005680779224,
+      "metalness": 0.5836208262729943,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "b2adcb4b-fc2d-4b5f-ad32-427ae5c21619",
+      "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.800275,
+        0.00787017,
+        0
+      ],
+      "roughness": 0.9606972568918656,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "44bb2358-e373-4bbc-8b71-9b467ddb68a8",
+      "name": "TwiXeR_992_carpet.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "0a8db04b-3e0a-4361-9f45-e5941ff38d53",
+      "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0980667,
+        0.0980667,
+        0.0980667
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "b3868dee-ec6a-4fea-a1cf-1b88a7e95f16",
+      "name": "TwiXeR_992_symbols_6",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 1,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "fc9e4851-81ca-4207-b2d4-d33c9f631b76",
+      "name": "TwiXeR_992_symbols_1.003_0",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "roughness": 0.8211145618000169,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "e0a58742-5f8d-44fc-9946-4cc9c7388c7c",
+      "name": "TwiXeR_992_glass.004",
+      "type": "MeshPhysicalMaterial",
+      "color": [
+        0.05612849004241121,
+        0.09305896283800832,
+        0.11697066774917994
+      ],
+      "roughness": 0.09,
+      "metalness": 0,
+      "side": 0,
+      "shadowSide": null
+    },
+    {
+      "uuid": "04a64b60-8863-4337-b109-13d5121100e1",
+      "name": "TwiXeR_992_glass_int.001",
+      "type": "MeshPhysicalMaterial",
+      "color": [
+        0.05612849004241121,
+        0.09305896283800832,
+        0.11697066774917994
+      ],
+      "roughness": 0.09,
+      "metalness": 0,
+      "side": 0,
+      "shadowSide": null
+    },
+    {
+      "uuid": "ba9dd934-aca8-4ac9-a5ca-197230ae713b",
+      "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.51193,
+        0.51193,
+        0.51193
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "10f45656-ef25-4331-9afc-16e328ef3709",
+      "name": "TwiXeR_992_rubbertrim.011",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0465254,
+        0.0465254,
+        0.0465254
+      ],
+      "roughness": 0.86,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "9c7083b3-03af-450c-95a8-cdafed8c7b20",
+      "name": "TwiXeR_992_chrome.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.00866848,
+        0.00866848,
+        0.00866848
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "e2dab303-1c3e-4a5c-9700-25ea0ebc9592",
+      "name": "TwiXeR_992_gauges_9000.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "roughness": 1,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "6745a45c-47a0-4ac3-87b0-331bcd47c16c",
+      "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.800172,
+        0,
+        0.007390439999999979
+      ],
+      "roughness": 0,
+      "metalness": 0.9188599431922078,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "c01ba665-5ba0-4ee1-8fc7-885f01a5c4ab",
+      "name": "TwiXeR_992_plastic.004",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.058404,
+        0.058404,
+        0.058404
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "bf059894-ce65-456f-827b-6e3b8d95056d",
+      "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.199507,
+        0.199507,
+        0.199507
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "5ffe7c92-797b-46ea-a2c8-c608e96ad451",
+      "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.160606,
+        0.160606,
+        0.160606
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "31437556-5a59-4783-864e-61940584744a",
+      "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.800212,
+        0,
+        0.00441773
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "a4649399-cbd2-4854-acc3-4a0854a8121e",
+      "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.00760262,
+        0.00760262,
+        0.00760262
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "56a1c2c3-c718-487b-8d2d-4a23c582410a",
+      "name": "TwiXeR_992_seat_leather.004",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0843852,
+        0.0843852,
+        0.0843852
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "717ea169-9554-48c0-85dc-fe9ba8fefe17",
+      "name": "TwiXeR_992_ID02_leather_MGL.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0912295,
+        0.0912295,
+        0.0912295
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "9a031dd9-4399-4e0c-a91a-58109b467ea1",
+      "name": "TwiXeR_992_gps_screen.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0327491,
+        0.0327491,
+        0.0327491
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "a00c25d8-71c1-44e8-90e7-64dfcdf1bb7f",
+      "name": "TwiXeR_992_upper_leather.004",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0672136,
+        0.0672136,
+        0.0672136
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "a9a0f018-0e56-4080-869e-e91164c3e589",
+      "name": "TwiXeR_992_plastic_2.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.101071,
+        0.101071,
+        0.101071
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "1480c13c-0df2-4387-b17c-33444b05f7b7",
+      "name": "TwiXeR_992_gauges_1.003",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0893869,
+        0.0811381,
+        0.129127
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "45460eab-741e-4d54-906e-d7c4378e3d41",
+      "name": "TwiXeR_992_gauges_9000.001_0",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "4920e964-c191-4d3f-8bb4-d9af1a8a100f",
+      "name": "TwiXeR_992_dash_clock_1.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.800219,
+        0.800219,
+        0.800219
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "35223879-89fe-4957-ab9d-a6f2f0f87260",
+      "name": "TwiXeR_992_gauges_chrome_2.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.703878,
+        0.703878,
+        0.703878
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "f31139b6-f0be-43d0-b1ac-f2207205f717",
+      "name": "TwiXeR_992_int_chrome.007",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.1002182397306339,
+        0.1002182397306339,
+        0.1002182397306339
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "47fdf5cd-f943-4960-b1bc-f92c826889d9",
+      "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0598124,
+        0.0598124,
+        0.0598124
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "e0a8c923-491a-40c0-b7ba-712ca14a6a0f",
+      "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "roughness": 0.86,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "7782f386-6e88-4b24-b837-4062646a5b82",
+      "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.05513,
+        0.05513,
+        0.05513
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "2a352a4c-59dd-431f-a138-5368d8aba3dc",
+      "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "c149a585-e07e-4a0b-9a04-f4e472461829",
+      "name": "TwiXeR_992_speakers.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0166846,
+        0.0166846,
+        0.0166846
+      ],
+      "roughness": 0.9947238662151154,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "c099bf48-fa8a-4479-bf57-db8f2783229a",
+      "name": "TwiXeR_992_antichrome.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "09910b2a-f4aa-4713-af71-f46cf18675d2",
+      "name": "TwiXeR_992_taillight_running.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.800371,
+        0.800371,
+        0.800371
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "2258b75d-cdaf-4a12-bc2a-3bc3037ec6d2",
+      "name": "TwiXeR_992_brakelight_1.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.3206165176906652,
+        0,
+        0
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "9aa7779a-3ebe-41c9-98e1-d360e6c65cb8",
+      "name": "TwiXeR_992_plastic_smooth.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.043265861743718964,
+        0.043265861743718964,
+        0.043265861743718964
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "e5af961b-ffa8-48f0-8b3b-2fc863398d55",
+      "name": "TwiXeR_992_gauges_screen.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 1,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "0a008682-17db-4582-a4e4-c9f90f93f5ea",
+      "name": "TwiXeR_992_led_lights.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0579677,
+        0.0579677,
+        0.0579677
+      ],
+      "roughness": 0.24571198693176977,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "ce5d1bcc-e790-4370-8bb4-8e7c3a2fc5a0",
+      "name": "TwiXeR_992_headlight_high.001",
+      "type": "MeshPhysicalMaterial",
+      "color": [
+        0.2855180324876753,
+        0.2855180324876753,
+        0.2855180324876753
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "3fb7f99d-2f2d-465b-81dd-4b1e60d83c6a",
+      "name": "TwiXeR_992_plastic_mgl.002",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0332968,
+        0.0332968,
+        0.0332968
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "c0fde68e-b2cd-4ad4-a2be-d625daa22c7b",
+      "name": "TwiXeR_992_seat_leather_2.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.38025399999999987,
+        0,
+        0.004867400000000003
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "ec2c9d0a-e874-4e02-b186-db7c556d4d0d",
+      "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0788826,
+        0.0788826,
+        0.0788826
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "e18b6f19-4ea2-4cb5-82ec-0b8be0352178",
+      "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.205461,
+        0.00033259999999999963,
+        0
+      ],
+      "roughness": 0.65,
+      "metalness": 0,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "5c1979cb-a8b7-4643-abeb-f4d1048bafe1",
+      "name": "TwiXeR_992_symbols_3.001",
+      "type": "MeshStandardMaterial",
+      "color": [
+        0.0465299,
+        0.0465299,
+        0.0465299
+      ],
+      "roughness": 0,
+      "metalness": 1,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "f85bf115-c573-437d-967e-236b71239d0a",
+      "name": "TwiXeR_992_carPaint.008",
+      "type": "MeshPhysicalMaterial",
+      "color": [
+        0.0143567,
+        0.0143567,
+        0.0143567
+      ],
+      "roughness": 0.3,
+      "metalness": 0.4,
+      "side": 2,
+      "shadowSide": null
+    },
+    {
+      "uuid": "c1a81fd4-114a-49b1-9054-99fe988e8044",
+      "name": "soft-contact-occlusion",
+      "type": "MeshBasicMaterial",
+      "color": [
+        0.005181516700061659,
+        0.006512090790025684,
+        0.008023192982520563
+      ],
+      "side": 0,
+      "shadowSide": null
+    }
+  ],
+  "limits": "Frozen visual diagnosis. Camera and output size are explicit. No performance or driving acceptance. Changes live only in this browser instance."
+}

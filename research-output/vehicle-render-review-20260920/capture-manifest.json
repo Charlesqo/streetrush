@@ -1,0 +1,107 @@
+{
+  "date": "2026-09-20",
+  "scene": "Current localhost production scene via existing renderreview mode",
+  "normalLighting": {
+    "preset": "hdri",
+    "skyRotation": -1.1,
+    "exposure": 0.9,
+    "sunIntensity": 3.5,
+    "fillIntensity": 0.48,
+    "environmentIntensity": 0.8
+  },
+  "camera": "Existing hero, rear and chase controls; FOV 58",
+  "capture": "Unmodified PNG canvas exports. No retouching.",
+  "frames": [
+    {
+      "file": "amggt3-hero-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3394082
+    },
+    {
+      "file": "gt3rs-hero-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3334951
+    },
+    {
+      "file": "lp700-hero-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3308546
+    },
+    {
+      "file": "m3e30-hero-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3331213
+    },
+    {
+      "file": "m5g90-hero-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3176186
+    },
+    {
+      "file": "mx5-chase-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 2555836
+    },
+    {
+      "file": "mx5-environment-only-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 2955379
+    },
+    {
+      "file": "mx5-hero-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3294371
+    },
+    {
+      "file": "mx5-hero-current.png",
+      "width": 762,
+      "height": 652,
+      "bytes": 860034
+    },
+    {
+      "file": "mx5-rear-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3078719
+    },
+    {
+      "file": "mx5-rear-no-sun-shadow-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3119396
+    },
+    {
+      "file": "mx5-settled-hero-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 3303799
+    },
+    {
+      "file": "mx5-source-only-texture.png",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 114564
+    },
+    {
+      "file": "mx5-sun-only-2x.png",
+      "width": 1524,
+      "height": 1304,
+      "bytes": 2736549
+    }
+  ],
+  "limitations": [
+    "5 FPS diagnostic preview is not a performance benchmark",
+    "2x review resolution bypasses production pixel budget",
+    "Six-car comparison begins paused after spawn; do not judge suspension or ground contact from it",
+    "MX5 settled images follow a 10-second normal preview",
+    "No production code or car assets edited"
+  ]
+}

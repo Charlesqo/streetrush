@@ -1,0 +1,41 @@
+{
+  "root": "/Volumes/Storage/streetrush/scratch/glm-materials-20260905-084701",
+  "ok": true,
+  "checks": [
+    {
+      "check": "manifest.json parses",
+      "ok": true,
+      "detail": "4 sets"
+    },
+    {
+      "check": "manifest paths + hashes",
+      "ok": true,
+      "detail": "32 relative paths checked"
+    },
+    {
+      "check": "index embedded data parses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "embedded data paths exist",
+      "ok": true,
+      "detail": "all exist"
+    },
+    {
+      "check": "static local refs exist",
+      "ok": true,
+      "detail": "0 refs ok"
+    },
+    {
+      "check": "no external network refs",
+      "ok": true,
+      "detail": "page uses no http(s) resources"
+    },
+    {
+      "check": "previews non-empty",
+      "ok": true,
+      "detail": "all non-empty"
+    }
+  ]
+}

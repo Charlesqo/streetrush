@@ -1,0 +1,66 @@
+// ARCHIVE ONLY: checks run against the rejected 2026-08-31 wrench experiment.
+// The experiment did not fix M5 production braking and has been reverted.
+// This text is not an active test or a PASS for the current production code.
+import assert from 'node:assert/strict';
+import { sumBodyTorqueFromHubs } from '../src/vehicle-v24/runtime.js';
+import { contactForceWorld, contactMomentWorld } from '../src/vehicle-v24/rapier-host-adapter.js';
+import { addVec3, crossVec3, vec3 } from '../src/vehicle-v24/math.js';
+
+// Small accounting regression, not a vehicle simulator or production PASS.
+const dt = 1 / 120;
+const contact = {
+  inContact: true,
+  forward: vec3(0, 0, 1),
+  lateral: vec3(-1, 0, 0),
+  normal: vec3(0, 1, 0),
+};
+let checks = 0;
+function close(actual, expected, name) {
+  assert.ok(Math.abs(actual - expected) < 1e-9, `${name}: ${actual} != ${expected}`);
+  checks += 1;
+}
+function reaction(driveTorque, brakeTorque, tireTorque) {
+  return sumBodyTorqueFromHubs(
+    [contact],
+    { dt, wheelDriveTorque: [driveTorque] },
+    [{ impulse: brakeTorque * dt }],
+    [{ wheelContactTorque: tireTorque }],
+  );
+}
+
+for (const sign of [-1, 1]) {
+  close(reaction(1000 * sign, 0, -1000 * sign).x, 0, `balanced drive ${sign}`);
+  close(reaction(0, -1000 * sign, 1000 * sign).x, 0, `balanced brake ${sign}`);
+  close(reaction(1000 * sign, 0, -700 * sign).x, -300 * sign, `spin-up reaction ${sign}`);
+  close(reaction(0, -1000 * sign, 700 * sign).x, 300 * sign, `spin-down reaction ${sign}`);
+}
+
+const radius = 0.36;
+const height = 0.62;
+for (const sign of [-1, 1]) {
+  const forceX = -4000 * sign;
+  const tire = {
+    forceX, forceY: 0, momentX: 0, momentY: 0, momentZ: 0,
+    wheelContactTorque: -radius * forceX,
+  };
+  const roadMoment = addVec3(
+    crossVec3(vec3(0, -height, 0), contactForceWorld(contact, tire, 6000)),
+    contactMomentWorld(contact, tire),
+  );
+  const spinReaction = reaction(0, radius * forceX, tire.wheelContactTorque);
+  close(addVec3(roadMoment, spinReaction).x, -height * forceX,
+    `contact pitch counts height, not height plus radius ${sign}`);
+}
+
+// Rolling resistance belongs to the same wheel-contact torque balance.
+close(reaction(1002, 0, -1000 - 2).x, 0, 'balanced drive with rolling resistance');
+// Requested capacity is not actual reaction: only the solved impulse is used.
+const staticReaction = sumBodyTorqueFromHubs([contact],
+  { dt, wheelDriveTorque: [0] },
+  [{ impulse: 0, capacityTorque: 5000 }],
+  [{ wheelContactTorque: 0 }]);
+close(staticReaction.x, 0, 'unused brake capacity creates no body torque');
+close(staticReaction.y, 0, 'straight brake creates no yaw torque');
+close(staticReaction.z, 0, 'straight brake creates no roll torque');
+
+console.log(JSON.stringify({ status: 'PASS', checks, scope: 'wheel-body-wrench-accounting-only' }));

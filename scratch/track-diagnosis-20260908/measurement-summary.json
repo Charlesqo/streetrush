@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-08",
+  "hardware": "ANGLE Metal Renderer: Apple M4",
+  "resolution": [1280,720],
+  "measurementCap": 5,
+  "throughputBenchmark": false,
+  "staticMainStraight": {
+    "gpuTimerAvailable": true,
+    "renderSubmitWallMs": {"samples":59,"mean":3.881,"p95":4.8},
+    "wholeRenderGpuMs": {"samples":58,"mean":15.691,"p95":19.948},
+    "triangles":598888,
+    "drawCalls":220,
+    "estimatedMainPassTriangles":593289,
+    "estimatedCarTriangles":51344,
+    "textures":62
+  },
+  "staticStageRun": {
+    "renderSubmitWallMeanMs":3.732,
+    "stageGpuMeanMs":{"sceneAndShadows":5.995,"ambientOcclusion":5.607,"compositeOrOutput":5.832},
+    "note":"Separate timer-query run; pass boundaries may perturb tile rendering. Do not sum into a normal-game FPS estimate."
+  },
+  "shortDrive": {
+    "endSpeedKmh":76.4927357937087,
+    "renderSubmitWallMs":{"samples":58,"mean":7.914,"p95":13.5,"p99":56.3},
+    "vehicleFixedUpdateWallMs":{"samples":1441,"mean":3.065,"p50":2.9,"p95":4.5,"p99":5.6},
+    "vehicleTimingScope":"Vehicle.fixedUpdate only, excluding world.step, afterPhysics, HUD/audio; synthetic short straight drive, not full-lap target validation",
+    "trianglesMean":1063750.707,
+    "drawCallsMean":280.914,
+    "stageGpuMeanMs":{"emptyQueryControl":0,"sceneAndShadows":7.365,"ambientOcclusion":6.474,"compositeOrOutput":6.406},
+    "stageGpuSamples":{"emptyQueryControl":57,"sceneAndShadows":57,"ambientOcclusion":57,"compositeOrOutput":72},
+    "note":"Composite/output includes additional effect draws and is per invocation, not per frame; whole-frame GPU timing was not collected in this staged drive."
+  },
+  "systemSnapshot": {
+    "memoryBytes":17179869184,
+    "swapUsedMiB":8921.19,
+    "swapInsAndOutsInTwoOneSecondIntervals":0,
+    "scope":"Whole machine. Does not establish game-specific memory pressure or active swap as this run's bottleneck."
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "frameRateCap": null,
+  "previewFrameRateCap": 5,
+  "driving": false,
+  "speedKmh": 8.243489324759157e-10,
+  "car": "m3e30",
+  "source": "gltf",
+  "state": "race",
+  "view": "chase",
+  "resolution": [
+    1280,
+    720
+  ],
+  "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "frameMs": {
+    "samples": 1762,
+    "mean": 6.81,
+    "p50": 6.7,
+    "p95": 8.4,
+    "p99": 9.6
+  },
+  "renderCpuMs": {
+    "samples": 1763,
+    "mean": 1.177,
+    "p50": 1,
+    "p95": 2.1,
+    "p99": 2.3
+  },
+  "gpuMs": {
+    "samples": 1759,
+    "mean": 3.202,
+    "p50": 2.968,
+    "p95": 5.042,
+    "p99": 5.685
+  },
+  "drawCalls": {
+    "samples": 1763,
+    "mean": 170,
+    "p50": 170,
+    "p95": 170,
+    "p99": 170
+  },
+  "triangles": {
+    "samples": 1763,
+    "mean": 319378,
+    "p50": 319378,
+    "p95": 319378,
+    "p99": 319378
+  },
+  "textures": 23,
+  "geometries": 74,
+  "materials": [
+    {
+      "name": "BMW_E30_M3_PAINT",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.5,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "BMW_E30_M3_PLASTIC",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.26917773286235097,
+      "metalness": 0
+    },
+    {
+      "name": "BMW_E30_M3_CHROME",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.1621362952328781,
+      "metalness": 1
+    },
+    {
+      "name": "BMW_E30_M3_WINDOWS",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 0
+    },
+    {
+      "name": "BMW_E30_M3_BLACKOUT",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 1
+    },
+    {
+      "name": "BMW_E30_M3_SIDE_MIRROR",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.206093,
+      "metalness": 1
+    },
+    {
+      "name": "BMW_E30_M3_TAILLIGHT_REFLECTOR",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.08,
+      "metalness": 1
+    },
+    {
+      "name": "BMW_E30_M3_HEADLIGHT_REFLECTOR",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.2125087364702771,
+      "metalness": 1
+    },
+    {
+      "name": "BMW_E30_M3_EMBLEMS",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.14954318492352833,
+      "metalness": 1
+    },
+    {
+      "name": "BMW_E30_M3_LENS",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.14324662976885347,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0.9574982527059446
+    },
+    {
+      "name": "BMW_E30_M3_RIM",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "BMW_E30_M3_TIRE",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0
+    },
+    {
+      "name": "Brake_Disc",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 1
+    },
+    {
+      "name": "Brembo_Calipers",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "Logo_Plane",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.5,
+      "metalness": 0
+    },
+    {
+      "name": "",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.82,
+      "metalness": 0
+    },
+    {
+      "name": "",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.78
+    },
+    {
+      "name": "",
+      "type": "MeshBasicMaterial"
+    }
+  ]
+}

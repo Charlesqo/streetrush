@@ -1,0 +1,597 @@
+{
+  "screening": {
+    "scope": "/Volumes/Storage/streetrush/art-output/longwan-pit-exit-20260907",
+    "screened_date": "2026-09-07",
+    "source_folder": "/Volumes/Charles/下载/赛车游戏 材质",
+    "source_policy": "Read ZIP listings and embedded JSON/glTF only; no 8K archive was extracted; vendor/license was not inferred from filenames or asset IDs.",
+    "preserved_original_archives": true,
+    "extracted_2k_sets": true,
+    "extra_bytes_including_preserved_archives": 67466993,
+    "extra_limit_bytes": 80000000,
+    "within_extra_limit": true,
+    "quality_status": "待实模验证"
+  },
+  "assets": [
+    {
+      "id": "tkynejer",
+      "name": "Lawn Grass",
+      "archive_filename": "lawn_grass_tkynejer_2k_ue_mid.zip",
+      "source_archive_path": "/Volumes/Charles/下载/赛车游戏 材质/lawn_grass_tkynejer_2k_ue_mid.zip",
+      "preserved_archive_path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/original/lawn_grass_tkynejer_2k_ue_mid.zip",
+      "archive_bytes": 30206424,
+      "archive_sha256": "0b2908d9da2e4e49f92e3c18998c5d36eb924b69523c4a6541e0a34ff406ed5d",
+      "preserved_copy_matches": {
+        "bytes": true,
+        "sha256": true
+      },
+      "archive_uncompressed_content_bytes": 30211761,
+      "archive_entry_count": 7,
+      "archive_entries": [
+        {
+          "path": "Textures/",
+          "directory": true,
+          "uncompressed_bytes": 0
+        },
+        {
+          "path": "tkynejer_tier_2.bin",
+          "directory": false,
+          "uncompressed_bytes": 92
+        },
+        {
+          "path": "tkynejer_tier_2.gltf",
+          "directory": false,
+          "uncompressed_bytes": 3214
+        },
+        {
+          "path": "Textures/T_tkynejer_2K_B.png",
+          "directory": false,
+          "uncompressed_bytes": 9577488
+        },
+        {
+          "path": "Textures/T_tkynejer_2K_N.png",
+          "directory": false,
+          "uncompressed_bytes": 11916473
+        },
+        {
+          "path": "Textures/T_tkynejer_2K_ORM.png",
+          "directory": false,
+          "uncompressed_bytes": 8701458
+        },
+        {
+          "path": "tkynejer.json",
+          "directory": false,
+          "uncompressed_bytes": 13036
+        }
+      ],
+      "zip_comment": null,
+      "file_comments_present": false,
+      "embedded_metadata": {
+        "preserved_path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/extracted/tkynejer.json",
+        "bytes": 13036,
+        "sha256": "64b8ade2ea6a5fe20d4b704b964a7f1d9d6e00366d05e3ddc895bbc4be5a11d9",
+        "id": "tkynejer",
+        "name": "Lawn Grass",
+        "categories": [
+          "surface",
+          "grass",
+          "lawn"
+        ],
+        "tags": [
+          "surface",
+          "garden",
+          "lawn",
+          "green",
+          "brussels",
+          "belgium",
+          "yellow",
+          "archviz"
+        ],
+        "description": "",
+        "highest_available_res": 8192,
+        "physicalSize": null,
+        "pack": null,
+        "meta": [
+          {
+            "key": "scanArea",
+            "name": "Scan Area",
+            "value": "2x2 m"
+          },
+          {
+            "key": "height",
+            "name": "Height",
+            "value": "0.026 m"
+          },
+          {
+            "key": "tileable",
+            "name": "Tileable",
+            "value": true
+          },
+          {
+            "key": "texelDensity",
+            "name": "Texel Density",
+            "value": "4096 px/m"
+          },
+          {
+            "key": "calibration",
+            "name": "Calibration",
+            "value": "GretagMacbeth ColorChecker Color Rendition Chart"
+          },
+          {
+            "key": "scanner",
+            "name": "Scanner",
+            "value": "MKX"
+          }
+        ],
+        "models": [],
+        "true_source_license_fields": {
+          "license": null,
+          "source": null,
+          "author": null,
+          "authors": null,
+          "attribution": null
+        },
+        "field_presence": {
+          "license": false,
+          "source": false,
+          "author": false,
+          "authors": false,
+          "attribution": false
+        },
+        "ue_plugin_archives": [
+          {
+            "contentLength": 399820199,
+            "gltfVersion": "2.0",
+            "tier": 0,
+            "type": "gltf",
+            "uri": "ue_plugin_archives/tier_0/tkynejer_tier_0.zip",
+            "version": 1
+          },
+          {
+            "contentLength": 125172417,
+            "gltfVersion": "2.0",
+            "tier": 1,
+            "type": "gltf",
+            "uri": "ue_plugin_archives/tier_1/tkynejer_tier_1.zip",
+            "version": 1
+          },
+          {
+            "contentLength": 30204257,
+            "gltfVersion": "2.0",
+            "tier": 2,
+            "type": "gltf",
+            "uri": "ue_plugin_archives/tier_2/tkynejer_tier_2.zip",
+            "version": 1
+          },
+          {
+            "contentLength": 3241088,
+            "gltfVersion": "2.0",
+            "tier": 3,
+            "type": "gltf",
+            "uri": "ue_plugin_archives/tier_3/tkynejer_tier_3.zip",
+            "version": 1
+          }
+        ]
+      },
+      "gltf": {
+        "preserved_path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/extracted/tkynejer_tier_2.gltf",
+        "asset": {
+          "generator": "Khronos glTF Blender I/O v3.6.27",
+          "version": "2.0"
+        },
+        "scenes": 1,
+        "nodes": 1,
+        "meshes": 1,
+        "materials": 1,
+        "primitives": 1,
+        "position_vertices": 4,
+        "index_count": 6,
+        "triangle_count": 2,
+        "buffers": [
+          {
+            "uri": "tkynejer_tier_2.bin",
+            "declared_byteLength": 92,
+            "actual_bytes": 92,
+            "sha256": "4b960c1ff5b64d776bdf833e35b4cb1f275f843a09ee3d5f0908d86fb65ec4bc"
+          }
+        ],
+        "images": [
+          {
+            "uri": "Textures/T_tkynejer_2K_N.png",
+            "mime_type": "image/png",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "bytes": 11916473,
+            "sha256": "045ef10c8c4e048bf16a17f2b17c26f3fb100b719c7b68b01bf34b6be0c3e37a"
+          },
+          {
+            "uri": "Textures/T_tkynejer_2K_ORM.png",
+            "mime_type": "image/png",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "bytes": 8701458,
+            "sha256": "188174fe84de5860ed5f9cc854d54fa277fb66a4b19918e8f357280d952b48fd"
+          },
+          {
+            "uri": "Textures/T_tkynejer_2K_B.png",
+            "mime_type": "image/png",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "bytes": 9577488,
+            "sha256": "f596d1ed25b63f83babeef1b254bb3c56aec8005bf30e58f4fdc507658ab56ca"
+          }
+        ],
+        "resolved_uri_count": 4,
+        "referenced_uri_count": 4,
+        "missing_uris": [],
+        "material_name": "MI_tkynejer",
+        "alpha_mode": "OPAQUE",
+        "map_semantics": {
+          "normal": "Textures/T_tkynejer_2K_N.png",
+          "orm": null,
+          "base_color": "Textures/T_tkynejer_2K_B.png"
+        },
+        "image_uris": [
+          "Textures/T_tkynejer_2K_N.png",
+          "Textures/T_tkynejer_2K_ORM.png",
+          "Textures/T_tkynejer_2K_B.png"
+        ],
+        "buffer_uris": [
+          "tkynejer_tier_2.bin"
+        ],
+        "material_json": {
+          "name": "MI_tkynejer",
+          "normalTexture": {
+            "index": 0
+          },
+          "occlusionTexture": {
+            "index": 1
+          },
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "metallicRoughnessTexture": {
+              "index": 1
+            }
+          }
+        }
+      },
+      "extracted_files": [
+        {
+          "path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/extracted/tkynejer_tier_2.bin",
+          "bytes": 92,
+          "sha256": "4b960c1ff5b64d776bdf833e35b4cb1f275f843a09ee3d5f0908d86fb65ec4bc"
+        },
+        {
+          "path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/extracted/tkynejer_tier_2.gltf",
+          "bytes": 3214,
+          "sha256": "91ab80a7a2612213dcccbe62b8aa86f47ef278b84eeb9b1ec0cd2f3e4af82bda"
+        },
+        {
+          "path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/extracted/Textures/T_tkynejer_2K_B.png",
+          "bytes": 9577488,
+          "sha256": "f596d1ed25b63f83babeef1b254bb3c56aec8005bf30e58f4fdc507658ab56ca"
+        },
+        {
+          "path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/extracted/Textures/T_tkynejer_2K_N.png",
+          "bytes": 11916473,
+          "sha256": "045ef10c8c4e048bf16a17f2b17c26f3fb100b719c7b68b01bf34b6be0c3e37a"
+        },
+        {
+          "path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/extracted/Textures/T_tkynejer_2K_ORM.png",
+          "bytes": 8701458,
+          "sha256": "188174fe84de5860ed5f9cc854d54fa277fb66a4b19918e8f357280d952b48fd"
+        },
+        {
+          "path": "sources/user-materials/lawn_grass_tkynejer_2k_ue_mid/extracted/tkynejer.json",
+          "bytes": 13036,
+          "sha256": "64b8ade2ea6a5fe20d4b704b964a7f1d9d6e00366d05e3ddc895bbc4be5a11d9"
+        }
+      ],
+      "source_status": "UNVERIFIED",
+      "license_status": "UNVERIFIED",
+      "quality_status": "待实模验证",
+      "manual_followup": "Obtain the vendor/source URL and license evidence from the user before production use; the filename and embedded asset ID alone do not establish provenance or license."
+    },
+    {
+      "id": "ugcmfivcw",
+      "name": "Asphalt Crack",
+      "archive_filename": "asphalt_crack_ugcmfivcw_2k_ue_mid.zip",
+      "source_archive_path": "/Volumes/Charles/下载/赛车游戏 材质/asphalt_crack_ugcmfivcw_2k_ue_mid.zip",
+      "preserved_archive_path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/original/asphalt_crack_ugcmfivcw_2k_ue_mid.zip",
+      "archive_bytes": 3514126,
+      "archive_sha256": "266f2d45932d1210bbee2cdbdfca2ba86b7d6196e0c57c0fc0fdd0307e7d13e4",
+      "preserved_copy_matches": {
+        "bytes": true,
+        "sha256": true
+      },
+      "archive_uncompressed_content_bytes": 3534682,
+      "archive_entry_count": 7,
+      "archive_entries": [
+        {
+          "path": "Textures/",
+          "directory": true,
+          "uncompressed_bytes": 0
+        },
+        {
+          "path": "ugcmfivcw_tier_2.bin",
+          "directory": false,
+          "uncompressed_bytes": 92
+        },
+        {
+          "path": "ugcmfivcw_tier_2.gltf",
+          "directory": false,
+          "uncompressed_bytes": 3260
+        },
+        {
+          "path": "Textures/T_ugcmfivcw_2K_B-O.png",
+          "directory": false,
+          "uncompressed_bytes": 1406703
+        },
+        {
+          "path": "Textures/T_ugcmfivcw_2K_ORM.png",
+          "directory": false,
+          "uncompressed_bytes": 698323
+        },
+        {
+          "path": "Textures/T_ugcmfivcw_2K_N.png",
+          "directory": false,
+          "uncompressed_bytes": 1413265
+        },
+        {
+          "path": "ugcmfivcw.json",
+          "directory": false,
+          "uncompressed_bytes": 13039
+        }
+      ],
+      "zip_comment": null,
+      "file_comments_present": false,
+      "embedded_metadata": {
+        "preserved_path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/extracted/ugcmfivcw.json",
+        "bytes": 13039,
+        "sha256": "1745c7ae45736b3109d643e88e01bb4cb33fca19e2f70ae225aea16e228ec77b",
+        "id": "ugcmfivcw",
+        "name": "Asphalt Crack",
+        "categories": [
+          "atlas",
+          "decals",
+          "patch"
+        ],
+        "tags": [
+          "decal",
+          "urban",
+          "street",
+          "road",
+          "outdoor",
+          "dirt",
+          "asphalt",
+          "damaged",
+          "rough",
+          "worn"
+        ],
+        "description": "",
+        "highest_available_res": 8192,
+        "physicalSize": null,
+        "pack": {
+          "_id": "volcanologist-lab",
+          "name": "Volcanologist Lab"
+        },
+        "meta": [
+          {
+            "key": "scanArea",
+            "name": "Scan Area",
+            "value": "1x1 m"
+          },
+          {
+            "key": "height",
+            "name": "Height",
+            "value": "0.01 m"
+          },
+          {
+            "key": "tileable",
+            "name": "Tileable",
+            "value": false
+          },
+          {
+            "key": "texelDensity",
+            "name": "Texel Density",
+            "value": "8192 px/m"
+          },
+          {
+            "key": "calibration",
+            "name": "Calibration",
+            "value": "GretagMacbeth ColorChecker Color Rendition Chart"
+          },
+          {
+            "key": "scanner",
+            "name": "Scanner",
+            "value": "MKX"
+          }
+        ],
+        "models": [],
+        "true_source_license_fields": {
+          "license": null,
+          "source": null,
+          "author": null,
+          "authors": null,
+          "attribution": null
+        },
+        "field_presence": {
+          "license": false,
+          "source": false,
+          "author": false,
+          "authors": false,
+          "attribution": false
+        },
+        "ue_plugin_archives": [
+          {
+            "contentLength": 28230651,
+            "gltfVersion": "2.0",
+            "tier": 0,
+            "type": "gltf",
+            "uri": "ue_plugin_archives/tier_0/ugcmfivcw_tier_0.zip",
+            "version": 1
+          },
+          {
+            "contentLength": 12459274,
+            "gltfVersion": "2.0",
+            "tier": 1,
+            "type": "gltf",
+            "uri": "ue_plugin_archives/tier_1/ugcmfivcw_tier_1.zip",
+            "version": 1
+          },
+          {
+            "contentLength": 3511938,
+            "gltfVersion": "2.0",
+            "tier": 2,
+            "type": "gltf",
+            "uri": "ue_plugin_archives/tier_2/ugcmfivcw_tier_2.zip",
+            "version": 1
+          },
+          {
+            "contentLength": 920652,
+            "gltfVersion": "2.0",
+            "tier": 3,
+            "type": "gltf",
+            "uri": "ue_plugin_archives/tier_3/ugcmfivcw_tier_3.zip",
+            "version": 1
+          }
+        ]
+      },
+      "gltf": {
+        "preserved_path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/extracted/ugcmfivcw_tier_2.gltf",
+        "asset": {
+          "generator": "Khronos glTF Blender I/O v3.6.27",
+          "version": "2.0"
+        },
+        "scenes": 1,
+        "nodes": 1,
+        "meshes": 1,
+        "materials": 1,
+        "primitives": 1,
+        "position_vertices": 4,
+        "index_count": 6,
+        "triangle_count": 2,
+        "buffers": [
+          {
+            "uri": "ugcmfivcw_tier_2.bin",
+            "declared_byteLength": 92,
+            "actual_bytes": 92,
+            "sha256": "4b960c1ff5b64d776bdf833e35b4cb1f275f843a09ee3d5f0908d86fb65ec4bc"
+          }
+        ],
+        "images": [
+          {
+            "uri": "Textures/T_ugcmfivcw_2K_N.png",
+            "mime_type": "image/png",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "bytes": 1413265,
+            "sha256": "cbd8ab83c0f750e9636c3811a4d751c481f779c4ca81436c1d4a8a4fbdfe1f9e"
+          },
+          {
+            "uri": "Textures/T_ugcmfivcw_2K_ORM.png",
+            "mime_type": "image/png",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "bytes": 698323,
+            "sha256": "c4cf291e0d7e2462ee4930dd33c68e9e40c6a4de05130308c420667343beedb3"
+          },
+          {
+            "uri": "Textures/T_ugcmfivcw_2K_B-O.png",
+            "mime_type": "image/png",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "bytes": 1406703,
+            "sha256": "ca12362945a9e6c602926f3359b2ba12bbca53804143a37cc18a4b7c0fc2fe4c"
+          }
+        ],
+        "resolved_uri_count": 4,
+        "referenced_uri_count": 4,
+        "missing_uris": [],
+        "material_name": "MI_ugcmfivcw",
+        "alpha_mode": "BLEND",
+        "map_semantics": {
+          "normal": "Textures/T_ugcmfivcw_2K_N.png",
+          "orm": null,
+          "base_color": "Textures/T_ugcmfivcw_2K_B-O.png"
+        },
+        "image_uris": [
+          "Textures/T_ugcmfivcw_2K_N.png",
+          "Textures/T_ugcmfivcw_2K_ORM.png",
+          "Textures/T_ugcmfivcw_2K_B-O.png"
+        ],
+        "buffer_uris": [
+          "ugcmfivcw_tier_2.bin"
+        ],
+        "material_json": {
+          "alphaMode": "BLEND",
+          "name": "MI_ugcmfivcw",
+          "normalTexture": {
+            "index": 0
+          },
+          "occlusionTexture": {
+            "index": 1
+          },
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "metallicRoughnessTexture": {
+              "index": 1
+            }
+          }
+        }
+      },
+      "extracted_files": [
+        {
+          "path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/extracted/ugcmfivcw_tier_2.bin",
+          "bytes": 92,
+          "sha256": "4b960c1ff5b64d776bdf833e35b4cb1f275f843a09ee3d5f0908d86fb65ec4bc"
+        },
+        {
+          "path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/extracted/ugcmfivcw_tier_2.gltf",
+          "bytes": 3260,
+          "sha256": "fc22ec5ae9c5cbe64884e8d78cdcbaa17521f60e34e8e224d9789d166b10508f"
+        },
+        {
+          "path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/extracted/Textures/T_ugcmfivcw_2K_B-O.png",
+          "bytes": 1406703,
+          "sha256": "ca12362945a9e6c602926f3359b2ba12bbca53804143a37cc18a4b7c0fc2fe4c"
+        },
+        {
+          "path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/extracted/Textures/T_ugcmfivcw_2K_ORM.png",
+          "bytes": 698323,
+          "sha256": "c4cf291e0d7e2462ee4930dd33c68e9e40c6a4de05130308c420667343beedb3"
+        },
+        {
+          "path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/extracted/Textures/T_ugcmfivcw_2K_N.png",
+          "bytes": 1413265,
+          "sha256": "cbd8ab83c0f750e9636c3811a4d751c481f779c4ca81436c1d4a8a4fbdfe1f9e"
+        },
+        {
+          "path": "sources/user-materials/asphalt_crack_ugcmfivcw_2k_ue_mid/extracted/ugcmfivcw.json",
+          "bytes": 13039,
+          "sha256": "1745c7ae45736b3109d643e88e01bb4cb33fca19e2f70ae225aea16e228ec77b"
+        }
+      ],
+      "source_status": "UNVERIFIED",
+      "license_status": "UNVERIFIED",
+      "quality_status": "待实模验证",
+      "manual_followup": "Obtain the vendor/source URL and license evidence from the user before production use; the filename and embedded asset ID alone do not establish provenance or license."
+    }
+  ]
+}
+

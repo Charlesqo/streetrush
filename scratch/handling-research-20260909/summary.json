@@ -1,0 +1,5138 @@
+[
+  {
+    "car": "mx5",
+    "scenario": "straight-brake",
+    "startSpeed": 140.07024417576758,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 139.11685532093804,
+      "yawRate": -3.631203355780599e-7,
+      "heading": -0.00005825779721977878,
+      "betaDeg": 0.0000036211715247866075,
+      "load": [
+        2379.936686378105,
+        2379.946997297345,
+        2474.9829417268356,
+        2474.9916012902795
+      ],
+      "omega": [
+        129.78743841506486,
+        129.7874458725367,
+        132.04119163411838,
+        132.04119825116052
+      ],
+      "trueKappa": [
+        -0.0006074310591119361,
+        -0.0006074213221233262,
+        0.0028429751716101603,
+        0.002842993212570291
+      ],
+      "alpha": [
+        -0.0008173942424901937,
+        0.0008175494382013295,
+        0.00011921883975144934,
+        -0.00011907331688509744
+      ],
+      "assistSlip": [
+        -0.0005990299282858699,
+        -0.0005990203296818134,
+        0.0011378675101121202,
+        0.0011378857506418307
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": 0,
+      "yawError": -3.5728547164156073e-7,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 134.8507717483982,
+          "omegaAfter": 129.78743841506486,
+          "impulse": -6.329166666666667,
+          "appliedTorque": 759.5,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 134.85077920587003,
+          "omegaAfter": 129.7874458725367,
+          "impulse": -6.329166666666667,
+          "appliedTorque": 759.5,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 135.1445249674517,
+          "omegaAfter": 132.04119163411838,
+          "impulse": -3.8791666666666664,
+          "appliedTorque": 465.5,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 135.14453158449385,
+          "omegaAfter": 132.04119825116052,
+          "impulse": -3.8791666666666664,
+          "appliedTorque": 465.5,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": -0.001584756365371351,
+          "camber": 0.00026944177317283086,
+          "toe": -0.00011882906818643366,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.0007722590936572518,
+            "y": 0,
+            "z": 0.9999997018079015
+          },
+          "lateral": {
+            "x": -0.9999997018079018,
+            "y": 0,
+            "z": 0.0007722590936572521
+          },
+          "velocityX": 38.64758540990345,
+          "velocityY": 0.03157114354255958
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.0015844143611451894,
+          "camber": -0.00026931725749790075,
+          "toe": 0.00011885873033320707,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": -0.0008616919023537579,
+            "y": 0,
+            "z": 0.9999996287434638
+          },
+          "lateral": {
+            "x": -0.9999996287434638,
+            "y": 0,
+            "z": -0.0008616919023537579
+          },
+          "velocityX": 38.64758540500601,
+          "velocityY": -0.03157713814822181
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.0015930010069644812,
+          "camber": -0.0002708101711839618,
+          "toe": 0.00011947507552233608,
+          "steeringAngle": 0,
+          "forward": {
+            "x": -0.00016417667866441612,
+            "y": 0,
+            "z": 0.9999999865230088
+          },
+          "lateral": {
+            "x": -0.999999986523009,
+            "y": 0,
+            "z": -0.00016417667866441615
+          },
+          "velocityX": 38.64759802885057,
+          "velocityY": -0.004620658234646666
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": 0.0015932859095086488,
+          "camber": 0.0002708586046164703,
+          "toe": -0.00011949644321314866,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.00007479486949316872,
+            "y": 0,
+            "z": 0.9999999972028637
+          },
+          "lateral": {
+            "x": -0.9999999972028639,
+            "y": 0,
+            "z": 0.00007479486949316874
+          },
+          "velocityX": 38.64759802952448,
+          "velocityY": 0.00461501817411159
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 17.11857400096868,
+        "driveTorqueAppliedNm": 69.7311873473652,
+        "wheelDriveTorqueRequestedNm": 59.91843271819057,
+        "wheelDriveTorqueAppliedNm": 69.7311873473652,
+        "serviceBrakeTorqueRequestedNm": 2450,
+        "serviceBrakeTorqueAppliedNm": 2450,
+        "driverServiceBrakeTorqueRequestedNm": 2450,
+        "driverServiceBrakeTorqueAppliedNm": 2450,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891108118468442,
+      "rpm": 4525.615739031307,
+      "gear": 5,
+      "steerAngle": 0,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.1024446831339528e-8
+    },
+    "maxYawRate": 0.0016988879069685936,
+    "maxBetaDeg": 0.08952771417355943,
+    "maxHeadingDeg": 0.05979370726580125,
+    "minRearLoad": 621.2978380804211,
+    "tcsSteps": 0,
+    "escSteps": 0,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 5.816666666666666,
+      "speed": 0.08775689509762907,
+      "yawRate": 2.5658604130285312e-8,
+      "heading": 0.05869265822652471,
+      "betaDeg": 0.002204327957062218,
+      "load": [
+        2497.972353018923,
+        2497.9687546925807,
+        2356.6764164921237,
+        2356.6783328329675
+      ],
+      "omega": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trueKappa": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.05451732006386872,
+        -0.05451732006386872,
+        -0.05451732006386872,
+        -0.05451732006386872
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": 0,
+      "yawError": 3.5023303102603294e-8,
+      "brake": [
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.16346567380852495,
+          "omegaAfter": 0,
+          "impulse": -0.20433209226065618,
+          "appliedTorque": 24.519851071278744,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.16346563082062596,
+          "omegaAfter": 0,
+          "impulse": -0.20433203852578244,
+          "appliedTorque": 24.519844623093892,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.16331914473619474,
+          "omegaAfter": 0,
+          "impulse": -0.20414893092024344,
+          "appliedTorque": 24.497871710429212,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.1633190683009871,
+          "omegaAfter": 0,
+          "impulse": -0.20414883537623388,
+          "appliedTorque": 24.497860245148065,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.007690414545023408,
+          "camber": -0.0013075315403195643,
+          "toe": 0.0005766468678221017,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.0011021969084606534,
+            "y": 0,
+            "z": 0.999999392580803
+          },
+          "lateral": {
+            "x": -0.9999993925808032,
+            "y": 0,
+            "z": 0.0011021969084606537
+          },
+          "velocityX": 0.04448651029254285,
+          "velocityY": 0.000005331502307928684
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": 0.007690241185280902,
+          "camber": 0.0013071799374630066,
+          "toe": -0.0005769023089250233,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.0008594796465696134,
+            "y": 0,
+            "z": 0.9999996306473005
+          },
+          "lateral": {
+            "x": -0.9999996306473005,
+            "y": 0,
+            "z": 0.0008594796465696134
+          },
+          "velocityX": 0.04448645067153603,
+          "velocityY": -0.000005466147230096555
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": -0.0067279660008574965,
+          "camber": 0.0011437542201457745,
+          "toe": -0.0005045974500643122,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.0014853060011916245,
+            "y": 0,
+            "z": 0.999998896932433
+          },
+          "lateral": {
+            "x": -0.999998896932433,
+            "y": 0,
+            "z": 0.0014853060011916245
+          },
+          "velocityX": 0.044486504845629674,
+          "velocityY": 0.00002246872956085702
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.00672814771907658,
+          "camber": -0.0011437851122430187,
+          "toe": 0.0005046110789307434,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.0004761012530022217,
+            "y": 0,
+            "z": 0.9999998866637919
+          },
+          "lateral": {
+            "x": -0.9999998866637921,
+            "y": 0,
+            "z": 0.0004761012530022218
+          },
+          "velocityX": 0.04448644526187461,
+          "velocityY": -0.000022427259846290268
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 0.1833652283331071,
+        "driveTorqueAppliedNm": 0,
+        "wheelDriveTorqueRequestedNm": 2.4726434310262824,
+        "wheelDriveTorqueAppliedNm": 0,
+        "serviceBrakeTorqueRequestedNm": 2450,
+        "serviceBrakeTorqueAppliedNm": 98.03542764994991,
+        "driverServiceBrakeTorqueRequestedNm": 2450,
+        "driverServiceBrakeTorqueAppliedNm": 98.03542764994991,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 1.5148118013448475e-47,
+      "rpm": 847.0047117829491,
+      "gear": 1,
+      "steerAngle": 0,
+      "resets": 0,
+      "tireRegime": [
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT"
+      ],
+      "solverResidual": 3.9915873806282e-18
+    },
+    "resets": 0
+  },
+  {
+    "car": "mx5",
+    "scenario": "turn-coast",
+    "startSpeed": 140.070244123924,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 136.7364075906076,
+      "yawRate": 0.33974242210388184,
+      "heading": 12.813125361392315,
+      "betaDeg": -4.449257173558586,
+      "load": [
+        4681.703179530926,
+        168.13452727054255,
+        4686.130653386231,
+        174.28961494424993
+      ],
+      "omega": [
+        134.69976522336776,
+        130.8798634915354,
+        135.3791459711227,
+        123.29233226772759
+      ],
+      "trueKappa": [
+        -0.0003795947033348237,
+        0.007303437097183467,
+        0.004796814051355821,
+        -0.05847395240563225
+      ],
+      "alpha": [
+        -0.09501533864242699,
+        -0.0943842030338569,
+        -0.08219204270094915,
+        -0.08866456659934353
+      ],
+      "assistSlip": [
+        0.0033054922958943938,
+        -0.0017290429706187742,
+        0.008379496360431423,
+        -0.06421788975068611
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.5366642238885875,
+      "yawError": -0.1967138829916656,
+      "brake": [
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 134.69976522336776,
+          "omegaAfter": 134.69976522336776,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 130.8798634915354,
+          "omegaAfter": 130.8798634915354,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 135.3791459711227,
+          "omegaAfter": 135.3791459711227,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 123.29233226772759,
+          "omegaAfter": 123.29233226772759,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.05430014292560882,
+          "camber": -0.009283947005178527,
+          "toe": 0.004028408462899806,
+          "steeringAngle": 0.03248776459485592,
+          "forward": {
+            "x": 0.24595565705615674,
+            "y": 0,
+            "z": 0.9692810814010941
+          },
+          "lateral": {
+            "x": -0.9692810814010941,
+            "y": 0,
+            "z": 0.24595565705615674
+          },
+          "velocityX": 38.13625428197516,
+          "velocityY": 3.633093837419686
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.05279056560370109,
+          "camber": -0.009024470574720816,
+          "toe": 0.0039175637352012235,
+          "steeringAngle": 0.03161828982065862,
+          "forward": {
+            "x": 0.24522026061167412,
+            "y": 0,
+            "z": 0.9694673918113713
+          },
+          "lateral": {
+            "x": -0.9694673918113711,
+            "y": 0,
+            "z": 0.24522026061167407
+          },
+          "velocityX": 37.65346735964359,
+          "velocityY": 3.5907078971067987
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.054173480307897606,
+          "camber": -0.009209491652342593,
+          "toe": 0.004063011023092321,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.21430783594326852,
+            "y": 0,
+            "z": 0.9767661703055207
+          },
+          "lateral": {
+            "x": -0.9767661703055205,
+            "y": 0,
+            "z": 0.21430783594326847
+          },
+          "velocityX": 38.23736520542384,
+          "velocityY": 3.1650857692336114
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.05291981593619498,
+          "camber": -0.008996368709153147,
+          "toe": 0.003968986195214623,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.21439967506519744,
+            "y": 0,
+            "z": 0.976746015774796
+          },
+          "lateral": {
+            "x": -0.9767460157747958,
+            "y": 0,
+            "z": 0.2143996750651974
+          },
+          "velocityX": 37.751352785117724,
+          "velocityY": 3.170608257887829
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 16.93934069578539,
+        "driveTorqueAppliedNm": 113.56374080650123,
+        "wheelDriveTorqueRequestedNm": 59.291080303388014,
+        "wheelDriveTorqueAppliedNm": 113.56374080650123,
+        "serviceBrakeTorqueRequestedNm": 0,
+        "serviceBrakeTorqueAppliedNm": 0,
+        "driverServiceBrakeTorqueRequestedNm": 0,
+        "driverServiceBrakeTorqueAppliedNm": 0,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 0,
+      "engineLoad": 0.12891108118468442,
+      "rpm": 4326.985453842885,
+      "gear": 5,
+      "steerAngle": 0.03205086351798973,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.2583888402720332e-8
+    },
+    "maxYawRate": 0.33974242210388184,
+    "maxBetaDeg": 4.801903806579001,
+    "maxHeadingDeg": 21.308739608855788,
+    "minRearLoad": 162.40237336736334,
+    "tcsSteps": 0,
+    "escSteps": 0,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 5.991666666666666,
+      "speed": 120.43855640423725,
+      "yawRate": 2.430573431411176e-7,
+      "heading": 21.285349293578467,
+      "betaDeg": 0.0000016378809703054333,
+      "load": [
+        2449.990131265039,
+        2450.015235998426,
+        2405.933307009941,
+        2405.960707379882
+      ],
+      "omega": [
+        116.79006763278507,
+        116.79008222114015,
+        116.68241610605084,
+        116.68243263104918
+      ],
+      "trueKappa": [
+        -0.0005851256905968059,
+        -0.0005851321649860689,
+        -0.002096994807852691,
+        -0.00209699586924192
+      ],
+      "alpha": [
+        -0.0006404365932417905,
+        0.000640479830988961,
+        -0.000057815744480620904,
+        0.0000578818985887703
+      ],
+      "assistSlip": [
+        -0.0005848529394543704,
+        -0.0005848594339135863,
+        -0.0012732246185212825,
+        -0.001273225798050808
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.6245362575028368,
+      "desiredYaw": -2.071432477045413e-37,
+      "yawError": 2.3401984822055735e-7,
+      "brake": [
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 116.79006763278507,
+          "omegaAfter": 116.79006763278507,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 116.79008222114015,
+          "omegaAfter": 116.79008222114015,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 116.68241610605084,
+          "omegaAfter": 116.68241610605084,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 116.68243263104918,
+          "omegaAfter": 116.68243263104918,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.0007736349091168188,
+          "camber": -0.00013153413752150616,
+          "toe": 0.00005800911570738895,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.3635687454060953,
+            "y": 0,
+            "z": 0.9315673713499404
+          },
+          "lateral": {
+            "x": -0.9315673713499406,
+            "y": 0,
+            "z": 0.36356874540609535
+          },
+          "velocityX": 33.460457879330306,
+          "velocityY": 0.021416773078218654
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": 0.0007743121269698366,
+          "camber": 0.00013161684442960776,
+          "toe": -0.000058086923818791484,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.36237588567464246,
+            "y": 0,
+            "z": 0.932032036724875
+          },
+          "lateral": {
+            "x": -0.932032036724875,
+            "y": 0,
+            "z": 0.36237588567464246
+          },
+          "velocityX": 33.4604578784049,
+          "velocityY": -0.02141821884841022
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": -0.0007700702236986129,
+          "camber": 0.0001309119380287642,
+          "toe": -0.00005775526677739596,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.3630261693929673,
+            "y": 0,
+            "z": 0.931778943921716
+          },
+          "lateral": {
+            "x": -0.9317789439217162,
+            "y": 0,
+            "z": 0.36302616939296734
+          },
+          "velocityX": 33.46046467767299,
+          "velocityY": 0.0019304934434352106
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.0007693368794380179,
+          "camber": -0.00013078726950446304,
+          "toe": 0.000057700265957851336,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.3629185879387014,
+            "y": 0,
+            "z": 0.9318208510913345
+          },
+          "lateral": {
+            "x": -0.9318208510913347,
+            "y": 0,
+            "z": 0.36291858793870146
+          },
+          "velocityX": 33.460464677545474,
+          "velocityY": -0.0019327023565036683
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 10.073915937100178,
+        "driveTorqueAppliedNm": 28.718689746622193,
+        "wheelDriveTorqueRequestedNm": 35.26072056303804,
+        "wheelDriveTorqueAppliedNm": 28.718689746622193,
+        "serviceBrakeTorqueRequestedNm": 0,
+        "serviceBrakeTorqueAppliedNm": 0,
+        "driverServiceBrakeTorqueRequestedNm": 0,
+        "driverServiceBrakeTorqueAppliedNm": 0,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 0,
+      "engineLoad": 6.2880009856642e-49,
+      "rpm": 3897.465211102275,
+      "gear": 5,
+      "steerAngle": 1.405286028431793e-38,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 4.0772378612915675e-9
+    },
+    "resets": 0
+  },
+  {
+    "car": "mx5",
+    "scenario": "turn-brake-release-steer",
+    "startSpeed": 140.070244123924,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 136.7363991053818,
+      "yawRate": 0.33986032009124756,
+      "heading": 12.813137595253933,
+      "betaDeg": -4.448945917807537,
+      "load": [
+        4681.703179530926,
+        168.13452727054255,
+        4686.130653386231,
+        174.28961494424993
+      ],
+      "omega": [
+        129.63643189003443,
+        125.81653015820206,
+        132.2758126377894,
+        120.18899893439425
+      ],
+      "trueKappa": [
+        -0.0003795947033348237,
+        0.007303437097183467,
+        0.004796814051355821,
+        -0.05847395240563225
+      ],
+      "alpha": [
+        -0.09501533864242699,
+        -0.0943842030338569,
+        -0.08219204270094915,
+        -0.08866456659934353
+      ],
+      "assistSlip": [
+        0.0033054922958943938,
+        -0.0017290429706187742,
+        0.008379496360431423,
+        -0.06421788975068611
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        118.02832979499935
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.5366642238885875,
+      "yawError": -0.1967138829916656,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 134.69976522336776,
+          "omegaAfter": 129.63643189003443,
+          "impulse": -6.329166666666667,
+          "appliedTorque": 759.5,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 130.8798634915354,
+          "omegaAfter": 125.81653015820206,
+          "impulse": -6.329166666666667,
+          "appliedTorque": 759.5,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 135.3791459711227,
+          "omegaAfter": 132.2758126377894,
+          "impulse": -3.8791666666666664,
+          "appliedTorque": 465.5,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 123.29233226772759,
+          "omegaAfter": 120.18899893439425,
+          "impulse": -3.8791666666666664,
+          "appliedTorque": 465.5,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.05430014292560882,
+          "camber": -0.009283947005178527,
+          "toe": 0.004028408462899806,
+          "steeringAngle": 0.03248776459485592,
+          "forward": {
+            "x": 0.24595565705615674,
+            "y": 0,
+            "z": 0.9692810814010941
+          },
+          "lateral": {
+            "x": -0.9692810814010941,
+            "y": 0,
+            "z": 0.24595565705615674
+          },
+          "velocityX": 38.13625428197516,
+          "velocityY": 3.633093837419686
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.05279056560370109,
+          "camber": -0.009024470574720816,
+          "toe": 0.0039175637352012235,
+          "steeringAngle": 0.03161828982065862,
+          "forward": {
+            "x": 0.24522026061167412,
+            "y": 0,
+            "z": 0.9694673918113713
+          },
+          "lateral": {
+            "x": -0.9694673918113711,
+            "y": 0,
+            "z": 0.24522026061167407
+          },
+          "velocityX": 37.65346735964359,
+          "velocityY": 3.5907078971067987
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.054173480307897606,
+          "camber": -0.009209491652342593,
+          "toe": 0.004063011023092321,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.21430783594326852,
+            "y": 0,
+            "z": 0.9767661703055207
+          },
+          "lateral": {
+            "x": -0.9767661703055205,
+            "y": 0,
+            "z": 0.21430783594326847
+          },
+          "velocityX": 38.23736520542384,
+          "velocityY": 3.1650857692336114
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.05291981593619498,
+          "camber": -0.008996368709153147,
+          "toe": 0.003968986195214623,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.21439967506519744,
+            "y": 0,
+            "z": 0.976746015774796
+          },
+          "lateral": {
+            "x": -0.9767460157747958,
+            "y": 0,
+            "z": 0.2143996750651974
+          },
+          "velocityX": 37.751352785117724,
+          "velocityY": 3.170608257887829
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 16.93934069578539,
+        "driveTorqueAppliedNm": 113.56374080650123,
+        "wheelDriveTorqueRequestedNm": 59.291080303388014,
+        "wheelDriveTorqueAppliedNm": 113.56374080650123,
+        "serviceBrakeTorqueRequestedNm": 2450,
+        "serviceBrakeTorqueAppliedNm": 2450,
+        "driverServiceBrakeTorqueRequestedNm": 2450,
+        "driverServiceBrakeTorqueAppliedNm": 2450,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891108118468442,
+      "rpm": 4326.985453842885,
+      "gear": 5,
+      "steerAngle": 0.03205086351798973,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.2583888402720332e-8
+    },
+    "maxYawRate": 0.7748253345489502,
+    "maxBetaDeg": 89.97444732019018,
+    "maxHeadingDeg": 130.52820906220128,
+    "minRearLoad": 0,
+    "tcsSteps": 0,
+    "escSteps": 318,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 3.3833333333333333,
+      "speed": -0.08724944727034122,
+      "yawRate": 0.31888073682785034,
+      "heading": 130.52820906220128,
+      "betaDeg": -89.86507632288061,
+      "load": [
+        4523.408641963506,
+        414.66546200656205,
+        4440.133374003888,
+        333.05997271913725
+      ],
+      "omega": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trueKappa": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.009252332289563014,
+        -0.009252332289563014,
+        -0.009252332289563014,
+        -0.009252332289563014
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -2.9356185498554094e-25,
+      "yawError": 0.3223062332606488,
+      "brake": [
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.1936893179997517,
+          "omegaAfter": 0,
+          "impulse": -0.2421116474996896,
+          "appliedTorque": 29.053397699962755,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.012469122069246793,
+          "omegaAfter": 0,
+          "impulse": 0.015586402586558492,
+          "appliedTorque": 1.870368310387019,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.1619590385564665,
+          "omegaAfter": 0,
+          "impulse": -0.20244879819558315,
+          "appliedTorque": 24.29385578346998,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.009125662618966838,
+          "omegaAfter": 0,
+          "impulse": 0.011407078273708546,
+          "appliedTorque": 1.3688493928450256,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.05274657002230766,
+          "camber": -0.00896802162537153,
+          "toe": 0.003955072150357052,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.7630046862883597,
+            "y": 0,
+            "z": -0.6463929522372608
+          },
+          "lateral": {
+            "x": 0.6463929522372608,
+            "y": 0,
+            "z": 0.7630046862883597
+          },
+          "velocityX": 0.2571264508468909,
+          "velocityY": 10.034670494488973
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.047478828037238005,
+          "camber": -0.008070406372081377,
+          "toe": 0.003561740764667088,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.7636525913948107,
+            "y": 0,
+            "z": -0.6456273845307293
+          },
+          "lateral": {
+            "x": 0.6456273845307293,
+            "y": 0,
+            "z": 0.7636525913948107
+          },
+          "velocityX": -0.1923599153945892,
+          "velocityY": 10.036366111859067
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.04784083046925232,
+          "camber": -0.008132941179772894,
+          "toe": 0.0035880622851939235,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.7632186800275383,
+            "y": 0,
+            "z": -0.646140268406963
+          },
+          "lateral": {
+            "x": 0.646140268406963,
+            "y": 0,
+            "z": 0.7632186800275383
+          },
+          "velocityX": 0.2629548986687986,
+          "velocityY": 10.767168205640036
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.052387067666605766,
+          "camber": -0.00890580150332298,
+          "toe": 0.003929030074995433,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.7634389480169907,
+            "y": 0,
+            "z": -0.6458799986458093
+          },
+          "lateral": {
+            "x": 0.6458799986458093,
+            "y": 0,
+            "z": 0.7634389480169907
+          },
+          "velocityX": -0.1929254484547558,
+          "velocityY": 10.768885154419076
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 1.9432165778898107,
+        "driveTorqueAppliedNm": 0,
+        "wheelDriveTorqueRequestedNm": 26.20388690952852,
+        "wheelDriveTorqueAppliedNm": 0,
+        "serviceBrakeTorqueRequestedNm": 2450,
+        "serviceBrakeTorqueAppliedNm": 56.58647118666478,
+        "driverServiceBrakeTorqueRequestedNm": 2450,
+        "driverServiceBrakeTorqueAppliedNm": 56.58647118666478,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 2.4808436486793493e-28,
+      "rpm": 1080.7970494705794,
+      "gear": 1,
+      "steerAngle": 1.440470121396064e-22,
+      "resets": 0,
+      "tireRegime": [
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT"
+      ],
+      "solverResidual": 1.145272858231923e-10
+    },
+    "resets": 0
+  },
+  {
+    "car": "mx5",
+    "scenario": "turn-brake-hold-steer",
+    "startSpeed": 140.070244123924,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 136.73630498465963,
+      "yawRate": 0.33987361192703247,
+      "heading": 12.813141340415337,
+      "betaDeg": -4.4489172576017335,
+      "load": [
+        4681.703179530926,
+        168.13452727054255,
+        4686.130653386231,
+        174.28961494424993
+      ],
+      "omega": [
+        129.63402013744312,
+        125.81648240050407,
+        132.2758126377894,
+        120.18899893439425
+      ],
+      "trueKappa": [
+        -0.0003246654333271998,
+        0.00735984222785398,
+        0.004796814051355821,
+        -0.05847395240563225
+      ],
+      "alpha": [
+        -0.09558497173171744,
+        -0.09496856515876366,
+        -0.08219204270094915,
+        -0.08866456659934353
+      ],
+      "assistSlip": [
+        0.0033054922958943938,
+        -0.0017290429706187742,
+        0.008379496360431423,
+        -0.06421788975068611
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        123.89367519838363
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.5464397995608946,
+      "yawError": -0.20648945866397272,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 134.69735347077645,
+          "omegaAfter": 129.63402013744312,
+          "impulse": -6.329166666666667,
+          "appliedTorque": 759.5,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 130.8798157338374,
+          "omegaAfter": 125.81648240050407,
+          "impulse": -6.329166666666667,
+          "appliedTorque": 759.5,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 135.3791459711227,
+          "omegaAfter": 132.2758126377894,
+          "impulse": -3.8791666666666664,
+          "appliedTorque": 465.5,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 123.29233226772759,
+          "omegaAfter": 120.18899893439425,
+          "impulse": -3.8791666666666664,
+          "appliedTorque": 465.5,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.05430014292560882,
+          "camber": -0.00928488182019057,
+          "toe": 0.00402762945038977,
+          "steeringAngle": 0.03306162128698534,
+          "forward": {
+            "x": 0.2465125999348495,
+            "y": 0,
+            "z": 0.9691395864752204
+          },
+          "lateral": {
+            "x": -0.9691395864752204,
+            "y": 0,
+            "z": 0.2465125999348495
+          },
+          "velocityX": 38.134160280238596,
+          "velocityY": 3.655007689737361
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.05279056560370109,
+          "camber": -0.00902541004131182,
+          "toe": 0.003916780846375386,
+          "steeringAngle": 0.032211493410644255,
+          "forward": {
+            "x": 0.2457960678410839,
+            "y": 0,
+            "z": 0.9693215632770487
+          },
+          "lateral": {
+            "x": -0.9693215632770487,
+            "y": 0,
+            "z": 0.2457960678410839
+          },
+          "velocityX": 37.65132788538128,
+          "velocityY": 3.6130729128541335
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.054173480307897606,
+          "camber": -0.009209491652342593,
+          "toe": 0.004063011023092321,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.21430783594326852,
+            "y": 0,
+            "z": 0.9767661703055207
+          },
+          "lateral": {
+            "x": -0.9767661703055205,
+            "y": 0,
+            "z": 0.21430783594326847
+          },
+          "velocityX": 38.23736520542384,
+          "velocityY": 3.1650857692336114
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.05291981593619498,
+          "camber": -0.008996368709153147,
+          "toe": 0.003968986195214623,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.21439967506519744,
+            "y": 0,
+            "z": 0.976746015774796
+          },
+          "lateral": {
+            "x": -0.9767460157747958,
+            "y": 0,
+            "z": 0.2143996750651974
+          },
+          "velocityX": 37.751352785117724,
+          "velocityY": 3.170608257887829
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 16.93934069578539,
+        "driveTorqueAppliedNm": 113.56374080650123,
+        "wheelDriveTorqueRequestedNm": 59.291080303388014,
+        "wheelDriveTorqueAppliedNm": 113.56374080650123,
+        "serviceBrakeTorqueRequestedNm": 2450,
+        "serviceBrakeTorqueAppliedNm": 2450,
+        "driverServiceBrakeTorqueRequestedNm": 2450,
+        "driverServiceBrakeTorqueAppliedNm": 2450,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891108118468442,
+      "rpm": 4326.985453842885,
+      "gear": 5,
+      "steerAngle": 0.0326342734213318,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.2583888402720332e-8
+    },
+    "maxYawRate": 0.7392756342887878,
+    "maxBetaDeg": 89.63930523274644,
+    "maxHeadingDeg": 131.6370894784565,
+    "minRearLoad": 0,
+    "tcsSteps": 0,
+    "escSteps": 328,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 4.05,
+      "speed": 0.08633806246439013,
+      "yawRate": 0.03748922795057297,
+      "heading": 131.6370894784565,
+      "betaDeg": -89.63930523274644,
+      "load": [
+        4505.2684145651865,
+        395.46807895886866,
+        4459.9388557552775,
+        350.38040878147467
+      ],
+      "omega": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trueKappa": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.05545740392383758,
+        -0.05545740392383758,
+        -0.05545740392383758,
+        -0.05545740392383758
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.0015091278181537892,
+      "yawError": 0.03921817842615218,
+      "brake": [
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.4671571190200838,
+          "omegaAfter": 0,
+          "impulse": 0.5839463987751047,
+          "appliedTorque": 70.07356785301256,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.08541397743317898,
+          "omegaAfter": 0,
+          "impulse": 0.10676747179147372,
+          "appliedTorque": 12.812096614976847,
+          "serviceCapacity": 759.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 759.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.074480291785733,
+          "omegaAfter": 0,
+          "impulse": -0.09310036473216625,
+          "appliedTorque": 11.17204376785995,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.0029298635877545963,
+          "omegaAfter": 0,
+          "impulse": -0.0036623294846932454,
+          "appliedTorque": 0.43947953816318946,
+          "serviceCapacity": 465.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 465.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.05184133162684014,
+          "camber": -0.008999469154022688,
+          "toe": 0.0037327308907964566,
+          "steeringAngle": 0.1198803937637385,
+          "forward": {
+            "x": 0.6645248710692252,
+            "y": 0,
+            "z": -0.7472661478552536
+          },
+          "lateral": {
+            "x": 0.7472661478552536,
+            "y": 0,
+            "z": 0.6645248710692252
+          },
+          "velocityX": -0.38964065903012246,
+          "velocityY": 3.835980624138425
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.0486089323131431,
+          "camber": -0.008447556538564204,
+          "toe": 0.003492304885710836,
+          "steeringAngle": 0.1262031733483922,
+          "forward": {
+            "x": 0.6596061329150993,
+            "y": 0,
+            "z": -0.7516114351317364
+          },
+          "lateral": {
+            "x": 0.7516114351317364,
+            "y": 0,
+            "z": 0.6596061329150993
+          },
+          "velocityX": -0.4720238585887928,
+          "velocityY": 3.8262858575628047
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.048776000256894894,
+          "camber": -0.008291920043672133,
+          "toe": 0.003658200019267117,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.7490743120691988,
+            "y": 0,
+            "z": -0.6624859809822821
+          },
+          "lateral": {
+            "x": 0.6624859809822821,
+            "y": 0,
+            "z": 0.7490743120691988
+          },
+          "velocityX": 0.07195371764891045,
+          "velocityY": 3.946953764629076
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.05167463017920908,
+          "camber": -0.008784687130465544,
+          "toe": 0.0038755972634406805,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.7492183166503905,
+            "y": 0,
+            "z": -0.6623231190254157
+          },
+          "lateral": {
+            "x": 0.6623231190254159,
+            "y": 0,
+            "z": 0.7492183166503906
+          },
+          "velocityX": 0.015161494773770823,
+          "velocityY": 3.94716123895612
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 0.8328783059072429,
+        "driveTorqueAppliedNm": 0,
+        "wheelDriveTorqueRequestedNm": 11.231197379497988,
+        "wheelDriveTorqueAppliedNm": 0,
+        "serviceBrakeTorqueRequestedNm": 2450,
+        "serviceBrakeTorqueAppliedNm": 94.49718777401254,
+        "driverServiceBrakeTorqueRequestedNm": 2450,
+        "driverServiceBrakeTorqueAppliedNm": 94.49718777401254,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 1.3502800656963588e-33,
+      "rpm": 947.9281716751482,
+      "gear": 1,
+      "steerAngle": 0.1229213301153233,
+      "resets": 0,
+      "tireRegime": [
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT"
+      ],
+      "solverResidual": 5.046589441095367e-10
+    },
+    "resets": 0
+  },
+  {
+    "car": "lp700",
+    "scenario": "straight-brake",
+    "startSpeed": 140.44403786663239,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 143.04940116075022,
+      "yawRate": -8.163084999068815e-7,
+      "heading": -0.00012160671007600224,
+      "betaDeg": 0.000014201256332441594,
+      "load": [
+        3889.505838547137,
+        3889.5430784509604,
+        4337.970183309559,
+        4338.009630047889
+      ],
+      "omega": [
+        107.36128973200749,
+        107.36130908927655,
+        111.4369580662398,
+        111.43697876617371
+      ],
+      "trueKappa": [
+        0.007827892341339755,
+        0.007827913070932143,
+        0.007469774988553354,
+        0.0074697988435196705
+      ],
+      "alpha": [
+        -0.001008974701897481,
+        0.001009544755372012,
+        0.0003257073239275855,
+        -0.00032517402437716426
+      ],
+      "assistSlip": [
+        0.0019596064056342007,
+        0.0019596278695404768,
+        0.0016083694085186288,
+        0.0016083948555025145
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": 0,
+      "yawError": -8.209329706785363e-7,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 117.38462306534083,
+          "omegaAfter": 107.36128973200749,
+          "impulse": -12.529166666666667,
+          "appliedTorque": 1503.5,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 117.38464242260987,
+          "omegaAfter": 107.36130908927655,
+          "impulse": -12.529166666666667,
+          "appliedTorque": 1503.5,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 117.58029139957313,
+          "omegaAfter": 111.4369580662398,
+          "impulse": -7.679166666666666,
+          "appliedTorque": 921.5,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 117.58031209950704,
+          "omegaAfter": 111.43697876617371,
+          "impulse": -7.679166666666666,
+          "appliedTorque": 921.5,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": -0.004254872186756978,
+          "camber": 0.0007234173855833788,
+          "toe": -0.0003190411524778629,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.0009960286501729879,
+            "y": 0,
+            "z": 0.9999995039633409
+          },
+          "lateral": {
+            "x": -0.9999995039633411,
+            "y": 0,
+            "z": 0.000996028650172988
+          },
+          "velocityX": 39.735830749970766,
+          "velocityY": 0.04040877714786902
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.0042542133642842345,
+          "camber": -0.0007231271718919729,
+          "toe": 0.00031914025235160666,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": -0.001038415881539637,
+            "y": 0,
+            "z": 0.999999460846083
+          },
+          "lateral": {
+            "x": -0.9999994608460833,
+            "y": 0,
+            "z": -0.0010384158815396373
+          },
+          "velocityX": 39.73583072674644,
+          "velocityY": -0.04043160825344566
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.00437153015354301,
+          "camber": -0.0007431601261023117,
+          "toe": 0.0003278647615157257,
+          "steeringAngle": 0,
+          "forward": {
+            "x": -0.00034900943310805577,
+            "y": 0,
+            "z": 0.9999999390962059
+          },
+          "lateral": {
+            "x": -0.9999999390962061,
+            "y": 0,
+            "z": -0.0003490094331080558
+          },
+          "velocityX": 39.735849156941114,
+          "velocityY": -0.01303966088328359
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": 0.004372185641274215,
+          "camber": 0.0007432715590166166,
+          "toe": -0.0003279139230955661,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.00030677043747822806,
+            "y": 0,
+            "z": 0.9999999529459481
+          },
+          "lateral": {
+            "x": -0.9999999529459483,
+            "y": 0,
+            "z": 0.0003067704374782281
+          },
+          "velocityX": 39.73584916394166,
+          "velocityY": 0.013018310601575657
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 88.41832999756583,
+        "driveTorqueAppliedNm": 420.02984086963335,
+        "wheelDriveTorqueRequestedNm": 392.46244136019544,
+        "wheelDriveTorqueAppliedNm": 420.02984086963335,
+        "serviceBrakeTorqueRequestedNm": 4850,
+        "serviceBrakeTorqueAppliedNm": 4850,
+        "driverServiceBrakeTorqueRequestedNm": 4850,
+        "driverServiceBrakeTorqueAppliedNm": 4850,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891107226467116,
+      "rpm": 5010.065725546755,
+      "gear": 5,
+      "steerAngle": 0,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 6.612209289783223e-15
+    },
+    "maxYawRate": 0.00005064088327344507,
+    "maxBetaDeg": 0.000425139266698163,
+    "maxHeadingDeg": 0.005449023815631995,
+    "minRearLoad": 1406.6944894596163,
+    "tcsSteps": 0,
+    "escSteps": 0,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 5.991666666666666,
+      "speed": 4.691103128619521,
+      "yawRate": 1.2729385900911439e-7,
+      "heading": 0.005449023815631995,
+      "betaDeg": 0.000007525091828798448,
+      "load": [
+        4765.497719307625,
+        4765.496733393133,
+        3466.7683680445916,
+        3466.7675848266404
+      ],
+      "omega": [
+        3.3450197745581627,
+        3.345019130325706,
+        3.6892319307273445,
+        3.6892312126594016
+      ],
+      "trueKappa": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.5107425821927153,
+        -0.5107426714724134,
+        -0.4652569431885601,
+        -0.46525703423112247
+      ],
+      "abs": [
+        0.08,
+        0.08,
+        0.08,
+        0.08
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": 0,
+      "yawError": 1.2427584855203715e-7,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 4.146886441224829,
+          "omegaAfter": 3.3450197745581627,
+          "impulse": -1.0023333333333333,
+          "appliedTorque": 120.28,
+          "serviceCapacity": 120.28,
+          "parkingCapacity": 0,
+          "totalCapacity": 120.28
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 4.146885796992373,
+          "omegaAfter": 3.345019130325706,
+          "impulse": -1.0023333333333333,
+          "appliedTorque": 120.28,
+          "serviceCapacity": 120.28,
+          "parkingCapacity": 0,
+          "totalCapacity": 120.28
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 4.180698597394011,
+          "omegaAfter": 3.6892319307273445,
+          "impulse": -0.6143333333333333,
+          "appliedTorque": 73.72,
+          "serviceCapacity": 73.72,
+          "parkingCapacity": 0,
+          "totalCapacity": 73.72
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 4.180697879326068,
+          "omegaAfter": 3.6892312126594016,
+          "impulse": -0.6143333333333333,
+          "appliedTorque": 73.72,
+          "serviceCapacity": 73.72,
+          "parkingCapacity": 0,
+          "totalCapacity": 73.72
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.015735416961118007,
+          "camber": -0.0026753504451922363,
+          "toe": 0.0011798816372487048,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": -0.0004056617449092076,
+            "y": 0,
+            "z": 0.9999999177192709
+          },
+          "lateral": {
+            "x": -0.9999999177192711,
+            "y": 0,
+            "z": -0.0004056617449092077
+          },
+          "velocityX": 1.3282305881998109,
+          "velocityY": -0.0006402570732455668
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": 0.015735418465828363,
+          "camber": 0.0026746915773571325,
+          "toe": -0.001180431019798535,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.0005583703955423199,
+            "y": 0,
+            "z": 0.9999998441112384
+          },
+          "lateral": {
+            "x": -0.9999998441112387,
+            "y": 0,
+            "z": 0.00055837039554232
+          },
+          "velocityX": 1.328230349808744,
+          "velocityY": 0.0006401999376320839
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": -0.01544034680280805,
+          "camber": 0.0026248589564773685,
+          "toe": -0.0011580260102106038,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.0012340977474307123,
+            "y": 0,
+            "z": 0.9999992385010849
+          },
+          "lateral": {
+            "x": -0.9999992385010851,
+            "y": 0,
+            "z": 0.0012340977474307126
+          },
+          "velocityX": 1.3282298519738744,
+          "velocityY": 0.0015380560836309556
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.015440345611812192,
+          "camber": -0.002624858754008073,
+          "toe": 0.0011580259208859144,
+          "steeringAngle": 0,
+          "forward": {
+            "x": -0.001081938465850367,
+            "y": 0,
+            "z": 0.9999994147044066
+          },
+          "lateral": {
+            "x": -0.9999994147044068,
+            "y": 0,
+            "z": -0.0010819384658503671
+          },
+          "velocityX": 1.3282296134184095,
+          "velocityY": -0.001538174151961849
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 9.172980494169954,
+        "driveTorqueAppliedNm": 0,
+        "wheelDriveTorqueRequestedNm": 133.78149942112287,
+        "wheelDriveTorqueAppliedNm": 0,
+        "serviceBrakeTorqueRequestedNm": 4850,
+        "serviceBrakeTorqueAppliedNm": 388,
+        "driverServiceBrakeTorqueRequestedNm": 4850,
+        "driverServiceBrakeTorqueAppliedNm": 388,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 6.2880005505654405e-49,
+      "rpm": 700.1585025732772,
+      "gear": 1,
+      "steerAngle": 0,
+      "resets": 0,
+      "tireRegime": [
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT"
+      ],
+      "solverResidual": 1.445516205872712e-16
+    },
+    "resets": 0
+  },
+  {
+    "car": "lp700",
+    "scenario": "turn-coast",
+    "startSpeed": 140.44403785592135,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 141.8833425529246,
+      "yawRate": 0.24456214904785156,
+      "heading": 8.487853542167016,
+      "betaDeg": -2.5698123166247293,
+      "load": [
+        6434.871599551644,
+        1452.3008817440077,
+        6785.121692207296,
+        1811.4555606588383
+      ],
+      "omega": [
+        118.1984269318353,
+        115.34862837072049,
+        118.41707134730073,
+        114.65241387155842
+      ],
+      "trueKappa": [
+        0.007545882949842024,
+        0.016175891325885712,
+        0.006470535318765573,
+        0.0024279004708259947
+      ],
+      "alpha": [
+        -0.0599826285346465,
+        -0.058420305307377234,
+        -0.049319584102292036,
+        -0.05067063966538157
+      ],
+      "assistSlip": [
+        0.005622675428294672,
+        0.0035479687006637023,
+        0.0058848319597126185,
+        -0.009135456894109495
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.3863753868472951,
+      "yawError": -0.1409397896556191,
+      "brake": [
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 118.1984269318353,
+          "omegaAfter": 118.1984269318353,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 115.34862837072049,
+          "omegaAfter": 115.34862837072049,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 118.41707134730073,
+          "omegaAfter": 118.41707134730073,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 114.65241387155842,
+          "omegaAfter": 114.65241387155842,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.029728687935265882,
+          "camber": -0.005077937112507887,
+          "toe": 0.002209601458884369,
+          "steeringAngle": 0.026977492318841674,
+          "forward": {
+            "x": 0.16988075835889005,
+            "y": 0,
+            "z": 0.9854646254125048
+          },
+          "lateral": {
+            "x": -0.9854646254125048,
+            "y": 0,
+            "z": 0.16988075835889005
+          },
+          "velocityX": 39.57551346555597,
+          "velocityY": 2.3947650056670593
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.035270743849676725,
+          "camber": -0.006023481464237583,
+          "toe": 0.0026224266138986383,
+          "steeringAngle": 0.02594691501220044,
+          "forward": {
+            "x": 0.16845815969870392,
+            "y": 0,
+            "z": 0.9857088050894776
+          },
+          "lateral": {
+            "x": -0.9857088050894778,
+            "y": 0,
+            "z": 0.16845815969870395
+          },
+          "velocityX": 39.15622933405715,
+          "velocityY": 2.3277787075769067
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.03643728745766582,
+          "camber": -0.00619433886780319,
+          "toe": 0.0027327965593249366,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.14271898379061684,
+            "y": 0,
+            "z": 0.989763250310787
+          },
+          "lateral": {
+            "x": -0.989763250310787,
+            "y": 0,
+            "z": 0.14271898379061684
+          },
+          "velocityX": 39.62828422531041,
+          "velocityY": 1.9687757554948742
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.028575575195956007,
+          "camber": -0.004857847783312522,
+          "toe": 0.0021431681396967004,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.1433025513431975,
+            "y": 0,
+            "z": 0.9896789271165322
+          },
+          "lateral": {
+            "x": -0.9896789271165322,
+            "y": 0,
+            "z": 0.1433025513431975
+          },
+          "velocityX": 39.204302990405566,
+          "velocityY": 1.9930479080604036
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 88.32990878612199,
+        "driveTorqueAppliedNm": 428.3476450880679,
+        "wheelDriveTorqueRequestedNm": 392.06996612895966,
+        "wheelDriveTorqueAppliedNm": 428.3476450880679,
+        "serviceBrakeTorqueRequestedNm": 0,
+        "serviceBrakeTorqueAppliedNm": 0,
+        "driverServiceBrakeTorqueRequestedNm": 0,
+        "driverServiceBrakeTorqueAppliedNm": 0,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 0,
+      "engineLoad": 0.12891107226467116,
+      "rpm": 4970.2096451380385,
+      "gear": 5,
+      "steerAngle": 0.02646094058942408,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.135990647759119e-9
+    },
+    "maxYawRate": 0.24456214904785156,
+    "maxBetaDeg": 2.648929503610921,
+    "maxHeadingDeg": 13.019688985748013,
+    "minRearLoad": 1800.352854518403,
+    "tcsSteps": 0,
+    "escSteps": 0,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 5.991666666666666,
+      "speed": 123.78379253400882,
+      "yawRate": 4.420052448494971e-7,
+      "heading": 13.018762803250008,
+      "betaDeg": -0.0000016810053439101552,
+      "load": [
+        4233.734987123763,
+        4233.771401719525,
+        4006.6288076127657,
+        4006.665222074776
+      ],
+      "omega": [
+        101.26526945285526,
+        101.2652858366321,
+        101.16375482703684,
+        101.16377099968221
+      ],
+      "trueKappa": [
+        -0.006441032413886896,
+        -0.00644102228903903,
+        -0.006431877592084285,
+        -0.00643186997749199
+      ],
+      "alpha": [
+        -0.000518270929988459,
+        0.0005181388518532534,
+        -0.00018426214442996262,
+        0.00018414792650247677
+      ],
+      "assistSlip": [
+        -0.002834264226864191,
+        -0.0028342547447784447,
+        -0.0028214953666019418,
+        -0.002821491512306615
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.6337800454960013,
+      "desiredYaw": -1.4763440072271779e-37,
+      "yawError": 4.4427841933481496e-7,
+      "brake": [
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 101.26526945285526,
+          "omegaAfter": 101.26526945285526,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 101.2652858366321,
+          "omegaAfter": 101.2652858366321,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 101.16375482703684,
+          "omegaAfter": 101.16375482703684,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 101.16377099968221,
+          "omegaAfter": 101.16377099968221,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.002443002239882572,
+          "camber": -0.0004153615468993007,
+          "toe": 0.00018318252955847335,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.22575366869420999,
+            "y": 0,
+            "z": 0.9741844184091146
+          },
+          "lateral": {
+            "x": -0.9741844184091146,
+            "y": 0,
+            "z": 0.22575366869420999
+          },
+          "velocityX": 34.391024582409,
+          "velocityY": 0.017709800490437466
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": 0.0024434835101033586,
+          "camber": 0.0004153410205186076,
+          "toe": -0.00018330391009022134,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.22475035650206673,
+            "y": 0,
+            "z": 0.9744163777627067
+          },
+          "lateral": {
+            "x": -0.9744163777627067,
+            "y": 0,
+            "z": 0.22475035650206673
+          },
+          "velocityX": 34.391024584732726,
+          "velocityY": -0.01770528743602018
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": -0.0024407016715532054,
+          "camber": 0.00041491928416404497,
+          "toe": -0.0001830526253664904,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.22543032782320688,
+            "y": 0,
+            "z": 0.9742592916146715
+          },
+          "lateral": {
+            "x": -0.9742592916146715,
+            "y": 0,
+            "z": 0.22543032782320688
+          },
+          "velocityX": 34.39102835106629,
+          "velocityY": 0.006296466602388584
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.0024402204011310796,
+          "camber": -0.0004148374681922836,
+          "toe": 0.00018301653008483097,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.2250736664498917,
+            "y": 0,
+            "z": 0.9743417494240934
+          },
+          "lateral": {
+            "x": -0.9743417494240936,
+            "y": 0,
+            "z": 0.22507366644989177
+          },
+          "velocityX": 34.39102824437214,
+          "velocityY": -0.006292563661776995
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 51.408511622604955,
+        "driveTorqueAppliedNm": 217.19129143996963,
+        "wheelDriveTorqueRequestedNm": 228.1869605392566,
+        "wheelDriveTorqueAppliedNm": 217.19129143996963,
+        "serviceBrakeTorqueRequestedNm": 0,
+        "serviceBrakeTorqueAppliedNm": 0,
+        "driverServiceBrakeTorqueRequestedNm": 0,
+        "driverServiceBrakeTorqueAppliedNm": 0,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 0,
+      "engineLoad": 6.2880005505654405e-49,
+      "rpm": 4275.603651344304,
+      "gear": 5,
+      "steerAngle": 1.159062815354254e-38,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 3.178613374559833e-15
+    },
+    "resets": 0
+  },
+  {
+    "car": "lp700",
+    "scenario": "turn-brake-release-steer",
+    "startSpeed": 140.44403785592135,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 141.88336482732717,
+      "yawRate": 0.2446173131465912,
+      "heading": 8.487869447499175,
+      "betaDeg": -2.569674541686714,
+      "load": [
+        6434.871599551644,
+        1452.3008817440077,
+        6785.121692207296,
+        1811.4555606588383
+      ],
+      "omega": [
+        108.17509359850197,
+        105.32529503738715,
+        112.2737380139674,
+        108.50908053822509
+      ],
+      "trueKappa": [
+        0.007545882949842024,
+        0.016175891325885712,
+        0.006470535318765573,
+        0.0024279004708259947
+      ],
+      "alpha": [
+        -0.0599826285346465,
+        -0.058420305307377234,
+        -0.049319584102292036,
+        -0.05067063966538157
+      ],
+      "assistSlip": [
+        0.005622675428294672,
+        0.0035479687006637023,
+        0.0058848319597126185,
+        -0.009135456894109495
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        84.56387379337146
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.3863753868472951,
+      "yawError": -0.1409397896556191,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 118.1984269318353,
+          "omegaAfter": 108.17509359850197,
+          "impulse": -12.529166666666667,
+          "appliedTorque": 1503.5,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 115.34862837072049,
+          "omegaAfter": 105.32529503738715,
+          "impulse": -12.529166666666667,
+          "appliedTorque": 1503.5,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 118.41707134730073,
+          "omegaAfter": 112.2737380139674,
+          "impulse": -7.679166666666666,
+          "appliedTorque": 921.5,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 114.65241387155842,
+          "omegaAfter": 108.50908053822509,
+          "impulse": -7.679166666666666,
+          "appliedTorque": 921.5,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.029728687935265882,
+          "camber": -0.005077937112507887,
+          "toe": 0.002209601458884369,
+          "steeringAngle": 0.026977492318841674,
+          "forward": {
+            "x": 0.16988075835889005,
+            "y": 0,
+            "z": 0.9854646254125048
+          },
+          "lateral": {
+            "x": -0.9854646254125048,
+            "y": 0,
+            "z": 0.16988075835889005
+          },
+          "velocityX": 39.57551346555597,
+          "velocityY": 2.3947650056670593
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.035270743849676725,
+          "camber": -0.006023481464237583,
+          "toe": 0.0026224266138986383,
+          "steeringAngle": 0.02594691501220044,
+          "forward": {
+            "x": 0.16845815969870392,
+            "y": 0,
+            "z": 0.9857088050894776
+          },
+          "lateral": {
+            "x": -0.9857088050894778,
+            "y": 0,
+            "z": 0.16845815969870395
+          },
+          "velocityX": 39.15622933405715,
+          "velocityY": 2.3277787075769067
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.03643728745766582,
+          "camber": -0.00619433886780319,
+          "toe": 0.0027327965593249366,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.14271898379061684,
+            "y": 0,
+            "z": 0.989763250310787
+          },
+          "lateral": {
+            "x": -0.989763250310787,
+            "y": 0,
+            "z": 0.14271898379061684
+          },
+          "velocityX": 39.62828422531041,
+          "velocityY": 1.9687757554948742
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.028575575195956007,
+          "camber": -0.004857847783312522,
+          "toe": 0.0021431681396967004,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.1433025513431975,
+            "y": 0,
+            "z": 0.9896789271165322
+          },
+          "lateral": {
+            "x": -0.9896789271165322,
+            "y": 0,
+            "z": 0.1433025513431975
+          },
+          "velocityX": 39.204302990405566,
+          "velocityY": 1.9930479080604036
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 88.32990878612199,
+        "driveTorqueAppliedNm": 428.3476450880679,
+        "wheelDriveTorqueRequestedNm": 392.06996612895966,
+        "wheelDriveTorqueAppliedNm": 428.3476450880679,
+        "serviceBrakeTorqueRequestedNm": 4850,
+        "serviceBrakeTorqueAppliedNm": 4850,
+        "driverServiceBrakeTorqueRequestedNm": 4850,
+        "driverServiceBrakeTorqueAppliedNm": 4850,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891107226467116,
+      "rpm": 4970.2096451380385,
+      "gear": 5,
+      "steerAngle": 0.02646094058942408,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.135990647759119e-9
+    },
+    "maxYawRate": 0.864072859287262,
+    "maxBetaDeg": 89.96840439343971,
+    "maxHeadingDeg": 128.58052088111845,
+    "minRearLoad": 0,
+    "tcsSteps": 0,
+    "escSteps": 308,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 3.158333333333333,
+      "speed": -0.12920875412630614,
+      "yawRate": 0.4292462170124054,
+      "heading": 128.58052088111845,
+      "betaDeg": -89.81818802213715,
+      "load": [
+        7207.273938327218,
+        1172.171133777354,
+        7068.398711970457,
+        1036.9898973456845
+      ],
+      "omega": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trueKappa": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.012572603591957332,
+        -0.012572603591957332,
+        -0.012572603591957332,
+        -0.012572603591957332
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -6.652671330057165e-24,
+      "yawError": 0.43305504139863266,
+      "brake": [
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.4642795623076316,
+          "omegaAfter": 0,
+          "impulse": -0.5803494528845395,
+          "appliedTorque": 69.64193434614475,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.0773794610551651,
+          "omegaAfter": 0,
+          "impulse": 0.09672432631895639,
+          "appliedTorque": 11.606919158274767,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.3976119445085151,
+          "omegaAfter": 0,
+          "impulse": -0.4970149306356439,
+          "appliedTorque": 59.641791676277265,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.06094715516595861,
+          "omegaAfter": 0,
+          "impulse": 0.07618394395744826,
+          "appliedTorque": 9.142073274893791,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.04414194437828865,
+          "camber": -0.007505055051030231,
+          "toe": 0.0033098754061040153,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.7851380574735268,
+            "y": 0,
+            "z": -0.6193207817494072
+          },
+          "lateral": {
+            "x": 0.6193207817494072,
+            "y": 0,
+            "z": 0.7851380574735268
+          },
+          "velocityX": 0.3985537572993936,
+          "velocityY": 10.829404431090826
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.03837079959955504,
+          "camber": -0.006522232295776796,
+          "toe": 0.0028784796667562632,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.7857352582259585,
+            "y": 0,
+            "z": -0.6185629345350288
+          },
+          "lateral": {
+            "x": 0.6185629345350288,
+            "y": 0,
+            "z": 0.7857352582259585
+          },
+          "velocityX": -0.3373801344638512,
+          "velocityY": 10.83168447570489
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.03893387605023983,
+          "camber": -0.006618758928540772,
+          "toe": 0.0029200407037679875,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.7853289585535995,
+            "y": 0,
+            "z": -0.6190786919747107
+          },
+          "lateral": {
+            "x": 0.6190786919747107,
+            "y": 0,
+            "z": 0.7853289585535995
+          },
+          "velocityX": 0.40518413834469236,
+          "velocityY": 11.999272032904578
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.04358446298172865,
+          "camber": -0.00740935870689387,
+          "toe": 0.0032688347236296484,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.7855448389316497,
+            "y": 0,
+            "z": -0.6188047398233536
+          },
+          "lateral": {
+            "x": 0.6188047398233537,
+            "y": 0,
+            "z": 0.78554483893165
+          },
+          "velocityX": -0.33701319969384524,
+          "velocityY": 12.001569441798857
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 5.163145136758785,
+        "driveTorqueAppliedNm": 0,
+        "wheelDriveTorqueRequestedNm": 75.30085761803115,
+        "wheelDriveTorqueAppliedNm": 0,
+        "serviceBrakeTorqueRequestedNm": 4850,
+        "serviceBrakeTorqueAppliedNm": 150.03271845559055,
+        "driverServiceBrakeTorqueRequestedNm": 4850,
+        "driverServiceBrakeTorqueAppliedNm": 150.03271845559055,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 1.4834011402205442e-26,
+      "rpm": 765.6595395340537,
+      "gear": 1,
+      "steerAngle": 2.857357660213631e-21,
+      "resets": 0,
+      "tireRegime": [
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT"
+      ],
+      "solverResidual": 9.907753737925137e-14
+    },
+    "resets": 0
+  },
+  {
+    "car": "lp700",
+    "scenario": "turn-brake-hold-steer",
+    "startSpeed": 140.44403785592135,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 141.88330585574562,
+      "yawRate": 0.24467863142490387,
+      "heading": 8.487887981124553,
+      "betaDeg": -2.569547738999176,
+      "load": [
+        6434.871599551644,
+        1452.3008817440077,
+        6785.121692207296,
+        1811.4555606588383
+      ],
+      "omega": [
+        108.1737275753066,
+        105.32609136337157,
+        112.2737380139674,
+        108.50908053822509
+      ],
+      "trueKappa": [
+        0.007574451934546325,
+        0.016204510365815713,
+        0.006470535318765573,
+        0.0024279004708259947
+      ],
+      "alpha": [
+        -0.060451203778586135,
+        -0.05889809446723071,
+        -0.049319584102292036,
+        -0.05067063966538157
+      ],
+      "assistSlip": [
+        0.005622675428294672,
+        0.0035479687006637023,
+        0.0058848319597126185,
+        -0.009135456894109495
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        88.77235646638354
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.3933895246356486,
+      "yawError": -0.14795392744397257,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 118.19706090863993,
+          "omegaAfter": 108.1737275753066,
+          "impulse": -12.529166666666667,
+          "appliedTorque": 1503.5,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 115.3494246967049,
+          "omegaAfter": 105.32609136337157,
+          "impulse": -12.529166666666667,
+          "appliedTorque": 1503.5,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 118.41707134730073,
+          "omegaAfter": 112.2737380139674,
+          "impulse": -7.679166666666666,
+          "appliedTorque": 921.5,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 114.65241387155842,
+          "omegaAfter": 108.50908053822509,
+          "impulse": -7.679166666666666,
+          "appliedTorque": 921.5,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.029728687935265882,
+          "camber": -0.005078359416543242,
+          "toe": 0.002209249538854907,
+          "steeringAngle": 0.027451001314904345,
+          "forward": {
+            "x": 0.17034771244004893,
+            "y": 0,
+            "z": 0.9853840149233407
+          },
+          "lateral": {
+            "x": -0.9853840149233407,
+            "y": 0,
+            "z": 0.17034771244004893
+          },
+          "velocityX": 39.574374236830494,
+          "velocityY": 2.4135180252188793
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.035270743849676725,
+          "camber": -0.006023996661402219,
+          "toe": 0.002621997282928107,
+          "steeringAngle": 0.026433812563734407,
+          "forward": {
+            "x": 0.16893850207676406,
+            "y": 0,
+            "z": 0.9856265938559385
+          },
+          "lateral": {
+            "x": -0.9856265938559385,
+            "y": 0,
+            "z": 0.16893850207676406
+          },
+          "velocityX": 39.15509029540081,
+          "velocityY": 2.346860313639459
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.03643728745766582,
+          "camber": -0.00619433886780319,
+          "toe": 0.0027327965593249366,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.14271898379061684,
+            "y": 0,
+            "z": 0.989763250310787
+          },
+          "lateral": {
+            "x": -0.989763250310787,
+            "y": 0,
+            "z": 0.14271898379061684
+          },
+          "velocityX": 39.62828422531041,
+          "velocityY": 1.9687757554948742
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.028575575195956007,
+          "camber": -0.004857847783312522,
+          "toe": 0.0021431681396967004,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.1433025513431975,
+            "y": 0,
+            "z": 0.9896789271165322
+          },
+          "lateral": {
+            "x": -0.9896789271165322,
+            "y": 0,
+            "z": 0.1433025513431975
+          },
+          "velocityX": 39.204302990405566,
+          "velocityY": 1.9930479080604036
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 88.32990878612199,
+        "driveTorqueAppliedNm": 428.3476450880679,
+        "wheelDriveTorqueRequestedNm": 392.06996612895966,
+        "wheelDriveTorqueAppliedNm": 428.3476450880679,
+        "serviceBrakeTorqueRequestedNm": 4850,
+        "serviceBrakeTorqueAppliedNm": 4850,
+        "driverServiceBrakeTorqueRequestedNm": 4850,
+        "driverServiceBrakeTorqueAppliedNm": 4850,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891107226467116,
+      "rpm": 4970.2096451380385,
+      "gear": 5,
+      "steerAngle": 0.026941073884490876,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.0934718963913236e-9
+    },
+    "maxYawRate": 0.8361584544181824,
+    "maxBetaDeg": 89.90871877850739,
+    "maxHeadingDeg": 126.43330389548984,
+    "minRearLoad": 0,
+    "tcsSteps": 0,
+    "escSteps": 294,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 3.1166666666666667,
+      "speed": -0.07614293596709346,
+      "yawRate": 0.3828282356262207,
+      "heading": 126.43330389548984,
+      "betaDeg": -89.89343105757777,
+      "load": [
+        7203.748477569844,
+        1172.0106945827845,
+        7062.895572701268,
+        1034.5752109105379
+      ],
+      "omega": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trueKappa": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.03651628641739535,
+        -0.03651628641739535,
+        -0.03651628641739535,
+        -0.03651628641739535
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.0007053783135331438,
+      "yawError": 0.3861832517189655,
+      "brake": [
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.6708470017453708,
+          "omegaAfter": 0,
+          "impulse": 0.8385587521817135,
+          "appliedTorque": 100.62705026180562,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.3634665337690157,
+          "omegaAfter": 0,
+          "impulse": 0.45433316721126965,
+          "appliedTorque": 54.51998006535236,
+          "serviceCapacity": 1503.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1503.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": 0.3711487993015324,
+          "omegaAfter": 0,
+          "impulse": -0.46393599912691547,
+          "appliedTorque": 55.672319895229855,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        },
+        {
+          "regime": "LOCKED",
+          "omegaBefore": -0.05000870042487683,
+          "omegaAfter": 0,
+          "impulse": 0.06251087553109604,
+          "appliedTorque": 7.501305063731524,
+          "serviceCapacity": 921.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 921.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.04436794114483393,
+          "camber": -0.007678176852435768,
+          "toe": 0.0032145732043508787,
+          "steeringAngle": 0.10189553862120178,
+          "forward": {
+            "x": 0.7437855480285361,
+            "y": 0,
+            "z": -0.6684183260084138
+          },
+          "lateral": {
+            "x": 0.6684183260084138,
+            "y": 0,
+            "z": 0.7437855480285361
+          },
+          "velocityX": -0.7360325843128876,
+          "velocityY": 10.934457788648185
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.03811896198648902,
+          "camber": -0.006601585865440407,
+          "toe": 0.0027577868758722817,
+          "steeringAngle": 0.10612594660918723,
+          "forward": {
+            "x": 0.740644387869487,
+            "y": 0,
+            "z": -0.6718972322590954
+          },
+          "lateral": {
+            "x": 0.6718972322590954,
+            "y": 0,
+            "z": 0.740644387869487
+          },
+          "velocityX": -1.4502854787165624,
+          "velocityY": 10.862108505235465
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.03841915022665725,
+          "camber": -0.006531255538531733,
+          "toe": 0.0028814362669992936,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.8077223283079928,
+            "y": 0,
+            "z": -0.5895630927667668
+          },
+          "lateral": {
+            "x": 0.5895630927667668,
+            "y": 0,
+            "z": 0.8077223283079928
+          },
+          "velocityX": 0.3792664979962055,
+          "velocityY": 11.997609350757742
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.04407295974050486,
+          "camber": -0.007492403155885827,
+          "toe": 0.0033054719805378644,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.8079722468392944,
+            "y": 0,
+            "z": -0.5892205430375477
+          },
+          "lateral": {
+            "x": 0.5892205430375477,
+            "y": 0,
+            "z": 0.8079722468392944
+          },
+          "velocityX": -0.2822094800743491,
+          "velocityY": 11.999650980041174
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 5.176046713820479,
+        "driveTorqueAppliedNm": 0,
+        "wheelDriveTorqueRequestedNm": 75.489018088372,
+        "wheelDriveTorqueAppliedNm": 0,
+        "serviceBrakeTorqueRequestedNm": 4850,
+        "serviceBrakeTorqueAppliedNm": 218.32065528611938,
+        "driverServiceBrakeTorqueRequestedNm": 4850,
+        "driverServiceBrakeTorqueAppliedNm": 218.32065528611938,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 3.164241190293546e-26,
+      "rpm": 765.4487910616984,
+      "gear": 1,
+      "steerAngle": 0.10393492028252745,
+      "resets": 0,
+      "tireRegime": [
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT",
+        "FRICTION_CONTACT"
+      ],
+      "solverResidual": 1.549400313888954e-11
+    },
+    "resets": 0
+  },
+  {
+    "car": "m5g90",
+    "scenario": "straight-brake",
+    "startSpeed": 140.2645813184668,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 142.4345656045582,
+      "yawRate": -7.179891099440283e-7,
+      "heading": -0.0001431923651760888,
+      "betaDeg": 0.0000198761677266558,
+      "load": [
+        5698.169784313788,
+        5698.23753663708,
+        6220.669696809419,
+        6220.7451368557595
+      ],
+      "omega": [
+        100.61533537947335,
+        100.61536509921127,
+        105.51767571391044,
+        105.5177078251372
+      ],
+      "trueKappa": [
+        0.008487817559975297,
+        0.00848781338705012,
+        0.008175827410371532,
+        0.008175799791499136
+      ],
+      "alpha": [
+        -0.0009951174058586137,
+        0.0009958747083567262,
+        0.0003101605461313292,
+        -0.00030943866781936143
+      ],
+      "assistSlip": [
+        0.0011389607737158835,
+        0.001138957946970545,
+        0.0008390418118634722,
+        0.0008390164032011179
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": 0,
+      "yawError": -7.31373874465053e-7,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 112.70533537947335,
+          "omegaAfter": 100.61533537947335,
+          "impulse": -15.112499999999999,
+          "appliedTorque": 1813.5,
+          "serviceCapacity": 1813.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1813.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 112.70536509921128,
+          "omegaAfter": 100.61536509921127,
+          "impulse": -15.112499999999999,
+          "appliedTorque": 1813.5,
+          "serviceCapacity": 1813.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1813.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 112.92767571391043,
+          "omegaAfter": 105.51767571391044,
+          "impulse": -9.2625,
+          "appliedTorque": 1111.5,
+          "serviceCapacity": 1111.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1111.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 112.92770782513719,
+          "omegaAfter": 105.5177078251372,
+          "impulse": -9.2625,
+          "appliedTorque": 1111.5,
+          "serviceCapacity": 1111.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1111.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": -0.004079021240512681,
+          "camber": 0.0006935190417082427,
+          "toe": -0.0003058554006875453,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.0009692626334024575,
+            "y": 0,
+            "z": 0.9999995302648632
+          },
+          "lateral": {
+            "x": -0.9999995302648634,
+            "y": 0,
+            "z": 0.0009692626334024577
+          },
+          "velocityX": 39.56652367507715,
+          "velocityY": 0.039710404059880175
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.004077931804780277,
+          "camber": -0.000693162998808649,
+          "toe": 0.00030591605869518596,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": -0.0010387729694575486,
+            "y": 0,
+            "z": 0.9999994604752134
+          },
+          "lateral": {
+            "x": -0.9999994604752136,
+            "y": 0,
+            "z": -0.0010387729694575488
+          },
+          "velocityX": 39.566523644735554,
+          "velocityY": -0.039740624223983945
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.004164122554564442,
+          "camber": -0.0007079008342759552,
+          "toe": 0.0003123091915923332,
+          "steeringAngle": 0,
+          "forward": {
+            "x": -0.000347035541901224,
+            "y": 0,
+            "z": 0.9999999397831645
+          },
+          "lateral": {
+            "x": -0.9999999397831645,
+            "y": 0,
+            "z": -0.000347035541901224
+          },
+          "velocityX": 39.56654166775372,
+          "velocityY": -0.012373141232963073
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": 0.004165259934086174,
+          "camber": 0.0007080941887946497,
+          "toe": -0.000312394495056463,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.0002776711437827682,
+            "y": 0,
+            "z": 0.9999999614493672
+          },
+          "lateral": {
+            "x": -0.9999999614493674,
+            "y": 0,
+            "z": 0.00027767114378276825
+          },
+          "velocityX": 39.566541676748884,
+          "velocityY": 0.012344343216143605
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 114.67774056053801,
+        "driveTorqueAppliedNm": 506.8205890633754,
+        "wheelDriveTorqueRequestedNm": 474.6626359541229,
+        "wheelDriveTorqueAppliedNm": 506.8205890633754,
+        "serviceBrakeTorqueRequestedNm": 5850,
+        "serviceBrakeTorqueAppliedNm": 5850,
+        "driverServiceBrakeTorqueRequestedNm": 5850,
+        "driverServiceBrakeTorqueAppliedNm": 5850,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891108118468442,
+      "rpm": 4493.334587072771,
+      "gear": 5,
+      "steerAngle": 0,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 2.935285689664522e-13
+    },
+    "maxYawRate": 0.00002246200165245682,
+    "maxBetaDeg": 0.00021025829841689092,
+    "maxHeadingDeg": 0.0032653431589353184,
+    "minRearLoad": 2877.650110504671,
+    "tcsSteps": 0,
+    "escSteps": 0,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 5.991666666666666,
+      "speed": 19.055739434232443,
+      "yawRate": 0.0000010919445685431128,
+      "heading": 0.0032653431589353184,
+      "betaDeg": 0.000016811390048197017,
+      "load": [
+        7562.716439824217,
+        7562.713263080666,
+        4385.014137927903,
+        4385.011181678157
+      ],
+      "omega": [
+        13.47823493440865,
+        13.47822947235504,
+        14.416036511918742,
+        14.416031543067577
+      ],
+      "trueKappa": [
+        -1.075665850868556,
+        -1.0756668713514728,
+        -0.3367474095682589,
+        -0.33674755789373545
+      ],
+      "alpha": [
+        0.003353489474880322,
+        -0.0033532857055510153,
+        -0.003085474302903,
+        0.0030853868363221863
+      ],
+      "assistSlip": [
+        -0.7855393927089397,
+        -0.7855398057690626,
+        -0.522865107766929,
+        -0.5228654620202529
+      ],
+      "abs": [
+        0.08,
+        0.08,
+        0.08,
+        0.08
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.6204147110944755,
+      "desiredYaw": 0,
+      "yawError": 0.0000010954157675367852,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 14.446081883716031,
+          "omegaAfter": 13.47823493440865,
+          "impulse": -1.2098086866342272,
+          "appliedTorque": 145.17704239610728,
+          "serviceCapacity": 145.17704239610728,
+          "parkingCapacity": 0,
+          "totalCapacity": 145.17704239610728
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 14.446076421662422,
+          "omegaAfter": 13.47822947235504,
+          "impulse": -1.2098086866342272,
+          "appliedTorque": 145.17704239610728,
+          "serviceCapacity": 145.17704239610728,
+          "parkingCapacity": 0,
+          "totalCapacity": 145.17704239610728
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 15.00818956261136,
+          "omegaAfter": 14.416036511918742,
+          "impulse": -0.7401913133657726,
+          "appliedTorque": 88.82295760389272,
+          "serviceCapacity": 88.82295760389272,
+          "parkingCapacity": 0,
+          "totalCapacity": 88.82295760389272
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 15.008184593760195,
+          "omegaAfter": 14.416031543067577,
+          "impulse": -0.7401913133657726,
+          "appliedTorque": 88.82295760389272,
+          "serviceCapacity": 88.82295760389272,
+          "parkingCapacity": 0,
+          "totalCapacity": 88.82295760389272
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.03084865101749157,
+          "camber": -0.005244916765609632,
+          "toe": 0.0023131104157818137,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": -0.0015902829171923522,
+            "y": 0,
+            "z": 0.9999987354993222
+          },
+          "lateral": {
+            "x": -0.9999987354993222,
+            "y": 0,
+            "z": -0.0015902829171923522
+          },
+          "velocityX": 5.3271348109154495,
+          "velocityY": -0.008606663485779457
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": 0.030848596209491652,
+          "camber": 0.005243615264125413,
+          "toe": -0.0023141831252853477,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.0016408681476583263,
+            "y": 0,
+            "z": 0.9999986537749547
+          },
+          "lateral": {
+            "x": -0.9999986537749549,
+            "y": 0,
+            "z": 0.0016408681476583267
+          },
+          "velocityX": 5.327132904421042,
+          "velocityY": 0.008606133200834871
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": -0.03077485015681375,
+          "camber": 0.005231724526658338,
+          "toe": -0.002308113761761031,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.0023329179362564668,
+            "y": 0,
+            "z": 0.9999972787432487
+          },
+          "lateral": {
+            "x": -0.9999972787432487,
+            "y": 0,
+            "z": 0.0023329179362564668
+          },
+          "velocityX": 5.327127572491112,
+          "velocityY": 0.012296090701774443
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.030774905286398535,
+          "camber": -0.0052317338986877515,
+          "toe": 0.00230811789647989,
+          "steeringAngle": 0,
+          "forward": {
+            "x": -0.0022834096520299827,
+            "y": 0,
+            "z": 0.9999973930167821
+          },
+          "lateral": {
+            "x": -0.9999973930167824,
+            "y": 0,
+            "z": -0.002283409652029983
+          },
+          "velocityX": 5.327125665955261,
+          "velocityY": -0.01229573636687396
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 42.346432086258226,
+        "driveTorqueAppliedNm": 2451.804144524159,
+        "wheelDriveTorqueRequestedNm": 666.9563053585671,
+        "wheelDriveTorqueAppliedNm": 2451.804144524159,
+        "serviceBrakeTorqueRequestedNm": 5850,
+        "serviceBrakeTorqueAppliedNm": 468,
+        "driverServiceBrakeTorqueRequestedNm": 5850,
+        "driverServiceBrakeTorqueAppliedNm": 468,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 6.2880009856642e-49,
+      "rpm": 1401.8489371864312,
+      "gear": 1,
+      "steerAngle": 0,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.2237171993052676e-13
+    },
+    "resets": 0
+  },
+  {
+    "car": "m5g90",
+    "scenario": "turn-coast",
+    "startSpeed": 140.26458130227147,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 141.59501726248388,
+      "yawRate": 0.21738430857658386,
+      "heading": 7.271913844328517,
+      "betaDeg": -2.5836641257386614,
+      "load": [
+        9141.420133231064,
+        2352.81491973244,
+        9586.69313895276,
+        2815.979402040389
+      ],
+      "omega": [
+        114.06267668515986,
+        110.44830644502002,
+        114.33715150679427,
+        110.25683626584181
+      ],
+      "trueKappa": [
+        0.007955680150340644,
+        0.014688127032141046,
+        0.007131600654836999,
+        0.005777710932367521
+      ],
+      "alpha": [
+        -0.05815163272710621,
+        -0.05659479019251536,
+        -0.048597977511864864,
+        -0.04978229973730999
+      ],
+      "assistSlip": [
+        0.004052755116715319,
+        0.0012516861939174573,
+        0.004494204235931705,
+        -0.006633634694852622
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.32875759337320937,
+      "yawError": -0.11076747661097111,
+      "brake": [
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 114.06267668515986,
+          "omegaAfter": 114.06267668515986,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 110.44830644502002,
+          "omegaAfter": 110.44830644502002,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 114.33715150679427,
+          "omegaAfter": 114.33715150679427,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 110.25683626584181,
+          "omegaAfter": 110.25683626584181,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.03692291956912985,
+          "camber": -0.006305369253384122,
+          "toe": 0.0027454915288247003,
+          "steeringAngle": 0.025704834977217105,
+          "forward": {
+            "x": 0.14730995209873657,
+            "y": 0,
+            "z": 0.9890903790921576
+          },
+          "lateral": {
+            "x": -0.9890903790921576,
+            "y": 0,
+            "z": 0.14730995209873657
+          },
+          "velocityX": 39.47320188845335,
+          "velocityY": 2.3164510061851438
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.04248851754523442,
+          "camber": -0.007254406432636953,
+          "toe": 0.0031605067742699966,
+          "steeringAngle": 0.024601509426413024,
+          "forward": {
+            "x": 0.14580800513711714,
+            "y": 0,
+            "z": 0.9893129058280471
+          },
+          "lateral": {
+            "x": -0.9893129058280471,
+            "y": 0,
+            "z": 0.14580800513711714
+          },
+          "velocityX": 39.105423814517266,
+          "velocityY": 2.2485562662056893
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.04391914024814142,
+          "camber": -0.007466253842184042,
+          "toe": 0.0032939355186106063,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.121295304355842,
+            "y": 0,
+            "z": 0.9926164662855557
+          },
+          "lateral": {
+            "x": -0.9926164662855557,
+            "y": 0,
+            "z": 0.121295304355842
+          },
+          "velocityX": 39.522659448691066,
+          "velocityY": 1.9360419192141536
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.035519342972379575,
+          "camber": -0.006038288305304528,
+          "toe": 0.002663950722928468,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.12192061457587383,
+            "y": 0,
+            "z": 0.9925398549889274
+          },
+          "lateral": {
+            "x": -0.9925398549889276,
+            "y": 0,
+            "z": 0.12192061457587386
+          },
+          "velocityX": 39.15009481735822,
+          "velocityY": 1.9619288494801141
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 114.85173362820402,
+        "driveTorqueAppliedNm": 512.9569170417124,
+        "wheelDriveTorqueRequestedNm": 475.3828106604992,
+        "wheelDriveTorqueAppliedNm": 512.9569170417124,
+        "serviceBrakeTorqueRequestedNm": 0,
+        "serviceBrakeTorqueAppliedNm": 0,
+        "driverServiceBrakeTorqueRequestedNm": 0,
+        "driverServiceBrakeTorqueAppliedNm": 0,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 0,
+      "engineLoad": 0.12891108118468442,
+      "rpm": 4468.502039899996,
+      "gear": 5,
+      "steerAngle": 0.02515231948146194,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 9.396437931838242e-9
+    },
+    "maxYawRate": 0.21738430857658386,
+    "maxBetaDeg": 2.777987395441201,
+    "maxHeadingDeg": 11.499094480777131,
+    "minRearLoad": 2685.3263450010836,
+    "tcsSteps": 0,
+    "escSteps": 0,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 5.991666666666666,
+      "speed": 126.32845261694968,
+      "yawRate": 6.62947570617689e-7,
+      "heading": 11.49431142497894,
+      "betaDeg": 0.000005020095671639031,
+      "load": [
+        6124.981806373746,
+        6125.00130711142,
+        5818.67519746373,
+        5818.694698195699
+      ],
+      "omega": [
+        99.69062248170965,
+        99.690630281755,
+        99.56383900905105,
+        99.56384692069199
+      ],
+      "trueKappa": [
+        -0.008708952961234173,
+        -0.00870896409260014,
+        -0.00866525645080221,
+        -0.008665262262771421
+      ],
+      "alpha": [
+        -0.00047906011274680263,
+        0.00047916979747082434,
+        -0.0002248376956589597,
+        0.00022494469777298862
+      ],
+      "assistSlip": [
+        -0.0036408132041805354,
+        -0.003640824615841511,
+        -0.003591185334271085,
+        -0.00359119149072439
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.6328229615393388,
+      "desiredYaw": -1.2845161238304946e-37,
+      "yawError": 6.628637034683286e-7,
+      "brake": [
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 99.69062248170965,
+          "omegaAfter": 99.69062248170965,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 99.690630281755,
+          "omegaAfter": 99.690630281755,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 99.56383900905105,
+          "omegaAfter": 99.56383900905105,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        },
+        {
+          "regime": "RELEASED",
+          "omegaBefore": 99.56384692069199,
+          "omegaAfter": 99.56384692069199,
+          "impulse": 0,
+          "appliedTorque": 0,
+          "serviceCapacity": 0,
+          "parkingCapacity": 0,
+          "totalCapacity": 0
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.002975213422016676,
+          "camber": -0.0005058485944670314,
+          "toe": 0.00022308907938108693,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.19970498700678385,
+            "y": 0,
+            "z": 0.9798560701269449
+          },
+          "lateral": {
+            "x": -0.9798560701269449,
+            "y": 0,
+            "z": 0.19970498700678385
+          },
+          "velocityX": 35.096933815175696,
+          "velocityY": 0.01666837823480627
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": 0.002975541498654921,
+          "camber": 0.0005057797351759191,
+          "toe": -0.00022321754539530032,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.1987740761235161,
+            "y": 0,
+            "z": 0.9800453390844948
+          },
+          "lateral": {
+            "x": -0.980045339084495,
+            "y": 0,
+            "z": 0.19877407612351616
+          },
+          "velocityX": 35.09693381336309,
+          "velocityY": -0.016672194411830432
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": -0.002972953340763418,
+          "camber": 0.0005054020679297811,
+          "toe": -0.00022297150055725632,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.1994579872465009,
+            "y": 0,
+            "z": 0.9799063788564573
+          },
+          "lateral": {
+            "x": -0.9799063788564573,
+            "y": 0,
+            "z": 0.1994579872465009
+          },
+          "velocityX": 35.09693652132957,
+          "velocityY": 0.007823323361886736
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.002972625264113571,
+          "camber": -0.0005053462948993071,
+          "toe": 0.0002229468948085178,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.19902100915082235,
+            "y": 0,
+            "z": 0.9799952234151901
+          },
+          "lateral": {
+            "x": -0.9799952234151901,
+            "y": 0,
+            "z": 0.19902100915082235
+          },
+          "velocityX": 35.09693652049946,
+          "velocityY": -0.0078270465008492
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 74.30203940069799,
+        "driveTorqueAppliedNm": 299.660617673544,
+        "wheelDriveTorqueRequestedNm": 307.54357128342906,
+        "wheelDriveTorqueAppliedNm": 299.660617673544,
+        "serviceBrakeTorqueRequestedNm": 0,
+        "serviceBrakeTorqueAppliedNm": 0,
+        "driverServiceBrakeTorqueRequestedNm": 0,
+        "driverServiceBrakeTorqueAppliedNm": 0,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 0,
+      "engineLoad": 6.2880009856642e-49,
+      "rpm": 3918.7069105930086,
+      "gear": 5,
+      "steerAngle": 1.1016352379775044e-38,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 3.167967174266266e-13
+    },
+    "resets": 0
+  },
+  {
+    "car": "m5g90",
+    "scenario": "turn-brake-release-steer",
+    "startSpeed": 140.26458130227147,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 141.5950326084741,
+      "yawRate": 0.21742838621139526,
+      "heading": 7.271924720297317,
+      "betaDeg": -2.5835338796625664,
+      "load": [
+        9141.420133231064,
+        2352.81491973244,
+        9586.69313895276,
+        2815.979402040389
+      ],
+      "omega": [
+        101.97267668515985,
+        98.35830644502002,
+        106.92715150679427,
+        102.84683626584182
+      ],
+      "trueKappa": [
+        0.007955680150340644,
+        0.014688127032141046,
+        0.007131600654836999,
+        0.005777710932367521
+      ],
+      "alpha": [
+        -0.05815163272710621,
+        -0.05659479019251536,
+        -0.048597977511864864,
+        -0.04978229973730999
+      ],
+      "assistSlip": [
+        0.004052755116715319,
+        0.0012516861939174573,
+        0.004494204235931705,
+        -0.006633634694852622
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        66.46048596658267
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.32875759337320937,
+      "yawError": -0.11076747661097111,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 114.06267668515986,
+          "omegaAfter": 101.97267668515985,
+          "impulse": -15.112499999999999,
+          "appliedTorque": 1813.5,
+          "serviceCapacity": 1813.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1813.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 110.44830644502002,
+          "omegaAfter": 98.35830644502002,
+          "impulse": -15.112499999999999,
+          "appliedTorque": 1813.5,
+          "serviceCapacity": 1813.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1813.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 114.33715150679427,
+          "omegaAfter": 106.92715150679427,
+          "impulse": -9.2625,
+          "appliedTorque": 1111.5,
+          "serviceCapacity": 1111.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1111.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 110.25683626584181,
+          "omegaAfter": 102.84683626584182,
+          "impulse": -9.2625,
+          "appliedTorque": 1111.5,
+          "serviceCapacity": 1111.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1111.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.03692291956912985,
+          "camber": -0.006305369253384122,
+          "toe": 0.0027454915288247003,
+          "steeringAngle": 0.025704834977217105,
+          "forward": {
+            "x": 0.14730995209873657,
+            "y": 0,
+            "z": 0.9890903790921576
+          },
+          "lateral": {
+            "x": -0.9890903790921576,
+            "y": 0,
+            "z": 0.14730995209873657
+          },
+          "velocityX": 39.47320188845335,
+          "velocityY": 2.3164510061851438
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.04248851754523442,
+          "camber": -0.007254406432636953,
+          "toe": 0.0031605067742699966,
+          "steeringAngle": 0.024601509426413024,
+          "forward": {
+            "x": 0.14580800513711714,
+            "y": 0,
+            "z": 0.9893129058280471
+          },
+          "lateral": {
+            "x": -0.9893129058280471,
+            "y": 0,
+            "z": 0.14580800513711714
+          },
+          "velocityX": 39.105423814517266,
+          "velocityY": 2.2485562662056893
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.04391914024814142,
+          "camber": -0.007466253842184042,
+          "toe": 0.0032939355186106063,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.121295304355842,
+            "y": 0,
+            "z": 0.9926164662855557
+          },
+          "lateral": {
+            "x": -0.9926164662855557,
+            "y": 0,
+            "z": 0.121295304355842
+          },
+          "velocityX": 39.522659448691066,
+          "velocityY": 1.9360419192141536
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.035519342972379575,
+          "camber": -0.006038288305304528,
+          "toe": 0.002663950722928468,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.12192061457587383,
+            "y": 0,
+            "z": 0.9925398549889274
+          },
+          "lateral": {
+            "x": -0.9925398549889276,
+            "y": 0,
+            "z": 0.12192061457587386
+          },
+          "velocityX": 39.15009481735822,
+          "velocityY": 1.9619288494801141
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 114.85173362820402,
+        "driveTorqueAppliedNm": 512.9569170417124,
+        "wheelDriveTorqueRequestedNm": 475.3828106604992,
+        "wheelDriveTorqueAppliedNm": 512.9569170417124,
+        "serviceBrakeTorqueRequestedNm": 5850,
+        "serviceBrakeTorqueAppliedNm": 5850,
+        "driverServiceBrakeTorqueRequestedNm": 5850,
+        "driverServiceBrakeTorqueAppliedNm": 5850,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891108118468442,
+      "rpm": 4468.502039899996,
+      "gear": 5,
+      "steerAngle": 0.02515231948146194,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 9.396437931838242e-9
+    },
+    "maxYawRate": 0.27030205726623535,
+    "maxBetaDeg": 4.952636361282378,
+    "maxHeadingDeg": 31.574846375332896,
+    "minRearLoad": 0,
+    "tcsSteps": 0,
+    "escSteps": 327,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 5.991666666666666,
+      "speed": 20.5676515251356,
+      "yawRate": 0.0000011718244650182896,
+      "heading": 31.574846375332896,
+      "betaDeg": 0.00004204821493759074,
+      "load": [
+        7507.639759828166,
+        7507.717889885653,
+        4420.875330081815,
+        4420.931927597619
+      ],
+      "omega": [
+        4.3407483353848715,
+        4.340751763143809,
+        8.289398531352997,
+        8.28940264100218
+      ],
+      "trueKappa": [
+        -0.6091066295125083,
+        -0.6091064878420713,
+        -0.4550005523357661,
+        -0.45499921382277886
+      ],
+      "alpha": [
+        0.002681990592059828,
+        -0.002684354472658133,
+        -0.003428608201906234,
+        0.0034262246661624827
+      ],
+      "assistSlip": [
+        -0.10552888717802356,
+        -0.10552915617347607,
+        -0.035982351510223616,
+        -0.035982037004306244
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.6220503376459603,
+      "desiredYaw": -2.1028257133827307e-38,
+      "yawError": 9.793008020174686e-7,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 16.470729919481098,
+          "omegaAfter": 4.3407483353848715,
+          "impulse": -15.162476980120283,
+          "appliedTorque": 1819.497237614434,
+          "serviceCapacity": 1819.497237614434,
+          "parkingCapacity": 0,
+          "totalCapacity": 1819.497237614434
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 16.470733347240035,
+          "omegaAfter": 4.340751763143809,
+          "impulse": -15.162476980120283,
+          "appliedTorque": 1819.497237614434,
+          "serviceCapacity": 1819.497237614434,
+          "parkingCapacity": 0,
+          "totalCapacity": 1819.497237614434
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 15.659416947256771,
+          "omegaAfter": 8.289398531352997,
+          "impulse": -9.212523019879717,
+          "appliedTorque": 1105.502762385566,
+          "serviceCapacity": 1105.502762385566,
+          "parkingCapacity": 0,
+          "totalCapacity": 1105.502762385566
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 15.659421056905954,
+          "omegaAfter": 8.28940264100218,
+          "impulse": -9.212523019879717,
+          "appliedTorque": 1105.502762385566,
+          "serviceCapacity": 1105.502762385566,
+          "parkingCapacity": 0,
+          "totalCapacity": 1105.502762385566
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.031543059896222414,
+          "camber": -0.005362980818659422,
+          "toe": 0.002365178961965338,
+          "steeringAngle": 0.0006981317007977319,
+          "forward": {
+            "x": 0.5222593474415758,
+            "y": 0,
+            "z": 0.8527867107371572
+          },
+          "lateral": {
+            "x": -0.8527867107371572,
+            "y": 0,
+            "z": 0.5222593474415758
+          },
+          "velocityX": 5.751840098288135,
+          "velocityY": -0.009586945784394008
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": 0.03154246456950116,
+          "camber": 0.00536155835298208,
+          "toe": -0.0023662353625735185,
+          "steeringAngle": -0.0006981317007977319,
+          "forward": {
+            "x": 0.525100499883111,
+            "y": 0,
+            "z": 0.8510402252670006
+          },
+          "lateral": {
+            "x": -0.8510402252670006,
+            "y": 0,
+            "z": 0.525100499883111
+          },
+          "velocityX": 5.751837959880403,
+          "velocityY": 0.009595392943816172
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": -0.03140847294556931,
+          "camber": 0.005339440400746783,
+          "toe": -0.002355635470917698,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.5256855011196357,
+            "y": 0,
+            "z": 0.8506789958101689
+          },
+          "lateral": {
+            "x": -0.8506789958101689,
+            "y": 0,
+            "z": 0.5256855011196357
+          },
+          "velocityX": 5.751832120250318,
+          "velocityY": 0.013553847816137221
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.031409035518550066,
+          "camber": -0.005339536038153511,
+          "toe": 0.002355677663891255,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.5216719605712683,
+            "y": 0,
+            "z": 0.8531461572050414
+          },
+          "lateral": {
+            "x": -0.8531461572050414,
+            "y": 0,
+            "z": 0.5216719605712683
+          },
+          "velocityX": 5.7518300181034805,
+          "velocityY": -0.013544432746475099
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 46.54709113898394,
+        "driveTorqueAppliedNm": 2692.8853442848963,
+        "wheelDriveTorqueRequestedNm": 733.116685438997,
+        "wheelDriveTorqueAppliedNm": 2692.8853442848963,
+        "serviceBrakeTorqueRequestedNm": 5850,
+        "serviceBrakeTorqueAppliedNm": 5850,
+        "driverServiceBrakeTorqueRequestedNm": 5850,
+        "driverServiceBrakeTorqueAppliedNm": 5850,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 6.2880009856642e-49,
+      "rpm": 1612.488343839696,
+      "gear": 1,
+      "steerAngle": 1.1016352379775044e-38,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 1.4213895789615085e-13
+    },
+    "resets": 0
+  },
+  {
+    "car": "m5g90",
+    "scenario": "turn-brake-hold-steer",
+    "startSpeed": 140.26458130227147,
+    "brakeEntry": {
+      "phase": "brake-or-coast",
+      "t": 0,
+      "speed": 141.5950107065107,
+      "yawRate": 0.21747590601444244,
+      "heading": 7.271940634525215,
+      "betaDeg": -2.583438463640873,
+      "load": [
+        9141.420133231064,
+        2352.81491973244,
+        9586.69313895276,
+        2815.979402040389
+      ],
+      "omega": [
+        101.97133811956928,
+        98.35866398247238,
+        106.92715150679427,
+        102.84683626584182
+      ],
+      "trueKappa": [
+        0.007982058583716655,
+        0.0147144162851283,
+        0.007131600654836999,
+        0.005777710932367521
+      ],
+      "alpha": [
+        -0.058597879151941853,
+        -0.05704869092421396,
+        -0.048597977511864864,
+        -0.04978229973730999
+      ],
+      "assistSlip": [
+        0.004052755116715319,
+        0.0012516861939174573,
+        0.004494204235931705,
+        -0.006633634694852622
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        70.04024995881092
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.62,
+      "desiredYaw": -0.3347238666935898,
+      "yawError": -0.11673374993135152,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 114.06133811956929,
+          "omegaAfter": 101.97133811956928,
+          "impulse": -15.112499999999999,
+          "appliedTorque": 1813.5,
+          "serviceCapacity": 1813.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1813.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 110.44866398247238,
+          "omegaAfter": 98.35866398247238,
+          "impulse": -15.112499999999999,
+          "appliedTorque": 1813.5,
+          "serviceCapacity": 1813.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1813.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 114.33715150679427,
+          "omegaAfter": 106.92715150679427,
+          "impulse": -9.2625,
+          "appliedTorque": 1111.5,
+          "serviceCapacity": 1111.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1111.5
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 110.25683626584181,
+          "omegaAfter": 102.84683626584182,
+          "impulse": -9.2625,
+          "appliedTorque": 1111.5,
+          "serviceCapacity": 1111.5,
+          "parkingCapacity": 0,
+          "totalCapacity": 1111.5
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.03692291956912985,
+          "camber": -0.006305868766369438,
+          "toe": 0.0027450752680036033,
+          "steeringAngle": 0.026155786121876436,
+          "forward": {
+            "x": 0.14775638023890253,
+            "y": 0,
+            "z": 0.989023787428137
+          },
+          "lateral": {
+            "x": -0.9890237874281372,
+            "y": 0,
+            "z": 0.14775638023890256
+          },
+          "velocityX": 39.472152297013416,
+          "velocityY": 2.334267686455808
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": -0.04248851754523442,
+          "camber": -0.007254994907190724,
+          "toe": 0.00316001637880852,
+          "steeringAngle": 0.025063182828836503,
+          "forward": {
+            "x": 0.1462652141620792,
+            "y": 0,
+            "z": 0.9892454129922064
+          },
+          "lateral": {
+            "x": -0.9892454129922066,
+            "y": 0,
+            "z": 0.14626521416207922
+          },
+          "velocityX": 39.10438043687407,
+          "velocityY": 2.266629136741835
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": 0.04391914024814142,
+          "camber": -0.007466253842184042,
+          "toe": 0.0032939355186106063,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.121295304355842,
+            "y": 0,
+            "z": 0.9926164662855557
+          },
+          "lateral": {
+            "x": -0.9926164662855557,
+            "y": 0,
+            "z": 0.121295304355842
+          },
+          "velocityX": 39.522659448691066,
+          "velocityY": 1.9360419192141536
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.035519342972379575,
+          "camber": -0.006038288305304528,
+          "toe": 0.002663950722928468,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.12192061457587383,
+            "y": 0,
+            "z": 0.9925398549889274
+          },
+          "lateral": {
+            "x": -0.9925398549889276,
+            "y": 0,
+            "z": 0.12192061457587386
+          },
+          "velocityX": 39.15009481735822,
+          "velocityY": 1.9619288494801141
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 114.85173362820402,
+        "driveTorqueAppliedNm": 512.9569170417124,
+        "wheelDriveTorqueRequestedNm": 475.3828106604992,
+        "wheelDriveTorqueAppliedNm": 512.9569170417124,
+        "serviceBrakeTorqueRequestedNm": 5850,
+        "serviceBrakeTorqueAppliedNm": 5850,
+        "driverServiceBrakeTorqueRequestedNm": 5850,
+        "driverServiceBrakeTorqueAppliedNm": 5850,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 0.12891108118468442,
+      "rpm": 4468.502039899996,
+      "gear": 5,
+      "steerAngle": 0.025608584522608894,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 9.17187134988792e-9
+    },
+    "maxYawRate": 0.3423837125301361,
+    "maxBetaDeg": 6.324771590121582,
+    "maxHeadingDeg": 97.32985552989913,
+    "minRearLoad": 0,
+    "tcsSteps": 0,
+    "escSteps": 295,
+    "final": {
+      "phase": "brake-or-coast",
+      "t": 5.991666666666666,
+      "speed": 22.212571036660307,
+      "yawRate": 0.17597557604312897,
+      "heading": 97.32985552989913,
+      "betaDeg": 2.198276400359881,
+      "load": [
+        7956.612216912623,
+        7191.211404866777,
+        4727.809307659854,
+        3950.7381914363955
+      ],
+      "omega": [
+        16.42888639434172,
+        15.535984232807863,
+        17.31907359399241,
+        16.433512656900906
+      ],
+      "trueKappa": [
+        -0.8320971622011267,
+        -0.9124906111942627,
+        -0.28787408827601796,
+        -0.30779368197071455
+      ],
+      "alpha": [
+        -0.007863472957650046,
+        -0.013688979789648816,
+        -0.009723121141805723,
+        -0.003909061311070255
+      ],
+      "assistSlip": [
+        -0.6534078080942235,
+        -0.7029697691474277,
+        -0.42177591852303203,
+        -0.4716512710629177
+      ],
+      "abs": [
+        0.08,
+        0.08,
+        0.08,
+        0.08
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "frontShare": 0.6254341308231618,
+      "desiredYaw": -0.17781665151773957,
+      "yawError": -0.001134746697095429,
+      "brake": [
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 17.404563638425852,
+          "omegaAfter": 16.42888639434172,
+          "impulse": -1.2195965551051657,
+          "appliedTorque": 146.35158661261988,
+          "serviceCapacity": 146.35158661261988,
+          "parkingCapacity": 0,
+          "totalCapacity": 146.35158661261988
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 16.511661476891994,
+          "omegaAfter": 15.535984232807863,
+          "impulse": -1.2195965551051657,
+          "appliedTorque": 146.35158661261988,
+          "serviceCapacity": 146.35158661261988,
+          "parkingCapacity": 0,
+          "totalCapacity": 146.35158661261988
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 17.903396349908277,
+          "omegaAfter": 17.31907359399241,
+          "impulse": -0.7304034448948344,
+          "appliedTorque": 87.64841338738013,
+          "serviceCapacity": 87.64841338738013,
+          "parkingCapacity": 0,
+          "totalCapacity": 87.64841338738013
+        },
+        {
+          "regime": "SLIP_POSITIVE",
+          "omegaBefore": 17.017835412816773,
+          "omegaAfter": 16.433512656900906,
+          "impulse": -0.7304034448948344,
+          "appliedTorque": 87.64841338738013,
+          "serviceCapacity": 87.64841338738013,
+          "parkingCapacity": 0,
+          "totalCapacity": 87.64841338738013
+        }
+      ],
+      "geometry": [
+        {
+          "wheelIndex": 0,
+          "jounce": 0.03741433601950134,
+          "camber": -0.006455925362356478,
+          "toe": 0.0027265016689282254,
+          "steeringAngle": 0.08507277263228635,
+          "forward": {
+            "x": 0.9782612438910296,
+            "y": 0,
+            "z": -0.20737632145636983
+          },
+          "lateral": {
+            "x": 0.20737632145636983,
+            "y": 0,
+            "z": 0.9782612438910296
+          },
+          "velocityX": 6.377719834068843,
+          "velocityY": 0.027374127415265237
+        },
+        {
+          "wheelIndex": 1,
+          "jounce": 0.027050868763544844,
+          "camber": 0.004669330622669023,
+          "toe": -0.001969912713210531,
+          "steeringAngle": 0.08709878351073531,
+          "forward": {
+            "x": 0.9768450514532809,
+            "y": 0,
+            "z": -0.21394799707227188
+          },
+          "lateral": {
+            "x": 0.21394799707227188,
+            "y": 0,
+            "z": 0.9768450514532809
+          },
+          "velocityX": 6.077957917778672,
+          "velocityY": 0.04350674453773706
+        },
+        {
+          "wheelIndex": 2,
+          "jounce": -0.027058033263958448,
+          "camber": 0.004599865654872936,
+          "toe": -0.0020293524947968835,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.9917455638197856,
+            "y": 0,
+            "z": -0.12822143597610977
+          },
+          "lateral": {
+            "x": 0.12822143597610977,
+            "y": 0,
+            "z": 0.9917455638197856
+          },
+          "velocityX": 6.35819153626668,
+          "velocityY": 0.04800423843295065
+        },
+        {
+          "wheelIndex": 3,
+          "jounce": -0.03740374303150962,
+          "camber": -0.006358636315356636,
+          "toe": 0.002805280727363221,
+          "steeringAngle": 0,
+          "forward": {
+            "x": 0.9923538872202672,
+            "y": 0,
+            "z": -0.12342512920319383
+          },
+          "lateral": {
+            "x": 0.12342512920319386,
+            "y": 0,
+            "z": 0.9923538872202674
+          },
+          "velocityX": 6.057725512206577,
+          "velocityY": 0.018106939478513606
+        }
+      ],
+      "powertrain": {
+        "engineDomainStatus": "IN_DOMAIN",
+        "driveTorqueRequestedNm": 54.40999043952788,
+        "driveTorqueAppliedNm": 2294.644508774639,
+        "wheelDriveTorqueRequestedNm": 856.9573494225641,
+        "wheelDriveTorqueAppliedNm": 2294.644508774639,
+        "serviceBrakeTorqueRequestedNm": 5850,
+        "serviceBrakeTorqueAppliedNm": 468,
+        "driverServiceBrakeTorqueRequestedNm": 5850,
+        "driverServiceBrakeTorqueAppliedNm": 468,
+        "assistBrakeTorqueRequestedNm": 0,
+        "assistBrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0
+      },
+      "throttle": 0,
+      "brakeInput": 1,
+      "engineLoad": 6.2880009856642e-49,
+      "rpm": 1736.55947742769,
+      "gear": 1,
+      "steerAngle": 0.08605184959200288,
+      "resets": 0,
+      "tireRegime": [
+        "HANDLING",
+        "HANDLING",
+        "HANDLING",
+        "HANDLING"
+      ],
+      "solverResidual": 7.327455723325066e-9
+    },
+    "resets": 0
+  }
+]

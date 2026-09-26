@@ -1,0 +1,68 @@
+{
+  "date": "2026-09-07",
+  "current_round_closure_requested_by_user": true,
+  "scope": "Current delivery; no further art iteration",
+  "runtime_structure": {
+    "gltf_version": 2,
+    "meshes": 24,
+    "materials": 68,
+    "embedded_images": 63,
+    "primitives_with_uv": 171,
+    "primitives_with_vertex_colour": 171,
+    "bytes": 296272492,
+    "canonical_uv_fix": "Preserved actual active UVs under UVMap before group join"
+  },
+  "files": [
+    {
+      "file": "scene/longwan_region_editable.blend",
+      "bytes": 670799341,
+      "sha256": "7804fe86026d6528ae2b45eef9997c196964f09c9539f238073fcf66be579365"
+    },
+    {
+      "file": "models/longwan_region_realtime.glb",
+      "bytes": 296272492,
+      "sha256": "15028a41637f1da0384d4417f7e7123172efdbe44284ebaaa95c3b53be4e7858"
+    },
+    {
+      "file": "scene/longwan_kerb_procedural.blend",
+      "bytes": 21276537,
+      "sha256": "f99dd32288d0568309b41b98b52c54024e9ec2a152cff0007edefe0b55ed7864"
+    },
+    {
+      "file": "review/DELIVERY.md",
+      "bytes": 4315,
+      "sha256": "391f0caeec5714d62fbf19e8fcdf074b37c01d9019d61e5fc2fac34d3c6a210e"
+    },
+    {
+      "file": "previews/region_01_overall.png",
+      "bytes": 1408403,
+      "sha256": "63ce2f1d9d290767987b201c0d0bdf42c978026636b751feacdcf4da3f84cb89"
+    },
+    {
+      "file": "previews/region_02_driving.png",
+      "bytes": 1148493,
+      "sha256": "7c7a6e8dc99cf59bf7092f9f0897f99d1e210808e0d03beea4688e5ccf8c95a2"
+    },
+    {
+      "file": "previews/region_03_pit_work.png",
+      "bytes": 1757502,
+      "sha256": "b3f94a17a4e9c854cc57f46169da84c9b8a60145b499d7aa48759d4dd385741e"
+    },
+    {
+      "file": "previews/region_04_control.png",
+      "bytes": 1549982,
+      "sha256": "e60122216d889342df0f274d53924ed75a8fb34a4a43917cbaf0dc59c49c14c9"
+    },
+    {
+      "file": "previews/region_05_stand.png",
+      "bytes": 1289748,
+      "sha256": "b9d6810480b88ae610a108cd9589a7a16e46c3770a7c9d9611bc34026e58d90d"
+    },
+    {
+      "file": "previews/region_06_ground.png",
+      "bytes": 1656969,
+      "sha256": "231d131b6664470fdf8cbf1e31f33137ee6a85032e1bd24f3f57b280382b3929"
+    }
+  ],
+  "game_integration": "NOT_RUN"
+}

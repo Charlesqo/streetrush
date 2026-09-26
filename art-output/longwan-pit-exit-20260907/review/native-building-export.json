@@ -1,0 +1,20 @@
+{
+  "source_blend": "scene/longwan_pit_building_native.blend",
+  "file": "models/longwan_pit_building_native.glb",
+  "source_parts": 254,
+  "triangles": 138758,
+  "material_slots": 13,
+  "dimensions_m": [
+    18.419998168945312,
+    9.710700988769531,
+    6.60346794128418
+  ],
+  "bytes": 251378648,
+  "status": "Original GLB inspected front/near in browser; separate runtime derivative also inspected front/near/rear and two sun directions. Whole asset set remains unaccepted.",
+  "not_run": [
+    "Game integration",
+    "Collision",
+    "Target game performance"
+  ],
+  "runtime_derivative": "models/longwan_pit_building_realtime.glb"
+}

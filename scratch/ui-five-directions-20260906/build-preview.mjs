@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+const dir=new URL('./',import.meta.url).pathname;
+const target='/Users/charles/.codex/visualizations/2026/09/06/01a0776a-658d-73a2-85cb-1145e70728c7/streetrush-five-directions.html';
+const names=['mx5','m3e30','gt3rs','lp700','amggt3','m5g90','drive','drive-m3e30','drive-gt3rs','drive-lp700','drive-amggt3','drive-m5g90'];
+const images=Object.fromEntries(await Promise.all(names.map(async name=>[name,'data:image/jpeg;base64,'+(await fs.readFile(dir+'scenes/'+name+'.jpg')).toString('base64')])));
+const source=await fs.readFile(dir+'preview-source.html','utf8');
+const fragment=source.replace('/*SCENE_DATA*/{}',JSON.stringify(images));
+if(Buffer.byteLength(fragment)>1000000)throw Error('Fragment exceeds 1MB');
+await fs.writeFile(target,fragment);
+const css=await fs.readFile('/Users/charles/.codex/plugins/cache/openai-bundled/visualize/1.0.29/skills/visualize/assets/visualize.css','utf8');
+await fs.writeFile(dir+'review.html','<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>StreetRush · 五套游戏界面预览</title><style>'+css+'\nbody{max-width:1600px;margin:0 auto;padding:24px;background:#16191d;color:#e5e8ec}button{cursor:pointer}#streetrush-directions [hidden]{display:none!important}</style></head><body>'+fragment+'</body></html>');
+console.log(JSON.stringify({target,bytes:Buffer.byteLength(fragment)}));

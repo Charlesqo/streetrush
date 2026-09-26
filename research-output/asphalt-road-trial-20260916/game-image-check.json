@@ -1,0 +1,19 @@
+{
+  "scope": "Final encoded screenshot values on fixed central road ROI; not linear radiance or image-quality score",
+  "region_xyxy": [
+    450,
+    385,
+    820,
+    460
+  ],
+  "image_wh": [
+    1280,
+    720
+  ],
+  "originalMean8bit": 70.05851051051052,
+  "trialMean8bit": 77.1117117117117,
+  "restoredMean8bit": 70.05851051051052,
+  "trialVsOriginalMeanAbs8bit": 7.053249249249249,
+  "restoredVsOriginalMaxAbs8bit": 0.0,
+  "restoredVsOriginalMeanAbs8bit": 0.0
+}

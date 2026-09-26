@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>911 GT3 RS · 渲染诊断对照</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#111519;color:#e5e8eb;font:15px/1.65 system-ui,sans-serif}main{max-width:1150px;margin:auto;padding:32px 24px}header{border-bottom:1px solid #39434a;padding-bottom:22px;margin-bottom:22px}small{color:#b7c883;letter-spacing:.12em}h1{font-size:30px;margin:8px 0}p{max-width:850px;color:#b9c2ca}select,button{background:#26343e;color:#fff;border:1px solid #66727b;border-radius:6px;padding:9px;font:inherit}select{width:100%;margin:8px 0 14px}#viewer{position:relative;width:100%;aspect-ratio:1524/1304;background:#222;overflow:hidden}#viewer img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}#image-b{clip-path:inset(0 0 0 50%)}#divider{position:absolute;top:0;bottom:0;left:50%;border-left:2px solid #ecf3cb;pointer-events:none}.tag{position:absolute;top:12px;background:#12181ce6;padding:5px 10px;border-radius:5px;font-size:13px;max-width:45%}#tag-a{left:12px}#tag-b{right:12px;text-align:right}input[type=range]{width:100%;accent-color:#b7c883;margin:16px 0}nav{display:flex;gap:10px;flex-wrap:wrap}.note{padding:16px 20px;background:#1c252c;border-left:3px solid #b7c883;margin:20px 0;color:#d8e0e6}a{color:#c2d78b}section{margin-top:36px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid img{width:100%;display:block}.grid a{text-decoration:none}.grid span{display:block;margin:8px 0}footer{margin-top:35px;color:#89959e;font-size:13px}@media(max-width:650px){main{padding:20px 14px}.grid{grid-template-columns:1fr 1fr}h1{font-size:25px}}
+</style>
+<main>
+<header><small>STREET RUSH · 2026.09.20</small><h1>911 还差在哪里</h1><p>主要曲面和部件结构值得保留。已确认的问题集中在阴影伪影、错误材质分配，以及尚未校准的表面响应。以下均为当前游戏的原始渲染帧，右侧实验不代表完成修复。</p></header>
+<label for="case">选择一组对照</label><select id="case"></select>
+<div id="viewer"><img id="image-a" alt="对照基准"><img id="image-b" alt="诊断实验"><div id="divider"></div><span class="tag" id="tag-a"></span><span class="tag" id="tag-b"></span></div>
+<label for="split">拖动分界线比较同机位画面</label><input id="split" type="range" min="0" max="100" value="50">
+<nav><button id="only-a">只看基准</button><button id="half">左右对照</button><button id="only-b">只看实验</button><a id="open-a" target="_blank">打开基准原图</a><a id="open-b" target="_blank">打开实验原图</a></nav>
+<div class="note" id="note"></div>
+<p>详细依据、实际参数和仍未验证的部分见 <a href="911渲染专项诊断.md">专项诊断报告</a>。逐帧 JSON 与截图同名，保存在同一目录。</p>
+<section><h2>关键部位基准</h2><div class="grid" id="gallery"></div></section>
+<footer>静态取证采用 5 FPS 检查模式和 2× 绘制分辨率，不是性能测试。摄影棚及条纹环境只用于检查响应和曲面，不是目标户外场景。源模型与生产代码未修改。</footer>
+</main>
+<script>
+const cases=[
+ ['玻璃黑边：颜色被统一规则覆盖','glass-baseline','glass-source-black-trim','当前蓝灰色边框','只恢复黑边源颜色','只改一个材质的颜色，边框及部分雨刮立即变深。证明蓝灰色来自程序覆盖；透明车窗和座舱本身仍需校准。'],
+ ['车身条纹：太阳阴影伪影','wheel-baseline','wheel-no-sun-shadow','当前太阳阴影','仅关闭太阳阴影','翼子板上看似模型分面的斜纹大幅消失。这是定位证据，关闭阴影会破坏正常遮挡，不是修复方案。'],
+ ['碳纤维：清漆材质分支未生效','carbon-baseline','carbon-clearcoat-test','当前 Standard 材质','Physical + 清漆实验','源颜色纹理和底层粗糙度保持一致，只补上可工作的清漆层。纹理方向、尺度及采样仍需处理，实验值没有作为最终配方。'],
+ ['局部反射：位置和精度的收益','baseline-hero','hero-probe-local-high','原固定场地探针','车旁 512 / 无预模糊','车门和车身下部反射发生变化，但整体质量仍未达到目标。这个实验同时改变采样位置、尺寸和预模糊；单因素截图另存于目录。'],
+ ['阴影覆盖：简单缩小范围并未解决','wheel-baseline','wheel-near-shadow-test','112 米覆盖','20 米覆盖 + 现有偏移缩放','条纹变细但仍然明显。不能仅凭更高近车采样密度就宣布阴影修复完成。'],
+ ['阴影偏移：实验仍有局限','wheel-shadow-control-r2','wheel-zero-normal-more-depth-bias','原始偏移','normalBias=0 / bias=-0.0006','改变了条纹与遮挡，但还不能通过验收。需要同时检查漏光、接触阴影和行驶稳定性。'],
+ ['环境遮蔽：有贡献，但不能替代材质','hero-baseline-r2','hero-no-gtao','当前 GTAO','仅关闭 GTAO','观察车底、轮拱和凹处。GTAO 提供局部暗部，但不能修复玻璃着色和材料分配。'],
+ ['结构化反射：模型能表现更多层次','hero-environment-only','hero-studio-diagnostic','当前环境 / 无太阳','摄影棚环境 / 无太阳','仅作诊断：场地背景仍为室外。车体能形成更清楚的反射，证明现有几何有继续校准的价值；摄影棚光照不能直接作为户外成品。']
+];
+const byId=id=>document.getElementById(id), select=byId('case'), slider=byId('split');
+for(let i=0;i<cases.length;i++){const o=document.createElement('option');o.value=i;o.textContent=cases[i][0];select.append(o)}
+function split(v){slider.value=v;byId('image-b').style.clipPath=`inset(0 0 0 ${v}%)`;byId('divider').style.left=v+'%'}
+function show(){const c=cases[select.value];byId('image-a').src=c[1]+'.png';byId('image-b').src=c[2]+'.png';byId('tag-a').textContent=c[3];byId('tag-b').textContent=c[4];byId('note').textContent=c[5];byId('open-a').href=c[1]+'.png';byId('open-b').href=c[2]+'.png';split(50)}
+select.onchange=show;slider.oninput=()=>split(slider.value);byId('only-a').onclick=()=>split(100);byId('only-b').onclick=()=>split(0);byId('half').onclick=()=>split(50);show();
+for(const [name,file] of [['整车','baseline-hero'],['前灯','headlight-baseline'],['轮组','wheel-baseline'],['内饰','cockpit-baseline'],['尾灯与车标','badge-baseline'],['后侧','rear-baseline'],['右前','opposite-baseline'],['条纹曲面诊断','stripe-reflective-side'],['碳纤维源纹理','textures/source-0']]){const a=document.createElement('a');a.href=file+'.png';a.target='_blank';const im=document.createElement('img');im.src=file+'.png';im.loading='lazy';im.alt=name;const s=document.createElement('span');s.textContent=name;a.append(im,s);byId('gallery').append(a)}
+</script></html>

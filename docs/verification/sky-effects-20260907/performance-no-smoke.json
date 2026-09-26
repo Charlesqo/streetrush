@@ -1,0 +1,621 @@
+{
+  "frameRateCap": null,
+  "previewFrameRateCap": 5,
+  "driving": false,
+  "speedKmh": 3.3391255837349525e-9,
+  "car": "gt3rs",
+  "source": "gltf",
+  "state": "race",
+  "view": {
+    "position": [
+      -2.5,
+      1.1,
+      3.6
+    ],
+    "target": [
+      0,
+      0.5,
+      0
+    ]
+  },
+  "resolution": [
+    1280,
+    720
+  ],
+  "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "sky": "hdri",
+  "effects": {
+    "particles": 0,
+    "screenCoverage": 0,
+    "marks": 0,
+    "mode": "near",
+    "paused": true,
+    "legacy": false,
+    "lighting": 1
+  },
+  "frameMs": {
+    "samples": 720,
+    "mean": 16.667,
+    "p50": 16.6,
+    "p95": 19,
+    "p99": 19.5
+  },
+  "renderCpuMs": {
+    "samples": 721,
+    "mean": 0.289,
+    "p50": 0.3,
+    "p95": 0.6,
+    "p99": 0.8
+  },
+  "gpuMs": {
+    "samples": 720,
+    "mean": 4.46,
+    "p50": 4.124,
+    "p95": 5.757,
+    "p99": 6.611
+  },
+  "drawCalls": {
+    "samples": 721,
+    "mean": 29,
+    "p50": 29,
+    "p95": 29,
+    "p99": 29
+  },
+  "triangles": {
+    "samples": 721,
+    "mean": 35917,
+    "p50": 35917,
+    "p95": 35917,
+    "p99": 35917
+  },
+  "textures": 17,
+  "geometries": 61,
+  "materials": [
+    {
+      "name": "Scene_-_Root.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.4713139487880803,
+      "metalness": 0.43123940949153367
+    },
+    {
+      "name": "TwiXeR_992_GT3RS_black",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.1725689068766686,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_wheels_chrome_1",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "amdb11_misc_chrome.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "amdb11_brake.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.16647365020541016,
+      "metalness": 0.7177164730406796
+    },
+    {
+      "name": "TwiXeR_992_metal_radiator.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "amdb11_caliper.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.11771159683534282,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_carPaint.003",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.3,
+      "metalness": 0.4,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "TwiXeR_992_headlight_1.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_carbon_roof.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.46,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_headlight_1.001_0",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.2518072436030282,
+      "metalness": 0.608001852958028
+    },
+    {
+      "name": "TwiXeR_992_glass.002",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "TwiXeR_992_symbols.004",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_antichrome.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992_red.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_headlight_1.001_1",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_plastic_mgl.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_symbols.004_0",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.8211145618000169,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_carpet.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_speakers.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0.9127646865209493
+    },
+    {
+      "name": "TwiXeR_992_blackGlass.001",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "TwiXeR_992_symbols_1.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.8211145618000169,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_symbols.004_1",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.8211145618000169,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID08_fabric_002.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_symbols.004_2",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.8211145618000169,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_rivet_001_747474FF.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9950304060020461,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_headlight_1.001_2",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.7470177871865296,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_seatbelt.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_plastic_1.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_gauges_chrome.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992_int_chrome.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_exhausttip_antichrome.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_engine.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_rubbertrim.008",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.86,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_int_chrome.005",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_rubbertrim.009",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.86,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_Interior_D",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_ID06_stitch_001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.08114005680779224,
+      "metalness": 0.5836208262729943
+    },
+    {
+      "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9606972568918656,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_carpet.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_symbols_6",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_symbols_1.003_0",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.8211145618000169,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_glass.004",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "TwiXeR_992_glass_int.001",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_rubbertrim.011",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.86,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_chrome.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992_gauges_9000.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 0.9188599431922078
+    },
+    {
+      "name": "TwiXeR_992_plastic.004",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_seat_leather.004",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID02_leather_MGL.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_gps_screen.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_upper_leather.004",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_plastic_2.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_gauges_1.003",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_gauges_9000.001_0",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_dash_clock_1.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_gauges_chrome_2.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992_int_chrome.007",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.86,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_speakers.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9947238662151154,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_antichrome.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "TwiXeR_992_taillight_running.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_brakelight_1.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_plastic_smooth.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_gauges_screen.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_led_lights.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.24571198693176977,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_headlight_high.001",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0,
+      "metalness": 1,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "TwiXeR_992_plastic_mgl.002",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_seat_leather_2.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "TwiXeR_992_symbols_3.001",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "TwiXeR_992_carPaint.008",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.3,
+      "metalness": 0.4,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "soft-contact-occlusion",
+      "type": "MeshBasicMaterial"
+    }
+  ]
+}

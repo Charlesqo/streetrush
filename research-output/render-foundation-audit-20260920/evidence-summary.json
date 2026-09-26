@@ -1,0 +1,2336 @@
+{
+  "recordedAt": "2026-09-20T12:13:13.249Z",
+  "sourceHashes": {
+    "src/main.js": "df82476e9ead8ede6fc3c41eeaebff29dfde51a588e6634c297c5ef689ab946b",
+    "src/rendering.js": "92950ca85a0fe56dcedc0688a7cbf514b5da69e08a3b9b13b9485cd10412ab72",
+    "src/render-pipeline.js": "ca9c7a8411b4465a39b8dea93955b8640fdc867c0d98a606265b09d760812d18",
+    "src/car-materials.js": "19293a57c07b316d77d577edca78a8e907d58db1e82a43a29e52362d451ee8a0",
+    "src/assets.js": "f67e70e8cf03d072d24b09b433e38485769332c52c8d2f6ff5410312a12bd122",
+    "src/track-environment.js": "b4ee5a3e5782c6d92d90c062bffe9a7bb40c31842c34f18f0296a51961ef6c73",
+    "src/track-detail-materials.js": "a3bbc1fd77da068489a5d702bd25b5decdb51518e76622c2b5783a33921bec43",
+    "src/dev-straight-art.js": "03a41dc1f13d9e0a8d3a807ee113922d2fbde016a45a8b6f8eb0c6d3de738e7a",
+    "package.json": "40f7e7baaa74ce978d51302f71ae9b8927b80e3f1bfa6bc7fa9e54a7e03fedaa",
+    "public/cars/porsche-gt3-rs.glb": "e1cf7d3e04aaaf27cfec6363de5f6427b87c997993f9de0f54ec5549b68b8f96"
+  },
+  "frames": [
+    {
+      "file": "normal-911-menu.json",
+      "car": "gt3rs",
+      "mode": "menu",
+      "recordedAt": "2026-09-20T12:08:45.137Z",
+      "resolution": [
+        1028,
+        880
+      ],
+      "renderer": {
+        "toneMapping": 4,
+        "exposure": 0.9,
+        "outputColorSpace": "srgb",
+        "msaa": 4,
+        "qualityTier": 2
+      },
+      "environment": {
+        "texture": {
+          "name": "PMREM.cubeUv",
+          "width": 768,
+          "height": 1024,
+          "colorSpace": "srgb-linear",
+          "channel": 0,
+          "anisotropy": 1,
+          "source": null
+        },
+        "id": "9030861e-b0e6-4450-9a91-227a74bba3d0",
+        "intensity": 0.8,
+        "preset": "hdri"
+      },
+      "ao": {
+        "size": [
+          514,
+          440
+        ],
+        "normalTexture": false,
+        "blend": {
+          "blending": 5,
+          "src": 208,
+          "dst": 200
+        }
+      },
+      "passTargets": [
+        {
+          "object": "game-scene",
+          "target": {
+            "id": "91ec0355-528b-4ae2-a2be-06c4eb246ac8",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 4,
+            "depth": true
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1575adcd-7388-4836-ac86-ca556da8635b",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "78f57b0b-8858-4f00-a73e-e1399d6f197d",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "OutputShader",
+          "target": null
+        }
+      ],
+      "carMaterials": [
+        {
+          "name": "Scene_-_Root.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.43123940949153367
+        },
+        {
+          "name": "TwiXeR_992_GT3RS_black",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_wheels_chrome_1",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "amdb11_misc_chrome.002",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "amdb11_brake.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.7177164730406796
+        },
+        {
+          "name": "TwiXeR_992_metal_radiator.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "amdb11_caliper.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_carPaint.003",
+          "type": "MeshPhysicalMaterial",
+          "role": "paint",
+          "transmission": 0,
+          "metalness": 0.4,
+          "clearcoat": 1
+        },
+        {
+          "name": "TwiXeR_992_headlight_1.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_carbon_roof.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_headlight_1.001_0",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.608001852958028
+        },
+        {
+          "name": "TwiXeR_992_glass.002",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "TwiXeR_992_symbols.004",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_antichrome.001",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_red.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_headlight_1.001_1",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_plastic_mgl.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols.004_0",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_carpet.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_speakers.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.9127646865209493
+        },
+        {
+          "name": "TwiXeR_992_blackGlass.001",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "TwiXeR_992_symbols_1.003",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols.004_1",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID08_fabric_002.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols.004_2",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_rivet_001_747474FF.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_headlight_1.001_2",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_seatbelt.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_plastic_1.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_gauges_chrome.001",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_int_chrome.003",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_exhausttip_antichrome.001",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_engine.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_rubbertrim.008",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_int_chrome.005",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_rubbertrim.009",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_Interior_D",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_ID06_stitch_001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.5836208262729943
+        },
+        {
+          "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_carpet.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols_6",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols_1.003_0",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_glass.004",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "TwiXeR_992_glass_int.001",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_rubbertrim.011",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_chrome.003",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_gauges_9000.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.9188599431922078
+        },
+        {
+          "name": "TwiXeR_992_plastic.004",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_seat_leather.004",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID02_leather_MGL.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_gps_screen.003",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_upper_leather.004",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_plastic_2.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_gauges_1.003",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_gauges_9000.001_0",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_dash_clock_1.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_gauges_chrome_2.001",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_int_chrome.007",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_speakers.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_antichrome.002",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_taillight_running.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_brakelight_1.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_plastic_smooth.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_gauges_screen.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_led_lights.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_headlight_high.001",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 0
+        },
+        {
+          "name": "TwiXeR_992_plastic_mgl.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_seat_leather_2.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols_3.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_carPaint.008",
+          "type": "MeshPhysicalMaterial",
+          "role": "paint",
+          "transmission": 0,
+          "metalness": 0.4,
+          "clearcoat": 1
+        },
+        {
+          "name": "soft-contact-occlusion",
+          "type": "MeshBasicMaterial"
+        }
+      ],
+      "trees": [
+        {
+          "name": "Distant Jacaranda trees 0",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        },
+        {
+          "name": "Distant Jacaranda trees 1",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        }
+      ],
+      "megascansMaterials": 0,
+      "transmissionMaterials": 0,
+      "lightMapMaterials": 0,
+      "roadMaps": {
+        "map": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "srgb",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_diff_1k.jpg"
+        },
+        "normalMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_nor_gl_1k.jpg"
+        },
+        "roughnessMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "metalnessMap": null,
+        "aoMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "lightMap": null,
+        "envMap": null
+      },
+      "contactShadow": {
+        "name": "contact-shadow",
+        "car": true,
+        "geometry": "CircleGeometry",
+        "instances": 1,
+        "castShadow": false,
+        "receiveShadow": false,
+        "renderOrder": 2,
+        "materials": [
+          "060e3232-bbce-4312-93c3-e7dbaa56d02b"
+        ]
+      }
+    },
+    {
+      "file": "normal-911-race.json",
+      "car": "gt3rs",
+      "mode": "race",
+      "recordedAt": "2026-09-20T12:09:48.081Z",
+      "resolution": [
+        1028,
+        880
+      ],
+      "renderer": {
+        "toneMapping": 4,
+        "exposure": 0.9,
+        "outputColorSpace": "srgb",
+        "msaa": 4,
+        "qualityTier": 2
+      },
+      "environment": {
+        "texture": {
+          "name": "PMREM.cubeUv",
+          "width": 768,
+          "height": 1024,
+          "colorSpace": "srgb-linear",
+          "channel": 0,
+          "anisotropy": 1,
+          "source": null
+        },
+        "id": "9030861e-b0e6-4450-9a91-227a74bba3d0",
+        "intensity": 0.8,
+        "preset": "hdri"
+      },
+      "ao": {
+        "size": [
+          514,
+          440
+        ],
+        "normalTexture": false,
+        "blend": {
+          "blending": 5,
+          "src": 208,
+          "dst": 200
+        }
+      },
+      "passTargets": [
+        {
+          "object": "game-scene",
+          "target": {
+            "id": "91ec0355-528b-4ae2-a2be-06c4eb246ac8",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 4,
+            "depth": true
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1575adcd-7388-4836-ac86-ca556da8635b",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "78f57b0b-8858-4f00-a73e-e1399d6f197d",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "OutputShader",
+          "target": null
+        }
+      ],
+      "carMaterials": [
+        {
+          "name": "Scene_-_Root.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.43123940949153367
+        },
+        {
+          "name": "TwiXeR_992_GT3RS_black",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_wheels_chrome_1",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "amdb11_misc_chrome.002",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "amdb11_brake.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.7177164730406796
+        },
+        {
+          "name": "TwiXeR_992_metal_radiator.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "amdb11_caliper.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_carPaint.003",
+          "type": "MeshPhysicalMaterial",
+          "role": "paint",
+          "transmission": 0,
+          "metalness": 0.4,
+          "clearcoat": 1
+        },
+        {
+          "name": "TwiXeR_992_headlight_1.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_carbon_roof.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_headlight_1.001_0",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.608001852958028
+        },
+        {
+          "name": "TwiXeR_992_glass.002",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "TwiXeR_992_symbols.004",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_antichrome.001",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_red.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_headlight_1.001_1",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_plastic_mgl.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols.004_0",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_carpet.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_speakers.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.9127646865209493
+        },
+        {
+          "name": "TwiXeR_992_blackGlass.001",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "TwiXeR_992_symbols_1.003",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols.004_1",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID08_fabric_002.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols.004_2",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_rivet_001_747474FF.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_headlight_1.001_2",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_seatbelt.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_plastic_1.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_gauges_chrome.001",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_int_chrome.003",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_exhausttip_antichrome.001",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_engine.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_rubbertrim.008",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_int_chrome.005",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_rubbertrim.009",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_Interior_D",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_ID06_stitch_001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.5836208262729943
+        },
+        {
+          "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_carpet.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols_6",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols_1.003_0",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_glass.004",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "TwiXeR_992_glass_int.001",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_rubbertrim.011",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_chrome.003",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_gauges_9000.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0.9188599431922078
+        },
+        {
+          "name": "TwiXeR_992_plastic.004",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_seat_leather.004",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID02_leather_MGL.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_gps_screen.003",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_upper_leather.004",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_plastic_2.003",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_gauges_1.003",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_gauges_9000.001_0",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_dash_clock_1.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_gauges_chrome_2.001",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_int_chrome.007",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_speakers.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_antichrome.002",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "TwiXeR_992_taillight_running.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_brakelight_1.002",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_plastic_smooth.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_gauges_screen.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_led_lights.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_headlight_high.001",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 0
+        },
+        {
+          "name": "TwiXeR_992_plastic_mgl.002",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_seat_leather_2.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "TwiXeR_992_symbols_3.001",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "TwiXeR_992_carPaint.008",
+          "type": "MeshPhysicalMaterial",
+          "role": "paint",
+          "transmission": 0,
+          "metalness": 0.4,
+          "clearcoat": 1
+        },
+        {
+          "name": "soft-contact-occlusion",
+          "type": "MeshBasicMaterial"
+        }
+      ],
+      "trees": [
+        {
+          "name": "Distant Jacaranda trees 0",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        },
+        {
+          "name": "Distant Jacaranda trees 1",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        }
+      ],
+      "megascansMaterials": 0,
+      "transmissionMaterials": 0,
+      "lightMapMaterials": 0,
+      "roadMaps": {
+        "map": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "srgb",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_diff_1k.jpg"
+        },
+        "normalMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_nor_gl_1k.jpg"
+        },
+        "roughnessMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "metalnessMap": null,
+        "aoMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "lightMap": null,
+        "envMap": null
+      },
+      "contactShadow": {
+        "name": "contact-shadow",
+        "car": true,
+        "geometry": "CircleGeometry",
+        "instances": 1,
+        "castShadow": false,
+        "receiveShadow": false,
+        "renderOrder": 2,
+        "materials": [
+          "060e3232-bbce-4312-93c3-e7dbaa56d02b"
+        ]
+      }
+    },
+    {
+      "file": "normal-e30-menu.json",
+      "car": "m3e30",
+      "mode": "menu",
+      "recordedAt": "2026-09-20T12:08:06.835Z",
+      "resolution": [
+        1028,
+        880
+      ],
+      "renderer": {
+        "toneMapping": 4,
+        "exposure": 0.9,
+        "outputColorSpace": "srgb",
+        "msaa": 4,
+        "qualityTier": 2
+      },
+      "environment": {
+        "texture": {
+          "name": "PMREM.cubeUv",
+          "width": 768,
+          "height": 1024,
+          "colorSpace": "srgb-linear",
+          "channel": 0,
+          "anisotropy": 1,
+          "source": null
+        },
+        "id": "9030861e-b0e6-4450-9a91-227a74bba3d0",
+        "intensity": 0.8,
+        "preset": "hdri"
+      },
+      "ao": {
+        "size": [
+          514,
+          440
+        ],
+        "normalTexture": false,
+        "blend": {
+          "blending": 5,
+          "src": 208,
+          "dst": 200
+        }
+      },
+      "passTargets": [
+        {
+          "object": "game-scene",
+          "target": {
+            "id": "91ec0355-528b-4ae2-a2be-06c4eb246ac8",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 4,
+            "depth": true
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1575adcd-7388-4836-ac86-ca556da8635b",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "78f57b0b-8858-4f00-a73e-e1399d6f197d",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "OutputShader",
+          "target": null
+        }
+      ],
+      "carMaterials": [
+        {
+          "name": "BMW_E30_M3_PAINT",
+          "type": "MeshPhysicalMaterial",
+          "role": "paint",
+          "transmission": 0,
+          "metalness": 0.12,
+          "clearcoat": 1
+        },
+        {
+          "name": "BMW_E30_M3_PLASTIC",
+          "type": "MeshStandardMaterial",
+          "role": "plastic",
+          "metalness": 0
+        },
+        {
+          "name": "BMW_E30_M3_CHROME",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "BMW_E30_M3_WINDOWS",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "BMW_E30_M3_BLACKOUT",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "BMW_E30_M3_SIDE_MIRROR",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "BMW_E30_M3_TAILLIGHT_REFLECTOR",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "BMW_E30_M3_HEADLIGHT_REFLECTOR",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "BMW_E30_M3_EMBLEMS",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "BMW_E30_M3_LENS",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 1
+        },
+        {
+          "name": "BMW_E30_M3_RIM",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 1
+        },
+        {
+          "name": "BMW_E30_M3_TIRE",
+          "type": "MeshStandardMaterial",
+          "role": "rubber",
+          "metalness": 0
+        },
+        {
+          "name": "Brake_Disc",
+          "type": "MeshStandardMaterial",
+          "role": "metal",
+          "metalness": 0.9
+        },
+        {
+          "name": "Brembo_Calipers",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 1
+        },
+        {
+          "name": "Logo_Plane",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "",
+          "type": "MeshStandardMaterial",
+          "metalness": 0
+        },
+        {
+          "name": "",
+          "type": "MeshStandardMaterial",
+          "metalness": 0.78
+        },
+        {
+          "name": "soft-contact-occlusion",
+          "type": "MeshBasicMaterial"
+        }
+      ],
+      "trees": [
+        {
+          "name": "Distant Jacaranda trees 0",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        },
+        {
+          "name": "Distant Jacaranda trees 1",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        }
+      ],
+      "megascansMaterials": 0,
+      "transmissionMaterials": 0,
+      "lightMapMaterials": 0,
+      "roadMaps": {
+        "map": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "srgb",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_diff_1k.jpg"
+        },
+        "normalMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_nor_gl_1k.jpg"
+        },
+        "roughnessMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "metalnessMap": null,
+        "aoMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "lightMap": null,
+        "envMap": null
+      },
+      "contactShadow": {
+        "name": "contact-shadow",
+        "car": true,
+        "geometry": "CircleGeometry",
+        "instances": 1,
+        "castShadow": false,
+        "receiveShadow": false,
+        "renderOrder": 2,
+        "materials": [
+          "e40368b5-9078-46cb-8a7f-be0aac8f7510"
+        ]
+      }
+    },
+    {
+      "file": "normal-mx5-menu.json",
+      "car": "mx5",
+      "mode": "menu",
+      "recordedAt": "2026-09-20T12:06:03.791Z",
+      "resolution": [
+        1028,
+        880
+      ],
+      "renderer": {
+        "toneMapping": 4,
+        "exposure": 0.9,
+        "outputColorSpace": "srgb",
+        "msaa": 4,
+        "qualityTier": 2
+      },
+      "environment": {
+        "texture": {
+          "name": "PMREM.cubeUv",
+          "width": 768,
+          "height": 1024,
+          "colorSpace": "srgb-linear",
+          "channel": 0,
+          "anisotropy": 1,
+          "source": null
+        },
+        "id": "9030861e-b0e6-4450-9a91-227a74bba3d0",
+        "intensity": 0.8,
+        "preset": "hdri"
+      },
+      "ao": {
+        "size": [
+          514,
+          440
+        ],
+        "normalTexture": false,
+        "blend": {
+          "blending": 5,
+          "src": 208,
+          "dst": 200
+        }
+      },
+      "passTargets": [
+        {
+          "object": "game-scene",
+          "target": {
+            "id": "91ec0355-528b-4ae2-a2be-06c4eb246ac8",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 4,
+            "depth": true
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1575adcd-7388-4836-ac86-ca556da8635b",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "78f57b0b-8858-4f00-a73e-e1399d6f197d",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "OutputShader",
+          "target": null
+        }
+      ],
+      "carMaterials": [
+        {
+          "name": "Material.015",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "Material.014",
+          "type": "MeshPhysicalMaterial",
+          "role": "rubber",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.017",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.002",
+          "type": "MeshPhysicalMaterial",
+          "role": "paint",
+          "transmission": 0,
+          "metalness": 0.12,
+          "clearcoat": 1
+        },
+        {
+          "name": "Material.001",
+          "type": "MeshPhysicalMaterial",
+          "role": "plastic",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.012",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "Material.013",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.010",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "Material.004",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "Material.005",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.008",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "Material.009",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 0
+        },
+        {
+          "name": "soft-contact-occlusion",
+          "type": "MeshBasicMaterial"
+        }
+      ],
+      "trees": [
+        {
+          "name": "Distant Jacaranda trees 0",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        },
+        {
+          "name": "Distant Jacaranda trees 1",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        }
+      ],
+      "megascansMaterials": 0,
+      "transmissionMaterials": 0,
+      "lightMapMaterials": 0,
+      "roadMaps": {
+        "map": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "srgb",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_diff_1k.jpg"
+        },
+        "normalMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_nor_gl_1k.jpg"
+        },
+        "roughnessMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "metalnessMap": null,
+        "aoMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "lightMap": null,
+        "envMap": null
+      },
+      "contactShadow": {
+        "name": "contact-shadow",
+        "car": true,
+        "geometry": "CircleGeometry",
+        "instances": 1,
+        "castShadow": false,
+        "receiveShadow": false,
+        "renderOrder": 2,
+        "materials": [
+          "3f4610c8-b10d-44c9-be87-4f6138f5fc81"
+        ]
+      }
+    },
+    {
+      "file": "normal-mx5-race.json",
+      "car": "mx5",
+      "mode": "race",
+      "recordedAt": "2026-09-20T12:06:28.246Z",
+      "resolution": [
+        1028,
+        880
+      ],
+      "renderer": {
+        "toneMapping": 4,
+        "exposure": 0.9,
+        "outputColorSpace": "srgb",
+        "msaa": 4,
+        "qualityTier": 2
+      },
+      "environment": {
+        "texture": {
+          "name": "PMREM.cubeUv",
+          "width": 768,
+          "height": 1024,
+          "colorSpace": "srgb-linear",
+          "channel": 0,
+          "anisotropy": 1,
+          "source": null
+        },
+        "id": "9030861e-b0e6-4450-9a91-227a74bba3d0",
+        "intensity": 0.8,
+        "preset": "hdri"
+      },
+      "ao": {
+        "size": [
+          514,
+          440
+        ],
+        "normalTexture": false,
+        "blend": {
+          "blending": 5,
+          "src": 208,
+          "dst": 200
+        }
+      },
+      "passTargets": [
+        {
+          "object": "game-scene",
+          "target": {
+            "id": "91ec0355-528b-4ae2-a2be-06c4eb246ac8",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 4,
+            "depth": true
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1575adcd-7388-4836-ac86-ca556da8635b",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "78f57b0b-8858-4f00-a73e-e1399d6f197d",
+            "width": 514,
+            "height": 440,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "ShaderMaterial",
+          "target": {
+            "id": "1aa9b425-bae5-424e-a5e2-aebd26d76894",
+            "width": 1028,
+            "height": 880,
+            "type": 1016,
+            "samples": 0,
+            "depth": false
+          }
+        },
+        {
+          "object": "Mesh",
+          "material": "OutputShader",
+          "target": null
+        }
+      ],
+      "carMaterials": [
+        {
+          "name": "Material.015",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 1
+        },
+        {
+          "name": "Material.014",
+          "type": "MeshPhysicalMaterial",
+          "role": "rubber",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.017",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.002",
+          "type": "MeshPhysicalMaterial",
+          "role": "paint",
+          "transmission": 0,
+          "metalness": 0.12,
+          "clearcoat": 1
+        },
+        {
+          "name": "Material.001",
+          "type": "MeshPhysicalMaterial",
+          "role": "plastic",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.012",
+          "type": "MeshStandardMaterial",
+          "role": "authored",
+          "metalness": 0
+        },
+        {
+          "name": "Material.013",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.010",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "Material.004",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "Material.005",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0
+        },
+        {
+          "name": "Material.008",
+          "type": "MeshPhysicalMaterial",
+          "role": "glass",
+          "transmission": 0,
+          "metalness": 0,
+          "clearcoat": 0.65
+        },
+        {
+          "name": "Material.009",
+          "type": "MeshPhysicalMaterial",
+          "role": "authored",
+          "transmission": 0,
+          "metalness": 1,
+          "clearcoat": 0
+        },
+        {
+          "name": "soft-contact-occlusion",
+          "type": "MeshBasicMaterial"
+        }
+      ],
+      "trees": [
+        {
+          "name": "Distant Jacaranda trees 0",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        },
+        {
+          "name": "Distant Jacaranda trees 1",
+          "count": 174,
+          "castShadow": false,
+          "receiveShadowFlag": true,
+          "material": "MeshBasicMaterial"
+        }
+      ],
+      "megascansMaterials": 0,
+      "transmissionMaterials": 0,
+      "lightMapMaterials": 0,
+      "roadMaps": {
+        "map": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "srgb",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_diff_1k.jpg"
+        },
+        "normalMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_nor_gl_1k.jpg"
+        },
+        "roughnessMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "metalnessMap": null,
+        "aoMap": {
+          "name": "",
+          "width": 1024,
+          "height": 1024,
+          "colorSpace": "",
+          "channel": 0,
+          "anisotropy": 16,
+          "source": "http://127.0.0.1:5174/textures/asphalt/asphalt_01_arm_1k.jpg"
+        },
+        "lightMap": null,
+        "envMap": null
+      },
+      "contactShadow": {
+        "name": "contact-shadow",
+        "car": true,
+        "geometry": "CircleGeometry",
+        "instances": 1,
+        "castShadow": false,
+        "receiveShadow": false,
+        "renderOrder": 2,
+        "materials": [
+          "3f4610c8-b10d-44c9-be87-4f6138f5fc81"
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Read-only observer on a separate dev server, using the normal production entry code and default quality controller.",
+    "No renderreview flag, camera override, lighting override, or material override.",
+    "PNG export and state traversal add capture overhead; not a performance benchmark.",
+    "Static menu and stationary race frames only; no all-track, moving-image, physical-fidelity, or cross-device acceptance."
+  ]
+}

@@ -34,3 +34,14 @@ id_ecdsa
 id_ecdsa.*
 id_ed25519
 id_ed25519.*
+
+# Local research inputs without confirmed redistribution permission.
+# Their generation records and project-generated WAV files remain versioned.
+research-salvage/audio/candidates/i4-bmw-s14b23/BMW_S14B23.mr
+research-salvage/audio/candidates/i4-mazda-b6-compatibility-proxy/Mazda_B6_ZE_NA8C_compatibility.mr
+research-salvage/audio/candidates/flat6-porsche-gt3-992-dacxl/gt3_v2.mr
+research-salvage/audio/candidates/flat6-porsche-gt3-992-dacxl/gt3_v2_0.1.11a_port.mr
+research-salvage/audio/candidates/v12-lamborghini-l539-dacxl/Lamborghini_6_5_SVJ_V2.mr
+research-salvage/audio/candidates/v12-lamborghini-l539-dacxl/Lamborghini_6_5_SVJ_V2_0.1.11a_port.mr
+research-salvage/audio/candidates/v8-bmw-s68-compression-compatible-proxy/S63B44_S68_compression_compatibility.mr
+research-salvage/audio/candidates/v8-mercedes-m159-compression-compatible-proxy/M159_compression_compatibility.mr

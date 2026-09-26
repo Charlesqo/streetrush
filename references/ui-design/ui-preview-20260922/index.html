@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141415">
+  <title>StreetRush — UI 预览</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="preview-bar">
+    <div class="preview-title"><span class="preview-dot"></span> STREETRUSH <span>界面提案 / 01</span></div>
+    <nav aria-label="预览画面">
+      <button data-view="garage" aria-current="page">选车</button>
+      <button data-view="drive">驾驶 HUD</button>
+      <button data-view="results">结算</button>
+    </nav>
+    <span class="preview-note" id="preview-note">独立预览 · 静态场景 / 演示数据</span>
+  </header>
+
+  <main class="stage" id="stage" data-screen="garage">
+    <section class="screen garage" id="garage" aria-label="选择车辆">
+      <div class="scene garage-scene"><img id="garage-image" src="assets/mx5.png" alt="项目中红色 Mazda MX-5 的赛道渲染"></div>
+      <div class="garage-shade"></div>
+      <header class="game-header">
+        <div class="wordmark" aria-label="StreetRush">STREET<span>RUSH</span><i></i></div>
+        <div class="chapter"><span class="accent-slash"></span> 计时赛 <span class="chapter-separator">/</span> 选择车辆</div>
+        <div class="event-mini"><span class="status-dot"></span> LONGWAN <span>03 LAPS</span></div>
+      </header>
+
+      <div class="vehicle-info" aria-live="polite" aria-atomic="true">
+        <div class="eyebrow"><span id="car-brand">MAZDA</span><span class="car-index" id="car-index">01 / 06</span></div>
+        <h1 id="car-name">MX-5</h1>
+        <div class="vehicle-subline"><span id="car-edition">NA</span><span class="small-rule"></span><span id="car-drive">后轮驱动</span></div>
+        <dl class="specs">
+          <div><dt>马力</dt><dd><span id="car-power">116</span><small>PS</small></dd></div>
+          <div><dt>车重</dt><dd><span id="car-mass">990</span><small>KG</small></dd></div>
+          <div><dt>变速</dt><dd><span id="car-gears">5</span><small>挡</small></dd></div>
+        </dl>
+      </div>
+
+      <div class="session-info">
+        <svg class="track-map" viewBox="0 0 940 380" aria-hidden="true"><use href="#track-path"/></svg>
+        <div><span class="eyebrow">TIME ATTACK</span><h2>龙湾国际赛道</h2><p>3 圈 <span>·</span> 干地 <span>·</span> 日间</p></div>
+      </div>
+      <div class="car-caption"><span class="caption-cross">+</span><span id="car-fullname">MAZDA MX-5 NA</span></div>
+
+      <div class="garage-bottom">
+        <div class="roster-heading"><span>车辆 <b>06</b></span><span class="keyboard-hint"><kbd>←</kbd><kbd>→</kbd> 切换</span></div>
+        <div class="car-roster" id="car-roster" role="group" aria-label="选择车辆"></div>
+        <footer class="garage-actions">
+          <div class="gear-setting"><span>换挡方式</span><div role="group" aria-label="换挡方式"><button data-gear="AT" aria-pressed="true">自动 <small>AT</small></button><button data-gear="MT" aria-pressed="false">手动 <small>MT</small></button></div></div>
+          <button class="primary-button start-button" id="start"><span>开始计时赛</span><span class="button-arrow">↗</span></button>
+        </footer>
+      </div>
+    </section>
+
+    <section class="screen drive" id="drive" aria-label="驾驶界面静态示例" hidden>
+      <img class="drive-scene" src="assets/drive-wide.png" alt="项目中 MX-5 在龙湾赛道起点的静态驾驶画面">
+      <div class="drive-shade"></div>
+      <div class="lap-hud"><div class="hud-eyebrow">计时赛 <span>LONGWAN</span></div><div class="lap-count"><strong>02</strong><span>/ 03</span></div><div class="hud-time"><span>本圈</span><b>01:06<small>.318</small></b></div><div class="hud-best"><span>最佳圈</span><b>01:12.846</b></div></div>
+      <div class="split-hud"><span class="split-marker"></span><strong>−00.427</strong><span>较最佳圈</span></div>
+      <button class="pause-button" id="pause" aria-label="暂停"><span></span><span></span></button>
+      <div class="map-hud"><svg viewBox="0 0 940 380" aria-label="龙湾赛道示意图"><use href="#track-path"/><circle cx="440" cy="80" r="18"/></svg><div><span class="map-dot"></span> 龙湾国际赛道</div></div>
+      <div class="speed-hud"><div class="rpm-scale"><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span></div><div class="rpm-bar"><i></i></div><div class="speed-line"><span class="gear-number">4<small id="hud-gear">AT</small></span><strong>128</strong></div><div class="speed-label"><span>MAZDA MX-5</span><span>KM/H</span></div></div>
+      <div class="drive-bottom"><span><kbd>ESC</kbd> 暂停</span><span>02 / 03 <i></i> 计时进行中</span></div>
+      <div class="pause-layer" id="pause-layer" hidden>
+        <div class="pause-panel" role="dialog" aria-modal="true" aria-labelledby="pause-title"><div class="eyebrow">TIME ATTACK / LONGWAN</div><h2 id="pause-title">已暂停</h2><button class="primary-button" id="resume">继续驾驶 <span>↗</span></button><button class="quiet-button" id="restart">重新开始</button><button class="quiet-button" id="back-garage">返回选车</button></div>
+      </div>
+    </section>
+
+    <section class="screen results" id="results" aria-label="计时赛结算演示" hidden>
+      <div class="scene result-scene"><img id="result-image" src="assets/mx5.png" alt="结算车辆的项目渲染"></div><div class="result-shade"></div>
+      <header class="game-header"><div class="wordmark" aria-label="StreetRush">STREET<span>RUSH</span><i></i></div><div class="chapter"><span class="accent-slash"></span> 计时赛 <span class="chapter-separator">/</span> 完赛</div><span class="event-mini">LONGWAN <span>03 LAPS</span></span></header>
+      <div class="result-content"><div class="eyebrow">龙湾国际赛道 <span class="small-rule"></span> 3 圈计时赛</div><h1>冲线。</h1><div class="record-tag"><span>↗</span> 个人新纪录</div><div class="total-time">03:38<span>.482</span></div><div class="record-delta"><b>−02.164</b><span>较个人最佳</span></div><div class="lap-table" aria-label="每圈用时"><div><span>第 1 圈</span><b>01:13.742</b></div><div><span>第 2 圈</span><b>01:12.846</b></div><div class="best-lap"><span>第 3 圈 <em>最佳圈</em></span><b>01:11.894</b></div></div></div>
+      <div class="result-car"><span class="eyebrow" id="result-brand">MAZDA</span><h2 id="result-car-name">MX-5 NA</h2><span id="result-transmission">自动换挡 / AT</span></div>
+      <footer class="result-actions"><button class="quiet-button" id="choose-car"><span>←</span> 选择车辆</button><button class="primary-button" id="retry">再跑一次 <span class="button-arrow">↗</span></button></footer>
+    </section>
+  </main>
+  <footer class="preview-footer"><span>真实项目车辆与赛道素材</span><span id="screen-description">01 — 选车与比赛准备</span><button id="next-screen">下一画面 <span>→</span></button></footer>
+  <svg class="svg-defs" aria-hidden="true"><defs><path id="track-path" d="M126 80 L336 80 L561 80 L771 80 C851 80 891 25 891 168 C888 230 811 300 716 330 C635 356 576 312 538 292 C479 262 454 268 454 294 C403 358 340 396 261 378 C155 368 56 302 18 218 C-5 157 -3 68 60 56 C86 50 107 62 126 80Z" transform="translate(24 -20) scale(.95 .93)"/></defs></svg>
+</body>
+</html>

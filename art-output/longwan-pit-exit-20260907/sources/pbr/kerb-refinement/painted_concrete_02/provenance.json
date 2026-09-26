@@ -1,0 +1,161 @@
+{
+  "asset_id": "painted_concrete_02",
+  "title": "Painted Concrete 02",
+  "source_url": "https://polyhaven.com/a/painted_concrete_02",
+  "license": {
+    "name": "CC0-1.0",
+    "url": "https://polyhaven.com/license",
+    "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "evidence_page": "sources/pbr/kerb-refinement/painted_concrete_02/polyhaven-license.html",
+    "summary": "Poly Haven states that its assets are CC0/public domain: they may be used for any purpose, including commercial work, without required attribution, and may be redistributed."
+  },
+  "api": {
+    "info_url": "https://api.polyhaven.com/info/painted_concrete_02",
+    "files_url": "https://api.polyhaven.com/files/painted_concrete_02",
+    "info_metadata": "sources/pbr/kerb-refinement/painted_concrete_02/polyhaven-painted_concrete_02-info.json",
+    "files_metadata": "sources/pbr/kerb-refinement/painted_concrete_02/polyhaven-painted_concrete_02-files.json"
+  },
+  "asset_metadata": {
+    "authors": {
+      "Rob Tuytel": "All"
+    },
+    "dimensions_api_raw": [
+      4000,
+      4000
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "recommended_surface_scale_m": [
+      4.0,
+      4.0
+    ],
+    "recommended_surface_scale_note": "4.0 m x 4.0 m is the judged conversion of the API dimensions and is a tiling starting point; do not infer displacement depth from this field.",
+    "max_resolution_api_raw": [
+      16384,
+      16384
+    ],
+    "files_hash": "64fd770fa7114f5aa18ab8c7face3083df6e1716",
+    "description": "Free 16K texture of painted concrete: dark matte, weatherbeaten paint over rough cement with fine scratches, scuffs, small pits and subtle surface variation.",
+    "category": "Concrete/Cast Walls & Floors/Painted Concrete",
+    "attributes": {
+      "surface_use": "floor",
+      "condition": [
+        "painted",
+        "weathered",
+        "worn"
+      ],
+      "origin": "man_made"
+    }
+  },
+  "acquisition": {
+    "acquired_date": "2026-09-07",
+    "resolution": "2K",
+    "download_budget_bytes": 60000000,
+    "map_format_policy": "JPEG for diffuse, normal_gl and packed ARM maps; official 16-bit PNG for displacement when available.",
+    "channels": "diffuse=sRGB base colour; arm=R ambient occlusion, G roughness, B metallic; normal_gl=OpenGL tangent normal; displacement=16-bit height",
+    "map_bytes": 14068892,
+    "batch_map_bytes": 29871009,
+    "within_60mb_batch": true,
+    "files": [
+      {
+        "channel": "diffuse",
+        "file": "sources/pbr/kerb-refinement/painted_concrete_02/painted_concrete_02_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_concrete_02/painted_concrete_02_diff_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "channels": [
+          "R",
+          "G",
+          "B"
+        ],
+        "bit_depth": 8,
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_manifest_key": "Diffuse/2k/jpg",
+        "api_bytes": 2103406,
+        "downloaded_bytes": 2103406,
+        "api_md5": "8f39424d7fe9cbc0c8e5c75fb29dc1f0",
+        "downloaded_md5": "8f39424d7fe9cbc0c8e5c75fb29dc1f0",
+        "sha256": "cc75f54f23ae7a02230885278cfdc103efefe453941874cda319c7cec54b30aa",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "normal_gl",
+        "file": "sources/pbr/kerb-refinement/painted_concrete_02/painted_concrete_02_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_concrete_02/painted_concrete_02_nor_gl_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "channels": [
+          "R",
+          "G",
+          "B"
+        ],
+        "bit_depth": 8,
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_manifest_key": "nor_gl/2k/jpg",
+        "api_bytes": 3108663,
+        "downloaded_bytes": 3108663,
+        "api_md5": "50f7f7dbec5fc02ef4ed07a5c413e2b2",
+        "downloaded_md5": "50f7f7dbec5fc02ef4ed07a5c413e2b2",
+        "sha256": "3c6f5701a48c6c164e3b446e26bb355b8f75a1933c8a3ca9dfea580b1b31f995",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "arm",
+        "file": "sources/pbr/kerb-refinement/painted_concrete_02/painted_concrete_02_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/painted_concrete_02/painted_concrete_02_arm_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "channels": [
+          "R",
+          "G",
+          "B"
+        ],
+        "bit_depth": 8,
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_manifest_key": "arm/2k/jpg",
+        "api_bytes": 3125588,
+        "downloaded_bytes": 3125588,
+        "api_md5": "dafa6d13e2d6984e584bd3c6aa0c9dcd",
+        "downloaded_md5": "dafa6d13e2d6984e584bd3c6aa0c9dcd",
+        "sha256": "48b7ef170b2105475ad9be2820caab683a2e0e6200578cbcb2bee0659d7e1775",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "displacement",
+        "file": "sources/pbr/kerb-refinement/painted_concrete_02/painted_concrete_02_disp_2k.png",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/painted_concrete_02/painted_concrete_02_disp_2k.png",
+        "format": "PNG",
+        "mode": "16-bit grayscale",
+        "channels": [
+          "gray"
+        ],
+        "bit_depth": 16,
+        "has_alpha": false,
+        "pixel_format": "gray16be",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_manifest_key": "Displacement/2k/png",
+        "api_bytes": 5731235,
+        "downloaded_bytes": 5731235,
+        "api_md5": "c4e38358239bb060ad2c2bda46177e68",
+        "downloaded_md5": "c4e38358239bb060ad2c2bda46177e68",
+        "sha256": "c21e9dd04fec163cb6e92e791837ea33588e92f8f493ac72f647c1608396484c",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      }
+    ]
+  }
+}

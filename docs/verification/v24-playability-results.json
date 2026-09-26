@@ -1,0 +1,253 @@
+{
+  "schema": "streetrush.v24-playability.verification-summary.v1",
+  "date": "2026-08-31",
+  "scope": "Historical pre-feedback working-tree v24-active playability run; not current driver-handedness acceptance or v2.0/v2.4 completeness",
+  "recordStatus": "HISTORICAL_WITH_WITHDRAWN_STEERING_ACCEPTANCE",
+  "steeringCorrection": {
+    "file": "v24-steering-feedback.json",
+    "previousDriverHandednessPass": "WITHDRAWN_WRONG_REFERENCE_AXIS",
+    "reason": "The old test used legacy +X/right instead of the production ChaseCamera screen-right axis (-X). User feedback and the corrected test reproduced reversed steering.",
+    "latestPolicy": "streetrush-playability-v2-driver-view",
+    "latestTargetedChecks": 100,
+    "latestTargetedStatus": "PASS",
+    "aggregate335ChecksRerun": false,
+    "productionSteeringFeel": "WAITING_FOR_USER"
+  },
+  "commands": [
+    {
+      "command": "node scripts/test-input.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "outputGroups": 8
+    },
+    {
+      "command": "node scripts/test-vehicle-v24.mjs",
+      "exitCode": 0,
+      "result": {
+        "schema": "streetrush.vehicle-v24.gate.v1",
+        "status": "PASS",
+        "scope": "current-working-tree implementation checks; not v2.4 completeness",
+        "referenceParity": "PARTIAL",
+        "suites": 8,
+        "checks": 335,
+        "results": [
+          {
+            "name": "contract",
+            "status": "PASS",
+            "checks": 17
+          },
+          {
+            "name": "selected-reference-checks",
+            "status": "PASS",
+            "checks": 24,
+            "referenceParity": "PARTIAL"
+          },
+          {
+            "name": "rapier-host",
+            "status": "PASS",
+            "checks": 53
+          },
+          {
+            "name": "runtime",
+            "status": "PASS",
+            "checks": 102
+          },
+          {
+            "name": "playability",
+            "status": "PASS",
+            "checks": 100
+          },
+          {
+            "name": "legacy-isolation",
+            "status": "PASS",
+            "checks": 30
+          },
+          {
+            "name": "determinism",
+            "status": "PASS",
+            "checks": 4
+          },
+          {
+            "name": "performance",
+            "status": "PASS",
+            "checks": 5
+          }
+        ]
+      }
+    },
+    {
+      "command": "git -c core.whitespace=cr-at-eol diff --check",
+      "exitCode": 2,
+      "status": "UNRELATED_WORKTREE_WARNINGS",
+      "output": [
+        "docs/MATERIAL_LIBRARY_AUDIT.md:3: trailing whitespace.",
+        "docs/MATERIAL_LIBRARY_AUDIT.md:4: trailing whitespace.",
+        "docs/VEHICLE_DATA.md:3: trailing whitespace."
+      ],
+      "action": "Preserved unrelated user edits; no formatting changes"
+    },
+    {
+      "command": "git -c core.whitespace=cr-at-eol diff --check -- src/input.js src/main.js src/vehicle.js scripts/test-input.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "scope": "Tracked task files only; untracked files are not covered by git diff"
+    },
+    {
+      "command": "node --check src/main.js",
+      "exitCode": 0,
+      "status": "PASS"
+    }
+  ],
+  "playability": {
+    "status": "PASS",
+    "scenarioGroups": 7,
+    "checks": 100,
+    "fixedHz": 120,
+    "evidenceKind": "Selected raw measurements from the executable playability suite; full JSON is printed by its command",
+    "physicalSteering": [
+      {
+        "speedMps": 2,
+        "command": -1,
+        "lateralTravel": 0.257973834032744,
+        "minimumGrounded": 4,
+        "steerAngle": 0.4438289943571249,
+        "automaticResets": []
+      },
+      {
+        "speedMps": 2,
+        "command": 1,
+        "lateralTravel": -0.25689732154242495,
+        "minimumGrounded": 4,
+        "steerAngle": -0.4438169588117605,
+        "automaticResets": []
+      },
+      {
+        "speedMps": 16,
+        "command": -1,
+        "lateralTravel": 0.6937968536462397,
+        "minimumGrounded": 4,
+        "steerAngle": 0.23634922316835463,
+        "automaticResets": []
+      },
+      {
+        "speedMps": 16,
+        "command": 1,
+        "lateralTravel": -0.6926935795506532,
+        "minimumGrounded": 4,
+        "steerAngle": -0.23640163089483732,
+        "automaticResets": []
+      },
+      {
+        "speedMps": 40,
+        "command": -1,
+        "lateralTravel": 0.7591796450133392,
+        "minimumGrounded": 4,
+        "steerAngle": 0.10636946721736301,
+        "automaticResets": []
+      },
+      {
+        "speedMps": 40,
+        "command": 1,
+        "lateralTravel": -0.7864007424031056,
+        "minimumGrounded": 4,
+        "steerAngle": -0.10636395735668747,
+        "automaticResets": []
+      }
+    ],
+    "footBrake": {
+      "launchSpeedKmh": 32.29995531223302,
+      "driverServiceCapacity": [
+        759.5,
+        759.5,
+        465.5,
+        465.5
+      ],
+      "maximumAppliedPairDifference": 5.708399776239048,
+      "maximumYawRate": 0.009074229747056961,
+      "startPosition": {
+        "x": 0.025245798751711845,
+        "y": 0.6560717821121216,
+        "z": 12.556514739990234
+      },
+      "endPosition": {
+        "x": 0.05259641632437706,
+        "y": 0.6540939807891846,
+        "z": 15.980390548706055
+      }
+    },
+    "lowSpeedEsc": {
+      "bodyLongSpeedMps": 1,
+      "escEligible": false,
+      "escBrakeCapacity": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "antiRoll": {
+      "loadRedistributionRestoresRoll": true,
+      "netVerticalIncrement": 0
+    },
+    "collisionDirectionAndClutch": {
+      "reboundDriveThrottle": 1,
+      "reboundServiceBrake": 0,
+      "engineStopActive": true,
+      "clutchRegime": "SLIP_POSITIVE",
+      "engineOmega": 0,
+      "scaledResidual": 0
+    },
+    "zeroInput": {
+      "durationSeconds": 3,
+      "maximumIdleSpeedKmh": 0.001779939153971622,
+      "maximumIdleTransferNm": 0,
+      "driveIntent": 0
+    },
+    "wallRecovery": {
+      "collisionStep": 168,
+      "maxWallContacts": 4,
+      "reverseClearedBodySpeedMps": -2.057639902310099,
+      "finalBodySpeedMps": 2.9400672931243563,
+      "finalReportStatus": "COMMITTED",
+      "automaticResets": []
+    }
+  },
+  "browser": {
+    "noInputBefore": {
+      "status": "REPRODUCED_FAILURE",
+      "file": "v24-playability-production-baseline.json"
+    },
+    "noInputAfter": {
+      "status": "PASS",
+      "file": "v24-playability-production-idle.json"
+    },
+    "keyboardPipeline": {
+      "status": "PARTIAL",
+      "file": "v24-playability-production-keys.json",
+      "passed": [
+        "W: driveIntent + wheel drive torque + afterPhysics",
+        "S: brake request + actual brake reaction + afterPhysics"
+      ],
+      "notRun": [
+        "Sustained production A/D maneuvers"
+      ],
+      "reason": "Short automation key events were received between input samples; not counted as a steering PASS"
+    },
+    "productionManeuverFeel": {
+      "status": "WAITING_FOR_USER"
+    },
+    "userHandoff": {
+      "status": "OPEN_FOR_USER",
+      "url": "http://127.0.0.1:4173/?devtools",
+      "selection": "MAZDA MX-5 NA",
+      "pageState": "READY",
+      "visibleAndMarkedDeliverable": true,
+      "serverCommand": "node_modules/.bin/vite --host 127.0.0.1 --port 4173 --strictPort",
+      "serverSessionId": 57700,
+      "physicsTestsRepeatedDuringHandoff": false
+    }
+  },
+  "referenceParity": "PARTIAL",
+  "targetVehicleCalibration": "SKIP_TARGET_DATA",
+  "gameCompletion": "旧方向 PASS 已撤回；纠正后定点自动验证通过，等待用户重新验收方向与驾驶手感。当前结果见 v24-steering-feedback.json。"
+}

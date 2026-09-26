@@ -1,0 +1,1116 @@
+window.STREETRUSH_AUDIT = {
+  "generatedAtLocal": "Sat Sep 05 2026 08:49:55 GMT+0800 (China Standard Time)",
+  "readOnlyRoot": "/Volumes/Storage/streetrush/public/audio-banks",
+  "audioUrlPrefix": "../../public/audio-banks",
+  "cars": [
+    {
+      "car": "mx5",
+      "bankId": "bank.candidate.i4.mazda-b6-compatibility-proxy",
+      "version": "candidate-2026-08-13-i4-mazda-b6-compatibility-proxy",
+      "family": "i4",
+      "scope": "family",
+      "format": {
+        "sampleRate": 44100,
+        "channels": 1,
+        "format": "PCM16-WAV",
+        "durationSeconds": 2.5,
+        "quality": "candidate-loop-approved"
+      },
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      },
+      "source": {
+        "engineSimulator": "0.1.11a isolated exporter",
+        "script": "candidates/i4-mazda-b6-compatibility-proxy/Mazda_B6_ZE_NA8C_compatibility.mr",
+        "engine": "Mazda B6-ZE 1.6L NA8C geometry compatibility proxy",
+        "claim": "Output-only B6 geometry proxy made from the pinned Mazda BP-ZE source: bore/stroke changed to the documented 78.0/83.6 mm B6 dimensions, while the BP-ZE head, cam profiles, flow samples, runner geometry, exhaust IR and other parameters remain inherited. This is a family compatibility candidate, not an exact B6 recording or exact game-asset bank.",
+        "exactCurrentAsset": false,
+        "exactEngineSource": false,
+        "sourceUrl": "https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/Mazda_BP_ZE.mr",
+        "inheritedSourceSha256": "925e7648a902ff3cd85075716831938b4e986d900c00705d6ed492ccdfc13228",
+        "geometryOverride": {
+          "boreMm": 78,
+          "strokeMm": 83.6,
+          "displacementCc": 1597,
+          "source": "1990 MX-5 specification reference"
+        },
+        "inheritedSignals": [
+          "BP-ZE cylinder-head flow",
+          "BP-ZE cam profiles",
+          "BP-ZE intake/exhaust runner geometry",
+          "BP-ZE exhaust impulse response"
+        ],
+        "officialCompatibilityReference": {
+          "sourceUrl": "https://www.miata.net/faq/First%2025%20Years/Pricing%20%26%20Specs%20-%20Model%20Year/Specifications/1990%20MX-5%20Miata%20Specifications.pdf",
+          "engineCode": "B6-ZE",
+          "boreMm": 78,
+          "strokeMm": 83.6,
+          "displacementCc": 1597,
+          "powerHp": 116,
+          "torqueFtLb": 100,
+          "redlineRpm": 7200,
+          "exactCurrentAsset": false
+        }
+      },
+      "registration": {
+        "status": "eligible_for_manifest",
+        "reason": "Selected as the primary MX-5 NA family candidate because the game config 116 hp / 136 Nm / 7000 rpm is closer to the documented 1.6L B6-ZE geometry than to the BP-ZE 1.8L fallback. This remains a non-exact output-only proxy because the GLB does not prove market/year/trim and the head/cam/flow/IR are inherited from BP-ZE."
+      },
+      "selection": null,
+      "compatibilityOverlay": null,
+      "layerCheck": {
+        "referencedCount": 6,
+        "presentCount": 6,
+        "missingFiles": [],
+        "unreferencedFilesOnDisk": []
+      },
+      "layers": [
+        {
+          "rpm": 1800,
+          "load": 0.06,
+          "mode": "off",
+          "file": "1800-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "766c607fbba6bcd6178bd4f9becf5bb4c8bfbc90595e56c595caada4184dca1d",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 1800,
+          "load": 1,
+          "mode": "on",
+          "file": "1800-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "9ca2fad4d0dbab9adcd54a0be38df03d30c99ddc2bad190989bcab5f37bbf6ff",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4200,
+          "load": 0.06,
+          "mode": "off",
+          "file": "4200-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "65e04af1dfd66e33df9f3f307e61d814e6904ee526affac3b59752fa4b566c4f",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4200,
+          "load": 1,
+          "mode": "on",
+          "file": "4200-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "77270610b5e5adb097478035265d389102f90cf3706e108635c7cbc252d91e7c",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 6800,
+          "load": 0.06,
+          "mode": "off",
+          "file": "6800-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "0f9f370aacdd6057bf75d885c1c18d37b8f6f11247d5f4b8726d8bc8281651e0",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 6800,
+          "load": 1,
+          "mode": "on",
+          "file": "6800-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "f783e5f0f4d115ac60f1960ba8023b204f0efff1e0901d23de22cd8811dc0726",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "car": "m3e30",
+      "bankId": "bank.candidate.i4.bmw-s14b23",
+      "version": "candidate-2026-08-10-i4-bmw-s14b23",
+      "family": "i4",
+      "scope": "family",
+      "format": {
+        "sampleRate": 44100,
+        "channels": 1,
+        "format": "PCM16-WAV",
+        "durationSeconds": 2.5,
+        "quality": "candidate-loop-approved"
+      },
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      },
+      "source": {
+        "engineSimulator": "0.1.11a isolated exporter",
+        "script": "candidates/i4-bmw-s14b23/BMW_S14B23.mr",
+        "engine": "BMW S14B23 2.3L naturally aspirated inline-four",
+        "claim": "isolated real Engine Simulator exhaust output; source-backed S14B23 family candidate for E30 M3; exact market/Evolution variant remains ambiguous",
+        "exactCurrentAsset": false,
+        "exactEngineSource": false,
+        "sourceUrl": "https://github.com/GearheadLydia/Engine-Sim-Engines/blob/f95625e5b91096bfb9ba6550682f96f0e49c53c2/GearheadLydia/BMW_S14B23.mr"
+      },
+      "registration": null,
+      "selection": null,
+      "compatibilityOverlay": null,
+      "layerCheck": {
+        "referencedCount": 6,
+        "presentCount": 6,
+        "missingFiles": [],
+        "unreferencedFilesOnDisk": []
+      },
+      "layers": [
+        {
+          "rpm": 1800,
+          "load": 0.06,
+          "mode": "off",
+          "file": "1800-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "1443dcdb8ec7ac750036e2db1f8d6a70e252bc6b86ccbaab71000d9fdefd59ad",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 1800,
+          "load": 1,
+          "mode": "on",
+          "file": "1800-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "895be37a3e32d2a79834546a5860a1adc40c662065ae35a7d8e774c2cdb25321",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4200,
+          "load": 0.06,
+          "mode": "off",
+          "file": "4200-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "ac68b790182d5b255a315c2d4d28704c38efe7c372c48f09751bbdad966b8b3e",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4200,
+          "load": 1,
+          "mode": "on",
+          "file": "4200-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "de82b298858c2b58888751f05c7549bf9c020e26f5218e0c38f862071d4c911e",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 6800,
+          "load": 0.06,
+          "mode": "off",
+          "file": "6800-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "6393d983bc630c28506317a6357d0b66c2a24d4277a8627d13d56da96099ecad",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 6800,
+          "load": 1,
+          "mode": "on",
+          "file": "6800-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "409f0848c3c27f4bf38a1745e96876f107adc9a6df3b0ca66046f1ed41f349e1",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "car": "gt3rs",
+      "bankId": "bank.candidate.flat6.porsche-gt3-992-dacxl",
+      "version": "candidate-2026-08-13-flat6-porsche-gt3-rs-992-spec",
+      "family": "flat6",
+      "scope": "family",
+      "format": {
+        "sampleRate": 44100,
+        "channels": 1,
+        "format": "PCM16-WAV",
+        "durationSeconds": 2.5,
+        "quality": "candidate-loop-approved"
+      },
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      },
+      "source": {
+        "engineSimulator": "0.1.11a exporter; output-only 992/9000-rpm source variant",
+        "script": "source_scripts/porsche_992_gt3rs_spec_0.1.11a.mr",
+        "baseScript": "candidates/flat6-porsche-gt3-992-dacxl/gt3_v2.mr",
+        "engine": "Porsche 911 GT3 RS (992.1 specification) 4.0L naturally aspirated flat-six; source-labelled MA1.76/MDG.G-compatible",
+        "claim": "isolated real Engine Simulator exhaust output with official 992 GT3 RS physical constraints; family fallback because the current GLB/config and source do not prove the same exact engine/exhaust recording identity",
+        "exactCurrentAsset": false,
+        "exactEngineSource": false,
+        "sourceUrl": "https://catalog.engine-sim.parts/parts/902",
+        "officialReference": {
+          "sourceUrl": "https://newsroom.porsche.com/en/2022/products/porsche-911-gt3-rs-world-premiere-29177.html",
+          "pressKitUrl": "https://newsroom.porsche.com/dam/jcr%3A46a23375-e7ee-4507-a577-d9761b784d33/992%2520911%2520GT3%2520RS%2520Press%2520Kit%25201.pdf",
+          "target": "2022 Porsche 911 GT3 RS / 992.1 specification",
+          "cylinders": 6,
+          "layout": "flat",
+          "displacementLiters": 4,
+          "aspiration": "naturally_aspirated",
+          "redlineRpm": 9000,
+          "specMatch": true,
+          "exactCurrentAsset": false,
+          "exactEngineSource": false,
+          "reason": "Official Porsche material confirms the physical 4.0-litre naturally aspirated six-cylinder boxer and 9000-rpm constraint, but does not identify the game GLB's exact engine code, exhaust calibration, production year, or sound-recording identity."
+        }
+      },
+      "registration": null,
+      "selection": null,
+      "compatibilityOverlay": null,
+      "layerCheck": {
+        "referencedCount": 6,
+        "presentCount": 6,
+        "missingFiles": [],
+        "unreferencedFilesOnDisk": []
+      },
+      "layers": [
+        {
+          "rpm": 1800,
+          "load": 0.06,
+          "mode": "off",
+          "file": "1800-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "ac660472073e6af5a2ae815fcc899c1e0ae2acdf12a56f484903d758fd1b082d",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 1800,
+          "load": 1,
+          "mode": "on",
+          "file": "1800-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "315ff7fbc489e05fa263fa08e4a7d3664bad0a821b6332b9c5e6c515c68b79ee",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4500,
+          "load": 0.06,
+          "mode": "off",
+          "file": "4500-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "e0be664e0df9466aa4e1001c84f8fe9cf3d8e5dc4780ee7ae6dd1b75157d1d64",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4500,
+          "load": 1,
+          "mode": "on",
+          "file": "4500-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "988014ea887273bc3511175949986df9e2994f0b99fa7d773b7d6c6a196d3969",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 9000,
+          "load": 0.06,
+          "mode": "off",
+          "file": "9000-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "de1ccfcd6e7a3f51fad3983e660efd0ba0a8cc5cac169da4807f78470dd51d37",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 9000,
+          "load": 1,
+          "mode": "on",
+          "file": "9000-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "bf0298ef63f6fd33c376cdaaf6acbe514b8ed2d22ddc0ee650d950c7328f6c6b",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "car": "lp700",
+      "bankId": "bank.candidate.v12.lamborghini-l539-dacxl",
+      "version": "candidate-2026-08-13-v12-lamborghini-l539-lp700-spec-coverage",
+      "family": "v12",
+      "scope": "family",
+      "format": {
+        "sampleRate": 44100,
+        "channels": 1,
+        "format": "PCM16-WAV",
+        "durationSeconds": 2.5,
+        "quality": "candidate-loop-approved"
+      },
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      },
+      "source": {
+        "engineSimulator": "0.1.11a exporter; output-only LP700-4 coverage variant derived from an SVJ L539 source",
+        "script": "source_scripts/lp700_l539_spec_0.1.11a.mr",
+        "baseScript": "candidates/v12-lamborghini-l539-dacxl/Lamborghini_6_5_SVJ_V2.mr",
+        "engine": "Lamborghini L539 6.5L naturally aspirated V12 (SVJ-derived source; LP700-4 specification coverage)",
+        "claim": "isolated real Engine Simulator exhaust output; V12 family fallback with LP700-4 700 CV / 8,250 rpm reference and 8,500-rpm runtime coverage; not an exact LP700 bank",
+        "exactCurrentAsset": false,
+        "exactEngineSource": false,
+        "sourceUrl": "https://catalog.engine-sim.parts/parts/901",
+        "officialReference": {
+          "sourceUrl": "https://www.lamborghini.com/ko-en/%EB%89%B4%EC%8A%A4/aventador-no-10000-a-new-production-record",
+          "publisher": "Automobili Lamborghini",
+          "target": "Aventador LP700-4 launch specification",
+          "cylinders": 12,
+          "layout": "V",
+          "displacementLiters": 6.5,
+          "aspiration": "naturally_aspirated",
+          "peakPowerCv": 700,
+          "peakPowerRpm": 8250,
+          "runtimeRedlineRpm": 8500,
+          "peakPowerReferenceMatch": true,
+          "exactCurrentAsset": false,
+          "exactEngineSource": false,
+          "reason": "Lamborghini identifies the LP700-4 as a 700 CV naturally aspirated V12 with peak power at 8,250 rpm. The game config/source coverage uses an 8,500-rpm ceiling, but the downloaded source is an SVJ L539 calibration and does not prove the LP700-4's exact engine, exhaust revision, body year or recording identity."
+        }
+      },
+      "registration": null,
+      "selection": null,
+      "compatibilityOverlay": null,
+      "layerCheck": {
+        "referencedCount": 6,
+        "presentCount": 6,
+        "missingFiles": [],
+        "unreferencedFilesOnDisk": []
+      },
+      "layers": [
+        {
+          "rpm": 1800,
+          "load": 0.06,
+          "mode": "off",
+          "file": "1800-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "92d30b02aea81ae0f35b552690cfcf14a973d8562fbd186a2d44e76f44e1b01c",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 1800,
+          "load": 1,
+          "mode": "on",
+          "file": "1800-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "8632f61c31aef22492a0663f5d7d29e7252f164a6b225a350b5b2ad7c648ad15",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4500,
+          "load": 0.06,
+          "mode": "off",
+          "file": "4500-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "cee0bda04a7b60fffc18f614698a3459b001343d2fb220bbdcd52cc16ec2f115",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4500,
+          "load": 1,
+          "mode": "on",
+          "file": "4500-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "10a7d7da732e041e4829b77ffe7a8399dc5332d6e447e0e0e3e454db77f5dc14",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 8500,
+          "load": 0.06,
+          "mode": "off",
+          "file": "8500-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "d238a356c6ca7ba486ca04a09ff2f27cfac4ce6e84f2c0728e105ec8c4006dd3",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 8500,
+          "load": 1,
+          "mode": "on",
+          "file": "8500-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "2a8afbf772d5faff2e8e6cf0f8903b3c950d99baad00d18f652906e9384357b1",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "car": "amggt3",
+      "bankId": "bank.candidate.v8-mercedes-m159-compression-compatible-proxy",
+      "version": "candidate-2026-08-13-v8-mercedes-m159-compression-compatible-proxy-m159-reference",
+      "family": "v8",
+      "scope": "family",
+      "format": {
+        "sampleRate": 44100,
+        "channels": 1,
+        "format": "PCM16-WAV",
+        "durationSeconds": 2.5,
+        "quality": "candidate-loop-approved"
+      },
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      },
+      "source": {
+        "engineSimulator": "0.1.11a isolated exporter",
+        "script": "candidates/v8-mercedes-m159-compression-compatible-proxy/M159_compression_compatibility.mr",
+        "engine": "Mercedes-AMG M159-compatible 6.208L naturally aspirated GT3 V8 compression-ratio compatibility proxy",
+        "claim": "Output-only M159 race-source proxy with chamber volume corrected from 28.23 cc to 75.343464 cc using the official 11.3:1 SLS M159 compression reference and 102.2 x 94.6 mm geometry. The current GT3 evolution, exact race calibration, dry-sump audio bus and exact source identity remain unverified.",
+        "exactCurrentAsset": false,
+        "exactEngineSource": false,
+        "sourceUrl": "https://mercedes-benz-publicarchive.com/marsClassic/en/instance/ko/SLS-AMG-Coup-2010---2014.xhtml?oid=192608215",
+        "sourceLineage": {
+          "inheritedCandidate": "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+          "engineCode": "M 159 E 63 / 159.980",
+          "boreMm": 102.2,
+          "strokeMm": 94.6,
+          "cylinders": 8,
+          "displacementCc": 6208.301450175419,
+          "compressionRatio": 11.3,
+          "chamberVolumeCc": 75.34346420115799,
+          "firingOrderReference": "15426378",
+          "exactClaim": false
+        },
+        "officialCompatibilityReference": {
+          "sourceUrl": "https://mercedes-benz-publicarchive.com/marsClassic/en/instance/ko/SLS-AMG-Coup-2010---2014.xhtml?oid=192608215",
+          "sourceTitle": "Mercedes-Benz Public Archive: SLS AMG Coupé, 2010–2014",
+          "engineCode": "M 159 E 63 / 159.980",
+          "boreMm": 102.2,
+          "strokeMm": 94.6,
+          "displacementCc": 6208,
+          "compressionRatio": 11.3,
+          "drySump": true,
+          "exactCurrentAsset": false
+        },
+        "sourceModification": {
+          "changedParameter": "cylinder_head.chamber_volume",
+          "inheritedValueCc": 28.23,
+          "outputValueCc": 75.34346420115799,
+          "formula": "sweptVolumePerCylinder / (compressionRatio - 1)",
+          "sourceHash": "b3e8e7874249e65368d4d4e7f3556b7487bb9a45d01b31e6e1f2ce7a37b0d564"
+        }
+      },
+      "registration": {
+        "status": "eligible_for_manifest",
+        "selectedForProfile": true,
+        "selectedAs": "primary_family_fallback",
+        "reason": "Selected as the first non-exact AMG family fallback after source-level proof of the official 11.3:1 M159 chamber-volume correction, six-layer WAV/loop gates, six-layer hash differences, and real Chromium pair audition. The source-calibrated race variant remains registered as the second M159 fallback; current GT3 evolution and exact audio identity remain unresolved."
+      },
+      "selection": {
+        "profileId": "amggt3",
+        "rank": 0,
+        "previousPrimary": "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+        "referenceCandidate": "bank.candidate.v8.mercedes-m159-race-source-calibrated",
+        "exactClaim": false
+      },
+      "compatibilityOverlay": null,
+      "layerCheck": {
+        "referencedCount": 6,
+        "presentCount": 6,
+        "missingFiles": [],
+        "unreferencedFilesOnDisk": []
+      },
+      "layers": [
+        {
+          "rpm": 1800,
+          "load": 0.06,
+          "mode": "off",
+          "file": "1800-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "0ec722202c4932c484ab68a00823f2d079b0b2cd56b2339c62ca5c64effdab1b",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 1800,
+          "load": 1,
+          "mode": "on",
+          "file": "1800-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "50c79bed4d874f2ba286edfbbfacfccdb9059c790c29a15ca5d529f7ab7915f6",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4500,
+          "load": 0.06,
+          "mode": "off",
+          "file": "4500-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "f1f0aa09c17deab1936a6dacc8d511875f557d626f6ecf9f65abc08d461344dc",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4500,
+          "load": 1,
+          "mode": "on",
+          "file": "4500-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "36470492d0ec6f4659b1a80071a2d4021e0c319eb98a9eb8974091a3d96bdb14",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 7600,
+          "load": 0.06,
+          "mode": "off",
+          "file": "7600-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "a3e7ea4b536c128073f6d0e1be77699ff4558ea948238f0303cbce18ddb7598a",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 7600,
+          "load": 1,
+          "mode": "on",
+          "file": "7600-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "957ffb44fe91526df72f26e615a598191ba1350d7e3032b82c3c8886c704b5ce",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "car": "m5g90",
+      "bankId": "bank.candidate.v8-bmw-s68-compression-compatible-proxy",
+      "version": "candidate-2026-08-13-v8-bmw-s68-compression-compatible-proxy-s68-compression-reference",
+      "family": "v8",
+      "scope": "family",
+      "format": {
+        "sampleRate": 44100,
+        "channels": 1,
+        "format": "PCM16-WAV",
+        "durationSeconds": 2.5,
+        "quality": "candidate-loop-approved"
+      },
+      "loop": {
+        "status": "approved",
+        "loopApproved": true,
+        "loopStart": 0,
+        "loopEnd": 2.5,
+        "method": "offline-tail-head-derivative-crossfade",
+        "crossfadeSamples": 4096
+      },
+      "source": {
+        "engineSimulator": "0.1.11a isolated exporter",
+        "script": "candidates/v8-bmw-s68-compression-compatible-proxy/S63B44_S68_compression_compatibility.mr",
+        "engine": "BMW S68B44T0 compression-ratio compatibility proxy",
+        "claim": "Output-only S68 geometry/ignition family proxy with chamber volume corrected from the inherited 20.0 cc to 57.823848 cc, derived from the documented 89.0 x 88.3 mm geometry and 10.5:1 compression ratio. S62B50/S63-labelled cam, head flow, runner, exhaust and no-turbo/no-hybrid source limitations remain; this is not an exact S68 audio source.",
+        "exactCurrentAsset": false,
+        "exactEngineSource": false,
+        "sourceUrl": "https://catalog.engine-sim.parts/parts/2060",
+        "sourceLineage": {
+          "downloadedLabel": "BMW S63B44",
+          "inheritedExecutableLineage": "S62B50",
+          "outputCompatibilityNode": "S68B44T0_compatibility",
+          "boreMm": 89,
+          "strokeMm": 88.3,
+          "displacementCc": 4394.612485244367,
+          "firingOrder": "15486372",
+          "compressionRatio": 10.5,
+          "chamberVolumeCc": 57.823848490057465,
+          "exactClaim": false
+        },
+        "officialCompatibilityReference": {
+          "sourceUrl": "https://www.press.bmwgroup.com/canada/article/detail/T0447873EN/the-all-new-2025-bmw-m5-touring",
+          "sourceTitle": "BMW Group Canada: The All-New 2025 BMW M5 Touring",
+          "engineCode": "S68B44T0 family reference",
+          "boreMm": 89,
+          "strokeMm": 88.3,
+          "displacementCc": 4395,
+          "compressionRatio": 10.5,
+          "exactCurrentAsset": false
+        },
+        "sourceModification": {
+          "changedParameter": "cylinder_head.chamber_volume",
+          "inheritedValueCc": 20,
+          "outputValueCc": 57.823848490057465,
+          "formula": "sweptVolumePerCylinder / (compressionRatio - 1)",
+          "sourceHash": "fecf8eb5497395f1e4fb4d19d7328ab4bf6830397ea135b1117ceadd35a3aac2"
+        }
+      },
+      "registration": {
+        "status": "eligible_for_manifest",
+        "reason": "Registered as a non-exact secondary family fallback after independent format, clipping, non-silence, six-layer, crossfade-loop, compression-derivation and waveform-difference gates. It remains behind the baked-overlay S68 primary and does not claim an exact S68 source."
+      },
+      "selection": null,
+      "compatibilityOverlay": {
+        "mode": "none",
+        "signals": [],
+        "physical": false,
+        "evidence": "Exhaust-only S68-family candidate; runtime compatibility overlay is separate and non-physical."
+      },
+      "layerCheck": {
+        "referencedCount": 6,
+        "presentCount": 6,
+        "missingFiles": [],
+        "unreferencedFilesOnDisk": []
+      },
+      "layers": [
+        {
+          "rpm": 1800,
+          "load": 0.06,
+          "mode": "off",
+          "file": "1800-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "fbd2cdd1e5de2e98b24bcd822e30c2b3be79758010d90fd438819bb24dbb72ab",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 1800,
+          "load": 1,
+          "mode": "on",
+          "file": "1800-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "bf642c77ddfec030f62fdc726da18f99a2e4c138a8ee0c3c9baaba594c9bd76d",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4500,
+          "load": 0.06,
+          "mode": "off",
+          "file": "4500-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "5809b20aa3d84486be188b2e20a8ca54c8ed49830b2453241eb6f522e31e40a7",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 4500,
+          "load": 1,
+          "mode": "on",
+          "file": "4500-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "ddca1546de2619ad138dd7220bd5e708ca6947d84d8b73c3dc0ef8479b131e6e",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 7200,
+          "load": 0.06,
+          "mode": "off",
+          "file": "7200-off.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "033528cc6e5474149ecb857741eed882b2a5600e8c292c497783105058a136e8",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        },
+        {
+          "rpm": 7200,
+          "load": 1,
+          "mode": "on",
+          "file": "7200-on.wav",
+          "existsOnDisk": true,
+          "bytes": 220544,
+          "sha256": "482313f4060e0d1c3b6ab99594a18c4d91af651e7177d7465f8fc649935724b4",
+          "wav": {
+            "headerOk": true,
+            "container": "RIFF/WAVE",
+            "audioFormat": 1,
+            "formatName": "PCM16-WAV",
+            "channels": 1,
+            "sampleRate": 44100,
+            "bitsPerSample": 16,
+            "dataBytes": 220500,
+            "durationSeconds": 2.5
+          }
+        }
+      ]
+    }
+  ]
+};

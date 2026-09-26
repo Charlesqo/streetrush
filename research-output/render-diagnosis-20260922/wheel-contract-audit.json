@@ -1,0 +1,126 @@
+[
+  {
+    "id": "mx5",
+    "groundCalibration": "shape:12",
+    "physicsRadius": 0.29,
+    "staticCompression": 0.08519210526315789,
+    "groundOffset": 0.66,
+    "wheelCenter": [
+      -0.7196371969498159,
+      -0.3139973316108383,
+      1.2188804998180176
+    ],
+    "tireMeshes": [
+      "Circle004_Material014_0"
+    ],
+    "rimMeshes": [],
+    "visualRadiusFromY": 0.3460026153592973,
+    "tireBottom": -0.6599999999999999,
+    "tireTop": 0.03200523071859479,
+    "radiusGap": 0.05600261535929735,
+    "localTireBottomAfterStaticCompression": -0.574807894736842
+  },
+  {
+    "id": "m3e30",
+    "groundCalibration": "shape:6",
+    "physicsRadius": 0.31,
+    "staticCompression": 0.09196875,
+    "groundOffset": 0.68,
+    "wheelCenter": [
+      -0.715,
+      -0.37000000000000005,
+      1.28
+    ],
+    "tireMeshes": [
+      "visual-wheel-FL-tire"
+    ],
+    "rimMeshes": [
+      "visual-wheel-FL-rim"
+    ],
+    "visualRadiusFromY": 0.3100000023841858,
+    "tireBottom": -0.6800000023841859,
+    "tireTop": -0.05999999761581426,
+    "radiusGap": 2.384185793236071e-9,
+    "localTireBottomAfterStaticCompression": -0.5880312523841859,
+    "sourceWheelNames": {
+      "matchingHideRule": [],
+      "originalRims": [
+        "Object_15",
+        "Object_25",
+        "Object_35",
+        "Object_45"
+      ],
+      "originalTires": [
+        "Object_17",
+        "Object_27",
+        "Object_37",
+        "Object_47"
+      ]
+    },
+    "runtimeOriginalWheelBatches": {
+      "originalRimBatches": [
+        ""
+      ],
+      "originalTireBatches": [
+        ""
+      ]
+    },
+    "proceduralRim": {
+      "type": "CylinderGeometry",
+      "radius": 0.1798,
+      "openEnded": false,
+      "axialLength": 0.214,
+      "widthFromTire": 0.009000000000000008
+    },
+    "proceduralTire": {
+      "type": "CylinderGeometry",
+      "radius": 0.31,
+      "openEnded": true,
+      "axialLength": 0.205
+    }
+  },
+  {
+    "id": "gt3rs",
+    "groundCalibration": "wheel:8",
+    "physicsRadius": 0.335,
+    "staticCompression": 0.08082102272727272,
+    "groundOffset": 0.64,
+    "wheelCenter": [
+      -0.7655878753502878,
+      -0.3085731557175044,
+      1.2411645910585836
+    ],
+    "tireMeshes": [
+      "Object_4002_Scene_-_Root002_0"
+    ],
+    "rimMeshes": [],
+    "visualRadiusFromY": 0.38599513457558826,
+    "tireBottom": -0.6964161075503728,
+    "tireTop": 0.07557416160080377,
+    "radiusGap": 0.05099513457558824,
+    "localTireBottomAfterStaticCompression": -0.6155950848231
+  },
+  {
+    "id": "lp700",
+    "groundCalibration": "fallback-box",
+    "physicsRadius": 0.345,
+    "staticCompression": 0.08860645161290322,
+    "groundOffset": 0.65,
+    "wheelCenter": [
+      -0.877916297232528,
+      -0.3043022316282038,
+      1.2617696968234158
+    ],
+    "tireMeshes": [
+      "FL-Pneu-split"
+    ],
+    "rimMeshes": [
+      "FL-Jante-split"
+    ],
+    "visualRadiusFromY": 0.3456977683717962,
+    "tireBottom": -0.65,
+    "tireTop": 0.041395536743592476,
+    "radiusGap": 0.000697768371796248,
+    "localTireBottomAfterStaticCompression": -0.5613935483870968
+  }
+]

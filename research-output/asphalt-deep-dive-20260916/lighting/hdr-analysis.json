@@ -1,0 +1,1311 @@
+{
+  "status": "CPU_SKY_ONLY_REFERENCE_NOT_GPU_TARGET",
+  "source": "E:\\Projects\\streetrush\\streetrush\\public\\textures\\sky\\kloofendal_48d_partly_cloudy_puresky_2k.hdr",
+  "sha256": "5244534e9cf5b606f2ff513aa00ddb161b0a4826ffd88a0d3bd03ac29247d198",
+  "header": [
+    "#?RADIANCE",
+    "FORMAT=32-bit_rle_rgbe",
+    "",
+    "-Y 1024 +X 2048"
+  ],
+  "dimensions": [
+    2048,
+    1024
+  ],
+  "radiance_units": "Uncalibrated linear HDR RGB; never interpreted as cd/m2 or lux",
+  "decode": "r180 RGBE/255, float16 texture storage. No bilinear sample/cubemap resample simulated.",
+  "solid_angle_sum_sr": 12.566370614359172,
+  "max_source_rgb": [
+    71447.09019607842,
+    73503.12156862745,
+    70419.07450980392
+  ],
+  "half_float_limit_pixels": 2,
+  "runtime_half_rgba_sha256": "b331a46f5fb989529b72ea0f4f825bb7841af6420fa679dbd9b37213941e781e",
+  "half_float_mean_abs_relative_luma_error": 0.010147886368509664,
+  "half_float_full_sphere_energy_loss_fraction": 0.010406407350395774,
+  "maximum_luma_texel": [
+    1218,
+    239
+  ],
+  "maximum_texel_rgb": [
+    65504.0,
+    65504.0,
+    65504.0
+  ],
+  "solar_source_texel": [
+    1218.5,
+    239.5
+  ],
+  "solar_direction": [
+    0.5872923826164553,
+    0.741980411720831,
+    -0.323346139521215
+  ],
+  "solar_elevation_deg": 47.900390625,
+  "solar_azimuth_deg": -28.83590433939056,
+  "linear_direct_sun_rgb": [
+    3.5,
+    2.9924741284348184,
+    2.3535510493519065
+  ],
+  "linear_direct_sun_luma": 3.0542438824197897,
+  "clip_affected_pixels_fraction": 0.0011463165283203125,
+  "clip_affected_full_sphere_solid_angle_fraction": 0.001184714105913306,
+  "clip_affected_upper_hemisphere_solid_angle_fraction": 0.002369428211826612,
+  "clip_affected_max_distance_from_sun_deg": 6.980174125294775,
+  "full_sphere_integrated_radiance": {
+    "raw_rgb": [
+      8.036397900353855,
+      8.655323104156661,
+      10.191158600003424
+    ],
+    "clipped_rgb": [
+      3.5947737264667143,
+      4.218245361351742,
+      6.115716351399023
+    ],
+    "raw_luma": 8.63462692862832,
+    "clipped_luma": 4.222692697256599,
+    "loss_fraction_luma": 0.510958292447337
+  },
+  "upper_hemisphere_integrated_radiance": {
+    "raw_rgb": [
+      6.823548624769329,
+      7.241075653077081,
+      8.170694666115661
+    ],
+    "clipped_rgb": [
+      2.381924450886127,
+      2.8039979102682056,
+      4.095252417509849
+    ],
+    "raw_luma": 7.2194278996002375,
+    "clipped_luma": 2.807493668226422,
+    "loss_fraction_luma": 0.6111196472532288
+  },
+  "lower_hemisphere_integrated_radiance": {
+    "raw_rgb": [
+      1.212849275580923,
+      1.414247451082103,
+      2.0204639338901433
+    ],
+    "clipped_rgb": [
+      1.212849275580923,
+      1.414247451082103,
+      2.0204639338901433
+    ],
+    "raw_luma": 1.4151990290292926,
+    "clipped_luma": 1.4151990290292926,
+    "loss_fraction_luma": 0.0
+  },
+  "removed_energy_angle_quantiles": [
+    {
+      "fraction_removed_energy": 0.5,
+      "cone_radius_deg": 0.21151804914656747
+    },
+    {
+      "fraction_removed_energy": 0.9,
+      "cone_radius_deg": 0.35354193272937545
+    },
+    {
+      "fraction_removed_energy": 0.95,
+      "cone_radius_deg": 0.4994350061637722
+    },
+    {
+      "fraction_removed_energy": 0.99,
+      "cone_radius_deg": 2.6394831568642427
+    },
+    {
+      "fraction_removed_energy": 0.999,
+      "cone_radius_deg": 4.829994419292077
+    }
+  ],
+  "removed_energy_solar_cones": [
+    {
+      "radius_deg": 0.27,
+      "removed_energy_inside_fraction": 0.7851673689342663,
+      "clipped_solid_angle_inside_sr": 6.941274264125153e-05
+    },
+    {
+      "radius_deg": 0.5,
+      "removed_energy_inside_fraction": 0.9511488583919884,
+      "clipped_solid_angle_inside_sr": 0.00023347774578571102
+    },
+    {
+      "radius_deg": 1,
+      "removed_energy_inside_fraction": 0.9709999957956861,
+      "clipped_solid_angle_inside_sr": 0.0009652618631892584
+    },
+    {
+      "radius_deg": 2,
+      "removed_energy_inside_fraction": 0.9834280609885954,
+      "clipped_solid_angle_inside_sr": 0.003792340121843313
+    },
+    {
+      "radius_deg": 5,
+      "removed_energy_inside_fraction": 0.9992323074112224,
+      "clipped_solid_angle_inside_sr": 0.01189251878155886
+    },
+    {
+      "radius_deg": 10,
+      "removed_energy_inside_fraction": 1.0,
+      "clipped_solid_angle_inside_sr": 0.01488755652696577
+    },
+    {
+      "radius_deg": 20,
+      "removed_energy_inside_fraction": 1.0,
+      "clipped_solid_angle_inside_sr": 0.01488755652696577
+    },
+    {
+      "radius_deg": 40,
+      "removed_energy_inside_fraction": 0.9999999999999998,
+      "clipped_solid_angle_inside_sr": 0.01488755652696577
+    },
+    {
+      "radius_deg": 90,
+      "removed_energy_inside_fraction": 1.0,
+      "clipped_solid_angle_inside_sr": 0.01488755652696577
+    }
+  ],
+  "diffuse_irradiance": [
+    {
+      "raw_rgb": [
+        4.547183687642911,
+        4.754179634514884,
+        5.16311900587683
+      ],
+      "clipped_rgb": [
+        1.2525311731003428,
+        1.4631938601662573,
+        2.1409639291237452
+      ],
+      "raw_luma": 4.739697718822234,
+      "clipped_luma": 1.4673419718747744,
+      "loss_fraction_luma": 0.6904144401345085,
+      "name": "up",
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "direct_sun_rgb": [
+        2.5969314410229085,
+        2.2203571858800015,
+        1.7462887766041213
+      ],
+      "removed_irradiance_rgb": [
+        3.2946525145425682,
+        3.2909857743486266,
+        3.0221550767530845
+      ],
+      "old_raw_sky_scaled_luma": 3.7917581750577876,
+      "clipped_sky_plus_direct_luma": 3.4400627108734847,
+      "direct_over_removed_scaled_luma": 0.8656566204207876
+    },
+    {
+      "raw_rgb": [
+        3.976014275138153,
+        4.2267014327161165,
+        4.700796718145271
+      ],
+      "clipped_rgb": [
+        1.3647331754291847,
+        1.617928201380697,
+        2.30412677267682
+      ],
+      "raw_luma": 4.207635022623026,
+      "clipped_luma": 1.6136424757109853,
+      "loss_fraction_luma": 0.6164965670655898,
+      "name": "positive_x",
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "direct_sun_rgb": [
+        2.0555233391575936,
+        1.757457260806585,
+        1.3822226033833398
+      ],
+      "removed_irradiance_rgb": [
+        2.611281099708968,
+        2.6087732313354195,
+        2.396669945468451
+      ],
+      "old_raw_sky_scaled_luma": 3.366108018098421,
+      "clipped_sky_plus_direct_luma": 3.0846481473668392,
+      "direct_over_removed_scaled_luma": 0.8643693719038252
+    },
+    {
+      "raw_rgb": [
+        0.588156839868176,
+        0.6722474707230028,
+        0.9943180865183258
+      ],
+      "clipped_rgb": [
+        0.588156839868176,
+        0.6722474707230028,
+        0.9943180865183258
+      ],
+      "raw_luma": 0.677623301063689,
+      "clipped_luma": 0.677623301063689,
+      "loss_fraction_luma": 0.0,
+      "name": "negative_x",
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "direct_sun_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "removed_irradiance_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "old_raw_sky_scaled_luma": 0.5420986408509512,
+      "clipped_sky_plus_direct_luma": 0.5420986408509512,
+      "direct_over_removed_scaled_luma": null
+    },
+    {
+      "raw_rgb": [
+        0.5911147630313207,
+        0.6915293430188979,
+        1.0321571687874915
+      ],
+      "clipped_rgb": [
+        0.5911147630313207,
+        0.6915293430188979,
+        1.0321571687874915
+      ],
+      "raw_luma": 0.6947745323340314,
+      "clipped_luma": 0.6947745323340314,
+      "loss_fraction_luma": 0.0,
+      "name": "positive_z",
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "direct_sun_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "removed_irradiance_rgb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "old_raw_sky_scaled_luma": 0.5558196258672251,
+      "clipped_sky_plus_direct_luma": 0.5558196258672251,
+      "direct_over_removed_scaled_luma": null
+    },
+    {
+      "raw_rgb": [
+        2.4725193741908638,
+        2.6861600641035976,
+        3.1616372721702635
+      ],
+      "clipped_rgb": [
+        1.0397689623559732,
+        1.254381727166517,
+        1.846088027006597
+      ],
+      "raw_luma": 2.6750695078505635,
+      "clipped_luma": 1.251476248216249,
+      "loss_fraction_luma": 0.532170568075512,
+      "name": "negative_z",
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "direct_sun_rgb": [
+        1.1317114883242525,
+        0.9676049570465111,
+        0.7610116459740435
+      ],
+      "removed_irradiance_rgb": [
+        1.4327504118348906,
+        1.4317783369370807,
+        1.3155492451636666
+      ],
+      "old_raw_sky_scaled_luma": 2.140055606280451,
+      "clipped_sky_plus_direct_luma": 1.9887589671097259,
+      "direct_over_removed_scaled_luma": 0.8671525046332499
+    },
+    {
+      "raw_rgb": [
+        6.03944751960275,
+        6.325201691479321,
+        6.787661890921288
+      ],
+      "clipped_rgb": [
+        1.5980200770915445,
+        1.8882820670250307,
+        2.7123582503954387
+      ],
+      "raw_luma": 6.297839980938072,
+      "clipped_luma": 1.886070668404515,
+      "loss_fraction_luma": 0.7005210240156685,
+      "name": "facing_sun",
+      "normal": [
+        0.5872923826164553,
+        0.741980411720831,
+        -0.323346139521215
+      ],
+      "direct_sun_rgb": [
+        3.499999999999999,
+        2.992474128434818,
+        2.353551049351906
+      ],
+      "removed_irradiance_rgb": [
+        4.4414274425112055,
+        4.436919624454291,
+        4.075303640525849
+      ],
+      "old_raw_sky_scaled_luma": 5.038271984750458,
+      "clipped_sky_plus_direct_luma": 4.563100417143401,
+      "direct_over_removed_scaled_luma": 0.865368196423733
+    },
+    {
+      "raw_rgb": [
+        5.572806295228981,
+        5.822020257185788,
+        6.250957613823183
+      ],
+      "clipped_rgb": [
+        1.4581339511139462,
+        1.7117052580842504,
+        2.475982193431648
+      ],
+      "raw_luma": 5.800006646022991,
+      "clipped_luma": 1.7129767929544457,
+      "loss_fraction_luma": 0.7046595120491772,
+      "name": "tilt20_toward_sun",
+      "normal": [
+        0.29961122485775876,
+        0.9396926207859084,
+        -0.16495724409599138
+      ],
+      "direct_sun_rgb": [
+        3.242859185410601,
+        2.772620632713838,
+        2.1806384682067397
+      ],
+      "removed_irradiance_rgb": [
+        4.114672344115035,
+        4.110314999101538,
+        3.774975420391535
+      ],
+      "old_raw_sky_scaled_luma": 4.640005316818393,
+      "clipped_sky_plus_direct_luma": 4.200233671103314,
+      "direct_over_removed_scaled_luma": 0.8654977876584087
+    },
+    {
+      "raw_rgb": [
+        3.135762562466647,
+        3.295093185188492,
+        3.6849988991507696
+      ],
+      "clipped_rgb": [
+        1.058513594642448,
+        1.22037808975495,
+        1.7801806705514782
+      ],
+      "raw_luma": 3.289370687345904,
+      "clipped_luma": 1.2263834444275414,
+      "loss_fraction_luma": 0.6271677591262681,
+      "name": "tilt20_away_sun",
+      "normal": [
+        -0.29961122485775876,
+        0.9396926207859084,
+        0.16495724409599138
+      ],
+      "direct_sun_rgb": [
+        1.6377754382216843,
+        1.400285893446968,
+        1.1013108860655496
+      ],
+      "removed_irradiance_rgb": [
+        2.0772489678241994,
+        2.0747150954335423,
+        1.9048182285992914
+      ],
+      "old_raw_sky_scaled_luma": 2.6314965498767235,
+      "clipped_sky_plus_direct_luma": 2.410296930675167,
+      "direct_over_removed_scaled_luma": 0.8659712875340899
+    }
+  ],
+  "rough_specular_reference": [
+    {
+      "raw_rgb": [
+        0.10390756277261558,
+        0.11088612094419432,
+        0.14598567846233754
+      ],
+      "clipped_rgb": [
+        0.10231685983998313,
+        0.10929722534649634,
+        0.14452662487119877
+      ],
+      "raw_luma": 0.11193666752972661,
+      "clipped_luma": 0.11035676228549514,
+      "loss_fraction_luma": 0.014114278002888558,
+      "view_name": "view_to_positive_x",
+      "NdotV": 0.1,
+      "view_direction": [
+        0.99498743710662,
+        0.1,
+        0.0
+      ],
+      "roughness": 0.3,
+      "direct_sun_luma": 0.0010942659841802892,
+      "raw_sky_scaled_luma": 0.08954933402378129,
+      "clipped_sky_plus_direct_luma": 0.0893796758125764,
+      "replacement_over_raw_sky": 0.9981054218542839
+    },
+    {
+      "raw_rgb": [
+        0.2232747336471989,
+        0.2588023074622848,
+        0.33939374884209705
+      ],
+      "clipped_rgb": [
+        0.20042833064766039,
+        0.2359904230916046,
+        0.3184427934691139
+      ],
+      "raw_luma": 0.25706784733682,
+      "clipped_luma": 0.2343829833792782,
+      "loss_fraction_luma": 0.08824465678050819,
+      "view_name": "view_to_negative_x",
+      "NdotV": 0.1,
+      "view_direction": [
+        -0.99498743710662,
+        0.1,
+        1.2185081800444507e-16
+      ],
+      "roughness": 0.3,
+      "direct_sun_luma": 0.01560818600343046,
+      "raw_sky_scaled_luma": 0.205654277869456,
+      "clipped_sky_plus_direct_luma": 0.203114572706853,
+      "replacement_over_raw_sky": 0.9876506086383716
+    },
+    {
+      "raw_rgb": [
+        0.13443276887386543,
+        0.16133000871316525,
+        0.22978624268170633
+      ],
+      "clipped_rgb": [
+        0.1300092729669233,
+        0.1569108675408649,
+        0.22572815985105782
+      ],
+      "raw_luma": 0.16055419561585876,
+      "clipped_luma": 0.15616019703924083,
+      "loss_fraction_luma": 0.02736769699330055,
+      "view_name": "view_to_positive_z",
+      "NdotV": 0.1,
+      "view_direction": [
+        6.092540900222253e-17,
+        0.1,
+        0.99498743710662
+      ],
+      "roughness": 0.3,
+      "direct_sun_luma": 0.0030506326472097283,
+      "raw_sky_scaled_luma": 0.128443356492687,
+      "clipped_sky_plus_direct_luma": 0.1279787902786024,
+      "replacement_over_raw_sky": 0.996383104375577
+    },
+    {
+      "raw_rgb": [
+        0.08995047452813755,
+        0.09970382680377925,
+        0.13658062069135282
+      ],
+      "clipped_rgb": [
+        0.08815550772391863,
+        0.0979110478875217,
+        0.1349344556051261
+      ],
+      "raw_luma": 0.10029276862866063,
+      "clipped_luma": 0.09851011008595072,
+      "loss_fraction_luma": 0.01777454712921822,
+      "view_name": "view_to_negative_z",
+      "NdotV": 0.1,
+      "view_direction": [
+        6.092540900222253e-17,
+        0.1,
+        -0.99498743710662
+      ],
+      "roughness": 0.3,
+      "direct_sun_luma": 0.0012340015627241936,
+      "raw_sky_scaled_luma": 0.08023421490292851,
+      "clipped_sky_plus_direct_luma": 0.08004208963148478,
+      "replacement_over_raw_sky": 0.9976054446139198
+    },
+    {
+      "raw_rgb": [
+        0.3711131242090108,
+        0.42463284193504974,
+        0.5353372282062709
+      ],
+      "clipped_rgb": [
+        0.2535657306371852,
+        0.3071359553609016,
+        0.4272534947355428
+      ],
+      "raw_luma": 0.421247406635276,
+      "clipped_luma": 0.30441941192748856,
+      "loss_fraction_luma": 0.27733819334569654,
+      "view_name": "view_away_sun",
+      "NdotV": 0.1,
+      "view_direction": [
+        -0.8716135893368694,
+        0.1,
+        0.47988514342840327
+      ],
+      "roughness": 0.3,
+      "direct_sun_luma": 0.08060118899339463,
+      "raw_sky_scaled_luma": 0.3369979253082208,
+      "clipped_sky_plus_direct_luma": 0.3241367185353855,
+      "replacement_over_raw_sky": 0.9618359467315047
+    },
+    {
+      "raw_rgb": [
+        0.07155839996567125,
+        0.08712544690685887,
+        0.13611642843190483
+      ],
+      "clipped_rgb": [
+        0.07001163098699914,
+        0.08558045030765087,
+        0.13469768181105893
+      ],
+      "raw_luma": 0.08735304159327069,
+      "clipped_luma": 0.08581678343462637,
+      "loss_fraction_luma": 0.0175867735184011,
+      "view_name": "view_toward_sun",
+      "NdotV": 0.1,
+      "view_direction": [
+        0.8716135893368694,
+        0.1,
+        -0.47988514342840327
+      ],
+      "roughness": 0.3,
+      "direct_sun_luma": 0.0010638537656115505,
+      "raw_sky_scaled_luma": 0.06988243327461656,
+      "clipped_sky_plus_direct_luma": 0.06971728051331265,
+      "replacement_over_raw_sky": 0.9976367056273655
+    },
+    {
+      "raw_rgb": [
+        2.620299970532508,
+        2.624697522541272,
+        2.440137506366045
+      ],
+      "clipped_rgb": [
+        0.10385614266976315,
+        0.10835791584698252,
+        0.12836257619818184
+      ],
+      "raw_luma": 2.610437369816357,
+      "clipped_luma": 0.10884517534686226,
+      "loss_fraction_luma": 0.9583038548997943,
+      "view_name": "mirror_sun",
+      "NdotV": 0.741980411720831,
+      "view_direction": [
+        -0.5872923826164554,
+        0.741980411720831,
+        0.32334613952121505
+      ],
+      "roughness": 0.3,
+      "direct_sun_luma": 1.7403348813804227,
+      "raw_sky_scaled_luma": 2.088349895853086,
+      "clipped_sky_plus_direct_luma": 1.8274110216579125,
+      "replacement_over_raw_sky": 0.8750502132265625
+    },
+    {
+      "raw_rgb": [
+        0.026608159607417785,
+        0.02841156447961548,
+        0.03428518368865369
+      ],
+      "clipped_rgb": [
+        0.020379108566907625,
+        0.022193234074089234,
+        0.028580050205739182
+      ],
+      "raw_luma": 0.02845223591067881,
+      "clipped_luma": 0.022268679115967548,
+      "loss_fraction_luma": 0.21733113749385247,
+      "view_name": "overhead",
+      "NdotV": 1.0,
+      "view_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "roughness": 0.3,
+      "direct_sun_luma": 0.004285399612053936,
+      "raw_sky_scaled_luma": 0.02276178872854305,
+      "clipped_sky_plus_direct_luma": 0.02210034290482797,
+      "replacement_over_raw_sky": 0.970940516511972
+    },
+    {
+      "raw_rgb": [
+        0.04360169619390322,
+        0.04816387533470547,
+        0.06481080595031061
+      ],
+      "clipped_rgb": [
+        0.031872616334516324,
+        0.03644795444207373,
+        0.05405200613418899
+      ],
+      "raw_luma": 0.048395864439817596,
+      "clipped_luma": 0.036746250092577745,
+      "loss_fraction_luma": 0.24071507931688385,
+      "view_name": "view_to_positive_x",
+      "NdotV": 0.1,
+      "view_direction": [
+        0.99498743710662,
+        0.1,
+        0.0
+      ],
+      "roughness": 0.6,
+      "direct_sun_luma": 0.008068289075207744,
+      "raw_sky_scaled_luma": 0.03871669155185408,
+      "clipped_sky_plus_direct_luma": 0.03746528914926994,
+      "replacement_over_raw_sky": 0.9676779613023466
+    },
+    {
+      "raw_rgb": [
+        0.16984076785004643,
+        0.1838607444251904,
+        0.21319896291092047
+      ],
+      "clipped_rgb": [
+        0.0655376052510894,
+        0.07969264465849175,
+        0.11751720358168351
+      ],
+      "raw_luma": 0.1829983167799845,
+      "clipped_luma": 0.07941421643473245,
+      "loss_fraction_luma": 0.5660385415992066,
+      "view_name": "view_to_negative_x",
+      "NdotV": 0.1,
+      "view_direction": [
+        -0.99498743710662,
+        0.1,
+        1.2185081800444507e-16
+      ],
+      "roughness": 0.6,
+      "direct_sun_luma": 0.07138879953296963,
+      "raw_sky_scaled_luma": 0.14639865342398758,
+      "clipped_sky_plus_direct_luma": 0.1349201726807556,
+      "replacement_over_raw_sky": 0.9215943557213674
+    },
+    {
+      "raw_rgb": [
+        0.07334751827580946,
+        0.0838390894922028,
+        0.11027931839568172
+      ],
+      "clipped_rgb": [
+        0.044959390527487486,
+        0.05547858463869695,
+        0.08423439576416147
+      ],
+      "raw_luma": 0.08351756597842874,
+      "clipped_luma": 0.055318373533912356,
+      "loss_fraction_luma": 0.3376438491011554,
+      "view_name": "view_to_positive_z",
+      "NdotV": 0.1,
+      "view_direction": [
+        6.092540900222253e-17,
+        0.1,
+        0.99498743710662
+      ],
+      "roughness": 0.6,
+      "direct_sun_luma": 0.019569259598530557,
+      "raw_sky_scaled_luma": 0.066814052782743,
+      "clipped_sky_plus_direct_luma": 0.06382395842566044,
+      "replacement_over_raw_sky": 0.955247523050198
+    },
+    {
+      "raw_rgb": [
+        0.04062159252424699,
+        0.045617234470850386,
+        0.06223687810822751
+      ],
+      "clipped_rgb": [
+        0.02759729094361522,
+        0.03260845097510076,
+        0.0502915010983434
+      ],
+      "raw_luma": 0.04575509926362113,
+      "clipped_luma": 0.03281979457130505,
+      "loss_fraction_luma": 0.28270739000670586,
+      "view_name": "view_to_negative_z",
+      "NdotV": 0.1,
+      "view_direction": [
+        6.092540900222253e-17,
+        0.1,
+        -0.99498743710662
+      ],
+      "roughness": 0.6,
+      "direct_sun_luma": 0.008954345968454926,
+      "raw_sky_scaled_luma": 0.036604079410896904,
+      "clipped_sky_plus_direct_luma": 0.035210181625498965,
+      "replacement_over_raw_sky": 0.9619196054693571
+    },
+    {
+      "raw_rgb": [
+        0.3813415702597846,
+        0.3999862071254873,
+        0.4256628905568853
+      ],
+      "clipped_rgb": [
+        0.08834658202041144,
+        0.1071651888960018,
+        0.15644490716944878
+      ],
+      "raw_luma": 0.39787621387158584,
+      "clipped_luma": 0.10672234873359415,
+      "loss_fraction_luma": 0.7317699701243294,
+      "view_name": "view_away_sun",
+      "NdotV": 0.1,
+      "view_direction": [
+        -0.8716135893368694,
+        0.1,
+        0.47988514342840327
+      ],
+      "roughness": 0.6,
+      "direct_sun_luma": 0.20117334761021727,
+      "raw_sky_scaled_luma": 0.3183009710972687,
+      "clipped_sky_plus_direct_luma": 0.2865512265970926,
+      "replacement_over_raw_sky": 0.9002524422381553
+    },
+    {
+      "raw_rgb": [
+        0.03520782779764647,
+        0.040739966776200946,
+        0.058838890624500255
+      ],
+      "clipped_rgb": [
+        0.023759534261786168,
+        0.02930461577701998,
+        0.04833771435431964
+      ],
+      "raw_luma": 0.04087057633120747,
+      "clipped_luma": 0.029499921164162304,
+      "loss_fraction_luma": 0.2782112753903814,
+      "view_name": "view_toward_sun",
+      "NdotV": 0.1,
+      "view_direction": [
+        0.8716135893368694,
+        0.1,
+        -0.47988514342840327
+      ],
+      "roughness": 0.6,
+      "direct_sun_luma": 0.007873925472195974,
+      "raw_sky_scaled_luma": 0.03269646106496598,
+      "clipped_sky_plus_direct_luma": 0.031473862403525815,
+      "replacement_over_raw_sky": 0.9626076149644779
+    },
+    {
+      "raw_rgb": [
+        0.1756418988587383,
+        0.17938667774348457,
+        0.17897561831178876
+      ],
+      "clipped_rgb": [
+        0.024771204302797733,
+        0.02865704305211325,
+        0.040523964020465715
+      ],
+      "raw_luma": 0.17856085926161905,
+      "clipped_luma": 0.02868770542792382,
+      "loss_fraction_luma": 0.8393393403988276,
+      "view_name": "mirror_sun",
+      "NdotV": 0.741980411720831,
+      "view_direction": [
+        -0.5872923826164554,
+        0.741980411720831,
+        0.32334613952121505
+      ],
+      "roughness": 0.6,
+      "direct_sun_luma": 0.10377777483325815,
+      "raw_sky_scaled_luma": 0.14284868740929524,
+      "clipped_sky_plus_direct_luma": 0.12672793917559722,
+      "replacement_over_raw_sky": 0.8871480828696152
+    },
+    {
+      "raw_rgb": [
+        0.045387206927063176,
+        0.04739643924852781,
+        0.05165905025098188
+      ],
+      "clipped_rgb": [
+        0.014595637825617734,
+        0.016645472285139903,
+        0.023430229483691462
+      ],
+      "raw_luma": 0.047277036971361604,
+      "clipped_luma": 0.016699536948780912,
+      "loss_fraction_luma": 0.6467727671068563,
+      "view_name": "overhead",
+      "NdotV": 1.0,
+      "view_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "roughness": 0.6,
+      "direct_sun_luma": 0.021184868720446642,
+      "raw_sky_scaled_luma": 0.03782162957708929,
+      "clipped_sky_plus_direct_luma": 0.03454449827947137,
+      "replacement_over_raw_sky": 0.9133529852028622
+    },
+    {
+      "raw_rgb": [
+        0.042380777622620845,
+        0.045627594427392906,
+        0.05542871190120999
+      ],
+      "clipped_rgb": [
+        0.020886575562352315,
+        0.024156623422098365,
+        0.03571017805588129
+      ],
+      "raw_luma": 0.04564496185630796,
+      "clipped_luma": 0.02429557789167548,
+      "loss_fraction_luma": 0.46772706332499825,
+      "view_name": "view_to_positive_x",
+      "NdotV": 0.1,
+      "view_direction": [
+        0.99498743710662,
+        0.1,
+        0.0
+      ],
+      "roughness": 0.837,
+      "direct_sun_luma": 0.014783713872906572,
+      "raw_sky_scaled_luma": 0.036515969485046366,
+      "clipped_sky_plus_direct_luma": 0.03422017618624695,
+      "replacement_over_raw_sky": 0.9371290607595791
+    },
+    {
+      "raw_rgb": [
+        0.11408768312588091,
+        0.12108658884623198,
+        0.13439724738542735
+      ],
+      "clipped_rgb": [
+        0.035557922995079316,
+        0.042640685746739224,
+        0.062331552719001426
+      ],
+      "raw_luma": 0.12055965103661524,
+      "clipped_luma": 0.042556570981133655,
+      "loss_fraction_luma": 0.6470081771536584,
+      "view_name": "view_to_negative_x",
+      "NdotV": 0.1,
+      "view_direction": [
+        -0.99498743710662,
+        0.1,
+        1.2185081800444507e-16
+      ],
+      "roughness": 0.837,
+      "direct_sun_luma": 0.053866964343896956,
+      "raw_sky_scaled_luma": 0.0964477208292922,
+      "clipped_sky_plus_direct_luma": 0.08791222112880388,
+      "replacement_over_raw_sky": 0.9115012814497115
+    },
+    {
+      "raw_rgb": [
+        0.06422926050453816,
+        0.07001160383137237,
+        0.08339838496619123
+      ],
+      "clipped_rgb": [
+        0.02663165682270637,
+        0.03244985260751844,
+        0.048898910939168656
+      ],
+      "raw_luma": 0.06974880323802134,
+      "clipped_luma": 0.03240052619521253,
+      "loss_fraction_luma": 0.5354683565731717,
+      "view_name": "view_to_positive_z",
+      "NdotV": 0.1,
+      "view_direction": [
+        6.092540900222253e-17,
+        0.1,
+        0.99498743710662
+      ],
+      "roughness": 0.837,
+      "direct_sun_luma": 0.025892696068135775,
+      "raw_sky_scaled_luma": 0.05579904259041707,
+      "clipped_sky_plus_direct_luma": 0.0518131170243058,
+      "replacement_over_raw_sky": 0.9285664165356877
+    },
+    {
+      "raw_rgb": [
+        0.04283635925844785,
+        0.046263244567384364,
+        0.05601015514035
+      ],
+      "clipped_rgb": [
+        0.019941644496001224,
+        0.02339416343616493,
+        0.03500823775921784
+      ],
+      "raw_luma": 0.046238415694072575,
+      "clipped_luma": 0.023498694075610546,
+      "loss_fraction_luma": 0.49179283669481555,
+      "view_name": "view_to_negative_z",
+      "NdotV": 0.1,
+      "view_direction": [
+        6.092540900222253e-17,
+        0.1,
+        -0.99498743710662
+      ],
+      "roughness": 0.837,
+      "direct_sun_luma": 0.01574171553182518,
+      "raw_sky_scaled_luma": 0.03699073255525806,
+      "clipped_sky_plus_direct_luma": 0.03454067079231362,
+      "replacement_over_raw_sky": 0.933765524667984
+    },
+    {
+      "raw_rgb": [
+        0.16313428888901538,
+        0.1714683478004741,
+        0.18460062604484342
+      ],
+      "clipped_rgb": [
+        0.04139260714117251,
+        0.04982029582754831,
+        0.072803431562707
+      ],
+      "raw_luma": 0.17064467736514144,
+      "clipped_luma": 0.04968795161290327,
+      "loss_fraction_luma": 0.7088221421252878,
+      "view_name": "view_away_sun",
+      "NdotV": 0.1,
+      "view_direction": [
+        -0.8716135893368694,
+        0.1,
+        0.47988514342840327
+      ],
+      "roughness": 0.837,
+      "direct_sun_luma": 0.08364391501010834,
+      "raw_sky_scaled_luma": 0.13651574189211316,
+      "clipped_sky_plus_direct_luma": 0.12339427630043096,
+      "replacement_over_raw_sky": 0.9038831316460783
+    },
+    {
+      "raw_rgb": [
+        0.039556124635500706,
+        0.04299619410148156,
+        0.053014816991218364
+      ],
+      "clipped_rgb": [
+        0.018366404927540995,
+        0.021829491533295865,
+        0.03357570318827431
+      ],
+      "raw_luma": 0.042988179905653026,
+      "clipped_luma": 0.02194131580240182,
+      "loss_fraction_luma": 0.4895965390822118,
+      "view_name": "view_toward_sun",
+      "NdotV": 0.1,
+      "view_direction": [
+        0.8716135893368694,
+        0.1,
+        -0.47988514342840327
+      ],
+      "roughness": 0.837,
+      "direct_sun_luma": 0.01457296374842713,
+      "raw_sky_scaled_luma": 0.03439054392452242,
+      "clipped_sky_plus_direct_luma": 0.03212601639034859,
+      "replacement_over_raw_sky": 0.9341526106960147
+    },
+    {
+      "raw_rgb": [
+        0.04628990890935204,
+        0.04819906500250965,
+        0.05123238821083435
+      ],
+      "clipped_rgb": [
+        0.010883326594251475,
+        0.012828397583699724,
+        0.01874466112536236
+      ],
+      "raw_luma": 0.04801218435274539,
+      "clipped_luma": 0.01284202971905107,
+      "loss_fraction_luma": 0.7325256100680462,
+      "view_name": "mirror_sun",
+      "NdotV": 0.741980411720831,
+      "view_direction": [
+        -0.5872923826164554,
+        0.741980411720831,
+        0.32334613952121505
+      ],
+      "roughness": 0.837,
+      "direct_sun_luma": 0.024348691587304627,
+      "raw_sky_scaled_luma": 0.03840974748219631,
+      "clipped_sky_plus_direct_luma": 0.03462231536254548,
+      "replacement_over_raw_sky": 0.9013939854354319
+    },
+    {
+      "raw_rgb": [
+        0.02884402233197753,
+        0.030195164855025644,
+        0.032909174148795316
+      ],
+      "clipped_rgb": [
+        0.008137993937170313,
+        0.00951223730556439,
+        0.013915789808740135
+      ],
+      "raw_luma": 0.03010386342563578,
+      "clipped_luma": 0.009538009656173099,
+      "loss_fraction_luma": 0.6831632697333213,
+      "view_name": "overhead",
+      "NdotV": 1.0,
+      "view_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "roughness": 0.837,
+      "direct_sun_luma": 0.014242218978947707,
+      "raw_sky_scaled_luma": 0.024083090740508628,
+      "clipped_sky_plus_direct_luma": 0.021872626703886185,
+      "replacement_over_raw_sky": 0.9082151016063581
+    },
+    {
+      "raw_rgb": [
+        0.042587166338094944,
+        0.04546979962342425,
+        0.05309403784175546
+      ],
+      "clipped_rgb": [
+        0.017371661668966556,
+        0.020280388174535785,
+        0.02995828784851806
+      ],
+      "raw_luma": 0.04540742178632674,
+      "clipped_luma": 0.020360737275913286,
+      "loss_fraction_luma": 0.5515989132409982,
+      "view_name": "view_to_positive_x",
+      "NdotV": 0.1,
+      "view_direction": [
+        0.99498743710662,
+        0.1,
+        0.0
+      ],
+      "roughness": 1.0,
+      "direct_sun_luma": 0.017340259116783233,
+      "raw_sky_scaled_luma": 0.03632593742906139,
+      "clipped_sky_plus_direct_luma": 0.03362884893751386,
+      "replacement_over_raw_sky": 0.9257530931771684
+    },
+    {
+      "raw_rgb": [
+        0.07068588311377531,
+        0.0754859256476983,
+        0.0853303987878949
+      ],
+      "clipped_rgb": [
+        0.024478472832300605,
+        0.0293234082618942,
+        0.04291937065867536
+      ],
+      "raw_luma": 0.07517620756570846,
+      "clipped_luma": 0.0292750034746102,
+      "loss_fraction_luma": 0.6105815334057373,
+      "view_name": "view_to_negative_x",
+      "NdotV": 0.1,
+      "view_direction": [
+        -0.99498743710662,
+        0.1,
+        1.2185081800444507e-16
+      ],
+      "roughness": 1.0,
+      "direct_sun_luma": 0.03172914731819314,
+      "raw_sky_scaled_luma": 0.060140966052566774,
+      "clipped_sky_plus_direct_luma": 0.055149150097881294,
+      "replacement_over_raw_sky": 0.9169980749839912
+    },
+    {
+      "raw_rgb": [
+        0.05256106639011421,
+        0.056763381544252964,
+        0.06631937290288181
+      ],
+      "clipped_rgb": [
+        0.020449305436159467,
+        0.02468196283479793,
+        0.03685016394186508
+      ],
+      "raw_luma": 0.05655991191857607,
+      "clipped_luma": 0.024660643991777635,
+      "loss_fraction_luma": 0.5639907638597594,
+      "view_name": "view_to_positive_z",
+      "NdotV": 0.1,
+      "view_direction": [
+        6.092540900222253e-17,
+        0.1,
+        0.99498743710662
+      ],
+      "roughness": 1.0,
+      "direct_sun_luma": 0.022095418816974063,
+      "raw_sky_scaled_luma": 0.045247929534860856,
+      "clipped_sky_plus_direct_luma": 0.04182393401039618,
+      "replacement_over_raw_sky": 0.924328128167131
+    },
+    {
+      "raw_rgb": [
+        0.042781511243225,
+        0.04578252080250676,
+        0.05343777585654266
+      ],
+      "clipped_rgb": [
+        0.01714897897940848,
+        0.020176761370636738,
+        0.029919744894615238
+      ],
+      "raw_luma": 0.04569721558510485,
+      "clipped_luma": 0.020236498244692855,
+      "loss_fraction_luma": 0.5571612408855606,
+      "view_name": "view_to_negative_z",
+      "NdotV": 0.1,
+      "view_direction": [
+        6.092540900222253e-17,
+        0.1,
+        -0.99498743710662
+      ],
+      "roughness": 1.0,
+      "direct_sun_luma": 0.017625273040529157,
+      "raw_sky_scaled_luma": 0.036557772468083886,
+      "clipped_sky_plus_direct_luma": 0.03381447163628344,
+      "replacement_over_raw_sky": 0.9249598472063517
+    },
+    {
+      "raw_rgb": [
+        0.08217848882828056,
+        0.08749142587844316,
+        0.09777958276046748
+      ],
+      "clipped_rgb": [
+        0.026470606737595218,
+        0.03183043204863973,
+        0.04663324907375079
+      ],
+      "raw_luma": 0.08710470038846074,
+      "clipped_luma": 0.031759696576724686,
+      "loss_fraction_luma": 0.6353848135050577,
+      "view_name": "view_away_sun",
+      "NdotV": 0.1,
+      "view_direction": [
+        -0.8716135893368694,
+        0.1,
+        0.47988514342840327
+      ],
+      "roughness": 1.0,
+      "direct_sun_luma": 0.03828092762227386,
+      "raw_sky_scaled_luma": 0.0696837603107686,
+      "clipped_sky_plus_direct_luma": 0.0636886848836536,
+      "replacement_over_raw_sky": 0.9139673949801393
+    },
+    {
+      "raw_rgb": [
+        0.04157052586576806,
+        0.04451395152479965,
+        0.052176838155368645
+      ],
+      "clipped_rgb": [
+        0.016424822682528803,
+        0.019394298489259054,
+        0.029105162117286632
+      ],
+      "raw_luma": 0.04444143964441661,
+      "clipped_luma": 0.019464112286691794,
+      "loss_fraction_luma": 0.5620278631289308,
+      "view_name": "view_toward_sun",
+      "NdotV": 0.1,
+      "view_direction": [
+        0.8716135893368694,
+        0.1,
+        -0.47988514342840327
+      ],
+      "roughness": 1.0,
+      "direct_sun_luma": 0.017291943856463786,
+      "raw_sky_scaled_luma": 0.03555315171553329,
+      "clipped_sky_plus_direct_luma": 0.03286323368581722,
+      "replacement_over_raw_sky": 0.9243409402564771
+    },
+    {
+      "raw_rgb": [
+        0.021495575910732527,
+        0.022612994865482593,
+        0.02488586108290674
+      ],
+      "clipped_rgb": [
+        0.0062356536320161225,
+        0.0073689739681692705,
+        0.010884867348573857
+      ],
+      "raw_luma": 0.02253953253660075,
+      "clipped_luma": 0.007381877566768322,
+      "loss_fraction_luma": 0.6724919847037074,
+      "view_name": "mirror_sun",
+      "NdotV": 0.741980411720831,
+      "view_direction": [
+        -0.5872923826164554,
+        0.741980411720831,
+        0.32334613952121505
+      ],
+      "roughness": 1.0,
+      "direct_sun_luma": 0.010494011677701622,
+      "raw_sky_scaled_luma": 0.0180316260292806,
+      "clipped_sky_plus_direct_luma": 0.01639951373111628,
+      "replacement_over_raw_sky": 0.9094861275675293
+    },
+    {
+      "raw_rgb": [
+        0.016995534932442585,
+        0.017837560252743925,
+        0.01955739347137357
+      ],
+      "clipped_rgb": [
+        0.004843247139169962,
+        0.005698288276224649,
+        0.008408738367411175
+      ],
+      "raw_luma": 0.01778271762803292,
+      "clipped_luma": 0.005712201027070489,
+      "loss_fraction_luma": 0.6787779490989782,
+      "view_name": "overhead",
+      "NdotV": 1.0,
+      "view_direction": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "roughness": 1.0,
+      "direct_sun_luma": 0.00835782675765762,
+      "raw_sky_scaled_luma": 0.014226174102426338,
+      "clipped_sky_plus_direct_luma": 0.01292758757931401,
+      "replacement_over_raw_sky": 0.9087184991718296
+    }
+  ]
+}

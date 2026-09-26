@@ -1,0 +1,53 @@
+{
+  "rows": [
+    {
+      "asset": "asphalt",
+      "region": "3-8 m",
+      "totalMeanPlain": 0.09190220004761113,
+      "totalMeanMixed": 0.09189966098550822,
+      "highpassRetainedPercent": 87.42481112832553,
+      "specularSharePercent": 49.63785517990911
+    },
+    {
+      "asset": "asphalt",
+      "region": "8-20 m",
+      "totalMeanPlain": 0.107510383934996,
+      "totalMeanMixed": 0.10737877022593367,
+      "highpassRetainedPercent": 86.39869784618348,
+      "specularSharePercent": 56.854085848322725
+    },
+    {
+      "asset": "asphalt",
+      "region": "20-50 m",
+      "totalMeanPlain": 0.11794717434264664,
+      "totalMeanMixed": 0.11806931495140972,
+      "highpassRetainedPercent": 90.88414201651277,
+      "specularSharePercent": 60.60764565088877
+    },
+    {
+      "asset": "fresh",
+      "region": "3-8 m",
+      "totalMeanPlain": 0.08578841773290265,
+      "totalMeanMixed": 0.08599609681707668,
+      "highpassRetainedPercent": 84.36152546273783,
+      "specularSharePercent": 59.270397587255864
+    },
+    {
+      "asset": "fresh",
+      "region": "8-20 m",
+      "totalMeanPlain": 0.1021314844203472,
+      "totalMeanMixed": 0.10206048523512679,
+      "highpassRetainedPercent": 86.27139294951071,
+      "specularSharePercent": 65.7032224405678
+    },
+    {
+      "asset": "fresh",
+      "region": "20-50 m",
+      "totalMeanPlain": 0.11238456162455947,
+      "totalMeanMixed": 0.11238236176663183,
+      "highpassRetainedPercent": 87.88457072158137,
+      "specularSharePercent": 68.66321996498698
+    }
+  ],
+  "maxAovClosureRelativeError": 1.6992681093363998e-08
+}

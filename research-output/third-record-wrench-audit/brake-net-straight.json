@@ -1,0 +1,115 @@
+{
+  "variant": "brake-net",
+  "scenario": "straight",
+  "scope": "GT3RS fresh uniform flat-plane rig, original keyboard filters; not browser input or exact recorded-state replay. Frozen-axis audit excludes axis transport, engine angular momentum, and Rapier integration/damping.",
+  "sourceUnchanged": true,
+  "sourceSha256": {
+    "/E:/Projects/streetrush/streetrush/src/vehicle-v24/runtime.js": "9f7ba2dc6eeb3d897af048b8de875d714de62e4c95e2666d9052b02ee2a741c9",
+    "/E:/Projects/streetrush/streetrush/src/vehicle-v24/powertrain.js": "0dea200c07614da958931411d605ea8b832d19cd179c4ebcc7c88e784c5da35d",
+    "/E:/Projects/streetrush/streetrush/src/vehicle-v24/rapier-host-adapter.js": "75283e91753339de40bfce0ad2aa101fa669902b9d45980e70db44e198b73ba5",
+    "/E:/Projects/streetrush/streetrush/src/vehicle-v24/tire.js": "248feabd4a824e9a730e25e98791c78ee45ea9d4b423cd78e14ab33cd3397e37"
+  },
+  "accelerationSeconds": 13.241666666666667,
+  "brakeEntrySpeed": 213.82260615525973,
+  "finalSpeed": 0.4846697013256457,
+  "stopSeconds": 8.299999999999999,
+  "maxBetaAbove20": 0.000844384914091815,
+  "maxYawAbove20": 0.00008329004049301147,
+  "minRearLoadAbove20": 1865.1286770340416,
+  "preTap": {
+    "t": 17.016666666666666,
+    "phase": "brake-before-tap",
+    "speed": 157.0525681635833,
+    "beta": -0.0004314754207573953,
+    "yaw": 0.00004308523784857243,
+    "steer": 0,
+    "position": {
+      "x": -0.019390691071748734,
+      "y": 0.6342946290969849,
+      "z": 574.7926635742188
+    },
+    "audit": {
+      "longitudinalContactPitch": 7308.740535904406,
+      "roadPitch": -145.37531329873764,
+      "extraPitch": 142.97060897155973,
+      "wheelSpinChangePitch": -142.97060897156558,
+      "frozenAxisExchangeResidual": -5.8548721426632255e-12,
+      "wheels": [
+        {
+          "drive": 0,
+          "brake": -1860.8290483697824,
+          "contact": 1826.4040509948366,
+          "spinChange": -34.424997374947,
+          "spinEquationResidual": -1.1368683772161603e-12,
+          "spinChangePitch": -34.42493130637748,
+          "inContact": true,
+          "load": 5107.9269413388865,
+          "omega": 113.65913888171926
+        },
+        {
+          "drive": 0,
+          "brake": -1860.7854710087818,
+          "contact": 1826.3591795739044,
+          "spinChange": -34.42629143487821,
+          "spinEquationResidual": -9.094947017729282e-13,
+          "spinChangePitch": -34.42622530130753,
+          "inContact": true,
+          "load": 5107.163621832367,
+          "omega": 113.65785606228924
+        },
+        {
+          "drive": -16.458285728009383,
+          "brake": -368.26426865192093,
+          "contact": 347.66351118003064,
+          "spinChange": -37.059043199901964,
+          "spinEquationResidual": -2.2737367544323206e-12,
+          "spinChangePitch": -37.05891259799053,
+          "inContact": true,
+          "load": 2005.1612313171458,
+          "omega": 126.81441726866328
+        },
+        {
+          "drive": -16.458285728009383,
+          "brake": -368.26426865192093,
+          "contact": 347.6618839756534,
+          "spinChange": -37.06067040427854,
+          "spinEquationResidual": -1.5916157281026244e-12,
+          "spinChangePitch": -37.06053976589003,
+          "inContact": true,
+          "load": 2004.4168128223794,
+          "omega": 126.81308302618692
+        }
+      ]
+    }
+  },
+  "phaseAudit": {
+    "accelerate": {
+      "samples": 1110,
+      "meanLongitudinalContactPitch": -3336.6953679959556,
+      "meanExtraPitch": -2117.170051351292,
+      "meanWheelSpinChangePitch": 51.99668043752222,
+      "meanFrozenAxisExchangeResidual": -2065.173370913762,
+      "maxAbsSpinEquationResidual": 4.320099833421409e-12
+    },
+    "coast": {
+      "samples": 13,
+      "meanLongitudinalContactPitch": -1132.9879419892218,
+      "meanExtraPitch": -676.6778460357775,
+      "meanWheelSpinChangePitch": -62.40279930080995,
+      "meanFrozenAxisExchangeResidual": -739.0806453365875,
+      "maxAbsSpinEquationResidual": 3.865352482534945e-12
+    },
+    "brake-before-tap": {
+      "samples": 201,
+      "meanLongitudinalContactPitch": 6634.329873433406,
+      "meanExtraPitch": 181.07892537441296,
+      "meanWheelSpinChangePitch": -181.07892537441276,
+      "meanFrozenAxisExchangeResidual": -8.887970514352397e-14,
+      "maxAbsSpinEquationResidual": 6.0822458181064576e-12
+    }
+  },
+  "reset": null,
+  "reachedStopThreshold": true,
+  "observedBrakeSeconds": 8.299999999999999,
+  "pathLengthAfterBrake": 196.41534474473028
+}

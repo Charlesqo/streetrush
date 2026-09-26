@@ -1,0 +1,77 @@
+[
+  {
+    "name": "A02_Race_Control.001",
+    "before_faces": 67752,
+    "after_faces": 12194
+  },
+  {
+    "name": "A03_Marshal_Post.001",
+    "before_faces": 9262,
+    "after_faces": 4167
+  },
+  {
+    "name": "A04_Trackside_Grandstand.001",
+    "before_faces": 150912,
+    "after_faces": 27164
+  },
+  {
+    "name": "D02_Control_Details.001",
+    "before_faces": 3168,
+    "after_faces": 1425
+  },
+  {
+    "name": "F01_Pit_Exit_Signal.001",
+    "before_faces": 4252,
+    "after_faces": 1913
+  },
+  {
+    "name": "F02_Tool_Trolley.001",
+    "before_faces": 4036,
+    "after_faces": 1816
+  },
+  {
+    "name": "F03_Tyre_Rack.001",
+    "before_faces": 29888,
+    "after_faces": 5379
+  },
+  {
+    "name": "F06_Floodlight_-31.001",
+    "before_faces": 2408,
+    "after_faces": 1083
+  },
+  {
+    "name": "F06_Floodlight_30.001",
+    "before_faces": 2408,
+    "after_faces": 1083
+  },
+  {
+    "name": "F07_Timing_Gantry.001",
+    "before_faces": 22596,
+    "after_faces": 4067
+  },
+  {
+    "name": "F08_Scanned_Service_Barriers.001",
+    "before_faces": 36552,
+    "after_faces": 6579
+  },
+  {
+    "name": "Longwan_Pit_Building.001",
+    "before_faces": 138758,
+    "after_faces": 24975
+  },
+  {
+    "name": "Pit_roof_services.001",
+    "before_faces": 3784,
+    "after_faces": 1702
+  },
+  {
+    "name": "Pit_working_drain.001",
+    "before_faces": 64860,
+    "after_faces": 11674
+  },
+  {
+    "name": "Site_fittings.001",
+    "before_faces": 1848,
+    "after_faces": 831
+  }
+]

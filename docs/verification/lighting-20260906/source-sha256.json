@@ -1,0 +1,12 @@
+{
+  "src/main.js": "df4df022d8f3c1324a7cc0765351d5d1d62ba660ba0c3c3614ab524150690bd3",
+  "src/track.js": "d79e2ed08e8e2e034967e0240d4cbacb5c127bf05fc8be394b4c099c52eb047f",
+  "src/assets.js": "4f767594c6eb33764df303fdce77ee3d1797aae62138e1dd5aeb5e8cf98ccaa3",
+  "src/style.css": "8becdf94ae25e8d8b7184f984b69f255a840fe46a41dec9009c14ef848721c6a",
+  "src/rendering.js": "462c4b8152be4f700c50a921f4da4ffe1dd51c8aaa8ba18bcb3ee6d38570c675",
+  "src/car-materials.js": "19293a57c07b316d77d577edca78a8e907d58db1e82a43a29e52362d451ee8a0",
+  "src/render-pipeline.js": "9e46db2f52967dec1e76b997d2aae91857f4397f645872d5031c6db43f0d8c9d",
+  "src/render-review.js": "7d4d90c3d09a3f4ba5ce67d47f4cc5d47afad0ca1e1f59b830a28527079b010d",
+  "scripts/test-render-materials.mjs": "e1b9cdb434e0a3f040a09ee65627b44fd808de8cf60242aa3b8b57ab9fa9a6ea",
+  "package.json": "2a2fe854abfaa210014c4a48892d218a97a51210ace22cff453dfe4684008458"
+}

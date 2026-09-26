@@ -1,0 +1,150 @@
+{
+  "frameRateCap": null,
+  "previewFrameRateCap": 5,
+  "driving": true,
+  "speedKmh": 95.06762400167219,
+  "car": "mx5",
+  "source": "gltf",
+  "state": "race",
+  "view": "chase",
+  "resolution": [
+    1280,
+    720
+  ],
+  "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "frameMs": {
+    "samples": 683,
+    "mean": 17.532,
+    "p50": 15.8,
+    "p95": 31,
+    "p99": 44.5
+  },
+  "renderCpuMs": {
+    "samples": 684,
+    "mean": 3.509,
+    "p50": 3.3,
+    "p95": 5.4,
+    "p99": 7.2
+  },
+  "gpuMs": {
+    "samples": 682,
+    "mean": 4.428,
+    "p50": 4.076,
+    "p95": 6.489,
+    "p99": 8.617
+  },
+  "drawCalls": {
+    "samples": 684,
+    "mean": 118.665,
+    "p50": 122,
+    "p95": 130,
+    "p99": 132
+  },
+  "triangles": {
+    "samples": 684,
+    "mean": 172135.525,
+    "p50": 172042,
+    "p95": 172618,
+    "p99": 173794
+  },
+  "textures": 65,
+  "geometries": 139,
+  "materials": [
+    {
+      "name": "Material.015",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.555005806565371,
+      "metalness": 1
+    },
+    {
+      "name": "Material.014",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.86,
+      "metalness": 0,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "Material.017",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 0,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "Material.002",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.3,
+      "metalness": 0.12,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "Material.001",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.65,
+      "metalness": 0,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "Material.012",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 0
+    },
+    {
+      "name": "Material.013",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0,
+      "metalness": 1,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "Material.010",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "Material.004",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "Material.005",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 0,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "Material.008",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "Material.009",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0,
+      "metalness": 1,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "soft-contact-occlusion",
+      "type": "MeshBasicMaterial"
+    }
+  ]
+}

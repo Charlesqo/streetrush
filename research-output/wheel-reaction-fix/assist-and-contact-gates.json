@@ -1,0 +1,38 @@
+[
+  {
+    "name": "brake-distribution",
+    "exit": 0,
+    "output": "{\"status\":\"PASS\",\"checks\":18,\"scope\":\"load-aware-symmetric-service-brake-distribution\"}\n",
+    "error": ""
+  },
+  {
+    "name": "esc-gates",
+    "exit": 0,
+    "output": "{\"schema\":\"streetrush.vehicle-v24.esc-gates.v1\",\"status\":\"PASS\",\"checks\":13}\n",
+    "error": ""
+  },
+  {
+    "name": "tcs-speed-gate",
+    "exit": 0,
+    "output": "{\"schema\":\"streetrush.vehicle-v24.tcs-speed-gate.v1\",\"status\":\"PASS\",\"checks\":11}\n",
+    "error": ""
+  },
+  {
+    "name": "steering-kc-ownership",
+    "exit": 0,
+    "output": "{\"status\":\"PASS\",\"checks\":20,\"scope\":\"single-owner-jounce-toe-and-handedness\"}\n",
+    "error": ""
+  },
+  {
+    "name": "suspension-symmetry",
+    "exit": 0,
+    "output": "{\"jounce\":-0.05,\"corners\":[{\"normalLoad\":1423.9999999999995,\"toe\":-0.00375,\"camber\":0.0085},{\"normalLoad\":1423.9999999999995,\"toe\":0.00375,\"camber\":-0.0085},{\"normalLoad\":1423.9999999999995,\"toe\":-0.00375,\"camber\":0.0085},{\"normalLoad\":1423.9999999999995,\"toe\":0.00375,\"camber\":-0.0085}]}\n{\"jounce\":0,\"corners\":[{\"normalLoad\":3923.9999999999995,\"toe\":0,\"camber\":0},{\"normalLoad\":3923.9999999999995,\"toe\":0,\"camber\":0},{\"normalLoad\":3923.9999999999995,\"toe\":0,\"camber\":0},{\"normalLoad\":3923.9999999999995,\"toe\":0,\"camber\":0}]}\n{\"jounce\":0.05,\"corners\":[{\"normalLoad\":6423.999999999999,\"toe\":0.003749999999999999,\"camber\":-0.008499999999999999},{\"normalLoad\":6423.999999999999,\"toe\":-0.003749999999999999,\"camber\":0.008499999999999999},{\"normalLoad\":6423.999999999999,\"toe\":0.003749999999999999,\"camber\":-0.008499999999999999},{\"normalLoad\":6423.999999999999,\"toe\":-0.003749999999999999,\"camber\":0.008499999999999999}]}\n{\"speedMps\":2,\"command\":-1,\"angle\":-0.4524190243921428,\"speedAuthority\":0.9867692307692307}\n{\"speedMps\":2,\"command\":1,\"angle\":0.4524190243921428,\"speedAuthority\":0.9867692307692307}\n{\"speedMps\":16,\"command\":-1,\"angle\":-0.24093700568429796,\"speedAuthority\":0.5700000000000001}\n{\"speedMps\":16,\"command\":1,\"angle\":0.24093700568429796,\"speedAuthority\":0.5700000000000001}\n{\"speedMps\":40,\"command\":-1,\"angle\":-0.10563673067819508,\"speedAuthority\":0.25862068965517243}\n{\"speedMps\":40,\"command\":1,\"angle\":0.10563673067819508,\"speedAuthority\":0.25862068965517243}\nPASS: 34 assertions (18 suspension symmetry + 16 steering seam/authority)\n",
+    "error": ""
+  },
+  {
+    "name": "friction-contact-relaxation",
+    "exit": 0,
+    "output": "{\"schema\":\"streetrush.vehicle-v24.friction-contact-relaxation.v1\",\"status\":\"PASS\",\"checks\":12}\n",
+    "error": ""
+  }
+]

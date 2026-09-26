@@ -7,6 +7,23 @@ This directory contains the small reusable remainder from:
 
 It is an archive/reference input, not production wiring. Nothing in this directory is imported by the game. The current six-car runtime copies one manifest and six WAV files per selected bank into `public/audio-banks/<vehicle-id>`; all 42 production files are hash-checked against this archive and have their own license inventory entries.
 
+## Source distribution boundary
+
+Eight externally authored engine definitions or derived `.mr` files are excluded
+from this repository and its rewritten `main` history because redistribution
+permission has not been established. Their exact paths are listed in `.gitignore`.
+The source/modification records retain filenames, authors, source links, and
+generation provenance; a recorded filename does not mean its source is included.
+The two small `main.mr` entry examples need the separately obtained engine source
+and are not standalone synthesis projects. This does not remove the generated
+WAV files, their manifests, or the JSON evidence consumed by the existing tests.
+
+Local research originals and a pre-cleanup Git bundle may be kept outside the
+published history. Do not merge an old clone's history into the rewritten branch,
+and do not publish the backup bundle. Fetching upstream source requires following
+that source's own terms; the simulator's MIT license does not license community
+engine definitions automatically.
+
 ## Validation in this repository
 
 Run `pnpm test:research-salvage`. The test maps the selection to all six game vehicles, validates the six bank/analysis/loop documents, reads all 36 WAV headers and samples, checks the prepared SHA-256 hashes and loop gates, and verifies the 21-field physics projection plus the MX-5 coil-rate boundary. The physics projection retains its original UTF-8 BOM; the reader handles it explicitly instead of rewriting the archived file.

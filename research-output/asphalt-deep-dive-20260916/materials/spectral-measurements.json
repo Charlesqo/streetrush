@@ -1,0 +1,300 @@
+{
+  "asphalt": {
+    "scan_size_m": 3.0,
+    "method": "Full 4096x4096 periodic DFT, DC removed; power-weighted radial wavelength, no window because tileable source",
+    "warning": "Power at a wavelength is not physical feature diameter; edge mismatch may leak low-frequency signal. No claim of final-screen visibility.",
+    "channels": {
+      "normal_x": {
+        "variance": 0.3106673817363941,
+        "power_fraction_below_wavelength_mm": {
+          "1": 0.0,
+          "2": 0.18169182869620878,
+          "3": 0.5209960570376739,
+          "5": 0.8525526860450792,
+          "10": 0.9834544863693434,
+          "20": 0.9973708466809365,
+          "50": 0.9991627131172247,
+          "100": 0.999508415189258,
+          "250": 0.9998643285225528,
+          "500": 0.9999530967467721
+        },
+        "power_fraction_wavelength_lt_2px": 0.02493721757174268,
+        "power_fraction_wavelength_lt_4px": 0.5011674709132388,
+        "power_fraction_wavelength_lt_8px": 0.9088678409210932,
+        "power_fraction_wavelength_lt_16px": 0.9898241196569604,
+        "power_fraction_wavelength_lt_32px": 0.9980277381607361,
+        "power_fraction_wavelength_lt_64px": 0.9991249108552401
+      },
+      "normal_y": {
+        "variance": 0.3004332592736332,
+        "power_fraction_below_wavelength_mm": {
+          "1": 0.0,
+          "2": 0.18089090210456096,
+          "3": 0.5149840917185106,
+          "5": 0.848161996845945,
+          "10": 0.9831442793465622,
+          "20": 0.9975805400455894,
+          "50": 0.9993770292328881,
+          "100": 0.9996188251835352,
+          "250": 0.9998717212402675,
+          "500": 0.9999664637591856
+        },
+        "power_fraction_wavelength_lt_2px": 0.025462666983965265,
+        "power_fraction_wavelength_lt_4px": 0.4954990896202265,
+        "power_fraction_wavelength_lt_8px": 0.9058257602589865,
+        "power_fraction_wavelength_lt_16px": 0.98965749949733,
+        "power_fraction_wavelength_lt_32px": 0.9982701712124692,
+        "power_fraction_wavelength_lt_64px": 0.9993409138475283
+      },
+      "linear_luma": {
+        "variance": 0.0002509989520317423,
+        "power_fraction_below_wavelength_mm": {
+          "1": 0.0,
+          "2": 0.3296614008059483,
+          "3": 0.5805247339764212,
+          "5": 0.7695440603904189,
+          "10": 0.8951213898263621,
+          "20": 0.9423182318665317,
+          "50": 0.9691684699269997,
+          "100": 0.9779257446046444,
+          "250": 0.9855202645182926,
+          "500": 0.9888542007224711
+        },
+        "power_fraction_wavelength_lt_2px": 0.08704645602274746,
+        "power_fraction_wavelength_lt_4px": 0.5688529837556545,
+        "power_fraction_wavelength_lt_8px": 0.8092201482815085,
+        "power_fraction_wavelength_lt_16px": 0.9104007402780057,
+        "power_fraction_wavelength_lt_32px": 0.948637318438478,
+        "power_fraction_wavelength_lt_64px": 0.9679939646400525
+      },
+      "roughness": {
+        "variance": 0.0010539009544558461,
+        "power_fraction_below_wavelength_mm": {
+          "1": 0.0,
+          "2": 0.27006049577377705,
+          "3": 0.5198498569479842,
+          "5": 0.7304301890368162,
+          "10": 0.8819024464687425,
+          "20": 0.9406901381572274,
+          "50": 0.9714247657706381,
+          "100": 0.9809502174348886,
+          "250": 0.9882106786174923,
+          "500": 0.9910152798240365
+        },
+        "power_fraction_wavelength_lt_2px": 0.06246945206290146,
+        "power_fraction_wavelength_lt_4px": 0.5076091868056442,
+        "power_fraction_wavelength_lt_8px": 0.7776660555592408,
+        "power_fraction_wavelength_lt_16px": 0.9005737469983948,
+        "power_fraction_wavelength_lt_32px": 0.9483646809811809,
+        "power_fraction_wavelength_lt_64px": 0.9701633741902586
+      }
+    },
+    "jpeg": {
+      "Normal": {
+        "subsampling": 0,
+        "quantization_min_max": {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            1,
+            2
+          ]
+        },
+        "meaning": "sampling 0=4:4:4, 1=4:2:2, 2=4:2:0; does not recover prior authoring/export losses"
+      },
+      "BaseColor": {
+        "subsampling": 0,
+        "quantization_min_max": {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            1,
+            2
+          ]
+        },
+        "meaning": "sampling 0=4:4:4, 1=4:2:2, 2=4:2:0; does not recover prior authoring/export losses"
+      },
+      "Roughness": {
+        "subsampling": 0,
+        "quantization_min_max": {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            1,
+            2
+          ]
+        },
+        "meaning": "sampling 0=4:4:4, 1=4:2:2, 2=4:2:0; does not recover prior authoring/export losses"
+      },
+      "AO": {
+        "subsampling": 0,
+        "quantization_min_max": {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            1,
+            2
+          ]
+        },
+        "meaning": "sampling 0=4:4:4, 1=4:2:2, 2=4:2:0; does not recover prior authoring/export losses"
+      }
+    }
+  },
+  "fresh": {
+    "scan_size_m": 2.0,
+    "method": "Full 4096x4096 periodic DFT, DC removed; power-weighted radial wavelength, no window because tileable source",
+    "warning": "Power at a wavelength is not physical feature diameter; edge mismatch may leak low-frequency signal. No claim of final-screen visibility.",
+    "channels": {
+      "normal_x": {
+        "variance": 0.053245018478205154,
+        "power_fraction_below_wavelength_mm": {
+          "1": 0.006000618197211544,
+          "2": 0.11557731584163305,
+          "3": 0.2294955828053808,
+          "5": 0.41056996819388736,
+          "10": 0.6927652996083563,
+          "20": 0.9211560786428039,
+          "50": 0.9922844706310515,
+          "100": 0.9970378591098064,
+          "250": 0.9988993668909865,
+          "500": 0.9996726033074543
+        },
+        "power_fraction_wavelength_lt_2px": 0.004642338913757773,
+        "power_fraction_wavelength_lt_4px": 0.10993802527866561,
+        "power_fraction_wavelength_lt_8px": 0.31798517409107874,
+        "power_fraction_wavelength_lt_16px": 0.5918797171943541,
+        "power_fraction_wavelength_lt_32px": 0.8505132115281252,
+        "power_fraction_wavelength_lt_64px": 0.9769226342158291
+      },
+      "normal_y": {
+        "variance": 0.04933963223101592,
+        "power_fraction_below_wavelength_mm": {
+          "1": 0.005428969980465831,
+          "2": 0.10677939601801628,
+          "3": 0.2117244589972165,
+          "5": 0.3834802428902307,
+          "10": 0.6696969663860103,
+          "20": 0.9138347385042788,
+          "50": 0.991472011057179,
+          "100": 0.9973829922664715,
+          "250": 0.9991923767022348,
+          "500": 0.9996312151279969
+        },
+        "power_fraction_wavelength_lt_2px": 0.004172511814084482,
+        "power_fraction_wavelength_lt_4px": 0.10146960299919913,
+        "power_fraction_wavelength_lt_8px": 0.29579015401868897,
+        "power_fraction_wavelength_lt_16px": 0.5628084951402875,
+        "power_fraction_wavelength_lt_32px": 0.8379934029306841,
+        "power_fraction_wavelength_lt_64px": 0.975718146338396
+      },
+      "linear_luma": {
+        "variance": 0.0003758855294742001,
+        "power_fraction_below_wavelength_mm": {
+          "1": 0.01701022235387202,
+          "2": 0.23996257566113094,
+          "3": 0.4253668154887532,
+          "5": 0.6381201099129413,
+          "10": 0.8334816736041245,
+          "20": 0.9398603052811304,
+          "50": 0.9924509562521995,
+          "100": 0.9978303168619372,
+          "250": 0.9989219732836555,
+          "500": 0.999462061380664
+        },
+        "power_fraction_wavelength_lt_2px": 0.013205928667308563,
+        "power_fraction_wavelength_lt_4px": 0.22958565407259038,
+        "power_fraction_wavelength_lt_8px": 0.5423968842218787,
+        "power_fraction_wavelength_lt_16px": 0.7774042478920773,
+        "power_fraction_wavelength_lt_32px": 0.910552155542312,
+        "power_fraction_wavelength_lt_64px": 0.9775486839794897
+      },
+      "roughness": {
+        "variance": 0.005974786576120749,
+        "power_fraction_below_wavelength_mm": {
+          "1": 0.008694124188140046,
+          "2": 0.13285121391172178,
+          "3": 0.23091732547394556,
+          "5": 0.3682743952630437,
+          "10": 0.5872532609186562,
+          "20": 0.8106657268010207,
+          "50": 0.9587597672162051,
+          "100": 0.9750055149782975,
+          "250": 0.9826601430117999,
+          "500": 0.9908811113175353
+        },
+        "power_fraction_wavelength_lt_2px": 0.006715766085847959,
+        "power_fraction_wavelength_lt_4px": 0.12723699490583656,
+        "power_fraction_wavelength_lt_8px": 0.2994048752909875,
+        "power_fraction_wavelength_lt_16px": 0.5071696771443935,
+        "power_fraction_wavelength_lt_32px": 0.7347432904972985,
+        "power_fraction_wavelength_lt_64px": 0.9128526642658504
+      }
+    },
+    "jpeg": {
+      "Normal": {
+        "subsampling": 0,
+        "quantization_min_max": {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            1,
+            2
+          ]
+        },
+        "meaning": "sampling 0=4:4:4, 1=4:2:2, 2=4:2:0; does not recover prior authoring/export losses"
+      },
+      "BaseColor": {
+        "subsampling": 0,
+        "quantization_min_max": {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            1,
+            2
+          ]
+        },
+        "meaning": "sampling 0=4:4:4, 1=4:2:2, 2=4:2:0; does not recover prior authoring/export losses"
+      },
+      "Roughness": {
+        "subsampling": 0,
+        "quantization_min_max": {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            1,
+            2
+          ]
+        },
+        "meaning": "sampling 0=4:4:4, 1=4:2:2, 2=4:2:0; does not recover prior authoring/export losses"
+      },
+      "AO": {
+        "subsampling": 0,
+        "quantization_min_max": {
+          "0": [
+            1,
+            2
+          ],
+          "1": [
+            1,
+            2
+          ]
+        },
+        "meaning": "sampling 0=4:4:4, 1=4:2:2, 2=4:2:0; does not recover prior authoring/export losses"
+      }
+    }
+  }
+}

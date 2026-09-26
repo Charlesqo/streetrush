@@ -2,5 +2,10 @@
 *.png binary
 *.wasm binary
 
+# These text assets have byte-level SHA-256 records. Keep checkout bytes stable
+# across Windows and Unix, including the research copies used by audio tests.
+public/audio-banks/*/bank.json text eol=lf
+research-salvage/audio/candidates/*/bank.json text eol=lf
+
 # Preserve archived Engine Simulator source whitespace verbatim.
 research-salvage/**/*.mr whitespace=-trailing-space,-blank-at-eof

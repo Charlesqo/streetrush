@@ -1,0 +1,38 @@
+{
+  "dataset_id": "SYNTH_ICE_NET_MAP_V1",
+  "semantics": "NET_BRAKE_MAP",
+  "full_curve": {
+    "interpolation": "PCHIP",
+    "rpm": [0, 300, 450, 650, 900, 1200, 1800, 2500, 3500, 4500, 5500, 6500, 6800, 7000, 7300, 7600],
+    "torque_nm": [0, 15, 35, 90, 155, 215, 285, 335, 370, 385, 365, 325, 300, 230, 0, 0]
+  },
+  "closed_curve": {
+    "interpolation": "PCHIP",
+    "rpm": [0, 300, 450, 650, 900, 1200, 1800, 2500, 3500, 4500, 5500, 6500, 6800, 7000, 7300, 7600],
+    "torque_nm": [0, -8, -15, -24, -32, -38, -48, -59, -72, -84, -96, -108, -112, -115, -118, -120]
+  },
+  "loss_curve": null,
+  "inertia_kg_m2": 0.28,
+  "idle_rpm": 900,
+  "idle_kp_nm_per_rad_s": 4.0,
+  "idle_max_torque_nm": 95,
+  "stall_zero_rpm": 100,
+  "stall_detect_rpm": 450,
+  "stall_hold_s": 0.15,
+  "fire_rpm": 650,
+  "min_crank_s": 0.08,
+  "starter_torque_nm": 72,
+  "rev_limit_rpm": 7000,
+  "rev_resume_rpm": 6700,
+  "hard_overspeed_rpm": 7500,
+  "torque_lag_s": 0.0,
+  "environment": {
+    "coolant_c": 90,
+    "oil_c": 90,
+    "ambient_c": 25,
+    "pressure_kpa": 100,
+    "accessories": "declared synthetic net condition"
+  },
+  "source_kind": "SYNTHETIC_STRUCTURE_ONLY",
+  "source_note": "Synthetic values exercise architecture and tests; they are not a real vehicle calibration."
+}

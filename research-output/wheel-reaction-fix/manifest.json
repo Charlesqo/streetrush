@@ -1,0 +1,76 @@
+{
+  "createdAt": "2026-09-08T18:50:23.861Z",
+  "files": {
+    "src/vehicle-v24/runtime.js": "48f86446f1399d2ab1ec4695be985309c5af75234c36c187af215623cfe1f1ad",
+    "scripts/test-vehicle-v24-wheel-reaction.mjs": "d2cd2a390d58333ed41c91e1a84bd8807914882046634a2a2b2df6284114ac50",
+    "scripts/test-vehicle-v24.mjs": "b1a684e210a94d3ccda2c9791b11d6defb813a7788050e834e3cc6515ae5b679",
+    "scripts/test-vehicle-v24-playability.mjs": "1057bb14e2c16b27c784e57b3b66af8629c96bc003627c52bf9a47e1ebb630fd",
+    "docs/VEHICLE_PHYSICS_BASELINE.md": "78ea2f94c8442e9189c675c8a0fe2d0b6acff7f26250304a6e237d119fe85698",
+    "docs/verification/WHEEL_SPIN_REACTION_20260909.md": "2cc85ead3e19726319a252385d51335ff42282ff0942292def69a0ca970ff0e4"
+  },
+  "runtimeBefore": "9f7ba2dc6eeb3d897af048b8de875d714de62e4c95e2666d9052b02ee2a741c9",
+  "runtimeMatchesBrowserEvidence": true,
+  "gates": {
+    "schema": "streetrush.vehicle-v24.gate.v1",
+    "status": "PASS",
+    "scope": "current-working-tree implementation checks; not v2.4 completeness",
+    "referenceParity": "PARTIAL",
+    "suites": 10,
+    "checks": 14876,
+    "results": [
+      {
+        "name": "contract",
+        "status": "PASS",
+        "checks": 17
+      },
+      {
+        "name": "selected-reference-checks",
+        "status": "PASS",
+        "checks": 24,
+        "referenceParity": "PARTIAL"
+      },
+      {
+        "name": "rapier-host",
+        "status": "PASS",
+        "checks": 53
+      },
+      {
+        "name": "runtime",
+        "status": "PASS",
+        "checks": 102
+      },
+      {
+        "name": "wheel-spin-reaction",
+        "status": "PASS",
+        "checks": 32
+      },
+      {
+        "name": "playability",
+        "status": "PASS",
+        "checks": 101
+      },
+      {
+        "name": "forced-downshift",
+        "status": "PASS",
+        "checks": 14508
+      },
+      {
+        "name": "legacy-isolation",
+        "status": "PASS",
+        "checks": 30
+      },
+      {
+        "name": "determinism",
+        "status": "PASS",
+        "checks": 4
+      },
+      {
+        "name": "performance",
+        "status": "PASS",
+        "checks": 5
+      }
+    ]
+  },
+  "liveUrl": "http://127.0.0.1:5192/",
+  "recorderProcessId": 50192
+}

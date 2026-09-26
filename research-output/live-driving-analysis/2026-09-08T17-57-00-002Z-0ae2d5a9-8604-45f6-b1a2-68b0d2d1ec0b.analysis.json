@@ -1,0 +1,4830 @@
+{
+  "file": "2026-09-08T17-57-00-002Z-0ae2d5a9-8604-45f6-b1a2-68b0d2d1ec0b.json",
+  "clickedAt": "2026-09-08T17:57:00.002Z",
+  "firstAlreadyTurning": false,
+  "sourceUnchanged": true,
+  "samples": 600,
+  "continuous": true,
+  "max": {
+    "speed": 64.11931827415641,
+    "beta": 9.472314099883873,
+    "yawRate": 0.5934974551200867,
+    "heading": 14.081087595377063,
+    "tiltDeg": 2.2343406005449467,
+    "steerInput": 0,
+    "steerDeg": 1.2667533083917848e-7,
+    "geometricDemandG": 2.585862009186414e-8
+  },
+  "minGrounded": 3,
+  "events": [
+    {
+      "wallTimeMs": 207742.19999999925,
+      "stepIndex": 6517,
+      "type": "keyup",
+      "code": "KeyS",
+      "repeat": false,
+      "trusted": true,
+      "target": "game",
+      "hidden": false,
+      "relativeS": 0.10230000000074506
+    }
+  ],
+  "first": {
+    "index": 0,
+    "step": 6505,
+    "t": 0,
+    "wallS": 0,
+    "speed": 64.1193,
+    "longitudinalKmh": 63.2277,
+    "lateralKmh": -10.5493,
+    "beta": -9.4723,
+    "yawRate": -0.1953,
+    "heading": 0,
+    "y": 0.663,
+    "tiltDeg": 2.2343,
+    "x": 355.6089,
+    "z": -19.0021,
+    "steerInput": 0,
+    "steerDeg": 0,
+    "rawThrottle": 0,
+    "rawBrake": 1,
+    "throttle": 0,
+    "brake": 1,
+    "handbrake": 0,
+    "grounded": 4,
+    "loads": [
+      6808.1858,
+      4159.7277,
+      4240.7782,
+      1634.1652
+    ],
+    "surfaces": [
+      "gravel",
+      "gravel",
+      "gravel",
+      "gravel"
+    ],
+    "slipRatios": [
+      -0.5417,
+      -0.6653,
+      -0.3405,
+      -2.3576
+    ],
+    "slipAnglesDeg": [
+      -15.6386,
+      -16.7273,
+      -11.8916,
+      -11.0411
+    ],
+    "wheelSpeed": [
+      35.8574,
+      33.5705,
+      40.2476,
+      -35.3849
+    ],
+    "wheelSteerDeg": [
+      0.04,
+      -0.04,
+      0,
+      0
+    ],
+    "wheelTravelDirectionDeg": [
+      10.2914,
+      10.2299,
+      8.9279,
+      8.1792
+    ],
+    "brakeTorque": [
+      708.3016,
+      472.8993,
+      397.6242,
+      53.7566
+    ],
+    "abs": [
+      0.3787,
+      0.2529,
+      0.7166,
+      0.08
+    ],
+    "esc": [
+      0,
+      0,
+      0,
+      117.0957
+    ],
+    "tcs": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "assistSlip": [
+      -0.3175,
+      -0.3535,
+      -0.221,
+      -1.7096
+    ],
+    "frontBrakeShare": 0.7712,
+    "desiredYaw": 0,
+    "geometricDemandG": 0,
+    "driveTorque": 1173.1203,
+    "reverse": false,
+    "status": "COMMITTED"
+  },
+  "last": {
+    "index": 599,
+    "step": 7104,
+    "t": 4.9917,
+    "wallS": 4.9878,
+    "speed": 28.9033,
+    "longitudinalKmh": 28.903,
+    "lateralKmh": 0.0006,
+    "beta": 0.0012,
+    "yawRate": 0,
+    "heading": -13.7873,
+    "y": 0.6435,
+    "tiltDeg": 0.2798,
+    "x": 406.9837,
+    "z": -40.7186,
+    "steerInput": 0,
+    "steerDeg": 0,
+    "rawThrottle": 0,
+    "rawBrake": 0,
+    "throttle": 0,
+    "brake": 0,
+    "handbrake": 0,
+    "grounded": 4,
+    "loads": [
+      4391.48,
+      4413.6829,
+      3850.1238,
+      3872.9936
+    ],
+    "surfaces": [
+      "asphalt",
+      "asphalt",
+      "asphalt",
+      "asphalt"
+    ],
+    "slipRatios": [
+      -0.0498,
+      -0.0498,
+      -0.0496,
+      -0.0496
+    ],
+    "slipAnglesDeg": [
+      -0.0101,
+      0.0161,
+      -0.0233,
+      0.0308
+    ],
+    "wheelSpeed": [
+      23.5379,
+      23.5402,
+      23.488,
+      23.4901
+    ],
+    "wheelSteerDeg": [
+      0.04,
+      -0.04,
+      0,
+      0
+    ],
+    "wheelTravelDirectionDeg": [
+      0.0096,
+      -0.0153,
+      0.0222,
+      -0.0293
+    ],
+    "brakeTorque": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "abs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "esc": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "tcs": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "assistSlip": [
+      -0.008,
+      -0.008,
+      -0.0077,
+      -0.0077
+    ],
+    "frontBrakeShare": 0.6272,
+    "desiredYaw": 0,
+    "geometricDemandG": 0,
+    "driveTorque": 559.2005,
+    "reverse": false,
+    "status": "COMMITTED"
+  },
+  "checkpoints": [
+    {
+      "index": 0,
+      "step": 6505,
+      "t": 0,
+      "wallS": 0,
+      "speed": 64.1193,
+      "longitudinalKmh": 63.2277,
+      "lateralKmh": -10.5493,
+      "beta": -9.4723,
+      "yawRate": -0.1953,
+      "heading": 0,
+      "y": 0.663,
+      "tiltDeg": 2.2343,
+      "x": 355.6089,
+      "z": -19.0021,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 1,
+      "throttle": 0,
+      "brake": 1,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        6808.1858,
+        4159.7277,
+        4240.7782,
+        1634.1652
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.5417,
+        -0.6653,
+        -0.3405,
+        -2.3576
+      ],
+      "slipAnglesDeg": [
+        -15.6386,
+        -16.7273,
+        -11.8916,
+        -11.0411
+      ],
+      "wheelSpeed": [
+        35.8574,
+        33.5705,
+        40.2476,
+        -35.3849
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        10.2914,
+        10.2299,
+        8.9279,
+        8.1792
+      ],
+      "brakeTorque": [
+        708.3016,
+        472.8993,
+        397.6242,
+        53.7566
+      ],
+      "abs": [
+        0.3787,
+        0.2529,
+        0.7166,
+        0.08
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        117.0957
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.3175,
+        -0.3535,
+        -0.221,
+        -1.7096
+      ],
+      "frontBrakeShare": 0.7712,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 1173.1203,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 60,
+      "step": 6565,
+      "t": 0.5,
+      "wallS": 0.5,
+      "speed": 52.504,
+      "longitudinalKmh": 52.4744,
+      "lateralKmh": 1.294,
+      "beta": 1.4126,
+      "yawRate": -0.5276,
+      "heading": -10.4611,
+      "y": 0.6426,
+      "tiltDeg": 1.3678,
+      "x": 362.7858,
+      "z": -22.6706,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0.0123,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        5338.4866,
+        5022.115,
+        3208.5836,
+        2785.3278
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.1065,
+        -0.1011,
+        -0.1302,
+        -10.1918
+      ],
+      "slipAnglesDeg": [
+        -1.8704,
+        -1.9376,
+        4.4106,
+        32.0881
+      ],
+      "wheelSpeed": [
+        41.1364,
+        43.7185,
+        39.7651,
+        -0.3804
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        1.6904,
+        1.7598,
+        -3.904,
+        -3.9023
+      ],
+      "brakeTorque": [
+        22.4169,
+        22.4169,
+        7.3557,
+        0.5885
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        0.08
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.051,
+        0.0103,
+        -0.0686,
+        -1.0394
+      ],
+      "frontBrakeShare": 0.7529,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 1877.3701,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 120,
+      "step": 6625,
+      "t": 1,
+      "wallS": 1.0003,
+      "speed": 45.3151,
+      "longitudinalKmh": 45.3124,
+      "lateralKmh": 0.0228,
+      "beta": 0.0288,
+      "yawRate": 0.0002,
+      "heading": -13.7328,
+      "y": 0.643,
+      "tiltDeg": 0.6456,
+      "x": 368.9111,
+      "z": -25.274,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0.0001,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4453.4504,
+        4370.7041,
+        3890.3675,
+        3765.8268
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0383,
+        -0.0385,
+        -0.0386,
+        -0.0387
+      ],
+      "slipAnglesDeg": [
+        0.0122,
+        -0.0447,
+        -0.0849,
+        0.0425
+      ],
+      "wheelSpeed": [
+        37.025,
+        37.0095,
+        36.933,
+        36.9124
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.0118,
+        0.043,
+        0.0817,
+        -0.0409
+      ],
+      "brakeTorque": [
+        0.0791,
+        0.0791,
+        0.0426,
+        0.0426
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0049,
+        -0.005,
+        -0.005,
+        -0.0051
+      ],
+      "frontBrakeShare": 0.6503,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 667.7129,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 180,
+      "step": 6685,
+      "t": 1.5,
+      "wallS": 1.5003,
+      "speed": 43.2315,
+      "longitudinalKmh": 43.231,
+      "lateralKmh": -0.002,
+      "beta": -0.0027,
+      "yawRate": 0,
+      "heading": -13.7349,
+      "y": 0.6437,
+      "tiltDeg": 0.2765,
+      "x": 374.6035,
+      "z": -27.5915,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4412.8395,
+        4410.9016,
+        3821.4693,
+        3817.95
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0354,
+        -0.0354,
+        -0.0354,
+        -0.0354
+      ],
+      "slipAnglesDeg": [
+        -0.0154,
+        0.0133,
+        -0.0277,
+        0.0258
+      ],
+      "wheelSpeed": [
+        35.2443,
+        35.244,
+        35.154,
+        35.1535
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0149,
+        -0.0128,
+        0.0268,
+        -0.0249
+      ],
+      "brakeTorque": [
+        0.0003,
+        0.0003,
+        0.0002,
+        0.0002
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0071,
+        -0.0071,
+        -0.007,
+        -0.007
+      ],
+      "frontBrakeShare": 0.6483,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 579.6568,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 240,
+      "step": 6745,
+      "t": 2,
+      "wallS": 2.0008,
+      "speed": 41.1713,
+      "longitudinalKmh": 41.1708,
+      "lateralKmh": 0,
+      "beta": 0.0001,
+      "yawRate": 0,
+      "heading": -13.735,
+      "y": 0.6437,
+      "tiltDeg": 0.2881,
+      "x": 380.0323,
+      "z": -29.7994,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4414.2699,
+        4414.4762,
+        3825.8162,
+        3826.0137
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0371,
+        -0.0371,
+        -0.037,
+        -0.037
+      ],
+      "slipAnglesDeg": [
+        -0.0132,
+        0.0133,
+        -0.0282,
+        0.0283
+      ],
+      "wheelSpeed": [
+        33.5631,
+        33.5631,
+        33.4782,
+        33.4783
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0127,
+        -0.0128,
+        0.0272,
+        -0.0273
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0071,
+        -0.0071,
+        -0.007,
+        -0.007
+      ],
+      "frontBrakeShare": 0.6454,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 580.2837,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 300,
+      "step": 6805,
+      "t": 2.5,
+      "wallS": 2.5001,
+      "speed": 39.1194,
+      "longitudinalKmh": 39.1189,
+      "lateralKmh": 0,
+      "beta": 0,
+      "yawRate": 0,
+      "heading": -13.735,
+      "y": 0.6437,
+      "tiltDeg": 0.2874,
+      "x": 385.1967,
+      "z": -31.8998,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4414.2092,
+        4414.2463,
+        3826.1496,
+        3826.1945
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0388,
+        -0.0388,
+        -0.0387,
+        -0.0387
+      ],
+      "slipAnglesDeg": [
+        -0.0133,
+        0.0133,
+        -0.0282,
+        0.0282
+      ],
+      "wheelSpeed": [
+        31.8854,
+        31.8854,
+        31.8057,
+        31.8057
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0128,
+        -0.0128,
+        0.0272,
+        -0.0272
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0073,
+        -0.0073,
+        -0.0072,
+        -0.0072
+      ],
+      "frontBrakeShare": 0.6425,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 579.5027,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 360,
+      "step": 6865,
+      "t": 3,
+      "wallS": 3.0001,
+      "speed": 37.0763,
+      "longitudinalKmh": 37.0758,
+      "lateralKmh": 0,
+      "beta": 0,
+      "yawRate": 0,
+      "heading": -13.735,
+      "y": 0.6437,
+      "tiltDeg": 0.2868,
+      "x": 390.0975,
+      "z": -33.893,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4413.5879,
+        4413.6199,
+        3826.7804,
+        3826.8012
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0407,
+        -0.0407,
+        -0.0406,
+        -0.0406
+      ],
+      "slipAnglesDeg": [
+        -0.0134,
+        0.0134,
+        -0.0282,
+        0.0282
+      ],
+      "wheelSpeed": [
+        30.2151,
+        30.2151,
+        30.1406,
+        30.1406
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0129,
+        -0.0129,
+        0.0271,
+        -0.0271
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0074,
+        -0.0074,
+        -0.0073,
+        -0.0073
+      ],
+      "frontBrakeShare": 0.6394,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 578.2034,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 420,
+      "step": 6925,
+      "t": 3.5,
+      "wallS": 3.5002,
+      "speed": 34.9155,
+      "longitudinalKmh": 34.9151,
+      "lateralKmh": 0.3002,
+      "beta": 0.4927,
+      "yawRate": -0.0292,
+      "heading": -14.0073,
+      "y": 0.6634,
+      "tiltDeg": 1.7615,
+      "x": 394.7271,
+      "z": -35.7852,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        3666.1358,
+        2482.9866,
+        2176.3271,
+        5597.2223
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.052,
+        -0.0347,
+        -0.0371,
+        -0.0351
+      ],
+      "slipAnglesDeg": [
+        0.2941,
+        0.2712,
+        0.5984,
+        0.6472
+      ],
+      "wheelSpeed": [
+        28.2679,
+        28.4459,
+        28.2839,
+        28.7953
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.2795,
+        -0.2621,
+        -0.577,
+        -0.6252
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0184,
+        0.0036,
+        -0.004,
+        0.0027
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 519.1556,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 480,
+      "step": 6985,
+      "t": 4,
+      "wallS": 4.0003,
+      "speed": 32.838,
+      "longitudinalKmh": 32.8383,
+      "lateralKmh": -0.2579,
+      "beta": -0.4499,
+      "yawRate": -0.0006,
+      "heading": -13.7866,
+      "y": 0.646,
+      "tiltDeg": 0.6473,
+      "x": 399.105,
+      "z": -37.5265,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4874.7907,
+        4327.2637,
+        4449.1374,
+        3998.9525
+      ],
+      "surfaces": [
+        "asphalt",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0483,
+        -0.0483,
+        -0.0485,
+        -0.0482
+      ],
+      "slipAnglesDeg": [
+        -0.1966,
+        -0.2219,
+        -0.2876,
+        -0.1156
+      ],
+      "wheelSpeed": [
+        26.9146,
+        26.8513,
+        26.8641,
+        26.8201
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.1875,
+        0.2117,
+        0.2743,
+        0.1103
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0037,
+        -0.0035,
+        -0.0038,
+        -0.0034
+      ],
+      "frontBrakeShare": 0.6279,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 622.514,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 540,
+      "step": 7045,
+      "t": 4.5,
+      "wallS": 4.5001,
+      "speed": 30.8559,
+      "longitudinalKmh": 30.8557,
+      "lateralKmh": 0.0285,
+      "beta": 0.053,
+      "yawRate": 0.0001,
+      "heading": -13.7898,
+      "y": 0.6444,
+      "tiltDeg": 0.2351,
+      "x": 403.2032,
+      "z": -39.1844,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4402.233,
+        4431.0883,
+        3792.4471,
+        3839.8946
+      ],
+      "surfaces": [
+        "asphalt",
+        "asphalt",
+        "asphalt",
+        "kerb"
+      ],
+      "slipRatios": [
+        -0.0474,
+        -0.0474,
+        -0.0472,
+        -0.0473
+      ],
+      "slipAnglesDeg": [
+        -0.003,
+        0.0426,
+        -0.0078,
+        0.0432
+      ],
+      "wheelSpeed": [
+        25.1164,
+        25.1192,
+        25.0551,
+        25.0592
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0028,
+        -0.0407,
+        0.0075,
+        -0.0412
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0086,
+        -0.0086,
+        -0.0083,
+        -0.0084
+      ],
+      "frontBrakeShare": 0.6307,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 566.558,
+      "reverse": false,
+      "status": "COMMITTED"
+    }
+  ],
+  "transitions": [
+    {
+      "index": 399,
+      "step": 6904,
+      "t": 3.325,
+      "wallS": 3.3251,
+      "speed": 35.7366,
+      "longitudinalKmh": 35.7356,
+      "lateralKmh": -0.0137,
+      "beta": -0.022,
+      "yawRate": -0.0041,
+      "heading": -13.7364,
+      "y": 0.6439,
+      "tiltDeg": 0.2826,
+      "x": 393.1423,
+      "z": -35.1314,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        11866.176,
+        3383.0912,
+        3827.3689,
+        3827.4156
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0763,
+        -0.0372,
+        -0.0419,
+        -0.0419
+      ],
+      "slipAnglesDeg": [
+        0.3553,
+        0.0065,
+        -0.0282,
+        0.0282
+      ],
+      "wheelSpeed": [
+        29.714,
+        29.016,
+        29.0628,
+        29.0628
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.3301,
+        -0.0063,
+        0.0271,
+        -0.0271
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0407,
+        -0.003,
+        -0.0074,
+        -0.0074
+      ],
+      "frontBrakeShare": 0.7014,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 576.9501,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 402,
+      "step": 6907,
+      "t": 3.35,
+      "wallS": 3.35,
+      "speed": 35.6063,
+      "longitudinalKmh": 35.6052,
+      "lateralKmh": 0.0098,
+      "beta": 0.0157,
+      "yawRate": -0.0119,
+      "heading": -13.7515,
+      "y": 0.6456,
+      "tiltDeg": 0.4155,
+      "x": 393.3715,
+      "z": -35.225,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        0,
+        3833.447,
+        2025.9816,
+        5230.5443
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        0,
+        -0.0502,
+        -0.0484,
+        -0.0507
+      ],
+      "slipAnglesDeg": [
+        0,
+        -1.0768,
+        -0.9219,
+        -0.867
+      ],
+      "wheelSpeed": [
+        28.8063,
+        29.0383,
+        28.6517,
+        29.2341
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.4745,
+        1.0253,
+        0.8793,
+        0.8252
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        0.0419,
+        -0.0062,
+        -0.0063,
+        -0.0069
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 652.6277,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 403,
+      "step": 6908,
+      "t": 3.3583,
+      "wallS": 3.3564,
+      "speed": 35.5599,
+      "longitudinalKmh": 35.5587,
+      "lateralKmh": 0.0313,
+      "beta": 0.0504,
+      "yawRate": -0.0158,
+      "heading": -13.7587,
+      "y": 0.6462,
+      "tiltDeg": 0.4893,
+      "x": 393.4476,
+      "z": -35.2562,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        10133.8273,
+        3743.1575,
+        2567.8106,
+        4876.1156
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0746,
+        -0.0378,
+        -0.0446,
+        -0.0359
+      ],
+      "slipAnglesDeg": [
+        -0.0815,
+        -0.6402,
+        -0.4975,
+        -0.4367
+      ],
+      "wheelSpeed": [
+        29.1022,
+        29.0894,
+        28.8328,
+        29.2486
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0759,
+        0.6168,
+        0.4762,
+        0.4216
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0399,
+        -0.0037,
+        -0.0118,
+        -0.0021
+      ],
+      "frontBrakeShare": 0.693,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 512.0191,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 407,
+      "step": 6912,
+      "t": 3.3917,
+      "wallS": 3.3878,
+      "speed": 35.3947,
+      "longitudinalKmh": 35.3941,
+      "lateralKmh": 0.1588,
+      "beta": 0.2571,
+      "yawRate": -0.0253,
+      "heading": -13.802,
+      "y": 0.6501,
+      "tiltDeg": 0.9127,
+      "x": 393.7511,
+      "z": -35.3811,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        0,
+        3222.9299,
+        1515.0491,
+        5779.4064
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        0,
+        -0.0468,
+        -0.0497,
+        -0.0483
+      ],
+      "slipAnglesDeg": [
+        0,
+        -0.9499,
+        -0.6035,
+        -0.5446
+      ],
+      "wheelSpeed": [
+        28.5441,
+        28.8788,
+        28.4058,
+        29.2247
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.3313,
+        0.9074,
+        0.575,
+        0.5195
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        0.0375,
+        -0.0008,
+        -0.0074,
+        -0.0026
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 627.3525,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 408,
+      "step": 6913,
+      "t": 3.4,
+      "wallS": 3.4001,
+      "speed": 35.3557,
+      "longitudinalKmh": 35.3553,
+      "lateralKmh": 0.1911,
+      "beta": 0.3097,
+      "yawRate": -0.0277,
+      "heading": -13.8148,
+      "y": 0.651,
+      "tiltDeg": 0.987,
+      "x": 393.8267,
+      "z": -35.4123,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        7369.3919,
+        3232.8525,
+        2123.5989,
+        5379.4257
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0645,
+        -0.0371,
+        -0.045,
+        -0.0343
+      ],
+      "slipAnglesDeg": [
+        0.0204,
+        -0.4478,
+        -0.1185,
+        -0.0608
+      ],
+      "wheelSpeed": [
+        28.7668,
+        28.941,
+        28.6696,
+        29.2328
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.0191,
+        0.4318,
+        0.1134,
+        0.0588
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0308,
+        -0.001,
+        -0.0125,
+        0.0013
+      ],
+      "frontBrakeShare": 0.6606,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 484.1084,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 413,
+      "step": 6918,
+      "t": 3.4417,
+      "wallS": 3.4376,
+      "speed": 35.1572,
+      "longitudinalKmh": 35.1576,
+      "lateralKmh": 0.2989,
+      "beta": 0.4871,
+      "yawRate": -0.0344,
+      "heading": -13.894,
+      "y": 0.6568,
+      "tiltDeg": 1.4319,
+      "x": 394.2031,
+      "z": -35.5684,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        0,
+        2712.8692,
+        1433.195,
+        6000.1604
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        0,
+        -0.0446,
+        -0.047,
+        -0.0448
+      ],
+      "slipAnglesDeg": [
+        0,
+        -0.5062,
+        -0.0263,
+        0.0287
+      ],
+      "wheelSpeed": [
+        28.181,
+        28.6952,
+        28.2419,
+        29.1144
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.1153,
+        0.4846,
+        0.0251,
+        -0.0275
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        0.03,
+        0.0016,
+        -0.0066,
+        0.0009
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 597.648,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 414,
+      "step": 6919,
+      "t": 3.45,
+      "wallS": 3.4501,
+      "speed": 35.1205,
+      "longitudinalKmh": 35.121,
+      "lateralKmh": 0.3103,
+      "beta": 0.5062,
+      "yawRate": -0.0351,
+      "heading": -13.9105,
+      "y": 0.6579,
+      "tiltDeg": 1.4854,
+      "x": 394.2782,
+      "z": -35.5996,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        6325.8292,
+        2620.6901,
+        1998.4319,
+        5625.8774
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0646,
+        -0.0342,
+        -0.0421,
+        -0.0327
+      ],
+      "slipAnglesDeg": [
+        0.2275,
+        -0.0557,
+        0.3736,
+        0.4231
+      ],
+      "wheelSpeed": [
+        28.4548,
+        28.7314,
+        28.4802,
+        29.1014
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.2137,
+        0.0539,
+        -0.3585,
+        -0.4097
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0321,
+        0.002,
+        -0.0111,
+        0.0031
+      ],
+      "frontBrakeShare": 0.6385,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 460.4673,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 418,
+      "step": 6923,
+      "t": 3.4833,
+      "wallS": 3.4812,
+      "speed": 34.9762,
+      "longitudinalKmh": 34.9766,
+      "lateralKmh": 0.3144,
+      "beta": 0.515,
+      "yawRate": -0.0333,
+      "heading": -13.9777,
+      "y": 0.662,
+      "tiltDeg": 1.7262,
+      "x": 394.5776,
+      "z": -35.7236,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        0,
+        2480.6942,
+        1534.7776,
+        6021.8309
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        0,
+        -0.0444,
+        -0.0447,
+        -0.0451
+      ],
+      "slipAnglesDeg": [
+        0,
+        -0.2171,
+        0.2306,
+        0.2826
+      ],
+      "wheelSpeed": [
+        28.0038,
+        28.4903,
+        28.0993,
+        28.9282
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.0511,
+        0.2078,
+        -0.2208,
+        -0.2704
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        0.0282,
+        0.0004,
+        -0.0061,
+        -0.0007
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 583.9449,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 419,
+      "step": 6924,
+      "t": 3.4917,
+      "wallS": 3.4877,
+      "speed": 34.9462,
+      "longitudinalKmh": 34.9462,
+      "lateralKmh": 0.3108,
+      "beta": 0.5096,
+      "yawRate": -0.0312,
+      "heading": -13.993,
+      "y": 0.6627,
+      "tiltDeg": 1.749,
+      "x": 394.6524,
+      "z": -35.7544,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        3634.4491,
+        2520.2598,
+        2041.8171,
+        5682.6872
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0512,
+        -0.0343,
+        -0.0408,
+        -0.0327
+      ],
+      "slipAnglesDeg": [
+        0.2348,
+        0.1679,
+        0.5378,
+        0.584
+      ],
+      "wheelSpeed": [
+        28.0704,
+        28.5483,
+        28.2948,
+        28.9242
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.2233,
+        -0.1623,
+        -0.5168,
+        -0.5654
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0215,
+        0.0005,
+        -0.0112,
+        0.0016
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 449.6597,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 423,
+      "step": 6928,
+      "t": 3.525,
+      "wallS": 3.5253,
+      "speed": 34.8305,
+      "longitudinalKmh": 34.8283,
+      "lateralKmh": 0.2453,
+      "beta": 0.4035,
+      "yawRate": -0.0196,
+      "heading": -14.0437,
+      "y": 0.6646,
+      "tiltDeg": 1.7471,
+      "x": 394.9511,
+      "z": -35.8769,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        0,
+        2605.7373,
+        2357.1152,
+        5439.5515
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        0,
+        -0.0398,
+        -0.0399,
+        -0.04
+      ],
+      "slipAnglesDeg": [
+        0,
+        0.3805,
+        0.5861,
+        0.635
+      ],
+      "wheelSpeed": [
+        27.4782,
+        28.296,
+        28.1351,
+        28.6252
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.2862,
+        -0.3659,
+        -0.5636,
+        -0.6106
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        0.0106,
+        -0.0026,
+        -0.0069,
+        -0.0031
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 528.8751,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 424,
+      "step": 6929,
+      "t": 3.5333,
+      "wallS": 3.5314,
+      "speed": 34.8018,
+      "longitudinalKmh": 34.7993,
+      "lateralKmh": 0.2159,
+      "beta": 0.3555,
+      "yawRate": -0.0169,
+      "heading": -14.0528,
+      "y": 0.6647,
+      "tiltDeg": 1.7122,
+      "x": 395.0258,
+      "z": -35.9072,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        3583.0416,
+        2759.6058,
+        2679.0105,
+        5084.6908
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0633,
+        -0.0317,
+        -0.0338,
+        -0.0302
+      ],
+      "slipAnglesDeg": [
+        0.42,
+        0.6241,
+        0.741,
+        0.7858
+      ],
+      "wheelSpeed": [
+        27.7921,
+        28.3406,
+        28.2238,
+        28.5946
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.395,
+        -0.605,
+        -0.7167,
+        -0.7628
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0355,
+        -0.0032,
+        -0.0085,
+        -0.002
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 417.4078,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 428,
+      "step": 6933,
+      "t": 3.5667,
+      "wallS": 3.5626,
+      "speed": 34.6884,
+      "longitudinalKmh": 34.6841,
+      "lateralKmh": 0.0738,
+      "beta": 0.1218,
+      "yawRate": -0.0049,
+      "heading": -14.0766,
+      "y": 0.6641,
+      "tiltDeg": 1.546,
+      "x": 395.3241,
+      "z": -36.0275,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        0,
+        3195.1477,
+        2864.4029,
+        4964.5047
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        0,
+        -0.0402,
+        -0.0407,
+        -0.0405
+      ],
+      "slipAnglesDeg": [
+        0,
+        0.4799,
+        0.4254,
+        0.4715
+      ],
+      "wheelSpeed": [
+        27.2903,
+        28.1327,
+        28.0366,
+        28.3246
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.2397,
+        -0.4613,
+        -0.4088,
+        -0.4532
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        0.0083,
+        -0.007,
+        -0.009,
+        -0.0075
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 532.2008,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 429,
+      "step": 6934,
+      "t": 3.575,
+      "wallS": 3.5758,
+      "speed": 34.66,
+      "longitudinalKmh": 34.6555,
+      "lateralKmh": 0.0342,
+      "beta": 0.0565,
+      "yawRate": -0.0027,
+      "heading": -14.079,
+      "y": 0.6637,
+      "tiltDeg": 1.481,
+      "x": 395.3986,
+      "z": -36.0573,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        3524.6758,
+        3349.2727,
+        3166.6081,
+        4640.0298
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0652,
+        -0.0322,
+        -0.0341,
+        -0.031
+      ],
+      "slipAnglesDeg": [
+        0.3623,
+        0.6547,
+        0.5246,
+        0.5678
+      ],
+      "wheelSpeed": [
+        27.6204,
+        28.1704,
+        28.1184,
+        28.3023
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.3401,
+        -0.6343,
+        -0.5073,
+        -0.5507
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0379,
+        -0.0074,
+        -0.01,
+        -0.0064
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 422.4422,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 432,
+      "step": 6937,
+      "t": 3.6,
+      "wallS": 3.6,
+      "speed": 34.5529,
+      "longitudinalKmh": 34.5493,
+      "lateralKmh": -0.1046,
+      "beta": -0.1735,
+      "yawRate": 0.0017,
+      "heading": -14.0807,
+      "y": 0.662,
+      "tiltDeg": 1.3241,
+      "x": 395.6221,
+      "z": -36.146,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        3160.5563,
+        3695.8784,
+        11540.5891,
+        3471.5994
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0378,
+        -0.0416,
+        -0.0792,
+        -0.037
+      ],
+      "slipAnglesDeg": [
+        0.1626,
+        0.4464,
+        0.4439,
+        0.267
+      ],
+      "wheelSpeed": [
+        28.0143,
+        27.9948,
+        28.6262,
+        27.9651
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.1566,
+        -0.4285,
+        -0.4113,
+        -0.2575
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0062,
+        -0.0104,
+        -0.0464,
+        -0.0061
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 545.2095,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 433,
+      "step": 6938,
+      "t": 3.6083,
+      "wallS": 3.6068,
+      "speed": 34.5127,
+      "longitudinalKmh": 34.5096,
+      "lateralKmh": -0.1506,
+      "beta": -0.25,
+      "yawRate": 0.0049,
+      "heading": -14.0787,
+      "y": 0.6616,
+      "tiltDeg": 1.3275,
+      "x": 395.6965,
+      "z": -36.1754,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        0,
+        4388.9163,
+        10787.3094,
+        3681.6974
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        0,
+        -0.0471,
+        -0.0534,
+        -0.0449
+      ],
+      "slipAnglesDeg": [
+        0,
+        -0.1342,
+        0.0572,
+        -0.3267
+      ],
+      "wheelSpeed": [
+        26.9814,
+        27.9726,
+        28.7973,
+        27.8521
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.3266,
+        0.1282,
+        -0.0543,
+        0.3127
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        0.0071,
+        -0.013,
+        -0.0197,
+        -0.0109
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 619.7909,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 434,
+      "step": 6939,
+      "t": 3.6167,
+      "wallS": 3.6124,
+      "speed": 34.4711,
+      "longitudinalKmh": 34.469,
+      "lateralKmh": -0.1859,
+      "beta": -0.309,
+      "yawRate": 0.0068,
+      "heading": -14.0753,
+      "y": 0.6614,
+      "tiltDeg": 1.3593,
+      "x": 395.7708,
+      "z": -36.2048,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        2180.5061,
+        5020.5677,
+        10369.4152,
+        3550.2394
+      ],
+      "surfaces": [
+        "kerb",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.066,
+        -0.039,
+        -0.035,
+        -0.0368
+      ],
+      "slipAnglesDeg": [
+        -0.6474,
+        -0.4064,
+        -0.1275,
+        -0.6459
+      ],
+      "wheelSpeed": [
+        27.1351,
+        28.0391,
+        28.7538,
+        27.8384
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.6073,
+        0.3912,
+        0.1232,
+        0.623
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0382,
+        -0.0155,
+        -0.0108,
+        -0.0132
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 494.5793,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 435,
+      "step": 6940,
+      "t": 3.625,
+      "wallS": 3.6252,
+      "speed": 34.4457,
+      "longitudinalKmh": 34.4434,
+      "lateralKmh": -0.182,
+      "beta": -0.3027,
+      "yawRate": 0.0081,
+      "heading": -14.0713,
+      "y": 0.6611,
+      "tiltDeg": 1.3811,
+      "x": 395.8451,
+      "z": -36.2341,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        2638.1831,
+        5553.0046,
+        0,
+        3519.3346
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0622,
+        -0.0387,
+        0,
+        -0.0369
+      ],
+      "slipAnglesDeg": [
+        -0.9555,
+        -0.7203,
+        0,
+        -0.984
+      ],
+      "wheelSpeed": [
+        27.495,
+        27.9777,
+        27.8554,
+        27.7274
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.8996,
+        0.6935,
+        0.4179,
+        0.9489
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0336,
+        -0.0143,
+        0.0361,
+        -0.0124
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 539.0473,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 436,
+      "step": 6941,
+      "t": 3.6333,
+      "wallS": 3.6312,
+      "speed": 34.4067,
+      "longitudinalKmh": 34.4051,
+      "lateralKmh": -0.1838,
+      "beta": -0.306,
+      "yawRate": 0.0081,
+      "heading": -14.0672,
+      "y": 0.6608,
+      "tiltDeg": 1.4004,
+      "x": 395.9193,
+      "z": -36.2634,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        2444.2452,
+        5319.497,
+        8910.3623,
+        3578.501
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0421,
+        -0.0349,
+        -0.0591,
+        -0.0364
+      ],
+      "slipAnglesDeg": [
+        -0.5956,
+        -0.3793,
+        -0.2664,
+        -0.6498
+      ],
+      "wheelSpeed": [
+        27.7103,
+        27.9517,
+        27.9416,
+        27.7364
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.5715,
+        0.3665,
+        0.2515,
+        0.627
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0192,
+        -0.0147,
+        -0.0349,
+        -0.0159
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 460.1166,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 441,
+      "step": 6946,
+      "t": 3.675,
+      "wallS": 3.6751,
+      "speed": 34.226,
+      "longitudinalKmh": 34.2257,
+      "lateralKmh": -0.103,
+      "beta": -0.1725,
+      "yawRate": 0.0125,
+      "heading": -14.0443,
+      "y": 0.6614,
+      "tiltDeg": 1.6495,
+      "x": 396.2891,
+      "z": -36.4099,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        2317.4787,
+        6733.8662,
+        0,
+        2565.772
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0385,
+        -0.0404,
+        0,
+        -0.0381
+      ],
+      "slipAnglesDeg": [
+        -0.8899,
+        -0.6517,
+        0,
+        -0.8891
+      ],
+      "wheelSpeed": [
+        27.3313,
+        27.7782,
+        27.277,
+        27.2971
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.8569,
+        0.6265,
+        0.3984,
+        0.8564
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0173,
+        -0.0213,
+        0.0201,
+        -0.0187
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 511.1637,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 442,
+      "step": 6947,
+      "t": 3.6833,
+      "wallS": 3.6813,
+      "speed": 34.1894,
+      "longitudinalKmh": 34.1887,
+      "lateralKmh": -0.0866,
+      "beta": -0.1452,
+      "yawRate": 0.0143,
+      "heading": -14.0378,
+      "y": 0.6616,
+      "tiltDeg": 1.6765,
+      "x": 396.3628,
+      "z": -36.4392,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        2842.4038,
+        6352.9526,
+        7306.636,
+        2431.9835
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.036,
+        -0.0327,
+        -0.0612,
+        -0.0331
+      ],
+      "slipAnglesDeg": [
+        -0.3922,
+        -0.168,
+        -0.0528,
+        -0.4238
+      ],
+      "wheelSpeed": [
+        27.4805,
+        27.7962,
+        27.5375,
+        27.3456
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.3786,
+        0.1626,
+        0.0498,
+        0.4103
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0206,
+        -0.0201,
+        -0.0419,
+        -0.02
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 395.4121,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 446,
+      "step": 6951,
+      "t": 3.7167,
+      "wallS": 3.7124,
+      "speed": 34.0539,
+      "longitudinalKmh": 34.051,
+      "lateralKmh": -0.0422,
+      "beta": -0.071,
+      "yawRate": 0.021,
+      "heading": -14.0041,
+      "y": 0.6632,
+      "tiltDeg": 1.8437,
+      "x": 396.6566,
+      "z": -36.5566,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        2699.3209,
+        6811.5592,
+        0,
+        1733.7754
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0404,
+        -0.0428,
+        0,
+        -0.0412
+      ],
+      "slipAnglesDeg": [
+        -0.3867,
+        -0.2237,
+        0,
+        -0.5383
+      ],
+      "wheelSpeed": [
+        27.2625,
+        27.6206,
+        27.0624,
+        26.9963
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.3717,
+        0.2145,
+        0.0695,
+        0.5169
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0167,
+        -0.023,
+        0.0182,
+        -0.0208
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 523.5938,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 448,
+      "step": 6953,
+      "t": 3.7333,
+      "wallS": 3.7312,
+      "speed": 33.9926,
+      "longitudinalKmh": 33.9892,
+      "lateralKmh": -0.0393,
+      "beta": -0.0663,
+      "yawRate": 0.0225,
+      "heading": -13.9825,
+      "y": 0.6635,
+      "tiltDeg": 1.8358,
+      "x": 396.803,
+      "z": -36.6152,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        3512.1624,
+        6140.2224,
+        7374.2915,
+        1690.5777
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0329,
+        -0.0309,
+        -0.093,
+        -0.0329
+      ],
+      "slipAnglesDeg": [
+        0.3147,
+        0.4517,
+        0.2802,
+        0.1423
+      ],
+      "wheelSpeed": [
+        27.505,
+        27.6521,
+        27.191,
+        27.1445
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.3046,
+        -0.4382,
+        -0.2563,
+        -0.1378
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0153,
+        -0.0175,
+        -0.0682,
+        -0.0189
+      ],
+      "frontBrakeShare": 0.6266,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 381.4059,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 452,
+      "step": 6957,
+      "t": 3.7667,
+      "wallS": 3.7624,
+      "speed": 33.8466,
+      "longitudinalKmh": 33.8407,
+      "lateralKmh": -0.0853,
+      "beta": -0.1444,
+      "yawRate": 0.0241,
+      "heading": -13.937,
+      "y": 0.6644,
+      "tiltDeg": 1.9583,
+      "x": 397.0949,
+      "z": -36.7321,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        2961.9491,
+        6765.5709,
+        0,
+        1770.414
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0457,
+        -0.048,
+        0,
+        -0.0489
+      ],
+      "slipAnglesDeg": [
+        -0.2443,
+        -0.1555,
+        0,
+        -0.4739
+      ],
+      "wheelSpeed": [
+        27.206,
+        27.517,
+        26.8394,
+        26.9056
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.2336,
+        0.1484,
+        0.217,
+        0.4518
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0136,
+        -0.0207,
+        0.0206,
+        -0.0207
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 594.0998,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 453,
+      "step": 6958,
+      "t": 3.775,
+      "wallS": 3.7751,
+      "speed": 33.8147,
+      "longitudinalKmh": 33.8086,
+      "lateralKmh": -0.0919,
+      "beta": -0.1558,
+      "yawRate": 0.0236,
+      "heading": -13.9252,
+      "y": 0.6646,
+      "tiltDeg": 1.9684,
+      "x": 397.1677,
+      "z": -36.7612,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        3314.7455,
+        6444.2289,
+        3546.7853,
+        1850.7477
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0412,
+        -0.039,
+        -0.0579,
+        -0.0417
+      ],
+      "slipAnglesDeg": [
+        0.0468,
+        0.1264,
+        -0.0941,
+        -0.1605
+      ],
+      "wheelSpeed": [
+        27.3403,
+        27.5706,
+        26.9565,
+        27.0395
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.045,
+        -0.1217,
+        0.089,
+        0.154
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.016,
+        -0.0187,
+        -0.0303,
+        -0.0206
+      ],
+      "frontBrakeShare": 0.6791,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 464.3709,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 457,
+      "step": 6962,
+      "t": 3.8083,
+      "wallS": 3.8064,
+      "speed": 33.6859,
+      "longitudinalKmh": 33.681,
+      "lateralKmh": -0.1294,
+      "beta": -0.2201,
+      "yawRate": 0.0194,
+      "heading": -13.8812,
+      "y": 0.6644,
+      "tiltDeg": 1.9357,
+      "x": 397.4581,
+      "z": -36.8772,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        3601.6651,
+        6152.4929,
+        0,
+        1870.3004
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0476,
+        -0.0485,
+        0,
+        -0.0498
+      ],
+      "slipAnglesDeg": [
+        0.138,
+        0.183,
+        0,
+        -0.0117
+      ],
+      "wheelSpeed": [
+        27.2668,
+        27.4397,
+        26.3328,
+        26.9117
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.1317,
+        -0.1746,
+        0.0662,
+        0.0111
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0113,
+        -0.0162,
+        0.007,
+        -0.0167
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 598.1085,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 458,
+      "step": 6963,
+      "t": 3.8167,
+      "wallS": 3.8127,
+      "speed": 33.6516,
+      "longitudinalKmh": 33.6469,
+      "lateralKmh": -0.1452,
+      "beta": -0.2472,
+      "yawRate": 0.0182,
+      "heading": -13.871,
+      "y": 0.6641,
+      "tiltDeg": 1.8984,
+      "x": 397.5305,
+      "z": -36.906,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        3899.4212,
+        5833.8932,
+        3478.679,
+        2055.4388
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0413,
+        -0.0398,
+        -0.0777,
+        -0.0431
+      ],
+      "slipAnglesDeg": [
+        0.3276,
+        0.3649,
+        0.0221,
+        0.2078
+      ],
+      "wheelSpeed": [
+        27.3871,
+        27.4974,
+        26.738,
+        27.0674
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.3147,
+        -0.3509,
+        -0.0205,
+        -0.1992
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0117,
+        -0.0141,
+        -0.0438,
+        -0.0166
+      ],
+      "frontBrakeShare": 0.6755,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 475.7426,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 462,
+      "step": 6967,
+      "t": 3.85,
+      "wallS": 3.8499,
+      "speed": 33.5128,
+      "longitudinalKmh": 33.5106,
+      "lateralKmh": -0.2113,
+      "beta": -0.3613,
+      "yawRate": 0.0125,
+      "heading": -13.8367,
+      "y": 0.6624,
+      "tiltDeg": 1.7323,
+      "x": 397.8195,
+      "z": -37.0208,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 3,
+      "loads": [
+        4048.4455,
+        5597.2185,
+        0,
+        2368.5733
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0514,
+        -0.0516,
+        0,
+        -0.0524
+      ],
+      "slipAnglesDeg": [
+        0.1354,
+        0.1481,
+        0,
+        0.0956
+      ],
+      "wheelSpeed": [
+        27.2573,
+        27.3608,
+        26.162,
+        26.9773
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.1287,
+        -0.1408,
+        0.1064,
+        -0.0908
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0087,
+        -0.0117,
+        0.0088,
+        -0.0118
+      ],
+      "frontBrakeShare": 0.62,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 647.3266,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 464,
+      "step": 6969,
+      "t": 3.8667,
+      "wallS": 3.8626,
+      "speed": 33.4507,
+      "longitudinalKmh": 33.4503,
+      "lateralKmh": -0.2471,
+      "beta": -0.4232,
+      "yawRate": 0.0091,
+      "heading": -13.8228,
+      "y": 0.6608,
+      "tiltDeg": 1.5836,
+      "x": 397.9636,
+      "z": -37.0777,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4561.7741,
+        4946.4523,
+        3842.7178,
+        2644.1791
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "kerb",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.037,
+        -0.0351,
+        -0.1209,
+        -0.0366
+      ],
+      "slipAnglesDeg": [
+        0.3793,
+        0.3816,
+        0.0932,
+        0.3909
+      ],
+      "wheelSpeed": [
+        27.4342,
+        27.4091,
+        26.3989,
+        27.1784
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.3658,
+        -0.3687,
+        -0.0831,
+        -0.3771
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0051,
+        -0.0053,
+        -0.0771,
+        -0.0064
+      ],
+      "frontBrakeShare": 0.6574,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 455.8503,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 470,
+      "step": 6975,
+      "t": 3.9167,
+      "wallS": 3.9126,
+      "speed": 33.2203,
+      "longitudinalKmh": 33.2216,
+      "lateralKmh": -0.3348,
+      "beta": -0.5773,
+      "yawRate": 0.0028,
+      "heading": -13.7982,
+      "y": 0.655,
+      "tiltDeg": 1.1659,
+      "x": 398.3942,
+      "z": -37.2469,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4810.7541,
+        4612.8151,
+        3827.3706,
+        3387.2114
+      ],
+      "surfaces": [
+        "gravel",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0545,
+        -0.0547,
+        -0.0553,
+        -0.0548
+      ],
+      "slipAnglesDeg": [
+        0.0117,
+        -0.0047,
+        -0.145,
+        0.1057
+      ],
+      "wheelSpeed": [
+        27.2028,
+        27.1491,
+        27.2749,
+        27.0244
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.0111,
+        0.0045,
+        0.1374,
+        -0.1002
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.002,
+        -0.0028,
+        -0.0021,
+        -0.0027
+      ],
+      "frontBrakeShare": 0.6457,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 738.7927,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 473,
+      "step": 6978,
+      "t": 3.9417,
+      "wallS": 3.9379,
+      "speed": 33.1025,
+      "longitudinalKmh": 33.1034,
+      "lateralKmh": -0.3423,
+      "beta": -0.5925,
+      "yawRate": 0.0017,
+      "heading": -13.792,
+      "y": 0.6519,
+      "tiltDeg": 0.9815,
+      "x": 398.6084,
+      "z": -37.3309,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4797.1727,
+        4596.3405,
+        3981.1503,
+        3890.3101
+      ],
+      "surfaces": [
+        "asphalt",
+        "gravel",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0528,
+        -0.0525,
+        -0.052,
+        -0.0538
+      ],
+      "slipAnglesDeg": [
+        -0.1774,
+        -0.199,
+        -0.3638,
+        -0.0847
+      ],
+      "wheelSpeed": [
+        27.146,
+        27.1121,
+        27.0272,
+        27.0397
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.1685,
+        0.1891,
+        0.3458,
+        0.0804
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0039,
+        -0.004,
+        -0.0031,
+        -0.005
+      ],
+      "frontBrakeShare": 0.6368,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 678.4323,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 498,
+      "step": 7003,
+      "t": 4.15,
+      "wallS": 4.1505,
+      "speed": 32.2289,
+      "longitudinalKmh": 32.2286,
+      "lateralKmh": -0.0029,
+      "beta": -0.0051,
+      "yawRate": -0.0001,
+      "heading": -13.7903,
+      "y": 0.6407,
+      "tiltDeg": 0.3044,
+      "x": 400.3622,
+      "z": -38.031,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4479.3397,
+        4272.0139,
+        4234.802,
+        4014.5229
+      ],
+      "surfaces": [
+        "asphalt",
+        "kerb",
+        "gravel",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0442,
+        -0.0443,
+        -0.0442,
+        -0.0441
+      ],
+      "slipAnglesDeg": [
+        -0.0353,
+        -0.0352,
+        -0.0481,
+        -0.0152
+      ],
+      "wheelSpeed": [
+        26.2988,
+        26.2799,
+        26.2698,
+        26.25
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0338,
+        0.0337,
+        0.046,
+        0.0145
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0062,
+        -0.0063,
+        -0.0062,
+        -0.0061
+      ],
+      "frontBrakeShare": 0.6251,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 554.1342,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 509,
+      "step": 7014,
+      "t": 4.2417,
+      "wallS": 4.2378,
+      "speed": 31.8669,
+      "longitudinalKmh": 31.8663,
+      "lateralKmh": 0.018,
+      "beta": 0.0323,
+      "yawRate": -0.0004,
+      "heading": -13.7903,
+      "y": 0.6419,
+      "tiltDeg": 0.2475,
+      "x": 401.118,
+      "z": -38.3381,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4203.6713,
+        5360.9463,
+        4161.3895,
+        3673.7917
+      ],
+      "surfaces": [
+        "asphalt",
+        "kerb",
+        "asphalt",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.0456,
+        -0.0471,
+        -0.0455,
+        -0.0455
+      ],
+      "slipAnglesDeg": [
+        0.1378,
+        0.0853,
+        0.1387,
+        0.1627
+      ],
+      "wheelSpeed": [
+        25.9605,
+        26.0619,
+        25.9628,
+        25.8983
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        -0.1318,
+        -0.0815,
+        -0.1326,
+        -0.1556
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0073,
+        -0.0089,
+        -0.0072,
+        -0.0071
+      ],
+      "frontBrakeShare": 0.6365,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 558.2742,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 516,
+      "step": 7021,
+      "t": 4.3,
+      "wallS": 4.3001,
+      "speed": 31.6406,
+      "longitudinalKmh": 31.6402,
+      "lateralKmh": -0.0334,
+      "beta": -0.0604,
+      "yawRate": -0.0006,
+      "heading": -13.7928,
+      "y": 0.6438,
+      "tiltDeg": 0.2518,
+      "x": 401.5948,
+      "z": -38.5312,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4222.8617,
+        3823.8697,
+        4049.6955,
+        3650.6022
+      ],
+      "surfaces": [
+        "asphalt",
+        "asphalt",
+        "asphalt",
+        "gravel"
+      ],
+      "slipRatios": [
+        -0.046,
+        -0.0435,
+        -0.0448,
+        -0.045
+      ],
+      "slipAnglesDeg": [
+        -0.0713,
+        -0.0267,
+        -0.0471,
+        -0.0164
+      ],
+      "wheelSpeed": [
+        25.769,
+        25.7317,
+        25.751,
+        25.7155
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0682,
+        0.0256,
+        0.0451,
+        0.0157
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0078,
+        -0.0054,
+        -0.0068,
+        -0.0067
+      ],
+      "frontBrakeShare": 0.6236,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 554.1529,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 535,
+      "step": 7040,
+      "t": 4.4583,
+      "wallS": 4.4568,
+      "speed": 31.0213,
+      "longitudinalKmh": 31.0212,
+      "lateralKmh": 0.0333,
+      "beta": 0.0615,
+      "yawRate": 0.0003,
+      "heading": -13.7902,
+      "y": 0.6447,
+      "tiltDeg": 0.2183,
+      "x": 402.8715,
+      "z": -39.0495,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4386.0889,
+        4374.5371,
+        3808.2248,
+        3820.0789
+      ],
+      "surfaces": [
+        "asphalt",
+        "asphalt",
+        "asphalt",
+        "kerb"
+      ],
+      "slipRatios": [
+        -0.047,
+        -0.047,
+        -0.0468,
+        -0.0469
+      ],
+      "slipAnglesDeg": [
+        -0.0025,
+        0.0495,
+        -0.0061,
+        0.0424
+      ],
+      "wheelSpeed": [
+        25.2499,
+        25.2478,
+        25.191,
+        25.1939
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0024,
+        -0.0473,
+        0.0058,
+        -0.0405
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0085,
+        -0.0086,
+        -0.0083,
+        -0.0084
+      ],
+      "frontBrakeShare": 0.6303,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 564.194,
+      "reverse": false,
+      "status": "COMMITTED"
+    },
+    {
+      "index": 553,
+      "step": 7058,
+      "t": 4.6083,
+      "wallS": 4.6064,
+      "speed": 30.4262,
+      "longitudinalKmh": 30.4254,
+      "lateralKmh": -0.061,
+      "beta": -0.1149,
+      "yawRate": 0.0007,
+      "heading": -13.7835,
+      "y": 0.6454,
+      "tiltDeg": 0.3773,
+      "x": 404.0577,
+      "z": -39.5305,
+      "steerInput": 0,
+      "steerDeg": 0,
+      "rawThrottle": 0,
+      "rawBrake": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "grounded": 4,
+      "loads": [
+        4649.1502,
+        4237.8173,
+        3693.6006,
+        3258.0819
+      ],
+      "surfaces": [
+        "asphalt",
+        "asphalt",
+        "asphalt",
+        "asphalt"
+      ],
+      "slipRatios": [
+        -0.0473,
+        -0.0472,
+        -0.0479,
+        -0.0453
+      ],
+      "slipAnglesDeg": [
+        -0.0668,
+        -0.0352,
+        -0.1098,
+        -0.0338
+      ],
+      "wheelSpeed": [
+        24.7751,
+        24.7336,
+        24.6841,
+        24.6287
+      ],
+      "wheelSteerDeg": [
+        0.04,
+        -0.04,
+        0,
+        0
+      ],
+      "wheelTravelDirectionDeg": [
+        0.0638,
+        0.0336,
+        0.1048,
+        0.0323
+      ],
+      "brakeTorque": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "abs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "esc": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "tcs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assistSlip": [
+        -0.0092,
+        -0.0093,
+        -0.0096,
+        -0.0074
+      ],
+      "frontBrakeShare": 0.6369,
+      "desiredYaw": 0,
+      "geometricDemandG": 0,
+      "driveTorque": 553.842,
+      "reverse": false,
+      "status": "COMMITTED"
+    }
+  ]
+}

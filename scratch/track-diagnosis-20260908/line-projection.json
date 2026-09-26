@@ -1,0 +1,66 @@
+{
+  "assumptions": {
+    "resolution": [
+      1280,
+      720
+    ],
+    "fov": 58,
+    "near": 0.1,
+    "far": 1300,
+    "cameraHeight": 4.8,
+    "lookTarget": [
+      0,
+      1.6,
+      16.9
+    ],
+    "edgeWidth": 0.12,
+    "gridThickness": 0.16,
+    "roadY": 0.015,
+    "edgeY": 0.043,
+    "scope": "Analytical projection of representative straight-road view; not observed temporal flicker or GPU performance"
+  },
+  "rows": [
+    {
+      "distance": 25,
+      "edgeWidthPixels": 3.0624,
+      "gridThicknessPixels": 0.8382,
+      "depthSeparation24Bit": 385.804,
+      "edgeAtScale072": 2.205
+    },
+    {
+      "distance": 50,
+      "edgeWidthPixels": 1.5583,
+      "gridThicknessPixels": 0.217,
+      "depthSeparation24Bit": 196.315,
+      "edgeAtScale072": 1.122
+    },
+    {
+      "distance": 100,
+      "edgeWidthPixels": 0.7861,
+      "gridThicknessPixels": 0.0552,
+      "depthSeparation24Bit": 99.034,
+      "edgeAtScale072": 0.566
+    },
+    {
+      "distance": 200,
+      "edgeWidthPixels": 0.3948,
+      "gridThicknessPixels": 0.0139,
+      "depthSeparation24Bit": 49.739,
+      "edgeAtScale072": 0.2843
+    },
+    {
+      "distance": 400,
+      "edgeWidthPixels": 0.1979,
+      "gridThicknessPixels": 0.0035,
+      "depthSeparation24Bit": 24.925,
+      "edgeAtScale072": 0.1425
+    },
+    {
+      "distance": 600,
+      "edgeWidthPixels": 0.132,
+      "gridThicknessPixels": 0.0016,
+      "depthSeparation24Bit": 16.629,
+      "edgeAtScale072": 0.095
+    }
+  ]
+}

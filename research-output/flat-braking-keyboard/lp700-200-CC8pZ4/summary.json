@@ -1,0 +1,29 @@
+{
+  "scope": "Actual Chrome page, production main loop and InputController; automated DOM keyboard events (isTrusted=false). Flat TrackSystem straight; LP700 only.",
+  "url": "http://127.0.0.1:5191/?straightline=1&car=lp700&targetkmh=200&coastseconds=0",
+  "outputDirectory": "E:\\Projects\\streetrush\\streetrush\\research-output\\flat-braking-keyboard\\lp700-200-CC8pZ4",
+  "originalRecording": "docs/verification/straight-line/f9e345c7-e512-4662-b77c-afa88c07b7ae.json",
+  "endReason": "STOPPED",
+  "keySequence": [
+    "keydown:KeyW",
+    "keyup:KeyW",
+    "keydown:KeyS",
+    "keyup:KeyS"
+  ],
+  "keySequenceMatches": true,
+  "sampleCount": 2865,
+  "physicalStepsContinuous": true,
+  "sourceUnchangedDuringRun": true,
+  "actualInputMatchesKeys": true,
+  "zeroSteeringAndHandbrake": true,
+  "automaticReset": [],
+  "reverseDuringBrake": false,
+  "accelerationSeconds": 10.083333333333334,
+  "speedBeforeBrakeKmh": 200.07192236424044,
+  "brakeSeconds": 9.025,
+  "maxHeadingChangeDuringBrakeDeg": 0.08477207638141683,
+  "maxLateralDepartureDuringBrakeM": 0.08020467823371291,
+  "maxYawRateDuringBrakeRadS": 0.0008043500129133463,
+  "finalBrakeHorizontalKmh": 0.35612799335521306,
+  "errors": []
+}

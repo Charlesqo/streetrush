@@ -1,0 +1,525 @@
+{
+  "checks": [
+    {
+      "duration_s": 0.06841129199892748,
+      "exit_code": 0,
+      "imported_module_count": 24,
+      "imported_modules": [
+        "engine_calibration_reference.accepted_tire_adapter",
+        "engine_calibration_reference.aero_reference_v1_9",
+        "engine_calibration_reference.asset_pipeline",
+        "engine_calibration_reference.calibration",
+        "engine_calibration_reference.calibration_fixtures",
+        "engine_calibration_reference.calibration_validation_reference_v2_0",
+        "engine_calibration_reference.chassis_suspension_reference",
+        "engine_calibration_reference.coupled_vehicle_solver",
+        "engine_calibration_reference.engine_behavior_reference_v2_0",
+        "engine_calibration_reference.engine_model",
+        "engine_calibration_reference.host_integration",
+        "engine_calibration_reference.powertrain_controller",
+        "engine_calibration_reference.reference_assets",
+        "engine_calibration_reference.rigs",
+        "engine_calibration_reference.run_v2_4_maneuver_matrix",
+        "engine_calibration_reference.runtime_vehicle_solver",
+        "engine_calibration_reference.steering_reference_v2",
+        "engine_calibration_reference.steering_transaction",
+        "engine_calibration_reference.timeseries_pipeline",
+        "engine_calibration_reference.tire_host_contract",
+        "engine_calibration_reference.tire_v2_reference_v1_7",
+        "engine_calibration_reference.tire_v2_reference_v1_8",
+        "engine_calibration_reference.unified_vehicle_fixture",
+        "engine_calibration_reference.vehicle_controls_reference"
+      ],
+      "name": "compile_and_public_import",
+      "public_api_count": 78,
+      "source_file_count": 52,
+      "status": "PASS"
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-v",
+        "-s",
+        "engine_calibration_reference/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "collected": 99,
+      "duration_s": 53.3266369579942,
+      "exit_code": 0,
+      "expected_failures": 1,
+      "name": "package_unittest",
+      "output_tail": "olverEvidence.test_aggregate_nonlinear_budget_failure_does_not_commit) ... ok\ntest_each_owner_commit_fault_rolls_back_the_five_owner_group (test_standalone_closeout_v2_4.TestAeroWrenchAndSolverEvidence.test_each_owner_commit_fault_rolls_back_the_five_owner_group) ... ok\ntest_road_and_air_reactions_expose_full_wrench_and_solver_provenance (test_standalone_closeout_v2_4.TestAeroWrenchAndSolverEvidence.test_road_and_air_reactions_expose_full_wrench_and_solver_provenance) ... ok\ntest_assists_only_emit_capacities_and_engine_authority (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_assists_only_emit_capacities_and_engine_authority) ... ok\ntest_direction_change_brakes_before_reverse_and_commits_intent_only (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_direction_change_brakes_before_reverse_and_commits_intent_only) ... ok\ntest_driver_trial_is_bound_to_vehicle_commit_and_abort (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_driver_trial_is_bound_to_vehicle_commit_and_abort) ... ok\ntest_mapped_airborne_keeps_internal_suspension_and_zeroes_road_wrench (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_mapped_airborne_keeps_internal_suspension_and_zeroes_road_wrench) ... ok\ntest_neutral_is_immediate_and_same_direction_does_not_force_first_gear (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_neutral_is_immediate_and_same_direction_does_not_force_first_gear) ... ok\ntest_parking_brake_releases_finite_capacity_locked_clutch (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_parking_brake_releases_finite_capacity_locked_clutch) ... ok\ntest_parking_channel_bypasses_abs_and_stays_independent (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_parking_channel_bypasses_abs_and_stays_independent) ... ok\ntest_reduced_platform_refuses_to_fake_missing_pitch_dynamics (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_reduced_platform_refuses_to_fake_missing_pitch_dynamics) ... ok\ntest_service_brake_actual_reaction_is_solver_bounded (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_service_brake_actual_reaction_is_solver_bounded) ... ok\ntest_standstill_hold_stops_at_real_contact_host_boundary (test_standalone_closeout_v2_4.TestBrakeAssistsAndDriverFSM.test_standstill_hold_stops_at_real_contact_host_boundary) ... ok\ntest_mapping_is_power_conjugate_and_does_not_lock_side_speeds (test_standalone_closeout_v2_4.TestIdealOpenDifferential.test_mapping_is_power_conjugate_and_does_not_lock_side_speeds) ... ok\ntest_contact_mode_rows_keep_gap_and_force_units_separate (test_standalone_closeout_v2_4.TestSteeringCausalityAndSpatialLoad.test_contact_mode_rows_keep_gap_and_force_units_separate) ... ok\ntest_legacy_trail_scrub_knobs_cannot_double_count_spatial_load (test_standalone_closeout_v2_4.TestSteeringCausalityAndSpatialLoad.test_legacy_trail_scrub_knobs_cannot_double_count_spatial_load) ... ok\ntest_position_reaction_consumes_one_full_spatial_projection (test_standalone_closeout_v2_4.TestSteeringCausalityAndSpatialLoad.test_position_reaction_consumes_one_full_spatial_projection) ... ok\ntest_tire_consumes_final_contact_frame_point_velocity_and_wrench (test_standalone_closeout_v2_4.TestSteeringCausalityAndSpatialLoad.test_tire_consumes_final_contact_frame_point_velocity_and_wrench) ... ok\ntest_torque_mode_is_same_step_coupled_and_mutually_exclusive (test_standalone_closeout_v2_4.TestSteeringCausalityAndSpatialLoad.test_torque_mode_is_same_step_coupled_and_mutually_exclusive) ... ok\ntest_latency_correction_missing_interpolation_and_exact_grid (test_timeseries_pipeline_v2_0.TestTimeSeriesPipeline.test_latency_correction_missing_interpolation_and_exact_grid) ... ok\ntest_latency_that_removes_common_support_is_rejected (test_timeseries_pipeline_v2_0.TestTimeSeriesPipeline.test_latency_that_removes_common_support_is_rejected) ... ok\ntest_long_or_endpoint_gap_is_never_silently_filled (test_timeseries_pipeline_v2_0.TestTimeSeriesPipeline.test_long_or_endpoint_gap_is_never_silently_filled) ... ok\ntest_nonmonotonic_time_is_rejected (test_timeseries_pipeline_v2_0.TestTimeSeriesPipeline.test_nonmonotonic_time_is_rejected) ... ok\ntest_processing_and_export_are_byte_deterministic (test_timeseries_pipeline_v2_0.TestTimeSeriesPipeline.test_processing_and_export_are_byte_deterministic) ... ok\ntest_reject_and_drop_row_policies_are_explicit (test_timeseries_pipeline_v2_0.TestTimeSeriesPipeline.test_reject_and_drop_row_policies_are_explicit) ... ok\ntest_both_backends_execute_real_paths_and_atomic_commit (test_unified_vehicle_fixture_v2_2.TestUnifiedCrossSystemClosure.test_both_backends_execute_real_paths_and_atomic_commit) ... ok\ntest_domain_failures_abort_every_owner_without_state_advance (test_unified_vehicle_fixture_v2_2.TestUnifiedCrossSystemClosure.test_domain_failures_abort_every_owner_without_state_advance) ... ok\ntest_dynamic_maneuvers_generate_trajectory_and_cross_corner_response (test_unified_vehicle_fixture_v2_2.TestUnifiedCrossSystemClosure.test_dynamic_maneuvers_generate_trajectory_and_cross_corner_response) ... ok\ntest_normal_authorities_are_mutually_exclusive_and_replay_is_deterministic (test_unified_vehicle_fixture_v2_2.TestUnifiedCrossSystemClosure.test_normal_authorities_are_mutually_exclusive_and_replay_is_deterministic) ... ok\ntest_timestep_and_solver_iteration_refinement (test_unified_vehicle_fixture_v2_2.TestUnifiedCrossSystemClosure.test_timestep_and_solver_iteration_refinement) ... ok\ntest_accepted_mapped_kc_asset_is_executable_not_a_stub (test_upstream_subsystem_bridge_v2_1.TestUpstreamSubsystemBridgeV21.test_accepted_mapped_kc_asset_is_executable_not_a_stub) ... ok\ntest_both_accepted_tire_normal_host_blocks_still_converge (test_upstream_subsystem_bridge_v2_1.TestUpstreamSubsystemBridgeV21.test_both_accepted_tire_normal_host_blocks_still_converge) ... ok\n\n----------------------------------------------------------------------\nRan 99 tests in 53.003s\n\nOK (skipped=1, expected failures=1)\n",
+      "skipped": 1,
+      "status": "PASS",
+      "timed_out": false
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/upstream_reference"
+      ],
+      "duration_s": 5.626018750001094,
+      "exit_code": 0,
+      "name": "upstream_reference_pytest",
+      "output_tail": "......................................x......s.......................... [ 63%]\n....................xs...................                                [100%]\n109 passed, 2 skipped, 2 xfailed in 5.48s\n",
+      "passed": 109,
+      "skipped": 2,
+      "status": "PASS",
+      "timed_out": false,
+      "xfailed": 2
+    },
+    {
+      "case_count": 33,
+      "case_records": [
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 60,
+          "max_residual_scaled_inf": 2.4093872513439307e-12,
+          "scenario": "straight_no_brake",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 4.004737893300442e-12,
+          "scenario": "straight_no_brake",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 4.917471798141469e-13,
+          "scenario": "straight_no_brake",
+          "status": "PASS"
+        },
+        {
+          "backend": "DYNAMIC_UNSPRUNG",
+          "hz": 60,
+          "max_residual_scaled_inf": 2.0553947792324272e-12,
+          "scenario": "straight_no_brake",
+          "status": "PASS"
+        },
+        {
+          "backend": "DYNAMIC_UNSPRUNG",
+          "hz": 120,
+          "max_residual_scaled_inf": 6.594576366101071e-12,
+          "scenario": "straight_no_brake",
+          "status": "PASS"
+        },
+        {
+          "backend": "DYNAMIC_UNSPRUNG",
+          "hz": 240,
+          "max_residual_scaled_inf": 8.05225730318433e-14,
+          "scenario": "straight_no_brake",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 60,
+          "max_residual_scaled_inf": 8.238168028975942e-13,
+          "scenario": "service_brake_0.45",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 2.1617917671810614e-11,
+          "scenario": "service_brake_0.45",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 1.7582472749879535e-12,
+          "scenario": "service_brake_0.45",
+          "status": "PASS"
+        },
+        {
+          "backend": "DYNAMIC_UNSPRUNG",
+          "hz": 60,
+          "max_residual_scaled_inf": 9.557891654629916e-12,
+          "scenario": "service_brake_0.45",
+          "status": "PASS"
+        },
+        {
+          "backend": "DYNAMIC_UNSPRUNG",
+          "hz": 120,
+          "max_residual_scaled_inf": 4.327400791429703e-12,
+          "scenario": "service_brake_0.45",
+          "status": "PASS"
+        },
+        {
+          "backend": "DYNAMIC_UNSPRUNG",
+          "hz": 240,
+          "max_residual_scaled_inf": 1.5874841622720657e-11,
+          "scenario": "service_brake_0.45",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "exception_type": "RigidBodyDynamicsHostRequired",
+          "hz": 60,
+          "scenario": "service_brake_full",
+          "status": "EXPECTED_HOST_BOUNDARY"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 9.311416746772527e-13,
+          "scenario": "service_brake_full",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 3.809468256085954e-11,
+          "scenario": "service_brake_full",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 60,
+          "max_residual_scaled_inf": 2.306042192015823e-12,
+          "scenario": "parking_brake_15mps",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 3.0647843309659286e-12,
+          "scenario": "parking_brake_15mps",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 2.1555024432018398e-14,
+          "scenario": "parking_brake_15mps",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 60,
+          "max_residual_scaled_inf": 2.1542961642015412e-12,
+          "scenario": "position_steering",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 1.1136340601850675e-11,
+          "scenario": "position_steering",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 2.2353707697809339e-13,
+          "scenario": "position_steering",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 60,
+          "max_residual_scaled_inf": 1.44228840025587e-12,
+          "scenario": "torque_driven_steering",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 1.103720420451721e-11,
+          "scenario": "torque_driven_steering",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 2.2270647647001582e-13,
+          "scenario": "torque_driven_steering",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 60,
+          "max_residual_scaled_inf": 1.4403024045735277e-12,
+          "scenario": "split_mu",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 6.9671282225446454e-12,
+          "scenario": "split_mu",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 5.71848968053618e-13,
+          "scenario": "split_mu",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 60,
+          "max_residual_scaled_inf": 4.423245724206464e-12,
+          "scenario": "rear_wheel_differential_external",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 1.687393297160727e-11,
+          "scenario": "rear_wheel_differential_external",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 5.369900197118143e-13,
+          "scenario": "rear_wheel_differential_external",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "exception_type": "RigidBodyDynamicsHostRequired",
+          "hz": 60,
+          "scenario": "step_driver_F_to_R_full_brake",
+          "status": "EXPECTED_HOST_BOUNDARY"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 120,
+          "max_residual_scaled_inf": 8.238432384205518e-12,
+          "scenario": "step_driver_F_to_R_full_brake",
+          "status": "PASS"
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "hz": 240,
+          "max_residual_scaled_inf": 3.809468256085954e-11,
+          "scenario": "step_driver_F_to_R_full_brake",
+          "status": "PASS"
+        }
+      ],
+      "counts": {
+        "EXPECTED_HOST_BOUNDARY": 2,
+        "FAIL": 0,
+        "PASS": 31,
+        "TIMEOUT": 0
+      },
+      "duration_s": 0.0003660000074887648,
+      "exit_code": 0,
+      "expected_host_boundaries": [
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "exception_type": "RigidBodyDynamicsHostRequired",
+          "hz": 60,
+          "scenario": "service_brake_full",
+          "transaction": {
+            "aborted": [
+              "mechanics",
+              "tires",
+              "steering",
+              "gearbox",
+              "engine"
+            ],
+            "committed": [],
+            "committed_exactly_once": false,
+            "rolled_back": []
+          }
+        },
+        {
+          "backend": "MAPPED_KC_MASSLESS",
+          "exception_type": "RigidBodyDynamicsHostRequired",
+          "hz": 60,
+          "scenario": "step_driver_F_to_R_full_brake",
+          "transaction": {
+            "aborted": [
+              "mechanics",
+              "tires",
+              "steering",
+              "gearbox",
+              "engine"
+            ],
+            "committed": [],
+            "committed_exactly_once": false,
+            "rolled_back": []
+          }
+        }
+      ],
+      "expected_schema": "vehicle-physics-v2.4-maneuver-matrix-v1",
+      "max_nonlinear_evaluations": 91,
+      "max_residual_scaled_inf": 3.809468256085954e-11,
+      "max_solver_attempt_count": 3,
+      "missing_host_boundaries": [],
+      "name": "maneuver_matrix_evidence",
+      "recomputed_counts": {
+        "EXPECTED_HOST_BOUNDARY": 2,
+        "FAIL": 0,
+        "PASS": 31,
+        "TIMEOUT": 0
+      },
+      "record_errors": [],
+      "schema": "vehicle-physics-v2.4-maneuver-matrix-v1",
+      "solver_methods": [
+        "root-hybr"
+      ],
+      "source_file": "maneuver_matrix_v2_4.json",
+      "source_sha256": "da141d1efec12f9abd28de081a596db91a875cd8f7a2dc3b393861b7ea2d51b3",
+      "status": "PASS",
+      "transaction_violations": [],
+      "unexpected_host_boundaries": []
+    }
+  ],
+  "declared_boundaries": {
+    "low_speed_contact": "FRICTION_CONTACT_HOST_REQUIRED",
+    "optional_models": [
+      "LSD_OR_LOCKED_DIFFERENTIAL",
+      "TIRE_THERMAL_AND_WEAR",
+      "ACTIVE_OR_UNSTEADY_AERO"
+    ],
+    "target_vehicle_data": "SKIP_NO_TARGET_DATA",
+    "world_rigid_body": "RIGID_BODY_DYNAMICS_HOST_REQUIRED"
+  },
+  "declared_test_outcomes": {
+    "package_expected_failures": [
+      {
+        "reason": "negative control: a naive post-integration RPM clamp does not conserve angular impulse",
+        "test": "test_engine_behavior_reference_v2_0.TestTrialCommitAndModes.test_naive_post_integration_rpm_clamp_conserves_angular_impulse"
+      }
+    ],
+    "package_skips": [
+      {
+        "reason": "target low-speed combustion/starter/stall fixture is unavailable",
+        "test": "test_engine_behavior_reference_v2_0.TestTrialCommitAndModes.test_target_low_speed_start_stall_fixture"
+      }
+    ],
+    "upstream_skips": [
+      {
+        "reason": "no target hardpoint/Chrono reference fixture was supplied",
+        "test": "test_chassis_suspension_reference.py::test_matrix_offline_hardpoint_chrono_crosscheck_requires_external_reference_fixture"
+      },
+      {
+        "reason": "no target-tire measured/TIR fixture was supplied",
+        "test": "test_tire_v2_reference_v1_7.py::test_target_tire_measurement_fit"
+      }
+    ],
+    "upstream_xfails": [
+      {
+        "reason": "additive K&C superposition intentionally cannot reproduce the embedded combined-load cross term",
+        "test": "test_chassis_suspension_reference.py::test_matrix_combined_roll_lateral_additive_superposition_is_not_exact"
+      },
+      {
+        "reason": "the accepted handling Tire intentionally excludes standstill turn-slip, bore, and parking-torque state",
+        "test": "test_tire_v2_reference_v1_7.py::test_standstill_bore_torque_not_core"
+      }
+    ]
+  },
+  "delivery_label": "v2.4-standalone-closeout",
+  "distribution_name": "engine-calibration-reference",
+  "distribution_version": "2.4.0",
+  "duration_s": 59.02433329200721,
+  "environment": {
+    "numpy_version": "2.3.5",
+    "pytest_version": "8.4.2",
+    "python_executable": "python3",
+    "python_version": "3.12.13",
+    "scipy_version": "1.17.0"
+  },
+  "execution_context": "source_tree",
+  "finished_at_utc": "2026-08-29T06:18:27Z",
+  "package_root": ".",
+  "run_id": "ddafc3fe-5149-404e-ae9d-fa0ad4469269",
+  "schema": "vehicle-physics-v2.4-validation-manifest-v2",
+  "source_file_sha256": {
+    ".gitignore": "f4528f372a5cde424cd27d46194fb5ce7f17a2d78fe66655433f2d941ddb53ae",
+    "MANIFEST.in": "f863b495fb8e976d38c69ea1f95a50c6f27f1291ebc289f3c9333bbcfa8c94f4",
+    "README.md": "9dd1b75b9bbe006fa24ce4166d2868425c84605ea296acde4c3cd6882d14e823",
+    "REFERENCE_RUNTIME.md": "b298fec32a8d88215b936a80462976b5cc5dbaa9126a1fc38c435630252c0813",
+    "docs/ARCHITECTURE.md": "38f13c0377883797de92e36681fa2ea03a340623b0f71e1fdee4933ee4a6b6fc",
+    "docs/HOST_BOUNDARIES.md": "c3292de96af5b7b50e59128166dd9d12c0958e287c0491cdc947627ad1e97385",
+    "docs/IMPLEMENTED_SCOPE.md": "d04a6daf291ffe9029b86246f1c007e0302ee8551b4fff8d174f1aae77af3801",
+    "docs/MANEUVER_MATRIX.md": "3d541448b611b58b7e9c2245560d38a15548a6fbaa05c7fa876a4e2679461a20",
+    "docs/PRIMARY_SOURCES.md": "74dcf77d26f62e6fa84dfe37522c75f556ea3aa7f4b1ea9af49404d8948a1eae",
+    "docs/VALIDATION.md": "61e78c110aa044fa671011ddb48fea619748a78185bb82d711dd7c85adc3bddd",
+    "engine_calibration_reference/IMPLEMENTATION_CLOSEOUT_V2_1.md": "693aa3d69d5b8054c1080adf45295494c85d92a41608c579c2b81c6998a88651",
+    "engine_calibration_reference/IMPLEMENTATION_CLOSEOUT_V2_2.md": "2c0496e48d52ca5c3598abc03201f74461006e4a639885f89efc5497ece0633e",
+    "engine_calibration_reference/README.md": "7683f8010ab59d6a490cfc49e3f00ae46d99f7efdc4c28fe14d4c0a5174fce88",
+    "engine_calibration_reference/SUPPLIED_V2_0_ARTIFACT_AUDIT.md": "45fdd2b239a080567d9220bfc286d32be5e33fafddeddbf7f5baba80deef2948",
+    "engine_calibration_reference/__init__.py": "9f1e6f7bfa494a725a2b6a9eaf457328cb33c6115fb319819f0e9b07271d275c",
+    "engine_calibration_reference/accepted_tire_adapter.py": "7c0f28c7885e48202f7ceb88a983f041b6f2b85a97d865739d6955cd646ee264",
+    "engine_calibration_reference/aero_reference_v1_9.py": "cec46eef6710c0903059d07043cf050456eb780508c3ae8c5d6ace258575321f",
+    "engine_calibration_reference/asset_pipeline.py": "8d5ef0f8323d95ee717d5bf6de8a6130e6fc1dbcb8b1f358aadeb90e24499e6a",
+    "engine_calibration_reference/calibration.py": "606685d4386b5607d8118f90c7fb57855d4892f2f29312db11baf8f5fc0bab0c",
+    "engine_calibration_reference/calibration_fixtures.py": "7b3a0808ca314271e7268788044561976d523c479b2f205471784fad6f4af71b",
+    "engine_calibration_reference/calibration_validation_reference_v2_0.py": "7f909ba9118154e29524b711556d8f7bc7e9555e532bfe15efb7868d28cb654d",
+    "engine_calibration_reference/chassis_suspension_reference.py": "e4c0c55fd724ceda8ff3f5baaf7c271689a7386703ce955b58bfb52904b63416",
+    "engine_calibration_reference/closeout_audit.py": "4959b83137b9b92d6fb1ad67bbd4330b0e8faf279d0d754efbceb2e3a6a6f064",
+    "engine_calibration_reference/coupled_vehicle_solver.py": "e381f1e236610ff1ca5323fafbea33b3280ba86aab413edc8a7fcde3fbd86626",
+    "engine_calibration_reference/data/maneuver_matrix_v2_4.json": "da141d1efec12f9abd28de081a596db91a875cd8f7a2dc3b393861b7ea2d51b3",
+    "engine_calibration_reference/data/raw/synthetic_engine_map_v2_0.csv": "d318f35267733090684abc0a34c007106d678199f89931f793b2a23d0b893d2e",
+    "engine_calibration_reference/data/raw/synthetic_engine_map_v2_0.metadata.json": "28a1ff993c26753db809753926be7dfb96f84916497dc9fe684f5c08b43ab837",
+    "engine_calibration_reference/data/synthetic_engine_asset.json": "d5a9e657412429f65021cb30ce037827b9c0e5ee52ac956559a608180bd736ab",
+    "engine_calibration_reference/engine_behavior_reference_v2_0.py": "d5d0b19529fa4ea9f23d44355b29728a423895036089ca157ca6ed74d4247d60",
+    "engine_calibration_reference/engine_model.py": "c1f3b60f8976d3e931a949df1cd594a5b9c39011290789e77574192f507b4a1f",
+    "engine_calibration_reference/final_cross_system_closeout.py": "f0abef555f2db61588fc52737f53e133a54a8c16532b09d6e2120fa860172b68",
+    "engine_calibration_reference/host_integration.py": "9082cd1bd91d6ff8de150d518f6f23dfe1d321b0b864260afa2044b88da572c8",
+    "engine_calibration_reference/implementation_audit.py": "04076e62f97d4ae204bf806ba104bf9d9f8044fad405774949fe77e30bd62a7d",
+    "engine_calibration_reference/integrated_closeout.py": "7bee9029f0dbecbe26a0673ba9a784a1dc8f17488e4c888925091c31e4b1c098",
+    "engine_calibration_reference/powertrain_controller.py": "7e0ec9087c84d78dfb39fdb3602781d139b8120988c69bf2dbc99357f6ed2d1a",
+    "engine_calibration_reference/reference_assets.py": "87ffc5c6167b29115c0e85a4f33d9047e11b5e40b2b95beee45acce62c0db197",
+    "engine_calibration_reference/rigs.py": "35cd47ea81bb9433ed3bb913f2385b1c8bbd0aeaa9340e0ea16d66d09536f811",
+    "engine_calibration_reference/run_v2_0_reference_audit.py": "a084223136ed9f869b72a1901e3169504aeaed5db33941f7c78150c2673b1be5",
+    "engine_calibration_reference/run_v2_1_closeout_audit.py": "fd69d171ccc27e892be70ea697291f96c8d1c223820056219657b74f0ed58f2f",
+    "engine_calibration_reference/run_v2_2_final_closeout.py": "435bc5a3205d57a1cce29f00c9cf959ff46081910079de9a16d8d5171007ba0f",
+    "engine_calibration_reference/run_v2_4_maneuver_matrix.py": "941f567d19c64a60c58cd34fc0934b6119d9865221a07062efe359661b18e73c",
+    "engine_calibration_reference/run_v2_4_validation.py": "53d87d8702fa284f9633773b0b9241c1f77a38df4b20cc7b85d57849c4cb7b49",
+    "engine_calibration_reference/runtime_vehicle_solver.py": "a555095101ebcdf149d262987b9f2b690157cd788385ea7b51c0d502a3d16f4e",
+    "engine_calibration_reference/steering_reference_v2.py": "d7ae22c8a28d1be4105afa8dd7ed2aca620d3fe2a36aab52782185d955215802",
+    "engine_calibration_reference/steering_transaction.py": "324fb101a7e6e4b2a557dbb5abf74e8fd6c7ba57df40e52c7c7cd49d34057b85",
+    "engine_calibration_reference/tests/__init__.py": "5ca71bcb3f9bc3c7a13dca23c53717d3de31c217707493b2aedf7d653c8e8032",
+    "engine_calibration_reference/tests/test_asset_pipeline_v2_0.py": "ec5aef3c9233f3bff02c861b34eca97be32e57d71288b55c7e32496e08a2124b",
+    "engine_calibration_reference/tests/test_calibration_validation_reference_v2_0.py": "57aba1bbb30312523d8f56e1912109a528622608e1af8310574f501eb6184b25",
+    "engine_calibration_reference/tests/test_coupled_vehicle_solver_v2_0.py": "004e87efdf29d14e42ee86e8132f8cfe98181e45c361e0101e114064dbdfbc7d",
+    "engine_calibration_reference/tests/test_coupled_vehicle_stress_v2_0.py": "f98321af9b9163f6dc774ff64a64e41d6ccad6820dc95e45a707f2fd60c861c1",
+    "engine_calibration_reference/tests/test_engine_behavior_reference_v2_0.py": "6a37e0d518afb70887485735b4b0a55938a37680bf07a38b5710d028deee022b",
+    "engine_calibration_reference/tests/test_host_integration_v2_0.py": "cb005c242883bf3c43080e774222d505357348e28a63ec11e57cbb943e6fd4fc",
+    "engine_calibration_reference/tests/test_integrated_closeout_v2_1.py": "345766fd5257d8e0c987fdbf201d1aa8acc5eb036875934a2a89aa200377c629",
+    "engine_calibration_reference/tests/test_powertrain_controller_v2_0.py": "d830b9ea85aeb2c45f6e9bd353875112f7560973712e9e67996060b15671723e",
+    "engine_calibration_reference/tests/test_runtime_vehicle_solver_v2_1.py": "9e50ef4bebaaca88f4e61ea725131812274a28171041e15c70884713b9012db3",
+    "engine_calibration_reference/tests/test_standalone_closeout_v2_4.py": "3d23e6f00bba2b7f1c380c3b4cc9c38f788344e93aaacf744c05c98add8944fd",
+    "engine_calibration_reference/tests/test_timeseries_pipeline_v2_0.py": "08ed8cf6562cc4365f723cfd42925ee05cf0f91d58f5f82dc7ebca97682b4c16",
+    "engine_calibration_reference/tests/test_unified_vehicle_fixture_v2_2.py": "1482e66b364d48737436a821ee7a8fd76fe0405bfc7027fd76bdd330f5932a74",
+    "engine_calibration_reference/tests/test_upstream_subsystem_bridge_v2_1.py": "a6123ccc9a834a520070bab24fba2c9aed060765de8821dbd756c6a0fec3bd2e",
+    "engine_calibration_reference/timeseries_pipeline.py": "2f963eee8ecf7614988968a68de071ed680ae25c43f165863fcbf3095ab6f300",
+    "engine_calibration_reference/tire_host_contract.py": "0b1b87cc296e92fd1d33128b74afe8f7a5eba5a7dfc8302ddf1444562ed2ee58",
+    "engine_calibration_reference/tire_v2_final/README_CN.md": "130c37dd88c0f81e4ab931a15aa4d49d71e9faf8f688c5686c93fc5a2efd4b99",
+    "engine_calibration_reference/tire_v2_final/__init__.py": "43b5229b5a31240d143fb550362e97e5ee5ec6726b8a4f8d9f33dbe248e86eee",
+    "engine_calibration_reference/tire_v2_final/adapters.py": "76585956ed92ebcd46effe57873c741dc08979a539e211996ded1bac133d61d5",
+    "engine_calibration_reference/tire_v2_final/coupled_solver.py": "5bdfa6a3e5868fa7199b993b6a10ca4d9cd39884472f1ec726d0ebdc7a8d253d",
+    "engine_calibration_reference/tire_v2_final/tire_model.py": "617eeaddcc8e513f139487ba5b4dbcf787c555ed7421296f9a9aacf29e8293cc",
+    "engine_calibration_reference/tire_v2_reference_v1_7.py": "8ee5adcf813808852ac21e56222309887e47642eb51c00833ba285918f6b62b4",
+    "engine_calibration_reference/tire_v2_reference_v1_8.py": "b2cb88114446ea8f511376ce12ca3334a85be939447c65c054fea1e2b9f7ded8",
+    "engine_calibration_reference/unified_vehicle_fixture.py": "2445039d19f2b16f4216aa2f949bb3e96c05f0e394dc7dd3339bd0f1b5840993",
+    "engine_calibration_reference/vehicle_controls_reference.py": "f736dca4ce9dbed9a92600fa750a7105b263a6daa12b050e7735034baa2d5c9b",
+    "engine_calibration_reference/whole_vehicle_fixture.py": "1d9b9b70ef94ae5498e97845f4dbeef5ebbbf3ace6192b6f375075cc6f202c63",
+    "pyproject.toml": "b9e6b172087409a8e9325c0a0be6c1509ba4c76e8de60159a6d3931ab68042c9",
+    "requirements-reference.txt": "f79dd2d5df7ff0a5f29b60d787759e5fa48aeefdcb94113e68586e34385b1f25",
+    "tests/upstream_reference/test_aero_reference_v1_9.py": "4025393b6bd2496673005537606cd6ea6ea13ea578dae0214163f25c729ce285",
+    "tests/upstream_reference/test_chassis_suspension_reference.py": "17e974ca0f2f424d3debcb7ac94b430574b29971d4304c63b6e364be1fdd2fee",
+    "tests/upstream_reference/test_tire_v2_independent_audit_v1_8.py": "0581af0948b818fe0663031b090ee1324949e7a27457eea093da3f164aca5097",
+    "tests/upstream_reference/test_tire_v2_reference_v1_7.py": "eeca8970bdc818ca1173a9701444e79a5af581f884ee5d7215e7aa4de6b1ecef"
+  },
+  "source_upstream_requested": true,
+  "started_at_utc": "2026-08-29T06:17:28Z",
+  "status": "PASS"
+}

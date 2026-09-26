@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>StreetRush · 制作实验室</title><link rel="stylesheet" href="./lab.css"></head>
+<body data-ui="quiet">
+<canvas id="scene" aria-label="可旋转观察的赛道维修区三维样片"></canvas>
+<header class="topbar"><a class="brand" href="#">SR<span>STREETRUSH</span></a><div class="world-label">龙湾赛车场 <span>PADDOCK / 01</span></div><button id="panel-button" aria-expanded="false">实验控制 <span>＋</span></button></header>
+<main class="game-overlay">
+  <div class="chapter"><span class="eyebrow">OPEN TRACK · 午后试车</span><h1>把车开出来。</h1><p>一组维修棚，一段路面，一束真正落地的光。</p></div>
+  <section class="vehicle-card"><div class="number">01 <span>/ 06</span></div><div class="car-copy"><small>ROADSTER · 1990s</small><h2>MAZDA MX-5 <span>NA</span></h2><p id="asset-status">正在加载已有车辆与地表素材…</p></div><button id="drive-button">看行驶构图 <span>↗</span></button></section>
+  <div class="driving-hud" hidden><div class="run-label">CAMERA STUDY <span>同一轨迹 · 相机对照</span></div><div class="speed"><strong id="speed-value">72</strong><span>KM/H</span><b>03</b></div></div>
+</main>
+<aside id="controls" hidden aria-label="实验控制面板">
+ <div class="panel-head"><strong>可改、可比、可复现</strong><span>独立样片 · 不改生产游戏</span></div>
+ <fieldset><legend>UI 方向 · 三版实际布局</legend><div class="segmented"><button data-ui-choice="club">俱乐部</button><button data-ui-choice="technical">工程</button><button data-ui-choice="quiet" class="selected">极简</button></div></fieldset>
+ <fieldset><legend>观看方式</legend><div class="segmented"><button data-view="orbit" class="selected">自由观察</button><button data-view="drive">镜头对照</button></div><p class="help">自由观察：拖动旋转，滚轮缩放。行驶使用固定轨迹，便于公平比较镜头。</p></fieldset>
+ <fieldset><legend>追车相机</legend><div class="segmented"><button data-camera="current">现有参数</button><button data-camera="close" class="selected">低位跟随</button><button data-camera="steady">稳定前视</button></div><label>演示速度 <output id="speed-output">72 km/h</output><input id="speed" type="range" min="25" max="140" value="72" step="1"></label></fieldset>
+ <fieldset><legend>环境实验</legend><label>太阳高度 <output id="sun-output">32°</output><input id="sun" type="range" min="15" max="70" value="32"></label><label>曝光 <output id="exposure-output">1.00</output><input id="exposure" type="range" min="65" max="130" value="100"></label><label class="check"><input id="shadows" type="checkbox" checked> 实时投影</label><label class="check"><input id="materials" type="checkbox" checked> 已有地表材质</label><label class="check"><input id="details" type="checkbox" checked> 草簇与设施细节</label></fieldset>
+ <div class="panel-actions"><button id="reset">恢复样片</button><button id="save">保存参数 JSON</button></div>
+ <p id="metrics" class="metrics">正在准备渲染…</p>
+ <p class="help">本页是程序化三维制作与构图实验。轨迹运动未连接 Rapier，不代表物理或实驾手感验收。所有几何源代码与参数可编辑。</p>
+</aside>
+<footer><span class="live-dot"></span><span id="view-label">自由观察 · 拖动旋转 / 滚轮缩放</span><button id="pause" hidden>暂停轨迹</button><span class="footer-end">SCENE STUDY 001</span></footer>
+<div id="loading" role="status"><div class="loader"></div><strong>搭建维修区样片</strong><span>加载本地车模与已有贴图</span></div>
+<script type="module" src="./lab.js"></script>
+</body></html>

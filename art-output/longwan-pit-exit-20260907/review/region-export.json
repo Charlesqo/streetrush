@@ -1,0 +1,314 @@
+{
+  "source": "scene/longwan_region_editable.blend",
+  "file": "models/longwan_region_native.glb",
+  "groups": [
+    {
+      "name": "A02_Race_Control",
+      "source_parts": 275,
+      "triangles": 67752,
+      "material_slots": 13,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "A03_Marshal_Post",
+      "source_parts": 68,
+      "triangles": 9262,
+      "material_slots": 11,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "A04_Trackside_Grandstand",
+      "source_parts": 478,
+      "triangles": 150912,
+      "material_slots": 7,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "D02_Control_Details",
+      "source_parts": 20,
+      "triangles": 3168,
+      "material_slots": 2,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "F01_Pit_Exit_Signal",
+      "source_parts": 19,
+      "triangles": 4252,
+      "material_slots": 8,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "F02_Tool_Trolley",
+      "source_parts": 28,
+      "triangles": 4036,
+      "material_slots": 4,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "F03_Tyre_Rack",
+      "source_parts": 72,
+      "triangles": 29888,
+      "material_slots": 3,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "F05_Braking_Board",
+      "source_parts": 14,
+      "triangles": 2310,
+      "material_slots": 4,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "F06_Floodlight_-31",
+      "source_parts": 20,
+      "triangles": 2408,
+      "material_slots": 4,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "F06_Floodlight_30",
+      "source_parts": 20,
+      "triangles": 2408,
+      "material_slots": 4,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "F07_Timing_Gantry",
+      "source_parts": 77,
+      "triangles": 22596,
+      "material_slots": 5,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "F08_Scanned_Service_Barriers",
+      "source_parts": 3,
+      "triangles": 36552,
+      "material_slots": 1,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Longwan_Pit_Building",
+      "source_parts": 254,
+      "triangles": 138758,
+      "material_slots": 13,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Native_vegetation",
+      "source_parts": 708,
+      "triangles": 230180,
+      "material_slots": 1,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Pit_divider",
+      "source_parts": 173,
+      "triangles": 14556,
+      "material_slots": 3,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Pit_roof_services",
+      "source_parts": 40,
+      "triangles": 3784,
+      "material_slots": 5,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Pit_working_drain",
+      "source_parts": 621,
+      "triangles": 64860,
+      "material_slots": 3,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Region_surfaces",
+      "source_parts": 59,
+      "triangles": 23300,
+      "material_slots": 7,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Roadside_module_01",
+      "source_parts": 639,
+      "triangles": 369936,
+      "material_slots": 18,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Roadside_module_02",
+      "source_parts": 639,
+      "triangles": 369936,
+      "material_slots": 18,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Roadside_module_03",
+      "source_parts": 639,
+      "triangles": 369936,
+      "material_slots": 18,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Roadside_module_04",
+      "source_parts": 655,
+      "triangles": 372064,
+      "material_slots": 18,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Site_fittings",
+      "source_parts": 42,
+      "triangles": 1848,
+      "material_slots": 3,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    },
+    {
+      "name": "Surface_repairs",
+      "source_parts": 8,
+      "triangles": 25,
+      "material_slots": 2,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "color_attributes": [
+        "RegionTint"
+      ]
+    }
+  ],
+  "triangles": 2294727,
+  "bytes": 472633404,
+  "scope": "Current finite 96m asset region, independent from the game",
+  "game_integration": "NOT_RUN",
+  "visual_status": "Actual final GLB viewed: overview, control tower and pit work area. UV fix confirmed; not a target-game performance acceptance.",
+  "browser_review": {
+    "date": "2026-09-07",
+    "views": [
+      "overview",
+      "control",
+      "pit"
+    ],
+    "observed": [
+      "Canonical UV preserved brick texture after merge",
+      "Ground marks visible without far-view z fighting",
+      "Terrain shadow acne removed in standalone preview"
+    ],
+    "scope": "Current user-requested delivery closeout",
+    "game_integration": "NOT_RUN"
+  }
+}

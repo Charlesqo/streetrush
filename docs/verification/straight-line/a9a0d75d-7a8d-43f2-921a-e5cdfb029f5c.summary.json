@@ -1,0 +1,171 @@
+{
+  "recording": "/Volumes/Storage/streetrush/docs/verification/straight-line/a9a0d75d-7a8d-43f2-921a-e5cdfb029f5c.json",
+  "sha256": "73d4a000047785e6ff11ba7b082b32a5981a163f46ed426f22ca38ac9348c3dc",
+  "runId": "a9a0d75d-7a8d-43f2-921a-e5cdfb029f5c",
+  "automatedStatus": "PASS_STRAIGHT_BRAKING_AUTOMATED",
+  "scope": "This 140 km/h production straight-line maneuver only; user handling acceptance remains pending.",
+  "sampleCount": 2250,
+  "endReason": "STOPPED",
+  "limits": {
+    "minimumTargetSpeedKmh": 140,
+    "maximumAbsHeadingDeg": 3,
+    "maximumAbsLateralM": 0.5,
+    "maximumAbsYawRate": 0.1,
+    "stoppedSpeedKmh": 0.5
+  },
+  "checks": {
+    "highSpeedReached": true,
+    "allFixedStepsRetained": true,
+    "zeroSteeringAndHandbrake": true,
+    "allReportsCommitted": true,
+    "noAutomaticRecovery": true,
+    "stoppedNormally": true,
+    "headingStayedStraight": true,
+    "stayedInStraightCorridor": true,
+    "noRapidYaw": true,
+    "noUncommandedEsc": true
+  },
+  "phases": [
+    {
+      "phase": "countdown",
+      "samples": 360,
+      "startTime": 0,
+      "endTime": 2.9916666666666587,
+      "startSpeedKmh": 0,
+      "endSpeedKmh": 0.2522864552799169,
+      "startHeadingDeg": 0,
+      "endHeadingDeg": -0.12600185935427854,
+      "maximumAbsHeadingDeg": 0.12600185935427854,
+      "maximumAbsYawRate": 0.0032966716680675745,
+      "startLateralM": 0,
+      "endLateralM": -0.05687122792005539,
+      "maximumAbsLateralM": 0.05687122792005539
+    },
+    {
+      "phase": "settle",
+      "samples": 121,
+      "startTime": 2.999999999999992,
+      "endTime": 3.9999999999999885,
+      "startSpeedKmh": 0.09982718902076085,
+      "endSpeedKmh": 0.09983571943793625,
+      "startHeadingDeg": -0.1264789010549291,
+      "endHeadingDeg": -0.20401066011489774,
+      "maximumAbsHeadingDeg": 0.20401066011489774,
+      "maximumAbsYawRate": 0.002743862336501479,
+      "startLateralM": -0.056966137140989304,
+      "endLateralM": -0.0781412348151207,
+      "maximumAbsLateralM": 0.0781412348151207
+    },
+    {
+      "phase": "accelerate",
+      "samples": 736,
+      "startTime": 4.008333333333322,
+      "endTime": 10.133333333333399,
+      "startSpeedKmh": 0.25307487786807564,
+      "endSpeedKmh": 140.19501412060765,
+      "startHeadingDeg": -0.20462245984454797,
+      "endHeadingDeg": 0.015710457649587974,
+      "maximumAbsHeadingDeg": 0.2048798050960084,
+      "maximumAbsYawRate": 0.03491140529513359,
+      "startLateralM": -0.07839859277009964,
+      "endLateralM": -0.12083926796913147,
+      "maximumAbsLateralM": 0.12083926796913147
+    },
+    {
+      "phase": "coast",
+      "samples": 122,
+      "startTime": 10.141666666666731,
+      "endTime": 11.150000000000007,
+      "startSpeedKmh": 140.34827340370728,
+      "endSpeedKmh": 139.45893010754202,
+      "startHeadingDeg": 0.01571044877052328,
+      "endHeadingDeg": 0.015709117203346085,
+      "maximumAbsHeadingDeg": 0.01571064816783638,
+      "maximumAbsYawRate": 1.2748931510486727e-7,
+      "startLateralM": -0.1209283173084259,
+      "endLateralM": -0.13174450397491455,
+      "maximumAbsLateralM": 0.13174450397491455
+    },
+    {
+      "phase": "brake",
+      "samples": 820,
+      "startTime": 11.15833333333334,
+      "endTime": 17.983333333332954,
+      "startSpeedKmh": 139.4328375772587,
+      "endSpeedKmh": 0.3259548169465986,
+      "startHeadingDeg": 0.015709130668670697,
+      "endHeadingDeg": -0.16402151803297085,
+      "maximumAbsHeadingDeg": 0.16402151803297085,
+      "maximumAbsYawRate": 0.009853675030171871,
+      "startLateralM": -0.131833016872406,
+      "endLateralM": -0.18446536362171173,
+      "maximumAbsLateralM": 0.18446536362171173
+    },
+    {
+      "phase": "stopped",
+      "samples": 91,
+      "startTime": 17.991666666666287,
+      "endTime": 18.741666666666244,
+      "startSpeedKmh": 0.3931176443557952,
+      "endSpeedKmh": 0.26024867887977715,
+      "startHeadingDeg": -0.16501481617430522,
+      "endHeadingDeg": -0.23030588636041138,
+      "maximumAbsHeadingDeg": 0.23030588636041138,
+      "maximumAbsYawRate": 0.0028412158135324717,
+      "startLateralM": -0.1847202181816101,
+      "endLateralM": -0.20046362280845642,
+      "maximumAbsLateralM": 0.20046362280845642
+    }
+  ],
+  "maximumSpeedKmh": 141.95584792697895,
+  "events": [
+    {
+      "time": 4.008333333333322,
+      "phase": "accelerate",
+      "type": "phase"
+    },
+    {
+      "time": 4.008333333333322,
+      "phase": "accelerate",
+      "type": "keydown",
+      "code": "KeyW",
+      "isTrusted": false
+    },
+    {
+      "time": 10.141666666666731,
+      "phase": "coast",
+      "type": "phase"
+    },
+    {
+      "time": 10.141666666666731,
+      "phase": "coast",
+      "type": "keyup",
+      "code": "KeyW",
+      "isTrusted": false
+    },
+    {
+      "time": 11.15833333333334,
+      "phase": "brake",
+      "type": "phase"
+    },
+    {
+      "time": 11.15833333333334,
+      "phase": "brake",
+      "type": "keydown",
+      "code": "KeyS",
+      "isTrusted": false
+    },
+    {
+      "time": 17.991666666666287,
+      "phase": "stopped",
+      "type": "phase"
+    },
+    {
+      "time": 17.991666666666287,
+      "phase": "stopped",
+      "type": "keyup",
+      "code": "KeyS",
+      "isTrusted": false
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+2026-08-31 extended-speed brake investigation — additional edit scope
+
+The complete pre-turn git status is preserved in extended-working-tree-before.txt.
+Existing working-tree modifications remain user-owned and are not reverted.
+
+Additional files for the bounded wheel/body-wrench investigation:
+- src/vehicle-v24/runtime.js: wheel/contact/actuator spin-reaction closure only.
+- scripts/test-vehicle-v24-brake-wrench.mjs: small, deterministic wrench-accounting checks.
+- docs/verification/straight-line/EXTENDED_SPEED.md: evidence, commands and status.
+- docs/verification/straight-line/extended-brake-wrench-scope-20260831.txt: this manifest.
+
+Additional confirmed ownership fix after the wrench experiment was rejected:
+- src/vehicle-v24/steering.js: remove the duplicate jounce bump-steer term only;
+  device handedness and the oracle-to-host wheel-angle conversion stay unchanged.
+- scripts/test-vehicle-v24-steering-kc-ownership.mjs: assert that the steering
+  helper no longer changes wheel angles with jounce; the existing suspension
+  symmetry test continues to assert that K&C itself remains jounce-sensitive.
+- src/vehicle-v24/powertrain.js and src/vehicle-v24/runtime.js: distribute the
+  driver's service brake from axle load while retaining exact left/right pairs,
+  fixed total pedal authority, ABS ownership, and the existing assist limits.
+- scripts/test-vehicle-v24-brake-distribution.mjs: low-speed/fallback, axle-load,
+  pair-symmetry, capacity and no-ESC regression checks for that distribution.
+- src/vehicle.js: size the Rapier body collider from each car's existing
+  `model.targetLength` so collision geometry and yaw inertia use the configured
+  vehicle length instead of a shortened wheelbase-derived approximation.
+
+Do not change steering handedness, tire constitutive laws, total driver brake
+authority, ABS/ESC settings, body velocity, wheel omega, RPM, or recovery/reset
+logic here. Axle distribution is allowed only as the explicit scoped change above.
+
+Before this experiment, all six production TrackSystem 35-second full-throttle
+recordings failed straight-braking checks. Raw JSON, CSV and summaries are kept:
+m5g90  ee3fa880-33b8-4cc4-bf51-c05644852756  323.526406 km/h
+lp700  11413998-c6eb-4903-973b-7e3add4bf398  331.463505 km/h
+mx5    9ced520a-c110-4b37-bf97-be132fa442ca  176.338890 km/h
+m3e30  9c204d8c-2141-424f-a26f-2b157cf15667  217.051432 km/h
+gt3rs  97a2fad9-75f0-471b-a184-da0a7eb06dd6  285.465973 km/h
+amggt3 1e4d77ce-2204-47e3-90bf-7382067966a3  268.313978 km/h
+
+Scope/authority caveat: the active synthetic reference itself separately adds
+brake chassis reaction to contact-point r-cross-F. This experiment tests the
+Rapier host's aggregate-body/independent-wheel-spin accounting explicitly; it
+is not a claim of exact fixture equivalence or target-vehicle calibration.
+Do not mark the investigation PASS based on a pure helper test alone.

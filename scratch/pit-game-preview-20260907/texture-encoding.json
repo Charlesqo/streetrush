@@ -1,0 +1,26 @@
+[
+  {
+    "file": "public/scenery/longwan/textures/concrete.jpg",
+    "before": 4355641,
+    "after": 2510179,
+    "resolution": "unchanged 2048x2048"
+  },
+  {
+    "file": "public/scenery/longwan/textures/grass.jpg",
+    "before": 4766204,
+    "after": 2643279,
+    "resolution": "unchanged 2048x2048"
+  },
+  {
+    "file": "public/scenery/longwan/textures/gravel.jpg",
+    "before": 3220057,
+    "after": 1895247,
+    "resolution": "unchanged 2048x2048"
+  },
+  {
+    "file": "public/scenery/longwan/textures/paving.jpg",
+    "before": 2704244,
+    "after": 1432874,
+    "resolution": "unchanged 2048x2048"
+  }
+]

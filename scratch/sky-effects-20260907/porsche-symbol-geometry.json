@@ -1,0 +1,455 @@
+[
+  {
+    "node": "TwiXeR_992_gt3rs_carbon_Wing_TwiXeR_992_CSR2_Badge_0",
+    "material": "TwiXeR_992_headlight_1.001",
+    "vertices": 24,
+    "center": [
+      0,
+      1.229,
+      -2.035
+    ],
+    "size": [
+      0.66,
+      0.036,
+      0.128
+    ]
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_carbon_hood_TwiXeR_992_carPaint_secondary|hoodbadge_a.001_0",
+    "material": "TwiXeR_992_headlight_1.001_0",
+    "vertices": 38,
+    "center": [
+      0,
+      0.591,
+      1.994
+    ],
+    "size": [
+      0.052,
+      0.032,
+      0.06
+    ],
+    "map": {
+      "index": 2
+    }
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_sideskirts_L_TwiXeR_992_headlight.001_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 754,
+    "center": [
+      0.883,
+      0.456,
+      0.71
+    ],
+    "size": [
+      0.064,
+      0.021,
+      0.038
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_sideskirts_R_TwiXeR_992_headlight.001_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 776,
+    "center": [
+      -0.883,
+      0.456,
+      0.71
+    ],
+    "size": [
+      0.064,
+      0.021,
+      0.038
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_CSR2_Badge_0",
+    "material": "TwiXeR_992_headlight_1.001",
+    "vertices": 116,
+    "center": [
+      0,
+      0.952,
+      -1.764
+    ],
+    "size": [
+      0.839,
+      0.009,
+      0.019
+    ]
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_brakelight_1.001_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 1348,
+    "center": [
+      0,
+      0.956,
+      -1.876
+    ],
+    "size": [
+      0.097,
+      0.07,
+      0.178
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_left_leg_TwiXeR_992_CSR2_Badge_0",
+    "material": "TwiXeR_992_headlight_1.001",
+    "vertices": 462,
+    "center": [
+      0.308,
+      1.133,
+      -1.976
+    ],
+    "size": [
+      0.031,
+      0.345,
+      0.486
+    ]
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_headlight.001_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 36,
+    "center": [
+      0.004,
+      0.567,
+      -2.318
+    ],
+    "size": [
+      0.315,
+      0.002,
+      0.024
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_CSR2_Badge_0",
+    "material": "TwiXeR_992_headlight_1.001",
+    "vertices": 1451,
+    "center": [
+      0,
+      0.43,
+      -1.829
+    ],
+    "size": [
+      0.932,
+      0.65,
+      0.851
+    ]
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_door_L_TwiXeR_992_rivet_001_FFFFFFFF.001_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 18,
+    "center": [
+      0.747,
+      0.584,
+      -0.542
+    ],
+    "size": [
+      0.055,
+      0.104,
+      0.045
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_door_R_TwiXeR_992_rivet_001_FFFFFFFF.001_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 18,
+    "center": [
+      -0.747,
+      0.584,
+      -0.542
+    ],
+    "size": [
+      0.055,
+      0.104,
+      0.045
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_body_gt3rs_TwiXeR_992_plastic.002_0",
+    "material": "TwiXeR_992_symbols.004_0",
+    "vertices": 1621,
+    "center": [
+      0,
+      0.757,
+      0.039
+    ],
+    "size": [
+      1.36,
+      0.523,
+      3.385
+    ],
+    "map": {
+      "index": 4
+    }
+  },
+  {
+    "node": "TwiXeR_992_body_gt3rs_TwiXeR_992_ID10_chrome.001_0",
+    "material": "TwiXeR_992_symbols_1.003",
+    "vertices": 8,
+    "center": [
+      0.002,
+      0.209,
+      0.418
+    ],
+    "size": [
+      0.971,
+      0.001,
+      0.142
+    ],
+    "map": {
+      "index": 0
+    }
+  },
+  {
+    "node": "TwiXeR_992_body_gt3rs_TwiXeR_992_undercarriage.001_0",
+    "material": "TwiXeR_992_symbols.004_1",
+    "vertices": 30,
+    "center": [
+      0,
+      1.139,
+      0.096
+    ],
+    "size": [
+      0.206,
+      0.007,
+      0.019
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_body_gt3rs_TwiXeR_992_ID12_paint.001_0",
+    "material": "TwiXeR_992_symbols.004_2",
+    "vertices": 65,
+    "center": [
+      0,
+      0.29,
+      0.47
+    ],
+    "size": [
+      1.123,
+      0.168,
+      0.607
+    ],
+    "map": {
+      "index": 5
+    }
+  },
+  {
+    "node": "TwiXeR_992_body_gt3rs_TwiXeR_992_symbols.002_0",
+    "material": "TwiXeR_992_gauges_chrome.001",
+    "vertices": 32,
+    "center": [
+      0,
+      1.137,
+      0.098
+    ],
+    "size": [
+      0.151,
+      0.008,
+      0.047
+    ]
+  },
+  {
+    "node": "TwiXeR_992_body_gt3rs_TwiXeR_992_ID03_stitch_001_111111FF.003_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 317,
+    "center": [
+      0.01,
+      0.943,
+      -0.483
+    ],
+    "size": [
+      1.158,
+      0.389,
+      2.864
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_right_leg_TwiXeR_992_CSR2_Badge_0",
+    "material": "TwiXeR_992_headlight_1.001",
+    "vertices": 494,
+    "center": [
+      -0.308,
+      1.133,
+      -1.976
+    ],
+    "size": [
+      0.031,
+      0.345,
+      0.486
+    ]
+  },
+  {
+    "node": "TwiXeR_992_exhausttip_3_antichrome_TwiXeR_992_int_chrome.004_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 237,
+    "center": [
+      0,
+      0.28,
+      -2.187
+    ],
+    "size": [
+      0.263,
+      0.118,
+      0.01
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_exhausttip_3_chrome_TwiXeR_992_chrome.002_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 894,
+    "center": [
+      0,
+      0.28,
+      -2.265
+    ],
+    "size": [
+      0.263,
+      0.118,
+      0.166
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_signalstalk_TwiXeR_992_symbols.004_0",
+    "material": "TwiXeR_992_symbols.004",
+    "vertices": 20,
+    "center": [
+      0.495,
+      0.785,
+      0.288
+    ],
+    "size": [
+      0.034,
+      0.017,
+      0.016
+    ],
+    "map": {
+      "index": 3
+    }
+  },
+  {
+    "node": "TwiXeR_992_steer_3_TwiXeR_992_symbols_6_0",
+    "material": "TwiXeR_992_symbols_6",
+    "vertices": 102,
+    "center": [
+      0.344,
+      0.731,
+      0.169
+    ],
+    "size": [
+      0.243,
+      0.11,
+      0.05
+    ],
+    "map": {
+      "index": 7
+    }
+  },
+  {
+    "node": "TwiXeR_992_steer_3_TwiXeR_992_symbols_1.003_0",
+    "material": "TwiXeR_992_symbols_1.003_0",
+    "vertices": 14,
+    "center": [
+      0.344,
+      0.745,
+      0.161
+    ],
+    "size": [
+      0.066,
+      0.034,
+      0.014
+    ]
+  },
+  {
+    "node": "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_symbols.005_0",
+    "material": "TwiXeR_992_headlight_1.001",
+    "vertices": 60,
+    "center": [
+      0.69,
+      0.68,
+      0.123
+    ],
+    "size": [
+      0.035,
+      0.257,
+      0.234
+    ]
+  },
+  {
+    "node": "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_symbols.005_0",
+    "material": "TwiXeR_992_headlight_1.001",
+    "vertices": 28,
+    "center": [
+      -0.687,
+      0.681,
+      0.146
+    ],
+    "size": [
+      0.029,
+      0.255,
+      0.188
+    ]
+  },
+  {
+    "node": "TwiXeR_992_shifter_A_TwiXeR_992_symbols.005_0",
+    "material": "TwiXeR_992_headlight_1.001",
+    "vertices": 20,
+    "center": [
+      0.001,
+      0.586,
+      0.178
+    ],
+    "size": [
+      0.01,
+      0.061,
+      0.056
+    ]
+  },
+  {
+    "node": "TwiXeR_992_shifter_knob_M_TwiXeR_992_symbols_3.001_0",
+    "material": "TwiXeR_992_symbols_3.001",
+    "vertices": 71,
+    "center": [
+      0.002,
+      0.699,
+      0.159
+    ],
+    "size": [
+      0.032,
+      0.013,
+      0.03
+    ]
+  }
+]

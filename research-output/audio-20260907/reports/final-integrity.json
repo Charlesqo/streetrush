@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-07",
+  "selected": 32,
+  "parked": 12,
+  "source_and_preview_hashes": "MATCH",
+  "source_and_preview_paths": "EXIST_WITHIN_RESEARCH_DIRECTORY",
+  "reel_v2": {
+    "path": "previews/shared-review-v2.wav",
+    "duration_s": 24.367208333333334,
+    "sha256": "74cd7449156578b647c2f6a83e78605a15503f5ce5f6c50c8aec97f120d6f8a1",
+    "cue_count": 10,
+    "cue_alignment": "VERIFIED_TO_FRAME",
+    "peak": "SAMPLE_PEAK_AT_MOST_MINUS_6_DBFS",
+    "listening": "NOT_RUN"
+  },
+  "changes": [
+    "Correct moving-car source category; it is not a footstep.",
+    "Preserve complete countdown and other short events in reel v2; v1 had a general 3s preview cap.",
+    "10ms tail fade only for truncated environment excerpts in v2.",
+    "v1 retained; individual audition files and all original sources unchanged."
+  ]
+}

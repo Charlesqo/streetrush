@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>主直道 · 第二轮材质验证</title>
+<style>body{margin:0;background:#17222b;color:#e8edf0;font:14px system-ui}header{padding:12px 20px}p{max-width:1000px;color:#bdcbd5}button,select{padding:7px;margin:3px;background:#2d4455;color:white;border:1px solid #617888;border-radius:4px}canvas{display:block;width:min(100%,1015px);height:auto}textarea{display:block;width:96%;height:120px;margin:12px;color:#dfe9ea;background:#0b171f}#status{padding:8px}</style>
+<header><b>主直道 · 完整静态场景的材质验证</b><p>复用赛道、建筑、扫描素材、光照和后处理代码。这里没有车辆和物理模拟；数值仅代表固定视角的裸路区域。场景按需绘制。</p>
+<select id="view" aria-label="视角"><option value="middle">直道中段</option><option value="early">主直道初段</option><option value="end">直道末端</option></select>
+<select id="asset" aria-label="素材"><option value="fine">Fine Asphalt</option><option value="fresh">Asphalt Fresh</option></select>
+<select id="sampling" aria-label="采样"><option value="mixed">当前随机混合</option><option value="plain">普通采样</option></select>
+<select id="aov" aria-label="分项"><option value="0">完整画面</option><option value="1">直接漫反射</option><option value="2">直接镜面</option><option value="3">间接漫反射</option><option value="4">环境镜面</option><option value="5">法线</option><option value="6">有效粗糙度</option><option value="7">线性底色</option></select>
+<button id="run" disabled>运行静态赛道矩阵</button><button id="probe" disabled>测探针历史与后处理</button><button id="dfg" disabled>测路面DFG修正</button><div id="status">加载完整静态赛道…</div></header>
+<canvas id="canvas"></canvas><div id="comparisons" hidden><p>同一中段机位，Fine Asphalt。上图原公式，下图有限域参照。仅研究环境反射角度响应，尚未完成材质画质验收。</p><img id="legacy-shot" alt="原环境反射公式" style="width:min(100%,1015px)"><img id="reference-shot" alt="有限域环境反射参照" style="width:min(100%,1015px)"></div><textarea id="results" readonly aria-label="诊断结果">尚未运行</textarea><script type="module" src="./scene-lab.js"></script></html>

@@ -1,0 +1,107 @@
+{
+  "scope": "Scalar formula evaluation, not game rendering or physical validation.",
+  "interpretation_assumption": "Treat formulas as extra direct-light visibility multipliers.",
+  "findings": {
+    "gt7_alpha_zero_is_not_identity": true,
+    "gt7_white_ao_grazing_value": 0.6,
+    "uncharted_white_ao_is_identity_on_sample_grid": true
+  },
+  "rows": [
+    {
+      "ao": 1.0,
+      "ndotl": 0.1,
+      "gt7_alpha_0": 0.6,
+      "gt7_alpha_1": 0.6,
+      "gt7_alpha_2": 0.6,
+      "uncharted4": 1.0
+    },
+    {
+      "ao": 1.0,
+      "ndotl": 0.25,
+      "gt7_alpha_0": 0.75,
+      "gt7_alpha_1": 0.75,
+      "gt7_alpha_2": 0.75,
+      "uncharted4": 1.0
+    },
+    {
+      "ao": 1.0,
+      "ndotl": 0.5,
+      "gt7_alpha_0": 1.0,
+      "gt7_alpha_1": 1.0,
+      "gt7_alpha_2": 1.0,
+      "uncharted4": 1.0
+    },
+    {
+      "ao": 1.0,
+      "ndotl": 1.0,
+      "gt7_alpha_0": 1.0,
+      "gt7_alpha_1": 1.0,
+      "gt7_alpha_2": 1.0,
+      "uncharted4": 1.0
+    },
+    {
+      "ao": 0.8,
+      "ndotl": 0.1,
+      "gt7_alpha_0": 0.6,
+      "gt7_alpha_1": 0.4,
+      "gt7_alpha_2": 0.20000000000000007,
+      "uncharted4": 0.38000000000000034
+    },
+    {
+      "ao": 0.8,
+      "ndotl": 0.25,
+      "gt7_alpha_0": 0.75,
+      "gt7_alpha_1": 0.55,
+      "gt7_alpha_2": 0.3500000000000001,
+      "uncharted4": 0.5300000000000002
+    },
+    {
+      "ao": 0.8,
+      "ndotl": 0.5,
+      "gt7_alpha_0": 1.0,
+      "gt7_alpha_1": 0.8,
+      "gt7_alpha_2": 0.6000000000000001,
+      "uncharted4": 0.7800000000000002
+    },
+    {
+      "ao": 0.8,
+      "ndotl": 1.0,
+      "gt7_alpha_0": 1.0,
+      "gt7_alpha_1": 1.0,
+      "gt7_alpha_2": 1.0,
+      "uncharted4": 1.0
+    },
+    {
+      "ao": 0.5,
+      "ndotl": 0.1,
+      "gt7_alpha_0": 0.6,
+      "gt7_alpha_1": 0.09999999999999998,
+      "gt7_alpha_2": 0.0,
+      "uncharted4": 0.0
+    },
+    {
+      "ao": 0.5,
+      "ndotl": 0.25,
+      "gt7_alpha_0": 0.75,
+      "gt7_alpha_1": 0.25,
+      "gt7_alpha_2": 0.0,
+      "uncharted4": 0.0
+    },
+    {
+      "ao": 0.5,
+      "ndotl": 0.5,
+      "gt7_alpha_0": 1.0,
+      "gt7_alpha_1": 0.5,
+      "gt7_alpha_2": 0.0,
+      "uncharted4": 0.0
+    },
+    {
+      "ao": 0.5,
+      "ndotl": 1.0,
+      "gt7_alpha_0": 1.0,
+      "gt7_alpha_1": 1.0,
+      "gt7_alpha_2": 0.5,
+      "uncharted4": 0.5
+    }
+  ]
+}

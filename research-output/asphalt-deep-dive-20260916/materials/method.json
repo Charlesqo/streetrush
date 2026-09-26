@@ -1,0 +1,41 @@
+{
+  "source": "local original 4K scans, current source; no attachment code executed",
+  "random_seed": 20260916,
+  "samples_per_material": 180000,
+  "direct_cases": {
+    "sun48_view10_front": [
+      48.0,
+      10.0,
+      0.0
+    ],
+    "sun48_view10_side": [
+      48.0,
+      10.0,
+      90.0
+    ],
+    "sun48_view10_back": [
+      48.0,
+      10.0,
+      180.0
+    ],
+    "sun10_view10_front": [
+      10.0,
+      10.0,
+      0.0
+    ],
+    "sun48_view30_front": [
+      48.0,
+      30.0,
+      0.0
+    ]
+  },
+  "limitations": [
+    "CPU reference, not GPU frame or exact WebGL mip/AF implementation",
+    "box averages are controlled footprints; no claim that hardware uses these exact boxes",
+    "normal map renormalization, GGX correlated visibility and Fresnel fit match r180 direct branch",
+    "unit light, no IBL/visibility/tone mapping; no attribution of full game image percentage",
+    "sample hash float64 CPU sin is not bit-identical to GPU float sin",
+    "radiance-average reference measures order-of-operations error for this shader, not physical asphalt truth",
+    "height-gradient sign checks are evidence of map consistency, not official normal-space metadata"
+  ]
+}

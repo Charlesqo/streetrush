@@ -1,0 +1,11 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>沥青材质诊断 · 独立研究场景</title>
+<style>body{margin:0;background:#17222b;color:#e8edf0;font:14px system-ui}header{padding:14px 20px}p{max-width:1000px;color:#bdcbd5}button,select{padding:7px;margin:3px;background:#2d4455;color:white;border:1px solid #617888;border-radius:4px}canvas{display:block;width:min(100%,1015px);height:auto}#results{display:block;width:96%;height:180px;margin:12px;color:#dfe9ea;background:#0b171f}#status{padding:8px}label{white-space:nowrap}</style>
+<header><b>沥青材质诊断 · 独立研究场景</b><p>真实 4K 扫描图和项目光照函数。平面替代完整赛道，环境捕获后冻结；用于定位材质响应，结果不等于完整游戏画面或性能验收。</p>
+<label>素材 <select id="asset"><option value="asphalt">Fine Asphalt</option><option value="fresh">Asphalt Fresh</option></select></label>
+<label>采样 <select id="sampling"><option value="plain">原始对齐采样</option><option value="mixed">当前随机混合</option></select></label>
+<label>光照 <select id="light"><option value="all">项目日光＋环境＋补光</option><option value="sun">仅太阳</option><option value="env">仅环境</option><option value="hemi">仅半球补光</option></select></label>
+<label>视角 <select id="view"><option value="drive">驾驶高度 1.7m</option><option value="near">近景高度 0.65m</option></select></label>
+<label>分项 <select id="aov"><option value="0">完整材质</option><option value="1">直接漫反射</option><option value="2">直接镜面</option><option value="3">间接漫反射（含补光）</option><option value="4">环境镜面</option><option value="5">实际法线</option><option value="6">有效粗糙度</option><option value="7">线性底色</option></select></label>
+<button id="run" disabled>运行材质分项矩阵</button><button id="dfg" disabled>验证 DFG 的实际 GPU 输出</button><button id="capture" disabled>检查重复捕获与后处理</button>
+<div id="status">加载真实素材…</div></header><canvas id="canvas"></canvas><textarea id="results" readonly aria-label="诊断结果">尚未运行</textarea>
+<script type="module" src="./lab.js"></script></html>

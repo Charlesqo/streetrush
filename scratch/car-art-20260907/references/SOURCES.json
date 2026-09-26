@@ -1,0 +1,33 @@
+{
+  "references": [
+    {
+      "author": "Albert Limeres",
+      "work": "BMW E30 M3 High Poly Model — Raw Render",
+      "url": "https://albertlimeres.artstation.com/projects/nYwaE1",
+      "file": "albert-limeres-e30-raw.jpg",
+      "purpose": "E30 body continuity, lens depth, rim and trim separation",
+      "rights": "Reference only; original author copyright; not a texture or redistributed model."
+    },
+    {
+      "author": "TREY Digital Studio / photographer Anke Luckmann / agency Grabarz und Partner",
+      "work": "Porsche 911 GT3 RS",
+      "url": "https://www.trey-studio.com/work/porsche-911-gt3-rs/",
+      "files": [
+        "trey-porsche-gt3rs-wide.jpg",
+        "trey-porsche-gt3rs-detail.jpg"
+      ],
+      "purpose": "Wheel hardware, seams, optical layers, carbon/paint separation; do not copy weather or colourway",
+      "rights": "Reference only; original author copyright."
+    },
+    {
+      "author": "Sergej Majboroda / Poly Haven",
+      "work": "Studio Small 09",
+      "url": "https://polyhaven.com/a/studio_small_09",
+      "file": "studio_small_09_2k.hdr",
+      "rights": "CC0",
+      "purpose": "Neutral controlled studio reflections; Powered by Poly Haven API",
+      "md5_expected": "b056fea247bc84b81d2e0987d44c87d8",
+      "md5_actual": "b056fea247bc84b81d2e0987d44c87d8"
+    }
+  ]
+}

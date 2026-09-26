@@ -1,0 +1,17 @@
+{
+  "variant": "balanced-braking-hub-reaction",
+  "scope": "Fresh flat-plane GT3RS scenario approximating recorded speed, braking and tap timings; NOT exact state replay or a proposed physics fix.",
+  "samples": 2542,
+  "sourceUnchanged": true,
+  "brakeEntrySpeed": 213.82260615525973,
+  "preTap": {
+    "speed": 157.0525681635833,
+    "yaw": 0.00004308523784857243
+  },
+  "maxBeta": 1.4096586031222993,
+  "maxYaw": 0.13180696964263916,
+  "minRearLoad": 936.5219698888316,
+  "firstRearZeroTime": null,
+  "finalSpeed": 26.717328954532633,
+  "reset": null
+}

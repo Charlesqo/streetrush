@@ -1,0 +1,192 @@
+[
+  {
+    "id": "mx5",
+    "name": "MAZDA MX-5 NA",
+    "target": "早期NA 1.6L、5速手动；1990北美基础款为项目暂定方向",
+    "identity_status": "PROVISIONAL_MARKET_YEAR",
+    "engine": "B6家族1.6L DOHC直列四缸，自然吸气",
+    "transmission": "5速手动",
+    "boost": "NOT_APPLICABLE",
+    "sources": [
+      "S03"
+    ],
+    "sound_hypothesis": "预期是小排量直四的排气脉动与随负载增加的进气宽带声；敞篷驾驶位会混入明显风和路面。以上为录音筛选假设，未作听感确认。",
+    "states": {
+      "start_idle": "分别收冷/热启动、稳定暖机怠速、熄火；不把老化挺杆/附件异响作为常态。",
+      "load": "低/中/高转稳态轻负载与全负载、上升/下降扫转；前机舱和后排气同步。",
+      "lift_shift": "收油滑行单独录制；手动离合断扭、换挡杆及齿轮接合短声，不能套PDK瞬时换挡。",
+      "intake_boost": "原厂空气箱进气，不加涡轮泄压或赛车ITB声。",
+      "perspectives": "前空气箱、前机舱机械、尾管侧向避开气流；驾驶员耳位分别顶篷开/关，固定路旁通过。"
+    },
+    "must_not_use": [
+      "NB/NBFL 1.6",
+      "NA后期1.8 BP或换机",
+      "涡轮改装Miata",
+      "以1997NA视频证明1990 1.6"
+    ],
+    "priority": "先锁定年款/市场/原厂排气，再获取匹配NA1.6多机位；当前仅链接与未定代际启动音候选。",
+    "listening_status": "LISTENING_NOT_RUN",
+    "target_recorded_audio_status": "SKIP_TARGET_DATA",
+    "notes": "身份研究不修改或裁决项目物理规范；候选库与网络视频不等于已获得准确车型制作素材。"
+  },
+  {
+    "id": "m3e30",
+    "name": "BMW M3 E30",
+    "target": "E30 M3基础2.3L、200PS、5速手动",
+    "identity_status": "TARGET_SPEC_VERIFIED",
+    "engine": "S14B23 2302cc自然吸气直列四缸",
+    "transmission": "5速手动",
+    "boost": "NOT_APPLICABLE",
+    "sources": [
+      "S01",
+      "S02"
+    ],
+    "sound_hypothesis": "应研究高转直四与独立节气门进气、机械纹理和排气共鸣；道路空气箱和催化配置会影响音色，DTM尖锐进气声不能直接复制。此为结构推断。",
+    "states": {
+      "start_idle": "暖怠速稳定片段与启动过程分开，避免故障链条声。",
+      "load": "同转速不同负载；空气箱和排气分轨，对比中转到高转的纹理变化。",
+      "lift_shift": "手动换挡有动力中断；记录补油降挡、收油和空挡转速回落，常态不能夸张持续放炮。",
+      "intake_boost": "进气具有研究价值，但无涡轮；DTM碳空气箱、2.5L赛车凸轮属不同目标。",
+      "perspectives": "前机舱/空气箱、后尾管、车内封闭驾驶位；外部通过单独保持空间信息。"
+    },
+    "must_not_use": [
+      "E30 318i M50b25涡轮直六换机库",
+      "320/325i普通直六",
+      "DTM/Group A 2.5L",
+      "Sport Evolution 238PS",
+      "未确认的195/215PS催化版本"
+    ],
+    "priority": "准确200PS原厂道路版整套公开授权录音尚未找到；应定向询价录制，优先空气箱+排气同步负载。",
+    "listening_status": "LISTENING_NOT_RUN",
+    "target_recorded_audio_status": "SKIP_TARGET_DATA",
+    "notes": "身份研究不修改或裁决项目物理规范；候选库与网络视频不等于已获得准确车型制作素材。"
+  },
+  {
+    "id": "gt3rs",
+    "name": "PORSCHE GT3 RS",
+    "target": "992代911 GT3 RS，项目欧规525PS（2022发布）",
+    "identity_status": "TARGET_SPEC_VERIFIED",
+    "engine": "4.0L自然吸气水平对置六缸，9000rpm上限",
+    "transmission": "7速PDK双离合",
+    "boost": "NOT_APPLICABLE",
+    "sources": [
+      "S04",
+      "S05",
+      "S14"
+    ],
+    "sound_hypothesis": "高转密集六缸纹理、后部进气和排气都需保留；PDK换挡短暂断扭与补油降挡是重点。官方整圈可校对状态关系，不能从车内混音推导干净排气轨。",
+    "states": {
+      "start_idle": "启动、稳定怠速、熄火及风扇应有分离依据。",
+      "load": "后空气入口、机械接触/机舱、尾管；低中高转轻重负载，接近9000rpm的短扫转。",
+      "lift_shift": "PDK升挡/降挡/收油；普通GT3手动声不能充作RS变速箱。",
+      "intake_boost": "独立节气门进气，NOT_APPLICABLE涡轮；库标签Blowoff不证明此车有增压。",
+      "perspectives": "后翼下方空气入口附近、后发动机、后尾管、车内、路旁；不借用GT4 RS座舱进气布置。"
+    },
+    "must_not_use": [
+      "991.1/991.2 GT3 RS",
+      "普通992 GT3手动挡当RS",
+      "911 GT3 R/Cup赛车",
+      "JCR/Dundon/Akrapovic改装排气当原厂",
+      "涡轮911 Carrera/GT2 RS"
+    ],
+    "priority": "官方992RS整圈为第一实车状态参照；Sweet 992GT3是优质方法/分层候选但有版本边界，仍需RS PDK准确录音。",
+    "listening_status": "LISTENING_NOT_RUN",
+    "target_recorded_audio_status": "SKIP_TARGET_DATA",
+    "notes": "身份研究不修改或裁决项目物理规范；候选库与网络视频不等于已获得准确车型制作素材。"
+  },
+  {
+    "id": "lp700",
+    "name": "LAMBORGHINI LP700",
+    "target": "2011 Aventador LP700-4 Coupé",
+    "identity_status": "TARGET_SPEC_VERIFIED",
+    "engine": "L539家族6.5L、60度自然吸气V12、700CV",
+    "transmission": "7速ISR自动化单离合手动变速箱",
+    "boost": "NOT_APPLICABLE",
+    "sources": [
+      "S07",
+      "S08",
+      "S10"
+    ],
+    "sound_hypothesis": "研究低转V12脉动向高转密集谐波的变化、后部进气及机械声；ISR换挡过程应区别于PDK。2014同款录音是最接近的采购线索，未宣称与2011完全相同。",
+    "states": {
+      "start_idle": "点火建立、暖怠速和熄火独立，驻车补油只作瞬态。",
+      "load": "发动机/排气/座舱同步steady与ramp；轻重负载分别取材。",
+      "lift_shift": "慢/快驾驶下ISR换挡断扭与恢复、收油；高转限转仅短时参考。",
+      "intake_boost": "后部自然吸气；不得加入turbo/supercharger。排气阀和改装状态需向录音商确认。",
+      "perspectives": "中后置机舱左右、尾管侧向、车内耳位、车外ORTF/XY通过。"
+    },
+    "must_not_use": [
+      "SV/SVJ/Ultimae",
+      "Roadster车内声当Coupé",
+      "Revuelto混动",
+      "直通/改装排气当2011原厂"
+    ],
+    "priority": "首选人工试听Pole 2014 LP700-4的同步engine/exhaust/inside；购Complete而非只含剪辑片段的Spotting，先确认年份及交付内容冲突。",
+    "listening_status": "LISTENING_NOT_RUN",
+    "target_recorded_audio_status": "SKIP_TARGET_DATA",
+    "notes": "身份研究不修改或裁决项目物理规范；候选库与网络视频不等于已获得准确车型制作素材。"
+  },
+  {
+    "id": "amggt3",
+    "name": "MERCEDES AMG GT3",
+    "target": "2019发布、2020 Evo规范GT3赛车；赛事/BoP仍需留档",
+    "identity_status": "MODEL_VERIFIED_EVENT_UNRESOLVED",
+    "engine": "6.3L名义排量，实际6208cc自然吸气V8（M159家族）",
+    "transmission": "6速序列式赛车变速箱，后置transaxle",
+    "boost": "NOT_APPLICABLE",
+    "sources": [
+      "S06"
+    ],
+    "sound_hypothesis": "研究V8排气脉动、快速切火换挡、车内传动啸叫和赛用底盘冲击。录音中的齿轮声可能掩盖排气；不能用单一低频V8层承担全部赛车声音。",
+    "states": {
+      "start_idle": "启动、暖机、pit limiter受限行驶；限速器状态不能用常规怠速代替。",
+      "load": "赛事范围内的稳定负载与快速加速，BoP及消音配置必须与录音一起记录。",
+      "lift_shift": "序列式升挡切火、降挡补油、传动加/减载啸叫；禁止套道路双离合或8AT。",
+      "intake_boost": "自然吸气进气，无turbo；AMG GT/GT R/GT4的4.0涡轮不是目标发动机。",
+      "perspectives": "发动机、排气口旁、车内安全隔热位置及后部传动机位；路旁通过/回响另轨。"
+    },
+    "must_not_use": [
+      "AMG GT R道路4.0TT",
+      "AMG GT4",
+      "SLS GT3当准确Evo录音",
+      "Edition55/130Y或Bathurst无限制纪录车",
+      "2017–19混剪直接认定2020 Evo"
+    ],
+    "priority": "19Bozzy92明确Evo2020+Monza双视角作参考；没有确认到可直接采购的准确Evo多轨库，赛事/车队定向录制优先。",
+    "listening_status": "LISTENING_NOT_RUN",
+    "target_recorded_audio_status": "SKIP_TARGET_DATA",
+    "notes": "身份研究不修改或裁决项目物理规范；候选库与网络视频不等于已获得准确车型制作素材。"
+  },
+  {
+    "id": "m5g90",
+    "name": "BMW M5 G90",
+    "target": "2024 G90轿车、欧规M HYBRID；不包括G99旅行版",
+    "identity_status": "TARGET_SPEC_VERIFIED",
+    "engine": "S68家族4.4L双涡轮V8 + 电驱动",
+    "transmission": "8速M Steptronic，电机集成于变速箱",
+    "boost": "REQUIRED_TURBO_AND_HYBRID_DISTINCT",
+    "sources": [
+      "S09",
+      "S22"
+    ],
+    "sound_hypothesis": "必须区分排气阀开度、涡轮进气/机械、电机与车内IconicSounds。座舱视频不是未经声效加工的V8干声；纯电驶离不应继续播放怠速。",
+    "states": {
+      "start_idle": "冷/热ICE启动、停止再启动、纯电READY分别标记，不能将READY当发动机已启动。",
+      "load": "V8轻/重负载与阀门模式，电机辅助出现的状态；分离车外真实动力声和座舱设计声。",
+      "lift_shift": "8AT升降挡、滑行及再加速；不能套F10双离合声音或夸张赛用回火。",
+      "intake_boost": "涡轮升压、卸载声只在真实可闻证据支持下采用；普通大泄压BOV不作为准确S68。BMW电驱提示/boost track另属设计音，不自动获得复用权。",
+      "perspectives": "前机舱/空气入口、两侧后尾管、车内（注明IconicSounds开关）、外部纯电低速；风噪/胎声独立。"
+    },
+    "must_not_use": [
+      "F10/F90 M5库当G90",
+      "G99混剪当纯G90",
+      "改装OPF-delete/Akrapovic当欧规原厂",
+      "自然吸气V8代理",
+      "科幻UI声当真实电机/AVAS"
+    ],
+    "priority": "当前最明显的完整库缺口；先收准确G90原厂外部/内部/EV/ICE切换，再做分层，保留市场排放和车内声效设置。",
+    "listening_status": "LISTENING_NOT_RUN",
+    "target_recorded_audio_status": "SKIP_TARGET_DATA",
+    "notes": "身份研究不修改或裁决项目物理规范；候选库与网络视频不等于已获得准确车型制作素材。"
+  }
+]

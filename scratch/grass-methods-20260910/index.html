@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>草地样段 · Street Rush 实验</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <canvas id="scene" aria-label="独立草地样段三维预览"></canvas>
+  <header><div class="wordmark">SR<span>FIELD STUDY / 01</span></div><div class="status"><i></i> 独立样段 · 未接入游戏</div></header>
+  <aside id="panel">
+    <div class="eyebrow">ROADSIDE VEGETATION</div><h1>让路边<br>长出草。</h1>
+    <p class="intro">同一段弯道，同一束光。<br>换一种做法，看真实差别。</p>
+    <nav aria-label="草地方法">
+      <button data-mode="ground"><span class="number">00</span><span><strong>只有地面</strong><small>平面贴图 · 对照基准</small></span></button>
+      <button data-mode="cards"><span class="number">01</span><span><strong>草丛贴片</strong><small>四张生成图 · 交叉面片</small></span></button>
+      <button data-mode="blades"><span class="number">02</span><span><strong>几何草叶</strong><small>弯曲叶片 · 无透明图片</small></span></button>
+      <button data-mode="hybrid" class="active" aria-pressed="true"><span class="number">03</span><span><strong>远近混合</strong><small>近处草叶 · 远处草丛</small></span></button>
+    </nav>
+    <p id="method-note">近处用真实叶片建立体积，远处过渡到轻量草丛贴片。</p>
+    <button id="compare" class="outline">三种方法并排比较 ↗</button>
+    <div class="tuning"><label for="density">草量 <output id="density-value">标准</output></label><input id="density" type="range" min="0.5" max="1.5" step="0.5" value="1" aria-label="草量"><label class="check"><input id="wind" type="checkbox"> 微风</label></div>
+  </aside>
+  <div id="compare-labels" hidden><span>01 / 草丛贴片</span><span>02 / 几何草叶</span><span>03 / 远近混合</span></div>
+  <footer>
+    <div class="views" role="group" aria-label="观察视角"><button data-view="drive" class="active">驾驶高度</button><button data-view="edge">路边近看</button><button data-view="low">贴地观察</button><button data-view="overhead">俯瞰分布</button><button id="travel">▶ 沿路移动</button></div>
+    <div class="hint">拖动旋转 · 滚轮靠近 <span id="metrics">载入样段…</span></div>
+  </footer>
+  <div id="loading"><span>FIELD STUDY</span><strong>准备草地样段…</strong><p>加载本地贴图与三种草地模型</p></div>
+  <div id="error" role="alert" hidden></div>
+  <script type="module" src="./main.js"></script>
+</body></html>

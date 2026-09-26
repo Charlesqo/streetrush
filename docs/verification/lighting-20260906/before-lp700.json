@@ -1,0 +1,300 @@
+{
+  "frameRateCap": null,
+  "previewFrameRateCap": 5,
+  "driving": false,
+  "speedKmh": 7.492465283558402e-10,
+  "car": "lp700",
+  "source": "gltf",
+  "state": "race",
+  "view": "chase",
+  "resolution": [
+    1280,
+    720
+  ],
+  "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "frameMs": {
+    "samples": 1777,
+    "mean": 6.756,
+    "p50": 6.6,
+    "p95": 8.2,
+    "p99": 9
+  },
+  "renderCpuMs": {
+    "samples": 1778,
+    "mean": 0.812,
+    "p50": 0.8,
+    "p95": 0.9,
+    "p99": 1.1
+  },
+  "gpuMs": {
+    "samples": 1777,
+    "mean": 1.13,
+    "p50": 1.118,
+    "p95": 1.481,
+    "p99": 1.641
+  },
+  "drawCalls": {
+    "samples": 1778,
+    "mean": 135,
+    "p50": 135,
+    "p95": 135,
+    "p99": 135
+  },
+  "triangles": {
+    "samples": 1778,
+    "mean": 236064,
+    "p50": 236064,
+    "p95": 236064,
+    "p99": 236064
+  },
+  "textures": 49,
+  "geometries": 240,
+  "materials": [
+    {
+      "name": "Disk",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9861314242816019,
+      "metalness": 0
+    },
+    {
+      "name": "Frein",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9953414108199156,
+      "metalness": 0
+    },
+    {
+      "name": "Jante",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9788134066224502,
+      "metalness": 0
+    },
+    {
+      "name": "Pneu",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9976272608275872,
+      "metalness": 0
+    },
+    {
+      "name": "Body",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.9271680058332403,
+      "metalness": 0,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "Chrome",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9524078,
+      "metalness": 0
+    },
+    {
+      "name": "Compteur",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0
+    },
+    {
+      "name": "Dessous",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0
+    },
+    {
+      "name": "Feux_blanc",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9747977282158025,
+      "metalness": 0
+    },
+    {
+      "name": "Feux_chrome",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9644005676798071,
+      "metalness": 0
+    },
+    {
+      "name": "Feux_glass",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9589600881053577,
+      "metalness": 0
+    },
+    {
+      "name": "Feux_orange",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9823427123811381,
+      "metalness": 0
+    },
+    {
+      "name": "Feux_rouge",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9929801708897605,
+      "metalness": 0
+    },
+    {
+      "name": "Feux_rouge_c",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9875923367199538,
+      "metalness": 0
+    },
+    {
+      "name": "Feux_stop",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9929801708897605,
+      "metalness": 0
+    },
+    {
+      "name": "Grille",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9978235582621837,
+      "metalness": 0
+    },
+    {
+      "name": "Interieur",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9957647,
+      "metalness": 0
+    },
+    {
+      "name": "Interieur_LCD",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9961434199185778,
+      "metalness": 0
+    },
+    {
+      "name": "Interieur_color",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.992964675004,
+      "metalness": 0
+    },
+    {
+      "name": "Interieur_glass",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9444296094373992,
+      "metalness": 0
+    },
+    {
+      "name": "Interieur_signs",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9971715728752538,
+      "metalness": 0
+    },
+    {
+      "name": "Interieur_sol",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0
+    },
+    {
+      "name": "LP_700",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9600693972236832,
+      "metalness": 0
+    },
+    {
+      "name": "Logo",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9886862915010153,
+      "metalness": 0
+    },
+    {
+      "name": "Logo_color",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.90698779708,
+      "metalness": 0
+    },
+    {
+      "name": "Metal_alu",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9425882,
+      "metalness": 0
+    },
+    {
+      "name": "Metal_noir",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9866897613621994,
+      "metalness": 0
+    },
+    {
+      "name": "Miroir",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9614001721858763,
+      "metalness": 0
+    },
+    {
+      "name": "Moteur",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9938847985296079,
+      "metalness": 0
+    },
+    {
+      "name": "Partie_noir",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 0
+    },
+    {
+      "name": "Phare",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9578620926955312,
+      "metalness": 0
+    },
+    {
+      "name": "Phare_blanc",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9747977282158025,
+      "metalness": 0
+    },
+    {
+      "name": "Phare_optique",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.95906972608,
+      "metalness": 0
+    },
+    {
+      "name": "Phare_vitre",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.97308848168,
+      "metalness": 0
+    },
+    {
+      "name": "Plastique_noir",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9925129836951694,
+      "metalness": 0
+    },
+    {
+      "name": "Plastique_rouge",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9870441141907489,
+      "metalness": 0
+    },
+    {
+      "name": "Siege_color",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9898674820026703,
+      "metalness": 0
+    },
+    {
+      "name": "Siege_noir",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9940456085992444,
+      "metalness": 0
+    },
+    {
+      "name": "Vitre",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.97471300312,
+      "metalness": 0
+    },
+    {
+      "name": "Vitre_noir",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.9971451,
+      "metalness": 0
+    },
+    {
+      "name": "",
+      "type": "MeshBasicMaterial"
+    }
+  ]
+}

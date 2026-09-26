@@ -1,0 +1,42 @@
+[
+  {
+    "path": "public/cars/lamborghini-aventador-lp700.glb",
+    "bytes": 11269432,
+    "sha256": "6489a80970e15eaa4dcc9aab7e2f43f8f9021bfc15cd9d1081563540f8c85d8a"
+  },
+  {
+    "path": "public/cars/bmw-m3-e30.glb",
+    "bytes": 13955660,
+    "sha256": "4af350460ea34b7901c8512adafd2c04faa632629ab6b2bcbbbb48694f902738"
+  },
+  {
+    "path": "public/cars/mazda-miata-mx5-na.glb",
+    "bytes": 1925828,
+    "sha256": "a17b3b9edc0997ba77837ae4358e3dfe7b7aa7f59364d7c15b6fb01a3452d26b"
+  },
+  {
+    "path": "public/cars/mercedes-amg-gt3.glb",
+    "bytes": 9636232,
+    "sha256": "af1f95809e31aa2546151857497c99442cf499940030fde8b1c5615f43f1cbf7"
+  },
+  {
+    "path": "public/cars/porsche-gt3-rs.glb",
+    "bytes": 19270544,
+    "sha256": "e1cf7d3e04aaaf27cfec6363de5f6427b87c997993f9de0f54ec5549b68b8f96"
+  },
+  {
+    "path": "public/cars/bmw-m5-g90.glb",
+    "bytes": 18706352,
+    "sha256": "c5ae1be8833983655626eab533f447d3476001c2ad88d8db6b24d64b8322dbd9"
+  },
+  {
+    "path": "source-models/mercedes-amg-gt3.glb",
+    "bytes": 33004208,
+    "sha256": "649ec8573d8c26311fed80f3ca3ada6d6e0e39e458fca7f93552cfcd3a027451"
+  },
+  {
+    "path": "source-models/bmw-m5-g90.glb",
+    "bytes": 38034600,
+    "sha256": "d6b0b22a1eb4547dbabad925e565a590b2a109c4770358a0ef913328cf68c9b5"
+  }
+]

@@ -1,0 +1,175 @@
+{
+  "asset_id": "grass_medium_01",
+  "title": "Grass Medium 01",
+  "source_url": "https://polyhaven.com/a/grass_medium_01",
+  "license": {
+    "name": "CC0-1.0",
+    "url": "https://polyhaven.com/license",
+    "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "evidence_file": "sources/native-models/grass_medium_01/polyhaven-license.html",
+    "evidence_sha256": "0c027ff13cb095a3f9c6de523363bba336c6f478790fa37c3f46d4a2768b8017"
+  },
+  "api": {
+    "info_url": "https://api.polyhaven.com/info/grass_medium_01",
+    "files_url": "https://api.polyhaven.com/files/grass_medium_01",
+    "info_metadata": "sources/native-models/grass_medium_01/polyhaven-grass_medium_01-info.json",
+    "info_metadata_sha256": "86ecc9132bdee3cf99317a80edfa00c0d31012ae80fd7525bc86596eda684c63",
+    "files_metadata": "sources/native-models/grass_medium_01/polyhaven-grass_medium_01-files.json",
+    "files_metadata_sha256": "daa882bd7a3925042501536763269b064f66c736779dd90fd9bd1cb405cb4d53"
+  },
+  "asset_metadata": {
+    "authors": {
+      "Rob Tuytel": "Photography",
+      "Rico Cilliers": "Modeling"
+    },
+    "dimensions_api_raw": [
+      7266.327619552612,
+      1259.2098712921143,
+      1177.0583391189575
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "physical_scale_m": [
+      7.266327619552612,
+      1.2592098712921143,
+      1.1770583391189575
+    ],
+    "physical_scale_note": "API dimensions converted from millimeters to meters; axis order preserved.",
+    "max_resolution_api_raw": [
+      8192,
+      8192
+    ],
+    "polycount": 1606633,
+    "texel_density": 16814.571847350904,
+    "files_hash": "c37a6bea414dac24f578f288810652add69d09fc",
+    "lods": true,
+    "geonodes": true,
+    "description": "Free 8K grass model: dense medium tuft with varied green blades, natural meadow tones and wispy outer fronds for realistic ground cover. Geometry nodes scatter system.",
+    "category": "Nature/Ground Cover & Moss/Grass Tufts",
+    "attributes": {
+      "condition": [
+        "clean"
+      ],
+      "lods": true,
+      "geonodes": true,
+      "material": [
+        "plant"
+      ]
+    }
+  },
+  "acquisition": {
+    "acquired_date": "2026-09-07",
+    "resolution": "1K",
+    "native_format": "Blender .blend",
+    "texture_bytes": 6133364,
+    "total_download_bytes": 7965392,
+    "texture_limit_bytes": 65000000,
+    "within_texture_limit": true,
+    "blend": {
+      "file": "sources/native-models/grass_medium_01/grass_medium_01_1k.blend",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/grass_medium_01/grass_medium_01_1k.blend",
+      "format": "Blender .blend",
+      "api_bytes": 1832028,
+      "downloaded_bytes": 1832028,
+      "api_md5": "e37f4fa4c90ddeb807ce6b4c09e3033d",
+      "downloaded_md5": "e37f4fa4c90ddeb807ce6b4c09e3033d",
+      "sha256": "5bbeaf7161508c1de66f137e7fcaec6fdea9c4ac0faa134c384c89c97271bec2",
+      "byte_count_matches_api": true,
+      "md5_matches_api": true
+    },
+    "files": [
+      {
+        "role": "blend_dependency",
+        "internal_path": "textures/grass_medium_01_alpha_1k.png",
+        "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_alpha_1k.png",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/grass_medium_01/grass_medium_01_alpha_1k.png",
+        "format": "PNG",
+        "mode": "I;16 grayscale",
+        "dimensions_px": [
+          1024,
+          1024
+        ],
+        "api_bytes": 648718,
+        "downloaded_bytes": 648718,
+        "api_md5": "6b5b251ef1ca9a69ab9f49def66d758a",
+        "downloaded_md5": "6b5b251ef1ca9a69ab9f49def66d758a",
+        "sha256": "711a8e49af758d6a6ce1f610db858899a27be19da6d1866bd35c13bc7b8ffeff",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "role": "blend_dependency",
+        "internal_path": "textures/grass_medium_01_diff_1k.jpg",
+        "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_01/grass_medium_01_diff_1k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          1024,
+          1024
+        ],
+        "api_bytes": 395673,
+        "downloaded_bytes": 395673,
+        "api_md5": "6b18ed50d776fd20c1304d9994bd764e",
+        "downloaded_md5": "6b18ed50d776fd20c1304d9994bd764e",
+        "sha256": "71495bd6a11fddcab0aaff38246fea1a7b802a705483f1c7cbca53955daa8050",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "role": "blend_dependency",
+        "internal_path": "textures/grass_medium_01_dry_diff_1k.png",
+        "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_dry_diff_1k.png",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/grass_medium_01/grass_medium_01_dry_diff_1k.png",
+        "format": "PNG",
+        "mode": "16-bit/color RGBA",
+        "dimensions_px": [
+          1024,
+          1024
+        ],
+        "api_bytes": 2167830,
+        "downloaded_bytes": 2167830,
+        "api_md5": "6f5ae8d4f152542de30aad6b6a3ea327",
+        "downloaded_md5": "6f5ae8d4f152542de30aad6b6a3ea327",
+        "sha256": "da85639d6eb8f029b50e7920aaf7e649940541bb24fe6ad239dbae7400af2eb2",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "role": "blend_dependency",
+        "internal_path": "textures/grass_medium_01_nor_gl_1k.exr",
+        "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_nor_gl_1k.exr",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/grass_medium_01/grass_medium_01_nor_gl_1k.exr",
+        "format": "OpenEXR",
+        "dimensions_px": [
+          1024,
+          1024
+        ],
+        "api_bytes": 2021011,
+        "downloaded_bytes": 2021011,
+        "api_md5": "70fb385251e22ca7cf23ed4adf835ab2",
+        "downloaded_md5": "70fb385251e22ca7cf23ed4adf835ab2",
+        "sha256": "7e9c4ca6dfca96b67e799a268493a6871ffaa215624dd1ade8b09044095f2a1d",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "role": "blend_dependency",
+        "internal_path": "textures/grass_medium_01_rough_1k.exr",
+        "file": "sources/native-models/grass_medium_01/textures/grass_medium_01_rough_1k.exr",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/grass_medium_01/grass_medium_01_rough_1k.exr",
+        "format": "OpenEXR",
+        "dimensions_px": [
+          1024,
+          1024
+        ],
+        "api_bytes": 900132,
+        "downloaded_bytes": 900132,
+        "api_md5": "8c72f456c9f2fae200be9d308fe91051",
+        "downloaded_md5": "8c72f456c9f2fae200be9d308fe91051",
+        "sha256": "79a4d6ac2b567c4b7a394a11e1a57c7823730c02878f792153ce5a41dfacedee",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      }
+    ]
+  }
+}

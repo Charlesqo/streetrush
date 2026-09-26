@@ -1,0 +1,399 @@
+{
+  "blender": "4.5.13 LTS",
+  "asset_roots": [
+    {
+      "asset": "G01_Track_and_Runoff",
+      "description": "96m track sample; 14m track width; metric tiled PBR asphalt, geometric paint and surface variation.",
+      "location_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parts": 220,
+      "triangles_evaluated": 672304
+    },
+    {
+      "asset": "G02_Drainage_Channel",
+      "description": "Modular trench drain with visible supporting rim, recess, cross bars and dirt accumulation.",
+      "location_m": [
+        -30.5,
+        14.130000114440918,
+        -0.04749999940395355
+      ],
+      "parts": 576,
+      "triangles_evaluated": 66304
+    },
+    {
+      "asset": "A01_Pit_Garages",
+      "description": "Three 6m garage bays, interior shells, structural columns, mechanical shutters and balcony. Front -Y.",
+      "location_m": [
+        -16.0,
+        20.0,
+        0.0
+      ],
+      "parts": 432,
+      "triangles_evaluated": 63146
+    },
+    {
+      "asset": "A02_Race_Control",
+      "description": "12m control tower with wrap-around observation room, exterior access stair and services.",
+      "location_m": [
+        12.600000381469727,
+        20.200000762939453,
+        0.0
+      ],
+      "parts": 247,
+      "triangles_evaluated": 39480
+    },
+    {
+      "asset": "B01_Pit_Wall",
+      "description": "Precast pit partition with joints, anchor details and safety fence; terminates before pit exit.",
+      "location_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parts": 290,
+      "triangles_evaluated": 47242
+    },
+    {
+      "asset": "B02_Armco_and_Catch_Fence",
+      "description": "Pressed two-high guardrail with I posts and fine welded-wire catch fence.",
+      "location_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parts": 1167,
+      "triangles_evaluated": 165928
+    },
+    {
+      "asset": "A03_Marshal_Post",
+      "description": "Compact track marshal hut, 2.8m high, shaded windows, access door and signal equipment.",
+      "location_m": [
+        29.0,
+        16.700000762939453,
+        0.0
+      ],
+      "parts": 51,
+      "triangles_evaluated": 6548
+    },
+    {
+      "asset": "F01_Pit_Exit_Signal",
+      "description": "Grounded signal post, two weatherhood lenses, controller box and flexible wiring.",
+      "location_m": [
+        23.200000762939453,
+        10.0,
+        0.0
+      ],
+      "parts": 19,
+      "triangles_evaluated": 4252
+    },
+    {
+      "asset": "F02_Tool_Trolley",
+      "description": "Rolling mechanic cabinet, six drawers, locks, side handle and swivel castors.",
+      "location_m": [
+        -12.0,
+        13.149999618530273,
+        0.0
+      ],
+      "parts": 28,
+      "triangles_evaluated": 4036
+    },
+    {
+      "asset": "F03_Tyre_Rack",
+      "description": "Two-tier welded rack with eight tyre casings, steel joints and round sidewall profile.",
+      "location_m": [
+        -23.0,
+        12.75,
+        0.11999999731779099
+      ],
+      "parts": 72,
+      "triangles_evaluated": 29888
+    },
+    {
+      "asset": "F04_Service_Bollards",
+      "description": "Powder coated protective bollards with worn footplates.",
+      "location_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parts": 18,
+      "triangles_evaluated": 3480
+    },
+    {
+      "asset": "F05_Braking_Board",
+      "description": "Double-post track distance board with rear bracing and anchor bolts.",
+      "location_m": [
+        35.0,
+        -13.649999618530273,
+        0.0
+      ],
+      "parts": 14,
+      "triangles_evaluated": 2310
+    },
+    {
+      "asset": "F06_Floodlight_-31",
+      "description": "Tapered mast with inspection hatch, mounting plate and four individual floodlights.",
+      "location_m": [
+        -31.0,
+        -16.0,
+        0.0
+      ],
+      "parts": 20,
+      "triangles_evaluated": 2408
+    },
+    {
+      "asset": "F06_Floodlight_30",
+      "description": "Tapered mast with inspection hatch, mounting plate and four individual floodlights.",
+      "location_m": [
+        30.0,
+        30.0,
+        0.0
+      ],
+      "parts": 20,
+      "triangles_evaluated": 2408
+    },
+    {
+      "asset": "F07_Timing_Gantry",
+      "description": "Track-spanning steel truss, 5.45m minimum clearance beneath lights, timing sign, five start-light pods.",
+      "location_m": [
+        -37.0,
+        0.0,
+        0.0
+      ],
+      "parts": 77,
+      "triangles_evaluated": 22596
+    },
+    {
+      "asset": "A04_Trackside_Grandstand",
+      "description": "Small six-row grandstand; cantilever roof, open steel bracing and access aisles.",
+      "location_m": [
+        -11.0,
+        -22.299999237060547,
+        0.0
+      ],
+      "parts": 253,
+      "triangles_evaluated": 46266
+    },
+    {
+      "asset": "D01_Architectural_Detail",
+      "description": "Facade cladding, equipment fixings, signage and construction joints for the pit building.",
+      "location_m": [
+        -16.0,
+        20.0,
+        0.0
+      ],
+      "parts": 97,
+      "triangles_evaluated": 19160
+    },
+    {
+      "asset": "D02_Control_Details",
+      "description": "Service entry awning, stair landing anchors and protected door threshold.",
+      "location_m": [
+        12.600000381469727,
+        20.200000762939453,
+        0.0
+      ],
+      "parts": 20,
+      "triangles_evaluated": 3168
+    },
+    {
+      "asset": "F08_Scanned_Service_Barriers",
+      "description": "Three reclaimed concrete barriers protecting service equipment; CC0 Poly Haven model, reduced for realtime, original preserved.",
+      "location_m": [
+        4.5,
+        15.149999618530273,
+        0.0
+      ],
+      "parts": 3,
+      "triangles_evaluated": 36552
+    },
+    {
+      "asset": "D03_Garage_Electrical_Services",
+      "description": "Acquired PBR industrial outlets and junction boxes connected by authored metal conduit; 1:1 physical scale.",
+      "location_m": [
+        -16.0,
+        20.0,
+        0.0
+      ],
+      "parts": 60,
+      "triangles_evaluated": 16904
+    },
+    {
+      "asset": "Presentation",
+      "description": "Presentation cameras and lighting, excluded from individual asset exports.",
+      "location_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parts": 0,
+      "triangles_evaluated": 0
+    }
+  ],
+  "mesh_objects": 3652,
+  "materials": [
+    {
+      "name": "Concrete",
+      "tile_metres": 1.3
+    },
+    {
+      "name": "Asphalt_Scan",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "Gravel",
+      "tile_metres": 1.6
+    },
+    {
+      "name": "Paving",
+      "tile_metres": 2
+    },
+    {
+      "name": "White",
+      "tile_metres": 1
+    },
+    {
+      "name": "Graphite",
+      "tile_metres": 1
+    },
+    {
+      "name": "Galvanized",
+      "tile_metres": 0.4
+    },
+    {
+      "name": "Vermilion",
+      "tile_metres": 1
+    },
+    {
+      "name": "PaintWhite_ScanBased",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "GreenRunoff_ScanBased",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "Rubber",
+      "tile_metres": 0.5
+    },
+    {
+      "name": "Soil",
+      "tile_metres": 1
+    },
+    {
+      "name": "Grass_Scan",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "Rust",
+      "tile_metres": 0.5
+    },
+    {
+      "name": "DarkConcrete",
+      "tile_metres": 2
+    },
+    {
+      "name": "AsphaltPatch_ScanBased",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "KerbRed",
+      "tile_metres": 0.75
+    },
+    {
+      "name": "Glass",
+      "tile_metres": 1
+    },
+    {
+      "name": "Black",
+      "tile_metres": 1
+    },
+    {
+      "name": "GlowWarm",
+      "tile_metres": 1
+    },
+    {
+      "name": "RedLens",
+      "tile_metres": 1
+    },
+    {
+      "name": "GreenLens",
+      "tile_metres": 1
+    },
+    {
+      "name": "WeatherStreak",
+      "tile_metres": 1
+    },
+    {
+      "name": "RubberTransfer",
+      "tile_metres": 1
+    },
+    {
+      "name": "Kerb_Red_Worn_0",
+      "tile_metres": 1
+    },
+    {
+      "name": "Kerb_White_Worn_0",
+      "tile_metres": 1
+    },
+    {
+      "name": "Kerb_Red_Worn_1",
+      "tile_metres": 1
+    },
+    {
+      "name": "Kerb_White_Worn_1",
+      "tile_metres": 1
+    },
+    {
+      "name": "Kerb_Red_Worn_2",
+      "tile_metres": 1
+    },
+    {
+      "name": "Kerb_White_Worn_2",
+      "tile_metres": 1
+    },
+    {
+      "name": "Kerb_Red_Worn_3",
+      "tile_metres": 1
+    },
+    {
+      "name": "Kerb_White_Worn_3",
+      "tile_metres": 1
+    },
+    {
+      "name": "concrete_road_barrier",
+      "tile_metres": 1
+    },
+    {
+      "name": "modular_electric_cables_boxes",
+      "tile_metres": 1
+    },
+    {
+      "name": "Asphalt_Scan",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "Grass_Scan",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "CorrugatedSheet_Scan",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "CorrugatedSheet_Scan",
+      "tile_metres": 2.0
+    },
+    {
+      "name": "DryGrassBlades",
+      "tile_metres": 1
+    },
+    {
+      "name": "EdgeDeposition",
+      "tile_metres": 1
+    }
+  ]
+}

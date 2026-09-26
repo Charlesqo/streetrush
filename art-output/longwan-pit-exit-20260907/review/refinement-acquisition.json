@@ -1,0 +1,526 @@
+{
+  "batch": {
+    "scope": "/Volumes/Storage/streetrush/art-output/longwan-pit-exit-20260907",
+    "acquired_date": "2026-09-07",
+    "acquired_at_utc": "2026-09-06T20:07:42Z",
+    "source": "Poly Haven official asset pages, API, and dl.polyhaven.org public files",
+    "selection_scope": "Exactly three new 2K CC0 PBR surface sets, plus the requested gravel displacement and chainlink wire opacity source",
+    "resolution": "2K maps are 2048 x 2048 pixels",
+    "download_policy": "Diffuse, arm, and OpenGL normal acquired as official 2K JPEGs; displacement and wire opacity acquired as official 2K 16-bit grayscale PNGs",
+    "payload_bytes": 56920933,
+    "payload_mib": 54.284,
+    "audit_and_provenance_bytes_before_this_manifest": 672617,
+    "all_new_source_bytes_before_this_manifest": 57593550,
+    "all_new_source_bytes_including_this_manifest": 57616131,
+    "cap_bytes": 100000000,
+    "within_100mb_cap": true,
+    "within_100mb_cap_including_audit": true,
+    "license": {
+      "name": "CC0-1.0",
+      "url": "https://polyhaven.com/license",
+      "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "evidence_files": [
+        "review/polyhaven-license.html",
+        "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-page.html",
+        "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-page.html",
+        "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-page.html"
+      ],
+      "note": "Poly Haven's official license page and each preserved asset page identify the assets as CC0/public-domain material."
+    }
+  },
+  "selected_assets": [
+    {
+      "id": "asphalt_track",
+      "title": "Asphalt Track",
+      "source_url": "https://polyhaven.com/a/asphalt_track",
+      "info_api_url": "https://api.polyhaven.com/info/asphalt_track",
+      "files_api_url": "https://api.polyhaven.com/files/asphalt_track",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "authors": {
+        "Dimitrios Savva": "All"
+      },
+      "dimensions_api_raw": [
+        2000,
+        2000
+      ],
+      "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+      "recommended_surface_scale_m": [
+        2.0,
+        2.0
+      ],
+      "recommended_surface_scale_note": "The 2.0 m x 2.0 m value is a judged conversion of the API millimeter dimensions and a tiling starting point.",
+      "max_resolution_api_raw": [
+        8192,
+        8192
+      ],
+      "files_hash": "2f5841e723e9c319052d33d4273995aa679c655a",
+      "description": "Free, 8K asphalt track texture: dark, fine-grained tarmac with subtle aggregate, worn micro-roughness and a low-gloss, slightly weathered surface.",
+      "category": "Asphalt & Bitumen/Tracks/Race Tracks",
+      "attributes": {
+        "surface_use": "floor",
+        "condition": [
+          "weathered"
+        ],
+        "origin": "man_made",
+        "setting": "outdoor"
+      },
+      "preserved_api_metadata": {
+        "info": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-info.json",
+        "info_sha256": "0b88a4092827e5cd2f298845578dcb25d54a4eff492e8acff35c1ea4ecf5a52a",
+        "files": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-files.json",
+        "files_sha256": "77f30d6289c92b017dd41951a67bc46dbe3c74f04caf66e3772a6100b5423918",
+        "asset_page": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-page.html",
+        "asset_page_sha256": "46d0d81d3745139d6deae259a3495b910ba71ea943685cbb85d8b15b8da9fc14"
+      },
+      "files": [
+        {
+          "channel": "diffuse",
+          "file": "sources/pbr/refinement/asphalt_track/asphalt_track_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_track/asphalt_track_diff_2k.jpg",
+          "api_bytes": 3779263,
+          "downloaded_bytes": 3779263,
+          "api_md5": "faec159f1f29d231581c32bd256b5ede",
+          "downloaded_md5": "faec159f1f29d231581c32bd256b5ede",
+          "sha256": "742d1d79560bd661d5871afc857e981e25dcd563bfd24385cbd063ebcaeef06c",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "arm",
+          "file": "sources/pbr/refinement/asphalt_track/asphalt_track_arm_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_track/asphalt_track_arm_2k.jpg",
+          "api_bytes": 2469962,
+          "downloaded_bytes": 2469962,
+          "api_md5": "a528253bac67e8570553c4eac14d97e8",
+          "downloaded_md5": "a528253bac67e8570553c4eac14d97e8",
+          "sha256": "064f8469a0f9e2a9581551926f02eb760992a9b3e2a3890ec6f6ac00d582944a",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "normal_gl",
+          "file": "sources/pbr/refinement/asphalt_track/asphalt_track_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_track/asphalt_track_nor_gl_2k.jpg",
+          "api_bytes": 3694762,
+          "downloaded_bytes": 3694762,
+          "api_md5": "5381e78d5deda41e9ff5dd9c317bfa62",
+          "downloaded_md5": "5381e78d5deda41e9ff5dd9c317bfa62",
+          "sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "displacement",
+          "file": "sources/pbr/refinement/asphalt_track/asphalt_track_disp_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/asphalt_track/asphalt_track_disp_2k.png",
+          "api_bytes": 6257146,
+          "downloaded_bytes": 6257146,
+          "api_md5": "799c1ce524ef0cc8353876aa4994e6c5",
+          "downloaded_md5": "799c1ce524ef0cc8353876aa4994e6c5",
+          "sha256": "3a8fff49c110c612bfd640d7d5531d7b197967adc76a6bbd548c671eab583b43",
+          "format": "PNG",
+          "mode": "I;16 grayscale",
+          "bit_depth": 16,
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        }
+      ]
+    },
+    {
+      "id": "withered_grass",
+      "title": "Withered Grass",
+      "source_url": "https://polyhaven.com/a/withered_grass",
+      "info_api_url": "https://api.polyhaven.com/info/withered_grass",
+      "files_api_url": "https://api.polyhaven.com/files/withered_grass",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "authors": {
+        "Charlotte Baglioni": "All"
+      },
+      "dimensions_api_raw": [
+        1999.9996423721313,
+        1999.9996423721313
+      ],
+      "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+      "recommended_surface_scale_m": [
+        2.0,
+        2.0
+      ],
+      "recommended_surface_scale_note": "The 2.0 m x 2.0 m value is a judged conversion of the API millimeter dimensions and a tiling starting point for short, sun-bleached ground cover.",
+      "max_resolution_api_raw": [
+        8192,
+        8192
+      ],
+      "files_hash": "eb88811d5af353e86750f73f412bf5aea3f7c8ab",
+      "description": "Free 8K texture of withered grass: brittle, fibrous, sun-bleached blades in muted brown and tan with scattered debris and compacted earth tones.",
+      "category": "Ground & Terrain/Grass & Vegetation/Dry & Sparse Grass",
+      "attributes": {
+        "surface_use": "ground",
+        "condition": [
+          "weathered"
+        ],
+        "origin": "natural",
+        "setting": "outdoor"
+      },
+      "preserved_api_metadata": {
+        "info": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-info.json",
+        "info_sha256": "75b618334fc4ffbcc2a8d072db9a0d24b2ea99c83c7f4d327d4bf0c019c2ac8d",
+        "files": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-files.json",
+        "files_sha256": "2e4cffdb00dd75a7929baf27b76283e26993fdfb7c4d3bb2ab8344dc7748ffb2",
+        "asset_page": "sources/pbr/refinement/withered_grass/polyhaven-withered_grass-page.html",
+        "asset_page_sha256": "a72c3be8ea2ef37557816d6a9f804e209a81f031d7ca244cb7ee23a90c13d5bd"
+      },
+      "files": [
+        {
+          "channel": "diffuse",
+          "file": "sources/pbr/refinement/withered_grass/withered_grass_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/withered_grass/withered_grass_diff_2k.jpg",
+          "api_bytes": 4632786,
+          "downloaded_bytes": 4632786,
+          "api_md5": "503d5c7262c46351e5b0acdcc90dd30b",
+          "downloaded_md5": "503d5c7262c46351e5b0acdcc90dd30b",
+          "sha256": "0cf0fca68cbf4277199a2b9b7b3a8013357e4087247b1367f86d4a53b4fafa7e",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "arm",
+          "file": "sources/pbr/refinement/withered_grass/withered_grass_arm_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/withered_grass/withered_grass_arm_2k.jpg",
+          "api_bytes": 4802892,
+          "downloaded_bytes": 4802892,
+          "api_md5": "8d649cc74868ffaf11b34970ee2ff058",
+          "downloaded_md5": "8d649cc74868ffaf11b34970ee2ff058",
+          "sha256": "0b4bfb6549a56c48f7239be7f520124b38e7842188b8d1d53b0a376686c40371",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "normal_gl",
+          "file": "sources/pbr/refinement/withered_grass/withered_grass_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/withered_grass/withered_grass_nor_gl_2k.jpg",
+          "api_bytes": 6194953,
+          "downloaded_bytes": 6194953,
+          "api_md5": "dd239e55b44c9b9bb0e9f1e145bf3a22",
+          "downloaded_md5": "dd239e55b44c9b9bb0e9f1e145bf3a22",
+          "sha256": "5fd42baf06224086cb9afcb2f7a3b9f26feddd719bf1f9aed65ec49c586e7ff9",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "displacement",
+          "file": "sources/pbr/refinement/withered_grass/withered_grass_disp_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/withered_grass/withered_grass_disp_2k.png",
+          "api_bytes": 7301380,
+          "downloaded_bytes": 7301380,
+          "api_md5": "a6d219647337243e13f4ec72ea24c53e",
+          "downloaded_md5": "a6d219647337243e13f4ec72ea24c53e",
+          "sha256": "2a7bf2836fd70e443e093f7239f8de3488a8e675c1301771371adba92836ea57",
+          "format": "PNG",
+          "mode": "I;16 grayscale",
+          "bit_depth": 16,
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        }
+      ]
+    },
+    {
+      "id": "corrugated_iron_03",
+      "title": "Corrugated Iron 03",
+      "source_url": "https://polyhaven.com/a/corrugated_iron_03",
+      "info_api_url": "https://api.polyhaven.com/info/corrugated_iron_03",
+      "files_api_url": "https://api.polyhaven.com/files/corrugated_iron_03",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "authors": {
+        "Charlotte Baglioni": "All"
+      },
+      "dimensions_api_raw": [
+        2000,
+        2000
+      ],
+      "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+      "recommended_surface_scale_m": [
+        2.0,
+        2.0
+      ],
+      "recommended_surface_scale_note": "The 2.0 m x 2.0 m value is a judged conversion of the API millimeter dimensions and a tiling starting point; orient the corrugation with the barrier profile.",
+      "max_resolution_api_raw": [
+        8192,
+        8192
+      ],
+      "files_hash": "a4cea9517f13893e33d55a868f722ccc189f2b19",
+      "description": "Free 8K texture of narrow corrugated galvanized steel, subtle scratches and small rust spots.",
+      "category": "Metal/Sheet & Corrugated/Corrugated Iron",
+      "attributes": {
+        "surface_use": "roof",
+        "condition": [
+          "weathered",
+          "rusted"
+        ],
+        "origin": "man_made",
+        "setting": "outdoor"
+      },
+      "preserved_api_metadata": {
+        "info": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-info.json",
+        "info_sha256": "bef200bc9128b5798bc4a390069ff3f780f1364fe017e447a0082a41b1b9f401",
+        "files": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-files.json",
+        "files_sha256": "3c76275ddc4aa85f7335d64d7170a2db7fb6be56f135b81975bba1fa3be841f8",
+        "asset_page": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-page.html",
+        "asset_page_sha256": "bc692d64292bcdcdeec97adcabafe8dd96fc123e0833026469e91cb2588d83eb"
+      },
+      "files": [
+        {
+          "channel": "diffuse",
+          "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/corrugated_iron_03/corrugated_iron_03_diff_2k.jpg",
+          "api_bytes": 1908641,
+          "downloaded_bytes": 1908641,
+          "api_md5": "5eb86304eada29624fc1e3c3a1fa2ff7",
+          "downloaded_md5": "5eb86304eada29624fc1e3c3a1fa2ff7",
+          "sha256": "7b3f4f849dd634f54548b3b552ebeae723266f782163341185c94094e2eb7991",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "arm",
+          "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_arm_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/corrugated_iron_03/corrugated_iron_03_arm_2k.jpg",
+          "api_bytes": 1193928,
+          "downloaded_bytes": 1193928,
+          "api_md5": "43be33fd60ffc53e0b19e22175167df7",
+          "downloaded_md5": "43be33fd60ffc53e0b19e22175167df7",
+          "sha256": "67e732253e52fd04089ba16c9757ced090c5331144f29600fc8ffeb32aaf5f2b",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "normal_gl",
+          "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/corrugated_iron_03/corrugated_iron_03_nor_gl_2k.jpg",
+          "api_bytes": 1950629,
+          "downloaded_bytes": 1950629,
+          "api_md5": "7c642a1e9c99d75066c45073c2141d03",
+          "downloaded_md5": "7c642a1e9c99d75066c45073c2141d03",
+          "sha256": "9f865a4de4753a9cc0987c4e665ec935c7dd28d3c6cd80c4dd2000d64c2fcfc3",
+          "format": "JPEG",
+          "mode": "RGB",
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        },
+        {
+          "channel": "displacement",
+          "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_disp_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/corrugated_iron_03/corrugated_iron_03_disp_2k.png",
+          "api_bytes": 5562796,
+          "downloaded_bytes": 5562796,
+          "api_md5": "41552f50749152015148cc62cc33d616",
+          "downloaded_md5": "41552f50749152015148cc62cc33d616",
+          "sha256": "29314e42351ee43ee248e82d732e997d02da87388558807085ba89e443632c0e",
+          "format": "PNG",
+          "mode": "I;16 grayscale",
+          "bit_depth": 16,
+          "dimensions_px": [
+            2048,
+            2048
+          ],
+          "byte_count_matches_api": true,
+          "md5_matches_api": true
+        }
+      ]
+    }
+  ],
+  "candidate_verification": {
+    "id": "asphalt_02",
+    "title": "Asphalt 02",
+    "source_url": "https://polyhaven.com/a/asphalt_02",
+    "info_api_url": "https://api.polyhaven.com/info/asphalt_02",
+    "files_api_url": "https://api.polyhaven.com/files/asphalt_02",
+    "license": "CC0-1.0",
+    "license_url": "https://polyhaven.com/license",
+    "dimensions_api_raw": [
+      3000.000238418579,
+      3000
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "max_resolution_api_raw": [
+      8192,
+      8192
+    ],
+    "files_hash": "2839a331f389f6ad1e30a78f24db58369d92f742",
+    "category": "Asphalt & Bitumen/Asphalt/Cracked Asphalt",
+    "description": "Free 8K texture of weathered grey asphalt: gritty coarse aggregate, subtle tar cracks, rough matte surface with uneven wear.",
+    "status": "verified_available_but_held_out",
+    "decision_note": "The official API confirms the requested ID exists, but its current metadata explicitly describes a cracked/weathered surface. The selected asphalt_track asset matches the fine-grained race-track requirement more closely."
+  },
+  "gravel_displacement_addition": {
+    "asset_id": "gravel_stones",
+    "title": "Gravel Stones",
+    "source_url": "https://polyhaven.com/a/gravel_stones",
+    "info_api_url": "https://api.polyhaven.com/info/gravel_stones",
+    "files_api_url": "https://api.polyhaven.com/files/gravel_stones",
+    "license": "CC0-1.0",
+    "license_url": "https://polyhaven.com/license",
+    "authors": {
+      "Amal Kumar": "All"
+    },
+    "dimensions_api_raw": [
+      2000,
+      2000
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "recommended_surface_scale_m": [
+      2.0,
+      2.0
+    ],
+    "recommended_surface_scale_note": "The 2.0 m x 2.0 m value is the judged conversion of the official API dimensions; use it as a tiling starting point for the existing gravel_stones maps.",
+    "recommended_relief_limit_m": 0.03,
+    "recommended_relief_note": "For this track runoff, cap actual displacement contribution below 0.03 m so it remains surface breakup rather than collision-scale geometry; this is an authoring recommendation, not API metadata.",
+    "max_resolution_api_raw": [
+      16384,
+      16384
+    ],
+    "files_hash": "ae0f7dde221a2d90d24f41188912bef9ca21e8bd",
+    "description": "Free 16K texture of coarse grey gravel: rough, uneven pebbles with a gritty, stony surface and jagged dark stones.",
+    "preserved_api_metadata": {
+      "info": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-info.json",
+      "files": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-files.json"
+    },
+    "file": {
+      "channel": "displacement",
+      "file": "sources/pbr/polyhaven/gravel_stones/gravel_stones_disp_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/gravel_stones/gravel_stones_disp_2k.png",
+      "api_bytes": 6886225,
+      "downloaded_bytes": 6886225,
+      "api_md5": "8a911317600673a7a67374d0d71275fa",
+      "downloaded_md5": "8a911317600673a7a67374d0d71275fa",
+      "sha256": "ad1ef062d9ea77b0bf71624dbbbd9bfc8a9444003877bf39c52648637d529f07",
+      "format": "PNG",
+      "mode": "I;16 grayscale",
+      "bit_depth": 16,
+      "dimensions_px": [
+        2048,
+        2048
+      ],
+      "byte_count_matches_api": true,
+      "md5_matches_api": true
+    }
+  },
+  "chainlink_wire_opacity_addition": {
+    "asset_id": "modular_chainlink_fence",
+    "title": "Modular Chainlink Fence",
+    "source_url": "https://polyhaven.com/a/modular_chainlink_fence",
+    "info_api_url": "https://api.polyhaven.com/info/modular_chainlink_fence",
+    "files_api_url": "https://api.polyhaven.com/files/modular_chainlink_fence",
+    "license": "CC0-1.0",
+    "license_url": "https://polyhaven.com/license",
+    "dimensions_api_raw": [
+      8115.001916885376,
+      2149.1531878709793,
+      2522.9129791259766
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "max_resolution_api_raw": [
+      8192,
+      8192
+    ],
+    "files_hash": "a876696fcfd57a434e5d1dd68baa03e15475b97e",
+    "preserved_api_metadata": "sources/free-models/modular_chainlink_fence/polyhaven-modular_chainlink_fence-files.json",
+    "current_gltf_reference": {
+      "file": "sources/free-models/modular_chainlink_fence/modular_chainlink_fence_2k.gltf",
+      "wire_image_uri": "textures/modular_chainlink_fence_wire_diff_2k.jpg",
+      "wire_image_mime_type": "image/jpeg",
+      "wire_material_alpha_mode": "BLEND",
+      "note": "The glTF currently names the wire diffuse/opacity material but references a JPEG image, so the official standalone opacity map is preserved below for material authoring."
+    },
+    "file": {
+      "channel": "wire_opacity",
+      "file": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_wire_opacity_2k.png",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/modular_chainlink_fence/modular_chainlink_fence_wire_opacity_2k.png",
+      "api_bytes": 285570,
+      "downloaded_bytes": 285570,
+      "api_md5": "0cc3c41a73de007a876f3907bcaefc30",
+      "downloaded_md5": "0cc3c41a73de007a876f3907bcaefc30",
+      "sha256": "0363aa5168a45aaa5c02c1b6224d6a535d32ca60809890470e44bca8770ce3dd",
+      "format": "PNG",
+      "mode": "I;16 grayscale",
+      "bit_depth": 16,
+      "dimensions_px": [
+        2048,
+        2048
+      ],
+      "byte_count_matches_api": true,
+      "md5_matches_api": true
+    }
+  },
+  "integrity": {
+    "downloaded_map_and_opacity_files": 14,
+    "all_api_byte_counts_match": true,
+    "all_api_md5_hashes_match": true,
+    "all_images_verified_as_2048_square": true,
+    "all_displacement_and_opacity_pngs_verified_as_16bit_grayscale": true,
+    "existing_reports_modified": false,
+    "source_build_scene_modified": false
+  }
+}

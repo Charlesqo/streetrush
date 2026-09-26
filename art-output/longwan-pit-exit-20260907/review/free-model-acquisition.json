@@ -1,0 +1,867 @@
+{
+  "batch": {
+    "scope": "/Volumes/Storage/streetrush/art-output/longwan-pit-exit-20260907",
+    "acquired_date": "2026-09-07",
+    "acquired_at_utc": "2026-09-06T19:35:57Z/2026-09-06T19:36:48Z",
+    "source": "Poly Haven official asset pages and API",
+    "selection": "concrete_road_barrier + modular_chainlink_fence required; modular_electric_cables included after metadata gate",
+    "format": "glTF 2.0",
+    "resolution": "2K",
+    "sequential_downloads": true,
+    "blender_renders": false,
+    "payload_bytes": 44852539,
+    "payload_mib": 42.775,
+    "payload_limit_bytes": 180000000,
+    "within_payload_limit": true,
+    "license": {
+      "name": "CC0-1.0",
+      "url": "https://polyhaven.com/license",
+      "evidence_file": "review/polyhaven-license.html",
+      "evidence_bytes": 71934,
+      "evidence_sha256": "0c027ff13cb095a3f9c6de523363bba336c6f478790fa37c3f46d4a2768b8017",
+      "evidence_note": "The official Poly Haven license page states that all HDRIs, textures, and 3D models on the site are licensed CC0. Each preserved asset page also embeds the CC0 1.0 Universal license URL and public-domain copyright notice."
+    }
+  },
+  "assets": [
+    {
+      "id": "concrete_road_barrier",
+      "title": "Concrete Road Barrier",
+      "source_url": "https://polyhaven.com/a/concrete_road_barrier",
+      "files_api_url": "https://api.polyhaven.com/files/concrete_road_barrier",
+      "info_api_url": "https://api.polyhaven.com/info/concrete_road_barrier",
+      "author": {
+        "Amal Kumar": "All"
+      },
+      "dimensions_api_raw": [
+        1545.3570485115051,
+        640.9457623958588,
+        835.279269143939
+      ],
+      "dimensions_unit": "Poly Haven API raw units; project records this field as source_dimensions_cm",
+      "metadata_polycount": 80776,
+      "max_resolution_px": [
+        8192,
+        8192
+      ],
+      "texel_density": 3727.608964011354,
+      "description": "Free 8K model, weathered concrete road barrier with chipped black-and-white checker paint, dirt streaks, eroded rough edges and rusted metal lifting loops.",
+      "categories": [
+        "industrial",
+        "structures",
+        "collection: hidden_alley"
+      ],
+      "tags": [
+        "road barrier",
+        "traffic barrier",
+        "safety barrier",
+        "wall",
+        "road",
+        "road block",
+        "blockade",
+        "partition",
+        "infrastructure"
+      ],
+      "files_hash_api": "bc3dfafc1abfc83dfa19710745d6f0beba9d2368",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "asset_page_copyright_notice": "CC0 1.0 Universal - public domain dedication, no attribution required",
+      "asset_page_credit_text": "Amal Kumar",
+      "quality_status": "待实模验证",
+      "selected_package": {
+        "resolution": "2K",
+        "format": "glTF 2.0",
+        "model_file": "sources/free-models/concrete_road_barrier/concrete_road_barrier_2k.gltf",
+        "api_declared_total_bytes": 10970422,
+        "actual_total_bytes": 10970422,
+        "api_and_actual_total_match": true,
+        "files": [
+          {
+            "role": "model",
+            "relative_path": "sources/free-models/concrete_road_barrier/concrete_road_barrier_2k.gltf",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/concrete_road_barrier/concrete_road_barrier_2k.gltf",
+            "api_bytes": 2868,
+            "actual_bytes": 2868,
+            "api_md5": "2e769dcaa61d9bf95e655d49c4abeafb",
+            "actual_md5": "2e769dcaa61d9bf95e655d49c4abeafb",
+            "sha256": "9189168735eaf2e91a7d8b9d250f4644f984bf5353a2cc844f8ccef270d743dd",
+            "dimensions_px": null,
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/concrete_road_barrier/textures/concrete_road_barrier_arm_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/concrete_road_barrier/concrete_road_barrier_arm_2k.jpg",
+            "api_bytes": 2515448,
+            "actual_bytes": 2515448,
+            "api_md5": "ffad687f9d20a42036b6fbc61be26d82",
+            "actual_md5": "ffad687f9d20a42036b6fbc61be26d82",
+            "sha256": "8c17f77897138a5ee0f80d0b5d194fd00554371e33b9f62f6d7b6a4e640094d6",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/concrete_road_barrier/textures/concrete_road_barrier_diff_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/concrete_road_barrier/concrete_road_barrier_diff_2k.jpg",
+            "api_bytes": 3189621,
+            "actual_bytes": 3189621,
+            "api_md5": "5d91066d8c6fc417a4090110839c282e",
+            "actual_md5": "5d91066d8c6fc417a4090110839c282e",
+            "sha256": "51832691e0769a04246b61222e5df1ce7dc22e9c7162f786a314409ac76d643c",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/concrete_road_barrier/textures/concrete_road_barrier_nor_gl_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/concrete_road_barrier/concrete_road_barrier_nor_gl_2k.jpg",
+            "api_bytes": 3888469,
+            "actual_bytes": 3888469,
+            "api_md5": "e9837d7752eda58f46a01145538e3e22",
+            "actual_md5": "e9837d7752eda58f46a01145538e3e22",
+            "sha256": "8e48a287ae58a53030635c585d57a2da72660531a907a8e6cd04836bc60bf3a3",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "buffer",
+            "relative_path": "sources/free-models/concrete_road_barrier/concrete_road_barrier.bin",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/concrete_road_barrier/concrete_road_barrier.bin",
+            "api_bytes": 1374016,
+            "actual_bytes": 1374016,
+            "api_md5": "f256cb4d2bd9e5623b062502605dfcf2",
+            "actual_md5": "f256cb4d2bd9e5623b062502605dfcf2",
+            "sha256": "64a4f9bc6e4af64d714a252c3c13428c430a60569deba3d52ca6b7dd3aa70d8c",
+            "dimensions_px": null,
+            "api_byte_and_md5_match": true
+          }
+        ]
+      },
+      "candidate_geometry": {
+        "metadata_polycount": 80776,
+        "gltf": {
+          "model_file": "sources/free-models/concrete_road_barrier/concrete_road_barrier_2k.gltf",
+          "version": "2.0",
+          "generator": "Khronos glTF Blender I/O v3.6.27",
+          "scenes": 1,
+          "nodes": 1,
+          "meshes": 1,
+          "materials": 1,
+          "images": 3,
+          "buffers": 1,
+          "primitives": 1,
+          "position_vertices": 31514,
+          "index_count": 182784,
+          "triangle_count": 60928,
+          "primitive_modes": [
+            4
+          ],
+          "resolved_uri_count": 4,
+          "referenced_uri_count": 4,
+          "missing_uris": [],
+          "image_uris": [
+            "textures/concrete_road_barrier_nor_gl_2k.jpg",
+            "textures/concrete_road_barrier_diff_2k.jpg",
+            "textures/concrete_road_barrier_arm_2k.jpg"
+          ],
+          "buffer_uris": [
+            "concrete_road_barrier.bin"
+          ],
+          "image_dimensions_px": [
+            {
+              "uri": "textures/concrete_road_barrier_nor_gl_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/concrete_road_barrier_diff_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/concrete_road_barrier_arm_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            }
+          ]
+        },
+        "note": "Metadata polycount and derived glTF triangle count are both retained; they differ for concrete_road_barrier."
+      },
+      "preserved_api_metadata": [
+        {
+          "relative_path": "sources/free-models/concrete_road_barrier/polyhaven-concrete_road_barrier-info.json",
+          "bytes": 1123,
+          "sha256": "56211dc9e16ab898df3a66aa3c1c7a75772da905a7e7fd288fd7215a14373f6d"
+        },
+        {
+          "relative_path": "sources/free-models/concrete_road_barrier/polyhaven-concrete_road_barrier-files.json",
+          "bytes": 32970,
+          "sha256": "f920b44d6db97c20407700820853ad32518646229465b88a1aaf25501403497f"
+        }
+      ],
+      "preserved_source_page": {
+        "relative_path": "sources/free-models/concrete_road_barrier/polyhaven-concrete_road_barrier-page.html",
+        "bytes": 203421,
+        "sha256": "e1cd82b3286f6d8c5797770b8920a53d719743ff2307bf5cab2a9c82ca2f8a83"
+      },
+      "selection_note": "Only the 2K glTF plus its API-declared buffer and 2K texture dependencies were acquired. The concrete and chainlink shared .bin URLs are hosted under Poly Haven gltf/8k paths, but no 8K texture set was downloaded."
+    },
+    {
+      "id": "modular_chainlink_fence",
+      "title": "Modular Chainlink Fence",
+      "source_url": "https://polyhaven.com/a/modular_chainlink_fence",
+      "files_api_url": "https://api.polyhaven.com/files/modular_chainlink_fence",
+      "info_api_url": "https://api.polyhaven.com/info/modular_chainlink_fence",
+      "author": {
+        "James Ray Cock": "All",
+        "Amal Kumar": "Fence Wire Material"
+      },
+      "dimensions_api_raw": [
+        8115.001916885376,
+        2149.1531878709793,
+        2522.9129791259766
+      ],
+      "dimensions_unit": "Poly Haven API raw units; project records this field as source_dimensions_cm",
+      "metadata_polycount": 89232,
+      "max_resolution_px": [
+        8192,
+        8192
+      ],
+      "texel_density": 2449.2185307745117,
+      "description": "Free 8K modular chainlink fence kit with rusted posts, gate and configurable panels - gritty urban/industrial barrier ideal for city, alley & security scenes.",
+      "categories": [
+        "structures",
+        "industrial",
+        "buildings",
+        "collection: hidden_alley"
+      ],
+      "tags": [
+        "infrastructure",
+        "city",
+        "urban",
+        "fencing",
+        "barrier",
+        "security",
+        "fencing",
+        "boundary",
+        "wall",
+        "wire"
+      ],
+      "files_hash_api": "a876696fcfd57a434e5d1dd68baa03e15475b97e",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "asset_page_copyright_notice": "CC0 1.0 Universal - public domain dedication, no attribution required",
+      "asset_page_credit_text": "James Ray Cock, Amal Kumar",
+      "quality_status": "待实模验证",
+      "selected_package": {
+        "resolution": "2K",
+        "format": "glTF 2.0",
+        "model_file": "sources/free-models/modular_chainlink_fence/modular_chainlink_fence_2k.gltf",
+        "api_declared_total_bytes": 16220852,
+        "actual_total_bytes": 16220852,
+        "api_and_actual_total_match": true,
+        "files": [
+          {
+            "role": "model",
+            "relative_path": "sources/free-models/modular_chainlink_fence/modular_chainlink_fence_2k.gltf",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/modular_chainlink_fence/modular_chainlink_fence_2k.gltf",
+            "api_bytes": 41838,
+            "actual_bytes": 41838,
+            "api_md5": "f81323a83d2ae1e7b99a3ec156aa8da5",
+            "actual_md5": "f81323a83d2ae1e7b99a3ec156aa8da5",
+            "sha256": "9c9c3e7301beff0a0ec8d8f16ba386d7c7aecf3c0c0e75131e4f6077bb064444",
+            "dimensions_px": null,
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_wire_nor_gl_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_chainlink_fence/modular_chainlink_fence_wire_nor_gl_2k.jpg",
+            "api_bytes": 1882329,
+            "actual_bytes": 1882329,
+            "api_md5": "ba604a876a3b0ef5af11fd49b1482ee4",
+            "actual_md5": "ba604a876a3b0ef5af11fd49b1482ee4",
+            "sha256": "a1b853c5639319d10493aba0e04b67e39186ea5fd98ffde49df6093d29ce4cc0",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "buffer",
+            "relative_path": "sources/free-models/modular_chainlink_fence/modular_chainlink_fence.bin",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modular_chainlink_fence/modular_chainlink_fence.bin",
+            "api_bytes": 3168016,
+            "actual_bytes": 3168016,
+            "api_md5": "953d32ee509142cf2ceb1e6b278b2430",
+            "actual_md5": "953d32ee509142cf2ceb1e6b278b2430",
+            "sha256": "be9ea1817089fd35b0927a8271358f6abd2ec80b306a085de435613d936fcb9a",
+            "dimensions_px": null,
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_wire_arm_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_chainlink_fence/modular_chainlink_fence_wire_arm_2k.jpg",
+            "api_bytes": 2082073,
+            "actual_bytes": 2082073,
+            "api_md5": "de230984104a87345c4aa8e78111f1e2",
+            "actual_md5": "de230984104a87345c4aa8e78111f1e2",
+            "sha256": "d3e8f0ac72d9177f442d6e2906537f5b4166e50a2dbf74cae9349e7724da2a54",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_posts_arm_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_chainlink_fence/modular_chainlink_fence_posts_arm_2k.jpg",
+            "api_bytes": 3004035,
+            "actual_bytes": 3004035,
+            "api_md5": "21a14ec9e416a3606a808139d0639c80",
+            "actual_md5": "21a14ec9e416a3606a808139d0639c80",
+            "sha256": "54da8887d80d86057e1b94818e374515ae8ee585cfe2a0f5351ed45826a14891",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_wire_diff_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_chainlink_fence/modular_chainlink_fence_wire_diff_2k.jpg",
+            "api_bytes": 1746959,
+            "actual_bytes": 1746959,
+            "api_md5": "4d99da51818311cff741329a3cbc912c",
+            "actual_md5": "4d99da51818311cff741329a3cbc912c",
+            "sha256": "6d4906f5676f32f53a5089915d5272340d9a33c52659bbdcf7104ab80e830307",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_posts_diff_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_chainlink_fence/modular_chainlink_fence_posts_diff_2k.jpg",
+            "api_bytes": 2425889,
+            "actual_bytes": 2425889,
+            "api_md5": "e474fe890146a4c48e8497b238efe4f0",
+            "actual_md5": "e474fe890146a4c48e8497b238efe4f0",
+            "sha256": "f710dbfd637feb60e69a1c24e04fd6cd03e67684e31511fa5c907929d230c122",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_chainlink_fence/textures/modular_chainlink_fence_posts_nor_gl_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_chainlink_fence/modular_chainlink_fence_posts_nor_gl_2k.jpg",
+            "api_bytes": 1869713,
+            "actual_bytes": 1869713,
+            "api_md5": "4b4b4d3d4d61d9e27141f5ffe2abe872",
+            "actual_md5": "4b4b4d3d4d61d9e27141f5ffe2abe872",
+            "sha256": "36e6f6c16e13dad18224b1c97a8dd388fd7519b3ee29cff901bd3bdfc206d5d8",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          }
+        ]
+      },
+      "candidate_geometry": {
+        "metadata_polycount": 89232,
+        "gltf": {
+          "model_file": "sources/free-models/modular_chainlink_fence/modular_chainlink_fence_2k.gltf",
+          "version": "2.0",
+          "generator": "Khronos glTF Blender I/O v3.6.27",
+          "scenes": 1,
+          "nodes": 20,
+          "meshes": 20,
+          "materials": 2,
+          "images": 6,
+          "buffers": 1,
+          "primitives": 26,
+          "position_vertices": 82277,
+          "index_count": 267696,
+          "triangle_count": 89232,
+          "primitive_modes": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "resolved_uri_count": 7,
+          "referenced_uri_count": 7,
+          "missing_uris": [],
+          "image_uris": [
+            "textures/modular_chainlink_fence_posts_nor_gl_2k.jpg",
+            "textures/modular_chainlink_fence_posts_diff_2k.jpg",
+            "textures/modular_chainlink_fence_posts_arm_2k.jpg",
+            "textures/modular_chainlink_fence_wire_nor_gl_2k.jpg",
+            "textures/modular_chainlink_fence_wire_diff_2k.jpg",
+            "textures/modular_chainlink_fence_wire_arm_2k.jpg"
+          ],
+          "buffer_uris": [
+            "modular_chainlink_fence.bin"
+          ],
+          "image_dimensions_px": [
+            {
+              "uri": "textures/modular_chainlink_fence_posts_nor_gl_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_chainlink_fence_posts_diff_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_chainlink_fence_posts_arm_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_chainlink_fence_wire_nor_gl_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_chainlink_fence_wire_diff_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_chainlink_fence_wire_arm_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            }
+          ]
+        },
+        "note": "Metadata polycount and derived glTF triangle count are both retained; they differ for concrete_road_barrier."
+      },
+      "preserved_api_metadata": [
+        {
+          "relative_path": "sources/free-models/modular_chainlink_fence/polyhaven-modular_chainlink_fence-info.json",
+          "bytes": 1084,
+          "sha256": "5ff49e676cb2ee31a82647cbe968719158ab35798ee56eaa0897ab69740fc9eb"
+        },
+        {
+          "relative_path": "sources/free-models/modular_chainlink_fence/polyhaven-modular_chainlink_fence-files.json",
+          "bytes": 82674,
+          "sha256": "8635fd523f01613b4bbc4bac7d172a29b7aa586f3ae12e2cc8228a9bcbdf3b75"
+        }
+      ],
+      "preserved_source_page": {
+        "relative_path": "sources/free-models/modular_chainlink_fence/polyhaven-modular_chainlink_fence-page.html",
+        "bytes": 280328,
+        "sha256": "9ea9d7d7025f9b5ab932f810a08ce64efa5e0f14602f95acdbebd4bf6ca436a7"
+      },
+      "selection_note": "Only the 2K glTF plus its API-declared buffer and 2K texture dependencies were acquired. The concrete and chainlink shared .bin URLs are hosted under Poly Haven gltf/8k paths, but no 8K texture set was downloaded."
+    },
+    {
+      "id": "modular_electric_cables",
+      "title": "Modular Electric Cables",
+      "source_url": "https://polyhaven.com/a/modular_electric_cables",
+      "files_api_url": "https://api.polyhaven.com/files/modular_electric_cables",
+      "info_api_url": "https://api.polyhaven.com/info/modular_electric_cables",
+      "author": {
+        "Kuutti Siitonen": "All"
+      },
+      "dimensions_api_raw": [
+        2076.6327381134033,
+        214.5041599869728,
+        757.2520458308203
+      ],
+      "dimensions_unit": "Poly Haven API raw units; project records this field as source_dimensions_cm",
+      "metadata_polycount": 42078,
+      "max_resolution_px": [
+        4096,
+        4096
+      ],
+      "texel_density": 4895.367987907014,
+      "description": "Free 4K modular electric cables: industrial kit of wiring segments, junction boxes, connectors and bends; PBR-ready.",
+      "categories": [
+        "industrial"
+      ],
+      "tags": [
+        "wiring",
+        "connectors",
+        "power supply",
+        "components",
+        "power",
+        "infrastructure",
+        "maintenance",
+        "junction box",
+        "breakers",
+        "transformer",
+        "circuit",
+        "electrical",
+        "underground",
+        "modular"
+      ],
+      "files_hash_api": "824f792bf907b567d72a52da324c7a79e67b40cd",
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "asset_page_copyright_notice": "CC0 1.0 Universal - public domain dedication, no attribution required",
+      "asset_page_credit_text": "Kuutti Siitonen",
+      "quality_status": "待实模验证",
+      "selected_package": {
+        "resolution": "2K",
+        "format": "glTF 2.0",
+        "model_file": "sources/free-models/modular_electric_cables/modular_electric_cables_2k.gltf",
+        "api_declared_total_bytes": 17661265,
+        "actual_total_bytes": 17661265,
+        "api_and_actual_total_match": true,
+        "files": [
+          {
+            "role": "model",
+            "relative_path": "sources/free-models/modular_electric_cables/modular_electric_cables_2k.gltf",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/modular_electric_cables/modular_electric_cables_2k.gltf",
+            "api_bytes": 82607,
+            "actual_bytes": 82607,
+            "api_md5": "f2142760a00c34109c50b8407cd9e656",
+            "actual_md5": "f2142760a00c34109c50b8407cd9e656",
+            "sha256": "4fea2727cf11b55d74ba4212bb4e7c64e095da20cc5a5dcf49f4ef75bb543e99",
+            "dimensions_px": null,
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_nor_gl_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_electric_cables/modular_electric_cables_nor_gl_2k.jpg",
+            "api_bytes": 3532531,
+            "actual_bytes": 3532531,
+            "api_md5": "6eeac85eb146c27ee0737a28925dbdae",
+            "actual_md5": "6eeac85eb146c27ee0737a28925dbdae",
+            "sha256": "ce7d0411d1455aac0266a9b96dae1d1695f8fcfc57dbe7e132f94c8e1b52527c",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_diff_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_electric_cables/modular_electric_cables_diff_2k.jpg",
+            "api_bytes": 1628766,
+            "actual_bytes": 1628766,
+            "api_md5": "dd06b628c4680404173c0a11289e5adf",
+            "actual_md5": "dd06b628c4680404173c0a11289e5adf",
+            "sha256": "7332324468d194e83e7e25e380ff865be2dfb9a1601eca00e5a0e71416965e57",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_arm_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_electric_cables/modular_electric_cables_arm_2k.jpg",
+            "api_bytes": 2679133,
+            "actual_bytes": 2679133,
+            "api_md5": "7195e2938ab35a74fbce0c999b6e211f",
+            "actual_md5": "7195e2938ab35a74fbce0c999b6e211f",
+            "sha256": "8be46df764812f43ba2c55906ee544b22be81fc416db0467c825a9a0892dceac",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_boxes_nor_gl_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_electric_cables/modular_electric_cables_boxes_nor_gl_2k.jpg",
+            "api_bytes": 2707023,
+            "actual_bytes": 2707023,
+            "api_md5": "0dece50fce1d1764bb1cb4f8c2d59fd9",
+            "actual_md5": "0dece50fce1d1764bb1cb4f8c2d59fd9",
+            "sha256": "d88c5e0a576b111b28d82784c1e36213e9e61842db4ea39ee170079aab502ccb",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_boxes_diff_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_electric_cables/modular_electric_cables_boxes_diff_2k.jpg",
+            "api_bytes": 2327515,
+            "actual_bytes": 2327515,
+            "api_md5": "5d5a194eebee6ab8dcd45b71328734d4",
+            "actual_md5": "5d5a194eebee6ab8dcd45b71328734d4",
+            "sha256": "4efd2dcf8cb6cda3f455b00c7864a38d65b4a3042033aade08e501f1fd9b33e3",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "texture",
+            "relative_path": "sources/free-models/modular_electric_cables/textures/modular_electric_cables_boxes_arm_2k.jpg",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_electric_cables/modular_electric_cables_boxes_arm_2k.jpg",
+            "api_bytes": 3140374,
+            "actual_bytes": 3140374,
+            "api_md5": "02a8a4eb52d7e35aaa659e205b74573e",
+            "actual_md5": "02a8a4eb52d7e35aaa659e205b74573e",
+            "sha256": "560fa1d5fe3cb38cdc46118677f6924def4aa5a25895465ddd46a1c6706ef178",
+            "dimensions_px": [
+              2048,
+              2048
+            ],
+            "api_byte_and_md5_match": true
+          },
+          {
+            "role": "buffer",
+            "relative_path": "sources/free-models/modular_electric_cables/modular_electric_cables.bin",
+            "source_url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/modular_electric_cables/modular_electric_cables.bin",
+            "api_bytes": 1563316,
+            "actual_bytes": 1563316,
+            "api_md5": "1444b0e21d201c344a99e86937bbe5fc",
+            "actual_md5": "1444b0e21d201c344a99e86937bbe5fc",
+            "sha256": "3990f8b60c244ecfc64f80b1242d2a0fef0a3e39288c9ba9fd31becad4734d8a",
+            "dimensions_px": null,
+            "api_byte_and_md5_match": true
+          }
+        ]
+      },
+      "candidate_geometry": {
+        "metadata_polycount": 42078,
+        "junction_box_component_names": [
+          "cable_3way_junction",
+          "cable_box_3way",
+          "cable_box_4way",
+          "cable_box_double",
+          "cable_box_double_to_single",
+          "cable_box_double_to_single_2",
+          "cable_box_turn",
+          "cable_double_junction"
+        ],
+        "junction_box_component_count": 8,
+        "gltf": {
+          "model_file": "sources/free-models/modular_electric_cables/modular_electric_cables_2k.gltf",
+          "version": "2.0",
+          "generator": "Khronos glTF Blender I/O v4.4.56",
+          "scenes": 1,
+          "nodes": 49,
+          "meshes": 49,
+          "materials": 2,
+          "images": 6,
+          "buffers": 1,
+          "primitives": 49,
+          "position_vertices": 40964,
+          "index_count": 126234,
+          "triangle_count": 42078,
+          "primitive_modes": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "resolved_uri_count": 7,
+          "referenced_uri_count": 7,
+          "missing_uris": [],
+          "image_uris": [
+            "textures/modular_electric_cables_nor_gl_2k.jpg",
+            "textures/modular_electric_cables_diff_2k.jpg",
+            "textures/modular_electric_cables_arm_2k.jpg",
+            "textures/modular_electric_cables_boxes_nor_gl_2k.jpg",
+            "textures/modular_electric_cables_boxes_diff_2k.jpg",
+            "textures/modular_electric_cables_boxes_arm_2k.jpg"
+          ],
+          "buffer_uris": [
+            "modular_electric_cables.bin"
+          ],
+          "image_dimensions_px": [
+            {
+              "uri": "textures/modular_electric_cables_nor_gl_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_electric_cables_diff_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_electric_cables_arm_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_electric_cables_boxes_nor_gl_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_electric_cables_boxes_diff_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            },
+            {
+              "uri": "textures/modular_electric_cables_boxes_arm_2k.jpg",
+              "dimensions_px": [
+                2048,
+                2048
+              ],
+              "mime_type": "image/jpeg"
+            }
+          ]
+        },
+        "note": "Metadata polycount and derived glTF triangle count are both retained; they differ for concrete_road_barrier."
+      },
+      "preserved_api_metadata": [
+        {
+          "relative_path": "sources/free-models/modular_electric_cables/polyhaven-modular_electric_cables-info.json",
+          "bytes": 1055,
+          "sha256": "2a4070714c9ae38c7d0236e9b923d974d9d4c857146b050703b39531fb40a8eb"
+        },
+        {
+          "relative_path": "sources/free-models/modular_electric_cables/polyhaven-modular_electric_cables-files.json",
+          "bytes": 46348,
+          "sha256": "348e117c3dd492c1a96a48992fad061916321da57e7234b26e68162999abb4f3"
+        }
+      ],
+      "preserved_source_page": {
+        "relative_path": "sources/free-models/modular_electric_cables/polyhaven-modular_electric_cables-page.html",
+        "bytes": 231349,
+        "sha256": "cdaa7836fb61c3d4db02438677315d781f240036402a2dfcde2610e0f02695a4"
+      },
+      "selection_note": "Only the 2K glTF plus its API-declared buffer and 2K texture dependencies were acquired. The concrete and chainlink shared .bin URLs are hosted under Poly Haven gltf/8k paths, but no 8K texture set was downloaded."
+    }
+  ]
+}

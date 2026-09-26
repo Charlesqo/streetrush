@@ -1,0 +1,96 @@
+{
+  "createdAt": "2026-09-08T17:30:21.456Z",
+  "car": {
+    "id": "lp700",
+    "name": "LAMBORGHINI LP700",
+    "file": "lamborghini-aventador-lp700.glb",
+    "speed": 350,
+    "accel": 99,
+    "grip": 91,
+    "mass": 1680,
+    "power": 700,
+    "torque": 690,
+    "wheelbase": 2.7,
+    "trackWidth": 1.72,
+    "wheelRadius": 0.345,
+    "steer": 0.39,
+    "idle": 850,
+    "redline": 8500,
+    "peakRpm": 5500,
+    "gears": [
+      3.91,
+      2.44,
+      1.81,
+      1.46,
+      1.19,
+      0.97,
+      0.84
+    ],
+    "finalDrive": 3.73,
+    "drivetrain": "AWD",
+    "cdA": 0.72,
+    "brakeTorque": 4850,
+    "suspension": {
+      "restLength": 0.28,
+      "travel": 0.18,
+      "springRate": 46500,
+      "damperBump": 5400,
+      "damperRebound": 6800,
+      "antiRoll": 13200
+    },
+    "tire": {
+      "mu": 1.18,
+      "longStiffness": 12,
+      "lateralStiffness": 8.2,
+      "rollingResistance": 0.014
+    },
+    "model": {
+      "targetLength": 4.78,
+      "yaw": 0,
+      "groundOffset": 0.65
+    },
+    "audio": {
+      "family": "v12",
+      "cylinders": 12,
+      "low": 94,
+      "mid": 690,
+      "high": 3900,
+      "drive": 1.48
+    }
+  },
+  "targetKmh": 200,
+  "physicsMode": "v24-active",
+  "dtSeconds": 0.008333333333333333,
+  "protocol": "2 s settling; W from rest until forward speed reaches target; next step release W and press S; zero steering throughout.",
+  "input": "Uses production updatePedal and resolveDriveIntent at 120 Hz. S retains production brake/reverse semantics; abort on reverse engagement.",
+  "scene": "Rapier fixed horizontal cuboid, top y=0, 24 km square; FlatTrack asphalt, grip=1; no scenery, collisions with other objects, or artificial disturbances.",
+  "stop": "3D speed < 0.5 km/h and angular speed < 0.05 rad/s for 0.1 s; abort on automatic reset, reverse, invalid state, or time limit.",
+  "limitsSeconds": {
+    "acceleration": 90,
+    "braking": 30
+  },
+  "timing": "bodyBefore and bodyAfter bracket fixedUpdate -> world.step -> afterPhysics. report is that step’s vehicle solver output, NOT an afterPhysics resample.",
+  "units": "SI except explicit Kmh/Deg columns. Wheel order FL FR RL RR. Local +Z forward, +X lateral, +Y up. tire force columns = solver impulse / dt.",
+  "scope": "Headless minimal-scene reproduction using the game vehicle runtime; does not certify browser input/render scheduling or production track parity.",
+  "revision": "afcb616551024ab97a9163eeb7550c8c69f7db24",
+  "sourceSha256": {
+    "src/config.js": "c5006d40a8f7fa723b358cbe07a153a783a433ac01259a15ca358a0cd002eba4",
+    "src/input.js": "b077ce8b9a6459aaddcccb0cdd77e2bb800f3ac458fece90e54e1275ac2d3756",
+    "src/vehicle.js": "09c8e6c960290b276c832ce89c7e5f42e5448c5e13c14497eb509d5278073135",
+    "src/vehicle-physics.js": "9112cbd8f2194fece67eeadfaba1dabc9efca72926c74b1d09cb6baf8485c2a8",
+    "src/rapier-init.js": "eb459d8fd362ed7fc656c634bb9beed6a514190a9474a00b324652b8d2f5002c",
+    "scripts/physics-harness.mjs": "fdeb837cddcfbf9c97e816b277c24d44a2f0d59ba7d4fac353e120d89d6462ba",
+    "scripts/record-flat-braking.mjs": "e6a2d7fc836c3960a4024000e264ec01fc926eccc8b08682f2afcd101111a69d",
+    "package.json": "40f7e7baaa74ce978d51302f71ae9b8927b80e3f1bfa6bc7fa9e54a7e03fedaa",
+    "src/vehicle-v24/aero.js": "f7f9de228fe44a3141e173d00b30914c42bba12696f56e0d7bd5e0cd4396e795",
+    "src/vehicle-v24/contract.js": "a665913de06e8e7547962ba131131282017ff6c10cf1f20248d1413975042249",
+    "src/vehicle-v24/index.js": "e23ad5f17a0324cb0043f2a6ac8d13ef40e2e2af19cb0cd1b0d727b3b835ca70",
+    "src/vehicle-v24/math.js": "5a67117feba479c0144b2a3dfb9a3bfc0772fe2ed17cc6c86cd5e242c8f55447",
+    "src/vehicle-v24/powertrain.js": "0dea200c07614da958931411d605ea8b832d19cd179c4ebcc7c88e784c5da35d",
+    "src/vehicle-v24/rapier-host-adapter.js": "75283e91753339de40bfce0ad2aa101fa669902b9d45980e70db44e198b73ba5",
+    "src/vehicle-v24/runtime.js": "9f7ba2dc6eeb3d897af048b8de875d714de62e4c95e2666d9052b02ee2a741c9",
+    "src/vehicle-v24/steering.js": "a05e28a45b1e1000b0ea613e5ea1575826d058b4344455a2b69b7a620dba2ee9",
+    "src/vehicle-v24/suspension.js": "653cceed8e8d82b242f6d922fec405f73d1b623d2cfb3bd1cb5bdf922ad462e0",
+    "src/vehicle-v24/tire.js": "248feabd4a824e9a730e25e98791c78ee45ea9d4b423cd78e14ab33cd3397e37"
+  }
+}

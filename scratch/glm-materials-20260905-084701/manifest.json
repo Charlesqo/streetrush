@@ -1,0 +1,453 @@
+{
+  "generatedAt": "2026-09-05T08:55:08",
+  "generator": "scratch/glm-materials-20260905-084701/tools/build.py（人工运行，无网络、无第三方依赖）",
+  "sourceDir": "/Volumes/Charles/下载/赛车游戏 材质",
+  "sourceDirPolicy": "只读，未修改",
+  "disclaimer": "颜色图预览只是底色贴图的原始像素副本，未参与法线/粗糙度/位移渲染，不代表完整材质的最终外观；请以游戏内实测为准。",
+  "licenseStatus": "未确认：所有元数据 JSON 均无 license 字段；未联网核实前不得入库游戏",
+  "missingCategories": [
+    "混凝土：源目录无任何混凝土候选包（目录内仅 road_asphalt / asphalt_crack / cracked_asphalt / lawn_grass 四种材质的多分辨率档）"
+  ],
+  "sets": [
+    {
+      "setName": "road_asphalt_rh0ribp0_1k_ue_low",
+      "sourceId": "rh0ribp0",
+      "displayNameCn": "道路沥青",
+      "displayName": "Road Asphalt",
+      "category": "道路",
+      "suggestedUse": "路面主体候选：干净平铺沥青（物理尺寸 0.39x0.39m，tileable）",
+      "originalZip": {
+        "path": "/Volumes/Charles/下载/赛车游戏 材质/road_asphalt_rh0ribp0_1k_ue_low.zip",
+        "sizeBytes": 2254333,
+        "sha256": "1b5d6aba88c35190bd290110ebfb1fc15b028db23e0590b84b83165b03fde555"
+      },
+      "siblingZips": [],
+      "extractedDir": "extracted/road_asphalt_rh0ribp0_1k_ue_low",
+      "material": {
+        "gltfPath": "extracted/road_asphalt_rh0ribp0_1k_ue_low/rh0ribp0_tier_3.gltf",
+        "materialName": "MI_rh0ribp0",
+        "alphaMode": "OPAQUE",
+        "bindings": {
+          "normalTexture": "Textures/T_rh0ribp0_1K_N.jpg",
+          "occlusionTexture": "Textures/T_rh0ribp0_1K_ORM.jpg",
+          "baseColorTexture": "Textures/T_rh0ribp0_1K_B.jpg",
+          "metallicRoughnessTexture": "Textures/T_rh0ribp0_1K_ORM.jpg"
+        },
+        "images": [
+          "Textures/T_rh0ribp0_1K_N.jpg",
+          "Textures/T_rh0ribp0_1K_ORM.jpg",
+          "Textures/T_rh0ribp0_1K_B.jpg"
+        ]
+      },
+      "meta": {
+        "sourceName": "Road Asphalt",
+        "sourceId": "rh0ribp0",
+        "averageColor": "#34302B",
+        "categories": [
+          "surface",
+          "asphalt",
+          "fresh"
+        ],
+        "tags": [
+          "desaturated",
+          "grey",
+          "colorless",
+          "faded",
+          "faint",
+          "gray",
+          "pavement",
+          "floor",
+          "dark",
+          "brown",
+          "archviz"
+        ],
+        "highestAvailableRes": 4096,
+        "scanArea": "0.39x0.39 m",
+        "tileable": true,
+        "texelDensity": "10468 px/m",
+        "height": "0.026 m"
+      },
+      "averageColorStatus": "已确认（源自元数据）",
+      "selectedMaps": [
+        {
+          "role": "baseColor",
+          "roleCn": "颜色/底色 (baseColor)",
+          "original": "extracted/road_asphalt_rh0ribp0_1k_ue_low/Textures/T_rh0ribp0_1K_B.jpg",
+          "preview": "previews/road_asphalt_rh0ribp0_1k_ue_low/basecolor__T_rh0ribp0_1K_B.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "RGB",
+          "channelMeaning": "RGB=底色，sRGB 色彩空间",
+          "confirmed": "已确认：gltf 的 baseColorTexture 绑定到此文件",
+          "note": "",
+          "hasAlpha": false
+        },
+        {
+          "role": "normal",
+          "roleCn": "法线 (normal)",
+          "original": "extracted/road_asphalt_rh0ribp0_1k_ue_low/Textures/T_rh0ribp0_1K_N.jpg",
+          "preview": "previews/road_asphalt_rh0ribp0_1k_ue_low/normal__T_rh0ribp0_1K_N.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "RGB",
+          "channelMeaning": "切线空间法线；glTF 2.0 约定 OpenGL 风格（+Y 向上）",
+          "confirmed": "已确认：gltf 的 normalTexture 绑定到此文件；+Y 向上为 glTF 2.0 规范约定",
+          "note": "使用注意：UE 原生法线为 DirectX 风格（-Y）。经 glTF 导入器/UE 插件流程会自动处理；若手动贴图需确认 G 通道是否要翻转——未实测，导入时请复核。",
+          "hasAlpha": false
+        },
+        {
+          "role": "orm",
+          "roleCn": "AO+粗糙度+金属度打包 (ORM)",
+          "original": "extracted/road_asphalt_rh0ribp0_1k_ue_low/Textures/T_rh0ribp0_1K_ORM.jpg",
+          "preview": "previews/road_asphalt_rh0ribp0_1k_ue_low/orm-ao-rough-metal__T_rh0ribp0_1K_ORM.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "R/G/B",
+          "channelMeaning": "R=AO 遮挡，G=粗糙度，B=金属度（glTF 2.0 metallicRoughness/occlusion 约定）",
+          "confirmed": "已确认：gltf 中 occlusionTexture 与 metallicRoughnessTexture 指向同一张图，符合 glTF 2.0 ORM 打包约定",
+          "note": "使用注意：ORM 以 JPEG 存储，三通道数据可能存在压缩串扰；对粗糙度敏感的表面建议检查 G 通道——未实测。",
+          "hasAlpha": false
+        }
+      ],
+      "missing": [
+        "独立粗糙度贴图缺失（打包于 ORM 的 G 通道）",
+        "独立 AO 贴图缺失（打包于 ORM 的 R 通道）",
+        "独立金属度贴图缺失（打包于 ORM 的 B 通道）",
+        "高度/位移贴图缺失（本 1k_ue_low 档不含 Height/Displacement）",
+        "许可未确认：元数据 JSON 无 license 字段，本次未联网核实（格式特征指向 PolyHaven，其默认许可为 CC0，但未经证实，入库游戏前必须核实）",
+        "不透明度贴图缺失（材质为 OPAQUE，一般不构成问题）"
+      ],
+      "processedAt": "2026-09-05T08:55:08"
+    },
+    {
+      "setName": "asphalt_crack_ugcmfivcw_1k_ue_low",
+      "sourceId": "ugcmfivcw",
+      "displayNameCn": "沥青裂纹贴花",
+      "displayName": "Asphalt Crack",
+      "category": "道路",
+      "suggestedUse": "道路裂纹 overlay/贴花候选：带透明通道（BLEND），源数据分类为 decal/atlas，tileable=false",
+      "originalZip": {
+        "path": "/Volumes/Charles/下载/赛车游戏 材质/asphalt_crack_ugcmfivcw_1k_ue_low.zip",
+        "sizeBytes": 922840,
+        "sha256": "6b6588166fd333287ecf29230a0f53b7d7da0d41e1346823e533bf2ef6c10878"
+      },
+      "siblingZips": [],
+      "extractedDir": "extracted/asphalt_crack_ugcmfivcw_1k_ue_low",
+      "material": {
+        "gltfPath": "extracted/asphalt_crack_ugcmfivcw_1k_ue_low/ugcmfivcw_tier_3.gltf",
+        "materialName": "MI_ugcmfivcw",
+        "alphaMode": "BLEND",
+        "bindings": {
+          "normalTexture": "Textures/T_ugcmfivcw_1K_N.jpg",
+          "occlusionTexture": "Textures/T_ugcmfivcw_1K_ORM.jpg",
+          "baseColorTexture": "Textures/T_ugcmfivcw_1K_B-O.png",
+          "metallicRoughnessTexture": "Textures/T_ugcmfivcw_1K_ORM.jpg"
+        },
+        "images": [
+          "Textures/T_ugcmfivcw_1K_N.jpg",
+          "Textures/T_ugcmfivcw_1K_ORM.jpg",
+          "Textures/T_ugcmfivcw_1K_B-O.png"
+        ]
+      },
+      "meta": {
+        "sourceName": "Asphalt Crack",
+        "sourceId": "ugcmfivcw",
+        "averageColor": "#000000",
+        "categories": [
+          "atlas",
+          "decals",
+          "patch"
+        ],
+        "tags": [
+          "decal",
+          "urban",
+          "street",
+          "road",
+          "outdoor",
+          "dirt",
+          "asphalt",
+          "damaged",
+          "rough",
+          "worn"
+        ],
+        "highestAvailableRes": 8192,
+        "scanArea": "1x1 m",
+        "tileable": false,
+        "texelDensity": "8192 px/m",
+        "height": "0.01 m"
+      },
+      "averageColorStatus": "未确认：元数据 averageColor 为 #000000，疑似透明区域/图集导致平均色失效",
+      "selectedMaps": [
+        {
+          "role": "baseColorOpacity",
+          "roleCn": "颜色+不透明度 (baseColor+opacity)",
+          "original": "extracted/asphalt_crack_ugcmfivcw_1k_ue_low/Textures/T_ugcmfivcw_1K_B-O.png",
+          "preview": "previews/asphalt_crack_ugcmfivcw_1k_ue_low/basecolor-opacity__T_ugcmfivcw_1K_B-O.png",
+          "format": "PNG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "RGBA",
+          "channelMeaning": "RGB=底色(sRGB)，A=不透明度",
+          "confirmed": "已确认：gltf baseColorTexture 绑定 + alphaMode=BLEND + 文件后缀 -O + 实测 PNG 含 alpha 通道",
+          "note": "",
+          "hasAlpha": true
+        },
+        {
+          "role": "normal",
+          "roleCn": "法线 (normal)",
+          "original": "extracted/asphalt_crack_ugcmfivcw_1k_ue_low/Textures/T_ugcmfivcw_1K_N.jpg",
+          "preview": "previews/asphalt_crack_ugcmfivcw_1k_ue_low/normal__T_ugcmfivcw_1K_N.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "RGB",
+          "channelMeaning": "切线空间法线；glTF 2.0 约定 OpenGL 风格（+Y 向上）",
+          "confirmed": "已确认：gltf 的 normalTexture 绑定到此文件；+Y 向上为 glTF 2.0 规范约定",
+          "note": "使用注意：UE 原生法线为 DirectX 风格（-Y）。经 glTF 导入器/UE 插件流程会自动处理；若手动贴图需确认 G 通道是否要翻转——未实测，导入时请复核。",
+          "hasAlpha": false
+        },
+        {
+          "role": "orm",
+          "roleCn": "AO+粗糙度+金属度打包 (ORM)",
+          "original": "extracted/asphalt_crack_ugcmfivcw_1k_ue_low/Textures/T_ugcmfivcw_1K_ORM.jpg",
+          "preview": "previews/asphalt_crack_ugcmfivcw_1k_ue_low/orm-ao-rough-metal__T_ugcmfivcw_1K_ORM.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "R/G/B",
+          "channelMeaning": "R=AO 遮挡，G=粗糙度，B=金属度（glTF 2.0 metallicRoughness/occlusion 约定）",
+          "confirmed": "已确认：gltf 中 occlusionTexture 与 metallicRoughnessTexture 指向同一张图，符合 glTF 2.0 ORM 打包约定",
+          "note": "使用注意：ORM 以 JPEG 存储，三通道数据可能存在压缩串扰；对粗糙度敏感的表面建议检查 G 通道——未实测。",
+          "hasAlpha": false
+        }
+      ],
+      "missing": [
+        "独立粗糙度贴图缺失（打包于 ORM 的 G 通道）",
+        "独立 AO 贴图缺失（打包于 ORM 的 R 通道）",
+        "独立金属度贴图缺失（打包于 ORM 的 B 通道）",
+        "高度/位移贴图缺失（本 1k_ue_low 档不含 Height/Displacement）",
+        "许可未确认：元数据 JSON 无 license 字段，本次未联网核实（格式特征指向 PolyHaven，其默认许可为 CC0，但未经证实，入库游戏前必须核实）"
+      ],
+      "processedAt": "2026-09-05T08:55:08"
+    },
+    {
+      "setName": "cracked_asphalt_tjmgfelew_1k_ue_low",
+      "sourceId": "tjmgfelew",
+      "displayNameCn": "开裂沥青",
+      "displayName": "Cracked Asphalt",
+      "category": "道路",
+      "suggestedUse": "破损路面整体替换候选（平铺 2x2m，tileable）",
+      "originalZip": {
+        "path": "/Volumes/Charles/下载/赛车游戏 材质/cracked_asphalt_tjmgfelew_1k_ue_low.zip",
+        "sizeBytes": 2354336,
+        "sha256": "1e754501db05e747a489183bd3f5a76be1e3b5c7490a68e50b86eccb10ebe633"
+      },
+      "siblingZips": [],
+      "extractedDir": "extracted/cracked_asphalt_tjmgfelew_1k_ue_low",
+      "material": {
+        "gltfPath": "extracted/cracked_asphalt_tjmgfelew_1k_ue_low/tjmgfelew_tier_3.gltf",
+        "materialName": "MI_tjmgfelew",
+        "alphaMode": "OPAQUE",
+        "bindings": {
+          "normalTexture": "Textures/T_tjmgfelew_1K_N.jpg",
+          "occlusionTexture": "Textures/T_tjmgfelew_1K_ORM.jpg",
+          "baseColorTexture": "Textures/T_tjmgfelew_1K_B.jpg",
+          "metallicRoughnessTexture": "Textures/T_tjmgfelew_1K_ORM.jpg"
+        },
+        "images": [
+          "Textures/T_tjmgfelew_1K_N.jpg",
+          "Textures/T_tjmgfelew_1K_ORM.jpg",
+          "Textures/T_tjmgfelew_1K_B.jpg"
+        ]
+      },
+      "meta": {
+        "sourceName": "Cracked Asphalt",
+        "sourceId": "tjmgfelew",
+        "averageColor": "#000000",
+        "categories": [
+          "surface",
+          "asphalt",
+          "cracked"
+        ],
+        "tags": [
+          "surface",
+          "gothenburg",
+          "archviz",
+          "crack",
+          "road"
+        ],
+        "highestAvailableRes": 8192,
+        "scanArea": "2x2 m",
+        "tileable": true,
+        "texelDensity": "4096 px/m",
+        "height": "0.009 m"
+      },
+      "averageColorStatus": "未确认：元数据 averageColor 为 #000000，疑似透明区域/图集导致平均色失效",
+      "selectedMaps": [
+        {
+          "role": "baseColor",
+          "roleCn": "颜色/底色 (baseColor)",
+          "original": "extracted/cracked_asphalt_tjmgfelew_1k_ue_low/Textures/T_tjmgfelew_1K_B.jpg",
+          "preview": "previews/cracked_asphalt_tjmgfelew_1k_ue_low/basecolor__T_tjmgfelew_1K_B.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "RGB",
+          "channelMeaning": "RGB=底色，sRGB 色彩空间",
+          "confirmed": "已确认：gltf 的 baseColorTexture 绑定到此文件",
+          "note": "",
+          "hasAlpha": false
+        },
+        {
+          "role": "normal",
+          "roleCn": "法线 (normal)",
+          "original": "extracted/cracked_asphalt_tjmgfelew_1k_ue_low/Textures/T_tjmgfelew_1K_N.jpg",
+          "preview": "previews/cracked_asphalt_tjmgfelew_1k_ue_low/normal__T_tjmgfelew_1K_N.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "RGB",
+          "channelMeaning": "切线空间法线；glTF 2.0 约定 OpenGL 风格（+Y 向上）",
+          "confirmed": "已确认：gltf 的 normalTexture 绑定到此文件；+Y 向上为 glTF 2.0 规范约定",
+          "note": "使用注意：UE 原生法线为 DirectX 风格（-Y）。经 glTF 导入器/UE 插件流程会自动处理；若手动贴图需确认 G 通道是否要翻转——未实测，导入时请复核。",
+          "hasAlpha": false
+        },
+        {
+          "role": "orm",
+          "roleCn": "AO+粗糙度+金属度打包 (ORM)",
+          "original": "extracted/cracked_asphalt_tjmgfelew_1k_ue_low/Textures/T_tjmgfelew_1K_ORM.jpg",
+          "preview": "previews/cracked_asphalt_tjmgfelew_1k_ue_low/orm-ao-rough-metal__T_tjmgfelew_1K_ORM.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "R/G/B",
+          "channelMeaning": "R=AO 遮挡，G=粗糙度，B=金属度（glTF 2.0 metallicRoughness/occlusion 约定）",
+          "confirmed": "已确认：gltf 中 occlusionTexture 与 metallicRoughnessTexture 指向同一张图，符合 glTF 2.0 ORM 打包约定",
+          "note": "使用注意：ORM 以 JPEG 存储，三通道数据可能存在压缩串扰；对粗糙度敏感的表面建议检查 G 通道——未实测。",
+          "hasAlpha": false
+        }
+      ],
+      "missing": [
+        "独立粗糙度贴图缺失（打包于 ORM 的 G 通道）",
+        "独立 AO 贴图缺失（打包于 ORM 的 R 通道）",
+        "独立金属度贴图缺失（打包于 ORM 的 B 通道）",
+        "高度/位移贴图缺失（本 1k_ue_low 档不含 Height/Displacement）",
+        "许可未确认：元数据 JSON 无 license 字段，本次未联网核实（格式特征指向 PolyHaven，其默认许可为 CC0，但未经证实，入库游戏前必须核实）",
+        "不透明度贴图缺失（材质为 OPAQUE，一般不构成问题）"
+      ],
+      "processedAt": "2026-09-05T08:55:08"
+    },
+    {
+      "setName": "lawn_grass_tkynejer_1k_ue_low",
+      "sourceId": "tkynejer",
+      "displayNameCn": "草坪草地",
+      "displayName": "Lawn Grass",
+      "category": "草地",
+      "suggestedUse": "路侧/缓冲区草地候选（平铺 2x2m，tileable）",
+      "originalZip": {
+        "path": "/Volumes/Charles/下载/赛车游戏 材质/lawn_grass_tkynejer_1k_ue_low.zip",
+        "sizeBytes": 3243255,
+        "sha256": "50b72f97007bd3d7c536d4f185563c294a7200ec1f1352ac89db6be74abfc8de"
+      },
+      "siblingZips": [],
+      "extractedDir": "extracted/lawn_grass_tkynejer_1k_ue_low",
+      "material": {
+        "gltfPath": "extracted/lawn_grass_tkynejer_1k_ue_low/tkynejer_tier_3.gltf",
+        "materialName": "MI_tkynejer",
+        "alphaMode": "OPAQUE",
+        "bindings": {
+          "normalTexture": "Textures/T_tkynejer_1K_N.jpg",
+          "occlusionTexture": "Textures/T_tkynejer_1K_ORM.jpg",
+          "baseColorTexture": "Textures/T_tkynejer_1K_B.jpg",
+          "metallicRoughnessTexture": "Textures/T_tkynejer_1K_ORM.jpg"
+        },
+        "images": [
+          "Textures/T_tkynejer_1K_N.jpg",
+          "Textures/T_tkynejer_1K_ORM.jpg",
+          "Textures/T_tkynejer_1K_B.jpg"
+        ]
+      },
+      "meta": {
+        "sourceName": "Lawn Grass",
+        "sourceId": "tkynejer",
+        "averageColor": "#51502C",
+        "categories": [
+          "surface",
+          "grass",
+          "lawn"
+        ],
+        "tags": [
+          "surface",
+          "garden",
+          "lawn",
+          "green",
+          "brussels",
+          "belgium",
+          "yellow",
+          "archviz"
+        ],
+        "highestAvailableRes": 8192,
+        "scanArea": "2x2 m",
+        "tileable": true,
+        "texelDensity": "4096 px/m",
+        "height": "0.026 m"
+      },
+      "averageColorStatus": "已确认（源自元数据）",
+      "selectedMaps": [
+        {
+          "role": "baseColor",
+          "roleCn": "颜色/底色 (baseColor)",
+          "original": "extracted/lawn_grass_tkynejer_1k_ue_low/Textures/T_tkynejer_1K_B.jpg",
+          "preview": "previews/lawn_grass_tkynejer_1k_ue_low/basecolor__T_tkynejer_1K_B.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "RGB",
+          "channelMeaning": "RGB=底色，sRGB 色彩空间",
+          "confirmed": "已确认：gltf 的 baseColorTexture 绑定到此文件",
+          "note": "",
+          "hasAlpha": false
+        },
+        {
+          "role": "normal",
+          "roleCn": "法线 (normal)",
+          "original": "extracted/lawn_grass_tkynejer_1k_ue_low/Textures/T_tkynejer_1K_N.jpg",
+          "preview": "previews/lawn_grass_tkynejer_1k_ue_low/normal__T_tkynejer_1K_N.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "RGB",
+          "channelMeaning": "切线空间法线；glTF 2.0 约定 OpenGL 风格（+Y 向上）",
+          "confirmed": "已确认：gltf 的 normalTexture 绑定到此文件；+Y 向上为 glTF 2.0 规范约定",
+          "note": "使用注意：UE 原生法线为 DirectX 风格（-Y）。经 glTF 导入器/UE 插件流程会自动处理；若手动贴图需确认 G 通道是否要翻转——未实测，导入时请复核。",
+          "hasAlpha": false
+        },
+        {
+          "role": "orm",
+          "roleCn": "AO+粗糙度+金属度打包 (ORM)",
+          "original": "extracted/lawn_grass_tkynejer_1k_ue_low/Textures/T_tkynejer_1K_ORM.jpg",
+          "preview": "previews/lawn_grass_tkynejer_1k_ue_low/orm-ao-rough-metal__T_tkynejer_1K_ORM.jpg",
+          "format": "JPEG",
+          "width": 1024,
+          "height": 1024,
+          "channels": "R/G/B",
+          "channelMeaning": "R=AO 遮挡，G=粗糙度，B=金属度（glTF 2.0 metallicRoughness/occlusion 约定）",
+          "confirmed": "已确认：gltf 中 occlusionTexture 与 metallicRoughnessTexture 指向同一张图，符合 glTF 2.0 ORM 打包约定",
+          "note": "使用注意：ORM 以 JPEG 存储，三通道数据可能存在压缩串扰；对粗糙度敏感的表面建议检查 G 通道——未实测。",
+          "hasAlpha": false
+        }
+      ],
+      "missing": [
+        "独立粗糙度贴图缺失（打包于 ORM 的 G 通道）",
+        "独立 AO 贴图缺失（打包于 ORM 的 R 通道）",
+        "独立金属度贴图缺失（打包于 ORM 的 B 通道）",
+        "高度/位移贴图缺失（本 1k_ue_low 档不含 Height/Displacement）",
+        "许可未确认：元数据 JSON 无 license 字段，本次未联网核实（格式特征指向 PolyHaven，其默认许可为 CC0，但未经证实，入库游戏前必须核实）"
+      ],
+      "processedAt": "2026-09-05T08:55:08"
+    }
+  ]
+}

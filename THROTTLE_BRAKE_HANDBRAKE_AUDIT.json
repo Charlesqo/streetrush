@@ -1,0 +1,183 @@
+{
+  "document_type": "streetrush_throttle_brake_handbrake_audit",
+  "language": "zh-CN",
+  "generated_date": "2026-08-21",
+  "purpose": "自包含地记录当前油门、普通刹车、倒车和手刹的输入与物理逻辑，供直接复制、审阅和复现。本文不依赖任何外部文件引用。",
+  "change_status": {
+    "production_code_changed_by_this_audit": false,
+    "note": "此前未经充分复现的试改已经完全撤回；本文件只记录当前已提交代码的真实行为。"
+  },
+  "control_mapping": {
+    "keyboard": {
+      "throttle": ["W", "ArrowUp"],
+      "service_brake_and_reverse_request": ["S", "ArrowDown"],
+      "handbrake": ["Space"]
+    },
+    "gamepad": {
+      "throttle": "button 7 / right trigger",
+      "service_brake_and_reverse_request": "button 6 / left trigger",
+      "handbrake": "button 0 / A"
+    },
+    "touch": {
+      "throttle": "GAS hold button",
+      "service_brake_and_reverse_request": "BRAKE hold button",
+      "handbrake": "handbrake hold button"
+    }
+  },
+  "verified_current_outputs": [
+    {
+      "case": "S only",
+      "raw_throttle": 0,
+      "raw_brake": 1,
+      "raw_handbrake": 0,
+      "drive_intent": -1,
+      "drive_throttle": 0,
+      "service_brake": 1,
+      "meaning": "车辆仍向前运动时，S会成为全量普通刹车。"
+    },
+    {
+      "case": "W plus S",
+      "raw_throttle": 1,
+      "raw_brake": 1,
+      "raw_handbrake": 0,
+      "drive_intent": 0,
+      "drive_throttle": 0,
+      "service_brake": 0,
+      "meaning": "油门和普通刹车同时满按时，当前逻辑把两者都归零；它不是刹车优先。"
+    },
+    {
+      "case": "W plus Space",
+      "raw_throttle": 1,
+      "raw_brake": 0,
+      "raw_handbrake": 1,
+      "drive_intent": 1,
+      "drive_throttle": 1,
+      "service_brake": 0,
+      "handbrake": 1,
+      "meaning": "油门保持全量，同时后轮手刹保持全量；后驱车的驱动力和手刹力作用于同一对后轮。"
+    }
+  ],
+  "confirmed_findings": [
+    "W和S同时满按时，driveIntent为0，随后driveThrottle和serviceBrake都为0。",
+    "普通刹车的名义分配为前轮每侧31%、后轮每侧19%，四轮合计100%的车辆brakeTorque。",
+    "手刹额外施加在后轮，每侧62%，两侧合计124%的车辆brakeTorque。",
+    "手刹制动力与普通刹车先相加，然后共同进入当前ABS滑移调制分支。",
+    "手刹激活时，稳定辅助ESC被显式关闭。",
+    "保持W并拉手刹时，当前传动逻辑不会自动切断driveThrottle。",
+    "车辆油门、刹车、轮胎受力和手刹物理目前由JavaScript车辆系统负责；Rust/WASM不拥有这部分计算。"
+  ],
+  "not_yet_proven": [
+    "仅凭静态代码还不能证明松开S后车辆为何会永久拒绝重新加速；该现象需要用持续W、按下S、释放S但不释放W的完整输入时间序列复现。",
+    "仅凭现有测试不能证明手刹的最佳制动力矩或最佳ESC策略；现有测试场景与真人的急刹和全油门手刹操作不一致。",
+    "没有现场遥测时，不能把所有左右摆动都归因于同一个变量。"
+  ],
+  "current_parameters": {
+    "mx5": {
+      "drivetrain": "RWD",
+      "mass_kg": 990,
+      "engine_torque_nm": 136,
+      "final_drive": 4.3,
+      "brake_torque": 2450,
+      "tire_mu": 0.98,
+      "service_brake_front_each_nm_at_full_input": 759.5,
+      "service_brake_rear_each_nm_at_full_input": 465.5,
+      "handbrake_rear_each_nm_at_full_input": 1519,
+      "handbrake_rear_total_nm_at_full_input": 3038
+    },
+    "gt3rs": {
+      "drivetrain": "RWD",
+      "mass_kg": 1450,
+      "engine_torque_nm": 465,
+      "final_drive": 4.25,
+      "brake_torque": 4550,
+      "tire_mu": 1.27,
+      "service_brake_front_each_nm_at_full_input": 1410.5,
+      "service_brake_rear_each_nm_at_full_input": 864.5,
+      "handbrake_rear_each_nm_at_full_input": 2821,
+      "handbrake_rear_total_nm_at_full_input": 5642
+    }
+  },
+  "production_logic": {
+    "pedal_smoothing": {
+      "description": "油门和普通刹车分别做阻尼平滑；driveIntent却直接根据未经平滑的rawThrottle和rawBrake计算。",
+      "code": "export function updatePedal(current, target, riseRate, releaseRate, dt) {\n  return THREE.MathUtils.damp(current, target, target > current ? riseRate : releaseRate, dt);\n}\n\nframe.driveIntent = resolveDriveIntent(rawThrottle, rawBrake);\nframe.throttle = updatePedal(frame.throttle, rawThrottle, 4.3, 7.5, dt);\nframe.brake = updatePedal(frame.brake, rawBrake, 7.5, 11, dt);\nframe.handbrake = THREE.MathUtils.damp(frame.handbrake, rawHandbrake, 14, dt);"
+    },
+    "drive_intent_resolution": {
+      "description": "同向只按一个踏板时返回方向；两个踏板同时有效且差值不超过0.05时返回0。",
+      "code": "export function resolveDriveIntent(rawThrottle, rawBrake) {\n  const forward = rawThrottle > 0.05;\n  const reverse = rawBrake > 0.05;\n  if (forward && !reverse) return 1;\n  if (reverse && !forward) return -1;\n  if (forward && reverse) {\n    if (rawThrottle > rawBrake + 0.05) return 1;\n    if (rawBrake > rawThrottle + 0.05) return -1;\n  }\n  return 0;\n}"
+    },
+    "input_collection": {
+      "description": "键盘、触控和手柄的输入会取最大值合并。",
+      "code": "let rawThrottle = keys.has('KeyW') || keys.has('ArrowUp') ? 1 : 0;\nlet rawBrake = keys.has('KeyS') || keys.has('ArrowDown') ? 1 : 0;\nlet rawHandbrake = keys.has('Space') ? 1 : 0;\n\nrawThrottle = Math.max(rawThrottle, touch.throttle);\nrawBrake = Math.max(rawBrake, touch.brake);\nrawHandbrake = Math.max(rawHandbrake, touch.handbrake);\n\nrawThrottle = Math.max(rawThrottle, gamepad.buttons[7]?.value || 0);\nrawBrake = Math.max(rawBrake, gamepad.buttons[6]?.value || 0);\nrawHandbrake = Math.max(rawHandbrake, gamepad.buttons[0]?.value || 0);"
+    },
+    "transmission_direction_and_brake_arbitration": {
+      "description": "这是当前完整的前进、普通刹车和倒车仲裁。driveIntent为0时，driveThrottle和serviceBrake保持初始0。",
+      "code": "updateTransmission(input, dt, longSpeed) {\n  if (input.toggleTransmission) this.transmissionMode = this.transmissionMode === 'AT' ? 'MT' : 'AT';\n  if (this.transmissionMode === 'MT') {\n    if (input.shiftUp) this.requestShift(1);\n    if (input.shiftDown) this.requestShift(-1);\n  }\n\n  const switchSpeed = 0.22;\n  const explicitIntent = Number.isFinite(input.driveIntent);\n  const driveIntent = explicitIntent\n    ? Math.sign(input.driveIntent)\n    : (input.throttle > 0.055 ? 1 : input.brake > 0.055 ? -1 : 0);\n  const wantsForward = driveIntent > 0;\n  const wantsReverse = driveIntent < 0;\n  let driveThrottle = 0;\n  let serviceBrake = 0;\n\n  if (wantsForward) {\n    this.reverseHold = 0;\n    if (longSpeed < -switchSpeed) {\n      serviceBrake = input.throttle;\n    } else {\n      if (this.reverse) this.setReverseState(false, longSpeed);\n      driveThrottle = input.throttle;\n    }\n  } else if (wantsReverse) {\n    if (longSpeed > switchSpeed) {\n      this.reverseHold = 0;\n      serviceBrake = input.brake;\n    } else if (this.reverse) {\n      driveThrottle = input.brake;\n    } else {\n      serviceBrake = input.brake;\n      this.reverseHold += dt;\n      if (this.reverseHold >= REVERSE_ENGAGE_HOLD_SECONDS) {\n        this.setReverseState(true, longSpeed);\n        serviceBrake = 0;\n        driveThrottle = input.brake;\n      }\n    }\n  } else {\n    this.reverseHold = 0;\n  }\n  return { driveThrottle, serviceBrake };\n}"
+    },
+    "engine_and_driveline_torque": {
+      "description": "普通油门经扭矩曲线、挡位、终传、效率和离合需求计算总驱动扭矩，再均分到驱动轮。手刹不参与这段仲裁。",
+      "code": "const engineTorque = config.torque * torqueCurve(engineRpm) * pedals.driveThrottle;\nconst efficiency = drivetrainEfficiency(config.drivetrain);\nlet totalDriveTorque = engineTorque * ratio * config.finalDrive * efficiency * clutchDemand;\nif (reverse) {\n  totalDriveTorque *= -0.72;\n  if (speedKmh > 38) totalDriveTorque *= clamp((43 - speedKmh) / 5, 0, 1);\n}\nif (shiftTimer > 0) totalDriveTorque *= SHIFT_TORQUE_FACTOR;\nconst driveTorquePerWheel = totalDriveTorque / Math.max(1, drivenWheels.length);"
+    },
+    "wheel_drive_and_braking": {
+      "description": "每个轮胎先取得驱动力；普通刹车按前31%和后19%分配；手刹在每个后轮额外叠加62%。合并后的brakeTorque进入同一个滑移调制。",
+      "code": "let wheelDriveTorque = wheel.driven ? driveTorquePerWheel : 0;\nif (pedals.driveThrottle > 0.05 && Math.abs(slipRatio) > 0.11) {\n  wheelDriveTorque *= clamp(0.11 / Math.abs(slipRatio), 0.16, 1);\n  tcsActive = true;\n}\n\nlet brakeTorque = pedals.serviceBrake * config.brakeTorque * (wheel.front ? 0.31 : 0.19);\nif (!wheel.front) brakeTorque += activeInput.handbrake * config.brakeTorque * 0.62;\nif (brakeTorque > 0 && slipRatio < -0.17) {\n  brakeTorque *= clamp(0.17 / Math.abs(slipRatio), 0.2, 1);\n  absActive = true;\n}\n\nconst brakeDirection = Math.sign(Math.abs(wheel.omega) > 0.2 ? wheel.omega : wheelLongSpeed);\nconst angularTorque = wheelDriveTorque\n  - longitudinalForce * config.wheelRadius\n  - brakeDirection * brakeTorque;\nwheel.omega += angularTorque / wheelInertia * safeDt;\nif (brakeTorque > 0 && Math.sign(wheel.omega) !== Math.sign(wheel.omega - angularTorque / wheelInertia * safeDt)) {\n  wheel.omega = 0;\n}"
+    },
+    "stability_assist_gate": {
+      "description": "稳定辅助要求至少两个轮胎承载、速度大于14km/h、偏航误差超过阈值，并且手刹没有激活。",
+      "code": "const stabilityActive = groundedCount >= 2\n  && Math.abs(stabilityError) > 0.16\n  && speedKmh > 14\n  && !activeInput.handbrake;"
+    },
+    "telemetry": {
+      "description": "HUD和音频读取的是仲裁后的driveThrottle与serviceBrake；当前HUD没有独立显示handbrake。",
+      "code": "telemetry.throttle = pedals.driveThrottle;\ntelemetry.brake = pedals.serviceBrake;\ntelemetry.absActive = absActive;\ntelemetry.tcsActive = tcsActive;\ntelemetry.stabilityActive = stabilityActive;"
+    },
+    "audio_only": {
+      "description": "声音系统只读取最终油门遥测作为发动机负载输入，不会向车辆施加任何力。",
+      "code": "const load = telemetry.throttle;"
+    }
+  },
+  "existing_test_coverage": {
+    "service_brake_test": {
+      "scenario": "先完全松开油门加速到约100km/h，再输入brake=1和driveIntent=-1。",
+      "covered": ["单独普通刹车能减速到约1km/h", "停车距离和时间在宽容差内", "制动结束前不进入倒车"],
+      "not_covered": ["W和S重叠", "刹车过程中转向或左右摆", "松开S但持续保持W后的恢复"]
+    },
+    "handbrake_test": {
+      "scenario": "MX-5约65km/h，先以16%油门和0.22转向稳定，再以5%油门、0.22转向拉0.7秒手刹，随后以25%油门直行恢复4秒。",
+      "covered": ["手刹相对对照组增加偏航", "峰值偏航和横向G不超过宽阈值", "四秒后偏航和车速恢复"],
+      "not_covered": ["持续全油门时拉手刹", "直线急拉手刹", "普通刹车立即切到手刹", "真人键盘按键重叠", "GT3 RS手刹操控"]
+    },
+    "reverse_transition_test": {
+      "scenario": "MX-5和GT3 RS在向前运动时单独按S，然后在静止状态继续保持S。",
+      "covered": ["行驶中S作为普通刹车", "停车后短时间不误入倒车", "持续保持后仍能进入倒车"],
+      "not_covered": ["同时按W和S", "从急刹直接恢复油门", "手刹"]
+    }
+  },
+  "required_reproduction_sequences_before_any_fix": [
+    {
+      "id": "service_brake_overlap_recovery",
+      "steps": [
+        "MX-5自动挡、直线、约60至100km/h。",
+        "持续保持W。",
+        "不松W，按住S进行急刹。",
+        "松开S，但整个过程不释放W。",
+        "记录每个固定物理步的rawThrottle、rawBrake、driveIntent、smoothedThrottle、smoothedBrake、driveThrottle、serviceBrake、reverse、gear、speedKmh、四轮slipRatio和yawRate。"
+      ],
+      "success_condition": "S按下时车辆产生稳定普通制动；S释放后无需重新按W便恢复驱动力；不出现持续偏航振荡。"
+    },
+    {
+      "id": "handbrake_recovery",
+      "steps": [
+        "MX-5自动挡、直线、约60至80km/h。",
+        "持续保持W。",
+        "点按空格0.2秒、0.4秒和0.7秒，分别独立运行。",
+        "释放空格但持续保持W。",
+        "记录driveThrottle、handbrake、四轮driveTorque估计、四轮brakeTorque、slipRatio、slipAngle、yawRate、ESC/ABS/TCS状态和恢复时间。"
+      ],
+      "success_condition": "手刹产生可预测的后轴滑移；释放后车辆能在合理时间内恢复，不因左右轮扭矩竞争持续摆动或自转。"
+    }
+  ],
+  "standalone_reproduction_code": {
+    "description": "以下JavaScript不导入项目文件，可单独复制运行，用来复现当前的踏板仲裁与名义制动力分配。它不是修复代码。",
+    "code": "function resolveDriveIntent(rawThrottle, rawBrake) {\n  const forward = rawThrottle > 0.05;\n  const reverse = rawBrake > 0.05;\n  if (forward && !reverse) return 1;\n  if (reverse && !forward) return -1;\n  if (forward && reverse) {\n    if (rawThrottle > rawBrake + 0.05) return 1;\n    if (rawBrake > rawThrottle + 0.05) return -1;\n  }\n  return 0;\n}\n\nfunction currentTransmissionOutput({ throttle, brake, handbrake, longSpeed = 20 }) {\n  const driveIntent = resolveDriveIntent(throttle, brake);\n  const wantsForward = driveIntent > 0;\n  const wantsReverse = driveIntent < 0;\n  let driveThrottle = 0;\n  let serviceBrake = 0;\n\n  if (wantsForward) {\n    if (longSpeed < -0.22) serviceBrake = throttle;\n    else driveThrottle = throttle;\n  } else if (wantsReverse) {\n    if (longSpeed > 0.22) serviceBrake = brake;\n  }\n\n  return { driveIntent, driveThrottle, serviceBrake, handbrake };\n}\n\nfunction nominalBrakeTorques(brakeTorque, serviceBrake, handbrake) {\n  return {\n    frontLeft: serviceBrake * brakeTorque * 0.31,\n    frontRight: serviceBrake * brakeTorque * 0.31,\n    rearLeft: serviceBrake * brakeTorque * 0.19 + handbrake * brakeTorque * 0.62,\n    rearRight: serviceBrake * brakeTorque * 0.19 + handbrake * brakeTorque * 0.62\n  };\n}\n\nconst cases = [\n  { name: 'S only', throttle: 0, brake: 1, handbrake: 0 },\n  { name: 'W plus S', throttle: 1, brake: 1, handbrake: 0 },\n  { name: 'W plus Space', throttle: 1, brake: 0, handbrake: 1 }\n];\n\nfor (const input of cases) {\n  const output = currentTransmissionOutput(input);\n  const torques = nominalBrakeTorques(2450, output.serviceBrake, output.handbrake);\n  console.log(JSON.stringify({ input, output, mx5NominalBrakeTorques: torques }, null, 2));\n}"
+  }
+}

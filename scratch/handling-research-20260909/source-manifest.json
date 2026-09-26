@@ -1,0 +1,63 @@
+{
+  "schema": "streetrush.handling-research.sources.v1",
+  "date": "2026-09-09",
+  "scope": "read-only production code audit; research probes on flat Rapier host; no source modifications",
+  "files": [
+    {
+      "path": "src/main.js",
+      "sha256": "f2172ec7052ae4fc1ccb477e78b8187f6df9a68a835ec563b227e04d2ab10035"
+    },
+    {
+      "path": "src/input.js",
+      "sha256": "b077ce8b9a6459aaddcccb0cdd77e2bb800f3ac458fece90e54e1275ac2d3756"
+    },
+    {
+      "path": "src/vehicle.js",
+      "sha256": "09c8e6c960290b276c832ce89c7e5f42e5448c5e13c14497eb509d5278073135"
+    },
+    {
+      "path": "src/config.js",
+      "sha256": "c5006d40a8f7fa723b358cbe07a153a783a433ac01259a15ca358a0cd002eba4"
+    },
+    {
+      "path": "src/vehicle-v24/runtime.js",
+      "sha256": "9f7ba2dc6eeb3d897af048b8de875d714de62e4c95e2666d9052b02ee2a741c9"
+    },
+    {
+      "path": "src/vehicle-v24/powertrain.js",
+      "sha256": "0dea200c07614da958931411d605ea8b832d19cd179c4ebcc7c88e784c5da35d"
+    },
+    {
+      "path": "src/vehicle-v24/steering.js",
+      "sha256": "a05e28a45b1e1000b0ea613e5ea1575826d058b4344455a2b69b7a620dba2ee9"
+    },
+    {
+      "path": "src/vehicle-v24/suspension.js",
+      "sha256": "653cceed8e8d82b242f6d922fec405f73d1b623d2cfb3bd1cb5bdf922ad462e0"
+    },
+    {
+      "path": "src/vehicle-v24/tire.js",
+      "sha256": "248feabd4a824e9a730e25e98791c78ee45ea9d4b423cd78e14ab33cd3397e37"
+    },
+    {
+      "path": "src/vehicle-v24/aero.js",
+      "sha256": "f7f9de228fe44a3141e173d00b30914c42bba12696f56e0d7bd5e0cd4396e795"
+    },
+    {
+      "path": "src/vehicle-v24/rapier-host-adapter.js",
+      "sha256": "75283e91753339de40bfce0ad2aa101fa669902b9d45980e70db44e198b73ba5"
+    },
+    {
+      "path": "src/effects.js",
+      "sha256": "e729990a8d1c512b8ae29fdce4d8c410ef6c46375b34974639ad5d3fd7837f28"
+    },
+    {
+      "path": "src/audio.js",
+      "sha256": "42505e0afd71bd01860c539ccd36a2155f777285d1d0586207e7400cc9e0ea4f"
+    },
+    {
+      "path": "src/validation.js",
+      "sha256": "6ec7c00e6add0b4516fcdb82279caa51b67318225c675911fac855c562218628"
+    }
+  ]
+}

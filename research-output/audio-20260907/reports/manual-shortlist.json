@@ -1,0 +1,82 @@
+[
+  {
+    "priority": "P1",
+    "title": "Herutsu · Isolated Tire Skids",
+    "price": "US$45 未税 · 22文件 / 472MB",
+    "url": "https://www.asoundeffect.com/sound-library/isolated-tire-skids/",
+    "use": "独立干沥青滑移；商家明确无引擎声、车内/车外机位，优先听。",
+    "gap": "来源车Taycan/GT86；不是六车专属胎声，轻滑/循环/湿路需另核实。"
+  },
+  {
+    "priority": "P1",
+    "title": "Pole · Skids & Screeches Tarmac",
+    "price": "US$199 · 154片段 / 7.27GB（厂商页）",
+    "url": "https://pole.se/product/skids-screeches-tarmac-library/",
+    "use": "干湿路滚动与滑移、轮边/车内/外部，覆盖比单一尖叫全面。",
+    "gap": "部分录音有引擎；不能整包标无串音。购买前确认不同商城的文件数差异。"
+  },
+  {
+    "priority": "P1",
+    "title": "Pole · Aventador LP700-4 2014",
+    "price": "Spotting US$99 · Complete US$249",
+    "url": "https://pole.se/product/lamborghini-aventador-2014/",
+    "use": "最接近目标车型的采购线索；原始take同步发动机/排气/车内，steady/ramp/shift。",
+    "gap": "不是2011录音。厂商286文件31.4GB与商城366文件27.48GB冲突；先确认版本。"
+  },
+  {
+    "priority": "P2",
+    "title": "Pole · Wind in Car",
+    "price": "US$5 · 56文件 / 1.56GB",
+    "url": "https://pole.se/product/wind-in-car/",
+    "use": "不同强度车窗风，优先补开窗气流。",
+    "gap": "不代表封闭舱/敞篷或精确风速；不能用环境树叶风冒充。"
+  },
+  {
+    "priority": "P2",
+    "title": "BOOM · ROAD RAGE",
+    "price": "From US$139 · 版本以选择后为准",
+    "url": "https://www.boomlibrary.com/sound-effects/road-rage/",
+    "use": "碰撞品质参照；Construction Kit按材料、部件与强度组织。",
+    "gap": "全包未取得，EULA全文本轮未存；轻擦/重撞需分开选，听感待验。"
+  },
+  {
+    "priority": "P2备选",
+    "title": "Pole · Car Debris, Impacts & Crashes",
+    "price": "US$199",
+    "url": "https://pole.se/product/car-debris-impacts-crashes/",
+    "use": "实车擦碰、碎玻璃与中大撞击，内外机位。",
+    "gap": "厂商说明车内录音左声道有间歇问题；应试听后再购买，不能统一当完美素材。"
+  },
+  {
+    "priority": "P3",
+    "title": "Sonic Bat · Racing Vehicles Pass-By (Binaural Stereo)",
+    "price": "US$50 · 48长录音 / 页面列57.4GB",
+    "url": "https://sonniss.com/sound-effects/binaural-stereo-racing-vehicles-pass-by-bundle/",
+    "use": "场地远车、通过与比赛背景，普通立体声路线。",
+    "gap": "多车型/可能广播，不是AMG GT3单车音轨；大包不自动下载。"
+  },
+  {
+    "priority": "跨版参照",
+    "title": "Sweet SFX · Porsche 992 GT3",
+    "price": "Short & Sweet £79 · Standard £199 · Ultimate询价",
+    "url": "https://www.sweetsfx.com/product/porsche-992-gt3/",
+    "use": "文件表中的进气/机械接触/排气/车内适合分层研究；免费样本包也已定位。",
+    "gap": "普通GT3手动，不是GT3 RS PDK；不推荐为RS直接买来替代。"
+  },
+  {
+    "priority": "跨代参照",
+    "title": "Soundholder · MX5 NBFL 1.6 Stock",
+    "price": "主商品页US$70；促销页可能不同",
+    "url": "https://sonniss.com/sound-effects/mazda-miata-mx5-nbfl-1-6-stock/",
+    "use": "149文件，状态结构较完整；可比较原厂/改装版本，借鉴取材结构。",
+    "gap": "NBFL不是NA；Designed是混音，不能等同于独立原轨。"
+  },
+  {
+    "priority": "免费/手动",
+    "title": "Sweet SFX · Free Sample Volume One",
+    "price": "£0 · 99 WAV / 2.2GB压缩包",
+    "url": "https://www.sweetsfx.com/product/sweet-sfx-free-sample-volume-one/",
+    "use": "已定位具体免费包与文件表；通过原站订单/账号下载。",
+    "gap": "本轮未取得音频，超过小批下载预算；免费不等于无限制许可，免费包与EULA适用范围待确认。"
+  }
+]

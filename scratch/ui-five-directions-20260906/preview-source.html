@@ -1,0 +1,562 @@
+<div id="streetrush-directions" aria-label="StreetRush 五套游戏界面对照">
+  <div class="viz-controls sr-review-controls" aria-label="选择方案">
+    <button class="btn" data-theme="apex">01 赛道计时</button>
+    <button class="btn" data-theme="shift">02 街头竞速</button>
+    <button class="btn" data-theme="heritage">03 经典车会</button>
+    <button class="btn" data-theme="arcade">04 日系街机</button>
+    <button class="btn" data-theme="aero">05 极简座舱</button>
+  </div>
+  <div class="viz-controls sr-review-controls" aria-label="选择界面">
+    <button class="btn" data-screen="menu">主菜单</button>
+    <button class="btn" data-screen="garage">选车</button>
+    <button class="btn" data-screen="hud">驾驶 HUD</button>
+    <button class="btn" data-overview>五套总览 · 15 屏</button>
+  </div>
+  <div id="sr-focus"></div>
+  <div id="sr-description" class="text-small" aria-live="polite"></div>
+  <div id="sr-overview" hidden></div>
+  <p class="text-small text-muted sr-source-note">实景：本项目龙湾赛道与六辆现有车辆。五套共用截图与示例计时数据；预览操作仅演示界面流程。</p>
+</div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700;800&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700;900&display=swap');
+#streetrush-directions { width:100%; }
+#streetrush-directions .sr-review-controls {margin-bottom:10px}
+#streetrush-directions #sr-description {padding:14px 0 8px;line-height:1.8}
+#streetrush-directions .sr-source-note {margin-top:12px}
+#streetrush-directions .sr-frame {position:relative;width:100%;aspect-ratio:16/9;container-type:inline-size;isolation:isolate;overflow:hidden;background:#151a1e;color:#f9fafb;font-family:Arial,'PingFang SC',sans-serif;font-size:1.15cqw;line-height:1.35;--sr-ink:#f9fafb;--sr-muted:#c0c9ce;--sr-accent:#eeff43;--sr-dark:#10171e;--sr-line:#ffffff30;--sr-panel:#10171ef5;--sr-good:#9ef5bd;--sr-display:'Barlow Condensed',Arial,sans-serif;--sr-number:'Barlow Condensed',Arial,sans-serif;--sr-hud-size:1}
+#streetrush-directions .sr-frame * {box-sizing:border-box}
+#streetrush-directions .sr-frame button {font:inherit;border:0;cursor:pointer;color:inherit;padding:0;background:none;transition:filter .15s,background .15s}
+#streetrush-directions .sr-frame button:hover {filter:brightness(1.15)}
+#streetrush-directions .sr-frame button:focus-visible {outline:3px solid #fff;outline-offset:3px}
+#streetrush-directions .sr-frame h1,#streetrush-directions .sr-frame h2,#streetrush-directions .sr-frame p {margin:0}
+#streetrush-directions .sr-scene {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3}
+#streetrush-directions .sr-frame:not(.screen-hud) .sr-scene {transform:scale(1.23);transform-origin:62% 52%}
+#streetrush-directions .screen-garage .sr-scene {transform:scale(1.55)!important;transform-origin:65% 53%!important}
+#streetrush-directions .sr-wash {position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,#0b121af5 0%,#0b121aa6 28%,transparent 63%),linear-gradient(0deg,#0b121ae8 0%,transparent 38%,transparent 80%,#0b121a60)}
+#streetrush-directions .screen-hud .sr-wash {background:linear-gradient(0deg,#080e1880,transparent 35%,transparent 65%,#080e1870)}
+#streetrush-directions .sr-game-header {position:absolute;top:3.9%;left:4%;right:4%;display:flex;align-items:center;justify-content:space-between;gap:2cqw;z-index:4}
+#streetrush-directions .sr-brand {font:800 2.35cqw/.85 var(--sr-display);letter-spacing:-.06cqw;color:var(--sr-ink)}
+#streetrush-directions .sr-brand em {font-style:normal;color:var(--sr-accent)}
+#streetrush-directions .sr-header-track {font-size:1.1cqw;color:var(--sr-muted);letter-spacing:.12cqw}
+#streetrush-directions .sr-utilities {display:flex;gap:.8cqw;align-items:center}
+#streetrush-directions .sr-utilities button {background:var(--sr-dark);padding:.68cqw 1.05cqw;border:1px solid var(--sr-line);font-size:1cqw}
+#streetrush-directions .sr-section-label {font-size:1cqw;letter-spacing:.18cqw;font-weight:600;color:var(--sr-accent);margin-bottom:1.1cqw}
+#streetrush-directions .sr-menu-intro {position:absolute;left:5%;top:21%;width:40%}
+#streetrush-directions .sr-menu-intro h1 {font:800 6.4cqw/.95 var(--sr-display);letter-spacing:-.1cqw}
+#streetrush-directions .sr-menu-intro h1 span {display:block;font:600 2.3cqw/1.4 Arial,'PingFang SC',sans-serif;margin-top:.8cqw;letter-spacing:.1cqw}
+#streetrush-directions .sr-race-info {display:flex;align-items:center;gap:1cqw;margin-top:1.6cqw;color:var(--sr-muted);font-size:1.05cqw}
+#streetrush-directions .sr-race-info b {color:var(--sr-ink);font-size:1.3cqw}
+#streetrush-directions .sr-menu-actions {position:absolute;left:5%;top:54%;width:29%;display:grid;gap:.55cqw}
+#streetrush-directions .sr-action {width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.15cqw 1.55cqw!important;background:var(--sr-dark)!important;font-size:1.35cqw!important;border:1px solid var(--sr-line)!important;min-height:3.8cqw}
+#streetrush-directions .sr-action small {font:600 .85cqw/1.2 Arial,sans-serif;opacity:.8;letter-spacing:.08cqw}
+#streetrush-directions .sr-action.primary {background:var(--sr-accent)!important;color:#0d1518!important;border-color:transparent!important;font-weight:700}
+#streetrush-directions .sr-current {position:absolute;right:5%;bottom:12%;width:39%;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--sr-line);padding-bottom:1.2cqw}
+#streetrush-directions .sr-current small {display:block;font-size:.95cqw;letter-spacing:.12cqw;color:var(--sr-muted);margin-bottom:.4cqw}
+#streetrush-directions .sr-current strong {display:block;font:700 2.2cqw/1.1 var(--sr-display)}
+#streetrush-directions .sr-current .sr-car-no {font:500 4.5cqw/.8 var(--sr-display);color:var(--sr-accent)}
+#streetrush-directions .sr-game-footer {position:absolute;bottom:3.4%;left:4%;right:4%;display:flex;justify-content:space-between;gap:2cqw;color:var(--sr-muted);font-size:.94cqw;align-items:center}
+#streetrush-directions .sr-game-footer kbd {font:inherit;color:var(--sr-ink);display:inline-block;border:1px solid var(--sr-line);padding:.1cqw .35cqw;margin-right:.35cqw}
+#streetrush-directions .sr-garage-heading {position:absolute;left:4%;top:17%;max-width:38%}
+#streetrush-directions .sr-garage-heading h1 {font:800 3.6cqw/1 var(--sr-display);margin-top:.4cqw}
+#streetrush-directions .sr-garage-heading .sr-car-index {font:700 1.4cqw/1 var(--sr-number);color:var(--sr-accent);margin-bottom:.8cqw}
+#streetrush-directions .sr-garage-heading .sr-car-type {margin-top:.9cqw;color:var(--sr-muted);font-size:1.05cqw;letter-spacing:.12cqw}
+#streetrush-directions .sr-car-stats {position:absolute;top:40%;left:4%;width:23%;display:grid;gap:1.3cqw}
+#streetrush-directions .sr-stat-top {display:flex;justify-content:space-between;align-items:baseline;font-size:1.05cqw}
+#streetrush-directions .sr-stat-top b {font:600 2cqw/1 var(--sr-number)}
+#streetrush-directions .sr-stat-top small {font-size:.85cqw;color:var(--sr-muted)}
+#streetrush-directions .sr-stat-meter {height:.24cqw;background:var(--sr-line);margin-top:.65cqw}
+#streetrush-directions .sr-stat-meter i {display:block;height:100%;background:var(--sr-accent)}
+#streetrush-directions .sr-records {position:absolute;left:4%;top:68%;width:34%;display:flex;gap:2.6cqw;font-size:.85cqw;color:var(--sr-muted)}
+#streetrush-directions .sr-records strong {display:block;color:var(--sr-ink);font:600 1.65cqw/1.2 var(--sr-number);margin-top:.5cqw;letter-spacing:.02cqw}
+#streetrush-directions .sr-medals {position:absolute;right:4%;top:17%;text-align:right;font-size:.95cqw}
+#streetrush-directions .sr-medal-row {display:flex;gap:1.3cqw;margin-top:1cqw}
+#streetrush-directions .sr-medal-row span {display:flex;align-items:center;gap:.5cqw;color:var(--sr-muted)}
+#streetrush-directions .sr-medal-row b {font:600 1.5cqw/1 var(--sr-number);color:var(--sr-ink)}
+#streetrush-directions .sr-medal-row i {width:.58cqw;height:.58cqw;border-radius:50%;background:#ddb36a}
+#streetrush-directions .sr-medal-row span:nth-child(2) i {background:#e0e6e9}
+#streetrush-directions .sr-medal-row span:nth-child(3) i {background:#ba8569}
+#streetrush-directions .sr-car-strip {position:absolute;left:4%;right:28%;bottom:9.8%;display:grid;grid-template-columns:repeat(6,1fr);gap:.5cqw}
+#streetrush-directions .sr-car-option {padding:1cqw .65cqw!important;text-align:left;background:var(--sr-dark)!important;border-top:.2cqw solid var(--sr-line)!important;line-height:1.25!important;font-size:.9cqw!important}
+#streetrush-directions .sr-car-option small {display:block;font-size:.68cqw;opacity:.65;margin-bottom:.35cqw}
+#streetrush-directions .sr-car-option[aria-pressed=true] {border-color:var(--sr-accent)!important;color:var(--sr-accent);background:#242d32!important}
+#streetrush-directions .sr-garage-confirm {position:absolute;right:4%;bottom:9.8%;width:21%}
+#streetrush-directions .sr-car-arrows {position:absolute;left:39%;right:5%;top:53%;display:flex;justify-content:space-between;pointer-events:none}
+#streetrush-directions .sr-car-arrows button {pointer-events:auto;width:3.4cqw;height:3.4cqw;border:1px solid var(--sr-line);background:var(--sr-dark);font-size:1.7cqw}
+#streetrush-directions .sr-hud-progress {position:absolute;top:5%;left:4%;display:flex;gap:.8cqw;align-items:stretch}
+#streetrush-directions .sr-lap {background:var(--sr-accent);color:#10171e;padding:1.05cqw 1.5cqw}
+#streetrush-directions .sr-lap small {font-size:.95cqw;display:block;letter-spacing:.16cqw}
+#streetrush-directions .sr-lap strong {font:700 3.6cqw/1 var(--sr-number)}
+#streetrush-directions .sr-lap strong span {font-size:1.8cqw;opacity:.65}
+#streetrush-directions .sr-total {padding:1.15cqw 1.4cqw;background:var(--sr-panel)}
+#streetrush-directions .sr-total small {display:block;font-size:.9cqw;color:var(--sr-muted);letter-spacing:.1cqw}
+#streetrush-directions .sr-total strong {font:600 2.4cqw/1.4 var(--sr-number);font-variant-numeric:tabular-nums}
+#streetrush-directions .sr-hud-menu {position:absolute;top:5%;right:4%;display:flex;gap:.75cqw}
+#streetrush-directions .sr-hud-menu button {padding:.9cqw 1.1cqw;background:var(--sr-panel);font-size:1cqw;border:1px solid var(--sr-line)}
+#streetrush-directions .sr-checkpoints {position:absolute;top:6%;left:43%;width:17%;text-align:center;background:var(--sr-panel);padding:.8cqw 1.1cqw}
+#streetrush-directions .sr-checkpoints .sr-cp-top {display:flex;justify-content:space-between;font-size:.95cqw}
+#streetrush-directions .sr-cp-top b {color:var(--sr-accent);font-family:var(--sr-number)}
+#streetrush-directions .sr-cp-track {display:flex;gap:.3cqw;margin-top:.65cqw}
+#streetrush-directions .sr-cp-track i {height:.28cqw;flex:1;background:var(--sr-line)}
+#streetrush-directions .sr-cp-track i.passed {background:var(--sr-accent)}
+#streetrush-directions .sr-timing {position:absolute;left:4%;top:22%;width:23%;background:var(--sr-panel);padding:1.3cqw 1.5cqw}
+#streetrush-directions .sr-timing-row {padding:1.05cqw 0;border-bottom:1px solid var(--sr-line)}
+#streetrush-directions .sr-timing-row:last-child {border:0;padding-bottom:0}
+#streetrush-directions .sr-timing-row:first-child {padding-top:0}
+#streetrush-directions .sr-timing-row .sr-timing-label {display:flex;justify-content:space-between;font-size:.9cqw;color:var(--sr-muted);margin-bottom:.3cqw}
+#streetrush-directions .sr-valid {color:var(--sr-good);font-size:.8cqw}
+#streetrush-directions .sr-timing-row .sr-timing-value {display:flex;align-items:baseline;justify-content:space-between;gap:.4cqw}
+#streetrush-directions .sr-timing-row strong {font:600 2.1cqw/1.2 var(--sr-number);font-variant-numeric:tabular-nums}
+#streetrush-directions .sr-timing-row:first-child strong {font-size:2.85cqw}
+#streetrush-directions .sr-delta {font:600 1.15cqw/1 var(--sr-number);color:var(--sr-good)}
+#streetrush-directions .sr-delta.sr-behind {color:#ffb7ad}
+#streetrush-directions .sr-goal {position:absolute;left:4%;bottom:14%;width:23%;padding:1cqw 1.5cqw;background:var(--sr-panel);border-left:.25cqw solid var(--sr-accent)}
+#streetrush-directions .sr-goal small {display:block;font-size:.9cqw;color:var(--sr-muted)}
+#streetrush-directions .sr-goal strong {font:600 2cqw/1.5 var(--sr-number);margin-right:1.2cqw}
+#streetrush-directions .sr-goal .sr-delta {white-space:nowrap}
+#streetrush-directions .sr-drive-unit {position:absolute;right:4%;bottom:13%;width:25%;padding:1.5cqw 1.6cqw 1.15cqw;background:var(--sr-panel)}
+#streetrush-directions .sr-rpm-label {display:flex;justify-content:space-between;font-size:.85cqw;color:var(--sr-muted);letter-spacing:.07cqw}
+#streetrush-directions .sr-rpm-label b {color:var(--sr-ink);font-family:var(--sr-number);font-weight:500}
+#streetrush-directions .sr-revs {height:.65cqw;display:flex;gap:.22cqw;margin:.65cqw 0 .25cqw}
+#streetrush-directions .sr-revs i {flex:1;background:#ffffff23}
+#streetrush-directions .sr-revs i.on {background:var(--sr-accent)}
+#streetrush-directions .sr-revs i.limit {background:#f87b73}
+#streetrush-directions .sr-speed-row {display:flex;align-items:center;justify-content:space-between;gap:1cqw}
+#streetrush-directions .sr-speed {display:flex;align-items:baseline;gap:.7cqw}
+#streetrush-directions .sr-speed strong {font:700 7.1cqw/.95 var(--sr-number);letter-spacing:-.15cqw;font-variant-numeric:tabular-nums}
+#streetrush-directions .sr-speed small {font-size:.95cqw;color:var(--sr-muted)}
+#streetrush-directions .sr-gear {border-left:1px solid var(--sr-line);padding-left:1.3cqw;text-align:center}
+#streetrush-directions .sr-gear strong {display:block;font:600 3.5cqw/1 var(--sr-number);color:var(--sr-accent)}
+#streetrush-directions .sr-gear small {display:block;font-size:.85cqw;color:var(--sr-muted);margin-top:.5cqw}
+#streetrush-directions .sr-pedals {display:flex;gap:1.2cqw;margin-top:1cqw;font-size:.8cqw}
+#streetrush-directions .sr-pedal {flex:1;display:grid;grid-template-columns:2.3cqw 1fr;gap:.35cqw;align-items:center;color:var(--sr-muted)}
+#streetrush-directions .sr-pedal i {height:.23cqw;background:var(--sr-line);position:relative}
+#streetrush-directions .sr-pedal i b {display:block;background:var(--sr-ink);height:100%;width:72%}
+#streetrush-directions .sr-pedal:last-child i b {width:0}
+#streetrush-directions .sr-state {position:absolute;bottom:5%;left:4%;font-size:.9cqw;display:flex;gap:1.3cqw;align-items:center;color:var(--sr-muted)}
+#streetrush-directions .sr-state b {color:var(--sr-ink);font-weight:500}
+#streetrush-directions .sr-hud-keys {position:absolute;bottom:5%;right:4%;font-size:.9cqw;color:#e1e6e9;text-shadow:0 1px 3px #000}
+#streetrush-directions .sr-hud-keys kbd {font:inherit;font-weight:700}
+#streetrush-directions .sr-modal-shade {position:absolute;inset:0;z-index:10;background:#070c12a6;display:grid;place-items:center;backdrop-filter:blur(5px)}
+#streetrush-directions .sr-modal {width:37%;padding:2.5cqw;background:var(--sr-dark);border-top:.3cqw solid var(--sr-accent);box-shadow:0 2cqw 8cqw #0006}
+#streetrush-directions .sr-modal h2 {font:700 3cqw/1.2 var(--sr-display);margin-bottom:1.7cqw}
+#streetrush-directions .sr-modal .sr-action {margin-top:.7cqw}
+#streetrush-directions .sr-modal .sr-settings-row {display:flex;justify-content:space-between;padding:1cqw 0;border-bottom:1px solid var(--sr-line);font-size:1.1cqw}
+/* 01: restrained timing console, tabular information, acid yellow */
+#streetrush-directions .theme-apex .sr-brand {font-style:italic}
+#streetrush-directions .theme-apex .sr-brand:before {content:'';display:inline-block;width:.45cqw;height:2cqw;background:var(--sr-accent);transform:skew(-15deg);margin-right:.65cqw;vertical-align:middle}
+#streetrush-directions .theme-apex .sr-menu-intro {border-left:.3cqw solid var(--sr-accent);padding-left:1.5cqw}
+#streetrush-directions .theme-apex .sr-menu-actions {left:6.8%;top:53%;width:28%}
+#streetrush-directions .theme-apex .sr-action.primary {clip-path:polygon(0 0,95% 0,100% 26%,100% 100%,0 100%)}
+#streetrush-directions .theme-apex .sr-garage-heading {border-left:.3cqw solid var(--sr-accent);padding-left:1.2cqw}
+/* 02: diagonal street racing, ultrabold italic type, paper yellow + violet */
+#streetrush-directions .theme-shift {--sr-accent:#c8ff36;--sr-dark:#211735;--sr-panel:#211735f5;--sr-muted:#ded0ec;--sr-good:#bdf985;--sr-display:'Archivo Black','Arial Black',sans-serif;--sr-number:'Barlow Condensed',sans-serif}
+#streetrush-directions .theme-shift .sr-wash {background:linear-gradient(90deg,#191127d9 0%,#21133455 42%,transparent 70%),linear-gradient(0deg,#231437ee,transparent 65%)}
+#streetrush-directions .theme-shift .sr-brand {font-size:2cqw;font-style:italic;letter-spacing:-.12cqw;transform:rotate(-3deg)}
+#streetrush-directions .theme-shift .sr-menu-intro {left:5%;top:22%;width:43%;transform:rotate(-4deg)}
+#streetrush-directions .theme-shift .sr-menu-intro h1 {font-size:5.5cqw;line-height:.96;font-style:italic;letter-spacing:-.22cqw;text-shadow:.25cqw .3cqw #513769}
+#streetrush-directions .theme-shift .sr-menu-intro h1 span {font-style:normal;font-weight:900;background:var(--sr-accent);color:#20172e;padding:.4cqw 1cqw;display:table;font-size:2cqw;transform:rotate(2deg);margin-top:1.3cqw;box-shadow:.4cqw .4cqw #7650db}
+#streetrush-directions .theme-shift .sr-menu-actions {left:5%;top:auto;bottom:12%;width:88%;display:flex;gap:1cqw;align-items:end}
+#streetrush-directions .theme-shift .sr-menu-actions .sr-action {height:5cqw;transform:skew(-8deg);width:26%;border-width:.15cqw!important;border-color:#b596d1!important}
+#streetrush-directions .theme-shift .sr-menu-actions .sr-action.primary {height:6cqw;font-size:1.9cqw!important;width:36%;box-shadow:.55cqw .55cqw #8460e7}
+#streetrush-directions .theme-shift .sr-current {right:5%;bottom:33%;width:31%;transform:rotate(-3deg);border:0;background:#241738f0;padding:1.4cqw 1.8cqw;border-right:.6cqw solid var(--sr-accent)}
+#streetrush-directions .theme-shift .sr-current strong {font-size:1.5cqw;font-style:italic}
+#streetrush-directions .theme-shift .sr-current .sr-car-no {font:700 4cqw/1 'Barlow Condensed'}
+#streetrush-directions .theme-shift .sr-section-label {font-style:italic}
+#streetrush-directions .theme-shift .sr-garage-heading {left:4%;top:20%;transform:rotate(-3deg);width:38%}
+#streetrush-directions .theme-shift .sr-garage-heading h1 {font-size:2.85cqw;font-style:italic;text-shadow:.2cqw .2cqw #7555a7}
+#streetrush-directions .theme-shift .sr-car-stats {top:42%;width:27%;gap:1cqw;transform:skew(-4deg)}
+#streetrush-directions .theme-shift .sr-stat-meter {height:.65cqw}
+#streetrush-directions .theme-shift .sr-car-option {transform:skew(-7deg);border:.12cqw solid #9368c3!important}
+#streetrush-directions .theme-shift .sr-car-option[aria-pressed=true] {background:var(--sr-accent)!important;color:#23132d;box-shadow:.35cqw .35cqw #845ce4}
+#streetrush-directions .theme-shift .sr-car-strip {gap:.8cqw}
+#streetrush-directions .theme-shift .sr-garage-confirm {transform:skew(-7deg)}
+#streetrush-directions .theme-shift.screen-hud .sr-wash {background:linear-gradient(0deg,#1c0e3366,transparent 40%,transparent 65%,#160a2255)}
+#streetrush-directions .theme-shift .sr-hud-progress {transform:skew(-7deg);left:5%;top:5.5%}
+#streetrush-directions .theme-shift .sr-lap {box-shadow:.45cqw .45cqw #8056cf}
+#streetrush-directions .theme-shift .sr-checkpoints {left:46%;transform:rotate(-2deg)}
+#streetrush-directions .theme-shift .sr-timing {left:auto;right:4%;top:19%;width:22%;transform:skew(-3deg);border-right:.35cqw solid #ac8aee}
+#streetrush-directions .theme-shift .sr-timing-row {padding:.7cqw 0}
+#streetrush-directions .theme-shift .sr-goal {left:5%;bottom:16%;transform:rotate(-3deg);width:26%;box-shadow:.4cqw .4cqw #7550bc}
+#streetrush-directions .theme-shift .sr-drive-unit {right:4%;bottom:12%;width:30%;background:transparent;transform:skew(-8deg);padding:0}
+#streetrush-directions .theme-shift .sr-speed-row {background:var(--sr-accent);padding:.2cqw 1.4cqw;box-shadow:.5cqw .5cqw #8457e1;color:#25142f}
+#streetrush-directions .theme-shift .sr-speed strong {font:italic 900 7.1cqw/1 var(--sr-display);letter-spacing:-.35cqw}
+#streetrush-directions .theme-shift .sr-speed small,#streetrush-directions .theme-shift .sr-gear strong,#streetrush-directions .theme-shift .sr-gear small {color:#25142f}
+#streetrush-directions .theme-shift .sr-rpm-label,#streetrush-directions .theme-shift .sr-pedals {background:#261938ee;padding:.45cqw .75cqw}
+/* 03: club registration card, ivory + racing green, serif identity */
+#streetrush-directions .theme-heritage {--sr-accent:#d9b776;--sr-dark:#123b35;--sr-panel:#123b35f5;--sr-ink:#f8efda;--sr-muted:#d9d9c9;--sr-good:#ccedbd;--sr-line:#e7d9b640;--sr-display:'Bodoni Moda',Georgia,'Songti SC',serif;--sr-number:'Barlow Condensed',sans-serif;color:var(--sr-ink);font-family:Georgia,'Songti SC',serif}
+#streetrush-directions .theme-heritage .sr-game-header {border-bottom:1px solid var(--sr-line);padding-bottom:1.2cqw;top:4%}
+#streetrush-directions .theme-heritage .sr-brand {font-size:2.4cqw;font-weight:500;letter-spacing:.04cqw}
+#streetrush-directions .theme-heritage .sr-brand em {color:var(--sr-ink)}
+#streetrush-directions .theme-heritage .sr-wash {background:linear-gradient(0deg,#102f2ee8,transparent 55%)}
+#streetrush-directions .theme-heritage .sr-menu-intro {top:21%;left:5%;width:29%;background:#f1e8d6;color:#153b34;padding:2cqw 2.2cqw 2.5cqw;border-top:.4cqw solid #cfac70;border-bottom:1px solid #c2b395}
+#streetrush-directions .theme-heritage .sr-section-label {color:#526251;letter-spacing:.15cqw;font-weight:500}
+#streetrush-directions .theme-heritage .sr-menu-intro h1 {font-size:5.2cqw;line-height:1;font-weight:500;letter-spacing:-.15cqw}
+#streetrush-directions .theme-heritage .sr-menu-intro h1 span {font-family:'Songti SC',serif;font-size:1.8cqw;margin-top:.8cqw}
+#streetrush-directions .theme-heritage .sr-race-info {color:#536358;font-family:Georgia,'Songti SC',serif;font-size:.9cqw;gap:.6cqw}
+#streetrush-directions .theme-heritage .sr-race-info b {color:#153b34;font-size:1.15cqw}
+#streetrush-directions .theme-heritage .sr-menu-actions {left:5%;top:57%;width:29%;gap:0;padding:1cqw 2.2cqw 1.6cqw;background:#f1e8d6;color:#163c35}
+#streetrush-directions .theme-heritage .sr-action {background:transparent!important;border:0!important;border-bottom:1px solid #526a5735!important;font-size:1.2cqw!important;padding:1.1cqw .2cqw!important;min-height:3.4cqw}
+#streetrush-directions .theme-heritage .sr-action.primary {background:#153f36!important;color:#f7ebd2!important;padding:1cqw!important;font-weight:500;margin-bottom:.4cqw}
+#streetrush-directions .theme-heritage .sr-current {right:6%;bottom:17%;width:36%;border-top:1px solid #d4bd85;border-bottom:1px solid #d4bd85;padding:1.2cqw .1cqw}
+#streetrush-directions .theme-heritage .sr-current strong {font-size:2.15cqw;font-weight:500}
+#streetrush-directions .theme-heritage .sr-current .sr-car-no {border:1px solid #ddcfac;border-radius:50%;width:5cqw;height:5cqw;display:grid;place-items:center;font:500 3cqw/1 var(--sr-display)}
+#streetrush-directions .theme-heritage .sr-game-footer {font-family:Arial,'PingFang SC',sans-serif}
+#streetrush-directions .theme-heritage .sr-garage-heading {left:5%;top:19%;width:29%;max-width:none;background:#f1e8d6;color:#173c35;padding:1.7cqw 2cqw;border-top:.35cqw solid #d5b376}
+#streetrush-directions .theme-heritage .sr-garage-heading h1 {font-size:2.6cqw;font-weight:500;line-height:1.05}
+#streetrush-directions .theme-heritage .sr-car-index {color:#6e735a;font-family:var(--sr-display)}
+#streetrush-directions .theme-heritage .sr-car-type {color:#526052}
+#streetrush-directions .theme-heritage .sr-car-stats {left:5%;top:40%;width:29%;background:#f1e8d6;color:#173c35;padding:1.6cqw 2cqw;gap:1cqw;--sr-muted:#617059;--sr-line:#153d3633;--sr-accent:#1c5444}
+#streetrush-directions .theme-heritage .sr-records {left:5%;top:66%;width:29%;gap:1.3cqw;background:#f1e8d6;color:#63715c;padding:1.2cqw 2cqw}
+#streetrush-directions .theme-heritage .sr-records strong {color:#153d35;font-size:1.45cqw}
+#streetrush-directions .theme-heritage .sr-car-strip {left:38%;right:5%;bottom:11%;gap:0;border-top:1px solid #d7c08b;border-bottom:1px solid #d7c08b}
+#streetrush-directions .theme-heritage .sr-car-option {background:#133b34f5!important;border:0!important;border-right:1px solid #d9c89455!important;text-align:center;padding:1.3cqw .5cqw!important}
+#streetrush-directions .theme-heritage .sr-car-option[aria-pressed=true] {background:#e6d6b8!important;color:#153d35}
+#streetrush-directions .theme-heritage .sr-garage-confirm {right:5%;bottom:29%;width:23%;background:#153d35;padding:.6cqw 1.2cqw;border:1px solid #d9c391}
+#streetrush-directions .theme-heritage .sr-garage-confirm .sr-action {margin:0}
+#streetrush-directions .theme-heritage .sr-medals {right:5%;top:21%;font-family:Arial,'PingFang SC',sans-serif}
+#streetrush-directions .theme-heritage .sr-hud-progress {top:5%;left:4%;border:1px solid #d7bf8a;gap:0}
+#streetrush-directions .theme-heritage .sr-lap {background:#f0e6cf;color:#163e36}
+#streetrush-directions .theme-heritage .sr-checkpoints {left:42%;top:5.5%;border-top:1px solid #d7bf8a;border-bottom:1px solid #d7bf8a}
+#streetrush-directions .theme-heritage .sr-timing {left:4%;top:23%;background:#f1e8d6;color:#163c35;--sr-muted:#536958;--sr-good:#1b6a3e;--sr-line:#284f3438;width:23%;border-top:.3cqw solid #cfab6b}
+#streetrush-directions .theme-heritage .sr-goal {bottom:16%;border:1px solid #d7bf8a}
+#streetrush-directions .theme-heritage .sr-drive-unit {right:5%;bottom:14%;width:22%;aspect-ratio:1;border-radius:50%;border:.35cqw solid #d7c493;background:#133b35fa;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2.1cqw;box-shadow:inset 0 0 0 .5cqw #12342e,inset 0 0 0 .58cqw #d1be8870}
+#streetrush-directions .theme-heritage .sr-rpm-label {width:85%;font-size:.75cqw}
+#streetrush-directions .theme-heritage .sr-revs {width:86%;margin:.7cqw 0;height:.5cqw}
+#streetrush-directions .theme-heritage .sr-speed-row {display:block;text-align:center}
+#streetrush-directions .theme-heritage .sr-speed strong {font-size:5.4cqw;font-weight:500}
+#streetrush-directions .theme-heritage .sr-speed {display:block}
+#streetrush-directions .theme-heritage .sr-speed small {font-size:.75cqw}
+#streetrush-directions .theme-heritage .sr-gear {padding:0;border:0;display:flex;align-items:center;justify-content:center;gap:.7cqw;margin-top:.5cqw}
+#streetrush-directions .theme-heritage .sr-gear strong {font-size:1.9cqw}
+#streetrush-directions .theme-heritage .sr-gear small {margin:0}
+#streetrush-directions .theme-heritage .sr-pedals {width:95%;margin-top:.6cqw;font-family:Arial,'PingFang SC',sans-serif}
+/* 04: arcade cabinet, modular cobalt panels, hard pixels and orange */
+#streetrush-directions .theme-arcade {--sr-accent:#ffba49;--sr-dark:#103da2;--sr-panel:#0f3292f5;--sr-ink:#fff;--sr-muted:#d4e6ff;--sr-line:#7eaafa75;--sr-good:#acffca;--sr-display:'Orbitron',monospace;--sr-number:'Orbitron',monospace}
+#streetrush-directions .theme-arcade .sr-brand {font-size:1.8cqw;letter-spacing:-.04cqw;text-shadow:.15cqw .15cqw #1246b2}
+#streetrush-directions .theme-arcade .sr-game-header {background:#0d348bec;inset:0 0 auto;padding:1.6cqw 3.5cqw;border-bottom:.3cqw solid #80b4ff}
+#streetrush-directions .theme-arcade .sr-wash {background:linear-gradient(0deg,#062365d9,transparent 70%)}
+#streetrush-directions .theme-arcade .sr-menu-intro {left:4%;top:19%;width:46%;background:#123e9ee8;padding:1.6cqw 2cqw 1.8cqw;border:.25cqw solid #6faff8;box-shadow:.65cqw .65cqw 0 #102260}
+#streetrush-directions .theme-arcade .sr-menu-intro h1 {font-size:3.8cqw;line-height:1.15;letter-spacing:.03cqw;font-weight:900;text-shadow:.2cqw .2cqw #092458}
+#streetrush-directions .theme-arcade .sr-menu-intro h1 span {font-size:1.65cqw;letter-spacing:.7cqw;background:#f8bd53;color:#143067;padding:.4cqw .7cqw;display:table;margin-top:.6cqw}
+#streetrush-directions .theme-arcade .sr-section-label {font-size:.95cqw;letter-spacing:.2cqw}
+#streetrush-directions .theme-arcade .sr-menu-actions {left:4%;top:58%;width:46%;display:grid;grid-template-columns:1fr 1fr;gap:1cqw}
+#streetrush-directions .theme-arcade .sr-menu-actions .primary {grid-column:span 2;font-size:1.75cqw!important;min-height:5cqw}
+#streetrush-directions .theme-arcade .sr-action {box-shadow:.4cqw .4cqw #081a56;border:.2cqw solid #75a3f1!important;padding:1.1cqw 1.3cqw!important;font-weight:700}
+#streetrush-directions .theme-arcade .sr-action.primary {border-color:#ffdd9d!important}
+#streetrush-directions .theme-arcade .sr-current {right:4%;bottom:15%;width:37%;padding:1.3cqw 1.5cqw;background:#113995;border:.25cqw solid #69a7f4;box-shadow:.55cqw .55cqw #0a205d}
+#streetrush-directions .theme-arcade .sr-current strong {font-size:1.45cqw;line-height:1.3}
+#streetrush-directions .theme-arcade .sr-current .sr-car-no {font-size:2.6cqw}
+#streetrush-directions .theme-arcade .sr-garage-heading {left:4%;top:19%;max-width:34%;border-left:.7cqw solid var(--sr-accent);padding:1cqw 1.5cqw;background:#103993f5}
+#streetrush-directions .theme-arcade .sr-garage-heading h1 {font-size:2.3cqw;line-height:1.1}
+#streetrush-directions .theme-arcade .sr-car-stats {left:4%;top:44%;width:28%;padding:1.1cqw 1.5cqw;background:#103993f5;gap:1cqw}
+#streetrush-directions .theme-arcade .sr-stat-top b {font-size:1.6cqw}
+#streetrush-directions .theme-arcade .sr-stat-meter {height:.55cqw;background:#82a5eb55}
+#streetrush-directions .theme-arcade .sr-stat-meter i {background:repeating-linear-gradient(90deg,var(--sr-accent) 0 1.5cqw,transparent 1.5cqw 1.8cqw)}
+#streetrush-directions .theme-arcade .sr-records {top:71%;width:31%;gap:1.5cqw}
+#streetrush-directions .theme-arcade .sr-records strong {font-size:1.25cqw}
+#streetrush-directions .theme-arcade .sr-medals {background:#113994f2;padding:1cqw 1.3cqw;top:19%;border:.2cqw solid #6faafa}
+#streetrush-directions .theme-arcade .sr-medal-row b {font-size:1.2cqw}
+#streetrush-directions .theme-arcade .sr-car-option {border:.2cqw solid #659aec!important;padding:.9cqw .6cqw!important}
+#streetrush-directions .theme-arcade .sr-car-option[aria-pressed=true] {color:#14336c;background:#ffbd50!important;border-color:#ffe5ad!important;transform:translateY(-.5cqw);box-shadow:0 .5cqw #ce8430}
+#streetrush-directions .theme-arcade .sr-lap {border:.25cqw solid #ffdd95;box-shadow:.45cqw .45cqw #092968}
+#streetrush-directions .theme-arcade .sr-lap strong {font-size:3cqw;line-height:1.25}
+#streetrush-directions .theme-arcade .sr-total {border:.2cqw solid #80b5fb;padding:1cqw 1.1cqw}
+#streetrush-directions .theme-arcade .sr-total strong {font-size:1.8cqw;line-height:1.9}
+#streetrush-directions .theme-arcade .sr-hud-progress {gap:1cqw}
+#streetrush-directions .theme-arcade .sr-checkpoints {top:6%;left:48%;width:19%;border:.2cqw solid #6faaff;box-shadow:.4cqw .4cqw #092365}
+#streetrush-directions .theme-arcade .sr-timing {left:4%;top:24%;width:27%;border:.22cqw solid #6faaff;box-shadow:.45cqw .45cqw #092365}
+#streetrush-directions .theme-arcade .sr-timing-row strong {font-size:1.7cqw}
+#streetrush-directions .theme-arcade .sr-timing-row:first-child strong {font-size:2.15cqw}
+#streetrush-directions .theme-arcade .sr-delta {font-size:.95cqw}
+#streetrush-directions .theme-arcade .sr-goal {left:auto;right:4%;top:20%;bottom:auto;width:24%;border:.2cqw solid #ffca65;background:#092d85}
+#streetrush-directions .theme-arcade .sr-goal strong {font-size:1.65cqw}
+#streetrush-directions .theme-arcade .sr-drive-unit {right:4%;bottom:14%;width:30%;border:.25cqw solid #6faaff;box-shadow:.6cqw .6cqw #082566}
+#streetrush-directions .theme-arcade .sr-speed strong {font-size:5.9cqw;font-weight:700;letter-spacing:-.4cqw}
+#streetrush-directions .theme-arcade .sr-gear strong {font-size:2.7cqw}
+#streetrush-directions .theme-arcade .sr-state {background:#10398fe8;padding:.7cqw 1cqw;border-left:.3cqw solid #ffbb53}
+#streetrush-directions .theme-arcade.screen-garage .sr-scene {transform:translateX(-7%) scale(1.55)!important}
+#streetrush-directions .theme-arcade .sr-garage-heading {left:67%;width:29%;max-width:29%;padding:1cqw 1.3cqw}
+#streetrush-directions .theme-arcade .sr-garage-heading h1 {font-size:2cqw}
+#streetrush-directions .theme-arcade .sr-car-stats {left:67%;width:29%;top:44%}
+#streetrush-directions .theme-arcade .sr-records {left:67%;top:70%;width:29%}
+#streetrush-directions .theme-arcade .sr-medals {left:4%;right:auto;top:19%;padding:1.3cqw}
+#streetrush-directions .theme-arcade .sr-medal-row {gap:1cqw}
+#streetrush-directions .theme-arcade .sr-car-strip {left:4%;right:auto;top:35%;bottom:auto;width:24%;grid-template-columns:repeat(2,1fr);gap:1cqw}
+#streetrush-directions .theme-arcade .sr-car-option {min-height:5.6cqw;padding:1.1cqw!important;font-size:1.1cqw!important}
+#streetrush-directions .theme-arcade .sr-garage-confirm {right:4%;width:29%;bottom:10%}
+#streetrush-directions .theme-arcade .sr-car-arrows {left:31%;right:37%}
+/* 05: light glass navigation, centered identity, horizontal cockpit */
+#streetrush-directions .theme-aero {--sr-accent:#69dfd4;--sr-dark:#f3f7f5;--sr-panel:#17282deb;--sr-ink:#fff;--sr-muted:#cbdcdd;--sr-line:#c7d8d840;--sr-good:#96e5bf;--sr-display:'Inter','Helvetica Neue',Arial,sans-serif;--sr-number:'Inter','Helvetica Neue',Arial,sans-serif}
+#streetrush-directions .theme-aero .sr-brand {font-size:1.55cqw;font-weight:600;letter-spacing:.42cqw}
+#streetrush-directions .theme-aero .sr-brand em {color:var(--sr-ink)}
+#streetrush-directions .theme-aero .sr-utilities button {color:#233e41;border:0;border-radius:2cqw;font-size:.95cqw;padding:.75cqw 1.3cqw}
+#streetrush-directions .theme-aero .sr-wash {background:linear-gradient(0deg,#102227fa,transparent 65%),linear-gradient(180deg,#143139aa,transparent 38%)}
+#streetrush-directions .theme-aero .sr-menu-intro {left:5%;top:20%;width:41%}
+#streetrush-directions .theme-aero.screen-menu .sr-menu-intro {left:32%;width:63%;text-align:center;top:21%}
+#streetrush-directions .theme-aero.screen-menu .sr-menu-intro h1 br {display:none}
+#streetrush-directions .theme-aero .sr-section-label {font-size:.85cqw;letter-spacing:.3cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-menu-intro h1 {font-size:4.3cqw;line-height:1.1;letter-spacing:-.2cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-menu-intro h1 span {font-weight:400;font-size:1.65cqw;letter-spacing:.45cqw;margin-top:1cqw}
+#streetrush-directions .theme-aero .sr-race-info {margin-top:1.4cqw}
+#streetrush-directions .theme-aero .sr-menu-actions {top:auto;bottom:13%;left:5%;width:54%;display:flex;gap:.75cqw;background:#f3f7f4;padding:.7cqw;border-radius:5cqw}
+#streetrush-directions .theme-aero .sr-action {border:0!important;background:transparent!important;color:#233f41;border-radius:4cqw;min-height:3.6cqw;font-size:1.05cqw!important;padding:1.1cqw 1.2cqw!important;gap:1cqw}
+#streetrush-directions .theme-aero .sr-action.primary {background:#173d40!important;color:#fff!important;font-weight:500}
+#streetrush-directions .theme-aero .sr-action small {font-size:.7cqw;letter-spacing:0}
+#streetrush-directions .theme-aero .sr-current {right:5%;bottom:14%;width:31%;border-bottom:0;padding-bottom:0}
+#streetrush-directions .theme-aero .sr-current strong {font-size:1.8cqw;letter-spacing:-.08cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-current small {font-size:.9cqw;letter-spacing:.2cqw}
+#streetrush-directions .theme-aero .sr-current .sr-car-no {font-size:2.6cqw;font-weight:400}
+#streetrush-directions .theme-aero .sr-garage-heading {top:21%;left:5%;width:31%}
+#streetrush-directions .theme-aero .sr-garage-heading h1 {font-size:3cqw;line-height:1.08;font-weight:500;letter-spacing:-.1cqw}
+#streetrush-directions .theme-aero .sr-car-stats {top:43%;left:5%;width:25%;gap:1.2cqw}
+#streetrush-directions .theme-aero .sr-stat-top b {font-size:1.5cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-stat-meter {height:.22cqw;border-radius:1cqw}
+#streetrush-directions .theme-aero .sr-records {top:66%;left:5%;width:30%;gap:2cqw}
+#streetrush-directions .theme-aero .sr-records strong {font-size:1.2cqw;font-weight:400}
+#streetrush-directions .theme-aero .sr-medals {top:21%;right:5%;background:#193a3bd9;padding:1.2cqw 1.6cqw;border-radius:1.3cqw}
+#streetrush-directions .theme-aero .sr-medal-row b {font-size:1.15cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-car-strip {left:5%;right:28%;bottom:11%;gap:.5cqw;background:#f3f7f4;padding:.55cqw;border-radius:1.2cqw}
+#streetrush-directions .theme-aero .sr-car-option {border:0!important;border-radius:.8cqw;color:#233f41;font-size:.85cqw!important;background:transparent!important}
+#streetrush-directions .theme-aero .sr-car-option[aria-pressed=true] {background:#183f40!important;color:#fff}
+#streetrush-directions .theme-aero .sr-garage-confirm {right:5%;bottom:12%;width:20%;background:#f3f7f4;border-radius:4cqw;padding:.5cqw}
+#streetrush-directions .theme-aero .sr-car-arrows button {background:#f3f7f4;color:#233f41;border:0;border-radius:50%}
+#streetrush-directions .theme-aero .sr-hud-progress {left:4%;top:5%;border-radius:1.2cqw;overflow:hidden;gap:0}
+#streetrush-directions .theme-aero .sr-lap {background:#f2f7f4;padding:1cqw 1.4cqw}
+#streetrush-directions .theme-aero .sr-lap strong {font-size:2.7cqw;font-weight:500;line-height:1.2}
+#streetrush-directions .theme-aero .sr-lap strong span {font-size:1.3cqw}
+#streetrush-directions .theme-aero .sr-total strong {font-size:1.85cqw;font-weight:500;line-height:1.8}
+#streetrush-directions .theme-aero .sr-hud-menu button {border-radius:3cqw;border:0}
+#streetrush-directions .theme-aero .sr-checkpoints {left:43%;top:6%;border-radius:3cqw;padding:.8cqw 1.6cqw;width:18%}
+#streetrush-directions .theme-aero .sr-cp-track i {height:.22cqw;border-radius:.4cqw}
+#streetrush-directions .theme-aero .sr-timing {top:5%;left:auto;right:4%;width:26%;padding:1.2cqw 1.6cqw;border-radius:1.2cqw}
+#streetrush-directions .theme-aero .sr-hud-menu {top:auto;bottom:4%;right:4%}
+#streetrush-directions .theme-aero .sr-timing-row {padding:.65cqw 0}
+#streetrush-directions .theme-aero .sr-timing-row strong {font-size:1.5cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-timing-row:first-child strong {font-size:2.1cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-delta {font-size:.92cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-goal {left:4%;bottom:18%;width:22%;border:0;border-radius:1.2cqw;padding:1.15cqw 1.4cqw}
+#streetrush-directions .theme-aero .sr-goal strong {font-size:1.6cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-drive-unit {bottom:9%;right:31%;width:36%;border-radius:1.5cqw;padding:1cqw 1.5cqw;display:grid;grid-template-columns:1fr 2fr;column-gap:1.5cqw;align-items:center;background:#f1f7f4;--sr-ink:#183b3d;--sr-muted:#486265;--sr-accent:#226a65;--sr-line:#244f4333;color:#183b3d}
+#streetrush-directions .theme-aero .sr-rpm-label {grid-column:1;grid-row:1;font-size:.8cqw;align-self:end}
+#streetrush-directions .theme-aero .sr-revs {grid-column:1;grid-row:2;align-self:start;margin-top:.6cqw}
+#streetrush-directions .theme-aero .sr-speed-row {grid-column:2;grid-row:1/3;gap:1.2cqw}
+#streetrush-directions .theme-aero .sr-speed strong {font-size:4.4cqw;letter-spacing:-.2cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-gear strong {font-size:2.3cqw;font-weight:500}
+#streetrush-directions .theme-aero .sr-gear {padding-left:1cqw}
+#streetrush-directions .theme-aero .sr-pedals {grid-column:1/3;margin-top:.5cqw;gap:2cqw}
+#streetrush-directions .theme-aero .sr-hud-keys {left:35%;right:auto;bottom:3.3%;font-size:.85cqw}
+#streetrush-directions .theme-aero .sr-state {bottom:5%;font-size:.8cqw;gap:.7cqw}
+#streetrush-directions .theme-aero .sr-modal {border:0;border-radius:1.6cqw;color:#234344}
+#streetrush-directions .theme-aero .sr-modal .sr-action {background:#dce8e4!important}
+#streetrush-directions .theme-aero .sr-modal .primary {background:#173d40!important}
+#streetrush-directions .theme-heritage .sr-modal .sr-action {color:#f1e8d6;border-bottom:1px solid #d7c08b!important}
+#streetrush-directions .sr-overview-section {margin:18px 0 28px}
+#streetrush-directions .sr-overview-heading {display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 10px}
+#streetrush-directions .sr-overview-frames {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#streetrush-directions .sr-overview-frames figure {margin:0;min-width:0}
+#streetrush-directions .sr-overview-frames figcaption {display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:12px}
+#streetrush-directions .sr-overview-note {margin-top:8px;font-size:12px;line-height:1.7}
+#streetrush-directions .sr-mini .sr-frame {pointer-events:none}
+#streetrush-directions #sr-focus .sr-section-label,
+#streetrush-directions #sr-focus .sr-header-track,
+#streetrush-directions #sr-focus .sr-game-footer,
+#streetrush-directions #sr-focus .sr-current small,
+#streetrush-directions #sr-focus .sr-car-type,
+#streetrush-directions #sr-focus .sr-stat-top,
+#streetrush-directions #sr-focus .sr-stat-top small,
+#streetrush-directions #sr-focus .sr-medals,
+#streetrush-directions #sr-focus .sr-records,
+#streetrush-directions #sr-focus .sr-lap small,
+#streetrush-directions #sr-focus .sr-total small,
+#streetrush-directions #sr-focus .sr-cp-top,
+#streetrush-directions #sr-focus .sr-timing-label,
+#streetrush-directions #sr-focus .sr-valid,
+#streetrush-directions #sr-focus .sr-goal small,
+#streetrush-directions #sr-focus .sr-rpm-label,
+#streetrush-directions #sr-focus .sr-speed small,
+#streetrush-directions #sr-focus .sr-gear small,
+#streetrush-directions #sr-focus .sr-pedals,
+#streetrush-directions #sr-focus .sr-state,
+#streetrush-directions #sr-focus .sr-hud-keys {font-size:max(11px,.9cqw)}
+#streetrush-directions #sr-focus .sr-car-option {font-size:max(11px,.9cqw)!important}
+#streetrush-directions #sr-focus .sr-car-option small {font-size:max(9px,.68cqw);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#streetrush-directions #sr-focus .sr-action {font-size:max(12px,1.35cqw)!important}
+#streetrush-directions #sr-focus .sr-utilities button,#streetrush-directions #sr-focus .sr-hud-menu button {font-size:max(11px,1cqw)}
+#streetrush-directions #sr-focus .sr-pedal {grid-template-columns:max(24px,2.3cqw) 1fr;white-space:nowrap}
+#streetrush-directions #sr-focus .sr-gear {min-width:max(40px,4cqw)}
+#streetrush-directions #sr-focus .sr-gear small {white-space:nowrap}
+@media(max-width:600px) {
+ #streetrush-directions .sr-overview-frames {grid-template-columns:1fr}
+ #streetrush-directions .sr-review-controls {gap:6px}
+ #streetrush-directions #sr-focus .sr-frame {min-height:440px;aspect-ratio:auto;container-type:inline-size}
+ #streetrush-directions #sr-focus .sr-game-header {top:4%;left:5%;right:5%}
+ #streetrush-directions #sr-focus .sr-brand {font-size:4cqw}
+ #streetrush-directions #sr-focus .sr-header-track {display:none}
+ #streetrush-directions #sr-focus .sr-utilities button {font-size:2.5cqw;padding:2cqw}
+ #streetrush-directions #sr-focus .sr-menu-intro {top:17%;left:5%;width:65%;padding:3cqw}
+ #streetrush-directions #sr-focus .sr-section-label {font-size:2.5cqw;margin-bottom:2cqw}
+ #streetrush-directions #sr-focus .sr-menu-intro h1 {font-size:10cqw}
+ #streetrush-directions #sr-focus .sr-menu-intro h1 span {font-size:4.2cqw}
+ #streetrush-directions #sr-focus .theme-aero .sr-menu-intro h1 br {display:block}
+ #streetrush-directions #sr-focus .sr-race-info {font-size:2.6cqw;gap:2cqw}
+ #streetrush-directions #sr-focus .sr-race-info b {font-size:3cqw}
+ #streetrush-directions #sr-focus .sr-menu-actions {top:auto;bottom:9%;left:5%;width:90%;display:flex;padding:1.5cqw;gap:1.5cqw}
+ #streetrush-directions #sr-focus .sr-menu-actions .sr-action {width:auto;flex:1;min-height:44px;height:auto;font-size:3cqw!important;padding:2cqw!important;transform:none}
+ #streetrush-directions #sr-focus .sr-action small {display:none}
+ #streetrush-directions #sr-focus .sr-current {bottom:26%;right:6%;width:55%;padding:2cqw;transform:none}
+ #streetrush-directions #sr-focus .sr-current small {font-size:2.5cqw}
+ #streetrush-directions #sr-focus .sr-current strong {font-size:3.6cqw}
+ #streetrush-directions #sr-focus .sr-car-no {font-size:6cqw;width:auto;height:auto}
+ #streetrush-directions #sr-focus .sr-game-footer {font-size:2.6cqw;bottom:3%;display:block}
+ #streetrush-directions #sr-focus .sr-game-footer>span:first-child {display:none}
+ #streetrush-directions #sr-focus .screen-garage .sr-scene {transform:scale(1)!important;object-fit:cover;object-position:62% 50%}
+ #streetrush-directions #sr-focus .sr-garage-heading {top:16%;left:5%;width:51%;max-width:none;padding:2cqw}
+ #streetrush-directions #sr-focus .sr-garage-heading h1 {font-size:5cqw}
+ #streetrush-directions #sr-focus .sr-car-index {font-size:3cqw}
+ #streetrush-directions #sr-focus .sr-car-type {font-size:2.6cqw}
+ #streetrush-directions #sr-focus .sr-car-stats {left:5%;top:39%;width:42%;padding:2cqw;gap:2.2cqw}
+ #streetrush-directions #sr-focus .sr-stat-top {font-size:2.6cqw}
+ #streetrush-directions #sr-focus .sr-stat-top b {font-size:4cqw}
+ #streetrush-directions #sr-focus .sr-stat-top small {font-size:2.5cqw}
+ #streetrush-directions #sr-focus .sr-stat-meter {height:.6cqw}
+ #streetrush-directions #sr-focus .sr-records {top:63%;left:5%;width:53%;font-size:2.4cqw;padding:1cqw;gap:3cqw}
+ #streetrush-directions #sr-focus .sr-records strong {font-size:2.8cqw}
+ #streetrush-directions #sr-focus .sr-medals {top:18%;right:4%;max-width:34%;font-size:2.6cqw;padding:2cqw}
+ #streetrush-directions #sr-focus .sr-medal-row {display:grid;gap:1.5cqw;margin-top:2cqw}
+ #streetrush-directions #sr-focus .sr-medal-row b {font-size:2.8cqw}
+ #streetrush-directions #sr-focus .sr-medal-row i {width:1.3cqw;height:1.3cqw}
+ #streetrush-directions #sr-focus .sr-car-strip {left:5%;right:5%;top:auto;width:auto;bottom:16%;gap:1cqw;padding:1cqw;border-radius:2cqw;grid-template-columns:repeat(6,1fr)}
+ #streetrush-directions #sr-focus .sr-car-option {font-size:2.5cqw!important;min-height:44px;padding:1.5cqw .5cqw!important}
+ #streetrush-directions #sr-focus .sr-car-option small {font-size:2cqw}
+ #streetrush-directions #sr-focus .sr-garage-confirm {right:5%;bottom:4%;width:44%;padding:.5cqw}
+ #streetrush-directions #sr-focus .sr-garage-confirm .sr-action {font-size:3cqw!important;min-height:44px;justify-content:center}
+ #streetrush-directions #sr-focus .screen-garage .sr-game-footer {bottom:7%;width:38%}
+ #streetrush-directions #sr-focus .sr-car-arrows {display:none}
+ #streetrush-directions #sr-focus .sr-hud-progress {left:4%;top:4%;gap:1cqw}
+ #streetrush-directions #sr-focus .sr-lap {padding:2cqw 2.5cqw}
+ #streetrush-directions #sr-focus .sr-lap small,#streetrush-directions #sr-focus .sr-total small {font-size:2.6cqw}
+ #streetrush-directions #sr-focus .sr-lap strong {font-size:7cqw}
+ #streetrush-directions #sr-focus .sr-lap strong span {font-size:3.5cqw}
+ #streetrush-directions #sr-focus .sr-total {padding:2cqw}
+ #streetrush-directions #sr-focus .sr-total strong {font-size:4.7cqw}
+ #streetrush-directions #sr-focus .sr-hud-menu {top:4%;right:4%;bottom:auto}
+ #streetrush-directions #sr-focus .sr-hud-menu button {font-size:2.6cqw;padding:2cqw;min-height:44px}
+ #streetrush-directions #sr-focus .sr-hud-menu button:last-child {display:none}
+ #streetrush-directions #sr-focus .sr-checkpoints {left:4%;top:19%;width:38%;padding:1.8cqw}
+ #streetrush-directions #sr-focus .sr-cp-top {font-size:2.6cqw}
+ #streetrush-directions #sr-focus .sr-cp-track {gap:.7cqw}
+ #streetrush-directions #sr-focus .sr-cp-track i {height:.65cqw}
+ #streetrush-directions #sr-focus .sr-timing {top:29%;left:4%;right:auto;width:43%;padding:2cqw}
+ #streetrush-directions #sr-focus .sr-timing-label {font-size:2.6cqw}
+ #streetrush-directions #sr-focus .sr-timing-row {padding:1.2cqw 0}
+ #streetrush-directions #sr-focus .sr-valid {font-size:2.2cqw}
+ #streetrush-directions #sr-focus .sr-timing-row strong {font-size:3.5cqw}
+ #streetrush-directions #sr-focus .sr-timing-row:first-child strong {font-size:4.5cqw}
+ #streetrush-directions #sr-focus .sr-delta {font-size:2.6cqw}
+ #streetrush-directions #sr-focus .sr-goal {left:4%;top:auto;bottom:19%;width:43%;padding:2cqw}
+ #streetrush-directions #sr-focus .sr-goal small {font-size:2.6cqw}
+ #streetrush-directions #sr-focus .sr-goal strong {font-size:4cqw}
+ #streetrush-directions #sr-focus .sr-drive-unit {right:4%;bottom:18%;width:43%;padding:2cqw;aspect-ratio:auto;border-radius:1.5cqw;display:block;transform:none}
+ #streetrush-directions #sr-focus .sr-rpm-label {font-size:2.6cqw;width:100%}
+ #streetrush-directions #sr-focus .sr-revs {height:1.1cqw;width:100%;margin:1.2cqw 0}
+ #streetrush-directions #sr-focus .sr-speed-row {display:flex;padding:1cqw;gap:.5cqw}
+ #streetrush-directions #sr-focus .sr-speed {display:flex;gap:.8cqw}
+ #streetrush-directions #sr-focus .sr-speed strong {font-size:9cqw;letter-spacing:-.4cqw}
+ #streetrush-directions #sr-focus .sr-speed small {font-size:2.2cqw}
+ #streetrush-directions #sr-focus .sr-gear {display:block;margin:0;padding-left:1.5cqw}
+ #streetrush-directions #sr-focus .sr-gear strong {font-size:5cqw}
+ #streetrush-directions #sr-focus .sr-gear small {font-size:2.3cqw}
+ #streetrush-directions #sr-focus .sr-pedals {font-size:2.6cqw;width:100%;gap:2cqw}
+ #streetrush-directions #sr-focus .sr-pedal {grid-template-columns:6cqw 1fr}
+ #streetrush-directions #sr-focus .sr-pedal i {height:.6cqw}
+ #streetrush-directions #sr-focus .sr-state {font-size:2.4cqw;bottom:11%;gap:2cqw;left:4%}
+ #streetrush-directions #sr-focus .sr-hud-keys {bottom:5%;left:4%;right:4%;font-size:2.6cqw;text-align:center}
+ #streetrush-directions #sr-focus .sr-modal {width:82%;padding:5cqw}
+ #streetrush-directions #sr-focus .sr-modal h2 {font-size:7cqw;margin-bottom:4cqw}
+ #streetrush-directions #sr-focus .sr-modal .sr-action {min-height:44px;padding:3cqw!important;font-size:3.5cqw!important}
+ #streetrush-directions #sr-focus .sr-settings-row {font-size:3cqw!important;padding:3cqw 0!important}
+}
+</style>
+<script>
+(()=>{
+ const root=document.getElementById('streetrush-directions');
+ const IMAGES=/*SCENE_DATA*/{};
+ const cars=[
+  {id:'mx5',name:'MAZDA MX-5 NA',short:'MX-5 NA',make:'MAZDA',drive:'后轮驱动',speed:185,accel:68,grip:82,medals:['06:45','07:30','08:45']},
+  {id:'m3e30',name:'BMW M3 E30',short:'M3 E30',make:'BMW',drive:'后轮驱动',speed:230,accel:78,grip:86,medals:['05:45','06:30','07:45']},
+  {id:'gt3rs',name:'PORSCHE GT3 RS',short:'GT3 RS',make:'PORSCHE',drive:'后轮驱动',speed:296,accel:96,grip:98,medals:['04:15','05:00','06:00']},
+  {id:'lp700',name:'LAMBORGHINI LP700',short:'LP700',make:'LAMBORGHINI',drive:'四轮驱动',speed:350,accel:99,grip:91,medals:['04:00','04:45','05:45']},
+  {id:'amggt3',name:'MERCEDES AMG GT3',short:'AMG GT3',make:'MERCEDES',drive:'后轮驱动',speed:310,accel:95,grip:97,medals:['04:00','04:45','05:45']},
+  {id:'m5g90',name:'BMW M5 G90',short:'M5 G90',make:'BMW',drive:'四轮驱动',speed:305,accel:94,grip:89,medals:['04:30','05:15','06:15']}
+ ];
+ const themes=[
+  {id:'apex',name:'赛道计时',title:'APEX / 01',desc:'左侧垂直菜单与计时列，右下集中仪表。Barlow Condensed 窄体数字、炭黑与荧光黄、切角和细分隔线；以圈速扫读为优先，适合三圈计时挑战。'},
+  {id:'shift',name:'街头竞速',title:'SHIFT / 02',desc:'主菜单横向展开，选车采用斜切标签，HUD 计时移到右侧。Archivo Black 粗黑斜体、酸橙与紫色、错位投影；动感鲜明，驾驶时收敛装饰。'},
+  {id:'heritage',name:'经典车会',title:'CLUB / 03',desc:'奶油色参赛车卡搭配横排车库，HUD 使用圆形仪表。Bodoni Moda 与宋体标题、赛车绿与黄铜、细双线；适合经典车型，关键计时使用清晰的窄体数字。'},
+  {id:'arcade',name:'日系街机',title:'GRID / 04',desc:'模块化大按钮，左侧六车选择格与右侧参数，圈数和奖牌分居两侧。Orbitron 方形数字、钴蓝与橙黄、像素分段条；选中状态鲜明，操作直接。'},
+  {id:'aero',name:'极简座舱',title:'AERO / 05',desc:'居中赛事标题与底部胶囊导航，右上计时，车速和挡位居中靠下。Inter 无衬线、雾白与青绿、圆角与留白；画面通透，速度靠近驾驶视线。'}
+ ];
+ const state={theme:'apex',screen:'menu',car:0,overview:true,modal:null,sound:true,mode:'AT'};
+ const sceneLabel={menu:'主菜单',garage:'选车',hud:'驾驶 HUD'};
+ const action=(label,code,act,primary=false)=>`<button class="sr-action ${primary?'primary':''}" data-act="${act}"><span>${label}</span><small>${code}</small></button>`;
+ const brand='<div class="sr-brand">STREET <em>RUSH</em></div>';
+ const header=()=>`<header class="sr-game-header">${brand}<div class="sr-header-track">龙湾国际赛道 &nbsp; / &nbsp; 午后 · 干地</div><div class="sr-utilities"><button data-act="sound">声音 ${state.sound?'开':'关'}</button><button data-act="settings">设置</button></div></header>`;
+ const footer=()=>`<footer class="sr-game-footer"><span><kbd>W A S D</kbd>驾驶 &nbsp; <kbd>空格</kbd>手刹</span><span><kbd>← →</kbd>选车 &nbsp; <kbd>Enter</kbd>发车 &nbsp; <kbd>Esc</kbd>返回</span></footer>`;
+ function menu(c){return `${header()}<div class="sr-menu-intro"><div class="sr-section-label">龙湾国际赛道</div><h1>TIME<br> ATTACK<span>三圈计时挑战</span></h1></div><nav class="sr-menu-actions" aria-label="主菜单">${action('开始比赛','ENTER','start',true)}${action('选择车辆','GARAGE','garage')}${action('驾驶设置','SETTINGS','settings')}</nav><div class="sr-current"><div><small>当前车辆 · ${c.drive}</small><strong>${c.name}</strong></div><b class="sr-car-no">${String(state.car+1).padStart(2,'0')}</b></div>${footer()}`;}
+ function garage(c){return `${header()}<div class="sr-garage-heading"><div class="sr-car-index">${String(state.car+1).padStart(2,'0')} / 06</div><h1>${c.name}</h1><div class="sr-car-type">${c.drive} &nbsp; · &nbsp; 已就绪</div></div><div class="sr-car-stats">${[['极速',c.speed,'km/h',c.speed/350*100],['加速',c.accel,'/ 100',c.accel],['操控',c.grip,'/ 100',c.grip]].map(([label,value,unit,pct])=>`<div><div class="sr-stat-top"><span>${label}</span><span><b>${value}</b> <small>${unit}</small></span></div><div class="sr-stat-meter"><i style="width:${pct}%"></i></div></div>`).join('')}</div><div class="sr-medals"><span>三圈奖牌目标</span><div class="sr-medal-row">${c.medals.map((m,i)=>`<span><i></i>${['金','银','铜'][i]} <b>${m}</b></span>`).join('')}</div></div><div class="sr-records"><div>最佳单圈<strong>${state.car===0?'02:20.164':'--:--.---'}</strong></div><div>三圈最佳<strong>${state.car===0?'07:08.620':'--:--.---'}</strong></div></div><div class="sr-car-arrows"><button data-act="prev" aria-label="上一辆车">←</button><button data-act="next" aria-label="下一辆车">→</button></div><nav class="sr-car-strip" aria-label="车辆">${cars.map((c,i)=>`<button class="sr-car-option" aria-pressed="${state.car===i}" data-car="${i}"><small>${c.make}</small>${c.short}</button>`).join('')}</nav><div class="sr-garage-confirm">${action('确认并发车','ENTER','start',true)}</div>${footer()}`;}
+ function timing(){return `<div class="sr-timing"><div class="sr-timing-row"><div class="sr-timing-label"><span>本圈计时</span><span class="sr-valid">有效</span></div><div class="sr-timing-value"><strong>01:06.318</strong><span class="sr-delta">−0.418</span></div></div><div class="sr-timing-row"><div class="sr-timing-label"><span>分段 2 / 3</span><span>对比最佳</span></div><div class="sr-timing-value"><strong>00:22.154</strong><span class="sr-delta">−0.284</span></div></div><div class="sr-timing-row"><div class="sr-timing-label"><span>最佳单圈</span><span>本机</span></div><div class="sr-timing-value"><strong>02:20.164</strong></div></div></div>`;}
+ function driveUnit(){return `<div class="sr-drive-unit"><div class="sr-rpm-label"><span>转速</span><b>5,420 RPM</b></div><div class="sr-revs" aria-label="转速 5420">${Array.from({length:16},(_,i)=>`<i class="${i<12?'on':i>13?'limit':''}"></i>`).join('')}</div><div class="sr-speed-row"><div class="sr-speed"><strong>118</strong><small>km/h</small></div><div class="sr-gear"><strong>4</strong><small>${state.mode} ${state.mode==='AT'?'自动':'手动'}</small></div></div><div class="sr-pedals"><div class="sr-pedal"><span>油门</span><i><b></b></i></div><div class="sr-pedal"><span>刹车</span><i><b></b></i></div></div></div>`;}
+ function hud(){return `<div class="sr-hud-progress"><div class="sr-lap"><small>圈数</small><strong>2<span> / 3</span></strong></div><div class="sr-total"><small>总用时</small><strong>03:26.482</strong></div></div><div class="sr-hud-menu"><button data-act="pause">暂停 <b>Ⅱ</b></button><button data-act="settings">设置</button></div><div class="sr-checkpoints"><div class="sr-cp-top"><span>检查点</span><b>6 / 10</b></div><div class="sr-cp-track">${Array.from({length:10},(_,i)=>`<i class="${i<6?'passed':''}"></i>`).join('')}</div></div>${timing()}<div class="sr-goal"><small>下一目标 · 金牌</small><strong>06:45</strong><span class="sr-delta">预计 −17.846</span></div>${driveUnit()}<div class="sr-state"><span><b>柏油</b></span><span>接地 <b>4 / 4</b></span><span>辅助 <b>就绪</b></span></div><div class="sr-hud-keys"><kbd>C</kbd> 自动 / 手动 &nbsp; <kbd>Q / E</kbd> 换挡 &nbsp; <kbd>R</kbd> 重置</div>`;}
+ function modal(){if(!state.modal)return '';return `<div class="sr-modal-shade"><section class="sr-modal" role="dialog" aria-modal="true" aria-label="${state.modal==='pause'?'已暂停':'驾驶设置'}"><h2>${state.modal==='pause'?'已暂停':'驾驶设置'}</h2>${state.modal==='pause'?`${action('继续驾驶','ESC','close',true)}${action('重新开始','RESTART','restart')}${action('返回主菜单','MENU','menu')}`:`<div class="sr-settings-row"><span>驾驶</span><b>WASD / 方向键</b></div><div class="sr-settings-row"><span>手刹</span><b>空格</b></div><div class="sr-settings-row"><span>换挡</span><b>C 自动 / 手动 · Q / E</b></div>${action('声音 · '+(state.sound?'开':'关'),'SOUND','sound')}${action('变速箱 · '+(state.mode==='AT'?'自动':'手动'),'GEAR','mode')}${action('返回','ESC','close',true)}`}</section></div>`;}
+ function hudForCar(c){
+  const targets=c.medals.map(v=>{const [m,s]=v.split(':').map(Number);return (m*60+s)*1000;});
+  const projected=206482/16*30;
+  const index=projected>targets[2]?2:projected>targets[1]?1:0;
+  const delta=projected-targets[index];
+  let content=hud().replace('下一目标 · 金牌','下一目标 · '+['金牌','银牌','铜牌'][index]).replace('06:45',c.medals[index]).replace('预计 −17.846','预计 '+(delta<0?'−':'+')+(Math.abs(delta)/1000).toFixed(3));
+  if(delta>0)content=content.replace('<span class="sr-delta">预计','<span class="sr-delta sr-behind">预计');
+  if(state.car!==0)content=content.replace('02:20.164','--:--.---').replace('−0.418','—').replace('−0.284','—').replace('对比最佳','暂无对比');
+  return content;
+ }
+ function frame(t,s,mini=false){const c=cars[state.car];return `<section class="sr-frame theme-${t} screen-${s}" aria-label="${themes.find(x=>x.id===t).name} · ${sceneLabel[s]}"><img class="sr-scene" src="${IMAGES[s==='hud'?(state.car===0?'drive':'drive-'+c.id):c.id]||IMAGES.drive}" alt="${s==='hud'?c.name+' 龙湾赛道追车驾驶实景':c.name+' 龙湾赛道车辆实景'}"><div class="sr-wash"></div>${s==='menu'?menu(c):s==='garage'?garage(c):hudForCar(c)}${mini?'':modal()}</section>`;}
+ function render(){
+  root.querySelectorAll('[data-theme]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.theme===state.theme&&!state.overview)));
+  root.querySelectorAll('[data-screen]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.screen===state.screen&&!state.overview)));
+  root.querySelector('[data-overview]').setAttribute('aria-pressed',String(state.overview));
+  const focus=root.querySelector('#sr-focus'),overview=root.querySelector('#sr-overview'),description=root.querySelector('#sr-description');
+  focus.hidden=state.overview;overview.hidden=!state.overview;description.hidden=state.overview;
+  if(state.overview){focus.innerHTML='';overview.innerHTML=themes.map(t=>`<section class="sr-overview-section"><div class="sr-overview-heading"><strong>${t.title} &nbsp; ${t.name}</strong></div><div class="sr-overview-frames">${['menu','garage','hud'].map(s=>`<figure class="sr-mini">${frame(t.id,s,true)}<figcaption><span>${sceneLabel[s]}</span><button class="btn" data-expand="${t.id}:${s}">查看</button></figcaption></figure>`).join('')}</div><div class="sr-overview-note">${t.desc}</div></section>`).join('');}
+  else {overview.innerHTML='';focus.innerHTML=frame(state.theme,state.screen);description.textContent=themes.find(t=>t.id===state.theme).desc;}
+ }
+ root.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.theme){state.theme=b.dataset.theme;state.overview=false;state.modal=null;}
+  if(b.dataset.screen){state.screen=b.dataset.screen;state.overview=false;state.modal=null;}
+  if(b.hasAttribute('data-overview')){state.overview=!state.overview;state.modal=null;}
+  if(b.dataset.expand){[state.theme,state.screen]=b.dataset.expand.split(':');state.overview=false;state.modal=null;}
+  if(b.dataset.car!==undefined)state.car=Number(b.dataset.car);
+  const a=b.dataset.act;
+  if(a==='start'||a==='restart'){state.screen='hud';state.modal=null;}
+  if(a==='garage')state.screen='garage';
+  if(a==='menu'){state.screen='menu';state.modal=null;}
+  if(a==='prev'||a==='next')state.car=(state.car+(a==='prev'?5:1))%6;
+  if(a==='settings'||a==='pause')state.modal=a;
+  if(a==='close')state.modal=null;
+  if(a==='sound')state.sound=!state.sound;
+  if(a==='mode')state.mode=state.mode==='AT'?'MT':'AT';
+  render();
+  if(state.modal){const frame=root.querySelector('#sr-focus .sr-frame');[...frame.children].filter(el=>!el.classList.contains('sr-modal-shade')).forEach(el=>el.inert=true);root.querySelector('.sr-modal button')?.focus();}
+  else if(a){const selector=a==='start'||a==='restart'||a==='close'&&state.screen==='hud'?'[data-act="pause"]':a==='garage'?'[data-car="'+state.car+'"]':'[data-act="'+a+'"]';root.querySelector('#sr-focus '+selector)?.focus();}
+  else if(b.dataset.car!==undefined)root.querySelector('#sr-focus [data-car="'+state.car+'"]')?.focus();
+ });
+ root.addEventListener('keydown',e=>{
+  if(e.key==='Tab'&&state.modal){const buttons=[...root.querySelectorAll('.sr-modal button')],first=buttons[0],last=buttons[buttons.length-1];if(e.shiftKey&&document.activeElement===first){last.focus();e.preventDefault();}else if(!e.shiftKey&&document.activeElement===last){first.focus();e.preventDefault();}}
+  if(e.key==='Escape'){state.modal?state.modal=null:state.screen==='hud'?state.modal='pause':state.screen='menu';e.preventDefault();render();}
+  if(!state.modal&&!state.overview&&state.screen==='garage'&&['ArrowLeft','ArrowRight'].includes(e.key)){state.car=(state.car+(e.key==='ArrowLeft'?5:1))%6;e.preventDefault();render();root.querySelector('#sr-focus [data-car="'+state.car+'"]')?.focus();}
+  if(!state.modal&&!state.overview&&state.screen==='garage'&&e.key==='Enter'&&e.target.hasAttribute('data-car')){state.screen='hud';e.preventDefault();render();root.querySelector('#sr-focus [data-act="pause"]')?.focus();}
+  if(!state.modal&&!state.overview&&state.screen==='hud'&&e.key.toLowerCase()==='c'){state.mode=state.mode==='AT'?'MT':'AT';e.preventDefault();render();}
+ });
+ render();
+ if(globalThis.Tweak){const tweak=new Tweak({container:root,onChange:render});tweak.addSelect(state,'theme',{label:'界面方案',options:themes.map(t=>({label:t.name,value:t.id}))});tweak.addSelect(state,'screen',{label:'游戏画面',options:[{label:'主菜单',value:'menu'},{label:'选车',value:'garage'},{label:'驾驶 HUD',value:'hud'}]});}
+})();
+</script>

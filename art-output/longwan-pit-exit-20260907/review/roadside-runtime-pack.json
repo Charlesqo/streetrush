@@ -1,0 +1,290 @@
+{
+  "source": "models/longwan_roadside_native.glb",
+  "output": "models/longwan_roadside_realtime.glb",
+  "source_bytes": 90561536,
+  "runtime_bytes": 83774500,
+  "reduction_percent": 7.5,
+  "geometry_uvs_material_connections_unchanged": true,
+  "maps": [
+    {
+      "name": "asphalt_track_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3694762,
+      "runtime_bytes": 3694762,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd",
+      "runtime_sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd"
+    },
+    {
+      "name": "asphalt_track_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2469962,
+      "runtime_bytes": 2469962,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "064f8469a0f9e2a9581551926f02eb760992a9b3e2a3890ec6f6ac00d582944a",
+      "runtime_sha256": "064f8469a0f9e2a9581551926f02eb760992a9b3e2a3890ec6f6ac00d582944a"
+    },
+    {
+      "name": "asphalt_track_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3779263,
+      "runtime_bytes": 2479128,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "742d1d79560bd661d5871afc857e981e25dcd563bfd24385cbd063ebcaeef06c",
+      "runtime_sha256": "20e556c8fa36881e6ff14cc2c9c0ad811fff5dc07ed5cb08f35476f5dd34deb2"
+    },
+    {
+      "name": "rough_concrete_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 5351725,
+      "runtime_bytes": 5351725,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d",
+      "runtime_sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d"
+    },
+    {
+      "name": "rough_concrete_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3432016,
+      "runtime_bytes": 3432016,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "014f6ca38e4bbc284789ebda32a97013f3fb9be078cbce629e07b0aa63bc4bb6",
+      "runtime_sha256": "014f6ca38e4bbc284789ebda32a97013f3fb9be078cbce629e07b0aa63bc4bb6"
+    },
+    {
+      "name": "rough_concrete_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4355641,
+      "runtime_bytes": 2874673,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "1c20c0ae8622ff673f6ed76a282f07427fdaaf8c0c073558013fa5c5f3ddbf1f",
+      "runtime_sha256": "b153777a0d4243e037921b9274871ccf1d2bd82ff691ae1faf26dbed72d1c579"
+    },
+    {
+      "name": "kerb_coating_normal",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 2992013,
+      "runtime_bytes": 2701294,
+      "runtime_mime": "image/png",
+      "source_sha256": "4d38d37e19b9b6805604579f7b6b143c48f1482ff77301b695d1b98f8a8c5277",
+      "runtime_sha256": "20fff7711f90b0621b9c05dadeacaa43cead9400993d8b3c361597b9875cff0d"
+    },
+    {
+      "name": "kerb_coating_arm",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 3056369,
+      "runtime_bytes": 2908787,
+      "runtime_mime": "image/png",
+      "source_sha256": "ce1040aa4f2192cbe9e1490f02c23fd928f07064992e289bff0e6c9a75aeb81b",
+      "runtime_sha256": "bfc142fd78b5870a79975ec0deaea00d985c111a37ced4468dd2751a7c17c5ff"
+    },
+    {
+      "name": "kerb_coating_base",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 1209697,
+      "runtime_bytes": 1209697,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "6bd9252f02c21d4efa85e0c3f9dded298058365d93d2ee12ee719ece63e1d132",
+      "runtime_sha256": "6bd9252f02c21d4efa85e0c3f9dded298058365d93d2ee12ee719ece63e1d132"
+    },
+    {
+      "name": "rubber_contact_band",
+      "dimensions": [
+        1024,
+        128
+      ],
+      "source_bytes": 167955,
+      "runtime_bytes": 163836,
+      "runtime_mime": "image/png",
+      "source_sha256": "b0905f0365c504b9ff75e8cf6926bc616847e2fa9bab1f4b983ee08f6b6608df",
+      "runtime_sha256": "21f5ad7eed3ff9563904374f195f4dd3e9f7b9c688ade89b78e53128fc06a958"
+    },
+    {
+      "name": "track_limit_arm",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_bytes": 1219540,
+      "runtime_bytes": 1109500,
+      "runtime_mime": "image/png",
+      "source_sha256": "61bfeb7357c28ed713bb58d3114a6b6c1cf0e4dd6b4f6225830b90ddc1bdd36a",
+      "runtime_sha256": "d9efcc947bf667e54bcd39544c56f646493d920c345b43999f954aff2889ac1c"
+    },
+    {
+      "name": "track_limit_base",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_bytes": 848320,
+      "runtime_bytes": 848320,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "96c1a33b9459323815d904cd30c7a6fac88a581581cd4016f9d3138c75ef1ae9",
+      "runtime_sha256": "96c1a33b9459323815d904cd30c7a6fac88a581581cd4016f9d3138c75ef1ae9"
+    },
+    {
+      "name": "gravel_stones_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 5469483,
+      "runtime_bytes": 5469483,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "13a0218f69539da3e8f9ad805213ce311a936d30c05558d8e42ebb46fde5b7eb",
+      "runtime_sha256": "13a0218f69539da3e8f9ad805213ce311a936d30c05558d8e42ebb46fde5b7eb"
+    },
+    {
+      "name": "gravel_stones_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3805569,
+      "runtime_bytes": 3805569,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "58c21dcfbfcbe7aa423dced4872bb0eff2988aae303cf268e787a102eb80a3dc",
+      "runtime_sha256": "58c21dcfbfcbe7aa423dced4872bb0eff2988aae303cf268e787a102eb80a3dc"
+    },
+    {
+      "name": "gravel_stones_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3220057,
+      "runtime_bytes": 2158663,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "cacad132d39976f66451271b4eeb1e6ee11ecbff2cd3160f2b9d4323aa2b0136",
+      "runtime_sha256": "eb7cfa4ef0069942b37ac016e60857fa4d6c1f8ae7f5fb4f7f6fae21ec500ea0"
+    },
+    {
+      "name": "gravel_dust_fringe",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "source_bytes": 575396,
+      "runtime_bytes": 575396,
+      "runtime_mime": "image/png",
+      "source_sha256": "057467e6fd378885f4a5900e1591249ad9212323d12b3aff0e0d1df775b46bdb",
+      "runtime_sha256": "057467e6fd378885f4a5900e1591249ad9212323d12b3aff0e0d1df775b46bdb"
+    },
+    {
+      "name": "withered_grass_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 6194953,
+      "runtime_bytes": 6194953,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "5fd42baf06224086cb9afcb2f7a3b9f26feddd719bf1f9aed65ec49c586e7ff9",
+      "runtime_sha256": "5fd42baf06224086cb9afcb2f7a3b9f26feddd719bf1f9aed65ec49c586e7ff9"
+    },
+    {
+      "name": "withered_grass_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4802892,
+      "runtime_bytes": 4802892,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "0b4bfb6549a56c48f7239be7f520124b38e7842188b8d1d53b0a376686c40371",
+      "runtime_sha256": "0b4bfb6549a56c48f7239be7f520124b38e7842188b8d1d53b0a376686c40371"
+    },
+    {
+      "name": "withered_grass_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4632786,
+      "runtime_bytes": 3068349,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "0cf0fca68cbf4277199a2b9b7b3a8013357e4087247b1367f86d4a53b4fafa7e",
+      "runtime_sha256": "8e6d1252131dc692e353dd91eed00c1bc61bc0aa42872b85923f81c2d5eaed71"
+    },
+    {
+      "name": "Metal038_2K-JPG_NormalGL",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 5957160,
+      "runtime_bytes": 5957160,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "a3fbbd22b384bbe94baafa21a01e60f0c27a859a9654637eff18eec5a100127f",
+      "runtime_sha256": "a3fbbd22b384bbe94baafa21a01e60f0c27a859a9654637eff18eec5a100127f"
+    },
+    {
+      "name": "Metal038_2K-JPG_Color",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2003658,
+      "runtime_bytes": 2003658,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "e1e0deda1119497fa419de496019e04a94d281ad470c6595da0100f063aa1f3c",
+      "runtime_sha256": "e1e0deda1119497fa419de496019e04a94d281ad470c6595da0100f063aa1f3c"
+    },
+    {
+      "name": "Metal038_2K-JPG_Roughness",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2329875,
+      "runtime_bytes": 1502239,
+      "runtime_mime": "image/png",
+      "source_sha256": "8df42c565341795f7b55d158fc1f542c7a3d016fcec0c911dc1e1facffdd0667",
+      "runtime_sha256": "ed1e7cae51f0b9025b78b86fec7e58b341dd04a76cfc34d24c85d39a87e0d640"
+    }
+  ],
+  "visual_status": "Actual browser inspection completed for listed views; not full art acceptance",
+  "not_run": [
+    "Target game performance",
+    "Game integration"
+  ],
+  "browser_review": {
+    "date": "2026-09-07",
+    "views": [
+      "overview",
+      "kerb close / light A",
+      "kerb close / light B",
+      "boundary"
+    ],
+    "notes": "Actually viewed the r03 GLB in the local in-app browser. Slope/teeth, coating and geometric cranked fence visible. Near-view shadow stripes removed by tighter view-dependent shadow frustum and normal bias. Art remains provisional; grass and material repetition unresolved.",
+    "game_integration": "NOT_RUN"
+  }
+}

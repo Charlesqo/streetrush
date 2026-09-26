@@ -1,0 +1,5112 @@
+[
+  {
+    "car": "mx5",
+    "materials": [
+      {
+        "index": 0,
+        "name": "Material.002",
+        "classifiedRole": "paint",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "roughnessFactor": 0.8042929062619704
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0.013870395028850423
+          }
+        },
+        "users": [
+          "Cube.001_Material.002_0",
+          "Cube.007_Material.002_0"
+        ]
+      },
+      {
+        "index": 1,
+        "name": "Material.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.03282970664197667,
+            0.03282970664197667,
+            0.03282970664197667,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.40851315445463887
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 0.2145161094
+          }
+        },
+        "users": [
+          "Cube.001_Material.001_0",
+          "Cube.007_Material.001_0"
+        ]
+      },
+      {
+        "index": 2,
+        "name": "Material.012",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Cube.001_Material.012_0"
+        ]
+      },
+      {
+        "index": 3,
+        "name": "Material.013",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 1
+          }
+        },
+        "users": [
+          "Cube.001_Material.013_0"
+        ]
+      },
+      {
+        "index": 4,
+        "name": "Material.010",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            0.8468541184052922
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 1
+          },
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.15314588159470777
+          }
+        },
+        "users": [
+          "Cube.001_Material.010_0"
+        ]
+      },
+      {
+        "index": 5,
+        "name": "Material.004",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            0.8225334258
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Cube.001_Material.004_0"
+        ]
+      },
+      {
+        "index": 6,
+        "name": "Material.005",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 0
+          }
+        },
+        "users": [
+          "Cube.001_Material.005_0",
+          "Plane_Material.005_0"
+        ]
+      },
+      {
+        "index": 7,
+        "name": "Material.008",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.0290996,
+            0.0290996,
+            0.0290996,
+            0.475963555442059
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 1
+          },
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.5240364445579411
+          }
+        },
+        "users": [
+          "Cube.007_Material.008_0"
+        ]
+      },
+      {
+        "index": 8,
+        "name": "Material.009",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 1
+          }
+        },
+        "users": [
+          "Cube.007_Material.009_0"
+        ]
+      },
+      {
+        "index": 9,
+        "name": "Material.015",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.17901507171454986,
+            0.17901507171454986,
+            0.17901507171454986,
+            1
+          ],
+          "roughnessFactor": 0.555005806565371
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Circle.002_Material.015_0",
+          "Circle.003_Material.015_0",
+          "Circle.004_Material.015_0",
+          "Circle.005_Material.015_0"
+        ]
+      },
+      {
+        "index": 10,
+        "name": "Material.014",
+        "classifiedRole": "rubber",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8040408206
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 0.2753178411
+          }
+        },
+        "users": [
+          "Circle.002_Material.014_0",
+          "Circle.003_Material.014_0",
+          "Circle.004_Material.014_0",
+          "Circle.005_Material.014_0"
+        ]
+      },
+      {
+        "index": 11,
+        "name": "Material.017",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 0
+          }
+        },
+        "users": [
+          "Circle.002_Material.017_0",
+          "Circle.003_Material.017_0",
+          "Circle.004_Material.017_0",
+          "Circle.005_Material.017_0"
+        ]
+      }
+    ]
+  },
+  {
+    "car": "m3e30",
+    "materials": [
+      {
+        "index": 0,
+        "name": "BMW_E30_M3_PAINT",
+        "classifiedRole": "paint",
+        "pbr": {
+          "baseColorFactor": [
+            0.4788319434779161,
+            0.010355356770772154,
+            0.010355356770772154,
+            1
+          ],
+          "metallicRoughnessTexture": {
+            "index": 0
+          },
+          "roughnessFactor": 0.5
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0
+          }
+        },
+        "occlusionTexture": {
+          "index": 0,
+          "strength": 0.4769640529666219
+        },
+        "users": [
+          "Object_0"
+        ]
+      },
+      {
+        "index": 1,
+        "name": "BMW_E30_M3_PLASTIC",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.006598275912249235,
+            0.006598275912249235,
+            0.006598275912249235,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.26917773286235097
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1"
+        ]
+      },
+      {
+        "index": 2,
+        "name": "BMW_E30_M3_CHROME",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.285027,
+            0.285027,
+            0.285027,
+            1
+          ],
+          "roughnessFactor": 0.1621362952328781
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_2"
+        ]
+      },
+      {
+        "index": 3,
+        "name": "BMW_E30_M3_WINDOWS",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            0.6343779318334939
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_3"
+        ]
+      },
+      {
+        "index": 4,
+        "name": "BMW_E30_M3_BLACKOUT",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_4"
+        ]
+      },
+      {
+        "index": 5,
+        "name": "BMW_E30_M3_SIDE_MIRROR",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            1
+          ],
+          "roughnessFactor": 0.206093
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_5"
+        ]
+      },
+      {
+        "index": 6,
+        "name": "BMW_E30_M3_TAILLIGHT_REFLECTOR",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.2,
+            0.2,
+            0.2,
+            1
+          ],
+          "roughnessFactor": 0.08
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_emissive_strength": {
+            "emissiveStrength": 10
+          }
+        },
+        "users": [
+          "Object_6"
+        ]
+      },
+      {
+        "index": 7,
+        "name": "BMW_E30_M3_HEADLIGHT_REFLECTOR",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.6831716576944958,
+            0.6831716576944958,
+            0.6831716576944958,
+            1
+          ],
+          "roughnessFactor": 0.2125087364702771
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_7"
+        ]
+      },
+      {
+        "index": 8,
+        "name": "BMW_E30_M3_EMBLEMS",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicRoughnessTexture": {
+            "index": 3
+          },
+          "roughnessFactor": 0.14954318492352833
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_8"
+        ]
+      },
+      {
+        "index": 9,
+        "name": "BMW_E30_M3_LENS",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0.25
+          ],
+          "baseColorTexture": {
+            "index": 4
+          },
+          "roughnessFactor": 0.14324662976885347
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0
+          },
+          "KHR_materials_transmission": {
+            "transmissionFactor": 0.9574982527059446
+          }
+        },
+        "normalTexture": {
+          "index": 5
+        },
+        "users": [
+          "Object_9"
+        ]
+      },
+      {
+        "index": 10,
+        "name": "BMW_E30_M3_RIM",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 6
+          },
+          "metallicRoughnessTexture": {
+            "index": 7
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatNormalTexture": {
+              "index": 8
+            },
+            "clearcoatRoughnessFactor": 0.36992261533714904
+          }
+        },
+        "normalTexture": {
+          "index": 8
+        },
+        "occlusionTexture": {
+          "index": 7
+        },
+        "users": [
+          "Object_10",
+          "Object_15",
+          "Object_20",
+          "Object_25"
+        ]
+      },
+      {
+        "index": 11,
+        "name": "BMW_E30_M3_TIRE",
+        "classifiedRole": "rubber",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 9
+          },
+          "metallicFactor": 0,
+          "metallicRoughnessTexture": {
+            "index": 10
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 11
+        },
+        "occlusionTexture": {
+          "index": 10
+        },
+        "users": [
+          "Object_11",
+          "Object_16",
+          "Object_21",
+          "Object_26"
+        ]
+      },
+      {
+        "index": 12,
+        "name": "Brake_Disc",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 14
+        },
+        "occlusionTexture": {
+          "index": 13
+        },
+        "users": [
+          "Object_12",
+          "Object_17",
+          "Object_22",
+          "Object_27"
+        ]
+      },
+      {
+        "index": 13,
+        "name": "Brembo_Calipers",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 15
+          },
+          "metallicRoughnessTexture": {
+            "index": 16
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatNormalTexture": {
+              "index": 17
+            },
+            "clearcoatRoughnessFactor": 0.12435696430482883
+          }
+        },
+        "normalTexture": {
+          "index": 17
+        },
+        "occlusionTexture": {
+          "index": 16
+        },
+        "users": [
+          "Object_13",
+          "Object_18",
+          "Object_23",
+          "Object_28"
+        ]
+      },
+      {
+        "index": 14,
+        "name": "Logo_Plane",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.5
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_14",
+          "Object_19",
+          "Object_24",
+          "Object_29"
+        ]
+      }
+    ]
+  },
+  {
+    "car": "gt3rs",
+    "materials": [
+      {
+        "index": 0,
+        "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0120399,
+            0.0120399,
+            0.0120399,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_carbon_Wing_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_carbon_roof_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_carbon_hood_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_sideskirts_L_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_sideskirts_R_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_left_leg_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_bumper_F_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_fender_L_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_right_leg_TwiXeR_992_plastic_mgl_060606FF.001_0",
+          "TwiXeR_992_gt3rs_fender_R_TwiXeR_992_plastic_mgl_060606FF.001_0"
+        ]
+      },
+      {
+        "index": 1,
+        "name": "TwiXeR_992_carPaint.003",
+        "classifiedRole": "paint",
+        "pbr": {
+          "baseColorFactor": [
+            0.6831716576944958,
+            0.6831716576944958,
+            0.6831716576944958,
+            1
+          ],
+          "metallicFactor": 0.7542880130682302,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_carbon_Wing_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_gt3rs_carbon_hood_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_gt3rs_bumper_F_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_gt3rs_spoiler_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_gt3rs_fender_L_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_gt3rs_door_L_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_gt3rs_door_R_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_gt3rs_fender_R_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_mirror_L_TwiXeR_992_carPaint.003_0",
+          "TwiXeR_992_mirror_R_TwiXeR_992_carPaint.003_0"
+        ]
+      },
+      {
+        "index": 2,
+        "name": "TwiXeR_992_headlight_1.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.1002182397306339,
+            0.1002182397306339,
+            0.1002182397306339,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_carbon_Wing_TwiXeR_992_CSR2_Badge_0",
+          "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_CSR2_Badge_0",
+          "TwiXeR_992_gt3rs_left_leg_TwiXeR_992_CSR2_Badge_0",
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_CSR2_Badge_0",
+          "TwiXeR_992_gt3rs_bumper_F_TwiXeR_992_signal_L_bumper.001_0",
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_mirror.001_0",
+          "TwiXeR_992_gt3rs_right_leg_TwiXeR_992_CSR2_Badge_0",
+          "TwiXeR_992_exhausttip_3_antichrome_TwiXeR_992_rubbertrim.006_0",
+          "TwiXeR_992_exhausttip_3_chrome_TwiXeR_992_rubbertrim.006_0",
+          "TwiXeR_992_chrome_dash_accessories_TwiXeR_992_ID05_leather_coarse_mgl|shifterassy_a.003_0",
+          "TwiXeR_992_dash_9000_TwiXeR_992_ID03_stitch_001.003_0",
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_symbols.005_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_symbols.005_0",
+          "TwiXeR_992_headlight_L_led_TwiXeR_992_headlight_1.001_0",
+          "TwiXeR_992_headlight_R_led_TwiXeR_992_headlight_1.001_0",
+          "TwiXeR_992_mirror_L_TwiXeR_992_mirror.002_0",
+          "TwiXeR_992_mirror_R_TwiXeR_992_mirror.002_0",
+          "TwiXeR_992_shifter_A_TwiXeR_992_symbols.005_0"
+        ]
+      },
+      {
+        "index": 3,
+        "name": "TwiXeR_992_carbon_roof.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "roughnessFactor": 0.1542831368628934
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_carbon_Wing_TwiXeR_992_carbon_roof.001_0",
+          "TwiXeR_992_gt3rs_carbon_roof_TwiXeR_992_carbon_roof.001_0",
+          "TwiXeR_992_gt3rs_carbon_hood_TwiXeR_992_carbon_roof.001_0"
+        ]
+      },
+      {
+        "index": 4,
+        "name": "TwiXeR_992_metal_radiator.002",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.03282970664197667,
+            0.03282970664197667,
+            0.03282970664197667,
+            1
+          ],
+          "baseColorTexture": {
+            "index": 1
+          },
+          "roughnessFactor": 0
+        },
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_carbon_hood_TwiXeR_992_metal_radiator.002_0",
+          "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_metal_radiator.002_0",
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_metal_radiator.002_0",
+          "TwiXeR_992_gt3rs_bumper_F_TwiXeR_992_metal_radiator.002_0",
+          "TwiXeR_992_gt3rs_fender_L_TwiXeR_992_metal_radiator.002_0",
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_metal_radiator.002_0",
+          "TwiXeR_992_gt3rs_fender_R_TwiXeR_992_metal_radiator.002_0",
+          "amdb11_brakedisc_FR.003_amdb11_misc.002_0",
+          "amdb11_brakedisc_FR.001_amdb11_misc.002_0",
+          "amdb11_brakedisc_FR.002_amdb11_misc.002_0",
+          "amdb11_brakedisc_FR.004_amdb11_misc.002_0"
+        ]
+      },
+      {
+        "index": 5,
+        "name": "TwiXeR_992_headlight_1.001_0",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0.608001852958028,
+          "roughnessFactor": 0.2518072436030282
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_carbon_hood_TwiXeR_992_carPaint_secondary|hoodbadge_a.001_0"
+        ]
+      },
+      {
+        "index": 6,
+        "name": "TwiXeR_992_glass.002",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            0.37638209945020784
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_sideskirts_L_TwiXeR_992_glass.002_0",
+          "TwiXeR_992_gt3rs_sideskirts_R_TwiXeR_992_glass.002_0",
+          "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_glass.002_0",
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_glass.002_0",
+          "TwiXeR_992_gt3rs_bumper_F_TwiXeR_992_glass.002_0"
+        ]
+      },
+      {
+        "index": 7,
+        "name": "TwiXeR_992_symbols.004",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_sideskirts_L_TwiXeR_992_headlight.001_0",
+          "TwiXeR_992_gt3rs_sideskirts_R_TwiXeR_992_headlight.001_0",
+          "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_brakelight_1.001_0",
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_headlight.001_0",
+          "TwiXeR_992_gt3rs_door_L_TwiXeR_992_rivet_001_FFFFFFFF.001_0",
+          "TwiXeR_992_gt3rs_door_R_TwiXeR_992_rivet_001_FFFFFFFF.001_0",
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_ID03_stitch_001_111111FF.003_0",
+          "TwiXeR_992_exhausttip_3_antichrome_TwiXeR_992_int_chrome.004_0",
+          "TwiXeR_992_exhausttip_3_chrome_TwiXeR_992_chrome.002_0",
+          "TwiXeR_992_signalstalk_TwiXeR_992_symbols.004_0"
+        ]
+      },
+      {
+        "index": 8,
+        "name": "TwiXeR_992_antichrome.001",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.0326383,
+            0.0326383,
+            0.0326383,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_antichrome.001_0"
+        ]
+      },
+      {
+        "index": 9,
+        "name": "TwiXeR_992_red.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.38843,
+            0.38843,
+            0.38843,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_red.001_0"
+        ]
+      },
+      {
+        "index": 10,
+        "name": "TwiXeR_992_headlight_1.001_1",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 0
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_door_L_TwiXeR_992_rubbertrim.004_0",
+          "TwiXeR_992_gt3rs_door_R_TwiXeR_992_rubbertrim.004_0",
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_rubbertrim.004_0"
+        ]
+      },
+      {
+        "index": 11,
+        "name": "TwiXeR_992_plastic_mgl.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0738,
+            0.0738,
+            0.0738,
+            1
+          ],
+          "metallicFactor": 0.7420974997257134,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_door_L_TwiXeR_992_plastic_mgl.001_0",
+          "TwiXeR_992_gt3rs_door_R_TwiXeR_992_plastic_mgl.001_0"
+        ]
+      },
+      {
+        "index": 12,
+        "name": "TwiXeR_992_carpet.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0178284,
+            0.0178284,
+            0.0178284,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9960134485669943
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_carpet.001_0"
+        ]
+      },
+      {
+        "index": 13,
+        "name": "TwiXeR_992_speakers.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0249267,
+            0.0249267,
+            0.0249267,
+            1
+          ],
+          "metallicFactor": 0.9127646865209493
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_speakers.001_0"
+        ]
+      },
+      {
+        "index": 14,
+        "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0307792,
+            0.0307792,
+            0.0307792,
+            1
+          ],
+          "metallicFactor": 0.5592397995879607,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_ID04_plastic_textured_001_060606FF.001_0"
+        ]
+      },
+      {
+        "index": 15,
+        "name": "TwiXeR_992_gauges_chrome.001",
+        "classifiedRole": "metal",
+        "pbr": {
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_symbols.002_0",
+          "TwiXeR_992_needle_tacho_TwiXeR_992_gauges_chrome.001_0",
+          "TwiXeR_992_needle_tacho_9000_TwiXeR_992_gauges_chrome.001_0"
+        ]
+      },
+      {
+        "index": 16,
+        "name": "TwiXeR_992_blackGlass.001",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.0137937,
+            0.0137937,
+            0.0137937,
+            1
+          ],
+          "metallicFactor": 0.821335836452073,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_blackGlass.001_0"
+        ]
+      },
+      {
+        "index": 17,
+        "name": "TwiXeR_992_symbols_1.003",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8211145618000169
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_ID10_chrome.001_0"
+        ]
+      },
+      {
+        "index": 18,
+        "name": "TwiXeR_992_symbols.004_0",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 4
+          },
+          "roughnessFactor": 0.8211145618000169
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_plastic.002_0"
+        ]
+      },
+      {
+        "index": 19,
+        "name": "TwiXeR_992_symbols.004_1",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8211145618000169
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_undercarriage.001_0"
+        ]
+      },
+      {
+        "index": 20,
+        "name": "TwiXeR_992_ID08_fabric_002.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0718824,
+            0.0718824,
+            0.0718824,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9772687892320713
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_ID08_fabric_002.001_0"
+        ]
+      },
+      {
+        "index": 21,
+        "name": "TwiXeR_992_symbols.004_2",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "roughnessFactor": 0.8211145618000169
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_ID12_paint.001_0"
+        ]
+      },
+      {
+        "index": 22,
+        "name": "TwiXeR_992_rivet_001_747474FF.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0222247,
+            0.0222247,
+            0.0222247,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9950304060020461
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_rivet_001_747474FF.001_0"
+        ]
+      },
+      {
+        "index": 23,
+        "name": "TwiXeR_992_headlight_1.001_2",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.7470177871865296
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_roof_alc.001_0"
+        ]
+      },
+      {
+        "index": 24,
+        "name": "TwiXeR_992_seatbelt.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0487732,
+            0.0487732,
+            0.0487732,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9890939809319808
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_seatbelt.001_0"
+        ]
+      },
+      {
+        "index": 25,
+        "name": "TwiXeR_992_plastic_1.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0573633,
+            0.0573633,
+            0.0573633,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_plastic_1.001_0"
+        ]
+      },
+      {
+        "index": 26,
+        "name": "TwiXeR_992_int_chrome.003",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.6358071275813759,
+            0.6358071275813759,
+            0.6358071275813759,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_gt3rs_TwiXeR_992_int_chrome.003_0"
+        ]
+      },
+      {
+        "index": 27,
+        "name": "TwiXeR_992_GT3RS_black",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.15766773041875703,
+            0.15766773041875703,
+            0.15766773041875703,
+            1
+          ],
+          "roughnessFactor": 0.1725689068766686
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9_TwiXeR_992_GT3RS_black_0",
+          "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9.001_TwiXeR_992_GT3RS_black_0",
+          "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9.002_TwiXeR_992_GT3RS_black_0",
+          "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9.003_TwiXeR_992_GT3RS_black_0"
+        ]
+      },
+      {
+        "index": 28,
+        "name": "TwiXeR_992_wheels_chrome_1",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.1542627968560867,
+            0.1542627968560867,
+            0.1542627968560867,
+            1
+          ],
+          "roughnessFactor": 0.35538182399630047
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9_TwiXeR_992_wheels_chrome_1_0",
+          "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9.001_TwiXeR_992_wheels_chrome_1_0",
+          "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9.002_TwiXeR_992_wheels_chrome_1_0",
+          "TwiXeR_992_gt3rs_style_1_chrome_wheels_20x9.003_TwiXeR_992_wheels_chrome_1_0"
+        ]
+      },
+      {
+        "index": 29,
+        "name": "TwiXeR_992.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0736778947237429,
+            0.0736778947237429,
+            0.0736778947237429,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_underbody_gt3rs_TwiXeR_992.001_0",
+          "TwiXeR_992_upperarm_R_TwiXeR_992.001_0",
+          "TwiXeR_992_upperarm_F_TwiXeR_992.001_0",
+          "TwiXeR_992_transaxle_TwiXeR_992.001_0",
+          "TwiXeR_992_trailingarm_R_TwiXeR_992.001_0",
+          "TwiXeR_992_tierod_F_TwiXeR_992.001_0",
+          "TwiXeR_992_swaybar_R_TwiXeR_992.001_0",
+          "TwiXeR_992_swaybar_F_TwiXeR_992.001_0",
+          "TwiXeR_992_subframe_R_TwiXeR_992.001_0",
+          "TwiXeR_992_subframe_F_TwiXeR_992.001_0",
+          "TwiXeR_992_steeringbox_TwiXeR_992.001_0",
+          "TwiXeR_992_radiator_TwiXeR_992.001_0",
+          "TwiXeR_992_pushrod_triangle_R_TwiXeR_992.001_0",
+          "TwiXeR_992_pushrod_R_TwiXeR_992.001_0",
+          "TwiXeR_992_lowerarm_R_TwiXeR_992.001_0",
+          "TwiXeR_992_lowerarm_F_TwiXeR_992.001_0",
+          "TwiXeR_992_hub_R_TwiXeR_992.001_0",
+          "TwiXeR_992_hub_F_TwiXeR_992.001_0",
+          "TwiXeR_992_halfshaft_R_TwiXeR_992.001_0",
+          "TwiXeR_992_halfshaft_F_TwiXeR_992.001_0",
+          "TwiXeR_992_halfshaft_e_R_TwiXeR_992.001_0",
+          "TwiXeR_992_halfshaft_e_F_TwiXeR_992.001_0",
+          "TwiXeR_992_fueltank_TwiXeR_992.001_0",
+          "TwiXeR_992_fuellines_TwiXeR_992.001_0",
+          "TwiXeR_992_driveshaft_TwiXeR_992.001_0",
+          "TwiXeR_992_diff_F_TwiXeR_992.001_0",
+          "TwiXeR_992_coolantlines_TwiXeR_992.001_0",
+          "TwiXeR_992_coilover_RR_TwiXeR_992.001_0",
+          "TwiXeR_992_coilover_RL_TwiXeR_992.001_0",
+          "TwiXeR_992_coilover_F_TwiXeR_992.001_0",
+          "TwiXeR_992_bumperbar_R_TwiXeR_992.001_0",
+          "TwiXeR_992_bumperbar_F_TwiXeR_992.001_0",
+          "TwiXeR_992_brakelines_TwiXeR_992.001_0",
+          "TwiXeR_992_radiators_small_TwiXeR_992.001_0"
+        ]
+      },
+      {
+        "index": 30,
+        "name": "TwiXeR_992_exhausttip_antichrome.001",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.185236,
+            0.185236,
+            0.185236,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_exhausttip_3_antichrome_TwiXeR_992_exhausttip_antichrome.001_0"
+        ]
+      },
+      {
+        "index": 31,
+        "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.800189,
+            0.800189,
+            0.800189,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_needle_tacho_TwiXeR_992_ID08_fabric_002_FFFFFFFF.003_0",
+          "TwiXeR_992_needle_tacho_9000_TwiXeR_992_ID08_fabric_002_FFFFFFFF.003_0"
+        ]
+      },
+      {
+        "index": 32,
+        "name": "TwiXeR_992_engine.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0287142,
+            0.0287142,
+            0.0287142,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_muffler_custom_TwiXeR_992_engine.001_0",
+          "TwiXeR_992_intake_TT_TwiXeR_992_engine.001_0",
+          "TwiXeR_992_heatshield_TwiXeR_992_engine.001_0",
+          "TwiXeR_992_muffler_TwiXeR_992_engine.001_0",
+          "TwiXeR_992_exhaust_TT_TwiXeR_992_engine.001_0",
+          "TwiXeR_992_exhaust_TwiXeR_992_engine.001_0",
+          "TwiXeR_992_engine_TwiXeR_992_engine.001_0"
+        ]
+      },
+      {
+        "index": 33,
+        "name": "TwiXeR_992_rubbertrim.008",
+        "classifiedRole": "rubber",
+        "pbr": {
+          "baseColorFactor": [
+            0.11927,
+            0.11927,
+            0.11927,
+            1
+          ],
+          "roughnessFactor": 0.22133096024673604
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_clutchpedal_TwiXeR_992_rubbertrim.008_0",
+          "TwiXeR_992_gaspedal_TwiXeR_992_rubbertrim.008_0",
+          "TwiXeR_992_brakepedal_TwiXeR_992_rubbertrim.008_0"
+        ]
+      },
+      {
+        "index": 34,
+        "name": "TwiXeR_992_int_chrome.005",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.0503153,
+            0.0503153,
+            0.0503153,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_clutchpedal_TwiXeR_992_int_chrome.005_0",
+          "TwiXeR_992_gaspedal_TwiXeR_992_int_chrome.005_0",
+          "TwiXeR_992_brakepedal_TwiXeR_992_int_chrome.005_0"
+        ]
+      },
+      {
+        "index": 35,
+        "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_signalstalk_TwiXeR_992_ID03_stitch_001|vents_a.003_0"
+        ]
+      },
+      {
+        "index": 36,
+        "name": "TwiXeR_992_rubbertrim.009",
+        "classifiedRole": "rubber",
+        "pbr": {
+          "baseColorFactor": [
+            0.113428,
+            0.113428,
+            0.113428,
+            1
+          ],
+          "roughnessFactor": 0.1725689068766686
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_signalstalk_TwiXeR_992_rubbertrim.009_0"
+        ]
+      },
+      {
+        "index": 37,
+        "name": "TwiXeR_992_Interior_D",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.02638308043037943,
+            0.02638308043037943,
+            0.02638308043037943,
+            1
+          ]
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_steer_3_TwiXeR_992_Interior_D_0"
+        ]
+      },
+      {
+        "index": 38,
+        "name": "TwiXeR_992_ID06_stitch_001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 6
+          },
+          "metallicFactor": 0.5836208262729943,
+          "roughnessFactor": 0.08114005680779224
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_steer_3_TwiXeR_992_ID06_stitch_001_0"
+        ]
+      },
+      {
+        "index": 39,
+        "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.800275,
+            0.00787017,
+            0,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9606972568918656
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_steer_3_TwiXeR_992_ID03_stitch_001_111111FF.005_0"
+        ]
+      },
+      {
+        "index": 40,
+        "name": "TwiXeR_992_carpet.002",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 5
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_steer_3_TwiXeR_992_carpet.002_0"
+        ]
+      },
+      {
+        "index": 41,
+        "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0980667,
+            0.0980667,
+            0.0980667,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_steer_3_TwiXeR_992_ID01_plastic_lgl_010101FF_0"
+        ]
+      },
+      {
+        "index": 42,
+        "name": "TwiXeR_992_symbols_6",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 7
+          },
+          "metallicFactor": 0
+        },
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_steer_3_TwiXeR_992_symbols_6_0"
+        ]
+      },
+      {
+        "index": 43,
+        "name": "TwiXeR_992_symbols_1.003_0",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            0
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.8211145618000169
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_steer_3_TwiXeR_992_symbols_1.003_0"
+        ]
+      },
+      {
+        "index": 44,
+        "name": "TwiXeR_992_glass.004",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.23509307101688112,
+            0.23509307101688112,
+            0.23509307101688112,
+            0.18742914264119662
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_backlight_tint_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_dash_clock_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_doorglass_L_tint_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_doorglass_R_tint_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_fascia_glass_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_headlightglass_L_led_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_headlightglass_R_led_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_quarterglass_L_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_quarterglass_R_tint_TwiXeR_992_glass.004_0",
+          "TwiXeR_992_windshield_TwiXeR_992_glass.004_0"
+        ]
+      },
+      {
+        "index": 45,
+        "name": "TwiXeR_992_glass_int.001",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            0.40685838280649994
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_backlight_tint_TwiXeR_992_glass_int.001_0",
+          "TwiXeR_992_doorglass_L_tint_TwiXeR_992_glass_int.001_0",
+          "TwiXeR_992_doorglass_R_tint_TwiXeR_992_glass_int.001_0",
+          "TwiXeR_992_quarterglass_L_TwiXeR_992_glass_int.001_0",
+          "TwiXeR_992_quarterglass_R_tint_TwiXeR_992_glass_int.001_0",
+          "TwiXeR_992_windshield_TwiXeR_992_glass_int.001_0"
+        ]
+      },
+      {
+        "index": 46,
+        "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.51193,
+            0.51193,
+            0.51193,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_black_dash_accessories_TwiXeR_992_ID05_leather_coarse_mgl|shifterassy_a_2.002_0",
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_ID05_leather_coarse_mgl|shifterassy_a_2.002_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_ID05_leather_coarse_mgl|shifterassy_a_2.002_0"
+        ]
+      },
+      {
+        "index": 47,
+        "name": "TwiXeR_992_rubbertrim.011",
+        "classifiedRole": "rubber",
+        "pbr": {
+          "baseColorFactor": [
+            0.0465254,
+            0.0465254,
+            0.0465254,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body.002_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_dash_9000_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_dash_clock_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_dash_noclock_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_shifter_A_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_shifter_base_M_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_shifter_boot_M_TwiXeR_992_rubbertrim.011_0",
+          "TwiXeR_992_shifter_knob_M_TwiXeR_992_rubbertrim.011_0"
+        ]
+      },
+      {
+        "index": 48,
+        "name": "TwiXeR_992_chrome.003",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.00866848,
+            0.00866848,
+            0.00866848,
+            1
+          ],
+          "metallicFactor": 0.6567639063280954,
+          "metallicRoughnessTexture": {
+            "index": 8
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body_chrome_end_TwiXeR_992_chrome.003_0",
+          "TwiXeR_992_door_L_antichrome_end_TwiXeR_992_chrome.003_0",
+          "TwiXeR_992_door_L_chrome_end_TwiXeR_992_chrome.003_0",
+          "TwiXeR_992_door_R_antichrome_end_TwiXeR_992_chrome.003_0",
+          "TwiXeR_992_door_R_chrome_end_TwiXeR_992_chrome.003_0",
+          "TwiXeR_992_fascia_mid_TwiXeR_992_chrome.003_0"
+        ]
+      },
+      {
+        "index": 49,
+        "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.800172,
+            0,
+            0.007390439999999979,
+            1
+          ],
+          "metallicFactor": 0.9188599431922078,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 9
+        },
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_ID03_stitch_001_111111FF.006_0",
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_ID03_stitch_001_111111FF.006_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_ID03_stitch_001_111111FF.006_0",
+          "TwiXeR_992_seat_FL_TwiXeR_992_ID03_stitch_001_111111FF.006_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_ID03_stitch_001_111111FF.006_0",
+          "TwiXeR_992_seats_R_TwiXeR_992_ID03_stitch_001_111111FF.006_0",
+          "TwiXeR_992_shifter_base_M_TwiXeR_992_ID03_stitch_001_111111FF.006_0"
+        ]
+      },
+      {
+        "index": 50,
+        "name": "TwiXeR_992_ID02_leather_MGL.003",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0912295,
+            0.0912295,
+            0.0912295,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_ID02_leather_MGL.003_0"
+        ]
+      },
+      {
+        "index": 51,
+        "name": "TwiXeR_992_plastic.004",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.058404,
+            0.058404,
+            0.058404,
+            1
+          ]
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 10
+        },
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_plastic.004_0",
+          "TwiXeR_992_dash_clock_TwiXeR_992_plastic.004_0",
+          "TwiXeR_992_dash_noclock_TwiXeR_992_plastic.004_0",
+          "TwiXeR_992_seat_FL_TwiXeR_992_plastic.004_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_plastic.004_0"
+        ]
+      },
+      {
+        "index": 52,
+        "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.199507,
+            0.199507,
+            0.199507,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_ID03_stitch_001|vents_a.004_0"
+        ]
+      },
+      {
+        "index": 53,
+        "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.00760262,
+            0.00760262,
+            0.00760262,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_ID05_leather_coarse_mgl|vents_a.003_0",
+          "TwiXeR_992_dash_clock_TwiXeR_992_ID05_leather_coarse_mgl|vents_a.003_0",
+          "TwiXeR_992_dash_noclock_TwiXeR_992_ID05_leather_coarse_mgl|vents_a.003_0"
+        ]
+      },
+      {
+        "index": 54,
+        "name": "TwiXeR_992_seat_leather.004",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0843852,
+            0.0843852,
+            0.0843852,
+            1
+          ],
+          "roughnessFactor": 0.8308566273725787
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 9
+        },
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_seat_leather.004_0",
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_seat_leather.004_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_seat_leather.004_0",
+          "TwiXeR_992_seat_FL_TwiXeR_992_seat_leather.004_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_seat_leather.004_0",
+          "TwiXeR_992_seats_R_TwiXeR_992_seat_leather.004_0"
+        ]
+      },
+      {
+        "index": 55,
+        "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.160606,
+            0.160606,
+            0.160606,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_ID04_plastic_textured_001|shifterassy_a.003_0"
+        ]
+      },
+      {
+        "index": 56,
+        "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.800212,
+            0,
+            0.00441773,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_ID08_fabric_002|centerconsolestructure_a.003_0"
+        ]
+      },
+      {
+        "index": 57,
+        "name": "TwiXeR_992_gps_screen.003",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0327491,
+            0.0327491,
+            0.0327491,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_gps_screen.003_0"
+        ]
+      },
+      {
+        "index": 58,
+        "name": "TwiXeR_992_upper_leather.004",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0672136,
+            0.0672136,
+            0.0672136,
+            1
+          ]
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 9
+        },
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_upper_leather.004_0",
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_upper_leather.004_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_upper_leather.004_0"
+        ]
+      },
+      {
+        "index": 59,
+        "name": "TwiXeR_992_plastic_2.003",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.101071,
+            0.101071,
+            0.101071,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_plastic_2.003_0"
+        ]
+      },
+      {
+        "index": 60,
+        "name": "TwiXeR_992_gauges_1.003",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0893869,
+            0.0811381,
+            0.129127,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_gauges_1.003_0"
+        ]
+      },
+      {
+        "index": 61,
+        "name": "TwiXeR_992_gauges_9000.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_parkingbrake_1.001_0",
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_ID08_fabric_002_FFFFFFFF.005_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_ID08_fabric_002_FFFFFFFF.005_0",
+          "TwiXeR_992_seat_FL_TwiXeR_992_red.002_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_red.002_0",
+          "TwiXeR_992_seats_R_TwiXeR_992_ID06_stitch_001|rearseats_a.001_0"
+        ]
+      },
+      {
+        "index": 62,
+        "name": "TwiXeR_992_gauges_9000.001_0",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 11
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_9000_TwiXeR_992_gauges_9000.001_0"
+        ]
+      },
+      {
+        "index": 63,
+        "name": "TwiXeR_992_dash_clock_1.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.800219,
+            0.800219,
+            0.800219,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_clock_TwiXeR_992_dash_clock_1.001_0"
+        ]
+      },
+      {
+        "index": 64,
+        "name": "TwiXeR_992_gauges_chrome_2.001",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.703878,
+            0.703878,
+            0.703878,
+            1
+          ],
+          "roughnessFactor": 0.42247443039826416
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_clock_TwiXeR_992_gauges_chrome_2.001_0"
+        ]
+      },
+      {
+        "index": 65,
+        "name": "TwiXeR_992_int_chrome.007",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.1002182397306339,
+            0.1002182397306339,
+            0.1002182397306339,
+            1
+          ],
+          "roughnessFactor": 0.20304519023296075
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_dash_clock_TwiXeR_992_int_chrome.007_0",
+          "TwiXeR_992_seat_FL_TwiXeR_992_int_chrome.007_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_int_chrome.007_0",
+          "TwiXeR_992_shifter_knob_M_TwiXeR_992_int_chrome.007_0"
+        ]
+      },
+      {
+        "index": 66,
+        "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0598124,
+            0.0598124,
+            0.0598124,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_plastic_mgl_060606FF.002_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_plastic_mgl_060606FF.002_0"
+        ]
+      },
+      {
+        "index": 67,
+        "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+        "classifiedRole": "rubber",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002_0"
+        ]
+      },
+      {
+        "index": 68,
+        "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.05513,
+            0.05513,
+            0.05513,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_ID04_plastic_textured_001_060606FF.002_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_ID04_plastic_textured_001_060606FF.002_0"
+        ]
+      },
+      {
+        "index": 69,
+        "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            1
+          ],
+          "roughnessFactor": 0.18475942021918546
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002_0"
+        ]
+      },
+      {
+        "index": 70,
+        "name": "TwiXeR_992_speakers.002",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0166846,
+            0.0166846,
+            0.0166846,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9947238662151154
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_doorpanel_L_antichrome_TwiXeR_992_speakers.002_0",
+          "TwiXeR_992_doorpanel_R_antichrome_TwiXeR_992_speakers.002_0"
+        ]
+      },
+      {
+        "index": 71,
+        "name": "TwiXeR_992_antichrome.002",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.8,
+            0.8,
+            0.8,
+            0.17523862929867975
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_fascia_glass_TwiXeR_992_antichrome.002_0"
+        ]
+      },
+      {
+        "index": 72,
+        "name": "TwiXeR_992_taillight_running.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.800371,
+            0.800371,
+            0.800371,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_fascia_mid_TwiXeR_992_taillight_running.001_0"
+        ]
+      },
+      {
+        "index": 73,
+        "name": "TwiXeR_992_brakelight_1.002",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.3206165176906652,
+            0,
+            0,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_fascia_mid_TwiXeR_992_brakelight_1.002_0"
+        ]
+      },
+      {
+        "index": 74,
+        "name": "TwiXeR_992_plastic_smooth.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.043265861743718964,
+            0.043265861743718964,
+            0.043265861743718964,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_fascia_mid_TwiXeR_992_plastic_smooth.001_0",
+          "TwiXeR_992_headlight_L_led_TwiXeR_992_plastic_smooth.001_0",
+          "TwiXeR_992_headlight_R_led_TwiXeR_992_plastic_smooth.001_0"
+        ]
+      },
+      {
+        "index": 75,
+        "name": "TwiXeR_992_gauges_screen.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_gauges_screen_TwiXeR_992_gauges_screen.001_0"
+        ]
+      },
+      {
+        "index": 76,
+        "name": "TwiXeR_992_led_lights.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0579677,
+            0.0579677,
+            0.0579677,
+            1
+          ],
+          "roughnessFactor": 0.24571198693176977
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_headlight_L_led_TwiXeR_992_led_lights.001_0",
+          "TwiXeR_992_headlight_R_led_TwiXeR_992_led_lights.001_0"
+        ]
+      },
+      {
+        "index": 77,
+        "name": "TwiXeR_992_headlight_high.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.2855180324876753,
+            0.2855180324876753,
+            0.2855180324876753,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularColorFactor": [
+              1,
+              1,
+              1
+            ],
+            "specularFactor": 0.38247735612146627
+          }
+        },
+        "users": [
+          "TwiXeR_992_headlight_L_led_TwiXeR_992_headlight_high.001_0",
+          "TwiXeR_992_headlight_R_led_TwiXeR_992_headlight_high.001_0"
+        ]
+      },
+      {
+        "index": 78,
+        "name": "TwiXeR_992_plastic_mgl.002",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0332968,
+            0.0332968,
+            0.0332968,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_mirror_L_TwiXeR_992_plastic_mgl.002_0",
+          "TwiXeR_992_mirror_R_TwiXeR_992_plastic_mgl.002_0"
+        ]
+      },
+      {
+        "index": 79,
+        "name": "TwiXeR_992_seat_leather_2.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.38025399999999987,
+            0,
+            0.004867400000000003,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.6114273872072753
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 12
+        },
+        "users": [
+          "TwiXeR_992_seat_FL_TwiXeR_992_seat_leather_2.001_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_seat_leather_2.001_0"
+        ]
+      },
+      {
+        "index": 80,
+        "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0788826,
+            0.0788826,
+            0.0788826,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_seat_FL_TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001_0",
+          "TwiXeR_992_seats_R_TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001_0"
+        ]
+      },
+      {
+        "index": 81,
+        "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.205461,
+            0.00033259999999999963,
+            0,
+            1
+          ],
+          "metallicFactor": 0.4921919762041179,
+          "roughnessFactor": 0.2700930136168035
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_seat_FL_TwiXeR_992_ID08_fabric_002_B60000FF.001_0",
+          "TwiXeR_992_seat_FR_TwiXeR_992_ID08_fabric_002_B60000FF.001_0",
+          "TwiXeR_992_seats_R_TwiXeR_992_ID08_fabric_002_B60000FF.001_0"
+        ]
+      },
+      {
+        "index": 82,
+        "name": "TwiXeR_992_symbols_3.001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0465299,
+            0.0465299,
+            0.0465299,
+            1
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_shifter_knob_M_TwiXeR_992_symbols_3.001_0"
+        ]
+      },
+      {
+        "index": 83,
+        "name": "TwiXeR_992_carPaint.008",
+        "classifiedRole": "paint",
+        "pbr": {
+          "baseColorFactor": [
+            0.0143567,
+            0.0143567,
+            0.0143567,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9967897442867428
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "TwiXeR_992_body.005_TwiXeR_992_carPaint.008_0"
+        ]
+      },
+      {
+        "index": 84,
+        "name": "Scene_-_Root.002",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0.43123940949153367,
+          "roughnessFactor": 0.4713139487880803
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_4.003_Scene_-_Root.002_0",
+          "Object_4.001_Scene_-_Root.002_0",
+          "Object_4.002_Scene_-_Root.002_0",
+          "Object_4.004_Scene_-_Root.002_0"
+        ]
+      },
+      {
+        "index": 85,
+        "name": "amdb11_brake.002",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.009615739678686761,
+            0.009615739678686761,
+            0.009615739678686761,
+            1
+          ],
+          "metallicFactor": 0.7177164730406796,
+          "roughnessFactor": 0.16647365020541016
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "amdb11_brakedisc_FR.003_amdb11_brake.002_0",
+          "amdb11_brakedisc_FR.001_amdb11_brake.002_0",
+          "amdb11_brakedisc_FR.002_amdb11_brake.002_0",
+          "amdb11_brakedisc_FR.004_amdb11_brake.002_0"
+        ]
+      },
+      {
+        "index": 86,
+        "name": "amdb11_misc_chrome.002",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.0486285,
+            0.0486285,
+            0.0486285,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9846223180802502
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "amdb11_brakedisc_FR.003_amdb11_misc_chrome.002_0",
+          "amdb11_brakedisc_FR.001_amdb11_misc_chrome.002_0",
+          "amdb11_brakedisc_FR.002_amdb11_misc_chrome.002_0",
+          "amdb11_brakedisc_FR.004_amdb11_misc_chrome.002_0"
+        ]
+      },
+      {
+        "index": 87,
+        "name": "amdb11_caliper.002",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "roughnessFactor": 0.11771159683534282
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "amdb11_brakedisc_FR.003_amdb11_caliper.002_0",
+          "amdb11_brakedisc_FR.001_amdb11_caliper.002_0",
+          "amdb11_brakedisc_FR.002_amdb11_caliper.002_0",
+          "amdb11_brakedisc_FR.004_amdb11_caliper.002_0"
+        ]
+      }
+    ]
+  },
+  {
+    "car": "lp700",
+    "materials": [
+      {
+        "index": 0,
+        "name": "Body",
+        "classifiedRole": "paint",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            0.09464058061344868,
+            0,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9271680058332403
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0.04
+          }
+        },
+        "users": [
+          "Object_0"
+        ]
+      },
+      {
+        "index": 1,
+        "name": "Chrome",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9524078
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1"
+        ]
+      },
+      {
+        "index": 2,
+        "name": "Compteur",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 0
+          },
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_2"
+        ]
+      },
+      {
+        "index": 3,
+        "name": "Dessous",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_3"
+        ]
+      },
+      {
+        "index": 4,
+        "name": "Disk",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.290196,
+            0.294118,
+            0.286275,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9861314242816019
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_4"
+        ]
+      },
+      {
+        "index": 5,
+        "name": "Feux_blanc",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0.89
+          ],
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9747977282158025
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_5"
+        ]
+      },
+      {
+        "index": 6,
+        "name": "Feux_chrome",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.192157,
+            0.192157,
+            0.192157,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9644005676798071
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_6"
+        ]
+      },
+      {
+        "index": 7,
+        "name": "Feux_glass",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            0.35
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9589600881053577
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_7"
+        ]
+      },
+      {
+        "index": 8,
+        "name": "Feux_orange",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0.9
+          ],
+          "baseColorTexture": {
+            "index": 2
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9823427123811381
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_8"
+        ]
+      },
+      {
+        "index": 9,
+        "name": "Feux_rouge",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0.9
+          ],
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9929801708897605
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_9"
+        ]
+      },
+      {
+        "index": 10,
+        "name": "Feux_rouge_c",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0.9
+          ],
+          "baseColorTexture": {
+            "index": 4
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9875923367199538
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_10"
+        ]
+      },
+      {
+        "index": 11,
+        "name": "Feux_stop",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 3
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9929801708897605
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_11"
+        ]
+      },
+      {
+        "index": 12,
+        "name": "Frein",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 5
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9953414108199156
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_12"
+        ]
+      },
+      {
+        "index": 13,
+        "name": "Grille",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 6
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9978235582621837
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_13"
+        ]
+      },
+      {
+        "index": 14,
+        "name": "Interieur",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.211765,
+            0.211765,
+            0.211765,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9957647
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_14"
+        ]
+      },
+      {
+        "index": 15,
+        "name": "Interieur_LCD",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 7
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9961434199185778
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_15"
+        ]
+      },
+      {
+        "index": 16,
+        "name": "Interieur_color",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.611765,
+            0.290196,
+            0.196078,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.992964675004
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_16"
+        ]
+      },
+      {
+        "index": 17,
+        "name": "Interieur_glass",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.654902,
+            0.654902,
+            0.654902,
+            0.04
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9444296094373992
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_17"
+        ]
+      },
+      {
+        "index": 18,
+        "name": "Interieur_signs",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 8
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9971715728752538
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_18"
+        ]
+      },
+      {
+        "index": 19,
+        "name": "Interieur_sol",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 9
+          },
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_19"
+        ]
+      },
+      {
+        "index": 20,
+        "name": "Jante",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9788134066224502
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_20"
+        ]
+      },
+      {
+        "index": 21,
+        "name": "LP_700",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 10
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9600693972236832
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_21"
+        ]
+      },
+      {
+        "index": 22,
+        "name": "Logo",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 11
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9886862915010153
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_22"
+        ]
+      },
+      {
+        "index": 23,
+        "name": "Logo_color",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.639216,
+            0.517647,
+            0.227451,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.90698779708
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_23"
+        ]
+      },
+      {
+        "index": 24,
+        "name": "Metal_alu",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.478431,
+            0.478431,
+            0.478431,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9425882
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_24"
+        ]
+      },
+      {
+        "index": 25,
+        "name": "Metal_noir",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.156863,
+            0.156863,
+            0.156863,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9866897613621994
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_25"
+        ]
+      },
+      {
+        "index": 26,
+        "name": "Miroir",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.227451,
+            0.227451,
+            0.227451,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9614001721858763
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_26"
+        ]
+      },
+      {
+        "index": 27,
+        "name": "Moteur",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9938847985296079
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_27"
+        ]
+      },
+      {
+        "index": 28,
+        "name": "Partie_noir",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_28"
+        ]
+      },
+      {
+        "index": 29,
+        "name": "Phare",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.227451,
+            0.227451,
+            0.227451,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9578620926955312
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_29"
+        ]
+      },
+      {
+        "index": 30,
+        "name": "Phare_blanc",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0.8
+          ],
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9747977282158025
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_30"
+        ]
+      },
+      {
+        "index": 31,
+        "name": "Phare_optique",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.623529,
+            0.643137,
+            0.65098,
+            0.365
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.95906972608
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_31"
+        ]
+      },
+      {
+        "index": 32,
+        "name": "Phare_vitre",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            0.31
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.97308848168
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_32"
+        ]
+      },
+      {
+        "index": 33,
+        "name": "Plastique_noir",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9925129836951694
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_33"
+        ]
+      },
+      {
+        "index": 34,
+        "name": "Plastique_rouge",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.670588,
+            0.207843,
+            0.196078,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9870441141907489
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_34"
+        ]
+      },
+      {
+        "index": 35,
+        "name": "Pneu",
+        "classifiedRole": "rubber",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9976272608275872
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_35"
+        ]
+      },
+      {
+        "index": 36,
+        "name": "Siege_color",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.643137,
+            0.25098,
+            0.14902,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9898674820026703
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_36"
+        ]
+      },
+      {
+        "index": 37,
+        "name": "Siege_noir",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.192157,
+            0.192157,
+            0.192157,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9940456085992444
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_37"
+        ]
+      },
+      {
+        "index": 38,
+        "name": "Vitre",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.168627,
+            0.223529,
+            0.207843,
+            0.34
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.97471300312
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_38"
+        ]
+      },
+      {
+        "index": 39,
+        "name": "Vitre_noir",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.0313726,
+            0.0313726,
+            0.0313726,
+            1
+          ],
+          "metallicFactor": 0,
+          "roughnessFactor": 0.9971451
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_39"
+        ]
+      }
+    ]
+  },
+  {
+    "car": "amggt3",
+    "materials": [
+      {
+        "index": 0,
+        "name": "AUX_LIGHT",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "baseColorTexture": {
+            "index": 0
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_0"
+        ]
+      },
+      {
+        "index": 1,
+        "name": "NUMBERPLATE_2018_EMISSIVE_PRO",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "roughnessFactor": 0.957705,
+          "baseColorTexture": {
+            "index": 1
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_12"
+        ]
+      },
+      {
+        "index": 2,
+        "name": "PISTON",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 2
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_14"
+        ]
+      },
+      {
+        "index": 3,
+        "name": "EXT_Carpaint_Inst",
+        "classifiedRole": "paint",
+        "pbr": {
+          "roughnessFactor": 0.2605722226962977,
+          "baseColorTexture": {
+            "index": 3
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0
+          }
+        },
+        "users": [
+          "Object_15"
+        ]
+      },
+      {
+        "index": 4,
+        "name": "EXT_Carpaint_Inst_0",
+        "classifiedRole": "paint",
+        "pbr": {
+          "roughnessFactor": 0.24838170935378087,
+          "baseColorTexture": {
+            "index": 3
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0.07161926588728651
+          }
+        },
+        "users": [
+          "Object_16"
+        ]
+      },
+      {
+        "index": 5,
+        "name": "EXT_Details",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.4860967195328595,
+          "baseColorTexture": {
+            "index": 4
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_19"
+        ]
+      },
+      {
+        "index": 6,
+        "name": "EXT_Disc",
+        "classifiedRole": "metal",
+        "pbr": {
+          "roughnessFactor": 0.17523862929867975,
+          "baseColorTexture": {
+            "index": 5
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0.10209554924357864
+          }
+        },
+        "users": [
+          "Object_20"
+        ]
+      },
+      {
+        "index": 7,
+        "name": "EXT_Banner",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.6140971096292864,
+            0.6140971096292864,
+            0.6140971096292864,
+            1
+          ],
+          "roughnessFactor": 0.5165730028891516,
+          "baseColorTexture": {
+            "index": 6
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0.0228572125172191
+          }
+        },
+        "users": [
+          "Object_21"
+        ]
+      },
+      {
+        "index": 8,
+        "name": "EXT_Emissive_Light_Rear",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.17523862929867975,
+          "baseColorTexture": {
+            "index": 7
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_22"
+        ]
+      },
+      {
+        "index": 9,
+        "name": "EXT_Glass_Emissive_Rear",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.02217388478862707,
+            0.0343398068028541,
+            0.036889450395083165,
+            0.20784313725490194
+          ],
+          "roughnessFactor": 0
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_23"
+        ]
+      },
+      {
+        "index": 10,
+        "name": "EXT_Wing_Metal",
+        "classifiedRole": "metal",
+        "pbr": {
+          "baseColorFactor": [
+            0.04011232605020126,
+            0.04011232605020126,
+            0.04011232605020126,
+            1
+          ],
+          "roughnessFactor": 0.8579073764796235
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 8,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                112.39338492202545,
+                112.39338492202545
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_31"
+        ]
+      },
+      {
+        "index": 11,
+        "name": "EXT_Headlight_Glass",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.02217388478862707,
+            0.0343398068028541,
+            0.036889450395083165,
+            0.20784313725490194
+          ],
+          "roughnessFactor": 0.957705
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0
+          }
+        },
+        "users": [
+          "Object_32"
+        ]
+      },
+      {
+        "index": 12,
+        "name": "EXT_Emissive_Light_Front",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 7
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_36"
+        ]
+      },
+      {
+        "index": 13,
+        "name": "EXT_Emissive_Light_Front_0",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.2527883650225801,
+            0.2527883650225801,
+            0.2527883650225801,
+            1
+          ],
+          "roughnessFactor": 0.06552400921602808
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_37"
+        ]
+      },
+      {
+        "index": 14,
+        "name": "EXT_Carbon",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.012130890020786248,
+            0.012130890020786248,
+            0.012130890020786248,
+            1
+          ],
+          "roughnessFactor": 0.5287635162316685
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 8,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                103.28500644482334,
+                103.28500644482334
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_43"
+        ]
+      },
+      {
+        "index": 15,
+        "name": "Lumirank",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.22400068266874718,
+          "metallicFactor": 0.894478916507174,
+          "baseColorTexture": {
+            "index": 9
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_60"
+        ]
+      },
+      {
+        "index": 16,
+        "name": "INT_Seat",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.04326586174371897,
+            0.04326586174371897,
+            0.04326586174371897,
+            1
+          ],
+          "roughnessFactor": 0.6019065962867696
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 8,
+          "scale": 0.6750496763418707,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                78.96432478136836,
+                78.96432478136836
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_63"
+        ]
+      },
+      {
+        "index": 17,
+        "name": "INT_Occlusion_Inst",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.03421842137872357,
+            0.03421842137872357,
+            0.03421842137872357,
+            1
+          ],
+          "roughnessFactor": 0.957705
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 10,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                6.606990695089931,
+                6.606990695089931
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_65"
+        ]
+      },
+      {
+        "index": 18,
+        "name": "INT_LED",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 11
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_66"
+        ]
+      },
+      {
+        "index": 19,
+        "name": "INT_ELECTRONICS",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.3946678694639831,
+          "metallicFactor": 0.7847642964245224,
+          "baseColorTexture": {
+            "index": 12
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_67"
+        ]
+      },
+      {
+        "index": 20,
+        "name": "INT_DECALS",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "baseColorTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "users": [
+          "Object_68"
+        ]
+      },
+      {
+        "index": 21,
+        "name": "INT_Dash_Alcantara",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.07161926588728651,
+            0.07161926588728651,
+            0.07161926588728651,
+            1
+          ],
+          "roughnessFactor": 0.851812119808365,
+          "baseColorTexture": {
+            "index": 14,
+            "extensions": {
+              "KHR_texture_transform": {
+                "scale": [
+                  20.000000000000004,
+                  20.000000000000004
+                ]
+              }
+            }
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 15,
+          "scale": 0.38857261279272465,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                20.000000000000004,
+                20.000000000000004
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_69"
+        ]
+      },
+      {
+        "index": 22,
+        "name": "INT_Carbon",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.007754087676467409,
+            0.007754087676467409,
+            0.007754087676467409,
+            1
+          ],
+          "roughnessFactor": 0.32152478940888196
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 8,
+          "scale": 0.43123940949153367,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                55.867365878642026,
+                55.867365878642026
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_70"
+        ]
+      },
+      {
+        "index": 23,
+        "name": "INT_NET",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.5348587729029269,
+          "metallicFactor": 0.5836208262729943,
+          "baseColorTexture": {
+            "index": 16
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 17,
+          "scale": 0.4678109495190842
+        },
+        "users": [
+          "Object_71"
+        ]
+      },
+      {
+        "index": 24,
+        "name": "MI_INT_Glass",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0.011750637479589597,
+            0.011750637479589597,
+            0.011750637479589597,
+            1
+          ],
+          "roughnessFactor": 0.5836208262729943
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 8,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                18.29130279282596,
+                18.29130279282596
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_73"
+        ]
+      },
+      {
+        "index": 25,
+        "name": "INT_LED_0",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 18
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_75"
+        ]
+      },
+      {
+        "index": 26,
+        "name": "LED_INT_LIMITER",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0.6140971096292864
+          ],
+          "roughnessFactor": 0.957705,
+          "baseColorTexture": {
+            "index": 18
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_85"
+        ]
+      },
+      {
+        "index": 27,
+        "name": "MIRROR",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0,
+          "baseColorTexture": {
+            "index": 19
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_88"
+        ]
+      },
+      {
+        "index": 28,
+        "name": "INT_Steer",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.012746557124078088,
+            0.012746557124078088,
+            0.012746557124078088,
+            1
+          ],
+          "roughnessFactor": 0.5775255696017358
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 8,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                12.370297857264209,
+                12.370297857264209
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_90"
+        ]
+      },
+      {
+        "index": 29,
+        "name": "INT_Steer_Alcantara",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.03564081245896186,
+            0.03564081245896186,
+            0.03564081245896186,
+            1
+          ],
+          "roughnessFactor": 0.6384781363143202
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 10,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                2.3386296767425634,
+                2.3386296767425634
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_92"
+        ]
+      },
+      {
+        "index": 30,
+        "name": "INT_Steer_Buttons",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.5226682595604101,
+          "metallicFactor": 0.5043824895466348,
+          "baseColorTexture": {
+            "index": 20
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_93"
+        ]
+      },
+      {
+        "index": 31,
+        "name": "Material_350",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 21
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_96"
+        ]
+      },
+      {
+        "index": 32,
+        "name": "RPM_Overlay",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_97"
+        ]
+      },
+      {
+        "index": 33,
+        "name": "LCD_LTS",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.6201923663005449,
+            0.6201923663005449,
+            0.6201923663005449,
+            0
+          ],
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0.8152405797808145,
+          "baseColorTexture": {
+            "index": 22
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_98"
+        ]
+      },
+      {
+        "index": 34,
+        "name": "LCD_RTS",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 23
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_99"
+        ]
+      },
+      {
+        "index": 35,
+        "name": "LCD_LIGHT",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.6994307030269045,
+            0.6994307030269045,
+            0.6994307030269045,
+            1
+          ],
+          "roughnessFactor": 0.4739062061903426,
+          "baseColorTexture": {
+            "index": 24
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_100"
+        ]
+      },
+      {
+        "index": 36,
+        "name": "LCD_TC",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 25
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_102"
+        ]
+      },
+      {
+        "index": 37,
+        "name": "LCD_OVERLAY",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 26
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_103"
+        ]
+      },
+      {
+        "index": 38,
+        "name": "LCD_FUEL",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.012518225358363446,
+            0.012518225358363446,
+            0.012518225358363446,
+            1
+          ],
+          "roughnessFactor": 0.30933427606636515
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_emissive_strength": {
+            "emissiveStrength": 1.3257183259987078
+          }
+        },
+        "users": [
+          "Object_104"
+        ]
+      },
+      {
+        "index": 39,
+        "name": "LCD_PIT",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.06518791730249957,
+            0.06518791730249957,
+            0.06518791730249957,
+            1
+          ],
+          "roughnessFactor": 0.5043824895466348
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_105"
+        ]
+      },
+      {
+        "index": 40,
+        "name": "BELT_Schroth",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.3946678694639831,
+          "metallicFactor": 0.821335836452073,
+          "baseColorTexture": {
+            "index": 29
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_106"
+        ]
+      },
+      {
+        "index": 41,
+        "name": "RL_PIT",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 30
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_118"
+        ]
+      },
+      {
+        "index": 42,
+        "name": "EXT_Carpaint_Inst_1",
+        "classifiedRole": "paint",
+        "pbr": {
+          "roughnessFactor": 0.2544769660250393,
+          "baseColorTexture": {
+            "index": 3
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0.04
+          }
+        },
+        "users": [
+          "Object_128"
+        ]
+      },
+      {
+        "index": 43,
+        "name": "EXT_Detail_Screws",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.4190488961490168,
+          "baseColorTexture": {
+            "index": 31
+          }
+        },
+        "alphaMode": "MASK",
+        "doubleSided": true,
+        "users": [
+          "Object_143"
+        ]
+      },
+      {
+        "index": 44,
+        "name": "INT_Auxlight",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 0
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_144"
+        ]
+      },
+      {
+        "index": 45,
+        "name": "Details_door",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.957705,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 4
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_147"
+        ]
+      },
+      {
+        "index": 46,
+        "name": "amg_gt3_tyres",
+        "classifiedRole": "rubber",
+        "pbr": {
+          "roughnessFactor": 0.5043824895466348,
+          "baseColorTexture": {
+            "index": 32
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 33
+        },
+        "users": [
+          "Object_149"
+        ]
+      },
+      {
+        "index": 47,
+        "name": "amg_gt3_rims_blur",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.0851527774837633,
+            0.0851527774837633,
+            0.0851527774837633,
+            0
+          ]
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_151"
+        ]
+      },
+      {
+        "index": 48,
+        "name": "PaletteMaterial001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 34
+          },
+          "metallicRoughnessTexture": {
+            "index": 35
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_17"
+        ]
+      },
+      {
+        "index": 49,
+        "name": "PaletteMaterial002",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 34
+          },
+          "metallicRoughnessTexture": {
+            "index": 35
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0
+          }
+        },
+        "users": [
+          "Object_24"
+        ]
+      },
+      {
+        "index": 50,
+        "name": "PaletteMaterial003",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 34
+          },
+          "metallicRoughnessTexture": {
+            "index": 35
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0
+          }
+        },
+        "users": [
+          "Object_150"
+        ]
+      }
+    ]
+  },
+  {
+    "car": "m5g90",
+    "materials": [
+      {
+        "index": 0,
+        "name": "BMW_M5SedanRewardRecycled_2024BadgeA_Material",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.27276273603881457,
+          "baseColorTexture": {
+            "index": 0
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {}
+        },
+        "users": [
+          "Object_6"
+        ]
+      },
+      {
+        "index": 1,
+        "name": "MAT_CarbonFiberMatte.024",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.00541940046552879,
+            0.005254665109906482,
+            0.005254665109906482,
+            1
+          ],
+          "roughnessFactor": 0.5287635162316685
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.1630481159561629,
+            "clearcoatRoughnessFactor": 0.26666747936755614
+          }
+        },
+        "normalTexture": {
+          "index": 1,
+          "scale": 0.5531445429167022,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                4.000000000000002,
+                4.000000000000002
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_1066"
+        ]
+      },
+      {
+        "index": 2,
+        "name": "MAT_CarbonFiberMatte.020",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.044895049180010534,
+            0.044895049180010534,
+            0.044895049180010534,
+            1
+          ]
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 2,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                0.96896843887397,
+                0.96896843887397
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_1069"
+        ]
+      },
+      {
+        "index": 3,
+        "name": "MAT_CarbonFiberMatte.023",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.01920283330493202,
+            0.01920283330493202,
+            0.01920283330493202,
+            1
+          ]
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 1,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                3.2195493577953442,
+                3.2195493577953442
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_1078"
+        ]
+      },
+      {
+        "index": 4,
+        "name": "MAT_CarbonFiberMatte.004",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.0192028,
+            0.0192028,
+            0.0192028,
+            1
+          ]
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 2,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                3.21955,
+                3.21955
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_1079"
+        ]
+      },
+      {
+        "index": 5,
+        "name": "MAT_CarbonFiberMatte.022",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.013314292935956682,
+            0.013314292935956682,
+            0.013314292935956682,
+            1
+          ]
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "normalTexture": {
+          "index": 1,
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                27.745772722476453,
+                27.745772722476453
+              ]
+            }
+          }
+        },
+        "users": [
+          "Object_1086"
+        ]
+      },
+      {
+        "index": 6,
+        "name": "window",
+        "classifiedRole": "glass",
+        "pbr": {
+          "baseColorFactor": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "roughnessFactor": 0.6,
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1095"
+        ]
+      },
+      {
+        "index": 7,
+        "name": "int_misc",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.6,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 3
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1096"
+        ]
+      },
+      {
+        "index": 8,
+        "name": "Details",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.6,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 4
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1097"
+        ]
+      },
+      {
+        "index": 9,
+        "name": "plastic_smooth_010101FF",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "roughnessFactor": 0.6,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 5
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1101"
+        ]
+      },
+      {
+        "index": 10,
+        "name": "bmw_badge_003_bmw_badge_003_diff",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.236191196011264,
+          "baseColorTexture": {
+            "index": 0
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1113"
+        ]
+      },
+      {
+        "index": 11,
+        "name": "paint_matteblack_040404FF",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorFactor": [
+            0.031896033067374104,
+            0.031896033067374104,
+            0.031896033067374104,
+            1
+          ],
+          "roughnessFactor": 0.6
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0
+          }
+        },
+        "users": [
+          "Object_1114"
+        ]
+      },
+      {
+        "index": 12,
+        "name": "plastic_010101FF",
+        "classifiedRole": "plastic",
+        "pbr": {
+          "baseColorFactor": [
+            0.01680737574872402,
+            0.01680737574872402,
+            0.01680737574872402,
+            1
+          ],
+          "roughnessFactor": 0.6,
+          "metallicFactor": 0
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1115"
+        ]
+      },
+      {
+        "index": 13,
+        "name": "screw_017_010101FF",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.6,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 6
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1118"
+        ]
+      },
+      {
+        "index": 14,
+        "name": "Material_28",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.6,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 7
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0
+          }
+        },
+        "users": [
+          "Object_1119"
+        ]
+      },
+      {
+        "index": 15,
+        "name": "Brake_Disk",
+        "classifiedRole": "metal",
+        "pbr": {
+          "roughnessFactor": 0.26666747936755614,
+          "metallicFactor": 0.5348587729029269,
+          "baseColorTexture": {
+            "index": 7
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1120"
+        ]
+      },
+      {
+        "index": 16,
+        "name": "Material_25",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.41295363947775837,
+          "baseColorTexture": {
+            "index": 8
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.5287635162316685
+          }
+        },
+        "users": [
+          "Object_1121"
+        ]
+      },
+      {
+        "index": 17,
+        "name": "paint_orange_D72A03FF",
+        "classifiedRole": "paint",
+        "pbr": {
+          "baseColorFactor": [
+            0.011119325275725147,
+            0.011119325275725147,
+            0.011119325275725147,
+            1
+          ],
+          "roughnessFactor": 0.29104850605258986
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {
+            "specularFactor": 0.7420974997257134
+          }
+        },
+        "users": [
+          "Object_1122"
+        ]
+      },
+      {
+        "index": 18,
+        "name": "metalicpaint_lightsilver_CDCDD3FF",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.4007631261352415,
+          "baseColorTexture": {
+            "index": 9
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1123"
+        ]
+      },
+      {
+        "index": 19,
+        "name": "CSR2_Grille2",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.6,
+          "metallicFactor": 0,
+          "baseColorTexture": {
+            "index": 10
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0.04
+          }
+        },
+        "users": [
+          "Object_1157"
+        ]
+      },
+      {
+        "index": 20,
+        "name": "material_9",
+        "classifiedRole": "authored",
+        "pbr": {
+          "roughnessFactor": 0.6,
+          "baseColorTexture": {
+            "index": 11
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1168"
+        ]
+      },
+      {
+        "index": 21,
+        "name": "PaletteMaterial001",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {}
+        },
+        "users": [
+          "Object_0"
+        ]
+      },
+      {
+        "index": 22,
+        "name": "PaletteMaterial002",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 0.894478916507174,
+            "clearcoatRoughnessFactor": 0.03504772585973595
+          },
+          "KHR_materials_specular": {
+            "specularFactor": 0
+          }
+        },
+        "users": [
+          "Object_2"
+        ]
+      },
+      {
+        "index": 23,
+        "name": "PaletteMaterial003",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_specular": {}
+        },
+        "users": [
+          "Object_3"
+        ]
+      },
+      {
+        "index": 24,
+        "name": "PaletteMaterial004",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0
+          },
+          "KHR_materials_specular": {}
+        },
+        "users": [
+          "Object_1060"
+        ]
+      },
+      {
+        "index": 25,
+        "name": "PaletteMaterial005",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "users": [
+          "Object_1061"
+        ]
+      },
+      {
+        "index": 26,
+        "name": "PaletteMaterial006",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "OPAQUE",
+        "doubleSided": true,
+        "users": [
+          "Object_1067"
+        ]
+      },
+      {
+        "index": 27,
+        "name": "PaletteMaterial007",
+        "classifiedRole": "authored",
+        "pbr": {
+          "baseColorTexture": {
+            "index": 12
+          },
+          "metallicRoughnessTexture": {
+            "index": 13
+          }
+        },
+        "alphaMode": "BLEND",
+        "doubleSided": true,
+        "extensions": {
+          "KHR_materials_clearcoat": {
+            "clearcoatFactor": 1,
+            "clearcoatRoughnessFactor": 0.00457144250344382
+          },
+          "KHR_materials_emissive_strength": {
+            "emissiveStrength": 10
+          }
+        },
+        "users": [
+          "Object_1076"
+        ]
+      }
+    ]
+  }
+]

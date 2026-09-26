@@ -1,0 +1,595 @@
+{
+  "schema": "streetrush.vehicle-v24.steering-feedback.v1",
+  "date": "2026-08-31",
+  "status": "AUTOMATED_REGRESSION_PASS_WAITING_FOR_USER",
+  "scope": "Correction of the driver-view handedness regression; not complete production handling acceptance or v2.4 parity",
+  "rootCause": "The previous edit and its test treated the legacy +X/right label as driver-right. The production ChaseCamera looks along +Z with +Y up, so its screen-right is -X. That shared bad reference let reversed steering pass the old test.",
+  "correction": {
+    "runtimeFile": "src/vehicle-v24/steering.js",
+    "commandToRack": "oracleCommand = -clamp(streetRushCommand, -1, 1)",
+    "unchangedMechanicalMapping": "streetRushVirtualAngle = -virtualAngle; wheel angles retain oracle-to-host coordinate conversion",
+    "controlPolicy": "streetrush-playability-v2-driver-view",
+    "testFile": "scripts/test-vehicle-v24-playability.mjs",
+    "testBasis": "Actual production ChaseCamera.snap quaternion, not the legacy +X/right label",
+    "inputMappingChanged": false,
+    "speedAssistChanged": false,
+    "bodyVelocityWheelOmegaOrRpmOverwritten": false,
+    "automaticResetAdded": false
+  },
+  "beforeFix": {
+    "command": "node scripts/test-vehicle-v24-playability.mjs",
+    "exitCode": 1,
+    "status": "REPRODUCED_FAILURE",
+    "stderr": "AssertionError [ERR_ASSERTION]: driver-view steering direction/authority failed at 2 m/s: screen-right travel=-0.2579755745887259, command=-1",
+    "meaning": "Right command moved left in the real chase-camera frame after replacing only the test reference axis."
+  },
+  "afterFix": {
+    "command": "node scripts/test-vehicle-v24-playability.mjs",
+    "exitCode": 0,
+    "source": "Full JSON stdout returned by the single post-fix execution; stored structurally without changing measurements",
+    "stdout": {
+      "schema": "streetrush.vehicle-v24.playability-probe.v1",
+      "fixedHz": 120,
+      "steering": [
+        {
+          "speedMps": 2,
+          "command": -1,
+          "streetRushVirtualAngle": -0.4524190243921428,
+          "oracleWheelAngles": {
+            "left": 0.506174191878334,
+            "right": 0.4086250724782079
+          },
+          "streetRushWheelAngles": [
+            -0.506174191878334,
+            -0.4086250724782079,
+            0,
+            0
+          ],
+          "speedAuthority": 0.9867692307692307
+        },
+        {
+          "speedMps": 2,
+          "command": 1,
+          "streetRushVirtualAngle": 0.4524190243921428,
+          "oracleWheelAngles": {
+            "left": -0.4086250724782079,
+            "right": -0.506174191878334
+          },
+          "streetRushWheelAngles": [
+            0.4086250724782079,
+            0.506174191878334,
+            0,
+            0
+          ],
+          "speedAuthority": 0.9867692307692307
+        },
+        {
+          "speedMps": 16,
+          "command": -1,
+          "streetRushVirtualAngle": -0.24093700568429796,
+          "oracleWheelAngles": {
+            "left": 0.2557630169263506,
+            "right": 0.22785246866632897
+          },
+          "streetRushWheelAngles": [
+            -0.2557630169263506,
+            -0.22785246866632897,
+            0,
+            0
+          ],
+          "speedAuthority": 0.5700000000000001
+        },
+        {
+          "speedMps": 16,
+          "command": 1,
+          "streetRushVirtualAngle": 0.24093700568429796,
+          "oracleWheelAngles": {
+            "left": -0.22785246866632897,
+            "right": -0.2557630169263506
+          },
+          "streetRushWheelAngles": [
+            0.22785246866632897,
+            0.2557630169263506,
+            0,
+            0
+          ],
+          "speedAuthority": 0.5700000000000001
+        },
+        {
+          "speedMps": 40,
+          "command": -1,
+          "streetRushVirtualAngle": -0.10563673067819508,
+          "oracleWheelAngles": {
+            "left": 0.1078688038146791,
+            "right": 0.10355812857824778
+          },
+          "streetRushWheelAngles": [
+            -0.1078688038146791,
+            -0.10355812857824778,
+            0,
+            0
+          ],
+          "speedAuthority": 0.25862068965517243
+        },
+        {
+          "speedMps": 40,
+          "command": 1,
+          "streetRushVirtualAngle": 0.10563673067819508,
+          "oracleWheelAngles": {
+            "left": -0.10355812857824778,
+            "right": -0.1078688038146791
+          },
+          "streetRushWheelAngles": [
+            0.10355812857824778,
+            0.1078688038146791,
+            0,
+            0
+          ],
+          "speedAuthority": 0.25862068965517243
+        }
+      ],
+      "physicalSteering": [
+        {
+          "speedMps": 2,
+          "command": -1,
+          "accelerationSeconds": 0.75,
+          "reachedSpeedMps": 2.0009416015650863,
+          "lateralTravel": 0.25689558459189693,
+          "minimumGrounded": 4,
+          "lateralBasis": "production ChaseCamera.snap screen-right",
+          "screenRight": [
+            -0.9999943412294627,
+            5.421010862427522e-20,
+            -0.0033641505691881205
+          ],
+          "steerAngle": -0.4438169588117605,
+          "automaticResets": []
+        },
+        {
+          "speedMps": 2,
+          "command": 1,
+          "accelerationSeconds": 0.75,
+          "reachedSpeedMps": 2.0009416015650863,
+          "lateralTravel": -0.2579755745887259,
+          "minimumGrounded": 4,
+          "lateralBasis": "production ChaseCamera.snap screen-right",
+          "screenRight": [
+            -0.9999943412294627,
+            5.421010862427522e-20,
+            -0.0033641505691881205
+          ],
+          "steerAngle": 0.4438289943571249,
+          "automaticResets": []
+        },
+        {
+          "speedMps": 16,
+          "command": -1,
+          "accelerationSeconds": 4.775,
+          "reachedSpeedMps": 16.029741266759384,
+          "lateralTravel": 0.6922696123008036,
+          "minimumGrounded": 4,
+          "lateralBasis": "production ChaseCamera.snap screen-right",
+          "screenRight": [
+            -0.9996501243014594,
+            4.336808689942018e-19,
+            0.026450500639447733
+          ],
+          "steerAngle": -0.23640163089483732,
+          "automaticResets": []
+        },
+        {
+          "speedMps": 16,
+          "command": 1,
+          "accelerationSeconds": 4.775,
+          "reachedSpeedMps": 16.029741266759384,
+          "lateralTravel": -0.6942222176558768,
+          "minimumGrounded": 4,
+          "lateralBasis": "production ChaseCamera.snap screen-right",
+          "screenRight": [
+            -0.9996501243014594,
+            4.336808689942018e-19,
+            0.026450500639447733
+          ],
+          "steerAngle": 0.23634922316835463,
+          "automaticResets": []
+        },
+        {
+          "speedMps": 40,
+          "command": -1,
+          "accelerationSeconds": 21.066666666666666,
+          "reachedSpeedMps": 40.001450697986904,
+          "lateralTravel": 0.7855941815615761,
+          "minimumGrounded": 4,
+          "lateralBasis": "production ChaseCamera.snap screen-right",
+          "screenRight": [
+            -0.971589159500114,
+            0,
+            0.23667383704554637
+          ],
+          "steerAngle": -0.10636395735668747,
+          "automaticResets": []
+        },
+        {
+          "speedMps": 40,
+          "command": 1,
+          "accelerationSeconds": 21.066666666666666,
+          "reachedSpeedMps": 40.001450697986904,
+          "lateralTravel": -0.7599987892476037,
+          "minimumGrounded": 4,
+          "lateralBasis": "production ChaseCamera.snap screen-right",
+          "screenRight": [
+            -0.971589159500114,
+            0,
+            0.23667383704554637
+          ],
+          "steerAngle": 0.10636946721736301,
+          "automaticResets": []
+        }
+      ],
+      "footBrake": {
+        "launchSpeedKmh": 32.29995531223302,
+        "maximumCapacityPairDifference": 5.708399776239048,
+        "maximumAppliedPairDifference": 5.708399776239048,
+        "maximumYawRate": 0.009074229747056961,
+        "maximumRollRate": 0.004076408687978983,
+        "startPosition": {
+          "x": 0.025245798751711845,
+          "y": 0.6560717821121216,
+          "z": 12.556514739990234
+        },
+        "endPosition": {
+          "x": 0.05259641632437706,
+          "y": 0.6540939807891846,
+          "z": 15.980390548706055
+        },
+        "symmetricAssist": {
+          "driverServiceCapacity": [
+            759.5,
+            759.5,
+            465.5,
+            465.5
+          ],
+          "serviceRequestCapacity": [
+            759.5,
+            759.5,
+            465.5,
+            465.5
+          ],
+          "serviceCapacity": [
+            759.5,
+            759.5,
+            465.5,
+            465.5
+          ],
+          "totalBrakeCapacity": [
+            759.5,
+            759.5,
+            465.5,
+            465.5
+          ]
+        },
+        "firstDiagnostics": [
+          {
+            "regime": "SLIP_POSITIVE",
+            "omegaBefore": 31.26987322915886,
+            "omegaAfter": 26.20653989582553,
+            "impulse": -6.329166666666667,
+            "appliedTorque": 759.5,
+            "serviceCapacity": 759.5,
+            "parkingCapacity": 0,
+            "totalCapacity": 759.5
+          },
+          {
+            "regime": "SLIP_POSITIVE",
+            "omegaBefore": 31.221638277965155,
+            "omegaAfter": 26.158304944631823,
+            "impulse": -6.329166666666667,
+            "appliedTorque": 759.5,
+            "serviceCapacity": 759.5,
+            "parkingCapacity": 0,
+            "totalCapacity": 759.5
+          },
+          {
+            "regime": "SLIP_POSITIVE",
+            "omegaBefore": 32.55264411422885,
+            "omegaAfter": 29.449310780895516,
+            "impulse": -3.8791666666666664,
+            "appliedTorque": 465.5,
+            "serviceCapacity": 465.5,
+            "parkingCapacity": 0,
+            "totalCapacity": 465.5
+          },
+          {
+            "regime": "SLIP_POSITIVE",
+            "omegaBefore": 32.51309981411403,
+            "omegaAfter": 29.409766480780696,
+            "impulse": -3.8791666666666664,
+            "appliedTorque": 465.5,
+            "serviceCapacity": 465.5,
+            "parkingCapacity": 0,
+            "totalCapacity": 465.5
+          }
+        ],
+        "finalSignedSpeedKmh": 27.991658177013154
+      },
+      "lowSpeedEsc": {
+        "bodyLongSpeedMps": 1,
+        "desiredYaw": 1,
+        "yawError": 1,
+        "escSpeedAuthority": 0,
+        "escSteerAuthority": 1,
+        "escEligible": false,
+        "escBrakeCapacity": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "antiRoll": [
+        {
+          "rollSign": -1,
+          "loadDelta": [
+            -124,
+            124,
+            -124,
+            124
+          ],
+          "rollTorque": 352.15999999999997
+        },
+        {
+          "rollSign": 1,
+          "loadDelta": [
+            124,
+            -124,
+            124,
+            -124
+          ],
+          "rollTorque": -352.15999999999997
+        }
+      ],
+      "collisionDirectionAndClutch": {
+        "reboundDriveThrottle": 1,
+        "reboundServiceBrake": 0,
+        "engineStopActive": true,
+        "clutchRegime": "SLIP_POSITIVE",
+        "engineOmega": 0,
+        "scaledResidual": 0
+      },
+      "zeroInput": {
+        "speedKmh": 0.0017519450399838233,
+        "signedSpeed": 0.00048665139999550644,
+        "driveIntent": 0,
+        "durationSeconds": 3,
+        "maximumIdleSpeedKmh": 0.001779939153971622,
+        "maximumIdleTransferNm": 0,
+        "startPosition": {
+          "x": -0.0010558818466961384,
+          "y": 0.6549527645111084,
+          "z": 0.000040675462514627725
+        },
+        "endPosition": {
+          "x": -0.004529884085059166,
+          "y": 0.654937744140625,
+          "z": 0.001110098441131413
+        },
+        "powertrain": {
+          "driveTorqueRequestedNm": 0,
+          "driveTorqueAppliedNm": 0,
+          "wheelDriveTorqueRequestedNm": 0,
+          "wheelDriveTorqueAppliedNm": 0,
+          "serviceBrakeTorqueRequestedNm": 0,
+          "serviceBrakeTorqueAppliedNm": 0,
+          "driverServiceBrakeTorqueRequestedNm": 0,
+          "driverServiceBrakeTorqueAppliedNm": 0,
+          "assistBrakeTorqueRequestedNm": 0,
+          "assistBrakeTorqueAppliedNm": 0,
+          "handbrakeTorqueRequestedNm": 0,
+          "handbrakeTorqueAppliedNm": 0
+        }
+      },
+      "wallRecovery": {
+        "wallColliderHandle": 1e-323,
+        "collision": {
+          "index": 168,
+          "position": {
+            "x": 0.0008562924922443926,
+            "y": 0.6559609770774841,
+            "z": 2.6437294483184814
+          },
+          "velocity": {
+            "x": -0.17659394443035126,
+            "y": -0.019540343433618546,
+            "z": -0.25153160095214844
+          },
+          "signedBodySpeed": -0.251743336540926,
+          "wallContacts": 4,
+          "wallNormal": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+          },
+          "telemetry": {
+            "signedSpeedKmh": 13.147572651805824,
+            "speedKmh": 13.147572651805824,
+            "reverse": false
+          }
+        },
+        "forwardAfterCollision": {
+          "index": 29,
+          "position": {
+            "x": -0.0020186398178339005,
+            "y": 0.653047502040863,
+            "z": 2.6244354248046875
+          },
+          "velocity": {
+            "x": 0.03425144404172897,
+            "y": 0.0002839316730387509,
+            "z": 0.0008955157245509326
+          },
+          "signedBodySpeed": 0.0009215147398427908,
+          "wallContacts": 4,
+          "wallNormal": {
+            "x": -0.001500129234045744,
+            "y": 0.000927681103348732,
+            "z": 0.9999984502792358
+          },
+          "telemetry": {
+            "signedSpeedKmh": -0.000012753130043172734,
+            "speedKmh": 0.000012753130043172734,
+            "reverse": false
+          }
+        },
+        "brakeAfterCollision": {
+          "index": 59,
+          "position": {
+            "x": -0.0035011160653084517,
+            "y": 0.6541683077812195,
+            "z": 2.6296498775482178
+          },
+          "velocity": {
+            "x": 0.031421732157468796,
+            "y": -0.022158397361636162,
+            "z": -0.007544049061834812
+          },
+          "signedBodySpeed": -0.007570707026740006,
+          "wallContacts": 4,
+          "wallNormal": {
+            "x": 0.000003978871973231435,
+            "y": 0.0006136840675026178,
+            "z": 0.9999997615814209
+          },
+          "telemetry": {
+            "signedSpeedKmh": -0.026256834267659457,
+            "speedKmh": 0.026256834267659457,
+            "reverse": true
+          }
+        },
+        "reverseEngaged": {
+          "index": 0,
+          "position": {
+            "x": -0.0036921408027410507,
+            "y": 0.6540025472640991,
+            "z": 2.629578113555908
+          },
+          "velocity": {
+            "x": -0.06457079946994781,
+            "y": -0.018508344888687134,
+            "z": -0.007394156418740749
+          },
+          "signedBodySpeed": -0.007435915623288286,
+          "wallContacts": 4,
+          "wallNormal": {
+            "x": -0.000011769167031161487,
+            "y": 0.0007562133250758052,
+            "z": 0.9999997019767761
+          },
+          "telemetry": {
+            "signedSpeedKmh": -0.027254545296261676,
+            "speedKmh": 0.027254545296261676,
+            "reverse": true
+          }
+        },
+        "reverseCleared": {
+          "index": 76,
+          "position": {
+            "x": -0.00685565359890461,
+            "y": 0.6553438305854797,
+            "z": 1.9995949268341064
+          },
+          "velocity": {
+            "x": -0.02593621239066124,
+            "y": -0.00018006065511144698,
+            "z": -2.058074474334717
+          },
+          "signedBodySpeed": -2.057639902310099,
+          "wallContacts": 0,
+          "wallNormal": null,
+          "telemetry": {
+            "signedSpeedKmh": -7.289064053118091,
+            "speedKmh": 7.289064053118091,
+            "reverse": true
+          }
+        },
+        "final": {
+          "index": 299,
+          "position": {
+            "x": -0.4431053102016449,
+            "y": 0.6560525894165039,
+            "z": 0.6127402782440186
+          },
+          "velocity": {
+            "x": -1.2739202976226807,
+            "y": -0.0003939277376048267,
+            "z": 2.7299692630767822
+          },
+          "signedBodySpeed": 2.946020008098932,
+          "wallContacts": 0,
+          "wallNormal": null,
+          "telemetry": {
+            "signedSpeedKmh": 10.54041499473873,
+            "speedKmh": 10.54041499473873,
+            "reverse": false
+          }
+        },
+        "maxWallContacts": 4,
+        "finalReportStatus": "COMMITTED",
+        "automaticResets": []
+      },
+      "status": "PASS",
+      "checks": 100,
+      "scenarioGroups": 7
+    }
+  },
+  "productionVersionCheck": {
+    "status": "PASS_VERSION_AND_RUNNING_CHAIN_ONLY",
+    "url": "http://127.0.0.1:4173/?devtools",
+    "fixedStepIndex": 6348,
+    "state": "race",
+    "car": "mx5",
+    "steeringControlPolicy": "streetrush-playability-v2-driver-view",
+    "track": {
+      "className": "TrackSystem",
+      "sampleCount": 1024,
+      "length": 2129.954296679656
+    },
+    "physicsSchedulerOwner": "rust-wasm",
+    "physicsSchedulerFallback": null,
+    "physicsPhase": "afterPhysics",
+    "authority": {
+      "legacyForceCalls": 0,
+      "v24ForceCalls": 1,
+      "vehicleForceState": "V24",
+      "world6Dof": "RAPIER"
+    },
+    "input": {
+      "steer": 0,
+      "throttle": 0,
+      "brake": 0,
+      "handbrake": 0,
+      "driveIntent": 0
+    },
+    "keyboardEvents": [],
+    "limitation": "This sample proves the corrected policy is running in production, not sustained left/right steering or driver feel."
+  },
+  "productionSteeringFeel": "WAITING_FOR_USER",
+  "savedArtifactValidation": {
+    "status": "PASS",
+    "exitCode": 0,
+    "method": "One read-only Node command: parse both JSON records, validate red/green exits and check count, validate six camera-based direction rows and historical-record link",
+    "gameTestsRerunDuringValidation": false
+  },
+  "userHandoff": {
+    "url": "http://127.0.0.1:4173/?devtools",
+    "visibleAndMarkedDeliverable": true,
+    "latestObservedFixedStep": 48060,
+    "keyboardEventsObserved": [],
+    "lastControlTraceObserved": null,
+    "steeringControlPolicy": "streetrush-playability-v2-driver-view",
+    "productionDirectionPassInferred": false
+  },
+  "previousAggregate335Checks": "HISTORICAL_ONLY_NOT_RERUN_AFTER_CORRECTION",
+  "previousDriverHandednessPass": "WITHDRAWN_WRONG_REFERENCE_AXIS",
+  "referenceParity": "PARTIAL",
+  "gameCompletion": "自动验证通过，等待手感验收"
+}

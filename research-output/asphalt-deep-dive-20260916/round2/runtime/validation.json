@@ -1,0 +1,31 @@
+{
+  "three": "180",
+  "matrix_rows": 8,
+  "dfg_rows": 8,
+  "matrix_closure_max": 3.154537505516073e-10,
+  "dfg_closure_max": 6.574159712102718e-10,
+  "dfg_direct_light_relative_change_max": 1.7144035968641447e-08,
+  "independent_image_run_total_relative_difference_max": 4.970465150577752e-09,
+  "actual_sun_direction_error": 1.6653345369377348e-16,
+  "textures_ready_before_initial_capture": 81,
+  "matrix_initial_capture": true,
+  "dfg_initial_capture": true,
+  "probe_mask_invariant": true,
+  "frozen_lod_invariant": true,
+  "browser_console_error_warn_count_observed": 0,
+  "browser_console_scope": "Final freshly loaded DFG image run, queried through browser dev.logs after completion; not historical whole-project logs",
+  "limitations": "No gameplay, vehicle shadows, GPU timing or motion-quality validation",
+  "files_sha256": {
+    "dfg-image-run.json": "882f1806c921e5db8aee32b50270850d2cc5264294db94ff2a0f4b247fbfd9a7",
+    "dfg-legacy.png": "6f8ec61c437f6214f09d19162c2fcf4fc6f73b211324f08381afddea28525d53",
+    "dfg-reference.png": "c9f860f7a85ba29c97194a89c50f20ac89ba1e570b847da36adbfab5972364e9",
+    "full-scene-dfg-gpu.json": "0b7fbd60d30489b34e6441f6e429f917e721e71f355c51b7417249cff823a84e",
+    "full-scene-matrix-gpu.json": "9608df119a57164d7d204ca6e9f776e4b2c40c6ec45ba5bef1de4c04385dbbfb",
+    "full-scene-probe-post-gpu.json": "42a8c849d9a685aea2c852261cea8c9b33bc51c2a08c5e33f382d32651af0a86",
+    "roi-early.png": "f60020c236b48f646f0dd54361c1471b56d23c9024e4d6efe2efbfbc73e32c4e",
+    "roi-end.png": "96abc2f69da68d754c1033cef5e34a87ae62dd92f5ecfa4eea8a4d12b7889353",
+    "roi-middle.png": "a7ce74fe57e5221cbb808eb221b9f32e3a1ea3cedd32b55c56da150a780e12e3",
+    "scene-lab.js": "f75b162ad1dffefdf60e6e42214d03c58a7526836aab44b1b70fd3736b4d2881",
+    "summary.json": "53432861c6a0fef038c632d634d72dc1a589b8821d5ef2e8e2fc46952c3886d5"
+  }
+}

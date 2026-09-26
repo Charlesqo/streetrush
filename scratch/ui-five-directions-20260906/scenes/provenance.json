@@ -1,0 +1,9 @@
+{
+  "capturedAt": "2026-09-06T15:54:42.871Z",
+  "source": "Local StreetRush renderer at http://127.0.0.1:5176/",
+  "viewport": [
+    1600,
+    900
+  ],
+  "notes": "Existing game scene, cars, track, materials and lighting. DOM UI hidden. Hero camera changed in this isolated browser session only. Driving scene captured via game controls. No generated imagery. Displayed UI timing values in concepts are shared sample data."
+}

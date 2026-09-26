@@ -1,0 +1,27 @@
+{
+  "before": {
+    "src/main.js": "df82476e9ead8ede6fc3c41eeaebff29dfde51a588e6634c297c5ef689ab946b",
+    "src/rendering.js": "92950ca85a0fe56dcedc0688a7cbf514b5da69e08a3b9b13b9485cd10412ab72",
+    "src/render-pipeline.js": "ca9c7a8411b4465a39b8dea93955b8640fdc867c0d98a606265b09d760812d18",
+    "src/car-materials.js": "19293a57c07b316d77d577edca78a8e907d58db1e82a43a29e52362d451ee8a0",
+    "src/assets.js": "f67e70e8cf03d072d24b09b433e38485769332c52c8d2f6ff5410312a12bd122",
+    "src/track-detail-materials.js": "a3bbc1fd77da068489a5d702bd25b5decdb51518e76622c2b5783a33921bec43",
+    "src/effects.js": "e729990a8d1c512b8ae29fdce4d8c410ef6c46375b34974639ad5d3fd7837f28",
+    "src/tire-effects.js": "3917187e1f51bfadf97e6320de24807986190db7e62820b5b8a0250c5cb506d1",
+    "scripts/test-render-materials.mjs": "e1b9cdb434e0a3f040a09ee65627b44fd808de8cf60242aa3b8b57ab9fa9a6ea"
+  },
+  "after": {
+    "src/main.js": "df82476e9ead8ede6fc3c41eeaebff29dfde51a588e6634c297c5ef689ab946b",
+    "src/rendering.js": "92950ca85a0fe56dcedc0688a7cbf514b5da69e08a3b9b13b9485cd10412ab72",
+    "src/render-pipeline.js": "ca9c7a8411b4465a39b8dea93955b8640fdc867c0d98a606265b09d760812d18",
+    "src/car-materials.js": "19293a57c07b316d77d577edca78a8e907d58db1e82a43a29e52362d451ee8a0",
+    "src/assets.js": "f67e70e8cf03d072d24b09b433e38485769332c52c8d2f6ff5410312a12bd122",
+    "src/track-detail-materials.js": "a3bbc1fd77da068489a5d702bd25b5decdb51518e76622c2b5783a33921bec43",
+    "src/effects.js": "e729990a8d1c512b8ae29fdce4d8c410ef6c46375b34974639ad5d3fd7837f28",
+    "src/tire-effects.js": "3917187e1f51bfadf97e6320de24807986190db7e62820b5b8a0250c5cb506d1",
+    "scripts/test-render-materials.mjs": "e1b9cdb434e0a3f040a09ee65627b44fd808de8cf60242aa3b8b57ab9fa9a6ea"
+  },
+  "sourceUnchanged": true,
+  "errors": [],
+  "note": "Audit instrumentation only; captures are not benchmarks. The normal warmup and renderer settings are preserved. All live runtime edits are discarded when this browser closes."
+}

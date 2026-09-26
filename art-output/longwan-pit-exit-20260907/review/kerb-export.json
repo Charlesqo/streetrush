@@ -1,0 +1,57 @@
+{
+  "source": "scene/longwan_kerb_procedural.blend",
+  "export": "models/longwan_kerb_examples_native.glb",
+  "objects": [
+    {
+      "name": "01 Straight",
+      "triangles": 16624,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        null,
+        "Worn kerb coating",
+        "Concrete"
+      ],
+      "used_material_slots": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "02 Corner",
+      "triangles": 20228,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        null,
+        "Worn kerb coating",
+        "Concrete"
+      ],
+      "used_material_slots": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "03 S Curve",
+      "triangles": 22268,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        null,
+        "Worn kerb coating",
+        "Concrete"
+      ],
+      "used_material_slots": [
+        1,
+        2
+      ]
+    }
+  ],
+  "bytes": 23233384,
+  "editable_path_and_nodes": "Kept in source .blend only; GLB contains evaluated meshes",
+  "game_integration": "NOT_RUN"
+}

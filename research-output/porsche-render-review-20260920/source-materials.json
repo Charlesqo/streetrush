@@ -1,0 +1,1370 @@
+{
+  "sha256": "e1cf7d3e04aaaf27cfec6363de5f6427b87c997993f9de0f54ec5549b68b8f96",
+  "images": [
+    {
+      "bufferView": 4,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 5,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 6,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 7,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 8,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 9,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 10,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 11,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 12,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 13,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 14,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 15,
+      "mimeType": "image/png"
+    },
+    {
+      "bufferView": 16,
+      "mimeType": "image/png"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    },
+    {
+      "sampler": 0,
+      "source": 5
+    },
+    {
+      "sampler": 0,
+      "source": 6
+    },
+    {
+      "sampler": 0,
+      "source": 7
+    },
+    {
+      "sampler": 0,
+      "source": 8
+    },
+    {
+      "sampler": 0,
+      "source": 9
+    },
+    {
+      "sampler": 0,
+      "source": 10
+    },
+    {
+      "sampler": 0,
+      "source": 11
+    },
+    {
+      "sampler": 0,
+      "source": 12
+    }
+  ],
+  "materials": [
+    {
+      "index": 0,
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0120399,
+          0.0120399,
+          0.0120399,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 1,
+      "doubleSided": true,
+      "name": "TwiXeR_992_carPaint.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6831716576944958,
+          0.6831716576944958,
+          0.6831716576944958,
+          1
+        ],
+        "metallicFactor": 0.7542880130682302,
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 2,
+      "doubleSided": true,
+      "name": "TwiXeR_992_headlight_1.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1002182397306339,
+          0.1002182397306339,
+          0.1002182397306339,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 3,
+      "doubleSided": true,
+      "name": "TwiXeR_992_carbon_roof.001",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "roughnessFactor": 0.1542831368628934
+      }
+    },
+    {
+      "index": 4,
+      "alphaCutoff": 0.4007631261352415,
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "TwiXeR_992_metal_radiator.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.03282970664197667,
+          0.03282970664197667,
+          0.03282970664197667,
+          1
+        ],
+        "baseColorTexture": {
+          "index": 1
+        },
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 5,
+      "doubleSided": true,
+      "name": "TwiXeR_992_headlight_1.001_0",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicFactor": 0.608001852958028,
+        "roughnessFactor": 0.2518072436030282
+      }
+    },
+    {
+      "index": 6,
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "TwiXeR_992_glass.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          0.37638209945020784
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 7,
+      "doubleSided": true,
+      "name": "TwiXeR_992_symbols.004",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 8,
+      "doubleSided": true,
+      "name": "TwiXeR_992_antichrome.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0326383,
+          0.0326383,
+          0.0326383,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 9,
+      "doubleSided": true,
+      "name": "TwiXeR_992_red.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.38843,
+          0.38843,
+          0.38843,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 10,
+      "doubleSided": true,
+      "name": "TwiXeR_992_headlight_1.001_1",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        }
+      }
+    },
+    {
+      "index": 11,
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic_mgl.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0738,
+          0.0738,
+          0.0738,
+          1
+        ],
+        "metallicFactor": 0.7420974997257134,
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 12,
+      "doubleSided": true,
+      "name": "TwiXeR_992_carpet.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0178284,
+          0.0178284,
+          0.0178284,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9960134485669943
+      }
+    },
+    {
+      "index": 13,
+      "doubleSided": true,
+      "name": "TwiXeR_992_speakers.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0249267,
+          0.0249267,
+          0.0249267,
+          1
+        ],
+        "metallicFactor": 0.9127646865209493
+      }
+    },
+    {
+      "index": 14,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0307792,
+          0.0307792,
+          0.0307792,
+          1
+        ],
+        "metallicFactor": 0.5592397995879607,
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 15,
+      "doubleSided": true,
+      "name": "TwiXeR_992_gauges_chrome.001",
+      "pbrMetallicRoughness": {
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 16,
+      "doubleSided": true,
+      "name": "TwiXeR_992_blackGlass.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0137937,
+          0.0137937,
+          0.0137937,
+          1
+        ],
+        "metallicFactor": 0.821335836452073,
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 17,
+      "doubleSided": true,
+      "name": "TwiXeR_992_symbols_1.003",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.8211145618000169
+      }
+    },
+    {
+      "index": 18,
+      "doubleSided": true,
+      "name": "TwiXeR_992_symbols.004_0",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 4
+        },
+        "roughnessFactor": 0.8211145618000169
+      }
+    },
+    {
+      "index": 19,
+      "doubleSided": true,
+      "name": "TwiXeR_992_symbols.004_1",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.8211145618000169
+      }
+    },
+    {
+      "index": 20,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID08_fabric_002.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0718824,
+          0.0718824,
+          0.0718824,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9772687892320713
+      }
+    },
+    {
+      "index": 21,
+      "doubleSided": true,
+      "name": "TwiXeR_992_symbols.004_2",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 5
+        },
+        "roughnessFactor": 0.8211145618000169
+      }
+    },
+    {
+      "index": 22,
+      "doubleSided": true,
+      "name": "TwiXeR_992_rivet_001_747474FF.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0222247,
+          0.0222247,
+          0.0222247,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9950304060020461
+      }
+    },
+    {
+      "index": 23,
+      "doubleSided": true,
+      "name": "TwiXeR_992_headlight_1.001_2",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 5
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0.7470177871865296
+      }
+    },
+    {
+      "index": 24,
+      "doubleSided": true,
+      "name": "TwiXeR_992_seatbelt.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0487732,
+          0.0487732,
+          0.0487732,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9890939809319808
+      }
+    },
+    {
+      "index": 25,
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic_1.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0573633,
+          0.0573633,
+          0.0573633,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 26,
+      "doubleSided": true,
+      "name": "TwiXeR_992_int_chrome.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6358071275813759,
+          0.6358071275813759,
+          0.6358071275813759,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 27,
+      "doubleSided": true,
+      "name": "TwiXeR_992_GT3RS_black",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.15766773041875703,
+          0.15766773041875703,
+          0.15766773041875703,
+          1
+        ],
+        "roughnessFactor": 0.1725689068766686
+      }
+    },
+    {
+      "index": 28,
+      "doubleSided": true,
+      "name": "TwiXeR_992_wheels_chrome_1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1542627968560867,
+          0.1542627968560867,
+          0.1542627968560867,
+          1
+        ],
+        "roughnessFactor": 0.35538182399630047
+      }
+    },
+    {
+      "index": 29,
+      "doubleSided": true,
+      "name": "TwiXeR_992.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0736778947237429,
+          0.0736778947237429,
+          0.0736778947237429,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 30,
+      "doubleSided": true,
+      "name": "TwiXeR_992_exhausttip_antichrome.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.185236,
+          0.185236,
+          0.185236,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 31,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800189,
+          0.800189,
+          0.800189,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 32,
+      "doubleSided": true,
+      "name": "TwiXeR_992_engine.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0287142,
+          0.0287142,
+          0.0287142,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 33,
+      "doubleSided": true,
+      "name": "TwiXeR_992_rubbertrim.008",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.11927,
+          0.11927,
+          0.11927,
+          1
+        ],
+        "roughnessFactor": 0.22133096024673604
+      }
+    },
+    {
+      "index": 34,
+      "doubleSided": true,
+      "name": "TwiXeR_992_int_chrome.005",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0503153,
+          0.0503153,
+          0.0503153,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 35,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 36,
+      "doubleSided": true,
+      "name": "TwiXeR_992_rubbertrim.009",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.113428,
+          0.113428,
+          0.113428,
+          1
+        ],
+        "roughnessFactor": 0.1725689068766686
+      }
+    },
+    {
+      "index": 37,
+      "doubleSided": true,
+      "name": "TwiXeR_992_Interior_D",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.02638308043037943,
+          0.02638308043037943,
+          0.02638308043037943,
+          1
+        ]
+      }
+    },
+    {
+      "index": 38,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID06_stitch_001",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 6
+        },
+        "metallicFactor": 0.5836208262729943,
+        "roughnessFactor": 0.08114005680779224
+      }
+    },
+    {
+      "index": 39,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800275,
+          0.00787017,
+          0,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9606972568918656
+      }
+    },
+    {
+      "index": 40,
+      "doubleSided": true,
+      "name": "TwiXeR_992_carpet.002",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 5
+        }
+      }
+    },
+    {
+      "index": 41,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0980667,
+          0.0980667,
+          0.0980667,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 42,
+      "alphaCutoff": 1,
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "TwiXeR_992_symbols_6",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 7
+        },
+        "metallicFactor": 0
+      }
+    },
+    {
+      "index": 43,
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "TwiXeR_992_symbols_1.003_0",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          0
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.8211145618000169
+      }
+    },
+    {
+      "index": 44,
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "TwiXeR_992_glass.004",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.23509307101688112,
+          0.23509307101688112,
+          0.23509307101688112,
+          0.18742914264119662
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 45,
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "TwiXeR_992_glass_int.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          0.40685838280649994
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 46,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.51193,
+          0.51193,
+          0.51193,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 47,
+      "doubleSided": true,
+      "name": "TwiXeR_992_rubbertrim.011",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0465254,
+          0.0465254,
+          0.0465254,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 48,
+      "doubleSided": true,
+      "name": "TwiXeR_992_chrome.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.00866848,
+          0.00866848,
+          0.00866848,
+          1
+        ],
+        "metallicFactor": 0.6567639063280954,
+        "metallicRoughnessTexture": {
+          "index": 8
+        }
+      }
+    },
+    {
+      "index": 49,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+      "normalTexture": {
+        "index": 9
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800172,
+          0,
+          0.007390439999999979,
+          1
+        ],
+        "metallicFactor": 0.9188599431922078,
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 50,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID02_leather_MGL.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0912295,
+          0.0912295,
+          0.0912295,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 51,
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic.004",
+      "normalTexture": {
+        "index": 10
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.058404,
+          0.058404,
+          0.058404,
+          1
+        ]
+      }
+    },
+    {
+      "index": 52,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.199507,
+          0.199507,
+          0.199507,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 53,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.00760262,
+          0.00760262,
+          0.00760262,
+          1
+        ],
+        "metallicFactor": 0
+      }
+    },
+    {
+      "index": 54,
+      "doubleSided": true,
+      "name": "TwiXeR_992_seat_leather.004",
+      "normalTexture": {
+        "index": 9
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0843852,
+          0.0843852,
+          0.0843852,
+          1
+        ],
+        "roughnessFactor": 0.8308566273725787
+      }
+    },
+    {
+      "index": 55,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.160606,
+          0.160606,
+          0.160606,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 56,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800212,
+          0,
+          0.00441773,
+          1
+        ],
+        "metallicFactor": 0
+      }
+    },
+    {
+      "index": 57,
+      "doubleSided": true,
+      "name": "TwiXeR_992_gps_screen.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0327491,
+          0.0327491,
+          0.0327491,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 58,
+      "doubleSided": true,
+      "name": "TwiXeR_992_upper_leather.004",
+      "normalTexture": {
+        "index": 9
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0672136,
+          0.0672136,
+          0.0672136,
+          1
+        ]
+      }
+    },
+    {
+      "index": 59,
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic_2.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.101071,
+          0.101071,
+          0.101071,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 60,
+      "doubleSided": true,
+      "name": "TwiXeR_992_gauges_1.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0893869,
+          0.0811381,
+          0.129127,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 61,
+      "doubleSided": true,
+      "name": "TwiXeR_992_gauges_9000.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          1
+        ],
+        "metallicFactor": 0
+      }
+    },
+    {
+      "index": 62,
+      "doubleSided": true,
+      "name": "TwiXeR_992_gauges_9000.001_0",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 11
+        },
+        "metallicFactor": 0,
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 63,
+      "doubleSided": true,
+      "name": "TwiXeR_992_dash_clock_1.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800219,
+          0.800219,
+          0.800219,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 64,
+      "doubleSided": true,
+      "name": "TwiXeR_992_gauges_chrome_2.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.703878,
+          0.703878,
+          0.703878,
+          1
+        ],
+        "roughnessFactor": 0.42247443039826416
+      }
+    },
+    {
+      "index": 65,
+      "doubleSided": true,
+      "name": "TwiXeR_992_int_chrome.007",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1002182397306339,
+          0.1002182397306339,
+          0.1002182397306339,
+          1
+        ],
+        "roughnessFactor": 0.20304519023296075
+      }
+    },
+    {
+      "index": 66,
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0598124,
+          0.0598124,
+          0.0598124,
+          1
+        ],
+        "metallicFactor": 0
+      }
+    },
+    {
+      "index": 67,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 68,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.05513,
+          0.05513,
+          0.05513,
+          1
+        ],
+        "metallicFactor": 0
+      }
+    },
+    {
+      "index": 69,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          1
+        ],
+        "roughnessFactor": 0.18475942021918546
+      }
+    },
+    {
+      "index": 70,
+      "doubleSided": true,
+      "name": "TwiXeR_992_speakers.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0166846,
+          0.0166846,
+          0.0166846,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9947238662151154
+      }
+    },
+    {
+      "index": 71,
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "TwiXeR_992_antichrome.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8,
+          0.8,
+          0.8,
+          0.17523862929867975
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 72,
+      "doubleSided": true,
+      "name": "TwiXeR_992_taillight_running.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.800371,
+          0.800371,
+          0.800371,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 73,
+      "doubleSided": true,
+      "name": "TwiXeR_992_brakelight_1.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.3206165176906652,
+          0,
+          0,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 74,
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic_smooth.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.043265861743718964,
+          0.043265861743718964,
+          0.043265861743718964,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 75,
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "TwiXeR_992_gauges_screen.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          0
+        ],
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicFactor": 0
+      }
+    },
+    {
+      "index": 76,
+      "doubleSided": true,
+      "name": "TwiXeR_992_led_lights.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0579677,
+          0.0579677,
+          0.0579677,
+          1
+        ],
+        "roughnessFactor": 0.24571198693176977
+      }
+    },
+    {
+      "index": 77,
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1,
+            1,
+            1
+          ],
+          "specularFactor": 0.38247735612146627
+        }
+      },
+      "name": "TwiXeR_992_headlight_high.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.2855180324876753,
+          0.2855180324876753,
+          0.2855180324876753,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 78,
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic_mgl.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0332968,
+          0.0332968,
+          0.0332968,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 79,
+      "doubleSided": true,
+      "name": "TwiXeR_992_seat_leather_2.001",
+      "normalTexture": {
+        "index": 12
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.38025399999999987,
+          0,
+          0.004867400000000003,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.6114273872072753
+      }
+    },
+    {
+      "index": 80,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0788826,
+          0.0788826,
+          0.0788826,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 81,
+      "doubleSided": true,
+      "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.205461,
+          0.00033259999999999963,
+          0,
+          1
+        ],
+        "metallicFactor": 0.4921919762041179,
+        "roughnessFactor": 0.2700930136168035
+      }
+    },
+    {
+      "index": 82,
+      "doubleSided": true,
+      "name": "TwiXeR_992_symbols_3.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0465299,
+          0.0465299,
+          0.0465299,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    {
+      "index": 83,
+      "doubleSided": true,
+      "name": "TwiXeR_992_carPaint.008",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0143567,
+          0.0143567,
+          0.0143567,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9967897442867428
+      }
+    },
+    {
+      "index": 84,
+      "doubleSided": true,
+      "name": "Scene_-_Root.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "metallicFactor": 0.43123940949153367,
+        "roughnessFactor": 0.4713139487880803
+      }
+    },
+    {
+      "index": 85,
+      "doubleSided": true,
+      "name": "amdb11_brake.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.009615739678686761,
+          0.009615739678686761,
+          0.009615739678686761,
+          1
+        ],
+        "metallicFactor": 0.7177164730406796,
+        "roughnessFactor": 0.16647365020541016
+      }
+    },
+    {
+      "index": 86,
+      "doubleSided": true,
+      "name": "amdb11_misc_chrome.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0486285,
+          0.0486285,
+          0.0486285,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.9846223180802502
+      }
+    },
+    {
+      "index": 87,
+      "doubleSided": true,
+      "name": "amdb11_caliper.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          0,
+          0,
+          1
+        ],
+        "roughnessFactor": 0.11771159683534282
+      }
+    }
+  ]
+}

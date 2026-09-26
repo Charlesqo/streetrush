@@ -1,0 +1,11 @@
+{
+  "src/rendering.js": "d7984d08f4f31c96f2e70e5546ebba2bfcc0d400d5998d650e273a270028b832",
+  "src/render-pipeline.js": "3cfc166c23eb44dbd307b45a64cfa78e2030b34df063067f49a7f8d87018fdd7",
+  "src/render-review.js": "4f581ac1559bdf68094071558785b008dd2d5154072b8aa657e56e050bb63a9d",
+  "src/tire-effects.js": "3917187e1f51bfadf97e6320de24807986190db7e62820b5b8a0250c5cb506d1",
+  "src/effects.js": "e729990a8d1c512b8ae29fdce4d8c410ef6c46375b34974639ad5d3fd7837f28",
+  "src/main.js": "0a01a4c7d867de6df525603db160fb99ec851f8ca042a00b025dfc5e321f9ac2",
+  "scripts/test-tire-effects.mjs": "8c96acecdab98582e72abcdaec803eb43396afda5b645b003d8adda864e4115a",
+  "src/car-materials.js": "19293a57c07b316d77d577edca78a8e907d58db1e82a43a29e52362d451ee8a0",
+  "src/assets.js": "4f767594c6eb33764df303fdce77ee3d1797aae62138e1dd5aeb5e8cf98ccaa3"
+}

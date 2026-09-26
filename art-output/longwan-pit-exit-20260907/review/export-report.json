@@ -1,0 +1,217 @@
+{
+  "source": "/Volumes/Storage/streetrush/art-output/longwan-pit-exit-20260907/scene/longwan_pit_exit_editable.blend",
+  "assets": [
+    {
+      "name": "G01_Track_and_Runoff",
+      "file": "models/G01_Track_and_Runoff.glb",
+      "triangles": 129828,
+      "material_slots": 13,
+      "file_bytes": 56330336,
+      "scene_location_metres": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "description": "96m track sample; 14m track width; metric tiled PBR asphalt, geometric paint and surface variation."
+    },
+    {
+      "name": "G02_Drainage_Channel",
+      "file": "models/G02_Drainage_Channel.glb",
+      "triangles": 66304,
+      "material_slots": 4,
+      "file_bytes": 7233016,
+      "scene_location_metres": [
+        -30.5,
+        14.130000114440918,
+        -0.04749999940395355
+      ],
+      "description": "Modular trench drain with visible supporting rim, recess, cross bars and dirt accumulation."
+    },
+    {
+      "name": "A01_Pit_Garages",
+      "file": "models/A01_Pit_Garages.glb",
+      "triangles": 63146,
+      "material_slots": 11,
+      "file_bytes": 24884828,
+      "scene_location_metres": [
+        -16.0,
+        20.0,
+        0.0
+      ],
+      "description": "Three 6m garage bays, interior shells, structural columns, mechanical shutters and balcony. Front -Y."
+    },
+    {
+      "name": "A02_Race_Control",
+      "file": "models/A02_Race_Control.glb",
+      "triangles": 39480,
+      "material_slots": 9,
+      "file_bytes": 22305652,
+      "scene_location_metres": [
+        12.600000381469727,
+        20.200000762939453,
+        0.0
+      ],
+      "description": "12m control tower with wrap-around observation room, exterior access stair and services."
+    },
+    {
+      "name": "B01_Pit_Wall",
+      "file": "models/B01_Pit_Wall.glb",
+      "triangles": 34362,
+      "material_slots": 6,
+      "file_bytes": 20903120,
+      "scene_location_metres": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "description": "Precast pit partition with joints, anchor details and safety fence; terminates before pit exit."
+    },
+    {
+      "name": "B02_Armco_and_Catch_Fence",
+      "file": "models/B02_Armco_and_Catch_Fence.glb",
+      "triangles": 81044,
+      "material_slots": 2,
+      "file_bytes": 5742716,
+      "scene_location_metres": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "description": "Pressed two-high guardrail with I posts and fine welded-wire catch fence."
+    },
+    {
+      "name": "A03_Marshal_Post",
+      "file": "models/A03_Marshal_Post.glb",
+      "triangles": 6548,
+      "material_slots": 9,
+      "file_bytes": 20027492,
+      "scene_location_metres": [
+        29.0,
+        16.700000762939453,
+        0.0
+      ],
+      "description": "Compact track marshal hut, 2.8m high, shaded windows, access door and signal equipment."
+    },
+    {
+      "name": "F01_Pit_Exit_Signal",
+      "file": "models/F01_Pit_Exit_Signal.glb",
+      "triangles": 4252,
+      "material_slots": 7,
+      "file_bytes": 18667416,
+      "scene_location_metres": [
+        23.200000762939453,
+        10.0,
+        0.0
+      ],
+      "description": "Grounded signal post, two weatherhood lenses, controller box and flexible wiring."
+    },
+    {
+      "name": "F02_Tool_Trolley",
+      "file": "models/F02_Tool_Trolley.glb",
+      "triangles": 4036,
+      "material_slots": 4,
+      "file_bytes": 3859380,
+      "scene_location_metres": [
+        -12.0,
+        13.149999618530273,
+        0.0
+      ],
+      "description": "Rolling mechanic cabinet, six drawers, locks, side handle and swivel castors."
+    },
+    {
+      "name": "F03_Tyre_Rack",
+      "file": "models/F03_Tyre_Rack.glb",
+      "triangles": 29888,
+      "material_slots": 3,
+      "file_bytes": 2498488,
+      "scene_location_metres": [
+        -23.0,
+        12.75,
+        0.11999999731779099
+      ],
+      "description": "Two-tier welded rack with eight tyre casings, steel joints and round sidewall profile."
+    },
+    {
+      "name": "F04_Service_Bollards",
+      "file": "models/F04_Service_Bollards.glb",
+      "triangles": 3480,
+      "material_slots": 3,
+      "file_bytes": 2853904,
+      "scene_location_metres": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "description": "Powder coated protective bollards with worn footplates."
+    },
+    {
+      "name": "F05_Braking_Board",
+      "file": "models/F05_Braking_Board.glb",
+      "triangles": 2310,
+      "material_slots": 3,
+      "file_bytes": 2936164,
+      "scene_location_metres": [
+        35.0,
+        -13.649999618530273,
+        0.0
+      ],
+      "description": "Double-post track distance board with rear bracing and anchor bolts."
+    },
+    {
+      "name": "F06_Floodlight_-31",
+      "file": "models/F06_Floodlight_-31.glb",
+      "triangles": 2408,
+      "material_slots": 4,
+      "file_bytes": 16935196,
+      "scene_location_metres": [
+        -31.0,
+        -16.0,
+        0.0
+      ],
+      "description": "Tapered mast with inspection hatch, mounting plate and four individual floodlights."
+    },
+    {
+      "name": "F06_Floodlight_30",
+      "file": "models/F06_Floodlight_30.glb",
+      "triangles": 2408,
+      "material_slots": 4,
+      "file_bytes": 16935196,
+      "scene_location_metres": [
+        30.0,
+        30.0,
+        0.0
+      ],
+      "description": "Tapered mast with inspection hatch, mounting plate and four individual floodlights."
+    },
+    {
+      "name": "F07_Timing_Gantry",
+      "file": "models/F07_Timing_Gantry.glb",
+      "triangles": 22596,
+      "material_slots": 5,
+      "file_bytes": 18648064,
+      "scene_location_metres": [
+        -37.0,
+        0.0,
+        0.0
+      ],
+      "description": "Track-spanning steel truss, 5.45m minimum clearance beneath lights, timing sign, five start-light pods."
+    },
+    {
+      "name": "A04_Trackside_Grandstand",
+      "file": "models/A04_Trackside_Grandstand.glb",
+      "triangles": 46266,
+      "material_slots": 5,
+      "file_bytes": 21223308,
+      "scene_location_metres": [
+        -11.0,
+        -22.299999237060547,
+        0.0
+      ],
+      "description": "Small six-row grandstand; cantilever roof, open steel bracing and access aisles."
+    }
+  ],
+  "scene_file": "scene/longwan_pit_exit.glb",
+  "scene_bytes": 82984068,
+  "total_triangles": 538356,
+  "note": "Evaluated art geometry; individual local pivots, metre units, +Y up in glTF. Game integration/collision/target performance NOT_RUN."
+}

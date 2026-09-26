@@ -1,0 +1,233 @@
+{
+  "asset_id": "Metal038",
+  "title": "Metal 038",
+  "intended_use": "Track safety barrier / guardrail metal panels and related industrial metal accents",
+  "source": {
+    "asset_page_url": "https://ambientcg.com/view?id=Metal038",
+    "download_url": "https://ambientcg.com/get?file=Metal038_2K-JPG.zip",
+    "resolved_download_url": "https://acg-download.struffelproductions.com/file/ambientCG-Web/download/Metal038_27fAeJTu/Metal038_2K-JPG.zip",
+    "downloaded_at": "2026-09-07",
+    "download_attempts": 1,
+    "archive": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.zip",
+    "archive_bytes": 18287653,
+    "archive_sha256": "9c4cd701a53ea208decbc160bcae71e204f6d518e442f6dfcf9d4c9e2af712bf",
+    "download_budget_bytes": 50000000,
+    "within_download_budget": true,
+    "source_page_snapshot": "sources/pbr/ambientcg/Metal038/Metal038-page.html",
+    "license_page_snapshot": "sources/pbr/ambientcg/Metal038/ambientcg-license.html"
+  },
+  "license": {
+    "name": "CC0-1.0",
+    "source_license_url": "https://docs.ambientcg.com/license/",
+    "cc0_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "summary": "The official ambientCG license page states that all ambientCG assets are provided under the Creative Commons CC0 1.0 Universal License.",
+    "author": "ambientCG",
+    "author_note": "The saved Metal038 asset page does not expose a named individual author; recorded as ambientCG per acquisition instructions. Do not label this material as authored by Lennart Demes.",
+    "technique": "Procedural",
+    "technique_note": "The official asset page labels the technique as procedural/algorithmic; this is not a photographic scan."
+  },
+  "source_dimensions": {
+    "map_dimensions_px": [
+      2048,
+      2048
+    ],
+    "map_resolution": "2K",
+    "preview_dimensions_px": [
+      512,
+      512
+    ],
+    "physical_dimensions": null,
+    "physical_dimensions_note": "The official asset page does not state a physical material size; do not infer one from the pixel dimensions."
+  },
+  "channels": {
+    "color": {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Color.jpg",
+      "semantic": "Base color",
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    "displacement": {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Displacement.jpg",
+      "semantic": "Height / displacement",
+      "format": "JPEG",
+      "mode": "L",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    "metalness": {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Metalness.jpg",
+      "semantic": "Metalness",
+      "format": "JPEG",
+      "mode": "L",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    "normal_gl": {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_NormalGL.jpg",
+      "semantic": "Tangent-space normal",
+      "convention": "OpenGL",
+      "preferred": true,
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    "normal_dx": {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_NormalDX.jpg",
+      "semantic": "Tangent-space normal",
+      "convention": "DirectX",
+      "preferred": false,
+      "format": "JPEG",
+      "mode": "RGB",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    "roughness": {
+      "file": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Roughness.jpg",
+      "semantic": "Roughness",
+      "format": "JPEG",
+      "mode": "L",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.zip",
+      "bytes": 18287653,
+      "sha256": "9c4cd701a53ea208decbc160bcae71e204f6d518e442f6dfcf9d4c9e2af712bf",
+      "role": "original archive"
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Color.jpg",
+      "bytes": 2003658,
+      "sha256": "e1e0deda1119497fa419de496019e04a94d281ad470c6595da0100f063aa1f3c",
+      "role": "original PBR map: base color",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Displacement.jpg",
+      "bytes": 1564118,
+      "sha256": "2ea7419f1d2f242ccde6d9b453a7a164093ab35018bcbb5a9c484e3ffffb13a9",
+      "role": "original PBR map: displacement",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Metalness.jpg",
+      "bytes": 314217,
+      "sha256": "6001a5c8c2e74a39754c64b55699dca6f5884f2272845f2a332a2ac76277238e",
+      "role": "original PBR map: metalness",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_NormalGL.jpg",
+      "bytes": 5957160,
+      "sha256": "a3fbbd22b384bbe94baafa21a01e60f0c27a859a9654637eff18eec5a100127f",
+      "role": "original PBR map: OpenGL normal (preferred)",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_NormalDX.jpg",
+      "bytes": 5959654,
+      "sha256": "f859c2196bc022a6c3c5e1a9dfeb20039d4ec0de907eba0db866599f095793fc",
+      "role": "original PBR map: DirectX normal",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG_Roughness.jpg",
+      "bytes": 1117305,
+      "sha256": "05b1b86df140c3bace260190af8d64593f95e6f139ed79605c647ea7a6ac0185",
+      "role": "original PBR map: roughness",
+      "dimensions_px": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038.png",
+      "bytes": 253636,
+      "sha256": "8ec88342835de32a1c148e564a319408e0b4393d41ff5380e25f0ee1b9a775af",
+      "role": "original 512 px preview",
+      "dimensions_px": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.blend",
+      "bytes": 1109172,
+      "sha256": "21dbcda362d93a872a5aa93cf81aa3ccc76b69623f24abbbeaf81350c84f7039",
+      "role": "original packaged material reference"
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.mtlx",
+      "bytes": 2595,
+      "sha256": "4ea650809ea03cd18220ab94a9d1f36af38a68631ed46fea35ee990b2c180c4b",
+      "role": "original packaged material reference"
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.tres",
+      "bytes": 1003,
+      "sha256": "7db6d08ab4f4db76198d836aeb053371ed43cb4a08ad4e1f5ae30355d96c4cb0",
+      "role": "original packaged material reference"
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038_2K-JPG.usdc",
+      "bytes": 2963,
+      "sha256": "327ca41f78e2f81a2291cc10b964ad21fcd110c42e625ce7c7bdb4e4978ae3dc",
+      "role": "original packaged material reference"
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/Metal038-page.html",
+      "bytes": 28227,
+      "sha256": "30cd8486a83bd8915a1db7b565f0dd1e1dd3238bb167fcd2f27fc4fcca545f6f",
+      "role": "official asset page snapshot"
+    },
+    {
+      "path": "sources/pbr/ambientcg/Metal038/ambientcg-license.html",
+      "bytes": 34106,
+      "sha256": "60138e09b277c89977841462634b36e99d7bae5b77174777813502069c59461c",
+      "role": "official license page snapshot"
+    }
+  ],
+  "verification": {
+    "zip_integrity": "PASS",
+    "zip_path_safety": "PASS",
+    "zip_symlink_entries": 0,
+    "extracted_entries": 11,
+    "extracted_uncompressed_bytes": 18285481,
+    "scripts_executed": false,
+    "render_review": "NOT_RUN",
+    "runtime_integration": "NOT_RUN"
+  },
+  "quality_status": "ACQUIRED_PENDING_RENDER_REVIEW"
+}

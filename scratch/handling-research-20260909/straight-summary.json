@@ -1,0 +1,134 @@
+[
+  {
+    "car": "mx5",
+    "kind": "straight-180",
+    "startSpeed": 180.03214812078392,
+    "entryHeadingDeg": -0.004859408709287624,
+    "maxYawRate": 0.032372914254665375,
+    "maxBeta": 0.2306714621683954,
+    "maxHeading": 2.7105371472656814,
+    "finalSpeed": 0.34200151038604026,
+    "resets": 0
+  },
+  {
+    "car": "mx5",
+    "kind": "near-straight-140",
+    "startSpeed": 139.59144305778923,
+    "entryHeadingDeg": 0.40429127969126505,
+    "maxYawRate": 0.9085180759429932,
+    "maxBeta": 44.61189374231284,
+    "maxHeading": 145.48409620745846,
+    "finalSpeed": 0.3377414881932593,
+    "resets": 0
+  },
+  {
+    "car": "m3e30",
+    "kind": "straight-180",
+    "startSpeed": 179.96910334996903,
+    "entryHeadingDeg": -0.0032717705529539455,
+    "maxYawRate": 0.0026312812697142363,
+    "maxBeta": 0.02127931703136907,
+    "maxHeading": 0.24380665409908867,
+    "finalSpeed": 0.3490497553516366,
+    "resets": 0
+  },
+  {
+    "car": "m3e30",
+    "kind": "near-straight-140",
+    "startSpeed": 140.86025451543782,
+    "entryHeadingDeg": 0.33689291011489514,
+    "maxYawRate": 0.20413494110107422,
+    "maxBeta": 2.0761463442722103,
+    "maxHeading": 23.561674223597528,
+    "finalSpeed": 0.3458262914028845,
+    "resets": 0
+  },
+  {
+    "car": "gt3rs",
+    "kind": "straight-180",
+    "startSpeed": 180.18226131115847,
+    "entryHeadingDeg": -0.0020738217857852407,
+    "maxYawRate": 0.0007889450644142926,
+    "maxBeta": 0.006313861445451842,
+    "maxHeading": 0.07270461465348448,
+    "finalSpeed": 0.3521218274338925,
+    "resets": 0
+  },
+  {
+    "car": "gt3rs",
+    "kind": "near-straight-140",
+    "startSpeed": 142.43593420893882,
+    "entryHeadingDeg": 0.2819094894063215,
+    "maxYawRate": 0.3851397931575775,
+    "maxBeta": 3.7690310088717744,
+    "maxHeading": 42.018558062247614,
+    "finalSpeed": 0.3545924811474367,
+    "resets": 0
+  },
+  {
+    "car": "lp700",
+    "kind": "straight-180",
+    "startSpeed": 180.30068746378393,
+    "entryHeadingDeg": -0.0015177476643673973,
+    "maxYawRate": 0.0002431838947813958,
+    "maxBeta": 0.0021913349032915952,
+    "maxHeading": 0.025255037336665672,
+    "finalSpeed": 0.3564889925131225,
+    "resets": 0
+  },
+  {
+    "car": "lp700",
+    "kind": "near-straight-140",
+    "startSpeed": 142.7714698169124,
+    "entryHeadingDeg": 0.24982500774704494,
+    "maxYawRate": 0.050240498036146164,
+    "maxBeta": 0.5020072464185158,
+    "maxHeading": 5.385486760848475,
+    "finalSpeed": 0.3588314074697329,
+    "resets": 0
+  },
+  {
+    "car": "amggt3",
+    "kind": "straight-180",
+    "startSpeed": 180.28406535213045,
+    "entryHeadingDeg": -0.0011814898469341536,
+    "maxYawRate": 0.0012309275334700942,
+    "maxBeta": 0.009523123994396828,
+    "maxHeading": 0.07656511673971642,
+    "finalSpeed": 0.348460997076735,
+    "resets": 0
+  },
+  {
+    "car": "amggt3",
+    "kind": "near-straight-140",
+    "startSpeed": 142.65850504269008,
+    "entryHeadingDeg": 0.27571594338643995,
+    "maxYawRate": 1.1455752849578857,
+    "maxBeta": 43.38319682405504,
+    "maxHeading": 135.92930955163584,
+    "finalSpeed": 0.3473318828983175,
+    "resets": 0
+  },
+  {
+    "car": "m5g90",
+    "kind": "straight-180",
+    "startSpeed": 180.25023609440723,
+    "entryHeadingDeg": -0.00253986556345475,
+    "maxYawRate": 0.00004926292967866175,
+    "maxBeta": 0.0005809855739918959,
+    "maxHeading": 0.008096762455994643,
+    "finalSpeed": 5.999213402673442,
+    "resets": 0
+  },
+  {
+    "car": "m5g90",
+    "kind": "near-straight-140",
+    "startSpeed": 142.16956758708713,
+    "entryHeadingDeg": 0.21398782490852097,
+    "maxYawRate": 0.015126056037843227,
+    "maxBeta": 0.15801849850149577,
+    "maxHeading": 1.1865989102389898,
+    "finalSpeed": 0.7603622306281518,
+    "resets": 0
+  }
+]

@@ -1,0 +1,284 @@
+{
+  "source": "models/longwan_pit_building_native.glb",
+  "output": "models/longwan_pit_building_realtime.glb",
+  "source_bytes": 251378648,
+  "runtime_bytes": 86927704,
+  "reduction_percent": 65.4,
+  "geometry_uvs_material_connections_unchanged": true,
+  "maps": [
+    {
+      "name": "rough_concrete_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 5351725,
+      "runtime_bytes": 5351725,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d",
+      "runtime_sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d"
+    },
+    {
+      "name": "rough_concrete_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4355641,
+      "runtime_bytes": 2874673,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "1c20c0ae8622ff673f6ed76a282f07427fdaaf8c0c073558013fa5c5f3ddbf1f",
+      "runtime_sha256": "b153777a0d4243e037921b9274871ccf1d2bd82ff691ae1faf26dbed72d1c579"
+    },
+    {
+      "name": "rough_concrete_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3700416,
+      "runtime_bytes": 2791463,
+      "runtime_mime": "image/png",
+      "source_sha256": "acd445be2165b06345668f41468828d7db6850a2cafb91b02bddbca08eaf57b3",
+      "runtime_sha256": "1121a22f4493f7248f4073366e8ca221980fb7349790d5d37f005674e68e8cfb"
+    },
+    {
+      "name": "modular_factory_facade_trim_01_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 22225169,
+      "runtime_bytes": 7899769,
+      "runtime_mime": "image/png",
+      "source_sha256": "4aee23b656e2f3b07c062be7ec4a4765f9ee399ba29a1814d33db3298723c94c",
+      "runtime_sha256": "c1468d7bcf26768371acc5fd4e40a6c42a5b4caed4b9a94a75ed325cc7a485f3"
+    },
+    {
+      "name": "modular_factory_facade_trim_01_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 24220907,
+      "runtime_bytes": 1539141,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "2df9ea84749ee88a4d2f2ecb2013c91a3db45cec5da61f2df11820f4a6e9fa6b",
+      "runtime_sha256": "5e2f54f74abf77f895543fd3a13891d488c729e96ec9be055afbd96ca57a0c9e"
+    },
+    {
+      "name": "modular_factory_facade_trim_01_rough_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4273487,
+      "runtime_bytes": 3400982,
+      "runtime_mime": "image/png",
+      "source_sha256": "b09a161dd220c88e20366d6cee11e0623c5dc03b4d6554f0f3fff5397a458b46",
+      "runtime_sha256": "e8127c4cc9535e7a25e5ac8f0304e926c518f0f74e13b36a3e911070fa09908c"
+    },
+    {
+      "name": "modular_factory_facade_windows_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 18850638,
+      "runtime_bytes": 5555680,
+      "runtime_mime": "image/png",
+      "source_sha256": "ee0ac855947f8e123a4b56918c1e091e8cb38bbfb54d25cea1e8d19803c38dbb",
+      "runtime_sha256": "b568349a7597a07b85a4e79a9e2bbe20b963b81c8eda143d28f85eeceb3d4907"
+    },
+    {
+      "name": "modular_factory_facade_windows_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 22431211,
+      "runtime_bytes": 1502249,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "e1298cc2635bffea1f6ef749692ba7760bc061f115b10e4229cff0565901a6d7",
+      "runtime_sha256": "54925f96011aa4006219bd1a23fef4972b02fc27628f7904fd530fd81bd9b933"
+    },
+    {
+      "name": "modular_factory_facade_windows_rough_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3903550,
+      "runtime_bytes": 3170979,
+      "runtime_mime": "image/png",
+      "source_sha256": "18985b443a29dacc76235431c7364422386614f303730e628a38743a45396e04",
+      "runtime_sha256": "76cbf269a9906b376920654378a57d11d437d87417b36213ab519b72c558ff63"
+    },
+    {
+      "name": "modular_factory_facade_doors_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 17055029,
+      "runtime_bytes": 4455118,
+      "runtime_mime": "image/png",
+      "source_sha256": "06e4c702b2917aa28179725a059e83476725633e8bded600c8660f0ced87ada4",
+      "runtime_sha256": "fce490173b9b59fe6f53d7325578e66f533e6bcdc1f559a4abbdce6fbca034f1"
+    },
+    {
+      "name": "modular_factory_facade_doors_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 20333005,
+      "runtime_bytes": 1203930,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "5707d503fbf795b0b913a61bb2aabdb158aba72c161e55b3cf1af51afed85607",
+      "runtime_sha256": "c365ca2940257effda194febff3889588f167c20990c398bde9bb2e621636bd9"
+    },
+    {
+      "name": "modular_factory_facade_doors_metal-modular_factory_facade_doors_rough",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3829110,
+      "runtime_bytes": 3032231,
+      "runtime_mime": "image/png",
+      "source_sha256": "35104f8981937cfbb15a1d6222b118c4008af7c4d572767b0b5b0925fa655994",
+      "runtime_sha256": "cc7690d4dfee3a9b819a93ee8ab39a13982e9a9d60a770f4e9ea5c46085632f4"
+    },
+    {
+      "name": "modular_factory_facade_garage_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 18209119,
+      "runtime_bytes": 5598361,
+      "runtime_mime": "image/png",
+      "source_sha256": "320bcd56c10f0cdabd727fa872238506c960d9c215499f3bfd4083d75affaaf4",
+      "runtime_sha256": "9eb4a17e5917d0cb103daea34e105d6cdab5cff9741461a56eecf7dbeb8941c3"
+    },
+    {
+      "name": "modular_factory_facade_garage_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 20424488,
+      "runtime_bytes": 1301815,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "01dfbf807981c02e8f2079792557cbf98f11875fe18ff815ced4506011977861",
+      "runtime_sha256": "8b85fce351d69d8b6515808bd6d5b8a8cfffece20bd8a67f23c325d76987eaa9"
+    },
+    {
+      "name": "modular_factory_facade_garage_metal-modular_factory_facade_garage_rough",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3364383,
+      "runtime_bytes": 2652841,
+      "runtime_mime": "image/png",
+      "source_sha256": "baf5f72fdc567c1838db6f813c3273d5da4e291ed549166d45956e412715b0c6",
+      "runtime_sha256": "fb1d2f8d1640e6d0e1fd47e77850cf6be996e5c8d671f037debb1fcfe60d5572"
+    },
+    {
+      "name": "modular_factory_facade_brick_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 21548678,
+      "runtime_bytes": 6722426,
+      "runtime_mime": "image/png",
+      "source_sha256": "ea66f43ba5eb840b3cf35eea04a95f5f4b2de34b5bdf9513ede08301ddbfda16",
+      "runtime_sha256": "5c30383ae275c877499b3ff822ebd1b8b36eb97ee68a8e84d9c2c012751bd315"
+    },
+    {
+      "name": "modular_factory_facade_brick_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 8843825,
+      "runtime_bytes": 3330816,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "0b13e3f7c5abc614d64dbb51bb9df5a7d3b99996a4038bc8d15d1c908123dda2",
+      "runtime_sha256": "3d98f7c75a67a6aa8c2bb96d07e508d9ce6c975c32640e528c4d14719e5f58f2"
+    },
+    {
+      "name": "modular_factory_facade_brick_rough_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3355306,
+      "runtime_bytes": 2461246,
+      "runtime_mime": "image/png",
+      "source_sha256": "7cc6782648fe934aa432daa2dd8372bb8f10aa1b0eadcd6835a2cebb9ac72172",
+      "runtime_sha256": "d737bf4a71437f5e6541741496632c079d5d5493e1f763c85d029571149000c1"
+    },
+    {
+      "name": "asphalt_track_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3694762,
+      "runtime_bytes": 3694762,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd",
+      "runtime_sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd"
+    },
+    {
+      "name": "asphalt_track_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3779263,
+      "runtime_bytes": 2479128,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "742d1d79560bd661d5871afc857e981e25dcd563bfd24385cbd063ebcaeef06c",
+      "runtime_sha256": "20e556c8fa36881e6ff14cc2c9c0ad811fff5dc07ed5cb08f35476f5dd34deb2"
+    },
+    {
+      "name": "asphalt_track_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3398631,
+      "runtime_bytes": 2499843,
+      "runtime_mime": "image/png",
+      "source_sha256": "44574e3d6aee0dd667d6963d998682065bde61da0c771c82e57b47770e6638f0",
+      "runtime_sha256": "98529ebf34ccb578500968618113b3373a96fc2114e71ee0acbf22fffd4ceaaa"
+    },
+    {
+      "name": "modular_factory_facade_windows_diff-modular_factory_facade_windows_alpha",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 6468048,
+      "runtime_bytes": 5646323,
+      "runtime_mime": "image/png",
+      "source_sha256": "0d0d085d44c6a758f76937f11e4f0a3694bd365841747cb96ee7757ecd775d4a",
+      "runtime_sha256": "b6ce7743af99b004d1f0ad91afdb5b33a4189c7796b01c4c498360b6b769ca6e"
+    }
+  ],
+  "visual_status": "Inspected actual runtime GLB in local Three.js viewer: front, close-up, rear, and changed sun direction; maps and alpha retained visibly. Whole bundle art acceptance is still open.",
+  "not_run": [
+    "Target game performance",
+    "Game integration"
+  ],
+  "visual_limits": [
+    "No target game performance test",
+    "No full Cycles GI parity",
+    "Remaining facade repetition and simple added fittings"
+  ]
+}

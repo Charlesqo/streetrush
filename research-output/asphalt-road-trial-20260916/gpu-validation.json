@@ -1,0 +1,215 @@
+{
+  "status": "PASS",
+  "cases": 25,
+  "offOnOffExactRestoration": true,
+  "format": "RG16F hardware bilinear output; compare to CPU interpolation with one half ULP allowance",
+  "initialStrictFloatThreshold": 2e-05,
+  "initialStrictThresholdFailed": true,
+  "reasonForFormatTolerance": "All actual lookup outputs round to half values. Error is less than one half ULP; shader sampler already highp. This is texture filtering precision, not a wrong lookup coordinate.",
+  "maxAbsABDifference": 0.00022781364260526793,
+  "maxErrorInHalfULP": 0.49744392795059866,
+  "maxSingleF004RelativeError": 0.00032929448250806903,
+  "casesMatchingRoundedCPUHalf": 25,
+  "results": [
+    {
+      "roughness": 0.0525,
+      "nv": 0.001,
+      "maxAbsABDifference": 0.00015392728958141255,
+      "errorInHalfULP": 0.3152430890627329,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.00017372652712532854
+    },
+    {
+      "roughness": 0.0525,
+      "nv": 0.025,
+      "maxAbsABDifference": 0.00020319262484291833,
+      "errorInHalfULP": 0.41613849567829675,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -0.00023146391837047808
+    },
+    {
+      "roughness": 0.0525,
+      "nv": 0.1,
+      "maxAbsABDifference": 0.00011468050927365692,
+      "errorInHalfULP": 0.23486568299244936,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.00018730105847386547
+    },
+    {
+      "roughness": 0.0525,
+      "nv": 0.5,
+      "maxAbsABDifference": 3.091425404844195e-05,
+      "errorInHalfULP": 0.45185226380999666,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -0.00017287728159343096
+    },
+    {
+      "roughness": 0.0525,
+      "nv": 1,
+      "maxAbsABDifference": 4.619359970090605e-08,
+      "errorInHalfULP": 0.3874999999998181,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -1.150562223717344e-06
+    },
+    {
+      "roughness": 0.25,
+      "nv": 0.001,
+      "maxAbsABDifference": 0.0001454375122421636,
+      "errorInHalfULP": 0.2978560250719511,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.0002723851065087324
+    },
+    {
+      "roughness": 0.25,
+      "nv": 0.025,
+      "maxAbsABDifference": 5.6953410651372494e-05,
+      "errorInHalfULP": 0.23328117002802173,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.00011084388752902186
+    },
+    {
+      "roughness": 0.25,
+      "nv": 0.1,
+      "maxAbsABDifference": 0.00022560402008975355,
+      "errorInHalfULP": 0.49744392795059866,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.00031636955274905176
+    },
+    {
+      "roughness": 0.25,
+      "nv": 0.5,
+      "maxAbsABDifference": 0.00012926997478079905,
+      "errorInHalfULP": 0.26474490835107645,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -6.988696204668354e-05
+    },
+    {
+      "roughness": 0.25,
+      "nv": 1,
+      "maxAbsABDifference": 0.0,
+      "errorInHalfULP": 0.0,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.0
+    },
+    {
+      "roughness": 0.6,
+      "nv": 0.001,
+      "maxAbsABDifference": 3.115626632299584e-05,
+      "errorInHalfULP": 0.06380803342949548,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 5.36044308225847e-05
+    },
+    {
+      "roughness": 0.6,
+      "nv": 0.025,
+      "maxAbsABDifference": 0.0001767185867705967,
+      "errorInHalfULP": 0.36191966570618206,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 2.926366135014291e-05
+    },
+    {
+      "roughness": 0.6,
+      "nv": 0.1,
+      "maxAbsABDifference": 0.00013484407645858454,
+      "errorInHalfULP": 0.27616066858718114,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 1.050589403117641e-05
+    },
+    {
+      "roughness": 0.6,
+      "nv": 0.5,
+      "maxAbsABDifference": 0.00015245566531718602,
+      "errorInHalfULP": 0.31222920256959696,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -0.00013037466712895185
+    },
+    {
+      "roughness": 0.6,
+      "nv": 1,
+      "maxAbsABDifference": 0.0,
+      "errorInHalfULP": 0.0,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.0
+    },
+    {
+      "roughness": 0.837,
+      "nv": 0.001,
+      "maxAbsABDifference": 0.00015008981110420372,
+      "errorInHalfULP": 0.4776160668589,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.00022270487623732294
+    },
+    {
+      "roughness": 0.837,
+      "nv": 0.025,
+      "maxAbsABDifference": 9.793388038970008e-06,
+      "errorInHalfULP": 0.23226447847082454,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 7.236165899926483e-05
+    },
+    {
+      "roughness": 0.837,
+      "nv": 0.1,
+      "maxAbsABDifference": 2.94930036466301e-05,
+      "errorInHalfULP": 0.3113599310127029,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -0.00011665770287150323
+    },
+    {
+      "roughness": 0.837,
+      "nv": 0.5,
+      "maxAbsABDifference": 0.00022134394154837977,
+      "errorInHalfULP": 0.4533123922910818,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -0.00032929448250806903
+    },
+    {
+      "roughness": 0.837,
+      "nv": 1,
+      "maxAbsABDifference": 1.2207031250266454e-06,
+      "errorInHalfULP": 0.21500000000014552,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -1.1876676742073045e-07
+    },
+    {
+      "roughness": 1,
+      "nv": 0.001,
+      "maxAbsABDifference": 6.231253264588066e-05,
+      "errorInHalfULP": 0.3190401671467953,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.00014229920156316744
+    },
+    {
+      "roughness": 1,
+      "nv": 0.025,
+      "maxAbsABDifference": 0.00011390682130274499,
+      "errorInHalfULP": 0.49055816138479713,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -0.00014094233383910026
+    },
+    {
+      "roughness": 1,
+      "nv": 0.1,
+      "maxAbsABDifference": 0.00022781364260526793,
+      "errorInHalfULP": 0.4665623400555887,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.0001785097303710348
+    },
+    {
+      "roughness": 1,
+      "nv": 0.5,
+      "maxAbsABDifference": 4.637138107260741e-05,
+      "errorInHalfULP": 0.38853987151878755,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": -0.00012073169836290809
+    },
+    {
+      "roughness": 1,
+      "nv": 1,
+      "maxAbsABDifference": 0.0,
+      "errorInHalfULP": 0.0,
+      "matchesRoundedHalf": true,
+      "singleF004RelativeError": 0.0
+    }
+  ]
+}

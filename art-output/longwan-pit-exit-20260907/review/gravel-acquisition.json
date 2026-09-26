@@ -1,0 +1,119 @@
+{
+  "asset_id": "gravel_stones",
+  "title": "Gravel Stones",
+  "source_url": "https://polyhaven.com/a/gravel_stones",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "acquired_date": "2026-09-07",
+  "api": {
+    "files_url": "https://api.polyhaven.com/files/gravel_stones",
+    "info_url": "https://api.polyhaven.com/info/gravel_stones",
+    "files_metadata": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-files.json",
+    "info_metadata": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-info.json"
+  },
+  "asset_metadata": {
+    "authors": {
+      "Amal Kumar": "All"
+    },
+    "dimensions_cm": [
+      2000,
+      2000
+    ],
+    "max_resolution_px": [
+      16384,
+      16384
+    ],
+    "files_hash": "ae0f7dde221a2d90d24f41188912bef9ca21e8bd",
+    "description": "Free 16K texture of coarse grey gravel: rough, uneven pebbles with a gritty, stony surface and jagged dark stones.",
+    "categories": [
+      "outdoor",
+      "gravel",
+      "natural"
+    ]
+  },
+  "acquisition_scope": {
+    "resolution": "2K",
+    "format": "JPEG",
+    "channels": [
+      "diff",
+      "nor_gl",
+      "arm"
+    ],
+    "map_bytes": 12495109,
+    "max_map_bytes": 30000000,
+    "within_size_limit": true
+  },
+  "files": [
+    {
+      "channel": "diff",
+      "file": "sources/pbr/polyhaven/gravel_stones/gravel_stones_diff_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/gravel_stones/gravel_stones_diff_2k.jpg",
+      "bytes": 3220057,
+      "dimensions_px": [
+        2048,
+        2048
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "md5": "f7a7720d37b7ca217936850cf87ab00d",
+      "sha256": "cacad132d39976f66451271b4eeb1e6ee11ecbff2cd3160f2b9d4323aa2b0136",
+      "api_md5": "f7a7720d37b7ca217936850cf87ab00d",
+      "api_bytes": 3220057,
+      "byte_count_matches_api": true,
+      "md5_matches_api": true,
+      "pillow_decode_verified": true
+    },
+    {
+      "channel": "nor_gl",
+      "file": "sources/pbr/polyhaven/gravel_stones/gravel_stones_nor_gl_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/gravel_stones/gravel_stones_nor_gl_2k.jpg",
+      "bytes": 5469483,
+      "dimensions_px": [
+        2048,
+        2048
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "md5": "49cc587dbdf8d9674488e9c65f3c3326",
+      "sha256": "13a0218f69539da3e8f9ad805213ce311a936d30c05558d8e42ebb46fde5b7eb",
+      "api_md5": "49cc587dbdf8d9674488e9c65f3c3326",
+      "api_bytes": 5469483,
+      "byte_count_matches_api": true,
+      "md5_matches_api": true,
+      "pillow_decode_verified": true
+    },
+    {
+      "channel": "arm",
+      "file": "sources/pbr/polyhaven/gravel_stones/gravel_stones_arm_2k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/gravel_stones/gravel_stones_arm_2k.jpg",
+      "bytes": 3805569,
+      "dimensions_px": [
+        2048,
+        2048
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "md5": "f17844a1ef9645325fd9e466e4907ec2",
+      "sha256": "58c21dcfbfcbe7aa423dced4872bb0eff2988aae303cf268e787a102eb80a3dc",
+      "api_md5": "f17844a1ef9645325fd9e466e4907ec2",
+      "api_bytes": 3805569,
+      "byte_count_matches_api": true,
+      "md5_matches_api": true,
+      "pillow_decode_verified": true
+    }
+  ],
+  "preserved_metadata": [
+    {
+      "file": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-files.json",
+      "bytes": 32898,
+      "sha256": "65304d52404b19362cadeed752707acc49bd22586d969f69928979703ac961fa"
+    },
+    {
+      "file": "sources/pbr/polyhaven/gravel_stones/polyhaven-gravel_stones-info.json",
+      "bytes": 959,
+      "sha256": "46ab7867d74f228507e7e6ace4af47d5518bacc175880e811554a98995c02ffd"
+    }
+  ],
+  "quality_status": "ACQUIRED_PENDING_RENDER_REVIEW",
+  "verification_note": "All three JPEGs decode with Pillow at 2048x2048 and match the API byte counts and MD5 hashes. Visual/material quality remains unverified until the main views/render."
+}

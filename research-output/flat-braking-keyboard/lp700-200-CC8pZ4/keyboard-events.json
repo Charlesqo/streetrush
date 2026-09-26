@@ -1,0 +1,38 @@
+[
+  {
+    "type": "keydown",
+    "code": "KeyW",
+    "key": "w",
+    "target": "game",
+    "repeat": false,
+    "isTrusted": false,
+    "wallTimeMs": 6517.199999999255
+  },
+  {
+    "type": "keyup",
+    "code": "KeyW",
+    "key": "w",
+    "target": "game",
+    "repeat": false,
+    "isTrusted": false,
+    "wallTimeMs": 16598.699999999255
+  },
+  {
+    "type": "keydown",
+    "code": "KeyS",
+    "key": "s",
+    "target": "game",
+    "repeat": false,
+    "isTrusted": false,
+    "wallTimeMs": 16598.699999999255
+  },
+  {
+    "type": "keyup",
+    "code": "KeyS",
+    "key": "s",
+    "target": "game",
+    "repeat": false,
+    "isTrusted": false,
+    "wallTimeMs": 25623.79999999702
+  }
+]

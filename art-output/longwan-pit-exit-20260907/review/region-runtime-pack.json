@@ -1,0 +1,786 @@
+{
+  "source": "models/longwan_region_native.glb",
+  "output": "models/longwan_region_realtime.glb",
+  "source_bytes": 472633404,
+  "runtime_bytes": 296272492,
+  "reduction_percent": 37.3,
+  "geometry_uvs_material_connections_unchanged": true,
+  "maps": [
+    {
+      "name": "White_NormalGL",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 233133,
+      "runtime_bytes": 130360,
+      "runtime_mime": "image/png",
+      "source_sha256": "54c73a4b1454ffd0ab0cbfba13138bf4965b4810c71a84b111731a8825eeea68",
+      "runtime_sha256": "a96c5d1ef1b65adc8d85c8f43560c20d8e34664bf2092e0abc6c4abb353ebee5"
+    },
+    {
+      "name": "White_BaseColor",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 375437,
+      "runtime_bytes": 294450,
+      "runtime_mime": "image/png",
+      "source_sha256": "fa629b5e6af88e7fb7174555313e4c485570530e02f584cb4892df99a7e4c005",
+      "runtime_sha256": "0e9db9fae498456736dc4f419ccffa74ab6aaa8d7267115d490a6de13b543ce0"
+    },
+    {
+      "name": "White_Roughness",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 219512,
+      "runtime_bytes": 163340,
+      "runtime_mime": "image/png",
+      "source_sha256": "5d0f87067a7d8af0372e2b3248ab4ad55b75bc9745e867e2c896924ff2fecdf1",
+      "runtime_sha256": "4454e2768fba8c0c68b0eb75f2e5617e8c522c196f78a6d7905be77b252142d6"
+    },
+    {
+      "name": "Metal038_2K-JPG_NormalGL",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 5957160,
+      "runtime_bytes": 5957160,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "a3fbbd22b384bbe94baafa21a01e60f0c27a859a9654637eff18eec5a100127f",
+      "runtime_sha256": "a3fbbd22b384bbe94baafa21a01e60f0c27a859a9654637eff18eec5a100127f"
+    },
+    {
+      "name": "Metal038_2K-JPG_Color",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2003658,
+      "runtime_bytes": 2003658,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "e1e0deda1119497fa419de496019e04a94d281ad470c6595da0100f063aa1f3c",
+      "runtime_sha256": "e1e0deda1119497fa419de496019e04a94d281ad470c6595da0100f063aa1f3c"
+    },
+    {
+      "name": "Metal038_2K-JPG_Roughness",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2329875,
+      "runtime_bytes": 1502239,
+      "runtime_mime": "image/png",
+      "source_sha256": "8df42c565341795f7b55d158fc1f542c7a3d016fcec0c911dc1e1facffdd0667",
+      "runtime_sha256": "ed1e7cae51f0b9025b78b86fec7e58b341dd04a76cfc34d24c85d39a87e0d640"
+    },
+    {
+      "name": "modular_factory_facade_trim_01_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 22225169,
+      "runtime_bytes": 7899769,
+      "runtime_mime": "image/png",
+      "source_sha256": "4aee23b656e2f3b07c062be7ec4a4765f9ee399ba29a1814d33db3298723c94c",
+      "runtime_sha256": "c1468d7bcf26768371acc5fd4e40a6c42a5b4caed4b9a94a75ed325cc7a485f3"
+    },
+    {
+      "name": "modular_factory_facade_trim_01_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 24220907,
+      "runtime_bytes": 1539141,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "2df9ea84749ee88a4d2f2ecb2013c91a3db45cec5da61f2df11820f4a6e9fa6b",
+      "runtime_sha256": "5e2f54f74abf77f895543fd3a13891d488c729e96ec9be055afbd96ca57a0c9e"
+    },
+    {
+      "name": "modular_factory_facade_trim_01_rough_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4273487,
+      "runtime_bytes": 3400982,
+      "runtime_mime": "image/png",
+      "source_sha256": "b09a161dd220c88e20366d6cee11e0623c5dc03b4d6554f0f3fff5397a458b46",
+      "runtime_sha256": "e8127c4cc9535e7a25e5ac8f0304e926c518f0f74e13b36a3e911070fa09908c"
+    },
+    {
+      "name": "modular_factory_facade_windows_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 18850638,
+      "runtime_bytes": 5555680,
+      "runtime_mime": "image/png",
+      "source_sha256": "ee0ac855947f8e123a4b56918c1e091e8cb38bbfb54d25cea1e8d19803c38dbb",
+      "runtime_sha256": "b568349a7597a07b85a4e79a9e2bbe20b963b81c8eda143d28f85eeceb3d4907"
+    },
+    {
+      "name": "modular_factory_facade_windows_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 22431211,
+      "runtime_bytes": 1502249,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "e1298cc2635bffea1f6ef749692ba7760bc061f115b10e4229cff0565901a6d7",
+      "runtime_sha256": "54925f96011aa4006219bd1a23fef4972b02fc27628f7904fd530fd81bd9b933"
+    },
+    {
+      "name": "modular_factory_facade_windows_rough_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3903550,
+      "runtime_bytes": 3170979,
+      "runtime_mime": "image/png",
+      "source_sha256": "18985b443a29dacc76235431c7364422386614f303730e628a38743a45396e04",
+      "runtime_sha256": "76cbf269a9906b376920654378a57d11d437d87417b36213ab519b72c558ff63"
+    },
+    {
+      "name": "modular_factory_facade_doors_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 17055029,
+      "runtime_bytes": 4455118,
+      "runtime_mime": "image/png",
+      "source_sha256": "06e4c702b2917aa28179725a059e83476725633e8bded600c8660f0ced87ada4",
+      "runtime_sha256": "fce490173b9b59fe6f53d7325578e66f533e6bcdc1f559a4abbdce6fbca034f1"
+    },
+    {
+      "name": "modular_factory_facade_doors_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 20333005,
+      "runtime_bytes": 1203930,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "5707d503fbf795b0b913a61bb2aabdb158aba72c161e55b3cf1af51afed85607",
+      "runtime_sha256": "c365ca2940257effda194febff3889588f167c20990c398bde9bb2e621636bd9"
+    },
+    {
+      "name": "modular_factory_facade_doors_metal.png-modular_factory_facade_doors_rough.png",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3829110,
+      "runtime_bytes": 3032231,
+      "runtime_mime": "image/png",
+      "source_sha256": "35104f8981937cfbb15a1d6222b118c4008af7c4d572767b0b5b0925fa655994",
+      "runtime_sha256": "cc7690d4dfee3a9b819a93ee8ab39a13982e9a9d60a770f4e9ea5c46085632f4"
+    },
+    {
+      "name": "modular_factory_facade_brick_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 21548678,
+      "runtime_bytes": 6722426,
+      "runtime_mime": "image/png",
+      "source_sha256": "ea66f43ba5eb840b3cf35eea04a95f5f4b2de34b5bdf9513ede08301ddbfda16",
+      "runtime_sha256": "5c30383ae275c877499b3ff822ebd1b8b36eb97ee68a8e84d9c2c012751bd315"
+    },
+    {
+      "name": "modular_factory_facade_brick_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 8843825,
+      "runtime_bytes": 3330816,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "0b13e3f7c5abc614d64dbb51bb9df5a7d3b99996a4038bc8d15d1c908123dda2",
+      "runtime_sha256": "3d98f7c75a67a6aa8c2bb96d07e508d9ce6c975c32640e528c4d14719e5f58f2"
+    },
+    {
+      "name": "modular_factory_facade_brick_rough_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3355306,
+      "runtime_bytes": 2461246,
+      "runtime_mime": "image/png",
+      "source_sha256": "7cc6782648fe934aa432daa2dd8372bb8f10aa1b0eadcd6835a2cebb9ac72172",
+      "runtime_sha256": "d737bf4a71437f5e6541741496632c079d5d5493e1f763c85d029571149000c1"
+    },
+    {
+      "name": "modular_factory_facade_windows_diff.png-modular_factory_facade_windows_alpha.png",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 6468048,
+      "runtime_bytes": 5646323,
+      "runtime_mime": "image/png",
+      "source_sha256": "0d0d085d44c6a758f76937f11e4f0a3694bd365841747cb96ee7757ecd775d4a",
+      "runtime_sha256": "b6ce7743af99b004d1f0ad91afdb5b33a4189c7796b01c4c498360b6b769ca6e"
+    },
+    {
+      "name": "rough_concrete_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 5351725,
+      "runtime_bytes": 5351725,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d",
+      "runtime_sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d"
+    },
+    {
+      "name": "rough_concrete_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3432016,
+      "runtime_bytes": 3432016,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "014f6ca38e4bbc284789ebda32a97013f3fb9be078cbce629e07b0aa63bc4bb6",
+      "runtime_sha256": "014f6ca38e4bbc284789ebda32a97013f3fb9be078cbce629e07b0aa63bc4bb6"
+    },
+    {
+      "name": "rough_concrete_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4355641,
+      "runtime_bytes": 2874673,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "1c20c0ae8622ff673f6ed76a282f07427fdaaf8c0c073558013fa5c5f3ddbf1f",
+      "runtime_sha256": "b153777a0d4243e037921b9274871ccf1d2bd82ff691ae1faf26dbed72d1c579"
+    },
+    {
+      "name": "Graphite_NormalGL",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 233536,
+      "runtime_bytes": 130318,
+      "runtime_mime": "image/png",
+      "source_sha256": "1e3e5a283e798f2422f37d8b5344fbeb2fb6d5072bc5cd4a220f20750c823d83",
+      "runtime_sha256": "ecabf34603e12a4135cd6dab04e96de6ba6ee13c3103434e5d8c3a42241bbb71"
+    },
+    {
+      "name": "Graphite_BaseColor",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 270073,
+      "runtime_bytes": 152558,
+      "runtime_mime": "image/png",
+      "source_sha256": "713a0faa3f7107e59fd8d65c157d69836d52308f6ba8452187d8e817a19a1f7d",
+      "runtime_sha256": "1e8fa592aef2b70ada8e53a09b6323a23d6af8513ebd6f43c580c9fab59b87ff"
+    },
+    {
+      "name": "Graphite_Roughness",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 219901,
+      "runtime_bytes": 163714,
+      "runtime_mime": "image/png",
+      "source_sha256": "dc8dea67f13b5289dbfe4232756fdb0bfa33465920e8bf91bd7edb312e5b5a2b",
+      "runtime_sha256": "2854f914736be176b66466a69a0a359b33b55faf86a2558c8847d74d6739f67b"
+    },
+    {
+      "name": "Rubber_NormalGL",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 233003,
+      "runtime_bytes": 129749,
+      "runtime_mime": "image/png",
+      "source_sha256": "cf1c67d184f237d8dddea4ed4fa9ab3d973dfd1f4d01761b5e070a0c71d15c01",
+      "runtime_sha256": "669ff573681d9bc2c92e906a8b8dce4e039e112ef35db97233ab32413a83b4bb"
+    },
+    {
+      "name": "Rubber_BaseColor",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 126389,
+      "runtime_bytes": 64350,
+      "runtime_mime": "image/png",
+      "source_sha256": "fc0f3f225e72f8dd6f0233093faac5bfe7e06b4dc121bb7c37d5dadbb499f6c4",
+      "runtime_sha256": "f9f572c13c19c03aea8f594be60c8c32ad187697ad7455cd5f76becab0a2ddcb"
+    },
+    {
+      "name": "Rubber_Roughness",
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_bytes": 219257,
+      "runtime_bytes": 162924,
+      "runtime_mime": "image/png",
+      "source_sha256": "3c2f84f421c71e1d067b20b28b7338be76dc7dd09e0b3d3e6fc72d0312cfe85d",
+      "runtime_sha256": "475de631df62db097ef85f819b1b933025aa73df4a0c843e1c6c50d4b8743cab"
+    },
+    {
+      "name": "corrugated_iron_03_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 1950629,
+      "runtime_bytes": 1950629,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "9f865a4de4753a9cc0987c4e665ec935c7dd28d3c6cd80c4dd2000d64c2fcfc3",
+      "runtime_sha256": "9f865a4de4753a9cc0987c4e665ec935c7dd28d3c6cd80c4dd2000d64c2fcfc3"
+    },
+    {
+      "name": "corrugated_iron_03_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 1193928,
+      "runtime_bytes": 1193928,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "67e732253e52fd04089ba16c9757ced090c5331144f29600fc8ffeb32aaf5f2b",
+      "runtime_sha256": "67e732253e52fd04089ba16c9757ced090c5331144f29600fc8ffeb32aaf5f2b"
+    },
+    {
+      "name": "corrugated_iron_03_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 1908641,
+      "runtime_bytes": 1103263,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "7b3f4f849dd634f54548b3b552ebeae723266f782163341185c94094e2eb7991",
+      "runtime_sha256": "e2c082bb28b8d437b615fa3c5a63b405dab1101d8ba3bc6c6df7feff920dc81e"
+    },
+    {
+      "name": "concrete_road_barrier_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3888469,
+      "runtime_bytes": 3888469,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "8e48a287ae58a53030635c585d57a2da72660531a907a8e6cd04836bc60bf3a3",
+      "runtime_sha256": "8e48a287ae58a53030635c585d57a2da72660531a907a8e6cd04836bc60bf3a3"
+    },
+    {
+      "name": "concrete_road_barrier_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3189621,
+      "runtime_bytes": 2104027,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "51832691e0769a04246b61222e5df1ce7dc22e9c7162f786a314409ac76d643c",
+      "runtime_sha256": "72e0e3bb00a071404d7f48abe339bf83b5d34769275a568cefdbb3439d072a0b"
+    },
+    {
+      "name": "concrete_road_barrier_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2515448,
+      "runtime_bytes": 2515448,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "8c17f77897138a5ee0f80d0b5d194fd00554371e33b9f62f6d7b6a4e640094d6",
+      "runtime_sha256": "8c17f77897138a5ee0f80d0b5d194fd00554371e33b9f62f6d7b6a4e640094d6"
+    },
+    {
+      "name": "rough_concrete_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3700416,
+      "runtime_bytes": 2791463,
+      "runtime_mime": "image/png",
+      "source_sha256": "acd445be2165b06345668f41468828d7db6850a2cafb91b02bddbca08eaf57b3",
+      "runtime_sha256": "1121a22f4493f7248f4073366e8ca221980fb7349790d5d37f005674e68e8cfb"
+    },
+    {
+      "name": "modular_factory_facade_doors_metal-modular_factory_facade_doors_rough",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3829110,
+      "runtime_bytes": 3032231,
+      "runtime_mime": "image/png",
+      "source_sha256": "35104f8981937cfbb15a1d6222b118c4008af7c4d572767b0b5b0925fa655994",
+      "runtime_sha256": "cc7690d4dfee3a9b819a93ee8ab39a13982e9a9d60a770f4e9ea5c46085632f4"
+    },
+    {
+      "name": "modular_factory_facade_garage_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 18209119,
+      "runtime_bytes": 5598361,
+      "runtime_mime": "image/png",
+      "source_sha256": "320bcd56c10f0cdabd727fa872238506c960d9c215499f3bfd4083d75affaaf4",
+      "runtime_sha256": "9eb4a17e5917d0cb103daea34e105d6cdab5cff9741461a56eecf7dbeb8941c3"
+    },
+    {
+      "name": "modular_factory_facade_garage_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 20424488,
+      "runtime_bytes": 1301815,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "01dfbf807981c02e8f2079792557cbf98f11875fe18ff815ced4506011977861",
+      "runtime_sha256": "8b85fce351d69d8b6515808bd6d5b8a8cfffece20bd8a67f23c325d76987eaa9"
+    },
+    {
+      "name": "modular_factory_facade_garage_metal-modular_factory_facade_garage_rough",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3364383,
+      "runtime_bytes": 2652841,
+      "runtime_mime": "image/png",
+      "source_sha256": "baf5f72fdc567c1838db6f813c3273d5da4e291ed549166d45956e412715b0c6",
+      "runtime_sha256": "fb1d2f8d1640e6d0e1fd47e77850cf6be996e5c8d671f037debb1fcfe60d5572"
+    },
+    {
+      "name": "asphalt_track_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3694762,
+      "runtime_bytes": 3694762,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd",
+      "runtime_sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd"
+    },
+    {
+      "name": "asphalt_track_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3779263,
+      "runtime_bytes": 2479128,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "742d1d79560bd661d5871afc857e981e25dcd563bfd24385cbd063ebcaeef06c",
+      "runtime_sha256": "20e556c8fa36881e6ff14cc2c9c0ad811fff5dc07ed5cb08f35476f5dd34deb2"
+    },
+    {
+      "name": "asphalt_track_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3398631,
+      "runtime_bytes": 2499843,
+      "runtime_mime": "image/png",
+      "source_sha256": "44574e3d6aee0dd667d6963d998682065bde61da0c771c82e57b47770e6638f0",
+      "runtime_sha256": "98529ebf34ccb578500968618113b3373a96fc2114e71ee0acbf22fffd4ceaaa"
+    },
+    {
+      "name": "modular_factory_facade_windows_diff-modular_factory_facade_windows_alpha",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 6468048,
+      "runtime_bytes": 5646323,
+      "runtime_mime": "image/png",
+      "source_sha256": "0d0d085d44c6a758f76937f11e4f0a3694bd365841747cb96ee7757ecd775d4a",
+      "runtime_sha256": "b6ce7743af99b004d1f0ad91afdb5b33a4189c7796b01c4c498360b6b769ca6e"
+    },
+    {
+      "name": "grass_medium_01_nor_gl_1k",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_bytes": 4411958,
+      "runtime_bytes": 1959060,
+      "runtime_mime": "image/png",
+      "source_sha256": "265d5f2945c9e649fc8413fd7fd65f57e1fd63b711269cc6ca2e79b3c04ed46f",
+      "runtime_sha256": "fe113ef02b67f35c8d92bea79f196130e4b125d40bc00da68a9d28e0d1647532"
+    },
+    {
+      "name": "grass_medium_01_base_alpha",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_bytes": 875787,
+      "runtime_bytes": 840009,
+      "runtime_mime": "image/png",
+      "source_sha256": "69b9b852cf7445aea75131c7cafd81ee70786fb3a1994469a9498a464d38424b",
+      "runtime_sha256": "2032d52cea9650f763c98bd14841f2fa51e3358843a3e24420fec4e1732608f2"
+    },
+    {
+      "name": "grass_medium_01_rough_1k",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_bytes": 814485,
+      "runtime_bytes": 569587,
+      "runtime_mime": "image/png",
+      "source_sha256": "375c08f2b4b10bacc2941df88dddf8f28e0107ae7c75597c06ee13c423c73041",
+      "runtime_sha256": "f1844965859d93500b3ceb74f4e617d56cb22f43986d42c10817c7d34cfa2474"
+    },
+    {
+      "name": "track_limit_arm",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_bytes": 1219540,
+      "runtime_bytes": 1109500,
+      "runtime_mime": "image/png",
+      "source_sha256": "61bfeb7357c28ed713bb58d3114a6b6c1cf0e4dd6b4f6225830b90ddc1bdd36a",
+      "runtime_sha256": "d9efcc947bf667e54bcd39544c56f646493d920c345b43999f954aff2889ac1c"
+    },
+    {
+      "name": "track_limit_base",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_bytes": 848320,
+      "runtime_bytes": 848320,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "96c1a33b9459323815d904cd30c7a6fac88a581581cd4016f9d3138c75ef1ae9",
+      "runtime_sha256": "96c1a33b9459323815d904cd30c7a6fac88a581581cd4016f9d3138c75ef1ae9"
+    },
+    {
+      "name": "leafy_grass_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 6047262,
+      "runtime_bytes": 6047262,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "df0cf0ce96e653f033e5b934d5b12995464bda027aa53bd12e329be889aa9f45",
+      "runtime_sha256": "df0cf0ce96e653f033e5b934d5b12995464bda027aa53bd12e329be889aa9f45"
+    },
+    {
+      "name": "leafy_grass_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4116600,
+      "runtime_bytes": 4116600,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "70d61c669fe9d186a84f5bb50e8a337083014d7e46534306a89d47d48fd5eb0e",
+      "runtime_sha256": "70d61c669fe9d186a84f5bb50e8a337083014d7e46534306a89d47d48fd5eb0e"
+    },
+    {
+      "name": "leafy_grass_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4766204,
+      "runtime_bytes": 3261245,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "8e1c6d21365d4b89bc5a35ab664da98a78dbc3ab9ba6100474881c8619a5b113",
+      "runtime_sha256": "f04c2dcee5b48606326b100d19473971da63b59b772c169306dc18a90089a247"
+    },
+    {
+      "name": "asphalt_track_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2469962,
+      "runtime_bytes": 2469962,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "064f8469a0f9e2a9581551926f02eb760992a9b3e2a3890ec6f6ac00d582944a",
+      "runtime_sha256": "064f8469a0f9e2a9581551926f02eb760992a9b3e2a3890ec6f6ac00d582944a"
+    },
+    {
+      "name": "floor_pavement_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2728464,
+      "runtime_bytes": 2728464,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "39fb68a180b001855336e98a39f76e8d34c18c3b4627e70e9b01d53ca3be3ffa",
+      "runtime_sha256": "39fb68a180b001855336e98a39f76e8d34c18c3b4627e70e9b01d53ca3be3ffa"
+    },
+    {
+      "name": "floor_pavement_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2007478,
+      "runtime_bytes": 2007478,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "1004b83c6590be25a8259e40db1d36420c4c143aa05ea67b066b15c7bf6bde23",
+      "runtime_sha256": "1004b83c6590be25a8259e40db1d36420c4c143aa05ea67b066b15c7bf6bde23"
+    },
+    {
+      "name": "floor_pavement_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 2704244,
+      "runtime_bytes": 1722702,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "87e2f4854e3b954e1e3a891d3d9c480cfd776cd333a08ae2114af0d5e72cc2a3",
+      "runtime_sha256": "5d56027cf2b0a75e563a0955e20390914310267e77be56b5775abc1ebcc061fa"
+    },
+    {
+      "name": "kerb_coating_normal",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 2992013,
+      "runtime_bytes": 2701294,
+      "runtime_mime": "image/png",
+      "source_sha256": "4d38d37e19b9b6805604579f7b6b143c48f1482ff77301b695d1b98f8a8c5277",
+      "runtime_sha256": "20fff7711f90b0621b9c05dadeacaa43cead9400993d8b3c361597b9875cff0d"
+    },
+    {
+      "name": "kerb_coating_arm",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 3056369,
+      "runtime_bytes": 2908787,
+      "runtime_mime": "image/png",
+      "source_sha256": "ce1040aa4f2192cbe9e1490f02c23fd928f07064992e289bff0e6c9a75aeb81b",
+      "runtime_sha256": "bfc142fd78b5870a79975ec0deaea00d985c111a37ced4468dd2751a7c17c5ff"
+    },
+    {
+      "name": "kerb_coating_base",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 1209697,
+      "runtime_bytes": 1209697,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "6bd9252f02c21d4efa85e0c3f9dded298058365d93d2ee12ee719ece63e1d132",
+      "runtime_sha256": "6bd9252f02c21d4efa85e0c3f9dded298058365d93d2ee12ee719ece63e1d132"
+    },
+    {
+      "name": "rubber_contact_band",
+      "dimensions": [
+        1024,
+        128
+      ],
+      "source_bytes": 167955,
+      "runtime_bytes": 163836,
+      "runtime_mime": "image/png",
+      "source_sha256": "b0905f0365c504b9ff75e8cf6926bc616847e2fa9bab1f4b983ee08f6b6608df",
+      "runtime_sha256": "21f5ad7eed3ff9563904374f195f4dd3e9f7b9c688ade89b78e53128fc06a958"
+    },
+    {
+      "name": "gravel_stones_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 5469483,
+      "runtime_bytes": 5469483,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "13a0218f69539da3e8f9ad805213ce311a936d30c05558d8e42ebb46fde5b7eb",
+      "runtime_sha256": "13a0218f69539da3e8f9ad805213ce311a936d30c05558d8e42ebb46fde5b7eb"
+    },
+    {
+      "name": "gravel_stones_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3805569,
+      "runtime_bytes": 3805569,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "58c21dcfbfcbe7aa423dced4872bb0eff2988aae303cf268e787a102eb80a3dc",
+      "runtime_sha256": "58c21dcfbfcbe7aa423dced4872bb0eff2988aae303cf268e787a102eb80a3dc"
+    },
+    {
+      "name": "gravel_stones_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3220057,
+      "runtime_bytes": 2158663,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "cacad132d39976f66451271b4eeb1e6ee11ecbff2cd3160f2b9d4323aa2b0136",
+      "runtime_sha256": "eb7cfa4ef0069942b37ac016e60857fa4d6c1f8ae7f5fb4f7f6fae21ec500ea0"
+    },
+    {
+      "name": "gravel_dust_fringe",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "source_bytes": 575396,
+      "runtime_bytes": 575396,
+      "runtime_mime": "image/png",
+      "source_sha256": "057467e6fd378885f4a5900e1591249ad9212323d12b3aff0e0d1df775b46bdb",
+      "runtime_sha256": "057467e6fd378885f4a5900e1591249ad9212323d12b3aff0e0d1df775b46bdb"
+    }
+  ],
+  "visual_status": "Actual final GLB viewed: overview, control tower and pit work area. UV fix confirmed; not a target-game performance acceptance.",
+  "not_run": [
+    "Target game performance",
+    "Game integration"
+  ],
+  "browser_review": {
+    "date": "2026-09-07",
+    "views": [
+      "overview",
+      "control",
+      "pit"
+    ],
+    "observed": [
+      "Canonical UV preserved brick texture after merge",
+      "Ground marks visible without far-view z fighting",
+      "Terrain shadow acne removed in standalone preview"
+    ],
+    "scope": "Current user-requested delivery closeout",
+    "game_integration": "NOT_RUN"
+  }
+}

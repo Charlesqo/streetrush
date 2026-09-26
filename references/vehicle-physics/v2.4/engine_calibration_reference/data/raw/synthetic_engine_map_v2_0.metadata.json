@@ -1,0 +1,87 @@
+{
+  "schema": "vehicle-engine-asset-compile-v1",
+  "dataset_id": "SYNTH_ICE_NET_MAP_V2_COMPILED",
+  "source_uri": "artifact://engine_calibration_reference/data/raw/synthetic_engine_map_v2_0.csv",
+  "source_kind": "SYNTHETIC",
+  "split": "CALIBRATION",
+  "semantics": "NET_BRAKE_MAP",
+  "interpolation": "PCHIP",
+  "frame_convention": "positive net crank torque accelerates positive engine omega",
+  "timebase": "STATIC_RPM_AXIS",
+  "lineage_root_id": "synthetic-engine-map-v2-compiled-lineage",
+  "acquisition_id": "deterministic-structural-fixture-v2",
+  "calibration_date": "",
+  "missing_data_policy": "REJECT_RECORD",
+  "parameter_status": "PROVISIONAL",
+  "source_note": "Synthetic structural data only; not a target-vehicle calibration.",
+  "units": {
+    "rpm": "rpm",
+    "net_full_torque_nm": "N*m",
+    "net_closed_torque_nm": "N*m"
+  },
+  "channel_semantics": {
+    "rpm": "crankshaft speed coordinate",
+    "net_full_torque_nm": "signed net crank torque at full command",
+    "net_closed_torque_nm": "signed net crank torque at zero command"
+  },
+  "uncertainty_1sigma": {
+    "rpm": 1.0,
+    "net_full_torque_nm": 5.0,
+    "net_closed_torque_nm": 5.0
+  },
+  "environment": {
+    "coolant_c": 90,
+    "oil_c": 90,
+    "ambient_c": 25,
+    "pressure_kpa": 100,
+    "accessories": "declared synthetic net condition"
+  },
+  "engine_parameters": {
+    "inertia_kg_m2": 0.28,
+    "idle_rpm": 900,
+    "idle_kp_nm_per_rad_s": 4.0,
+    "idle_max_torque_nm": 95,
+    "stall_zero_rpm": 100,
+    "stall_detect_rpm": 450,
+    "stall_hold_s": 0.15,
+    "fire_rpm": 650,
+    "min_crank_s": 0.08,
+    "starter_torque_nm": 72,
+    "rev_limit_rpm": 7000,
+    "rev_resume_rpm": 6700,
+    "hard_overspeed_rpm": 7500,
+    "torque_lag_s": 0.0
+  },
+  "parameter_bounds": {
+    "inertia_kg_m2": [0.1, 0.8],
+    "idle_rpm": [600, 1400],
+    "idle_kp_nm_per_rad_s": [0.0, 12.0],
+    "idle_max_torque_nm": [0, 250],
+    "stall_zero_rpm": [0, 250],
+    "stall_detect_rpm": [250, 600],
+    "stall_hold_s": [0.02, 1.0],
+    "fire_rpm": [500, 850],
+    "min_crank_s": [0.0, 1.0],
+    "starter_torque_nm": [20, 200],
+    "rev_limit_rpm": [5000, 7400],
+    "rev_resume_rpm": [4500, 7200],
+    "hard_overspeed_rpm": [7000, 7600],
+    "torque_lag_s": [0.0, 1.0]
+  },
+  "parameter_uncertainty_1sigma": {
+    "inertia_kg_m2": 0.03,
+    "idle_rpm": 20,
+    "idle_kp_nm_per_rad_s": 0.4,
+    "idle_max_torque_nm": 8,
+    "stall_zero_rpm": 20,
+    "stall_detect_rpm": 20,
+    "stall_hold_s": 0.02,
+    "fire_rpm": 20,
+    "min_crank_s": 0.01,
+    "starter_torque_nm": 6,
+    "rev_limit_rpm": 20,
+    "rev_resume_rpm": 20,
+    "hard_overspeed_rpm": 20,
+    "torque_lag_s": 0.0
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "schema": "streetrush.audio-acquisition.v1",
+  "captured_at": "2026-09-07",
+  "scope": "independent vehicle sound research; no game/physics integration",
+  "download_cap_bytes": 200000000,
+  "listening": "LISTENING_NOT_RUN",
+  "sources": [
+    {
+      "url": "https://pole.se/product/lamborghini-aventador-2014/",
+      "title": "Pole Position Production — Lamborghini Aventador 2014 product page",
+      "type": "product-page",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/pole-lamborghini-product.html",
+      "license": "Pole EULA; product page states Royalty-free Single User License",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "Direct page: Complete Library USD 249 / 286 clips / 31.4 GB; Spotting Files USD 99 / 83 files / 839 MB; Italian 2014 LP 700-4, 96 kHz/24-bit. LISTENING_NOT_RUN.",
+      "hash": "7cda7362f93ff3f6b7ea2863f4ace4938070f56418206484796a360ddca5f135"
+    },
+    {
+      "url": "https://pole.se/wp-content/uploads/2024/01/Lamborghini-Aventador-Sound-File-List.pdf",
+      "title": "Pole Lamborghini Aventador complete file list",
+      "type": "file-list-pdf",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/pole-lamborghini-complete-filelist.pdf",
+      "license": "Metadata/file list only; audio use is governed by Pole EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "PDF contains 286 .wav rows; extracted aggregate duration 18:15:00.099. Rows explicitly describe Italian 2014 Lamborghini Aventador LP 700-4 Coupe. LISTENING_NOT_RUN.",
+      "hash": "cefef12852ec215f639a717d4afb64db0ef210bd2d5c969aa7a933a6c2091fdb",
+      "extracted_path": "research-output/audio-20260907/vehicles/acquisition/extracted/pole-lamborghini-complete-filelist.txt"
+    },
+    {
+      "url": "https://pole.se/wp-content/uploads/2019/01/Lamborghini-Aventador-Sound-File-List-Spotting-v2.pdf",
+      "title": "Pole Lamborghini Aventador spotting file list v2",
+      "type": "file-list-pdf",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/pole-lamborghini-spotting-v2.pdf",
+      "license": "Metadata/file list only; audio use is governed by Pole EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "PDF contains 83 .wav rows; extracted aggregate duration 00:23:10.996. Product page describes this as the Spotting Files variant. LISTENING_NOT_RUN.",
+      "hash": "efaf0ced046c0df2aeb4bbc8bdc487e6d58fc019a43453381d7c9dc0f3fb4df0",
+      "extracted_path": "research-output/audio-20260907/vehicles/acquisition/extracted/pole-lamborghini-spotting-v2.txt"
+    },
+    {
+      "url": "https://pole.se/shop/eula/",
+      "title": "Pole Position Production EULA page",
+      "type": "license-html",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/pole-eula.html",
+      "license": "Pole Position Production EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "Worldwide, non-exclusive, royalty-free license; unlimited lifetime projects; personal/commercial use without attribution; one local drive plus one backup; no network/share; single-user unless multi-user license; no AI training. See also PDF copy.",
+      "hash": "8fdd68302d363992115d85992261230ae10ae3c30311bf327e40c5db99d01cf0"
+    },
+    {
+      "url": "https://drive.usercontent.google.com/download?id=1dN-yVRuu7MV0X1jxt9rzYz-Ru7UkiF5P&export=download&confirm=t",
+      "title": "Pole Position Production EULA PDF copy",
+      "type": "license-pdf",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/pole-eula.pdf",
+      "license": "Pole Position Production EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "Public PDF linked from the EULA page; extracted text kept for audit. LISTENING_NOT_RUN.",
+      "hash": "51646375a3be372bb1e1ce2bac9a6dcc59115ee6cc6542e2c2405d47f73f42ac",
+      "extracted_path": "research-output/audio-20260907/vehicles/acquisition/extracted/pole-eula.txt"
+    },
+    {
+      "url": "https://soundcloud.com/polepositionproduction/sets/lamborghini-aventador-sound-library-audio-demo-preview-montage",
+      "title": "Pole Lamborghini Aventador SoundCloud audio demo preview montage",
+      "type": "streaming-preview",
+      "local_path": null,
+      "license": "All-rights-reserved as displayed by SoundCloud; no download license identified",
+      "status": "STREAM_ONLY",
+      "notes": "Public stream page lists five preview tracks and points back to the Pole product page. No explicit author download link was identified; stream only, no extraction or bypass. LISTENING_NOT_RUN.",
+      "hash": null
+    },
+    {
+      "url": "https://sonniss.com/sound-effects/lamborghini-aventador-2014/",
+      "title": "SONNISS — Lamborghini Aventador 2014 product page",
+      "type": "product-page",
+      "local_path": null,
+      "license": "Sonniss EULA; licensed, not sold; royalty-free after purchase",
+      "status": "VERIFIED_WEB_NO_LOCAL_COPY",
+      "notes": "Web page reports USD 249, 366 files, 27.48 GB, 96 kHz/24-bit, sold by Pole Position; page and CDN tracklist conflict with Pole direct 286 files/31.4 GB. LISTENING_NOT_RUN.",
+      "hash": null
+    },
+    {
+      "url": "https://cdn.sonniss.com/storage/2025/02/Lamborghini-Aventador-2014-Sheet1.pdf",
+      "title": "SONNISS — Lamborghini Aventador 2014 tracklist",
+      "type": "file-list-pdf",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/sonniss-lamborghini-tracklist.pdf",
+      "license": "Metadata/file list only; audio use is governed by Sonniss EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "PDF contains 366 .wav rows; extracted aggregate duration 16:07:38.000. Treat as a separate listing claim; do not reconcile to Pole's 286/31.4 GB claim. LISTENING_NOT_RUN.",
+      "hash": "808f843dfa9d2e2fb9a94b5b44aff435e15e40317c05033f343ebef5483ceba7",
+      "extracted_path": "research-output/audio-20260907/vehicles/acquisition/extracted/sonniss-lamborghini-tracklist.txt"
+    },
+    {
+      "url": "https://sonniss.com/license/",
+      "title": "SONNISS sound library license",
+      "type": "license-page",
+      "local_path": null,
+      "license": "Sonniss EULA",
+      "status": "VERIFIED_WEB_NO_LOCAL_COPY",
+      "notes": "Worldwide, non-exclusive, royalty-free after purchase; unlimited lifetime projects; commercial/personal use without attribution; one local drive plus one backup; no network/share; no AI training; single-user unless site/multi-user license.",
+      "hash": null
+    },
+    {
+      "url": "https://www.sweetsfx.com/product/porsche-992-gt3/",
+      "title": "Sweet SFX — Porsche 992 GT3 product page",
+      "type": "product-page",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/sweetsfx-p992gt3-product.html",
+      "license": "Sounding Sweet EULA; product page variants are licensed, not sold",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "Correct product found through www.sweetsfx.com navigation/search. Short & Sweet GBP 79 excluding VAT; Standard Pack GBP 199 excluding VAT; Ultimate says call for price. Source is stock 4.0L F6 manual GT3; never label as GT3 RS or PDK. LISTENING_NOT_RUN.",
+      "hash": "6016143a788d9cf447565c2069132b54d843b2ba8aa16ae5c6c17dc1d86c833c"
+    },
+    {
+      "url": "https://www.sweetsfx.com/wp-content/uploads/2026/02/SSFX-P992GT3_Standard_FileList.pdf",
+      "title": "Sweet SFX Porsche 992 GT3 Standard Pack file list",
+      "type": "file-list-pdf",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/sweetsfx-p992gt3-standard-filelist.pdf",
+      "license": "Metadata/file list only; audio use is governed by Sounding Sweet EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "233 .wav rows; extracted aggregate duration 03:27:21.000. Product specs: 7.89 GB compressed, 8.42 GB uncompressed, 96 kHz/24-bit; ambisonic surround and Reaper/Pro Tools sessions are described for the standard pack. LISTENING_NOT_RUN.",
+      "hash": "f2f020c3716911d05da30979795bd4db72030895bd78ecb76eef7c0b38f13c44",
+      "extracted_path": "research-output/audio-20260907/vehicles/acquisition/extracted/sweetsfx-p992gt3-standard-filelist.txt"
+    },
+    {
+      "url": "https://www.sweetsfx.com/wp-content/uploads/2026/02/SSFX-P992GT3_Short_and_Sweet_FileList.pdf",
+      "title": "Sweet SFX Porsche 992 GT3 Short & Sweet file list",
+      "type": "file-list-pdf",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/sweetsfx-p992gt3-short-and-sweet-filelist.pdf",
+      "license": "Metadata/file list only; audio use is governed by Sounding Sweet EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "Correct URL includes the SSFX-P992GT3 prefix. 52 .wav rows; extracted aggregate duration 00:46:13.000. Product specs: 1.37 GB compressed, 1.46 GB uncompressed; no surround files in Short & Sweet. LISTENING_NOT_RUN.",
+      "hash": "48fdbe0f2c9ff2b66dd31a84c3978cf0804a9705e4a380fe28c71d007eae6d44",
+      "extracted_path": "research-output/audio-20260907/vehicles/acquisition/extracted/sweetsfx-p992gt3-short-and-sweet-filelist.txt"
+    },
+    {
+      "url": "https://www.sweetsfx.com/licensing/",
+      "title": "Sounding Sweet / Sweet SFX EULA",
+      "type": "license-html",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/sweetsfx-licensing.html",
+      "license": "Sounding Sweet Limited EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "Non-exclusive and non-transferable license for the Order Form workstations/users; rights after full fee; 99-year initial term with renewal; may embed/adapt in games and other Products; no standalone resale, sharing, extraction, or third-party sound-library redistribution; one backup only with written consent. Free-pack applicability is not expressly stated.",
+      "hash": "f64f4f5dda6414a442908dd1db4a21c50e8d293d928a8aa2e7ac367ec3314af2"
+    },
+    {
+      "url": "https://www.sweetsfx.com/product/sweet-sfx-free-sample-volume-one/",
+      "title": "Sweet SFX Free Sample Volume One product page",
+      "type": "free-sample-product-page",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/sweetsfx-free-sample-product.html",
+      "license": "Price shown as GBP 0.00; separate free-sample terms are not stated on the product page",
+      "status": "PUBLIC_FREE_LISTING_NO_DIRECT_AUDIO",
+      "notes": "Product page identifies 99 WAV files, 2.2 GB compressed / 2.4 GB uncompressed, download-only, price GBP 0.00. No direct public audio URL was exposed; full pack exceeds 200 MB cap, so no audio archive was fetched. File-list PDF saved. LISTENING_NOT_RUN.",
+      "hash": "16c71f3304e9f6482ef53579c91c148fda8fc70f6c65690ef60ad7efa77cd4a3"
+    },
+    {
+      "url": "https://www.sweetsfx.com/wp-content/uploads/2025/11/SSFX-Free_Pack_FileList.pdf",
+      "title": "Sweet SFX Free Pack file list",
+      "type": "file-list-pdf",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/sweetsfx-free-pack-filelist.pdf",
+      "license": "Metadata/file list only; free-pack audio terms not expressly stated",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "Two-page public file list for the 99-file free pack; it contains filenames/metadata but no durations. No audio archive downloaded because the product page states 2.2 GB compressed. LISTENING_NOT_RUN.",
+      "hash": "f46e9c68bb855fe2075ff9cd8504dddcc64c4d59b0a39eade2e3c8c15a2777f6",
+      "extracted_path": "research-output/audio-20260907/vehicles/acquisition/extracted/sweetsfx-free-pack-filelist.txt"
+    },
+    {
+      "url": "https://sonniss.com/sound-effects/mazda-miata-mx5-nbfl-1-6-stock/",
+      "title": "SONNISS — Mazda Miata MX5 NBFL 1.6 Stock product page",
+      "type": "product-page",
+      "local_path": null,
+      "license": "Sonniss EULA; licensed, not sold; royalty-free after purchase",
+      "status": "VERIFIED_WEB_NO_LOCAL_COPY",
+      "notes": "Seller shown as soundholder. Direct product page value observed as USD 70; category/listing cache also showed a USD 49 sale value, so price should be rechecked at checkout. 149 files / 4.63 GB / 96 kHz/24-bit / 232 min. NBFL 1.6 is a cross-generation reference and must not be called NA. LISTENING_NOT_RUN.",
+      "hash": null
+    },
+    {
+      "url": "https://cdn.sonniss.com/storage/2025/02/Mazda-Miata-MX5-NBFL-1.6-Stock-Sheet1.pdf",
+      "title": "SONNISS — Mazda Miata MX5 NBFL 1.6 Stock tracklist",
+      "type": "file-list-pdf",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/sonniss-miata-tracklist.pdf",
+      "license": "Metadata/file list only; audio use is governed by Sonniss EULA",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "PDF contains 149 .wav rows; extracted aggregate duration 03:52:34.000, matching the product page's approximately 232 minutes. LISTENING_NOT_RUN.",
+      "hash": "1b5ddc1a0a1090a08abd56a5e473ba62a4bea3d1eaed611e398bedcbde1931bf",
+      "extracted_path": "research-output/audio-20260907/vehicles/acquisition/extracted/sonniss-miata-tracklist.txt"
+    },
+    {
+      "url": "https://sonniss.com/vendors/soundholder/",
+      "title": "SONNISS soundholder vendor page",
+      "type": "vendor-page",
+      "local_path": null,
+      "license": "Sonniss EULA for Sonniss purchases",
+      "status": "VERIFIED_WEB_NO_LOCAL_COPY",
+      "notes": "Vendor page confirms soundholder as a Sonniss seller; the Miata listing is reached through the product page rather than a separate downloadable origin. LISTENING_NOT_RUN.",
+      "hash": null
+    },
+    {
+      "url": "https://soundholder.com/",
+      "title": "Soundholder official domain",
+      "type": "origin-page",
+      "local_path": null,
+      "license": "No license text recovered from the origin page",
+      "status": "BROKEN_SERVER",
+      "notes": "Public domain resolves but currently returns a PHP fatal error for a missing WordPress theme file; no product page or license could be verified there. Use the Sonniss listing for the purchasable NBFL library. LISTENING_NOT_RUN.",
+      "hash": null
+    },
+    {
+      "url": "https://freesound.org/people/TurboTheSergal/sounds/523351/",
+      "title": "Freesound — Miata Start and Stop.mp3",
+      "type": "sound-page",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/freesound-523351-page.html",
+      "license": "CC BY 4.0 (Attribution 4.0)",
+      "status": "DOWNLOADED_PUBLIC",
+      "notes": "Page metadata: posted 2020-06-22; Mazda MX5/Miata startup and engine stop from inside; 0:13.881, 544.9 KB, 44.1 kHz, 320 kbps, mono. Vehicle year/generation unknown. LISTENING_NOT_RUN.",
+      "hash": "0b17fe969d2a40dc09fc88a3890a7bc60711e327ce5368a0a96092784fe45026"
+    },
+    {
+      "url": "https://freesound.org/people/TurboTheSergal/sounds/523351/download/523351__turbothesergal__miata-start-and-stop.mp3",
+      "title": "Freesound original MP3 download endpoint",
+      "type": "original-audio-download",
+      "local_path": null,
+      "license": "CC BY 4.0",
+      "status": "BLOCKED_LOGIN",
+      "notes": "Normal HEAD request redirects to /home/login/; no login, captcha, or access-control bypass attempted. Manual step: sign in on the sound page, then use its Download button if the user has an account. LISTENING_NOT_RUN.",
+      "hash": null
+    },
+    {
+      "url": "https://cdn.freesound.org/previews/523/523351_11603686-hq.mp3",
+      "title": "Freesound public HQ preview",
+      "type": "preview-audio",
+      "local_path": "research-output/audio-20260907/vehicles/acquisition/raw/freesound-523351-preview-hq.mp3",
+      "license": "CC BY 4.0 page license; file is a transcoded preview",
+      "status": "PREVIEW_ONLY",
+      "notes": "Public preview fetched from the page's static-file URL. It is not the original download; ffprobe reports about 186.9 kbps average MPEG audio (stream 186360 bps; format 186925 bps; possibly VBR), 44.1 kHz mono, about 13.881 s. Do not treat as original. LISTENING_NOT_RUN.",
+      "hash": "f371aee52ffcfb2699e4e9478e629241745787d9eb788f8c9b9ff31da5daee1d"
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "title": "Creative Commons Attribution 4.0 license",
+      "type": "license-page",
+      "local_path": null,
+      "license": "CC BY 4.0",
+      "status": "VERIFIED_WEB_NO_LOCAL_COPY",
+      "notes": "Freesound page links this license and states sharing/remixing are allowed with attribution. Verify attribution text on the source page before publication.",
+      "hash": null
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "frameRateCap": null,
+  "previewFrameRateCap": 5,
+  "driving": false,
+  "speedKmh": 5.567909716334076e-10,
+  "car": "m5g90",
+  "source": "gltf",
+  "state": "race",
+  "view": "chase",
+  "resolution": [
+    1280,
+    720
+  ],
+  "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "frameMs": {
+    "samples": 677,
+    "mean": 17.708,
+    "p50": 17,
+    "p95": 28,
+    "p99": 34.5
+  },
+  "renderCpuMs": {
+    "samples": 678,
+    "mean": 4.151,
+    "p50": 4.1,
+    "p95": 5.7,
+    "p99": 6.7
+  },
+  "gpuMs": {
+    "samples": 674,
+    "mean": 7.456,
+    "p50": 6.598,
+    "p95": 12.071,
+    "p99": 13.324
+  },
+  "drawCalls": {
+    "samples": 678,
+    "mean": 110,
+    "p50": 110,
+    "p95": 110,
+    "p99": 110
+  },
+  "triangles": {
+    "samples": 678,
+    "mean": 869092,
+    "p50": 869092,
+    "p95": 869092,
+    "p99": 869092
+  },
+  "textures": 65,
+  "geometries": 139,
+  "materials": [
+    {
+      "name": "PaletteMaterial001",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "PaletteMaterial002",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 0.894478916507174,
+      "transmission": 0
+    },
+    {
+      "name": "PaletteMaterial003",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "BMW_M5SedanRewardRecycled_2024BadgeA_Material",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.27276273603881457,
+      "metalness": 1,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "PaletteMaterial004",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "PaletteMaterial005",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 1
+    },
+    {
+      "name": "MAT_CarbonFiberMatte.024",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.46,
+      "metalness": 0,
+      "clearcoat": 0.25,
+      "transmission": 0
+    },
+    {
+      "name": "PaletteMaterial006",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 1
+    },
+    {
+      "name": "MAT_CarbonFiberMatte.020",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.46,
+      "metalness": 0
+    },
+    {
+      "name": "PaletteMaterial007",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "MAT_CarbonFiberMatte.023",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.46,
+      "metalness": 0
+    },
+    {
+      "name": "MAT_CarbonFiberMatte.004",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.46,
+      "metalness": 0
+    },
+    {
+      "name": "MAT_CarbonFiberMatte.022",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.46,
+      "metalness": 0
+    },
+    {
+      "name": "window",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "int_misc",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.6,
+      "metalness": 0
+    },
+    {
+      "name": "Details",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.6,
+      "metalness": 0
+    },
+    {
+      "name": "plastic_smooth_010101FF",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "bmw_badge_003_bmw_badge_003_diff",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.236191196011264,
+      "metalness": 1
+    },
+    {
+      "name": "paint_matteblack_040404FF",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.6,
+      "metalness": 1,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "plastic_010101FF",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "screw_017_010101FF",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.6,
+      "metalness": 0
+    },
+    {
+      "name": "Material_28",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.6,
+      "metalness": 0,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "Brake_Disk",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "Material_25",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.41295363947775837,
+      "metalness": 1,
+      "clearcoat": 0,
+      "transmission": 0
+    },
+    {
+      "name": "paint_orange_D72A03FF",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.3,
+      "metalness": 0.4,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "metalicpaint_lightsilver_CDCDD3FF",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.4007631261352415,
+      "metalness": 1
+    },
+    {
+      "name": "CSR2_Grille2",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.6,
+      "metalness": 0,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "material_9",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.6,
+      "metalness": 1
+    },
+    {
+      "name": "soft-contact-occlusion",
+      "type": "MeshBasicMaterial"
+    }
+  ]
+}

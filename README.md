@@ -8,11 +8,11 @@
 
 这个目录是从原项目复制出的独立 Studio 工作区。原始项目和素材库没有被修改。发布版只打包游戏实际使用的六辆车和两张赛道贴图；BMW M5 G90 与 Mercedes-AMG GT3 使用了网页传输优化副本，未覆盖的原始模型保存在 `source-models/`。
 
-当前已做、未做和通向可玩版本的顺序见 `docs/PLAYABLE_READINESS.md`；1.0 范围见 `docs/SCOPE.md`，仓库与发布流程见 `docs/RELEASE.md`，素材授权状态见 `docs/ASSET_LICENSES.md`。Lamborghini 模型的 Sketchfab 来源与 CC BY 4.0 授权已记录，六车候选发动机音频为项目内合成输出；商业发布仍需替换两辆 CC BY-NC-SA 车辆。公开整个源代码仓库前还需单独处理第三方研究脚本和大文件历史。
+当前已做、未做和通向可玩版本的顺序见 `docs/PLAYABLE_READINESS.md`；1.0 范围见 `docs/SCOPE.md`，仓库与发布流程见 `docs/RELEASE.md`，素材授权状态见 `docs/ASSET_LICENSES.md`。Lamborghini 模型的 Sketchfab 来源与 CC BY 4.0 授权已记录，六车候选发动机音频为项目内合成输出；商业发布仍需替换两辆 CC BY-NC-SA 车辆。8 份缺少再分发授权证据的第三方引擎定义已从 `main` 历史剔除，范围见 `research-salvage/README.md`；当前 `main` 没有超过 GitHub 普通 Git 单文件限制的历史对象。仓库备份范围与保留资料的限制见 `docs/GITHUB_BACKUP.md`。
 
 ## 工作区边界
 
-- `E:\Projects\streetrush`：唯一可写的长期整合仓库，拥有独立 Git 历史。
+- `E:\Projects\streetrush\streetrush`：当前 Windows 长期整合仓库，拥有独立 Git 历史；外层 `E:\Projects\streetrush` 是含素材库和其他成果的工作目录。
 - `Z:\Temp\street-rush-studio-continuation` 和 `E:\Codex` 下列入 `docs/SOURCE_INVENTORY.md` 的项目都是只读来源。
 - 来源代码必须先复制到本仓库，再修改副本并记录原始状态和差异。
 - C++ 车辆物理、音频和模型研究是 Rust/网页接口的 oracle 与候选，不直接回写来源工程。

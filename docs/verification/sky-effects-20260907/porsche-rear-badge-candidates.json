@@ -1,0 +1,312 @@
+[
+  {
+    "node": "TwiXeR_992_gt3rs_carbon_Wing_TwiXeR_992_CSR2_Badge_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_headlight_1.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1002182397306339,
+          0.1002182397306339,
+          0.1002182397306339,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 24,
+    "center": [
+      1.0721141474601126e-8,
+      1.228932930915073,
+      -2.0348324981606036
+    ],
+    "size": [
+      0.6603399963600931,
+      0.03636409857237166,
+      0.12805891343199183
+    ]
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_plastic_mgl_060606FF.001_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0120399,
+          0.0120399,
+          0.0120399,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 3285,
+    "center": [
+      2.485466832347072e-10,
+      0.9219136161608146,
+      -1.8378625365945023
+    ],
+    "size": [
+      0.9828599471704669,
+      0.1588206857354334,
+      0.3692931113021509
+    ]
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_metal_radiator.002_0",
+    "material": {
+      "alphaCutoff": 0.4007631261352415,
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "TwiXeR_992_metal_radiator.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.03282970664197667,
+          0.03282970664197667,
+          0.03282970664197667,
+          1
+        ],
+        "baseColorTexture": {
+          "index": 1
+        },
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 138,
+    "center": [
+      2.485466832347072e-10,
+      0.9374892951955209,
+      -1.8241969825298976
+    ],
+    "size": [
+      0.5615399950398503,
+      0.039619997767668114,
+      0.10072791996732344
+    ]
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_tailgate_TwiXeR_992_CSR2_Badge_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_headlight_1.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1002182397306339,
+          0.1002182397306339,
+          0.1002182397306339,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 116,
+    "center": [
+      2.485466832347072e-10,
+      0.9522008336210415,
+      -1.7644264617608854
+    ],
+    "size": [
+      0.8393199852260946,
+      0.00919699959326381,
+      0.019088984607475323
+    ]
+  },
+  {
+    "node": "TwiXeR_992_gt3rs_bumper_R_TwiXeR_992_antichrome.001_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_antichrome.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0326383,
+          0.0326383,
+          0.0326383,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 1014,
+    "center": [
+      -0.0005999989557080032,
+      0.7383153572487142,
+      -2.223961957954956
+    ],
+    "size": [
+      0.5312000096321101,
+      0.03160000687504838,
+      0.0558998623735647
+    ]
+  },
+  {
+    "node": "TwiXeR_992_body_gt3rs_TwiXeR_992_metal_radiator.002_0",
+    "material": {
+      "alphaCutoff": 0.4007631261352415,
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "name": "TwiXeR_992_metal_radiator.002",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.03282970664197667,
+          0.03282970664197667,
+          0.03282970664197667,
+          1
+        ],
+        "baseColorTexture": {
+          "index": 1
+        },
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 278,
+    "center": [
+      5.9604643443122995e-9,
+      0.8349730803320836,
+      -1.9415654328329301
+    ],
+    "size": [
+      0.9305399448303886,
+      0.06229814856723814,
+      0.18961108322016584
+    ]
+  },
+  {
+    "node": "TwiXeR_992_muffler_custom_TwiXeR_992_engine.001_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_engine.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0287142,
+          0.0287142,
+          0.0287142,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 312,
+    "center": [
+      0.000026753218246577948,
+      0.263669302047752,
+      -1.9186074075572375
+    ],
+    "size": [
+      0.7620270975971122,
+      0.09425408907095997,
+      0.26335909052955664
+    ]
+  },
+  {
+    "node": "TwiXeR_992_muffler_TwiXeR_992_engine.001_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_engine.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0287142,
+          0.0287142,
+          0.0287142,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 273,
+    "center": [
+      -4.65661048609789e-9,
+      0.27847597887734293,
+      -1.9435800087076749
+    ],
+    "size": [
+      0.4553756016036359,
+      0.13738366519189904,
+      0.20647409992560894
+    ]
+  },
+  {
+    "node": "TwiXeR_992_exhaust_TwiXeR_992_engine.001_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_engine.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0287142,
+          0.0287142,
+          0.0287142,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 1254,
+    "center": [
+      -2.913870889020842e-8,
+      0.22768447062461253,
+      -1.7035814543557684
+    ],
+    "size": [
+      1.037914133714568,
+      0.10824040946010355,
+      0.4267651052655319
+    ]
+  },
+  {
+    "node": "TwiXeR_992_body.002_TwiXeR_992_rubbertrim.011_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_rubbertrim.011",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0465254,
+          0.0465254,
+          0.0465254,
+          1
+        ],
+        "roughnessFactor": 0
+      }
+    },
+    "vertices": 8599,
+    "center": [
+      9.53674295089968e-9,
+      0.8157728747252617,
+      -1.9008096311294853
+    ],
+    "size": [
+      0.9661999724909665,
+      0.10350002498566513,
+      0.24790096510260384
+    ]
+  },
+  {
+    "node": "TwiXeR_992_fascia_mid_TwiXeR_992_chrome.003_0",
+    "material": {
+      "doubleSided": true,
+      "name": "TwiXeR_992_chrome.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.00866848,
+          0.00866848,
+          0.00866848,
+          1
+        ],
+        "metallicFactor": 0.6567639063280954,
+        "metallicRoughnessTexture": {
+          "index": 8
+        }
+      }
+    },
+    "vertices": 138,
+    "center": [
+      -9.990353433408927e-9,
+      0.7412227500284505,
+      -2.182358898646571
+    ],
+    "size": [
+      0.8997999824628233,
+      0.01940000512144091,
+      0.06599998473065583
+    ]
+  }
+]

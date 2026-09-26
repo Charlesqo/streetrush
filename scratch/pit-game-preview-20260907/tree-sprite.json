@@ -1,0 +1,19 @@
+{
+  "source": "https://polyhaven.com/a/jacaranda_tree",
+  "license": "CC0-1.0",
+  "author": "Rico Cilliers; Rob Tuytel",
+  "method": "Two orthographic transparent renders of source model; distant crossed-card foliage only",
+  "size": 1024,
+  "bounds": [
+    [
+      -12.92025089263916,
+      -9.200760841369629,
+      -0.146615132689476
+    ],
+    [
+      11.496798515319824,
+      9.953813552856445,
+      19.3222599029541
+    ]
+  ]
+}

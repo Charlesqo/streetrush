@@ -1,0 +1,62 @@
+{
+  "checked_at": "2026-09-07",
+  "path": "data/vehicle-data.json",
+  "sha256": "692c41812608657e0ed315be9d795a5b0d3f3677b6215875ff3b24b7394908e6",
+  "vehicles": [
+    {
+      "id": "mx5",
+      "identity": {
+        "gameLabel": "MAZDA MX-5 NA",
+        "proposedLock": "1990 Mazda MX-5 Miata, North American base car, 1.6 litre, five-speed manual",
+        "status": "provisional_market_mix",
+        "notes": "The visual filename says Miata, while the direct power/torque evidence is European and the approximate mass evidence is North American. Market and model year must be frozen before production calibration."
+      }
+    },
+    {
+      "id": "m3e30",
+      "identity": {
+        "gameLabel": "BMW M3 E30",
+        "proposedLock": "BMW M3 E30 base 2.3 litre, 200 PS, five-speed manual",
+        "status": "locked_by_exact_spec",
+        "notes": "Do not silently substitute Evolution, Sport Evolution, catalytic, or market-specific variants."
+      }
+    },
+    {
+      "id": "gt3rs",
+      "identity": {
+        "gameLabel": "PORSCHE GT3 RS",
+        "proposedLock": "Porsche 911 GT3 RS, 992 generation, EU/Germany, MY P 08/2022",
+        "status": "locked_by_power_mass_performance",
+        "notes": "The current 525 PS, 465 Nm, 1,450 kg, and 296 km/h identify the 992, but some calibration values resemble the older 991.2."
+      }
+    },
+    {
+      "id": "lp700",
+      "identity": {
+        "gameLabel": "LAMBORGHINI LP700",
+        "proposedLock": "2011 Lamborghini Aventador LP 700-4 coupé",
+        "status": "locked_by_manufacturer_history",
+        "notes": "The approved first-party pages identify the model and headline performance but do not provide a complete downloadable exact-trim technical table."
+      }
+    },
+    {
+      "id": "amggt3",
+      "identity": {
+        "gameLabel": "MERCEDES AMG GT3",
+        "proposedLock": "Mercedes-AMG GT3 evolution introduced in 2019, 6.3 litre V8, current Customer Racing specification",
+        "status": "locked_by_manufacturer_product_page",
+        "notes": "Race-car values vary by Balance of Performance and event gearing; exact race series and BoP package are part of the identity."
+      }
+    },
+    {
+      "id": "m5g90",
+      "identity": {
+        "gameLabel": "BMW M5 G90",
+        "proposedLock": "2024 BMW M5 G90 sedan, EU specification, optional M Driver's Package for 305 km/h display",
+        "status": "locked_by_exact_spec",
+        "notes": "Without the optional package, the manufacturer-limited top speed is 250 km/h."
+      }
+    }
+  ],
+  "note": "只读快照。不是新的身份冻结决定，也不评价物理完成状态。"
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "texture": 0,
+    "image": 0,
+    "usedBy": [
+      "TwiXeR_992_carbon_roof.001",
+      "TwiXeR_992_headlight_1.001_1",
+      "TwiXeR_992_symbols_1.003"
+    ]
+  },
+  {
+    "texture": 1,
+    "image": 1,
+    "usedBy": [
+      "TwiXeR_992_metal_radiator.002"
+    ]
+  },
+  {
+    "texture": 2,
+    "image": 2,
+    "usedBy": [
+      "TwiXeR_992_headlight_1.001_0"
+    ]
+  },
+  {
+    "texture": 3,
+    "image": 3,
+    "usedBy": [
+      "TwiXeR_992_symbols.004",
+      "TwiXeR_992_symbols.004_1",
+      "TwiXeR_992_gauges_screen.001"
+    ]
+  },
+  {
+    "texture": 4,
+    "image": 4,
+    "usedBy": [
+      "TwiXeR_992_symbols.004_0"
+    ]
+  },
+  {
+    "texture": 5,
+    "image": 5,
+    "usedBy": [
+      "TwiXeR_992_symbols.004_2",
+      "TwiXeR_992_headlight_1.001_2",
+      "TwiXeR_992_carpet.002"
+    ]
+  },
+  {
+    "texture": 6,
+    "image": 6,
+    "usedBy": [
+      "TwiXeR_992_ID06_stitch_001"
+    ]
+  },
+  {
+    "texture": 7,
+    "image": 7,
+    "usedBy": [
+      "TwiXeR_992_symbols_6"
+    ]
+  },
+  {
+    "texture": 8,
+    "image": 8,
+    "usedBy": [
+      "TwiXeR_992_chrome.003"
+    ]
+  },
+  {
+    "texture": 9,
+    "image": 9,
+    "usedBy": [
+      "TwiXeR_992_ID03_stitch_001_111111FF.006",
+      "TwiXeR_992_seat_leather.004",
+      "TwiXeR_992_upper_leather.004"
+    ]
+  },
+  {
+    "texture": 10,
+    "image": 10,
+    "usedBy": [
+      "TwiXeR_992_plastic.004"
+    ]
+  },
+  {
+    "texture": 11,
+    "image": 11,
+    "usedBy": [
+      "TwiXeR_992_gauges_9000.001_0"
+    ]
+  },
+  {
+    "texture": 12,
+    "image": 12,
+    "usedBy": [
+      "TwiXeR_992_seat_leather_2.001"
+    ]
+  }
+]

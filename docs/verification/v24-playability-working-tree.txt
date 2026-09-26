@@ -1,0 +1,109 @@
+Command: git status --short
+Captured: 2026-08-31, during continued implementation.
+This is NOT an invented pre-task snapshot. The initial status was recorded in
+the conversation; this persisted continuation snapshot includes pre-existing
+user changes, newly copied read-only references, and this task's edits.
+Do not attribute the entire diff below to this task.
+
+ M .gitattributes
+ M .gitignore
+ M README.md
+ M data/vehicle-data.json
+ M data/vehicle-replay-baseline.json
+ M data/vehicle-replay-fnv-baseline.json
+ M docs/ASSET_LICENSES.md
+ M docs/AUDIO_LISTENING_REVIEW.md
+ M docs/DEFERRED_REWORK_REGISTER.md
+ M docs/EXPERIMENT_LOG.md
+ M docs/INTEGRATION_LEDGER.md
+ M docs/MATERIAL_LIBRARY_AUDIT.md
+ M docs/PLAYABLE_READINESS.md
+ M docs/RELEASE.md
+ M docs/SCOPE.md
+ M docs/VEHICLE_DATA.md
+ M index.html
+ M licenses/assets.json
+ M licenses/evidence/downtown-city-license.txt
+ M licenses/evidence/lamborghini-license-missing.md
+ M licenses/evidence/vehicle-license-records.txt
+ M package.json
+ M pnpm-lock.yaml
+ M pnpm-workspace.yaml
+ M public/THIRD_PARTY_NOTICES.txt
+ M public/favicon.svg
+ M public/manifest.webmanifest
+ M research-salvage/audio/candidates/flat6-porsche-gt3-992-dacxl/gt3_v2.mr
+ M research-salvage/audio/candidates/flat6-porsche-gt3-992-dacxl/gt3_v2_0.1.11a_port.mr
+ M research-salvage/audio/candidates/v12-lamborghini-l539-dacxl/Lamborghini_6_5_SVJ_V2.mr
+ M research-salvage/audio/candidates/v12-lamborghini-l539-dacxl/Lamborghini_6_5_SVJ_V2_0.1.11a_port.mr
+ M research-salvage/audio/candidates/v8-mercedes-m159-compression-compatible-proxy/M159_compression_compatibility.mr
+ M research-salvage/physics/selected-target-projection.json
+ M scripts/build-provenance.mjs
+ M scripts/calibrate-physics.mjs
+ M scripts/check-asset-licenses.mjs
+ M scripts/check-cloudflare.mjs
+ M scripts/check-git-release.mjs
+ M scripts/check-goal-calibration.mjs
+ M scripts/check-secrets.mjs
+ M scripts/generate-icons.mjs
+ M scripts/physics-harness.mjs
+ M scripts/regression-physics.mjs
+ M scripts/smoke-physics.mjs
+ M scripts/test-assets.mjs
+ M scripts/test-dev-telemetry.mjs
+ M scripts/test-input.mjs
+ M scripts/test-medal-goals.mjs
+ M scripts/test-orientation.mjs
+ M scripts/test-physics-scheduling.mjs
+ M scripts/test-race-timing.mjs
+ M scripts/test-research-salvage.mjs
+ M scripts/test-route-guidance.mjs
+ M scripts/test-surface-stability.mjs
+ M scripts/test-track-markers.mjs
+ M scripts/test-vehicle-determinism.mjs
+ M scripts/test-vehicle-direction-change.mjs
+ M scripts/test-vehicle-reset.mjs
+ M src/assets.js
+ M src/audio.js
+ M src/config.js
+ M src/dev-telemetry.js
+ M src/effects.js
+ M src/input.js
+ M src/main.js
+ M src/orientation.js
+ M src/physics-scheduling.js
+ M src/race-goals.js
+ M src/race-timing.js
+ M src/rapier-init.js
+ M src/style.css
+ M src/track.js
+ M src/validation.js
+ M src/vehicle-physics.js
+ M src/vehicle.js
+ M tools/audit_material_library.py
+ M validation.html
+ M vite.config.js
+?? AGENTS.md
+?? "StreetRush-\344\273\243\347\240\201\345\272\223\345\256\214\346\225\264\345\256\241\350\256\241\344\270\216AI\346\216\245\347\256\241\350\257\264\346\230\216.md"
+?? THROTTLE_BRAKE_HANDBRAKE_AUDIT.json
+?? THROTTLE_BRAKE_HANDBRAKE_CODE_REVIEW_PACKET.md
+?? data/vehicle-v24-golden.json
+?? docs/PROJECT_MAP.md
+?? docs/TESTING_AND_COMPLETION.md
+?? docs/V24_PLAYABILITY_STABILIZATION.md
+?? docs/VEHICLE_PHYSICS_BASELINE.md
+?? docs/verification/
+?? references/
+?? scripts/export-vehicle-v24-oracle.py
+?? scripts/test-vehicle-braking.mjs
+?? scripts/test-vehicle-v24-contract.mjs
+?? scripts/test-vehicle-v24-determinism.mjs
+?? scripts/test-vehicle-v24-golden.mjs
+?? scripts/test-vehicle-v24-host.mjs
+?? scripts/test-vehicle-v24-legacy-isolation.mjs
+?? scripts/test-vehicle-v24-performance.mjs
+?? scripts/test-vehicle-v24-playability.mjs
+?? scripts/test-vehicle-v24-runtime.mjs
+?? scripts/test-vehicle-v24.mjs
+?? src/vehicle-v24/
+?? "\346\225\264\346\224\271\346\200\273\350\264\246-\344\273\245\345\220\216\346\214\211\350\277\231\344\270\252\345\201\232.md"

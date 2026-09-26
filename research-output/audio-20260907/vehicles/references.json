@@ -1,0 +1,310 @@
+[
+  {
+    "id": "R01",
+    "vehicle_id": "mx5",
+    "title": "1990 MAZDA MX-5 Miata NA, 1.6l stock exhaust sound",
+    "creator": "Paweł Pilarczyk",
+    "url": "https://www.youtube.com/watch?v=RhtinZnIB6Q",
+    "role": "REAL_CAR_REFERENCE",
+    "match": "作者自述准确款；市场/原厂状态未独立证实",
+    "recommended_use": "标题与简述明确1990/NA/1.6/原厂排气；比改装NB视频更贴近目标。先核对画面车型和进排气，听手动换挡动力中断。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "INDEXED_METADATA_ONLY",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "整段核对原厂1.6；事件时间待定位",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R02",
+    "vehicle_id": "mx5",
+    "title": "1991 Mazda MX-5 Miata – POV Test Drive",
+    "creator": "Winding Road Magazine",
+    "url": "https://windingroad.com/articles/reviews/winding-road-modern-classic-1991-mazda-mx-5-miata-pov-test-drive/",
+    "role": "REAL_CAR_REFERENCE",
+    "match": "1991轻改；不作原厂基准",
+    "recommended_use": "真实早期NA驾驶位参考；出版者明确轻度改装，因此仅研究敞篷空间、风路声和驾驶状态。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "PUBLISHER_PAGE_READ",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "页内POV完整视频；无可靠章节",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R03",
+    "vehicle_id": "m3e30",
+    "title": "Perfect 1988 BMW E30 M3 - Driving My Dream Car! (POV)",
+    "creator": "Straight Six Racing",
+    "url": "https://www.youtube.com/watch?v=OAZAmBFVRg8",
+    "role": "REAL_CAR_REFERENCE",
+    "match": "标题称1988 M3；动力/改装未知",
+    "recommended_use": "真实道路M3 POV线索优于DTM混剪；需先确认发动机/排气/催化版本，不能直接认定200PS。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "INDEXED_METADATA_ONLY",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "完整片：先核对版本，再定位暖怠速、负载、换挡",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R04",
+    "vehicle_id": "m3e30",
+    "title": "BMW E30 M3 Race cars High revving S14s | Intake & Exhaust sound 2022–2023",
+    "creator": "Belgian-Motorsport",
+    "url": "https://www.youtube.com/watch?v=a2ASO3b67Cg",
+    "role": "EXCLUSION_COMPARISON",
+    "match": "已确认版本不符",
+    "recommended_use": "只作赛车版与道路版差异参照；作者写2493cc/355bhp@9300rpm，不是目标2.3L 200PS。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "INDEXED_METADATA_ONLY",
+    "cues": [
+      {
+        "start_s": 8,
+        "end_s": 114,
+        "label": "混合赛道",
+        "timestamp_status": "PUBLISHER_CHAPTER_VERIFIED_AUDIO_NOT_LISTENED"
+      },
+      {
+        "start_s": 245,
+        "end_s": 366,
+        "label": "维修区/围场",
+        "timestamp_status": "PUBLISHER_CHAPTER_VERIFIED_AUDIO_NOT_LISTENED"
+      },
+      {
+        "start_s": 573,
+        "end_s": 628,
+        "label": "E30 M3 vs E30 325i",
+        "timestamp_status": "PUBLISHER_CHAPTER_VERIFIED_AUDIO_NOT_LISTENED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R05",
+    "vehicle_id": "gt3rs",
+    "title": "On-board video of the dream lap (7:06)",
+    "creator": "Porsche",
+    "url": "https://newsroom.porsche.com/en_US/2022/products/porsche-911-gt3-rs-dream-lap-nuerburgring-nordschleife-30037.html",
+    "role": "REAL_CAR_REFERENCE",
+    "match": "992RS Weissach/Cup2R官方确认；不是独立分轨",
+    "recommended_use": "第一实车状态品质参照：官方992RS连续完整圈，适合校对高转、PDK与道路声在负载变化时的相对关系。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "MANUFACTURER_PAGE_READ",
+    "cues": [
+      {
+        "start_s": 20,
+        "end_s": 65,
+        "label": "建议首轮抽查窗：观察转速/挡位/踏板与声音",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      },
+      {
+        "start_s": 340,
+        "end_s": 395,
+        "label": "建议高速段抽查窗：先按画面核对实际工况",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R06",
+    "vehicle_id": "lp700",
+    "title": "Lamborghini Aventador Sound Library Audio Demo Preview Montage",
+    "creator": "Pole Position Production",
+    "url": "https://soundcloud.com/polepositionproduction/sets/lamborghini-aventador-sound-library-audio-demo-preview-montage",
+    "role": "COMMERCIAL_QUALITY_REFERENCE",
+    "match": "2014 LP700-4，同款不同年；非2011准确录音",
+    "recommended_use": "第一采购参照：对照T1发动机DPA4061与T1排气DPA4062及外部ORTF；只有厂家原始同步轨才可做严格对齐A/B，网页剪辑试听不能假定同步。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "PUBLISHER_PLAYLIST_METADATA_READ",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "分曲T1 ONBRD SLOW ENGINE Left DPA4061",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      },
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "分曲T1 ONBRD SLOW EXHAUST Right DPA4062",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      },
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "分曲T1 EXT SLOW By ORTF MKH8040",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R07",
+    "vehicle_id": "amggt3",
+    "title": "Mercedes AMG GT3 Evo 2020 OnBoard, Warm Up & Sound at Monza Circuit!",
+    "creator": "19Bozzy92",
+    "url": "https://www.youtube.com/watch?v=HBaEm2ENBqg",
+    "role": "REAL_CAR_REFERENCE",
+    "match": "正确Evo代际；该赛事BoP与目标仍需核对",
+    "recommended_use": "明确Evo2020、Krypton Motorsport/Stefano Pezzucchi；车内+车外可研究序列变速和赛用传动。作者说明不同练习场次湿/干路面，不能直接拿响度做A/B。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "INDEXED_METADATA_ONLY",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "先看暖机与全片状态；没有可靠原作者章节，不编造换挡时点",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R08",
+    "vehicle_id": "amggt3",
+    "title": "Mercedes AMG GT3 Evo 2020 in action at Monza Circuit: Accelerations, Fly Bys & Great V8 Sound!",
+    "creator": "19Bozzy92",
+    "url": "https://www.youtube.com/watch?v=pi1J8dNxlYM",
+    "role": "REAL_CAR_REFERENCE",
+    "match": "正确Evo代际；具体消音配置未知",
+    "recommended_use": "补车外加速与通过机位；保留多普勒和场地混响作空间参考，不能直接循环作跟车引擎。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "INDEXED_METADATA_ONLY",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "外部通过整片，短片事件待手动定位",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R09",
+    "vehicle_id": "m5g90",
+    "title": "2025 BMW M5 - POV Night Drive (Binaural Audio)",
+    "creator": "Winding Road Magazine",
+    "url": "https://www.youtube.com/watch?v=huuCI1aOOcE",
+    "role": "REAL_CAR_REFERENCE",
+    "match": "标题与年份匹配G90时代；配置仍待核实",
+    "recommended_use": "车内双耳呈现方式参考；先核实视频作者、市场及IconicSounds设置。不可把座舱录音判为真实尾管声。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "INDEXED_METADATA_ONLY",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "整片先核对EV/ICE/声效设置；时间待定位",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R10",
+    "vehicle_id": "m5g90",
+    "title": "THE NEW BMW M5 G90/G99 - SOUND COMPILATION!",
+    "creator": "CarSpotterQVS",
+    "url": "https://www.youtube.com/watch?v=YdWyqCQDcvQ",
+    "role": "REAL_CAR_REFERENCE",
+    "match": "混有G99；不可整片认定G90",
+    "recommended_use": "补车外实际通过；作者说明G90/G99混合、Panasonic HC-X1500E与Rode VideoMic Pro+，必须逐镜区分轿车。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "INDEXED_METADATA_ONLY",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "逐镜先辨G90轿车与G99旅行版，再标通过时点",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R11",
+    "vehicle_id": "shared",
+    "title": "Making the DR!FT sound",
+    "creator": "BOOM Library",
+    "url": "https://www.boomlibrary.com/blog/making-the-drift-sound/",
+    "role": "WORKFLOW_BENCHMARK",
+    "match": "流程参照，不提供本项目六车素材",
+    "recommended_use": "选为已完成游戏声音工作的制作参照：多机位、负载状态及可分离胎声设计；借鉴方法，不能提取游戏声音或把其DTM录音当道路E30。",
+    "acquisition_status": "LINK_ONLY",
+    "rights": "REFERENCE_ONLY_NO_GAME_REUSE_LICENSE",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "CREATOR_ARTICLE_READ",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": null,
+        "label": "阅读Recording Process与More Sounds；非音频时间",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "待验证；按来源与内容结构入选，不代表已试听优胜"
+  },
+  {
+    "id": "R12",
+    "vehicle_id": "mx5",
+    "title": "Miata Start and Stop.mp3 — 公开HQ预览",
+    "creator": "TurboTheSergal",
+    "url": "https://freesound.org/people/TurboTheSergal/sounds/523351/",
+    "role": "DOWNLOADED_UNRESOLVED_VEHICLE_REFERENCE",
+    "match": "Miata自述；动力和年款未核实",
+    "recommended_use": "已经保存的Miata车内启停参考。网页未写年份/排量/代际，只能作为未知代际参考，不能挂到NA1.6名下作为准确音频。",
+    "acquisition_status": "PREVIEW_ONLY",
+    "rights": "CC BY 4.0; attribution required; target identity unresolved",
+    "listening_status": "LISTENING_NOT_RUN",
+    "verification": "SOURCE_PAGE_AND_LOCAL_PREVIEW_METADATA_READ",
+    "cues": [
+      {
+        "start_s": 0,
+        "end_s": 13.881202,
+        "label": "完整公开预览；启动/熄火各自事件秒点未定位",
+        "timestamp_status": "SUGGESTED_WINDOW_NOT_EVENT_VERIFIED"
+      }
+    ],
+    "quality": "公开转码预览已取得，原始320kbps文件未取得；主观听感待验证",
+    "local_path": "vehicles/acquisition/raw/freesound-523351-preview-hq.mp3",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  }
+]

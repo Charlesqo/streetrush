@@ -1,0 +1,112 @@
+[
+  {
+    "id": "ui_click",
+    "title": "Kenney interface click 001",
+    "reel_start_s": 0,
+    "reel_end_s": 0.097125,
+    "source_start_s": 0,
+    "source_end_s": 0.097125,
+    "source_url": "https://kenney.nl/assets/interface-sounds",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "ui_confirmation",
+    "title": "Kenney interface confirmation 001",
+    "reel_start_s": 1.097125,
+    "reel_end_s": 1.386958,
+    "source_start_s": 0,
+    "source_end_s": 0.289833,
+    "source_url": "https://kenney.nl/assets/interface-sounds",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "ui_error",
+    "title": "Kenney interface error 001",
+    "reel_start_s": 2.386958,
+    "reel_end_s": 2.548625,
+    "source_start_s": 0,
+    "source_end_s": 0.161667,
+    "source_url": "https://kenney.nl/assets/interface-sounds",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "race_countdown",
+    "title": "Race start countdown",
+    "reel_start_s": 3.548625,
+    "reel_end_s": 6.548625,
+    "source_start_s": 0,
+    "source_end_s": 3.0,
+    "source_url": "https://opengameart.org/content/race-start-countdown",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "vehicle_tire_skid_loop",
+    "title": "Car tire skid squealing loop",
+    "reel_start_s": 7.548625,
+    "reel_end_s": 8.550521,
+    "source_start_s": 0,
+    "source_end_s": 1.001896,
+    "source_url": "https://opengameart.org/content/car-tire-skid-squealing",
+    "license": "CC BY 3.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "environment_wind_01",
+    "title": "Wind 01",
+    "reel_start_s": 9.550521,
+    "reel_end_s": 12.550521,
+    "source_start_s": 0,
+    "source_end_s": 3.0,
+    "source_url": "https://opengameart.org/content/wind",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "mechanical_clank",
+    "title": "Mechanical clank 1",
+    "reel_start_s": 13.550521,
+    "reel_end_s": 14.223896,
+    "source_start_s": 0,
+    "source_end_s": 0.673375,
+    "source_url": "https://opengameart.org/content/mechanical-sounds",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "collision_metal_thud",
+    "title": "Metal impact thud 2",
+    "reel_start_s": 15.223896,
+    "reel_end_s": 15.804396,
+    "source_start_s": 0,
+    "source_end_s": 0.5805,
+    "source_url": "https://opengameart.org/content/metal-impact-sounds",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "collision_glass_break",
+    "title": "Glass break",
+    "reel_start_s": 16.804396,
+    "reel_end_s": 18.11325,
+    "source_start_s": 0,
+    "source_end_s": 1.308854,
+    "source_url": "https://opengameart.org/content/glass-break",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  },
+  {
+    "id": "environment_birds_ambient",
+    "title": "Ambient bird sounds",
+    "reel_start_s": 19.11325,
+    "reel_end_s": 22.11325,
+    "source_start_s": 0,
+    "source_end_s": 3.0,
+    "source_url": "https://opengameart.org/content/ambient-bird-sounds",
+    "license": "CC0 1.0",
+    "timestamp_status": "ASSEMBLED_CUE_VERIFIED_NOT_LISTENED"
+  }
+]

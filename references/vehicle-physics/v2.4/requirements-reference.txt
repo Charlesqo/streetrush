@@ -1,0 +1,4 @@
+# Recorded v2.1/v2.2 evidence pin, reused for the v2.4 closeout rerun; not the install contract.
+# Current supported dependency ranges are owned by pyproject.toml.
+numpy==2.3.5
+scipy==1.17.0

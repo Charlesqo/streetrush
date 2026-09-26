@@ -1,0 +1,302 @@
+{
+  "asphalt": {
+    "domain_m": [
+      641,
+      14
+    ],
+    "samples": 600000,
+    "levels": [
+      {
+        "lod": 0,
+        "bins": [
+          {
+            "sum_weights_squared_range": [
+              0.3333,
+              0.45
+            ],
+            "count": 38675,
+            "mean_sum_weights_squared": 0.3976896405220032,
+            "mixed_luma_mean": 0.04003757983446121,
+            "mixed_luma_std": 0.00768474442884326,
+            "unmixed_luma_std": 0.01208256371319294,
+            "std_ratio_mixed_to_unmixed": 0.6360193490982056
+          },
+          {
+            "sum_weights_squared_range": [
+              0.45,
+              0.6
+            ],
+            "count": 139200,
+            "mean_sum_weights_squared": 0.524360716342926,
+            "mixed_luma_mean": 0.04002019762992859,
+            "mixed_luma_std": 0.008908433839678764,
+            "unmixed_luma_std": 0.012487396597862244,
+            "std_ratio_mixed_to_unmixed": 0.7133939862251282
+          },
+          {
+            "sum_weights_squared_range": [
+              0.6,
+              0.75
+            ],
+            "count": 99718,
+            "mean_sum_weights_squared": 0.674042284488678,
+            "mixed_luma_mean": 0.04002039134502411,
+            "mixed_luma_std": 0.009895739145576954,
+            "unmixed_luma_std": 0.01253166887909174,
+            "std_ratio_mixed_to_unmixed": 0.7896585464477539
+          },
+          {
+            "sum_weights_squared_range": [
+              0.75,
+              0.9
+            ],
+            "count": 117324,
+            "mean_sum_weights_squared": 0.8298934102058411,
+            "mixed_luma_mean": 0.039905060082674026,
+            "mixed_luma_std": 0.010981802828609943,
+            "unmixed_luma_std": 0.013020779006183147,
+            "std_ratio_mixed_to_unmixed": 0.8434059619903564
+          },
+          {
+            "sum_weights_squared_range": [
+              0.9,
+              1.00001
+            ],
+            "count": 205083,
+            "mean_sum_weights_squared": 0.9666200876235962,
+            "mixed_luma_mean": 0.03997192531824112,
+            "mixed_luma_std": 0.01199084147810936,
+            "unmixed_luma_std": 0.012085096910595894,
+            "std_ratio_mixed_to_unmixed": 0.9922006726264954
+          }
+        ]
+      },
+      {
+        "lod": 4,
+        "bins": [
+          {
+            "sum_weights_squared_range": [
+              0.3333,
+              0.45
+            ],
+            "count": 38675,
+            "mean_sum_weights_squared": 0.3976896405220032,
+            "mixed_luma_mean": 0.040036801248788834,
+            "mixed_luma_std": 0.0018738285871222615,
+            "unmixed_luma_std": 0.002702710684388876,
+            "std_ratio_mixed_to_unmixed": 0.6933145523071289
+          },
+          {
+            "sum_weights_squared_range": [
+              0.45,
+              0.6
+            ],
+            "count": 139200,
+            "mean_sum_weights_squared": 0.524360716342926,
+            "mixed_luma_mean": 0.040035296231508255,
+            "mixed_luma_std": 0.0022344370372593403,
+            "unmixed_luma_std": 0.00307127321138978,
+            "std_ratio_mixed_to_unmixed": 0.727527916431427
+          },
+          {
+            "sum_weights_squared_range": [
+              0.6,
+              0.75
+            ],
+            "count": 99718,
+            "mean_sum_weights_squared": 0.674042284488678,
+            "mixed_luma_mean": 0.04002580791711807,
+            "mixed_luma_std": 0.002472479594871402,
+            "unmixed_luma_std": 0.0031597730703651905,
+            "std_ratio_mixed_to_unmixed": 0.7824864387512207
+          },
+          {
+            "sum_weights_squared_range": [
+              0.75,
+              0.9
+            ],
+            "count": 117324,
+            "mean_sum_weights_squared": 0.8298934102058411,
+            "mixed_luma_mean": 0.039990875869989395,
+            "mixed_luma_std": 0.002741708420217037,
+            "unmixed_luma_std": 0.0033218131866306067,
+            "std_ratio_mixed_to_unmixed": 0.8253650069236755
+          },
+          {
+            "sum_weights_squared_range": [
+              0.9,
+              1.00001
+            ],
+            "count": 205083,
+            "mean_sum_weights_squared": 0.9666200876235962,
+            "mixed_luma_mean": 0.03997211158275604,
+            "mixed_luma_std": 0.0029200841672718525,
+            "unmixed_luma_std": 0.0028106034733355045,
+            "std_ratio_mixed_to_unmixed": 1.0389527082443237
+          }
+        ]
+      }
+    ],
+    "lattice_vectors_m": [
+      [
+        3.0,
+        0
+      ],
+      [
+        1.5,
+        2.5980762
+      ]
+    ],
+    "caveat": "Statistics conditioned on weights over many cells, not proof that the visible in-game squares are this lattice. Random shifts sample different positions."
+  },
+  "fresh": {
+    "domain_m": [
+      641,
+      14
+    ],
+    "samples": 600000,
+    "levels": [
+      {
+        "lod": 0,
+        "bins": [
+          {
+            "sum_weights_squared_range": [
+              0.3333,
+              0.45
+            ],
+            "count": 38266,
+            "mean_sum_weights_squared": 0.3978503346443176,
+            "mixed_luma_mean": 0.01838255487382412,
+            "mixed_luma_std": 0.01059081219136715,
+            "unmixed_luma_std": 0.018132036551833153,
+            "std_ratio_mixed_to_unmixed": 0.5840939283370972
+          },
+          {
+            "sum_weights_squared_range": [
+              0.45,
+              0.6
+            ],
+            "count": 142597,
+            "mean_sum_weights_squared": 0.5245718359947205,
+            "mixed_luma_mean": 0.01844269596040249,
+            "mixed_luma_std": 0.012438281439244747,
+            "unmixed_luma_std": 0.017342088744044304,
+            "std_ratio_mixed_to_unmixed": 0.7172308564186096
+          },
+          {
+            "sum_weights_squared_range": [
+              0.6,
+              0.75
+            ],
+            "count": 100585,
+            "mean_sum_weights_squared": 0.6741082072257996,
+            "mixed_luma_mean": 0.018472207710146904,
+            "mixed_luma_std": 0.014385148882865906,
+            "unmixed_luma_std": 0.017407799139618874,
+            "std_ratio_mixed_to_unmixed": 0.8263623118400574
+          },
+          {
+            "sum_weights_squared_range": [
+              0.75,
+              0.9
+            ],
+            "count": 116597,
+            "mean_sum_weights_squared": 0.8297854065895081,
+            "mixed_luma_mean": 0.018462255597114563,
+            "mixed_luma_std": 0.016230445355176926,
+            "unmixed_luma_std": 0.017455797642469406,
+            "std_ratio_mixed_to_unmixed": 0.9298025369644165
+          },
+          {
+            "sum_weights_squared_range": [
+              0.9,
+              1.00001
+            ],
+            "count": 201955,
+            "mean_sum_weights_squared": 0.9667882323265076,
+            "mixed_luma_mean": 0.018508927896618843,
+            "mixed_luma_std": 0.017231527715921402,
+            "unmixed_luma_std": 0.01753237657248974,
+            "std_ratio_mixed_to_unmixed": 0.982840359210968
+          }
+        ]
+      },
+      {
+        "lod": 4,
+        "bins": [
+          {
+            "sum_weights_squared_range": [
+              0.3333,
+              0.45
+            ],
+            "count": 38266,
+            "mean_sum_weights_squared": 0.3978503346443176,
+            "mixed_luma_mean": 0.018474340438842773,
+            "mixed_luma_std": 0.0025206224527209997,
+            "unmixed_luma_std": 0.0040472750551998615,
+            "std_ratio_mixed_to_unmixed": 0.6227949261665344
+          },
+          {
+            "sum_weights_squared_range": [
+              0.45,
+              0.6
+            ],
+            "count": 142597,
+            "mean_sum_weights_squared": 0.5245718359947205,
+            "mixed_luma_mean": 0.018454059958457947,
+            "mixed_luma_std": 0.0028738942928612232,
+            "unmixed_luma_std": 0.003971483558416367,
+            "std_ratio_mixed_to_unmixed": 0.7236324548721313
+          },
+          {
+            "sum_weights_squared_range": [
+              0.6,
+              0.75
+            ],
+            "count": 100585,
+            "mean_sum_weights_squared": 0.6741082072257996,
+            "mixed_luma_mean": 0.018462836742401123,
+            "mixed_luma_std": 0.003265479812398553,
+            "unmixed_luma_std": 0.003951940685510635,
+            "std_ratio_mixed_to_unmixed": 0.8262977600097656
+          },
+          {
+            "sum_weights_squared_range": [
+              0.75,
+              0.9
+            ],
+            "count": 116597,
+            "mean_sum_weights_squared": 0.8297854065895081,
+            "mixed_luma_mean": 0.01843245141208172,
+            "mixed_luma_std": 0.0035995175130665302,
+            "unmixed_luma_std": 0.003933796659111977,
+            "std_ratio_mixed_to_unmixed": 0.9150238037109375
+          },
+          {
+            "sum_weights_squared_range": [
+              0.9,
+              1.00001
+            ],
+            "count": 201955,
+            "mean_sum_weights_squared": 0.9667882323265076,
+            "mixed_luma_mean": 0.018451178446412086,
+            "mixed_luma_std": 0.003913847263902426,
+            "unmixed_luma_std": 0.00399529654532671,
+            "std_ratio_mixed_to_unmixed": 0.979613721370697
+          }
+        ]
+      }
+    ],
+    "lattice_vectors_m": [
+      [
+        2.0,
+        0
+      ],
+      [
+        1.0,
+        1.7320508
+      ]
+    ],
+    "caveat": "Statistics conditioned on weights over many cells, not proof that the visible in-game squares are this lattice. Random shifts sample different positions."
+  }
+}

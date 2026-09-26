@@ -1,0 +1,124 @@
+[
+  {
+    "key": "asphalt",
+    "source": "fine_asphalt_vlzobiady_4k.zip",
+    "asset_id": "vlzobiady",
+    "sha256": "163a9618c0f09f943549552aed3009f63f596c8036e35e452184192e139172ef",
+    "maps": {
+      "BaseColor": "asphalt/BaseColor.jpg",
+      "Normal": "asphalt/Normal.jpg",
+      "Roughness": "asphalt/Roughness.jpg",
+      "AO": "asphalt/AO.jpg",
+      "ORM": "asphalt/ORM.png"
+    }
+  },
+  {
+    "key": "fresh",
+    "source": "asphalt_fresh_sfrofg0a_4k.zip",
+    "asset_id": "sfrofg0a",
+    "sha256": "fe663c070a61c2be538b339f351a467c0a64a7453d940aa8b8e604f1b1308523",
+    "maps": {
+      "BaseColor": "fresh/BaseColor.jpg",
+      "Normal": "fresh/Normal.jpg",
+      "Roughness": "fresh/Roughness.jpg",
+      "AO": "fresh/AO.jpg",
+      "ORM": "fresh/ORM.png"
+    }
+  },
+  {
+    "key": "grass",
+    "source": "grass_lawn_sfklehwa_4k.zip",
+    "asset_id": "sfklehwa",
+    "sha256": "6241baedff59c54d22e000cb4e314b735c93fb0344a2d8389b5f420412345f14",
+    "maps": {
+      "BaseColor": "grass/BaseColor.jpg",
+      "Normal": "grass/Normal.jpg",
+      "Roughness": "grass/Roughness.jpg",
+      "AO": "grass/AO.jpg",
+      "ORM": "grass/ORM.png"
+    }
+  },
+  {
+    "key": "gravel",
+    "source": "gravel_ground_tl3hegckw_4k.zip",
+    "asset_id": "tl3hegckw",
+    "sha256": "47587ad41ba2911eaee68db51a71ffbdf1479d2f29c432f09aa72db0d17b98bd",
+    "maps": {
+      "BaseColor": "gravel/BaseColor.jpg",
+      "Normal": "gravel/Normal.jpg",
+      "Roughness": "gravel/Roughness.jpg",
+      "AO": "gravel/AO.jpg",
+      "ORM": "gravel/ORM.png"
+    }
+  },
+  {
+    "key": "dust",
+    "source": "tileable_road_dust_shcl0jn_4k.zip",
+    "asset_id": "shcl0jn",
+    "sha256": "ebb3498df16024a71c4a13871332bf14c6ca51144dd036b11b74d4a659e1b0eb",
+    "maps": {
+      "BaseColor": "dust/BaseColor.jpg",
+      "Normal": "dust/Normal.jpg",
+      "Roughness": "dust/Roughness.jpg",
+      "AO": "dust/AO.jpg",
+      "Opacity": "dust/Opacity.jpg",
+      "ORM": "dust/ORM.png"
+    }
+  },
+  {
+    "key": "patch",
+    "source": "asphalt_patch_smooth_sbqpo0p_4k.zip",
+    "asset_id": "sbqpo0p",
+    "sha256": "84f56c938f452259e3916e5242cabc88baa0ee5c0ffadcd3b3a52d1440dea11b",
+    "maps": {
+      "BaseColor": "patch/BaseColor.jpg",
+      "Normal": "patch/Normal.jpg",
+      "Roughness": "patch/Roughness.jpg",
+      "AO": "patch/AO.jpg",
+      "Opacity": "patch/Opacity.jpg",
+      "ORM": "patch/ORM.png"
+    }
+  },
+  {
+    "key": "guardrail",
+    "source": "modular_metal_guardrail_kit_uh5gcflfa_high.glb",
+    "tier": "high",
+    "sha256": "02efa5b392f794df885f6a10136468aba54b218e54f447572e880a466f733b30",
+    "file": "guardrail/model.gltf"
+  },
+  {
+    "key": "guardrail-mid",
+    "source": "modular_metal_guardrail_kit_uh5gcflfa_mid.glb",
+    "tier": "mid",
+    "sha256": "cb8c667e1ef4fc6cebf561fe193c409a0194295e806464e0cd362de1baf08ae9",
+    "file": "guardrail-mid/model.gltf"
+  },
+  {
+    "key": "guardrail-low",
+    "source": "modular_metal_guardrail_kit_uh5gcflfa_low.glb",
+    "tier": "low",
+    "sha256": "c6ded5583fd2e035176e8e3868c1ecf02d8178cf929399a76fdaa58d657e5668",
+    "file": "guardrail-low/model.gltf"
+  },
+  {
+    "key": "barrier",
+    "source": "concrete_barrier_tmrvaayda_high.glb",
+    "tier": "high",
+    "sha256": "a0a12db29aa53e784ba6b1b4120d009c297831d28f6dec9ef5d44f66672896a0",
+    "file": "barrier/model.gltf"
+  },
+  {
+    "key": "rbojr",
+    "source": "grass_clumps_rbojr_ue_high.zip",
+    "tier": "high",
+    "sha256": "34a676c1b1d187038edd291a9899f9dc3e5fa8d0d471aa2114c231b664214e60",
+    "file": "rbojr/standard/rbojr_tier_1_nonUE.gltf"
+  },
+  {
+    "key": "rbptq",
+    "source": "grass_clumps_rbptq_ue_high.zip",
+    "tier": "high",
+    "sha256": "5c12a1b245faed80ebc345b95e708dce36324ab7d3998b0828361caf185992a7",
+    "file": "rbptq/standard/rbptq_tier_1_nonUE.gltf"
+  }
+]

@@ -1,0 +1,222 @@
+[
+  {
+    "id": "S01",
+    "publisher": "BMW Group Classic",
+    "title": "BMW M3 (E30)",
+    "url": "https://www.bmwgroup-classic.com/en/models/bmw-classics/product-description-page.ad-239-1.bmw-m3-e30.html",
+    "verified_facts": "厂家页面核实 S14B23 2302cc；200hp无催化、195hp有催化及后期215hp不可混用。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S02",
+    "publisher": "BMW M",
+    "title": "The BMW M3 E30",
+    "url": "https://www.bmw-m.com/en/topics/magazine-article-pool/bmw-m3-e30-portraet.html",
+    "verified_facts": "厂家车型历史；Sport Evolution 2.5L属于不同版本。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S03",
+    "publisher": "Mazda",
+    "title": "MX-5 (1989–), A linear driving feel",
+    "url": "https://www.mazda.com/en/about/history/greatcar/roadster/03/",
+    "verified_facts": "厂家确认早期1.6L DOHC直四自然吸气，没有涡轮或机械增压；未解决本项目市场/年款混用。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S04",
+    "publisher": "Porsche Newsroom",
+    "title": "Purpose-built for performance: the new Porsche 911 GT3 RS",
+    "url": "https://newsroom.porsche.com/en_US/2022/products/porsche-911-gt3-rs-world-premiere-29439.html",
+    "verified_facts": "992 GT3 RS 4.0L自然吸气水平对置六缸、独立节气门、7速PDK；美制hp与欧制PS不可直接当成版本差。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S05",
+    "publisher": "Porsche Newsroom",
+    "title": "992 911 GT3 RS Press Kit",
+    "url": "https://newsroom.porsche.com/dam/jcr%3A46a23375-e7ee-4507-a577-d9761b784d33/992%20911%20GT3%20RS%20Press%20Kit%201.pdf",
+    "verified_facts": "厂家文件确认9000rpm上限、进气位置和7速PDK；本轮仅网页提取内容用于资料核对。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S06",
+    "publisher": "Mercedes-AMG",
+    "title": "The Mercedes-AMG GT3",
+    "url": "https://www.mercedes-amg.com/en/mercedes-amg-gt3",
+    "verified_facts": "2019发布的后继型号；标称6.3L实际6208cc自然吸气V8、6速序列式后置变速箱。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S07",
+    "publisher": "Lamborghini",
+    "title": "Lamborghini V12: an engine that made history",
+    "url": "https://www.lamborghini.com/en-en/news/lamborghini-v12-an-engine-that-made-history",
+    "verified_facts": "2011 Aventador新6.5L V12、700CV；SVJ为770CV另一个版本。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S08",
+    "publisher": "Lamborghini",
+    "title": "End of an Era with the Last Lamborghini Aventador",
+    "url": "https://www.lamborghini.com/en-en/news/end-of-an-era-with-the-last-lamborghini-aventador",
+    "verified_facts": "厂家明确2011 LP700-4、60度V12；不可拿Ultimae终代声当初代。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S09",
+    "publisher": "BMW PressClub",
+    "title": "The all-new BMW M5 (26 June 2024)",
+    "url": "https://www.press.bmwgroup.com/united-kingdom/article/detail/T0443389EN_GB/the-all-new-bmw-m5",
+    "verified_facts": "G90 4.4L涡轮V8加电机，8速M Steptronic；排气电控阀、纯电声及boost track需区分。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S10",
+    "publisher": "Pole Position Production",
+    "title": "Lamborghini Aventador 2014",
+    "url": "https://pole.se/product/lamborghini-aventador-2014/",
+    "verified_facts": "同步多机位、steady/ramp/shift录音候选；与S11文件数容量存在冲突。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S11",
+    "publisher": "Sonniss / Pole Position",
+    "title": "Lamborghini Aventador 2014",
+    "url": "https://sonniss.com/sound-effects/lamborghini-aventador-2014/",
+    "verified_facts": "商城列366文件/27.48GB；厂商主页面列286文件/31.4GB；采购前确认实际版本。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S12",
+    "publisher": "Sonniss / Soundholder",
+    "title": "Mazda Miata MX5 NBFL 1.6 Stock",
+    "url": "https://sonniss.com/sound-effects/mazda-miata-mx5-nbfl-1-6-stock/",
+    "verified_facts": "149文件、多机位；NBFL与NA代际不符。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S13",
+    "publisher": "Sounding Sweet",
+    "title": "Porsche 992 GT3 Standard File List",
+    "url": "https://www.sweetsfx.com/wp-content/uploads/2026/02/SSFX-P992GT3_Standard_FileList.pdf",
+    "verified_facts": "文件表明确Stock、Manual、4.0L、进气/接触式机械/排气/车内；不是RS PDK。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S14",
+    "publisher": "Porsche Newsroom",
+    "title": "On-board video of the dream lap",
+    "url": "https://newsroom.porsche.com/en_US/2022/products/porsche-911-gt3-rs-dream-lap-nuerburgring-nordschleife-30037.html",
+    "verified_facts": "官方992 GT3 RS整圈视频7:06，Weissach/Cup2R；只作参照，不获得游戏复用授权。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S15",
+    "publisher": "BOOM Library",
+    "title": "Making the DR!FT sound",
+    "url": "https://www.boomlibrary.com/blog/making-the-drift-sound/",
+    "verified_facts": "已完成作品的录音方法参照：多机位、负载录音和分离附加声；其中E30是DTM非本项目道路版。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S16",
+    "publisher": "Pole Position Production",
+    "title": "How to Record and Use a Dyno Sound Library",
+    "url": "https://pole.se/new-dyno-sound-library/",
+    "verified_facts": "负载/卸载可控制；轮毂台架避免行驶风胎声但仍有台架啸叫、散热风扇、室内混响。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S17",
+    "publisher": "Sonniss / Sounddogs",
+    "title": "Mazda Miata MX5 Hot",
+    "url": "https://sonniss.com/sound-effects/mazda-miata-mx5-hot/",
+    "verified_facts": "进一步查商品文件表确认2002 Turbocharged；明确排除早期NA原厂候选，不只是信息不足。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S18",
+    "publisher": "Sonniss / Krampfstadt Studio",
+    "title": "BMW M5 F10 2011 sports sedan",
+    "url": "https://sonniss.com/sound-effects/bmw-m5-f10-2011-sports-sedan/",
+    "verified_facts": "明确F10；即使同为4.4L双涡轮V8也不能代表G90的S68及混动。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S19",
+    "publisher": "Pole Position / A Sound Effect",
+    "title": "BMW E30 1988 Street Race Modded file list",
+    "url": "https://www.asoundeffect.com/wp-content/uploads/2020/03/BMW_E30_88_Street_Race_Modded.pdf",
+    "verified_facts": "明确318i换M50b25直六涡轮、定制排气；从M3目标素材中剔除。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S20",
+    "publisher": "Pole Position Production",
+    "title": "Lamborghini Aventador SVJ 2019",
+    "url": "https://pole.se/product/lamborghini-aventador-svj-sound-effects/",
+    "verified_facts": "2019 SVJ、改装排气；仅版本反例。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S21",
+    "publisher": "Sonniss / Sounddogs",
+    "title": "Mazda Miata MX5 Hot file list",
+    "url": "https://cdn.sonniss.com/storage/2025/02/Mazda-Miata-MX5-Hot-Sound-Effects-Library.pdf",
+    "verified_facts": "文件描述明确2002涡轮改装；不是目标NA1.6自然吸气。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  },
+  {
+    "id": "S22",
+    "publisher": "BMW PressClub USA",
+    "title": "The All-New 2025 BMW M5",
+    "url": "https://www.press.bmwgroup.com/usa/article/detail/T0443395EN_US/the-all-new-2025-bmw-m5?language=en_US",
+    "verified_facts": "厂家明确S68B44T0与8速M Steptronic内电机。用作发动机家族核实；美规功率/排气配置不覆盖欧规。",
+    "checked_at": "2026-09-07",
+    "verification": "PAGE_OR_PUBLISHED_FILELIST_READ",
+    "rights": "REFERENCE_DOCUMENT_ONLY"
+  }
+]

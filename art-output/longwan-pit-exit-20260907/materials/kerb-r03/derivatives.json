@@ -1,0 +1,36 @@
+{
+  "atlas_metres": [
+    4,
+    2
+  ],
+  "pixels": [
+    2048,
+    1024
+  ],
+  "sources": [
+    "sources/pbr/kerb-refinement/painted_concrete_02",
+    "sources/pbr/kerb-refinement/concrete_floor_painted"
+  ],
+  "authors": [
+    "Rob Tuytel / Poly Haven"
+  ],
+  "license": "CC0",
+  "treatment": "Registered scan channels; recoloured intact coating, scan-driven exposed cement, localized authored tire contact, modest crest abrasion. No baked lighting.",
+  "files": [
+    {
+      "file": "materials/kerb-r03/kerb_coating_base.jpg",
+      "sha256": "6bd9252f02c21d4efa85e0c3f9dded298058365d93d2ee12ee719ece63e1d132",
+      "bytes": 1209697
+    },
+    {
+      "file": "materials/kerb-r03/kerb_coating_normal.png",
+      "sha256": "4d38d37e19b9b6805604579f7b6b143c48f1482ff77301b695d1b98f8a8c5277",
+      "bytes": 2992013
+    },
+    {
+      "file": "materials/kerb-r03/kerb_coating_arm.png",
+      "sha256": "ce1040aa4f2192cbe9e1490f02c23fd928f07064992e289bff0e6c9a75aeb81b",
+      "bytes": 3056369
+    }
+  ]
+}

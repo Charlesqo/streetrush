@@ -1,0 +1,191 @@
+{
+  "scope": "Native Blender generator behavior; no game or physics tests",
+  "default_straight": {
+    "vertices": 8314,
+    "triangles": 16624,
+    "bounds_min": [
+      0.0,
+      0.0,
+      -0.07999999821186066
+    ],
+    "bounds_max": [
+      12.0,
+      1.0,
+      0.09773778170347214
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "nonmanifold_edges": 0,
+    "position_hash": "bb742bc37a9daa7c55dece27c799e53656f0219077789ae89efb1278605b435a",
+    "uv_hash": "a7774a1eb94ff0c2ee43d5549a838fc73e156a1a268eb309c5b6c8f6909eeec1"
+  },
+  "width_065": {
+    "vertices": 8314,
+    "triangles": 16624,
+    "bounds_min": [
+      0.0,
+      0.0,
+      -0.07999999821186066
+    ],
+    "bounds_max": [
+      12.0,
+      0.6499999761581421,
+      0.0732368677854538
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "nonmanifold_edges": 0,
+    "position_hash": "d39904babc8fb61f9548832db7fabc71412919b00da9c970803a40a2d7d3f6e3",
+    "uv_hash": "a41f4fa9d4b696e34d8669d793c3d097f3395ce3dabc68ab1260bc2760e28622"
+  },
+  "ribs_disabled": {
+    "vertices": 8314,
+    "triangles": 16624,
+    "bounds_min": [
+      0.0,
+      0.0,
+      -0.07999999821186066
+    ],
+    "bounds_max": [
+      12.0,
+      1.0,
+      0.07278729975223541
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "nonmanifold_edges": 0,
+    "position_hash": "df475e93d3f884e6a0d67a489209d8cc69420f3b86f3009ce73992ee620f788f",
+    "uv_hash": "4296f5b7163ea27fa86e54dde5210fd932965e2822516d8539560e4ffe86349a"
+  },
+  "slope_and_ribs_disabled": {
+    "vertices": 8314,
+    "triangles": 16624,
+    "bounds_min": [
+      0.0,
+      0.0,
+      -0.07999999821186066
+    ],
+    "bounds_max": [
+      12.0,
+      1.0,
+      0.003000000026077032
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "nonmanifold_edges": 0,
+    "position_hash": "f561102542b089b9b6922f098cde66e20f085138b855acf5f4f82ddf8dfece1f",
+    "uv_hash": "cef8789dca4ea16ef1714f8636ab2cb2fe8c6ab31621fd693217d7f80233fdcb"
+  },
+  "length_6m": {
+    "vertices": 4234,
+    "triangles": 8464,
+    "bounds_min": [
+      0.0,
+      0.0,
+      -0.07999999821186066
+    ],
+    "bounds_max": [
+      6.0,
+      1.0,
+      0.09773778915405273
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "nonmanifold_edges": 0,
+    "position_hash": "88c9f1dcff19a80b9f8f067f6942e5004187ce26b576ba5414ce5e96ab195372",
+    "uv_hash": "70afb76b5f212762607f9576dab88717b084fc6a6359d50153df1774d8678936"
+  },
+  "raised_path_050": {
+    "vertices": 8314,
+    "triangles": 16624,
+    "bounds_min": [
+      0.0,
+      0.0,
+      0.42000001668930054
+    ],
+    "bounds_max": [
+      12.0,
+      1.0,
+      0.5977377891540527
+    ],
+    "uv_layers": [
+      "UVMap"
+    ],
+    "nonmanifold_edges": 0,
+    "position_hash": "220b63f4d6e76ae5c75026ba4f9b8d11fc8fd0af0269bed1f3f5e9c990812d73",
+    "uv_hash": "a0d251ec5e6b83c9c8a05aff87fb35508c74da0b375de63b9cf11e72ca4eaa36"
+  },
+  "wear_changes_uv": true,
+  "curve_edit_changes_geometry": true,
+  "examples": [
+    {
+      "vertices": 8314,
+      "triangles": 16624,
+      "bounds_min": [
+        0.0,
+        0.0,
+        -0.07999999821186066
+      ],
+      "bounds_max": [
+        12.0,
+        1.0,
+        0.09773778170347214
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "nonmanifold_edges": 0,
+      "position_hash": "bb742bc37a9daa7c55dece27c799e53656f0219077789ae89efb1278605b435a",
+      "uv_hash": "feb9f0390a077a745079218d0084b67530ed1aec204bdcb5e30e7294087ced0d"
+    },
+    {
+      "vertices": 10116,
+      "triangles": 20228,
+      "bounds_min": [
+        4.36294470773646e-07,
+        4.761113166809082,
+        -0.07999999821186066
+      ],
+      "bounds_max": [
+        10.499387741088867,
+        12.315595626831055,
+        0.09771639108657837
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "nonmanifold_edges": 0,
+      "position_hash": "6e0152a23bafdafe21bf8d60e4b2f150058a96e48f6dea55b82a79017fb16aee",
+      "uv_hash": "ef6df4ebb7b7036cb50e8de9daf78f63aca5395184cf80a648a90f6fa1821c83"
+    },
+    {
+      "vertices": 11136,
+      "triangles": 22268,
+      "bounds_min": [
+        0.0,
+        14.79912281036377,
+        -0.07999999821186066
+      ],
+      "bounds_max": [
+        14.999752044677734,
+        17.816036224365234,
+        0.05880194157361984
+      ],
+      "uv_layers": [
+        "UVMap"
+      ],
+      "nonmanifold_edges": 0,
+      "position_hash": "ef7397a2f1a0ca4ea89e36dd71d3dbdd6e70517a3530596a282af640a946fb48",
+      "uv_hash": "9af44e3c05afafde4532a446fa21d68f53afb27ddcbb6cf936de127dad6bd17f"
+    }
+  ],
+  "parameters_restored": true,
+  "nominal_area_default_m2": 12,
+  "nominal_area_short_m2": 6,
+  "visual_review": "Actual overview, PBR close and matching clay viewed; transverse slope and outer-edge teeth visible. Surface and environment quality remains in progress."
+}

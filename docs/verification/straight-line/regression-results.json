@@ -1,0 +1,76 @@
+{
+  "schema": "streetrush.straight-line-regression-evidence.v1",
+  "scope": "Current LP700 140 km/h straight-line braking follow-up; not complete v2.4 or game acceptance",
+  "userHandlingAcceptance": "PENDING",
+  "finalProductionRecording": "79968482-9559-4204-98a9-2fb53170895b.json",
+  "finalProductionChecks": { "passed": 10, "total": 10, "samples": 2252, "csvColumns": 370 },
+  "lightweightRegression": {
+    "command": "node scripts/test-vehicle-v24-suspension-symmetry.mjs",
+    "exitCode": 0,
+    "status": "PASS",
+    "assertions": 34,
+    "suspensionAssertions": 18,
+    "steeringAssertions": 16,
+    "suspensionRows": [
+      { "jounce": -0.05, "load": [1423.9999999999995, 1423.9999999999995, 1423.9999999999995, 1423.9999999999995], "toe": [-0.00375, 0.00375, -0.00375, 0.00375], "camber": [0.0085, -0.0085, 0.0085, -0.0085] },
+      { "jounce": 0, "load": [3923.9999999999995, 3923.9999999999995, 3923.9999999999995, 3923.9999999999995], "toe": [0, 0, 0, 0], "camber": [0, 0, 0, 0] },
+      { "jounce": 0.05, "load": [6423.999999999999, 6423.999999999999, 6423.999999999999, 6423.999999999999], "toe": [0.003749999999999999, -0.003749999999999999, 0.003749999999999999, -0.003749999999999999], "camber": [-0.008499999999999999, 0.008499999999999999, -0.008499999999999999, 0.008499999999999999] }
+    ],
+    "steeringRows": [
+      { "speedMps": 2, "command": -1, "angle": -0.4524190243921428, "speedAuthority": 0.9867692307692307 },
+      { "speedMps": 2, "command": 1, "angle": 0.4524190243921428, "speedAuthority": 0.9867692307692307 },
+      { "speedMps": 16, "command": -1, "angle": -0.24093700568429796, "speedAuthority": 0.5700000000000001 },
+      { "speedMps": 16, "command": 1, "angle": 0.24093700568429796, "speedAuthority": 0.5700000000000001 },
+      { "speedMps": 40, "command": -1, "angle": -0.10563673067819508, "speedAuthority": 0.25862068965517243 },
+      { "speedMps": 40, "command": 1, "angle": 0.10563673067819508, "speedAuthority": 0.25862068965517243 }
+    ],
+    "finalStdoutLine": "PASS: 34 assertions (18 suspension symmetry + 16 steering seam/authority)"
+  },
+  "olderCombinedPlayabilityAttempt": {
+    "command": "node scripts/test-vehicle-v24-playability.mjs",
+    "status": "TIMEOUT_NOT_VERIFIED",
+    "firstReportedResult": "Reported exit 0 with empty stdout; not accepted as a test PASS or assertion count",
+    "boundedCapture": {
+      "method": "spawnSync(process.execPath, ['scripts/test-vehicle-v24-playability.mjs'], {encoding: 'utf8', timeout: 45000})",
+      "status": null,
+      "signal": "SIGTERM",
+      "error": { "name": "Error", "message": "spawnSync /opt/homebrew/Cellar/node/26.5.0/bin/node ETIMEDOUT", "code": "ETIMEDOUT" },
+      "stdoutLength": 0,
+      "stdout": "",
+      "stderrLength": 0,
+      "stderr": ""
+    },
+    "assertionsCredited": 0,
+    "repeatedAfterTimeout": false
+  },
+  "recordAnalysisCommands": [
+    { "command": "node scripts/analyze-straight-line-recording.mjs docs/verification/straight-line/c9e4882c-5e73-49ce-bed0-86fc6dc6993a.json", "exitCode": 1, "status": "EXPECTED_PRE_FIX_FAIL" },
+    { "command": "node scripts/analyze-straight-line-recording.mjs docs/verification/straight-line/a9a0d75d-7a8d-43f2-921a-e5cdfb029f5c.json", "exitCode": 0, "status": "PASS_STRAIGHT_BRAKING_AUTOMATED" },
+    { "command": "node scripts/analyze-straight-line-recording.mjs docs/verification/straight-line/79968482-9559-4204-98a9-2fb53170895b.json", "exitCode": 0, "status": "PASS_STRAIGHT_BRAKING_AUTOMATED" }
+  ],
+  "syntaxChecks": {
+    "commandPattern": "node --check <file>",
+    "passedFiles": [
+      "src/straight-line-diagnostic.js",
+      "scripts/straight-line-recorder-plugin.mjs",
+      "src/main.js",
+      "src/vehicle-v24/runtime.js",
+      "src/vehicle-v24/suspension.js",
+      "vite.config.js",
+      "scripts/analyze-straight-line-recording.mjs",
+      "scripts/test-vehicle-v24-suspension-symmetry.mjs"
+    ]
+  },
+  "workingTree": {
+    "earlierFullSnapshot": "../v24-playability-working-tree.txt",
+    "scopedStatusCommand": "git status --short -- src/main.js vite.config.js src/vehicle-v24/runtime.js src/vehicle-v24/suspension.js src/straight-line-diagnostic.js scripts/straight-line-recorder-plugin.mjs scripts/analyze-straight-line-recording.mjs scripts/test-vehicle-v24-suspension-symmetry.mjs docs/verification/straight-line/",
+    "scopedStatus": " M src/main.js\n M vite.config.js\n?? docs/verification/straight-line/\n?? scripts/analyze-straight-line-recording.mjs\n?? scripts/straight-line-recorder-plugin.mjs\n?? scripts/test-vehicle-v24-suspension-symmetry.mjs\n?? src/straight-line-diagnostic.js\n?? src/vehicle-v24/runtime.js\n?? src/vehicle-v24/suspension.js\n",
+    "snapshotTiming": "After diagnostic/physics edits, before adding the link at the top of docs/V24_PLAYABILITY_STABILIZATION.md; not a fabricated clean pre-task snapshot",
+    "ordinaryDiffCheckExitCode": 2,
+    "ordinaryDiffCheckNote": "Existing CRLF lines in tracked main.js/vite.config.js reported as trailing whitespace; no broad formatting performed",
+    "crlfAwareDiffCheckExitCode": 0,
+    "unrelatedChangesPreserved": true
+  },
+  "formalBuild": "NOT_RUN",
+  "dependencyInstallation": "NONE"
+}

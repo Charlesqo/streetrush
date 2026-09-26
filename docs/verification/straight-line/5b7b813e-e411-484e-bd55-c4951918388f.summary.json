@@ -1,0 +1,162 @@
+{
+  "recording": "/Volumes/Storage/streetrush/docs/verification/straight-line/5b7b813e-e411-484e-bd55-c4951918388f.json",
+  "sha256": "e884be9827c6b2620b30ff458955d8442ab0385d6a0ba4a85b24fa1079e24cbd",
+  "runId": "5b7b813e-e411-484e-bd55-c4951918388f",
+  "automatedStatus": "FAIL_STRAIGHT_BRAKING_AUTOMATED",
+  "scope": "This 35 s continuous-throttle production straight-line maneuver only; user handling acceptance remains pending.",
+  "sampleCount": 5650,
+  "endReason": "TIME_OR_STRAIGHT_LANE_LIMIT",
+  "limits": {
+    "minimumTargetSpeedKmh": 250,
+    "maximumAbsHeadingDeg": 3,
+    "maximumAbsLateralM": 0.5,
+    "maximumAbsYawRate": 0.1,
+    "stoppedSpeedKmh": 0.5
+  },
+  "checks": {
+    "highSpeedReached": true,
+    "fullAccelerationDuration": true,
+    "fullThrottleHeld": true,
+    "allFixedStepsRetained": true,
+    "zeroSteeringAndHandbrake": true,
+    "allReportsCommitted": true,
+    "noAutomaticRecovery": true,
+    "stoppedNormally": false,
+    "headingStayedStraight": false,
+    "stayedInStraightCorridor": false,
+    "noRapidYaw": false,
+    "noUncommandedEsc": true
+  },
+  "phases": [
+    {
+      "phase": "countdown",
+      "samples": 360,
+      "startTime": 0,
+      "endTime": 2.9916666666666587,
+      "startSpeedKmh": 0,
+      "endSpeedKmh": 0.13500855399172434,
+      "startHeadingDeg": 0,
+      "endHeadingDeg": 0.07033192351250858,
+      "maximumAbsHeadingDeg": 0.0703930509567328,
+      "maximumAbsYawRate": 0.0021226219832897186,
+      "startLateralM": 0,
+      "endLateralM": 0.013433258049190044,
+      "maximumAbsLateralM": 0.01346129085868597
+    },
+    {
+      "phase": "settle",
+      "samples": 122,
+      "startTime": 2.999999999999992,
+      "endTime": 4.008333333333322,
+      "startSpeedKmh": 0.17035984036549076,
+      "endSpeedKmh": 0.13503141362610038,
+      "startHeadingDeg": 0.07049236890225598,
+      "endHeadingDeg": 0.0741067953765693,
+      "maximumAbsHeadingDeg": 0.07419932518949242,
+      "maximumAbsYawRate": 0.0010188978631049395,
+      "startLateralM": 0.013543127104640007,
+      "endLateralM": 0.01842508837580681,
+      "maximumAbsLateralM": 0.018453124910593033
+    },
+    {
+      "phase": "accelerate",
+      "samples": 4201,
+      "startTime": 4.016666666666656,
+      "endTime": 39.016666666665095,
+      "startSpeedKmh": 0.17171871281781315,
+      "endSpeedKmh": 323.4729775656637,
+      "startHeadingDeg": 0.07423710442618459,
+      "endHeadingDeg": 0.09045204441489689,
+      "maximumAbsHeadingDeg": 0.1167372286412617,
+      "maximumAbsYawRate": 0.023832639679312706,
+      "startLateralM": 0.018533771857619286,
+      "endLateralM": -3.454833745956421,
+      "maximumAbsLateralM": 3.454833745956421
+    },
+    {
+      "phase": "coast",
+      "samples": 121,
+      "startTime": 39.02499999999843,
+      "endTime": 40.02499999999837,
+      "startSpeedKmh": 323.49352201362035,
+      "endSpeedKmh": 318.34587052995204,
+      "startHeadingDeg": 0.09045081280356053,
+      "endHeadingDeg": 0.09038765487607928,
+      "maximumAbsHeadingDeg": 0.09045081280356053,
+      "maximumAbsYawRate": 0.000003079116140725091,
+      "startLateralM": -3.456017017364502,
+      "endLateralM": -3.596892833709717,
+      "maximumAbsLateralM": 3.596892833709717
+    },
+    {
+      "phase": "brake",
+      "samples": 846,
+      "startTime": 40.033333333331704,
+      "endTime": 47.07499999999797,
+      "startSpeedKmh": 318.29676157943203,
+      "endSpeedKmh": 136.84652103671658,
+      "startHeadingDeg": 0.09038805593927092,
+      "endHeadingDeg": 30.164560623661306,
+      "maximumAbsHeadingDeg": 30.164560623661306,
+      "maximumAbsYawRate": 0.2555425465106964,
+      "startLateralM": -3.598055362701416,
+      "endLateralM": -37.10574722290039,
+      "maximumAbsLateralM": 37.10574722290039
+    }
+  ],
+  "maximumSpeedKmh": 323.51933988334315,
+  "protocol": {
+    "name": "continuous-throttle-high-speed-v1",
+    "accelerationSeconds": 35,
+    "straightLaneLimitM": 5500,
+    "speedFloorPolicy": "Diagnostic coverage only: min(250 km/h, 90% of garage display). Not a physical limiter or a target-data certification."
+  },
+  "actualAccelerationSeconds": 35.00833333333333,
+  "fullThrottleSeconds": 35.00833333333333,
+  "carId": "m5g90",
+  "events": [
+    {
+      "time": 4.016666666666656,
+      "phase": "accelerate",
+      "type": "phase"
+    },
+    {
+      "time": 4.016666666666656,
+      "phase": "accelerate",
+      "type": "keydown",
+      "code": "KeyW",
+      "isTrusted": false
+    },
+    {
+      "time": 39.02499999999843,
+      "phase": "coast",
+      "type": "phase"
+    },
+    {
+      "time": 39.02499999999843,
+      "phase": "coast",
+      "type": "keyup",
+      "code": "KeyW",
+      "isTrusted": false
+    },
+    {
+      "time": 40.033333333331704,
+      "phase": "brake",
+      "type": "phase"
+    },
+    {
+      "time": 40.033333333331704,
+      "phase": "brake",
+      "type": "keydown",
+      "code": "KeyS",
+      "isTrusted": false
+    },
+    {
+      "time": 47.0833333333313,
+      "phase": "brake",
+      "type": "keyup",
+      "code": "KeyS",
+      "isTrusted": false
+    }
+  ]
+}

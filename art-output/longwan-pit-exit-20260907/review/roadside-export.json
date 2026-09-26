@@ -1,0 +1,103 @@
+{
+  "source_blend": "scene/longwan_roadside_editable.blend",
+  "file": "models/longwan_roadside_native.glb",
+  "groups": [
+    {
+      "name": "E01_Road_Surfaces_24m",
+      "source_parts": 5,
+      "triangles": 2032,
+      "materials": 3,
+      "dimensions_m": [
+        24.0,
+        16.299999237060547,
+        0.21000000834465027
+      ]
+    },
+    {
+      "name": "E02_Painted_Kerbs_24m",
+      "source_parts": 1,
+      "triangles": 32944,
+      "materials": 3,
+      "dimensions_m": [
+        24.0,
+        1.0,
+        0.1777377724647522
+      ]
+    },
+    {
+      "name": "E03_Road_Markings_24m",
+      "source_parts": 4,
+      "triangles": 8,
+      "materials": 2,
+      "dimensions_m": [
+        24.0,
+        4.28000020980835,
+        0.036885712295770645
+      ]
+    },
+    {
+      "name": "E04_Drainage_24m",
+      "source_parts": 76,
+      "triangles": 73872,
+      "materials": 4,
+      "dimensions_m": [
+        24.0,
+        0.3300001621246338,
+        0.2304999977350235
+      ]
+    },
+    {
+      "name": "E05_Gravel_24m",
+      "source_parts": 3,
+      "triangles": 157202,
+      "materials": 2,
+      "dimensions_m": [
+        24.0,
+        3.223048210144043,
+        0.044678762555122375
+      ]
+    },
+    {
+      "name": "E06_Grass_Verge_24m",
+      "source_parts": 2,
+      "triangles": 47298,
+      "materials": 5,
+      "dimensions_m": [
+        24.01065444946289,
+        6.903797149658203,
+        0.08799503743648529
+      ]
+    },
+    {
+      "name": "E07_Guardrail_24m",
+      "source_parts": 200,
+      "triangles": 13216,
+      "materials": 2,
+      "dimensions_m": [
+        24.0,
+        0.3530902862548828,
+        1.8650000095367432
+      ]
+    },
+    {
+      "name": "E08_Racing_Debris_Fence_24m",
+      "source_parts": 364,
+      "triangles": 43192,
+      "materials": 3,
+      "dimensions_m": [
+        24.479999542236328,
+        1.9910001754760742,
+        4.86234188079834
+      ]
+    }
+  ],
+  "triangles": 369764,
+  "bytes": 90561536,
+  "cutout_materials": [],
+  "visual_status": "Runtime derivative actually inspected; see roadside-runtime-pack.json",
+  "not_run": [
+    "Game integration",
+    "Collision",
+    "Target game performance"
+  ]
+}

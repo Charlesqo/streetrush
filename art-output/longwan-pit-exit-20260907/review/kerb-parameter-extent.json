@@ -1,0 +1,24 @@
+[
+  {
+    "file": "longwan_kerb_procedural.blend",
+    "default_geometry_unchanged_within_m": 1e-05,
+    "largest_exposed_controls": {
+      "width_m": 2.5,
+      "cross_slope_deg": 15,
+      "rib_rise_m": 0.12
+    },
+    "highest_downward_face_centre_m": -0.07999999821186066,
+    "default_controls_restored": true
+  },
+  {
+    "file": "longwan_roadside_editable.blend",
+    "default_geometry_unchanged_within_m": 1e-05,
+    "largest_exposed_controls": {
+      "width_m": 2.5,
+      "cross_slope_deg": 15,
+      "rib_rise_m": 0.12
+    },
+    "highest_downward_face_centre_m": -0.07999999821186066,
+    "default_controls_restored": true
+  }
+]

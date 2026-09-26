@@ -1,0 +1,306 @@
+{
+  "generated_at": "2026-09-07",
+  "scope": "用户记忆中的赛车游戏素材目录；服务龙湾赛道主直道与维修区出口素材核对",
+  "confirmed_directory": {
+    "path": "/Volumes/Charles/下载/赛车游戏素材",
+    "confirmed_by": [
+      "目录名与用户记忆完全一致",
+      "README.md 将其定义为赛车或驾驶游戏素材库",
+      "runtime/city/downtown-city/ 与 runtime/cars/ 均存在可直接读取的模型"
+    ],
+    "originals_modified": false
+  },
+  "bounded_search": {
+    "roots_checked": [
+      "/Volumes/Charles/下载",
+      "/Users/charles/Downloads",
+      "/Volumes/Storage"
+    ],
+    "exact_match": "/Volumes/Charles/下载/赛车游戏素材",
+    "near_match_excluded": {
+      "path": "/Volumes/Charles/下载/赛车游戏 材质",
+      "reason": "用户明确指定这不是目标目录",
+      "observed_scale": "8.1G, 34 个文件",
+      "observed_contents": "road_asphalt、asphalt_crack、cracked_asphalt、lawn_grass 的 ZIP 材质包"
+    },
+    "other_roots": [
+      {
+        "path": "/Users/charles/Downloads",
+        "result": "未发现同名 赛车游戏素材 目录"
+      },
+      {
+        "path": "/Volumes/Storage",
+        "result": "未发现同名目录；仅见 streetrush 项目等顶层目录"
+      }
+    ]
+  },
+  "scale": {
+    "directory_du": "936M",
+    "file_count_excluding_ds_store": 386,
+    "bytes_excluding_ds_store": 979880087,
+    "extension_counts_excluding_ds_store": {
+      "glb": 8,
+      "gltf": 153,
+      "usdz": 6,
+      "bin": 153,
+      "png": 43,
+      "jpg": 3,
+      "zip": 12,
+      "rar": 1,
+      "md": 1,
+      "txt": 6
+    },
+    "layout": [
+      {
+        "path": "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city",
+        "files_excluding_ds_store": 339,
+        "bytes": 93668573,
+        "contents": "153 个 glTF、153 个同名 .bin、29 个 PNG、3 个预览 JPG、1 个 CC0 说明"
+      },
+      {
+        "path": "/Volumes/Charles/下载/赛车游戏素材/runtime/cars",
+        "files": 6,
+        "bytes": 117460272,
+        "contents": "6 个运行时 GLB"
+      },
+      {
+        "path": "/Volumes/Charles/下载/赛车游戏素材/archives",
+        "files": 27,
+        "bytes": 609278439,
+        "contents": "12 个 ZIP、1 个嵌套 Lamborghini RAR，以及归档包内提取的 Lamborghini 源文件"
+      },
+      {
+        "path": "/Volumes/Charles/下载/赛车游戏素材/extras",
+        "files": 8,
+        "bytes": 159466937,
+        "contents": "6 个 USDZ、2 个较大的重复 GLB"
+      },
+      {
+        "path": "/Volumes/Charles/下载/赛车游戏素材/licenses",
+        "files": 5,
+        "bytes": 3660,
+        "contents": "5 个车辆授权文本；城市授权在 runtime/city/downtown-city/License_Standard.txt"
+      }
+    ]
+  },
+  "integrity_checks": {
+    "runtime_city_gltf": 153,
+    "runtime_city_matching_bin": 153,
+    "missing_bin_references": 0,
+    "missing_image_references": 0,
+    "method": "逐个读取 glTF JSON 的 buffers/images URI，并在同一 glTF (Godot) 目录检查目标文件；未解压归档、未改动原始资源"
+  },
+  "candidate_assets": [
+    {
+      "id": "road_surface_and_straight",
+      "priority": "medium",
+      "directory": "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city/Exports/glTF (Godot)",
+      "files": [
+        "Street_Asphalt_6x6.gltf",
+        "Street_Asphalt_9x9.gltf",
+        "Street_Asphalt_Curve_2Lane.gltf",
+        "Street_Asphalt_Curve_4Lane_Short.gltf"
+      ],
+      "sidecar_rule": "每个 glTF 都有同名 .bin；需一并引用",
+      "fit_for_longwan": "可做主直道/维修通道的模块化底板或比例参照；文件名含 6x6、9x9 与 2Lane/4Lane 曲线段",
+      "quality_evidence": "Street_Asphalt_6x6 是单节点、单网格、4 顶点/6 索引的平面；Street_Asphalt_Curve_2Lane 是 37 顶点/144 索引的曲面，均使用一套 Asphalt PBR 材质",
+      "limitations": [
+        "城市街道风格，缺少永久赛道的专用路缘、磨损、橡胶线和赛车涂装",
+        "更适合作为几何底板或参考，不能凭存在性宣称已达到目标赛道质量"
+      ]
+    },
+    {
+      "id": "road_edges_and_sidewalks",
+      "priority": "medium",
+      "directory": "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city/Exports/glTF (Godot)",
+      "files": [
+        "Street_2Lane.gltf",
+        "Street_2Lane_noSidewalk.gltf",
+        "Street_4Lane.gltf",
+        "Street_4Lane_noSidewalk.gltf",
+        "Street_4WayIntersection.gltf",
+        "Street_Curve_2Lane.gltf",
+        "Street_Curve_2Lane_Curb.gltf",
+        "Street_Curve_4LaneShort.gltf",
+        "Street_Curve_4Lane_Short_Curb.gltf",
+        "Street_TIntersection.gltf",
+        "Sidewalk_Corner_Flat_3m.gltf",
+        "Sidewalk_Corner_Flat_3m_Stripe.gltf",
+        "Sidewalk_Corner_Round_3m.gltf",
+        "Sidewalk_Corner_Round_3m_Stripe.gltf",
+        "Sidewalk_NoCurb_3m.gltf",
+        "Sidewalk_Planter.gltf",
+        "Sidewalk_Straight_3m.gltf",
+        "Sidewalk_Straight_3m_Stripe.gltf"
+      ],
+      "fit_for_longwan": "可提供无路缘/有路缘、直段/曲段、3m 人行边缘的拼接参考；其中 noSidewalk 版本可作为干净路边底板",
+      "limitations": [
+        "不是 Armco、混凝土防撞墙或维修区 pit wall",
+        "人行道条纹和城市街道交叉口标识需要从龙湾赛道语境中筛选"
+      ]
+    },
+    {
+      "id": "concrete_and_metal_concrete_materials",
+      "priority": "medium",
+      "directory": "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city/Exports/glTF (Godot)",
+      "files": [
+        "T_Concrete_Asphalt_BaseColor.png",
+        "T_Concrete_BaseColor.png",
+        "T_Concrete_Normal.png",
+        "T_Concrete_ORM.png",
+        "T_MetalConcrete_BaseColor.png",
+        "T_MetalConcrete_Normal.png",
+        "T_MetalConcrete_ORM.png",
+        "Entrance_Concrete_2x1.gltf",
+        "Entrance_Concrete_2x2.gltf",
+        "Stairs_Entrance_Concrete.gltf"
+      ],
+      "fit_for_longwan": "可用于混凝土边缘、预制件、入口与楼梯的快速材质试配；Concrete 与 MetalConcrete 各含 BaseColor/Normal/ORM，相关 PNG 为 2048x2048",
+      "quality_evidence": "glTF 材质显式引用 Normal、BaseColor 与 metallicRoughness/ORM 贴图；Sidewalk_Straight_3m 样本为 82 顶点/180 索引",
+      "limitations": [
+        "仍是城市包的统一风格，混凝土磨损和接缝不一定匹配现代永久赛道近景",
+        "需按项目材质命名、UV 尺度与光照重新验证"
+      ]
+    },
+    {
+      "id": "drainage_and_small_facilities",
+      "priority": "medium",
+      "directory": "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city/Exports/glTF (Godot)",
+      "files": [
+        "Prop_Drain.gltf",
+        "Prop_ManholeCover.gltf",
+        "Prop_ACUnit.gltf",
+        "Prop_Bollard.gltf",
+        "Prop_Planter_Single.gltf",
+        "Stairs_Rails_Metal.gltf",
+        "Stairs_Rails_Metal_Straight_1.gltf",
+        "Stairs_Rails_Metal_Straight_2.gltf"
+      ],
+      "fit_for_longwan": "可补充排水口、井盖、空调外机、隔离柱和楼梯扶手等维修区/设施背景小件",
+      "quality_evidence": "Prop_Drain 样本为 20 顶点/30 索引，Prop_ManholeCover 为 120 顶点/354 索引，Prop_ACUnit 为 136 顶点/408 索引，Stairs_Rails_Metal 为 888 顶点/1692 索引",
+      "limitations": [
+        "没有 pit-specific 工具车、轮胎架、信号灯、维修门或龙门架",
+        "扶手是楼梯资产，不能当作赛道捕捉网"
+      ]
+    },
+    {
+      "id": "urban_backdrop_and_markings",
+      "priority": "low",
+      "directory": "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city/Exports/glTF (Godot)",
+      "files": [
+        "Building_Large_2.gltf",
+        "Building_Medium_2_001.gltf",
+        "Building_Small_1.gltf",
+        "Decal_BrokenLine_Straight.gltf",
+        "Decal_DoubleYellow_Straight.gltf",
+        "Decal_Curve_2Lane_Stripe.gltf",
+        "Decal_Only.gltf",
+        "Decal_Slow.gltf",
+        "Decal_Stop.gltf",
+        "Decal_ArrowStraight.gltf",
+        "Decal_Crosswalk.gltf"
+      ],
+      "fit_for_longwan": "建筑模块可作为远景占位；道路 decal 可用于研究标线贴图接线",
+      "limitations": [
+        "明显是 downtown city kit，不是现代永久赛道设施",
+        "Decal 内容包含自行车道、斑马线、Slow/Stop 等城市语义，不能直接当赛车道标线"
+      ]
+    },
+    {
+      "id": "vehicle_models",
+      "priority": "low_for_track_scene",
+      "directory": "/Volumes/Charles/下载/赛车游戏素材/runtime/cars",
+      "files": [
+        "porsche-gt3-rs.glb",
+        "bmw-m5-g90.glb",
+        "mercedes-amg-gt3.glb",
+        "bmw-m3-e30.glb",
+        "mazda-miata-mx5-na.glb",
+        "lamborghini-aventador-lp700.glb"
+      ],
+      "fit_for_longwan": "车辆运行时模型清单；与本次主直道/维修区出口场景的环境升级关系较弱",
+      "size_range_bytes": {
+        "smallest": 1925828,
+        "largest": 38034600
+      }
+    }
+  ],
+  "missing_or_unverified_for_requested_scope": [
+    "runtime/city/downtown-city/Exports/glTF (Godot) 中没有命名为 Fence、Guardrail、Barrier、CatchFence 或 Armco 的专用赛道护栏/捕捉网；只有 Stairs_Rails_* 与 Trim_Wall_Guard 等非赛道语义资产",
+    "城市包不是已拼好的地图；README 明确说明需要由游戏代码或引擎添加碰撞体",
+    "未看到针对龙湾赛道、维修区出口或 pit wall 的专用模型与布局文件",
+    "README 对 Lamborghini 模型没有提供明确授权文件；公开发布前需单独确认",
+    "归档 ZIP/RAR 只做了目录与 ZIP listing 核对，没有批量解压或渲染；归档内来源与重复包不应直接视为运行时质量证据"
+  ],
+  "license_findings": {
+    "city": {
+      "asset": "Downtown City MegaKit Standard",
+      "license": "CC0 1.0 Universal",
+      "evidence": "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city/License_Standard.txt",
+      "status": "local license text present; attribution optional per text"
+    },
+    "vehicles": [
+      {
+        "asset": "Porsche GT3 RS",
+        "license": "CC BY 4.0",
+        "evidence": "/Volumes/Charles/下载/赛车游戏素材/licenses/cars/porsche-gt3-rs/license.txt",
+        "status": "credit required; commercial use documented as allowed"
+      },
+      {
+        "asset": "BMW M3 E30",
+        "license": "CC BY 4.0",
+        "evidence": "/Volumes/Charles/下载/赛车游戏素材/licenses/cars/bmw-m3-e30/license.txt",
+        "status": "credit required; commercial use documented as allowed"
+      },
+      {
+        "asset": "Mazda Miata MX-5 NA",
+        "license": "CC BY 4.0",
+        "evidence": "/Volumes/Charles/下载/赛车游戏素材/licenses/cars/mazda-miata-mx5-na/license.txt",
+        "status": "credit required; commercial use documented as allowed"
+      },
+      {
+        "asset": "BMW M5 G90",
+        "license": "CC BY-NC-SA 4.0",
+        "evidence": "/Volumes/Charles/下载/赛车游戏素材/licenses/cars/bmw-m5-g90/license.txt",
+        "status": "non-commercial; derivatives same license per local text"
+      },
+      {
+        "asset": "Mercedes-AMG GT3",
+        "license": "CC BY-NC-SA 4.0",
+        "evidence": "/Volumes/Charles/下载/赛车游戏素材/licenses/cars/mercedes-amg-gt3/license.txt",
+        "status": "non-commercial; derivatives same license per local text"
+      },
+      {
+        "asset": "Lamborghini Aventador LP700",
+        "license": "unknown",
+        "evidence": "README.md explicitly says the current package has no clear authorization text",
+        "status": "do not publish without source/license confirmation"
+      }
+    ],
+    "near_match_excluded_materials": {
+      "path": "/Volumes/Charles/下载/赛车游戏 材质",
+      "status": "not inspected beyond bounded filename/size listing; license and quality unknown"
+    }
+  },
+  "preview_review": {
+    "files_viewed": [
+      "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city/Preview_1.jpg",
+      "/Volumes/Charles/下载/赛车游戏素材/runtime/city/downtown-city/Preview_2.jpg"
+    ],
+    "dimensions": "1920x1080 JPEG",
+    "assessment": "Preview_1 是风格化 downtown 建筑街景；Preview_2 是模块化建筑、街道、路口、人行道和 decal 资源表。两张图都没有现代永久赛道的 Armco/捕捉网/维修区设备。Preview_2 的 SOURCE 宣传文字不能证明 Standard runtime 已包含完整 310+ 模型。"
+  },
+  "handoff_recommendation": {
+    "useful_as_secondary": [
+      "Street_Asphalt_* 与 Street_*_noSidewalk：几何底板与尺度参照",
+      "T_Concrete_*、T_MetalConcrete_*：混凝土/金属混凝土快速材质试配",
+      "Prop_Drain、Prop_ManholeCover、Prop_ACUnit、Prop_Bollard：设施小件占位"
+    ],
+    "do_not_substitute_for": [
+      "主直道高质量路面扫描与赛道磨损",
+      "Armco/捕捉网/维修区安全护栏",
+      "已锁定的龙湾 pit wall、维修车库、信号、工具车和计时龙门架"
+    ],
+    "overall_quality": "可验证、可加载的风格化城市模块包，带 2K BaseColor/Normal/ORM 纹理，但不应被当作现代永久赛道的高保真环境素材包"
+  }
+}

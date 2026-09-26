@@ -1,0 +1,167 @@
+{
+  "schema": "streetrush.v24-playability.browser-idle.v1",
+  "status": "PASS",
+  "scenario": "production TrackSystem after auto-clutch fix; normal Start click, zero driving input",
+  "assertions": [
+    "race state",
+    "speed below 0.02 km/h",
+    "driveIntent zero",
+    "wheelDriveTorqueAppliedNm zero",
+    "COMMITTED"
+  ],
+  "sample": {
+    "fixedStepIndex": 10446,
+    "input": {
+      "brake": 0,
+      "directionConflict": false,
+      "driveIntent": 0,
+      "handbrake": 0,
+      "rawBrake": 0,
+      "rawHandbrake": 0,
+      "rawThrottle": 0,
+      "reset": false,
+      "shiftDown": false,
+      "shiftUp": false,
+      "steer": 0,
+      "throttle": 0,
+      "toggleTransmission": false
+    },
+    "lastControlTrace": null,
+    "readiness": {
+      "assetSource": "gltf",
+      "audioBankError": null,
+      "audioBankId": "bank.candidate.i4.mazda-b6-compatibility-proxy",
+      "audioBankMode": "family",
+      "audioBankState": "ready",
+      "mountedCarId": "mx5",
+      "physicsSchedulerFallback": null,
+      "physicsSchedulerOwner": "rust-wasm",
+      "restartable": false,
+      "selectedCarId": "mx5",
+      "startable": false,
+      "state": "race",
+      "vehicleLoadPending": false,
+      "visualWheelBindingCount": 4,
+      "visualWheelSource": "manifest:mx5"
+    },
+    "report": {
+      "authority": {
+        "legacyForceCalls": 0,
+        "v24ForceCalls": 1,
+        "vehicleForceState": "V24",
+        "world6Dof": "RAPIER"
+      },
+      "hostCounters": {
+        "bodyForceWrites": 5,
+        "bodyTorqueWrites": 5,
+        "groundReactionWrites": 0,
+        "queryCount": 4
+      },
+      "status": "COMMITTED"
+    },
+    "state": "race",
+    "telemetry": {
+      "brake": 0,
+      "driveIntent": 0,
+      "groundedCount": 4,
+      "powertrain": {
+        "assistBrakeTorqueAppliedNm": 0,
+        "assistBrakeTorqueRequestedNm": 0,
+        "driveTorqueAppliedNm": 0,
+        "driveTorqueRequestedNm": 0,
+        "driverServiceBrakeTorqueAppliedNm": 0,
+        "driverServiceBrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "serviceBrakeTorqueAppliedNm": 0,
+        "serviceBrakeTorqueRequestedNm": 0,
+        "wheelDriveTorqueAppliedNm": 0,
+        "wheelDriveTorqueRequestedNm": 0
+      },
+      "signedSpeedKmh": 0.002246616729443823,
+      "speedKmh": 0.002246616729443823,
+      "steer": 0,
+      "throttle": 0
+    },
+    "trace": {
+      "bodyPose": {
+        "position": {
+          "x": -320,
+          "y": 0.654937744140625,
+          "z": 0.10479964315891266
+        },
+        "rotation": {
+          "w": 0.6961454153060913,
+          "x": 0.00005221530227572657,
+          "y": 0.717900812625885,
+          "z": 0.00005083301948616281
+        }
+      },
+      "currentPose": {
+        "position": [
+          -320,
+          0.654937744140625,
+          0.10479964315891266
+        ],
+        "rotation": [
+          0.00005221530227572657,
+          0.717900812625885,
+          0.00005083301948616281,
+          0.6961454153060913
+        ]
+      },
+      "driveIntent": 0,
+      "fixedStepIndex": 10446,
+      "hostCounters": {
+        "bodyForceWrites": 5,
+        "bodyTorqueWrites": 5,
+        "groundReactionWrites": 0,
+        "queryCount": 4
+      },
+      "input": {
+        "brake": 0,
+        "directionConflict": false,
+        "driveIntent": 0,
+        "handbrake": 0,
+        "rawBrake": 0,
+        "rawHandbrake": 0,
+        "rawThrottle": 0,
+        "reset": false,
+        "shiftDown": false,
+        "shiftUp": false,
+        "steer": 0,
+        "throttle": 0,
+        "toggleTransmission": false
+      },
+      "phase": "afterPhysics",
+      "powertrain": {
+        "assistBrakeTorqueAppliedNm": 0,
+        "assistBrakeTorqueRequestedNm": 0,
+        "driveTorqueAppliedNm": 0,
+        "driveTorqueRequestedNm": 0,
+        "driverServiceBrakeTorqueAppliedNm": 0,
+        "driverServiceBrakeTorqueRequestedNm": 0,
+        "handbrakeTorqueAppliedNm": 0,
+        "handbrakeTorqueRequestedNm": 0,
+        "serviceBrakeTorqueAppliedNm": 0,
+        "serviceBrakeTorqueRequestedNm": 0,
+        "wheelDriveTorqueAppliedNm": 0,
+        "wheelDriveTorqueRequestedNm": 0
+      },
+      "reportAuthority": {
+        "legacyForceCalls": 0,
+        "v24ForceCalls": 1,
+        "vehicleForceState": "V24",
+        "world6Dof": "RAPIER"
+      },
+      "reportStatus": "COMMITTED",
+      "signedSpeedKmh": 0.002246616729443823,
+      "speedKmh": 0.002246616729443823
+    },
+    "track": {
+      "className": "TrackSystem",
+      "length": 2129.954296679656,
+      "sampleCount": 1024
+    }
+  }
+}

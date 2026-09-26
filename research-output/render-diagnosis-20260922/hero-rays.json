@@ -1,0 +1,827 @@
+[
+  {
+    "id": "m3e30",
+    "camera": [
+      -315.7,
+      2.005,
+      3.4000000000000004
+    ],
+    "rays": [
+      {
+        "label": "front-grey-disc",
+        "pixel": [
+          767,
+          878
+        ],
+        "hits": [
+          {
+            "name": "visual-wheel-FL-rim",
+            "material": "",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              0.4232676699760063,
+              0.4452011945063733,
+              0.46207699964472876
+            ],
+            "distance": 4.288994272600529,
+            "point": [
+              -318.7430069184303,
+              0.4271860791650362,
+              0.8220000007748607
+            ],
+            "uv": [
+              0.4360208063751537,
+              0.7563572889708374
+            ]
+          },
+          {
+            "name": "",
+            "material": "BMW_E30_M3_BLACKOUT",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "distance": 4.551322912842452,
+            "point": [
+              -318.92912697745163,
+              0.33068192129017393,
+              0.6643212557458129
+            ],
+            "uv": [
+              0.5745405389925781,
+              0.8628677202008321
+            ]
+          },
+          {
+            "name": "",
+            "material": "BMW_E30_M3_BLACKOUT",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "distance": 4.963197806313538,
+            "point": [
+              -319.22134889958545,
+              0.17916343018082093,
+              0.41675424875946526
+            ],
+            "uv": [
+              0.5669870998006379,
+              0.24565319007017242
+            ]
+          },
+          {
+            "name": "contact-shadow",
+            "material": "soft-contact-occlusion",
+            "transparent": true,
+            "opacity": 0.36,
+            "depthWrite": false,
+            "color": [
+              0.005181516700061659,
+              0.006512090790025684,
+              0.008023192982520563
+            ],
+            "distance": 5.314304616159553,
+            "point": [
+              -319.470456355451,
+              0.05000000000000015,
+              0.2057133151556723
+            ],
+            "uv": [
+              0.4001003714278981,
+              0.34393055000073386
+            ]
+          }
+        ]
+      },
+      {
+        "label": "front-black-tyre",
+        "pixel": [
+          808,
+          934
+        ],
+        "hits": [
+          {
+            "name": "",
+            "material": "BMW_E30_M3_TIRE",
+            "role": "rubber",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.013350104969903,
+            "point": [
+              -318.4037793988006,
+              0.36161639305749094,
+              0.9310232183927208
+            ],
+            "uv": [
+              0.5265398703124338,
+              0.9024625993727569
+            ]
+          },
+          {
+            "name": "",
+            "material": "BMW_E30_M3_RIM",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.134068515788024,
+            "point": [
+              -318.4851069540074,
+              0.31218470825407474,
+              0.8567583410142569
+            ],
+            "uv": [
+              4.663264818440497,
+              0.5305000811699246
+            ]
+          },
+          {
+            "name": "",
+            "material": "BMW_E30_M3_RIM",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.148878804834393,
+            "point": [
+              -318.4950845919823,
+              0.30612020214414404,
+              0.8476471847911572
+            ],
+            "uv": [
+              4.418665485080767,
+              0.7720034512569718
+            ]
+          },
+          {
+            "name": "",
+            "material": "BMW_E30_M3_RIM",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.1598629886360285,
+            "point": [
+              -318.50248459674106,
+              0.3016224067554638,
+              0.8408898140006985
+            ],
+            "uv": [
+              4.71547314012186,
+              0.2646776254525589
+            ]
+          }
+        ]
+      },
+      {
+        "label": "rear-wheel",
+        "pixel": [
+          461,
+          764
+        ],
+        "hits": [
+          {
+            "name": "",
+            "material": "BMW_E30_M3_RIM",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 6.281664649945021,
+            "point": [
+              -321.17529612131364,
+              0.31202643151816756,
+              0.8281750341987666
+            ],
+            "uv": [
+              0.45303429071133705,
+              0.4760414172932955
+            ]
+          },
+          {
+            "name": "visual-wheel-RL-rim",
+            "material": "",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              0.4232676699760063,
+              0.4452011945063733,
+              0.46207699964472876
+            ],
+            "distance": 6.29674712627483,
+            "point": [
+              -321.188442481196,
+              0.3079615482114964,
+              0.82200000077486
+            ],
+            "uv": [
+              0.7546093462919912,
+              0.42480964275681515
+            ]
+          },
+          {
+            "name": "",
+            "material": "BMW_E30_M3_RIM",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 6.3155014135525445,
+            "point": [
+              -321.2047893067768,
+              0.302907073891997,
+              0.8143216627984755
+            ],
+            "uv": [
+              0.1257896270565572,
+              0.8606279431470067
+            ]
+          },
+          {
+            "name": "",
+            "material": "BMW_E30_M3_RIM",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 6.32696781552827,
+            "point": [
+              -321.2147837827257,
+              0.2998167600098869,
+              0.8096271143766118
+            ],
+            "uv": [
+              0.12184077067591012,
+              0.20842386520056383
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m5g90",
+    "camera": [
+      -315.7,
+      2.045,
+      3.4000000000000004
+    ],
+    "rays": [
+      {
+        "label": "windscreen",
+        "pixel": [
+          831,
+          463
+        ],
+        "hits": [
+          {
+            "name": "",
+            "material": "PaletteMaterial004",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.925244191521838,
+            "point": [
+              -319.28134815915786,
+              1.909396498976407,
+              0.02159987575090721
+            ],
+            "uv": [
+              0.5155107957579919,
+              0.5155107957579919
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial005",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.936369793488462,
+            "point": [
+              -319.289438043146,
+              1.9090901851127677,
+              0.013968429754557634
+            ],
+            "uv": [
+              0.5467612726024261,
+              0.5467612726024261
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial005",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 6.056184004574295,
+            "point": [
+              -320.10370113498914,
+              1.8782590787524778,
+              -0.7541519563129064
+            ],
+            "uv": [
+              0.546761272602426,
+              0.546761272602426
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial004",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 6.0604764248319505,
+            "point": [
+              -320.10682233076955,
+              1.8781408983755927,
+              -0.7570962799987822
+            ],
+            "uv": [
+              0.5155107957579919,
+              0.5155107957579919
+            ]
+          }
+        ]
+      },
+      {
+        "label": "headlamp-green-left",
+        "pixel": [
+          945,
+          605
+        ],
+        "hits": [
+          {
+            "name": "",
+            "material": "PaletteMaterial004",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.461741663300083,
+            "point": [
+              -317.94969964395983,
+              1.544090586547223,
+              0.817056598585836
+            ],
+            "uv": [
+              0.5155107957579919,
+              0.5155107957579919
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial001",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.489642329553978,
+            "point": [
+              -317.9678315917025,
+              1.5400533972571202,
+              0.7962387996843296
+            ],
+            "uv": [
+              0.45323872739757387,
+              0.45323872739757387
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial003",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.4897468592286103,
+            "point": [
+              -317.9678995229333,
+              1.540038271952259,
+              0.7961608059287002
+            ],
+            "uv": [
+              0.42197299153124285,
+              0.42197299153124285
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial001",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.530527835687953,
+            "point": [
+              -317.9944020633145,
+              1.5341373189103726,
+              0.7657324943173589
+            ],
+            "uv": [
+              0.1719081406881819,
+              0.1719081406881819
+            ]
+          }
+        ]
+      },
+      {
+        "label": "headlamp-green-right",
+        "pixel": [
+          1011,
+          620
+        ],
+        "hits": [
+          {
+            "name": "",
+            "material": "PaletteMaterial004",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.4262114734000795,
+            "point": [
+              -317.7785094328544,
+              1.511950650852697,
+              0.7289361689829832
+            ],
+            "uv": [
+              0.5155107957579919,
+              0.5155107957579919
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial001",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.429969556905905,
+            "point": [
+              -317.78078927228546,
+              1.5113659689139496,
+              0.7260063787454842
+            ],
+            "uv": [
+              0.45323872739757376,
+              0.45323872739757376
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial003",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.4299705060923062,
+            "point": [
+              -317.7807898481089,
+              1.5113658212397032,
+              0.7260056387627056
+            ],
+            "uv": [
+              0.4219729915312429,
+              0.4219729915312429
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial001",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.43022394753027,
+            "point": [
+              -317.7809435982272,
+              1.511326390867525,
+              0.7258080566042482
+            ],
+            "uv": [
+              0.45323872739757387,
+              0.45323872739757387
+            ]
+          }
+        ]
+      },
+      {
+        "label": "near-headlamp",
+        "pixel": [
+          1002,
+          665
+        ],
+        "hits": [
+          {
+            "name": "",
+            "material": "PaletteMaterial002",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.4063155074267484,
+            "point": [
+              -317.76845215366274,
+              1.3886253456642847,
+              0.7744213328697316
+            ],
+            "uv": [
+              0.07814145113298238,
+              0.07814145113298238
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial001",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.453600462415426,
+            "point": [
+              -317.7971654853459,
+              1.379513845006668,
+              0.7379742190237635
+            ],
+            "uv": [
+              0.1719081406881819,
+              0.1719081406881819
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial003",
+            "role": "authored",
+            "transparent": true,
+            "opacity": 1,
+            "depthWrite": false,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.463236496343887,
+            "point": [
+              -317.8030168737709,
+              1.377657044476838,
+              0.7305467904537615
+            ],
+            "uv": [
+              0.4219729915312429,
+              0.4219729915312429
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial001",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 3.463313286648356,
+            "point": [
+              -317.80306350394073,
+              1.3776422474888754,
+              0.7304876006973089
+            ],
+            "uv": [
+              0.45323872739757376,
+              0.45323872739757376
+            ]
+          }
+        ]
+      },
+      {
+        "label": "near-body",
+        "pixel": [
+          699,
+          612
+        ],
+        "hits": [
+          {
+            "name": "",
+            "material": "PaletteMaterial002",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.15975190475013,
+            "point": [
+              -318.98720851263954,
+              1.4123214272619733,
+              0.9306855349914283
+            ],
+            "uv": [
+              0.07814145113298238,
+              0.07814145113298238
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial002",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.227206950232335,
+            "point": [
+              -319.0405142877932,
+              1.4020618341715974,
+              0.8906428297145148
+            ],
+            "uv": [
+              0.07814145113298238,
+              0.07814145113298238
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial001",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.2923227586100525,
+            "point": [
+              -319.09197150074914,
+              1.3921580279710244,
+              0.8519887437955298
+            ],
+            "uv": [
+              0.32820630197604334,
+              0.32820630197604334
+            ]
+          },
+          {
+            "name": "",
+            "material": "PaletteMaterial002",
+            "role": "authored",
+            "transparent": false,
+            "opacity": 1,
+            "depthWrite": true,
+            "color": [
+              1,
+              1,
+              1
+            ],
+            "distance": 4.329823892901873,
+            "point": [
+              -319.12160645271274,
+              1.3864542829729887,
+              0.8297272975647567
+            ],
+            "uv": [
+              0.07814145113298238,
+              0.07814145113298238
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

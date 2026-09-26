@@ -1,0 +1,34 @@
+{
+  "createdAt": "2026-09-08T17:39:07.269Z",
+  "browser": "152.0.7977.77",
+  "sourceSha256": {
+    "src/main.js": "d783d61de027c346efd67b21f1e1e3384f33db0aa0f1a0b1c2ea786e08db3ebf",
+    "src/input.js": "b077ce8b9a6459aaddcccb0cdd77e2bb800f3ac458fece90e54e1275ac2d3756",
+    "src/vehicle.js": "09c8e6c960290b276c832ce89c7e5f42e5448c5e13c14497eb509d5278073135",
+    "src/vehicle-physics.js": "9112cbd8f2194fece67eeadfaba1dabc9efca72926c74b1d09cb6baf8485c2a8",
+    "src/config.js": "c5006d40a8f7fa723b358cbe07a153a783a433ac01259a15ca358a0cd002eba4",
+    "src/track.js": "cdd1b665ddaa86849c0b0f86cfd20144ff8302608e1801a4e0119424c85fb857",
+    "src/straight-line-diagnostic.js": "6011c4f37593263cf6b00b2a1f6b9bb4bdf574e30a0632cb1c7979ca89638866",
+    "src/physics-scheduling.js": "60dabe3c0ac5c913d2ddcbf312e1ca65ebc53bf3d56962b5631215e18f5ed540",
+    "scripts/straight-line-recorder-plugin.mjs": "8a5b46a4d669c84e00d179dbe59eb9df2c4f741c547f92e6ce4e4a9aecca1864",
+    "scripts/record-flat-braking-keyboard.mjs": "ca09054fa934242ed0e70a4a1e216801bfcff4914222a827564cdd01d8f47b95",
+    "src/vehicle-v24/aero.js": "f7f9de228fe44a3141e173d00b30914c42bba12696f56e0d7bd5e0cd4396e795",
+    "src/vehicle-v24/contract.js": "a665913de06e8e7547962ba131131282017ff6c10cf1f20248d1413975042249",
+    "src/vehicle-v24/index.js": "e23ad5f17a0324cb0043f2a6ac8d13ef40e2e2af19cb0cd1b0d727b3b835ca70",
+    "src/vehicle-v24/math.js": "5a67117feba479c0144b2a3dfb9a3bfc0772fe2ed17cc6c86cd5e242c8f55447",
+    "src/vehicle-v24/powertrain.js": "0dea200c07614da958931411d605ea8b832d19cd179c4ebcc7c88e784c5da35d",
+    "src/vehicle-v24/rapier-host-adapter.js": "75283e91753339de40bfce0ad2aa101fa669902b9d45980e70db44e198b73ba5",
+    "src/vehicle-v24/runtime.js": "9f7ba2dc6eeb3d897af048b8de875d714de62e4c95e2666d9052b02ee2a741c9",
+    "src/vehicle-v24/steering.js": "a05e28a45b1e1000b0ea613e5ea1575826d058b4344455a2b69b7a620dba2ee9",
+    "src/vehicle-v24/suspension.js": "653cceed8e8d82b242f6d922fec405f73d1b623d2cfb3bd1cb5bdf922ad462e0",
+    "src/vehicle-v24/tire.js": "248feabd4a824e9a730e25e98791c78ee45ea9d4b423cd78e14ab33cd3397e37"
+  },
+  "protocol": {
+    "name": "speed-target-200-v1",
+    "accelerationSeconds": null,
+    "straightLaneLimitM": 1120,
+    "targetSpeedKmh": 200,
+    "coastSeconds": 0,
+    "speedFloorPolicy": "200 km/h diagnostic coverage only"
+  }
+}

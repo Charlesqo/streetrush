@@ -1,0 +1,131 @@
+{
+  "asset_id": "corrugated_iron_03",
+  "title": "Corrugated Iron 03",
+  "source_url": "https://polyhaven.com/a/corrugated_iron_03",
+  "license": {
+    "name": "CC0-1.0",
+    "url": "https://polyhaven.com/license",
+    "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "evidence_page": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-page.html"
+  },
+  "api": {
+    "info_url": "https://api.polyhaven.com/info/corrugated_iron_03",
+    "files_url": "https://api.polyhaven.com/files/corrugated_iron_03",
+    "info_metadata": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-info.json",
+    "files_metadata": "sources/pbr/refinement/corrugated_iron_03/polyhaven-corrugated_iron_03-files.json"
+  },
+  "asset_metadata": {
+    "authors": {
+      "Charlotte Baglioni": "All"
+    },
+    "dimensions_api_raw": [
+      2000,
+      2000
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "recommended_surface_scale_m": [
+      2.0,
+      2.0
+    ],
+    "recommended_surface_scale_note": "2.0 m x 2.0 m is the judged conversion of the API dimensions and is a tiling starting point; orient the corrugation with the barrier profile during material authoring.",
+    "max_resolution_api_raw": [
+      8192,
+      8192
+    ],
+    "files_hash": "a4cea9517f13893e33d55a868f722ccc189f2b19",
+    "description": "Free 8K texture of narrow corrugated galvanized steel, subtle scratches and small rust spots.",
+    "category": "Metal/Sheet & Corrugated/Corrugated Iron",
+    "attributes": {
+      "surface_use": "roof",
+      "condition": [
+        "weathered",
+        "rusted"
+      ],
+      "origin": "man_made",
+      "setting": "outdoor"
+    }
+  },
+  "acquisition": {
+    "acquired_date": "2026-09-07",
+    "resolution": "2K",
+    "map_format_policy": "JPEG for colour/packed maps; 16-bit grayscale PNG for displacement",
+    "channels": "diffuse=sRGB base colour; arm=R ambient occlusion, G roughness, B metallic; nor_gl=OpenGL tangent normal; displacement=16-bit height",
+    "map_bytes": 10615994,
+    "within_100mb_batch": true,
+    "files": [
+      {
+        "channel": "diffuse",
+        "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/corrugated_iron_03/corrugated_iron_03_diff_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 1908641,
+        "downloaded_bytes": 1908641,
+        "api_md5": "5eb86304eada29624fc1e3c3a1fa2ff7",
+        "downloaded_md5": "5eb86304eada29624fc1e3c3a1fa2ff7",
+        "sha256": "7b3f4f849dd634f54548b3b552ebeae723266f782163341185c94094e2eb7991",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "arm",
+        "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/corrugated_iron_03/corrugated_iron_03_arm_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 1193928,
+        "downloaded_bytes": 1193928,
+        "api_md5": "43be33fd60ffc53e0b19e22175167df7",
+        "downloaded_md5": "43be33fd60ffc53e0b19e22175167df7",
+        "sha256": "67e732253e52fd04089ba16c9757ced090c5331144f29600fc8ffeb32aaf5f2b",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "normal_gl",
+        "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/corrugated_iron_03/corrugated_iron_03_nor_gl_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 1950629,
+        "downloaded_bytes": 1950629,
+        "api_md5": "7c642a1e9c99d75066c45073c2141d03",
+        "downloaded_md5": "7c642a1e9c99d75066c45073c2141d03",
+        "sha256": "9f865a4de4753a9cc0987c4e665ec935c7dd28d3c6cd80c4dd2000d64c2fcfc3",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "displacement",
+        "file": "sources/pbr/refinement/corrugated_iron_03/corrugated_iron_03_disp_2k.png",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/corrugated_iron_03/corrugated_iron_03_disp_2k.png",
+        "format": "PNG",
+        "mode": "I;16 grayscale",
+        "bit_depth": 16,
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 5562796,
+        "downloaded_bytes": 5562796,
+        "api_md5": "41552f50749152015148cc62cc33d616",
+        "downloaded_md5": "41552f50749152015148cc62cc33d616",
+        "sha256": "29314e42351ee43ee248e82d732e997d02da87388558807085ba89e443632c0e",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      }
+    ]
+  }
+}

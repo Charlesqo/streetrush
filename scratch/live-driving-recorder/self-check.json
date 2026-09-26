@@ -1,0 +1,12 @@
+{
+  "file": "E:\\Projects\\streetrush\\streetrush\\research-output\\live-driving\\2026-09-08T17-51-19-866Z-7fdeb5cd-5b03-42fe-9276-63149dbdc8fe.json",
+  "samples": 600,
+  "checks": {
+    "previousFiveSecondsOnly": true,
+    "stepsContinuous": true,
+    "sourceUnchanged": true,
+    "normalTrack": true,
+    "realKeys": true,
+    "noCaptureError": true
+  }
+}

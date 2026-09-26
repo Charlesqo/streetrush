@@ -1,0 +1,8 @@
+{
+  "purpose": "Verify the acquired 6m garage facade and its matching rolling/service doors before designing a replacement pit building.",
+  "objects": [
+    "wall_door_garage_door_01",
+    "door_garage_door_01"
+  ],
+  "camera_offset": [-2.4, -8.6, 2.1]
+}

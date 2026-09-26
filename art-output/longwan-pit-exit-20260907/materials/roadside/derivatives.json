@@ -1,0 +1,50 @@
+[
+  {
+    "file": "materials/roadside/kerb_coating_base.jpg",
+    "source": "Poly Haven rough_concrete",
+    "treatment": "4m × 2m metric atlas: 1m alternating paint bands, exposed cement chips, localized contact deposits",
+    "sha256": "27794f6d87117b2dd4ac4e05cac1be48c199797f64ef65c4e7808b4af0b19d39"
+  },
+  {
+    "file": "materials/roadside/kerb_coating_normal.png",
+    "source": "Poly Haven rough_concrete",
+    "treatment": "OpenGL normal retained; spatial repeat copied without invented large bumps",
+    "sha256": "8d521af731122456021773170ac9f4359cb2f9d2c79c2cb8d36c8e63300bc03b"
+  },
+  {
+    "file": "materials/roadside/kerb_coating_arm.png",
+    "source": "Poly Haven rough_concrete",
+    "treatment": "AO retained; coating roughness differs from exposed concrete; nonmetallic",
+    "sha256": "002673be97f75122741dba4e6be50197c0b2c490b29bc1e6b7390d657c09a092"
+  },
+  {
+    "file": "materials/roadside/chainlink_wire_base_alpha.png",
+    "source": "Poly Haven modular_chainlink_fence: original diffuse + original opacity",
+    "treatment": "Combined matching opacity; no generated wire shape",
+    "sha256": "4405d81bc92265863718b9bc6cc1b46f6f20afa67d624b5323c7a9970c4a9f6c"
+  },
+  {
+    "file": "materials/roadside/gravel_dust_fringe.png",
+    "source": "Poly Haven gravel_stones",
+    "treatment": "4m × 0.30m deposition decal; strongest at gravel edge",
+    "sha256": "057467e6fd378885f4a5900e1591249ad9212323d12b3aff0e0d1df775b46bdb"
+  },
+  {
+    "file": "materials/roadside/rubber_contact_band.png",
+    "source": "Poly Haven asphalt_track",
+    "treatment": "12m × 0.24m contact mark; preserves underlying road through alpha",
+    "sha256": "b0905f0365c504b9ff75e8cf6926bc616847e2fa9bab1f4b983ee08f6b6608df"
+  },
+  {
+    "file": "materials/roadside/track_limit_base.jpg",
+    "source": "Poly Haven asphalt_track",
+    "treatment": "2m repeat; paint albedo with exposed aggregate pinholes",
+    "sha256": "96c1a33b9459323815d904cd30c7a6fac88a581581cd4016f9d3138c75ef1ae9"
+  },
+  {
+    "file": "materials/roadside/track_limit_arm.png",
+    "source": "Poly Haven asphalt_track",
+    "treatment": "AO and roughness retained for worn nonmetallic paint",
+    "sha256": "61bfeb7357c28ed713bb58d3114a6b6c1cf0e4dd6b4f6225830b90ddc1bdd36a"
+  }
+]

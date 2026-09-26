@@ -1,0 +1,130 @@
+{
+  "asset_id": "asphalt_track",
+  "title": "Asphalt Track",
+  "source_url": "https://polyhaven.com/a/asphalt_track",
+  "license": {
+    "name": "CC0-1.0",
+    "url": "https://polyhaven.com/license",
+    "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "evidence_page": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-page.html"
+  },
+  "api": {
+    "info_url": "https://api.polyhaven.com/info/asphalt_track",
+    "files_url": "https://api.polyhaven.com/files/asphalt_track",
+    "info_metadata": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-info.json",
+    "files_metadata": "sources/pbr/refinement/asphalt_track/polyhaven-asphalt_track-files.json"
+  },
+  "asset_metadata": {
+    "authors": {
+      "Dimitrios Savva": "All"
+    },
+    "dimensions_api_raw": [
+      2000,
+      2000
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "recommended_surface_scale_m": [
+      2.0,
+      2.0
+    ],
+    "recommended_surface_scale_note": "2.0 m x 2.0 m is the judged conversion of the API dimensions and is a tiling starting point; do not infer displacement depth from this field.",
+    "max_resolution_api_raw": [
+      8192,
+      8192
+    ],
+    "files_hash": "2f5841e723e9c319052d33d4273995aa679c655a",
+    "description": "Free, 8K asphalt track texture: dark, fine-grained tarmac with subtle aggregate, worn micro-roughness and a low-gloss, slightly weathered surface.",
+    "category": "Asphalt & Bitumen/Tracks/Race Tracks",
+    "attributes": {
+      "surface_use": "floor",
+      "condition": [
+        "weathered"
+      ],
+      "origin": "man_made",
+      "setting": "outdoor"
+    }
+  },
+  "acquisition": {
+    "acquired_date": "2026-09-07",
+    "resolution": "2K",
+    "map_format_policy": "JPEG for colour/packed maps; 16-bit grayscale PNG for displacement",
+    "channels": "diffuse=sRGB base colour; arm=R ambient occlusion, G roughness, B metallic; nor_gl=OpenGL tangent normal; displacement=16-bit height",
+    "map_bytes": 16201133,
+    "within_100mb_batch": true,
+    "files": [
+      {
+        "channel": "diffuse",
+        "file": "sources/pbr/refinement/asphalt_track/asphalt_track_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_track/asphalt_track_diff_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 3779263,
+        "downloaded_bytes": 3779263,
+        "api_md5": "faec159f1f29d231581c32bd256b5ede",
+        "downloaded_md5": "faec159f1f29d231581c32bd256b5ede",
+        "sha256": "742d1d79560bd661d5871afc857e981e25dcd563bfd24385cbd063ebcaeef06c",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "arm",
+        "file": "sources/pbr/refinement/asphalt_track/asphalt_track_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_track/asphalt_track_arm_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 2469962,
+        "downloaded_bytes": 2469962,
+        "api_md5": "a528253bac67e8570553c4eac14d97e8",
+        "downloaded_md5": "a528253bac67e8570553c4eac14d97e8",
+        "sha256": "064f8469a0f9e2a9581551926f02eb760992a9b3e2a3890ec6f6ac00d582944a",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "normal_gl",
+        "file": "sources/pbr/refinement/asphalt_track/asphalt_track_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_track/asphalt_track_nor_gl_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 3694762,
+        "downloaded_bytes": 3694762,
+        "api_md5": "5381e78d5deda41e9ff5dd9c317bfa62",
+        "downloaded_md5": "5381e78d5deda41e9ff5dd9c317bfa62",
+        "sha256": "d9c635867ed0e022580baac711e0dcff679f8301cd906dff162be1bfbad8cfcd",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "displacement",
+        "file": "sources/pbr/refinement/asphalt_track/asphalt_track_disp_2k.png",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/asphalt_track/asphalt_track_disp_2k.png",
+        "format": "PNG",
+        "mode": "I;16 grayscale",
+        "bit_depth": 16,
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 6257146,
+        "downloaded_bytes": 6257146,
+        "api_md5": "799c1ce524ef0cc8353876aa4994e6c5",
+        "downloaded_md5": "799c1ce524ef0cc8353876aa4994e6c5",
+        "sha256": "3a8fff49c110c612bfd640d7d5531d7b197967adc76a6bbd548c671eab583b43",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      }
+    ]
+  }
+}

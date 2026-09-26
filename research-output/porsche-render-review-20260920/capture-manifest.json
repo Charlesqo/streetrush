@@ -1,0 +1,1003 @@
+{
+  "date": "2026-09-20",
+  "sourceSha256": "e1cf7d3e04aaaf27cfec6363de5f6427b87c997993f9de0f54ec5549b68b8f96",
+  "diagnosticOnly": true,
+  "frames": [
+    {
+      "file": "badge-baseline.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "badge-baseline.json",
+      "settings": {
+        "view": "badge",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "baseline-hero.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "baseline-hero.json",
+      "settings": {
+        "view": "hero",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "carbon-baseline.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "carbon-baseline.json",
+      "settings": {
+        "view": "roof",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "carbon-clearcoat-test.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "carbon-clearcoat-test.json",
+      "settings": {
+        "view": "roof",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": true,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "cockpit-baseline.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "cockpit-baseline.json",
+      "settings": {
+        "view": "cockpit",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "glass-baseline.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "glass-baseline.json",
+      "settings": {
+        "view": "glass",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "glass-source-black-trim.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "glass-source-black-trim.json",
+      "settings": {
+        "view": "glass",
+        "environment": "baseline",
+        "blackTrim": true,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "headlight-baseline.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "headlight-baseline.json",
+      "settings": {
+        "view": "headlight",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-baseline-r2.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-baseline-r2.json",
+      "settings": {
+        "view": "hero",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-environment-only.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-environment-only.json",
+      "settings": {
+        "view": "hero",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 0,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-no-gtao.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-no-gtao.json",
+      "settings": {
+        "view": "hero",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-probe-local-high.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-probe-local-high.json",
+      "settings": {
+        "view": "hero",
+        "environment": "local-position-512-no-preblur",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-probe-local-same-quality.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-probe-local-same-quality.json",
+      "settings": {
+        "view": "hero",
+        "environment": "local-position-256-sigma025",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-probe-no-preblur.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-probe-no-preblur.json",
+      "settings": {
+        "view": "hero",
+        "environment": "original-position-256-no-preblur",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-probe-same-recapture.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-probe-same-recapture.json",
+      "settings": {
+        "view": "hero",
+        "environment": "original-position-256-sigma025-recapture",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-sharper-coat-test.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-sharper-coat-test.json",
+      "settings": {
+        "view": "hero",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": true,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-studio-diagnostic.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-studio-diagnostic.json",
+      "settings": {
+        "view": "hero",
+        "environment": "studio-hdri-diagnostic",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 0,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-sun-only.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-sun-only.json",
+      "settings": {
+        "view": "hero",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0,
+        "environment": 0
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "hero-white-nonmetal-test.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "hero-white-nonmetal-test.json",
+      "settings": {
+        "view": "hero",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": true,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "opposite-baseline.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "opposite-baseline.json",
+      "settings": {
+        "view": "opposite",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "production-hero.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": null
+    },
+    {
+      "file": "rear-baseline.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "rear-baseline.json",
+      "settings": {
+        "view": "rear",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "stripe-clay-opposite.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "stripe-clay-opposite.json",
+      "settings": {
+        "view": "opposite",
+        "environment": "stripe-diagnostic",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": true,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 0,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "stripe-clay-side.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "stripe-clay-side.json",
+      "settings": {
+        "view": "side",
+        "environment": "stripe-diagnostic",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": true,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 0,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "stripe-reflective-opposite.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "stripe-reflective-opposite.json",
+      "settings": {
+        "view": "opposite",
+        "environment": "stripe-diagnostic",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": true,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 0,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "stripe-reflective-side.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "stripe-reflective-side.json",
+      "settings": {
+        "view": "side",
+        "environment": "stripe-diagnostic",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": true,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 0,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "wheel-baseline.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "wheel-baseline.json",
+      "settings": {
+        "view": "wheel",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "wheel-near-shadow-test.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "wheel-near-shadow-test.json",
+      "settings": {
+        "view": "wheel",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": true
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 20,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00004285714285714286,
+        "normalBias": 0.005357142857142857
+      }
+    },
+    {
+      "file": "wheel-no-sun-shadow.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "wheel-no-sun-shadow.json",
+      "settings": {
+        "view": "wheel",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "wheel-shadow-control-r2.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "wheel-shadow-control-r2.json",
+      "settings": {
+        "view": "wheel",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": false,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0.03
+      }
+    },
+    {
+      "file": "wheel-zero-normal-bias.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "wheel-zero-normal-bias.json",
+      "settings": {
+        "view": "wheel",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": true,
+        "depthBiasTest": false
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.00024,
+        "normalBias": 0
+      }
+    },
+    {
+      "file": "wheel-zero-normal-more-depth-bias.png",
+      "width": 1524,
+      "height": 1304,
+      "stateFile": "wheel-zero-normal-more-depth-bias.json",
+      "settings": {
+        "view": "wheel",
+        "environment": "baseline",
+        "blackTrim": false,
+        "paintNonmetal": false,
+        "sharperCoat": false,
+        "carbonCoat": false,
+        "clay": false,
+        "nearShadow": false,
+        "noNormalBias": true,
+        "depthBiasTest": true
+      },
+      "lights": {
+        "sun": 3.5,
+        "fill": 0.48,
+        "environment": 0.8
+      },
+      "ao": 0.75,
+      "shadow": {
+        "span": 112,
+        "map": [
+          2048,
+          2048
+        ],
+        "bias": -0.0006,
+        "normalBias": 0
+      }
+    }
+  ],
+  "limitations": [
+    "All changes in an isolated dev-server transform; production source not edited",
+    "5 FPS capture mode, not performance evidence",
+    "Studio and stripe environments are diagnostic, not proposed outdoor lighting",
+    "No dynamic antialiasing or full-track validation",
+    "wheel-no-sun-shadow was captured by toggling sun.shadow.intensity through the review UI; older snapshots do not serialize intensity"
+  ]
+}

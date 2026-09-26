@@ -1,0 +1,95 @@
+{
+  "source": "models/longwan_kerb_examples_native.glb",
+  "output": "models/longwan_kerb_examples_realtime.glb",
+  "source_bytes": 23233384,
+  "runtime_bytes": 21314112,
+  "reduction_percent": 8.3,
+  "geometry_uvs_material_connections_unchanged": true,
+  "maps": [
+    {
+      "name": "kerb_coating_normal",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 2992013,
+      "runtime_bytes": 2701294,
+      "runtime_mime": "image/png",
+      "source_sha256": "4d38d37e19b9b6805604579f7b6b143c48f1482ff77301b695d1b98f8a8c5277",
+      "runtime_sha256": "20fff7711f90b0621b9c05dadeacaa43cead9400993d8b3c361597b9875cff0d"
+    },
+    {
+      "name": "kerb_coating_arm",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 3056369,
+      "runtime_bytes": 2908787,
+      "runtime_mime": "image/png",
+      "source_sha256": "ce1040aa4f2192cbe9e1490f02c23fd928f07064992e289bff0e6c9a75aeb81b",
+      "runtime_sha256": "bfc142fd78b5870a79975ec0deaea00d985c111a37ced4468dd2751a7c17c5ff"
+    },
+    {
+      "name": "kerb_coating_base",
+      "dimensions": [
+        2048,
+        1024
+      ],
+      "source_bytes": 1209697,
+      "runtime_bytes": 1209697,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "6bd9252f02c21d4efa85e0c3f9dded298058365d93d2ee12ee719ece63e1d132",
+      "runtime_sha256": "6bd9252f02c21d4efa85e0c3f9dded298058365d93d2ee12ee719ece63e1d132"
+    },
+    {
+      "name": "rough_concrete_nor_gl_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 5351725,
+      "runtime_bytes": 5351725,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d",
+      "runtime_sha256": "314050848fe4f50e695f05daa4f624e67eda37fc90c9cb6459e50af8463a720d"
+    },
+    {
+      "name": "rough_concrete_arm_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 3432016,
+      "runtime_bytes": 3432016,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "014f6ca38e4bbc284789ebda32a97013f3fb9be078cbce629e07b0aa63bc4bb6",
+      "runtime_sha256": "014f6ca38e4bbc284789ebda32a97013f3fb9be078cbce629e07b0aa63bc4bb6"
+    },
+    {
+      "name": "rough_concrete_diff_2k",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "source_bytes": 4355641,
+      "runtime_bytes": 2874673,
+      "runtime_mime": "image/jpeg",
+      "source_sha256": "1c20c0ae8622ff673f6ed76a282f07427fdaaf8c0c073558013fa5c5f3ddbf1f",
+      "runtime_sha256": "b153777a0d4243e037921b9274871ccf1d2bd82ff691ae1faf26dbed72d1c579"
+    }
+  ],
+  "visual_status": "Actual browser inspection completed for listed views; not full art acceptance",
+  "not_run": [
+    "Target game performance",
+    "Game integration"
+  ],
+  "browser_review": {
+    "date": "2026-09-07",
+    "views": [
+      "overview"
+    ],
+    "notes": "Actually viewed the exported straight, corner and S curve meshes with PBR in the local in-app browser. Editable Geometry Nodes remain in source blend only.",
+    "game_integration": "NOT_RUN"
+  }
+}

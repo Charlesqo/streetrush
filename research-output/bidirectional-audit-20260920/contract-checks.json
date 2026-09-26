@@ -1,0 +1,138 @@
+{
+  "materials": [
+    {
+      "car": "gt3rs",
+      "name": "TwiXeR_992_blackGlass.001",
+      "source": {
+        "color": [
+          0.0137937,
+          0.0137937,
+          0.0137937
+        ],
+        "roughness": 0,
+        "metalness": 0.821335836452073,
+        "transparent": false
+      },
+      "runtime": {
+        "role": "glass",
+        "color": [
+          0.05612849004241121,
+          0.09305896283800832,
+          0.11697066774917994
+        ],
+        "roughness": 0.09,
+        "metalness": 0,
+        "transparent": false,
+        "clearcoat": 0.65,
+        "type": "MeshPhysicalMaterial"
+      }
+    },
+    {
+      "car": "lp700",
+      "name": "Vitre_noir",
+      "source": {
+        "color": [
+          0.0313726,
+          0.0313726,
+          0.0313726
+        ],
+        "roughness": 0.9971451,
+        "metalness": 0,
+        "transparent": false
+      },
+      "runtime": {
+        "role": "glass",
+        "color": [
+          0.05612849004241121,
+          0.09305896283800832,
+          0.11697066774917994
+        ],
+        "roughness": 0.09,
+        "metalness": 0,
+        "transparent": false,
+        "clearcoat": 0.65,
+        "type": "MeshPhysicalMaterial"
+      }
+    },
+    {
+      "car": "gt3rs",
+      "name": "TwiXeR_992_ID08_fabric_002.001",
+      "source": {
+        "color": [
+          0.0718824,
+          0.0718824,
+          0.0718824
+        ],
+        "roughness": 0.9772687892320713,
+        "metalness": 0,
+        "transparent": false
+      },
+      "runtime": {
+        "role": "plastic",
+        "color": [
+          0.0718824,
+          0.0718824,
+          0.0718824
+        ],
+        "roughness": 0.65,
+        "metalness": 0,
+        "transparent": false,
+        "type": "MeshStandardMaterial"
+      }
+    },
+    {
+      "car": "gt3rs",
+      "name": "TwiXeR_992_carbon_roof.001",
+      "source": {
+        "color": [
+          1,
+          1,
+          1
+        ],
+        "roughness": 0.1542831368628934,
+        "metalness": 1,
+        "transparent": false
+      },
+      "runtime": {
+        "role": "plastic",
+        "color": [
+          1,
+          1,
+          1
+        ],
+        "roughness": 0.46,
+        "metalness": 0,
+        "transparent": false,
+        "type": "MeshStandardMaterial"
+      }
+    }
+  ],
+  "fpsCounter": [
+    {
+      "inputFps": 60,
+      "reportedFps": 60,
+      "display": "60 FPS · 1280×720 · MSAA 4× · AO 2 · PHYS 0.00ms · 1 DRAWS · 1 TRI"
+    },
+    {
+      "inputFps": 30,
+      "reportedFps": 30,
+      "display": "30 FPS · 1280×720 · MSAA 4× · AO 0 · PHYS 0.00ms · 1 DRAWS · 1 TRI"
+    },
+    {
+      "inputFps": 20,
+      "reportedFps": 20,
+      "display": "20 FPS · 1280×720 · MSAA 4× · AO 0 · PHYS 0.00ms · 1 DRAWS · 1 TRI"
+    },
+    {
+      "inputFps": 10,
+      "reportedFps": 20,
+      "display": "20 FPS · 1280×720 · MSAA 4× · AO 2 · PHYS 0.00ms · 1 DRAWS · 1 TRI"
+    },
+    {
+      "inputFps": 5,
+      "reportedFps": 20,
+      "display": "20 FPS · 1280×720 · MSAA 4× · AO 2 · PHYS 0.00ms · 1 DRAWS · 1 TRI"
+    }
+  ],
+  "note": "Material source parameters come from real GLBs; textures are presence markers in this CPU test. FPS executes the source function with deterministic frame intervals. These checks reproduce behavior, not visual acceptance."
+}

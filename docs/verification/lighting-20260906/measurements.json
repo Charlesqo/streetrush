@@ -1,0 +1,5633 @@
+{
+  "dates": [
+    "2026-09-06",
+    "2026-09-07"
+  ],
+  "viewport": [
+    1280,
+    720
+  ],
+  "previewFps": 5,
+  "measurementFpsCap": null,
+  "warmupSeconds": 3,
+  "sampleSeconds": 12,
+  "note": "rows uses the latest six final-version samples. earlierRows preserves the earlier sweep before the final MeshPhysicalMaterial defines compatibility correction. Machine load and browser scheduling were not controlled; differences between sessions must not be attributed solely to code.",
+  "rows": [
+    {
+      "id": "mx5",
+      "name": "Mazda MX-5 NA",
+      "before": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 4.0828529029919655e-10,
+        "car": "mx5",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1799,
+          "mean": 6.674,
+          "p50": 6.6,
+          "p95": 8.2,
+          "p99": 8.8
+        },
+        "renderCpuMs": {
+          "samples": 1800,
+          "mean": 0.967,
+          "p50": 0.9,
+          "p95": 1.3,
+          "p99": 2.4
+        },
+        "gpuMs": {
+          "samples": 1799,
+          "mean": 2.507,
+          "p50": 2.469,
+          "p95": 2.864,
+          "p99": 3.058
+        },
+        "drawCalls": {
+          "samples": 1800,
+          "mean": 167,
+          "p50": 167,
+          "p95": 167,
+          "p99": 167
+        },
+        "triangles": {
+          "samples": 1800,
+          "mean": 183894,
+          "p50": 183894,
+          "p95": 183894,
+          "p99": 183894
+        },
+        "textures": 5,
+        "geometries": 56,
+        "materials": [
+          {
+            "name": "Material.015",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.555005806565371,
+            "metalness": 1
+          },
+          {
+            "name": "Material.014",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.8040408206,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.017",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.8042929062619704,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Material.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.40851315445463887,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.012",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "Material.013",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.010",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0.15314588159470777
+          },
+          {
+            "name": "Material.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "Material.005",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.008",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0.5240364445579411
+          },
+          {
+            "name": "Material.009",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      },
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 2.2867714136873046e-9,
+        "car": "mx5",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 664,
+          "mean": 18.022,
+          "p50": 14.6,
+          "p95": 33.5,
+          "p99": 68.8
+        },
+        "renderCpuMs": {
+          "samples": 665,
+          "mean": 2.291,
+          "p50": 2.2,
+          "p95": 4.3,
+          "p99": 6.5
+        },
+        "gpuMs": {
+          "samples": 662,
+          "mean": 7.712,
+          "p50": 5.241,
+          "p95": 18.082,
+          "p99": 25.213
+        },
+        "drawCalls": {
+          "samples": 665,
+          "mean": 99,
+          "p50": 99,
+          "p95": 99,
+          "p99": 99
+        },
+        "triangles": {
+          "samples": 665,
+          "mean": 94226,
+          "p50": 94226,
+          "p95": 94226,
+          "p99": 94226
+        },
+        "textures": 15,
+        "geometries": 58,
+        "materials": [
+          {
+            "name": "Material.015",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.555005806565371,
+            "metalness": 1
+          },
+          {
+            "name": "Material.014",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.86,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.017",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Material.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.65,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.012",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "Material.013",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.010",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Material.004",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Material.005",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.008",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Material.009",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "m3e30",
+      "name": "BMW M3 E30",
+      "before": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 8.243489324759157e-10,
+        "car": "m3e30",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1762,
+          "mean": 6.81,
+          "p50": 6.7,
+          "p95": 8.4,
+          "p99": 9.6
+        },
+        "renderCpuMs": {
+          "samples": 1763,
+          "mean": 1.177,
+          "p50": 1,
+          "p95": 2.1,
+          "p99": 2.3
+        },
+        "gpuMs": {
+          "samples": 1759,
+          "mean": 3.202,
+          "p50": 2.968,
+          "p95": 5.042,
+          "p99": 5.685
+        },
+        "drawCalls": {
+          "samples": 1763,
+          "mean": 170,
+          "p50": 170,
+          "p95": 170,
+          "p99": 170
+        },
+        "triangles": {
+          "samples": 1763,
+          "mean": 319378,
+          "p50": 319378,
+          "p95": 319378,
+          "p99": 319378
+        },
+        "textures": 23,
+        "geometries": 74,
+        "materials": [
+          {
+            "name": "BMW_E30_M3_PAINT",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.5,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_PLASTIC",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.26917773286235097,
+            "metalness": 0
+          },
+          {
+            "name": "BMW_E30_M3_CHROME",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.1621362952328781,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_WINDOWS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "BMW_E30_M3_BLACKOUT",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_SIDE_MIRROR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.206093,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_TAILLIGHT_REFLECTOR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.08,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_HEADLIGHT_REFLECTOR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.2125087364702771,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_EMBLEMS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.14954318492352833,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_LENS",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.14324662976885347,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0.9574982527059446
+          },
+          {
+            "name": "BMW_E30_M3_RIM",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_TIRE",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Brake_Disc",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "Brembo_Calipers",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Logo_Plane",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5,
+            "metalness": 0
+          },
+          {
+            "name": "",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.82,
+            "metalness": 0
+          },
+          {
+            "name": "",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.78
+          },
+          {
+            "name": "",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      },
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 5.28830296976668e-10,
+        "car": "m3e30",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 865,
+          "mean": 13.877,
+          "p50": 13.2,
+          "p95": 21.1,
+          "p99": 29.7
+        },
+        "renderCpuMs": {
+          "samples": 866,
+          "mean": 3.361,
+          "p50": 3.2,
+          "p95": 4.7,
+          "p99": 5.5
+        },
+        "gpuMs": {
+          "samples": 864,
+          "mean": 4.827,
+          "p50": 4.688,
+          "p95": 6.155,
+          "p99": 7.28
+        },
+        "drawCalls": {
+          "samples": 866,
+          "mean": 103,
+          "p50": 103,
+          "p95": 103,
+          "p99": 103
+        },
+        "triangles": {
+          "samples": 866,
+          "mean": 164053,
+          "p50": 164053,
+          "p95": 164053,
+          "p99": 164053
+        },
+        "textures": 33,
+        "geometries": 76,
+        "materials": [
+          {
+            "name": "BMW_E30_M3_PAINT",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_PLASTIC",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "BMW_E30_M3_CHROME",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "BMW_E30_M3_WINDOWS",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_BLACKOUT",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_SIDE_MIRROR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.206093,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_TAILLIGHT_REFLECTOR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.08,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_HEADLIGHT_REFLECTOR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.2125087364702771,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_EMBLEMS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.14954318492352833,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_LENS",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.14324662976885347,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_RIM",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_TIRE",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "Brake_Disc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Brembo_Calipers",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Logo_Plane",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5,
+            "metalness": 0
+          },
+          {
+            "name": "",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.82,
+            "metalness": 0
+          },
+          {
+            "name": "",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.78
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gt3rs",
+      "name": "Porsche GT3 RS",
+      "before": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 8.475855736955919e-11,
+        "car": "gt3rs",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1163,
+          "mean": 10.315,
+          "p50": 9.8,
+          "p95": 13.9,
+          "p99": 18.3
+        },
+        "renderCpuMs": {
+          "samples": 1164,
+          "mean": 3.842,
+          "p50": 3.8,
+          "p95": 4.9,
+          "p99": 5.5
+        },
+        "gpuMs": {
+          "samples": 1162,
+          "mean": 1.72,
+          "p50": 1.661,
+          "p95": 2.162,
+          "p99": 3.082
+        },
+        "drawCalls": {
+          "samples": 1164,
+          "mean": 190,
+          "p50": 190,
+          "p95": 190,
+          "p99": 190
+        },
+        "triangles": {
+          "samples": 1164,
+          "mean": 425117,
+          "p50": 425117,
+          "p95": 425117,
+          "p99": 425117
+        },
+        "textures": 36,
+        "geometries": 187,
+        "materials": [
+          {
+            "name": "Scene_-_Root.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4713139487880803,
+            "metalness": 0.43123940949153367
+          },
+          {
+            "name": "TwiXeR_992_GT3RS_black",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.1725689068766686,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_wheels_chrome_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.35538182399630047,
+            "metalness": 1
+          },
+          {
+            "name": "amdb11_misc_chrome.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9846223180802502,
+            "metalness": 0
+          },
+          {
+            "name": "amdb11_brake.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.16647365020541016,
+            "metalness": 0.7177164730406796
+          },
+          {
+            "name": "TwiXeR_992_metal_radiator.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "amdb11_caliper.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.11771159683534282,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_carPaint.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0.7542880130682302
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_carbon_roof.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.1542831368628934,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.2518072436030282,
+            "metalness": 0.608001852958028
+          },
+          {
+            "name": "TwiXeR_992_glass.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_symbols.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_antichrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_red.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0.7420974997257134
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0.5592397995879607
+          },
+          {
+            "name": "TwiXeR_992_carpet.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9960134485669943,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_speakers.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0.9127646865209493
+          },
+          {
+            "name": "TwiXeR_992_blackGlass.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0.821335836452073
+          },
+          {
+            "name": "TwiXeR_992_symbols_1.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9772687892320713,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_2",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rivet_001_747474FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9950304060020461,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_2",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.7470177871865296,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_seatbelt.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9890939809319808,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_plastic_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_chrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_exhausttip_antichrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_engine.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.008",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.22133096024673604,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.005",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.009",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.1725689068766686,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_Interior_D",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID06_stitch_001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.08114005680779224,
+            "metalness": 0.5836208262729943
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9606972568918656,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_carpet.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_symbols_6",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_1.003_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_glass.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_glass_int.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.011",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_chrome.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0.6567639063280954
+          },
+          {
+            "name": "TwiXeR_992_gauges_9000.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0.9188599431922078
+          },
+          {
+            "name": "TwiXeR_992_plastic.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_seat_leather.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8308566273725787,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID02_leather_MGL.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gps_screen.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_upper_leather.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_2.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_1.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_9000.001_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_dash_clock_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_chrome_2.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.42247443039826416,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.007",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.20304519023296075,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.18475942021918546,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_speakers.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9947238662151154,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_antichrome.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_taillight_running.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_brakelight_1.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_smooth.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_screen.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_led_lights.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.24571198693176977,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_headlight_high.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_seat_leather_2.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6114273872072753,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.2700930136168035,
+            "metalness": 0.4921919762041179
+          },
+          {
+            "name": "TwiXeR_992_symbols_3.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_carPaint.008",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9967897442867428,
+            "metalness": 0
+          },
+          {
+            "name": "",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      },
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 6.36568729745753e-10,
+        "car": "gt3rs",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 869,
+          "mean": 13.819,
+          "p50": 13.5,
+          "p95": 19.4,
+          "p99": 25.5
+        },
+        "renderCpuMs": {
+          "samples": 870,
+          "mean": 3.652,
+          "p50": 3.6,
+          "p95": 4.6,
+          "p99": 5.3
+        },
+        "gpuMs": {
+          "samples": 866,
+          "mean": 5.724,
+          "p50": 5.83,
+          "p95": 7.267,
+          "p99": 13.411
+        },
+        "drawCalls": {
+          "samples": 870,
+          "mean": 193,
+          "p50": 193,
+          "p95": 193,
+          "p99": 193
+        },
+        "triangles": {
+          "samples": 870,
+          "mean": 412372,
+          "p50": 412372,
+          "p95": 412372,
+          "p99": 412372
+        },
+        "textures": 28,
+        "geometries": 171,
+        "materials": [
+          {
+            "name": "Scene_-_Root.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4713139487880803,
+            "metalness": 0.43123940949153367
+          },
+          {
+            "name": "TwiXeR_992_GT3RS_black",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.1725689068766686,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_wheels_chrome_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "amdb11_misc_chrome.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "amdb11_brake.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.16647365020541016,
+            "metalness": 0.7177164730406796
+          },
+          {
+            "name": "TwiXeR_992_metal_radiator.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "amdb11_caliper.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.11771159683534282,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_carPaint.003",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.4,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_carbon_roof.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.2518072436030282,
+            "metalness": 0.608001852958028
+          },
+          {
+            "name": "TwiXeR_992_glass.002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_antichrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_red.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_carpet.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_speakers.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0.9127646865209493
+          },
+          {
+            "name": "TwiXeR_992_blackGlass.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_1.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_2",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rivet_001_747474FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9950304060020461,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_2",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.7470177871865296,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_seatbelt.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_plastic_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_gauges_chrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_exhausttip_antichrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_engine.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.008",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.005",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.009",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_Interior_D",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID06_stitch_001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.08114005680779224,
+            "metalness": 0.5836208262729943
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9606972568918656,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_carpet.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_6",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_1.003_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_glass.004",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_glass_int.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.011",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_chrome.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_gauges_9000.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0.9188599431922078
+          },
+          {
+            "name": "TwiXeR_992_plastic.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_seat_leather.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID02_leather_MGL.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_gps_screen.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_upper_leather.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_plastic_2.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_gauges_1.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_9000.001_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_dash_clock_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_chrome_2.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.007",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_speakers.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9947238662151154,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_antichrome.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_taillight_running.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_brakelight_1.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_smooth.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_gauges_screen.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_led_lights.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.24571198693176977,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_headlight_high.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_seat_leather_2.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_3.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_carPaint.008",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.4,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lp700",
+      "name": "Lamborghini LP700",
+      "before": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 7.492465283558402e-10,
+        "car": "lp700",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1777,
+          "mean": 6.756,
+          "p50": 6.6,
+          "p95": 8.2,
+          "p99": 9
+        },
+        "renderCpuMs": {
+          "samples": 1778,
+          "mean": 0.812,
+          "p50": 0.8,
+          "p95": 0.9,
+          "p99": 1.1
+        },
+        "gpuMs": {
+          "samples": 1777,
+          "mean": 1.13,
+          "p50": 1.118,
+          "p95": 1.481,
+          "p99": 1.641
+        },
+        "drawCalls": {
+          "samples": 1778,
+          "mean": 135,
+          "p50": 135,
+          "p95": 135,
+          "p99": 135
+        },
+        "triangles": {
+          "samples": 1778,
+          "mean": 236064,
+          "p50": 236064,
+          "p95": 236064,
+          "p99": 236064
+        },
+        "textures": 49,
+        "geometries": 240,
+        "materials": [
+          {
+            "name": "Disk",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9861314242816019,
+            "metalness": 0
+          },
+          {
+            "name": "Frein",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9953414108199156,
+            "metalness": 0
+          },
+          {
+            "name": "Jante",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9788134066224502,
+            "metalness": 0
+          },
+          {
+            "name": "Pneu",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9976272608275872,
+            "metalness": 0
+          },
+          {
+            "name": "Body",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.9271680058332403,
+            "metalness": 0,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Chrome",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9524078,
+            "metalness": 0
+          },
+          {
+            "name": "Compteur",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Dessous",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_blanc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9747977282158025,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_chrome",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9644005676798071,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_glass",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9589600881053577,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_orange",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9823427123811381,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_rouge",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9929801708897605,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_rouge_c",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9875923367199538,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_stop",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9929801708897605,
+            "metalness": 0
+          },
+          {
+            "name": "Grille",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9978235582621837,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9957647,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_LCD",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9961434199185778,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.992964675004,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_glass",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9444296094373992,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_signs",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9971715728752538,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_sol",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "LP_700",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9600693972236832,
+            "metalness": 0
+          },
+          {
+            "name": "Logo",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9886862915010153,
+            "metalness": 0
+          },
+          {
+            "name": "Logo_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.90698779708,
+            "metalness": 0
+          },
+          {
+            "name": "Metal_alu",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9425882,
+            "metalness": 0
+          },
+          {
+            "name": "Metal_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9866897613621994,
+            "metalness": 0
+          },
+          {
+            "name": "Miroir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9614001721858763,
+            "metalness": 0
+          },
+          {
+            "name": "Moteur",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9938847985296079,
+            "metalness": 0
+          },
+          {
+            "name": "Partie_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Phare",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9578620926955312,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_blanc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9747977282158025,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_optique",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.95906972608,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_vitre",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.97308848168,
+            "metalness": 0
+          },
+          {
+            "name": "Plastique_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9925129836951694,
+            "metalness": 0
+          },
+          {
+            "name": "Plastique_rouge",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9870441141907489,
+            "metalness": 0
+          },
+          {
+            "name": "Siege_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9898674820026703,
+            "metalness": 0
+          },
+          {
+            "name": "Siege_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9940456085992444,
+            "metalness": 0
+          },
+          {
+            "name": "Vitre",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.97471300312,
+            "metalness": 0
+          },
+          {
+            "name": "Vitre_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9971451,
+            "metalness": 0
+          },
+          {
+            "name": "",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      },
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 7.220951935720837e-10,
+        "car": "lp700",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 803,
+          "mean": 14.936,
+          "p50": 13.6,
+          "p95": 24.1,
+          "p99": 34.6
+        },
+        "renderCpuMs": {
+          "samples": 804,
+          "mean": 4.304,
+          "p50": 4.1,
+          "p95": 6.1,
+          "p99": 8
+        },
+        "gpuMs": {
+          "samples": 800,
+          "mean": 4.926,
+          "p50": 4.753,
+          "p95": 6.753,
+          "p99": 8.46
+        },
+        "drawCalls": {
+          "samples": 804,
+          "mean": 137,
+          "p50": 137,
+          "p95": 137,
+          "p99": 137
+        },
+        "triangles": {
+          "samples": 804,
+          "mean": 234526,
+          "p50": 234526,
+          "p95": 234526,
+          "p99": 234526
+        },
+        "textures": 41,
+        "geometries": 224,
+        "materials": [
+          {
+            "name": "Disk",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Frein",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9953414108199156,
+            "metalness": 0
+          },
+          {
+            "name": "Jante",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Pneu",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "Body",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Chrome",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Compteur",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Dessous",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_blanc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9747977282158025,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_chrome",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Feux_glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Feux_orange",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9823427123811381,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_rouge",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9929801708897605,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_rouge_c",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9875923367199538,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_stop",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9929801708897605,
+            "metalness": 0
+          },
+          {
+            "name": "Grille",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9978235582621837,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_LCD",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Interieur_signs",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_sol",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "LP_700",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9600693972236832,
+            "metalness": 0
+          },
+          {
+            "name": "Logo",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9886862915010153,
+            "metalness": 0
+          },
+          {
+            "name": "Logo_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.90698779708,
+            "metalness": 0
+          },
+          {
+            "name": "Metal_alu",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Metal_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Miroir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.07,
+            "metalness": 0.9
+          },
+          {
+            "name": "Moteur",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9938847985296079,
+            "metalness": 0
+          },
+          {
+            "name": "Partie_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Phare",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9578620926955312,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_blanc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9747977282158025,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_optique",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.95906972608,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_vitre",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Plastique_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Plastique_rouge",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Siege_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Siege_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Vitre",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Vitre_noir",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "amggt3",
+      "name": "Mercedes-AMG GT3",
+      "before": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 2.2427575055104488e-9,
+        "car": "amggt3",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1734,
+          "mean": 6.921,
+          "p50": 6.7,
+          "p95": 8.7,
+          "p99": 11.8
+        },
+        "renderCpuMs": {
+          "samples": 1735,
+          "mean": 1.159,
+          "p50": 0.9,
+          "p95": 2.6,
+          "p99": 3.2
+        },
+        "gpuMs": {
+          "samples": 1733,
+          "mean": 1.486,
+          "p50": 1.485,
+          "p95": 1.825,
+          "p99": 2.004
+        },
+        "drawCalls": {
+          "samples": 1735,
+          "mean": 132,
+          "p50": 132,
+          "p95": 132,
+          "p99": 132
+        },
+        "triangles": {
+          "samples": 1735,
+          "mean": 362466,
+          "p50": 362466,
+          "p95": 362466,
+          "p99": 362466
+        },
+        "textures": 85,
+        "geometries": 292,
+        "materials": [
+          {
+            "name": "AUX_LIGHT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "NUMBERPLATE_2018_EMISSIVE_PRO",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "PISTON",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.2605722226962977,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst_0",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.24838170935378087,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Details",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4860967195328595,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Disc",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.17523862929867975,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Banner",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.5165730028891516,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Rear",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.17523862929867975,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Glass_Emissive_Rear",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "PaletteMaterial002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Wing_Metal",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8579073764796235,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Headlight_Glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.957705,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Front",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Front_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.06552400921602808,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Carbon",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5287635162316685,
+            "metalness": 1
+          },
+          {
+            "name": "Lumirank",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.22400068266874718,
+            "metalness": 0.894478916507174
+          },
+          {
+            "name": "INT_Seat",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6019065962867696,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Occlusion_Inst",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "INT_LED",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "INT_ELECTRONICS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.3946678694639831,
+            "metalness": 0.7847642964245224
+          },
+          {
+            "name": "INT_DECALS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Dash_Alcantara",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.851812119808365,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Carbon",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.32152478940888196,
+            "metalness": 1
+          },
+          {
+            "name": "INT_NET",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5348587729029269,
+            "metalness": 0.5836208262729943
+          },
+          {
+            "name": "MI_INT_Glass",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5836208262729943,
+            "metalness": 1
+          },
+          {
+            "name": "INT_LED_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LED_INT_LIMITER",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "MIRROR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Steer",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5775255696017358,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Steer_Alcantara",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6384781363143202,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Steer_Buttons",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5226682595604101,
+            "metalness": 0.5043824895466348
+          },
+          {
+            "name": "Material_350",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "RPM_Overlay",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_LTS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0.8152405797808145
+          },
+          {
+            "name": "LCD_RTS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_LIGHT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4739062061903426,
+            "metalness": 1
+          },
+          {
+            "name": "LCD_TC",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_OVERLAY",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_FUEL",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.30933427606636515,
+            "metalness": 1
+          },
+          {
+            "name": "LCD_PIT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5043824895466348,
+            "metalness": 1
+          },
+          {
+            "name": "BELT_Schroth",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.3946678694639831,
+            "metalness": 0.821335836452073
+          },
+          {
+            "name": "RL_PIT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst_1",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.2544769660250393,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Detail_Screws",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4190488961490168,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Auxlight",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "Details_door",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "amg_gt3_tyres",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5043824895466348,
+            "metalness": 1
+          },
+          {
+            "name": "PaletteMaterial003",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "amg_gt3_rims_blur",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      },
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 2.2594233710163384e-10,
+        "car": "amggt3",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 734,
+          "mean": 16.385,
+          "p50": 13.9,
+          "p95": 29.5,
+          "p99": 57.7
+        },
+        "renderCpuMs": {
+          "samples": 735,
+          "mean": 5.064,
+          "p50": 4.8,
+          "p95": 7.3,
+          "p99": 10.4
+        },
+        "gpuMs": {
+          "samples": 733,
+          "mean": 4.887,
+          "p50": 4.527,
+          "p95": 6.934,
+          "p99": 11.354
+        },
+        "drawCalls": {
+          "samples": 735,
+          "mean": 136,
+          "p50": 136,
+          "p95": 136,
+          "p99": 136
+        },
+        "triangles": {
+          "samples": 735,
+          "mean": 358587,
+          "p50": 358587,
+          "p95": 358587,
+          "p99": 358587
+        },
+        "textures": 51,
+        "geometries": 110,
+        "materials": [
+          {
+            "name": "AUX_LIGHT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "NUMBERPLATE_2018_EMISSIVE_PRO",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "PISTON",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst_0",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Details",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4860967195328595,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Disc",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Banner",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.5165730028891516,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Rear",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.17523862929867975,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Glass_Emissive_Rear",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Wing_Metal",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "EXT_Headlight_Glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Front",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Front_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.06552400921602808,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Carbon",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "Lumirank",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.22400068266874718,
+            "metalness": 0.894478916507174
+          },
+          {
+            "name": "INT_Seat",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "INT_Occlusion_Inst",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "INT_LED",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "INT_ELECTRONICS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.3946678694639831,
+            "metalness": 0.7847642964245224
+          },
+          {
+            "name": "INT_DECALS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Dash_Alcantara",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "INT_Carbon",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "INT_NET",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5348587729029269,
+            "metalness": 0.5836208262729943
+          },
+          {
+            "name": "MI_INT_Glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "INT_LED_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LED_INT_LIMITER",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "MIRROR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Steer",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5775255696017358,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Steer_Alcantara",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "INT_Steer_Buttons",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5226682595604101,
+            "metalness": 0.5043824895466348
+          },
+          {
+            "name": "Material_350",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "RPM_Overlay",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_LTS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0.8152405797808145
+          },
+          {
+            "name": "LCD_RTS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_LIGHT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4739062061903426,
+            "metalness": 1
+          },
+          {
+            "name": "LCD_TC",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_OVERLAY",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_FUEL",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.30933427606636515,
+            "metalness": 1
+          },
+          {
+            "name": "LCD_PIT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5043824895466348,
+            "metalness": 1
+          },
+          {
+            "name": "BELT_Schroth",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.3946678694639831,
+            "metalness": 0.821335836452073
+          },
+          {
+            "name": "RL_PIT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst_1",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Detail_Screws",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4190488961490168,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Auxlight",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "Details_door",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "amg_gt3_tyres",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "PaletteMaterial003",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "amg_gt3_rims_blur",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "m5g90",
+      "name": "BMW M5 G90",
+      "before": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 1.1485725382933287e-9,
+        "car": "m5g90",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1799,
+          "mean": 6.672,
+          "p50": 6.6,
+          "p95": 8.4,
+          "p99": 9.1
+        },
+        "renderCpuMs": {
+          "samples": 1800,
+          "mean": 0.803,
+          "p50": 0.8,
+          "p95": 1,
+          "p99": 1.3
+        },
+        "gpuMs": {
+          "samples": 1798,
+          "mean": 1.562,
+          "p50": 1.545,
+          "p95": 1.825,
+          "p99": 1.996
+        },
+        "drawCalls": {
+          "samples": 1800,
+          "mean": 104,
+          "p50": 104,
+          "p95": 104,
+          "p99": 104
+        },
+        "triangles": {
+          "samples": 1800,
+          "mean": 869075,
+          "p50": 869075,
+          "p95": 869075,
+          "p99": 869075
+        },
+        "textures": 99,
+        "geometries": 321,
+        "materials": [
+          {
+            "name": "PaletteMaterial001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0.894478916507174,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial003",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_M5SedanRewardRecycled_2024BadgeA_Material",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.27276273603881457,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial004",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial005",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.024",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.5287635162316685,
+            "metalness": 1,
+            "clearcoat": 0.1630481159561629,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial006",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.020",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "PaletteMaterial007",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.023",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.022",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "window",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "int_misc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "Details",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "plastic_smooth_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "bmw_badge_003_bmw_badge_003_diff",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.236191196011264,
+            "metalness": 1
+          },
+          {
+            "name": "paint_matteblack_040404FF",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "plastic_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "screw_017_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "Material_28",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Brake_Disk",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.26666747936755614,
+            "metalness": 0.5348587729029269
+          },
+          {
+            "name": "Material_25",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.41295363947775837,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "paint_orange_D72A03FF",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.29104850605258986,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "metalicpaint_lightsilver_CDCDD3FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4007631261352415,
+            "metalness": 1
+          },
+          {
+            "name": "CSR2_Grille2",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 0,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "material_9",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 1
+          },
+          {
+            "name": "",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      },
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 5.567909716334076e-10,
+        "car": "m5g90",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 677,
+          "mean": 17.708,
+          "p50": 17,
+          "p95": 28,
+          "p99": 34.5
+        },
+        "renderCpuMs": {
+          "samples": 678,
+          "mean": 4.151,
+          "p50": 4.1,
+          "p95": 5.7,
+          "p99": 6.7
+        },
+        "gpuMs": {
+          "samples": 674,
+          "mean": 7.456,
+          "p50": 6.598,
+          "p95": 12.071,
+          "p99": 13.324
+        },
+        "drawCalls": {
+          "samples": 678,
+          "mean": 110,
+          "p50": 110,
+          "p95": 110,
+          "p99": 110
+        },
+        "triangles": {
+          "samples": 678,
+          "mean": 869092,
+          "p50": 869092,
+          "p95": 869092,
+          "p99": 869092
+        },
+        "textures": 65,
+        "geometries": 139,
+        "materials": [
+          {
+            "name": "PaletteMaterial001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0.894478916507174,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial003",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_M5SedanRewardRecycled_2024BadgeA_Material",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.27276273603881457,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial004",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial005",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.024",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.46,
+            "metalness": 0,
+            "clearcoat": 0.25,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial006",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.020",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "PaletteMaterial007",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.023",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.022",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "window",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "int_misc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "Details",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "plastic_smooth_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "bmw_badge_003_bmw_badge_003_diff",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.236191196011264,
+            "metalness": 1
+          },
+          {
+            "name": "paint_matteblack_040404FF",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "plastic_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "screw_017_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "Material_28",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Brake_Disk",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Material_25",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.41295363947775837,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "paint_orange_D72A03FF",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.4,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "metalicpaint_lightsilver_CDCDD3FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4007631261352415,
+            "metalness": 1
+          },
+          {
+            "name": "CSR2_Grille2",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 0,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "material_9",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 1
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    }
+  ],
+  "earlierRows": [
+    {
+      "id": "mx5",
+      "name": "Mazda MX-5 NA",
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 8.765242329574509e-10,
+        "car": "mx5",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1799,
+          "mean": 6.673,
+          "p50": 6.6,
+          "p95": 7.5,
+          "p99": 8.1
+        },
+        "renderCpuMs": {
+          "samples": 1800,
+          "mean": 0.463,
+          "p50": 0.5,
+          "p95": 0.6,
+          "p99": 0.7
+        },
+        "gpuMs": {
+          "samples": 1799,
+          "mean": 2.568,
+          "p50": 2.5,
+          "p95": 2.947,
+          "p99": 3.073
+        },
+        "drawCalls": {
+          "samples": 1800,
+          "mean": 99,
+          "p50": 99,
+          "p95": 99,
+          "p99": 99
+        },
+        "triangles": {
+          "samples": 1800,
+          "mean": 94226,
+          "p50": 94226,
+          "p95": 94226,
+          "p99": 94226
+        },
+        "textures": 15,
+        "geometries": 58,
+        "materials": [
+          {
+            "name": "Material.015",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.555005806565371,
+            "metalness": 1
+          },
+          {
+            "name": "Material.014",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.86,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.017",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Material.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.65,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.012",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "Material.013",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.010",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Material.004",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Material.005",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Material.008",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Material.009",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "m3e30",
+      "name": "BMW M3 E30",
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 1.6187487067445028e-10,
+        "car": "m3e30",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1798,
+          "mean": 6.673,
+          "p50": 6.7,
+          "p95": 7.5,
+          "p99": 8
+        },
+        "renderCpuMs": {
+          "samples": 1799,
+          "mean": 0.544,
+          "p50": 0.5,
+          "p95": 0.7,
+          "p99": 0.8
+        },
+        "gpuMs": {
+          "samples": 1798,
+          "mean": 2.777,
+          "p50": 2.784,
+          "p95": 3.13,
+          "p99": 3.253
+        },
+        "drawCalls": {
+          "samples": 1799,
+          "mean": 103,
+          "p50": 103,
+          "p95": 103,
+          "p99": 103
+        },
+        "triangles": {
+          "samples": 1799,
+          "mean": 164053,
+          "p50": 164053,
+          "p95": 164053,
+          "p99": 164053
+        },
+        "textures": 33,
+        "geometries": 76,
+        "materials": [
+          {
+            "name": "BMW_E30_M3_PAINT",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_PLASTIC",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "BMW_E30_M3_CHROME",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "BMW_E30_M3_WINDOWS",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_BLACKOUT",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_SIDE_MIRROR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.206093,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_TAILLIGHT_REFLECTOR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.08,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_HEADLIGHT_REFLECTOR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.2125087364702771,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_EMBLEMS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.14954318492352833,
+            "metalness": 1
+          },
+          {
+            "name": "BMW_E30_M3_LENS",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.14324662976885347,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_RIM",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_E30_M3_TIRE",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "Brake_Disc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Brembo_Calipers",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Logo_Plane",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5,
+            "metalness": 0
+          },
+          {
+            "name": "",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.82,
+            "metalness": 0
+          },
+          {
+            "name": "",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.78
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gt3rs",
+      "name": "Porsche GT3 RS",
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 1.9911263643404407e-10,
+        "car": "gt3rs",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1749,
+          "mean": 6.86,
+          "p50": 6.7,
+          "p95": 7.8,
+          "p99": 10.9
+        },
+        "renderCpuMs": {
+          "samples": 1750,
+          "mean": 0.915,
+          "p50": 0.9,
+          "p95": 1.3,
+          "p99": 1.5
+        },
+        "gpuMs": {
+          "samples": 1749,
+          "mean": 3.501,
+          "p50": 3.103,
+          "p95": 5.507,
+          "p99": 7.319
+        },
+        "drawCalls": {
+          "samples": 1750,
+          "mean": 193,
+          "p50": 193,
+          "p95": 193,
+          "p99": 193
+        },
+        "triangles": {
+          "samples": 1750,
+          "mean": 412372,
+          "p50": 412372,
+          "p95": 412372,
+          "p99": 412372
+        },
+        "textures": 46,
+        "geometries": 189,
+        "materials": [
+          {
+            "name": "Scene_-_Root.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4713139487880803,
+            "metalness": 0.43123940949153367
+          },
+          {
+            "name": "TwiXeR_992_GT3RS_black",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.1725689068766686,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_wheels_chrome_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "amdb11_misc_chrome.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "amdb11_brake.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.16647365020541016,
+            "metalness": 0.7177164730406796
+          },
+          {
+            "name": "TwiXeR_992_metal_radiator.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "amdb11_caliper.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.11771159683534282,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl_060606FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_carPaint.003",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.4,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_carbon_roof.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.2518072436030282,
+            "metalness": 0.608001852958028
+          },
+          {
+            "name": "TwiXeR_992_glass.002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_antichrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_red.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_carpet.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_speakers.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0.9127646865209493
+          },
+          {
+            "name": "TwiXeR_992_blackGlass.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_1.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_1",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols.004_2",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rivet_001_747474FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9950304060020461,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_headlight_1.001_2",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.7470177871865296,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_seatbelt.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_plastic_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_gauges_chrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_exhausttip_antichrome.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002_FFFFFFFF.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_engine.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.008",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.005",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001vents_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.009",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_Interior_D",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID06_stitch_001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.08114005680779224,
+            "metalness": 0.5836208262729943
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001_111111FF.005",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9606972568918656,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_carpet.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID01_plastic_lgl_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_6",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_1.003_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.8211145618000169,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_glass.004",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_glass_int.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mglshifterassy_a_2.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_rubbertrim.011",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_chrome.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_gauges_9000.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001_111111FF.006",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0.9188599431922078
+          },
+          {
+            "name": "TwiXeR_992_plastic.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID03_stitch_001vents_a.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001shifterassy_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002centerconsolestructure_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mglvents_a.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_seat_leather.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID02_leather_MGL.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_gps_screen.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_upper_leather.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_plastic_2.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_gauges_1.003",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_9000.001_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_dash_clock_1.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_gauges_chrome_2.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_int_chrome.007",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl_060606FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID09_rubbertrim_FFFFFFFF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID04_plastic_textured_001_060606FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mgl_171717FF.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_speakers.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9947238662151154,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_antichrome.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "TwiXeR_992_taillight_running.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_brakelight_1.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_plastic_smooth.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_gauges_screen.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_led_lights.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.24571198693176977,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_headlight_high.001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "TwiXeR_992_plastic_mgl.002",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_seat_leather_2.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID05_leather_coarse_mgl_FFFFFFFF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_ID08_fabric_002_B60000FF.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "TwiXeR_992_symbols_3.001",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "TwiXeR_992_carPaint.008",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.4,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "lp700",
+      "name": "Lamborghini LP700",
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 7.43521184056784e-10,
+        "car": "lp700",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1796,
+          "mean": 6.681,
+          "p50": 6.7,
+          "p95": 7.7,
+          "p99": 8.2
+        },
+        "renderCpuMs": {
+          "samples": 1797,
+          "mean": 1.064,
+          "p50": 1.1,
+          "p95": 1.3,
+          "p99": 1.4
+        },
+        "gpuMs": {
+          "samples": 1796,
+          "mean": 3.066,
+          "p50": 3.028,
+          "p95": 3.45,
+          "p99": 3.983
+        },
+        "drawCalls": {
+          "samples": 1797,
+          "mean": 137,
+          "p50": 137,
+          "p95": 137,
+          "p99": 137
+        },
+        "triangles": {
+          "samples": 1797,
+          "mean": 234526,
+          "p50": 234526,
+          "p95": 234526,
+          "p99": 234526
+        },
+        "textures": 59,
+        "geometries": 242,
+        "materials": [
+          {
+            "name": "Disk",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Frein",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9953414108199156,
+            "metalness": 0
+          },
+          {
+            "name": "Jante",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Pneu",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "Body",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "Chrome",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Compteur",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Dessous",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_blanc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9747977282158025,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_chrome",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Feux_glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Feux_orange",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9823427123811381,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_rouge",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9929801708897605,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_rouge_c",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9875923367199538,
+            "metalness": 0
+          },
+          {
+            "name": "Feux_stop",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9929801708897605,
+            "metalness": 0
+          },
+          {
+            "name": "Grille",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9978235582621837,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_LCD",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Interieur_signs",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Interieur_sol",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "LP_700",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9600693972236832,
+            "metalness": 0
+          },
+          {
+            "name": "Logo",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9886862915010153,
+            "metalness": 0
+          },
+          {
+            "name": "Logo_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.90698779708,
+            "metalness": 0
+          },
+          {
+            "name": "Metal_alu",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Metal_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Miroir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.07,
+            "metalness": 0.9
+          },
+          {
+            "name": "Moteur",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9938847985296079,
+            "metalness": 0
+          },
+          {
+            "name": "Partie_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 0
+          },
+          {
+            "name": "Phare",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9578620926955312,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_blanc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.9747977282158025,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_optique",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.95906972608,
+            "metalness": 0
+          },
+          {
+            "name": "Phare_vitre",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Plastique_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Plastique_rouge",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Siege_color",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Siege_noir",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "Vitre",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "Vitre_noir",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "amggt3",
+      "name": "Mercedes-AMG GT3",
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 1.7942285763580094e-9,
+        "car": "amggt3",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1599,
+          "mean": 7.505,
+          "p50": 7.3,
+          "p95": 9.8,
+          "p99": 11.2
+        },
+        "renderCpuMs": {
+          "samples": 1600,
+          "mean": 1.688,
+          "p50": 1.6,
+          "p95": 2.3,
+          "p99": 2.6
+        },
+        "gpuMs": {
+          "samples": 1596,
+          "mean": 3.417,
+          "p50": 3.315,
+          "p95": 4.032,
+          "p99": 4.459
+        },
+        "drawCalls": {
+          "samples": 1600,
+          "mean": 136,
+          "p50": 136,
+          "p95": 136,
+          "p99": 136
+        },
+        "triangles": {
+          "samples": 1600,
+          "mean": 358587,
+          "p50": 358587,
+          "p95": 358587,
+          "p99": 358587
+        },
+        "textures": 95,
+        "geometries": 294,
+        "materials": [
+          {
+            "name": "AUX_LIGHT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "NUMBERPLATE_2018_EMISSIVE_PRO",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "PISTON",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst_0",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial001",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Details",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4860967195328595,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Disc",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Banner",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.5165730028891516,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Rear",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.17523862929867975,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Glass_Emissive_Rear",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Wing_Metal",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "EXT_Headlight_Glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Front",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Emissive_Light_Front_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.06552400921602808,
+            "metalness": 1
+          },
+          {
+            "name": "EXT_Carbon",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "Lumirank",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.22400068266874718,
+            "metalness": 0.894478916507174
+          },
+          {
+            "name": "INT_Seat",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "INT_Occlusion_Inst",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "INT_LED",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "INT_ELECTRONICS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.3946678694639831,
+            "metalness": 0.7847642964245224
+          },
+          {
+            "name": "INT_DECALS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Dash_Alcantara",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "INT_Carbon",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "INT_NET",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5348587729029269,
+            "metalness": 0.5836208262729943
+          },
+          {
+            "name": "MI_INT_Glass",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "INT_LED_0",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LED_INT_LIMITER",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 1
+          },
+          {
+            "name": "MIRROR",
+            "type": "MeshStandardMaterial",
+            "roughness": 0,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Steer",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5775255696017358,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Steer_Alcantara",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "INT_Steer_Buttons",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5226682595604101,
+            "metalness": 0.5043824895466348
+          },
+          {
+            "name": "Material_350",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "RPM_Overlay",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_LTS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0.8152405797808145
+          },
+          {
+            "name": "LCD_RTS",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_LIGHT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4739062061903426,
+            "metalness": 1
+          },
+          {
+            "name": "LCD_TC",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_OVERLAY",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "LCD_FUEL",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.30933427606636515,
+            "metalness": 1
+          },
+          {
+            "name": "LCD_PIT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.5043824895466348,
+            "metalness": 1
+          },
+          {
+            "name": "BELT_Schroth",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.3946678694639831,
+            "metalness": 0.821335836452073
+          },
+          {
+            "name": "RL_PIT",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "EXT_Carpaint_Inst_1",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.12,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "EXT_Detail_Screws",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4190488961490168,
+            "metalness": 1
+          },
+          {
+            "name": "INT_Auxlight",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "Details_door",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.957705,
+            "metalness": 0
+          },
+          {
+            "name": "amg_gt3_tyres",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.86,
+            "metalness": 0
+          },
+          {
+            "name": "PaletteMaterial003",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "amg_gt3_rims_blur",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    },
+    {
+      "id": "m5g90",
+      "name": "BMW M5 G90",
+      "after": {
+        "frameRateCap": null,
+        "previewFrameRateCap": 5,
+        "driving": false,
+        "speedKmh": 1.6637200472326457e-9,
+        "car": "m5g90",
+        "source": "gltf",
+        "state": "race",
+        "view": "chase",
+        "resolution": [
+          1280,
+          720
+        ],
+        "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        "frameMs": {
+          "samples": 1470,
+          "mean": 8.164,
+          "p50": 7.7,
+          "p95": 12.7,
+          "p99": 15.5
+        },
+        "renderCpuMs": {
+          "samples": 1471,
+          "mean": 1.01,
+          "p50": 1,
+          "p95": 1.7,
+          "p99": 2
+        },
+        "gpuMs": {
+          "samples": 1467,
+          "mean": 4.971,
+          "p50": 4.638,
+          "p95": 9.31,
+          "p99": 11.559
+        },
+        "drawCalls": {
+          "samples": 1471,
+          "mean": 110,
+          "p50": 110,
+          "p95": 110,
+          "p99": 110
+        },
+        "triangles": {
+          "samples": 1471,
+          "mean": 869092,
+          "p50": 869092,
+          "p95": 869092,
+          "p99": 869092
+        },
+        "textures": 109,
+        "geometries": 323,
+        "materials": [
+          {
+            "name": "PaletteMaterial001",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial002",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0.894478916507174,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial003",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "BMW_M5SedanRewardRecycled_2024BadgeA_Material",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.27276273603881457,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial004",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial005",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.024",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.46,
+            "metalness": 0,
+            "clearcoat": 0.25,
+            "transmission": 0
+          },
+          {
+            "name": "PaletteMaterial006",
+            "type": "MeshStandardMaterial",
+            "roughness": 1,
+            "metalness": 1
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.020",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "PaletteMaterial007",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 1,
+            "metalness": 1,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.023",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.004",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "MAT_CarbonFiberMatte.022",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.46,
+            "metalness": 0
+          },
+          {
+            "name": "window",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.09,
+            "metalness": 0,
+            "clearcoat": 0.65,
+            "transmission": 0
+          },
+          {
+            "name": "int_misc",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "Details",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "plastic_smooth_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "bmw_badge_003_bmw_badge_003_diff",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.236191196011264,
+            "metalness": 1
+          },
+          {
+            "name": "paint_matteblack_040404FF",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "plastic_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.65,
+            "metalness": 0
+          },
+          {
+            "name": "screw_017_010101FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 0
+          },
+          {
+            "name": "Material_28",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 0,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "Brake_Disk",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.28,
+            "metalness": 0.9
+          },
+          {
+            "name": "Material_25",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.41295363947775837,
+            "metalness": 1,
+            "clearcoat": 0,
+            "transmission": 0
+          },
+          {
+            "name": "paint_orange_D72A03FF",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.3,
+            "metalness": 0.4,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "metalicpaint_lightsilver_CDCDD3FF",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.4007631261352415,
+            "metalness": 1
+          },
+          {
+            "name": "CSR2_Grille2",
+            "type": "MeshPhysicalMaterial",
+            "roughness": 0.6,
+            "metalness": 0,
+            "clearcoat": 1,
+            "transmission": 0
+          },
+          {
+            "name": "material_9",
+            "type": "MeshStandardMaterial",
+            "roughness": 0.6,
+            "metalness": 1
+          },
+          {
+            "name": "soft-contact-occlusion",
+            "type": "MeshBasicMaterial"
+          }
+        ]
+      }
+    }
+  ]
+}

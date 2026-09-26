@@ -1,0 +1,384 @@
+{
+  "frameRateCap": null,
+  "previewFrameRateCap": 5,
+  "driving": false,
+  "speedKmh": 2.2594233710163384e-10,
+  "car": "amggt3",
+  "source": "gltf",
+  "state": "race",
+  "view": "chase",
+  "resolution": [
+    1280,
+    720
+  ],
+  "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "frameMs": {
+    "samples": 734,
+    "mean": 16.385,
+    "p50": 13.9,
+    "p95": 29.5,
+    "p99": 57.7
+  },
+  "renderCpuMs": {
+    "samples": 735,
+    "mean": 5.064,
+    "p50": 4.8,
+    "p95": 7.3,
+    "p99": 10.4
+  },
+  "gpuMs": {
+    "samples": 733,
+    "mean": 4.887,
+    "p50": 4.527,
+    "p95": 6.934,
+    "p99": 11.354
+  },
+  "drawCalls": {
+    "samples": 735,
+    "mean": 136,
+    "p50": 136,
+    "p95": 136,
+    "p99": 136
+  },
+  "triangles": {
+    "samples": 735,
+    "mean": 358587,
+    "p50": 358587,
+    "p95": 358587,
+    "p99": 358587
+  },
+  "textures": 51,
+  "geometries": 110,
+  "materials": [
+    {
+      "name": "AUX_LIGHT",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 1
+    },
+    {
+      "name": "NUMBERPLATE_2018_EMISSIVE_PRO",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 1
+    },
+    {
+      "name": "PISTON",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "EXT_Carpaint_Inst",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.3,
+      "metalness": 0.12,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "EXT_Carpaint_Inst_0",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.3,
+      "metalness": 0.12,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "PaletteMaterial001",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 1
+    },
+    {
+      "name": "EXT_Details",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.4860967195328595,
+      "metalness": 1
+    },
+    {
+      "name": "EXT_Disc",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "EXT_Banner",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.5165730028891516,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "EXT_Emissive_Light_Rear",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.17523862929867975,
+      "metalness": 1
+    },
+    {
+      "name": "EXT_Glass_Emissive_Rear",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "PaletteMaterial002",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "EXT_Wing_Metal",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.28,
+      "metalness": 0.9
+    },
+    {
+      "name": "EXT_Headlight_Glass",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "EXT_Emissive_Light_Front",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "EXT_Emissive_Light_Front_0",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.06552400921602808,
+      "metalness": 1
+    },
+    {
+      "name": "EXT_Carbon",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.46,
+      "metalness": 0
+    },
+    {
+      "name": "Lumirank",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.22400068266874718,
+      "metalness": 0.894478916507174
+    },
+    {
+      "name": "INT_Seat",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "INT_Occlusion_Inst",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 1
+    },
+    {
+      "name": "INT_LED",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "INT_ELECTRONICS",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.3946678694639831,
+      "metalness": 0.7847642964245224
+    },
+    {
+      "name": "INT_DECALS",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 1
+    },
+    {
+      "name": "INT_Dash_Alcantara",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "INT_Carbon",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.46,
+      "metalness": 0
+    },
+    {
+      "name": "INT_NET",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.5348587729029269,
+      "metalness": 0.5836208262729943
+    },
+    {
+      "name": "MI_INT_Glass",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.09,
+      "metalness": 0,
+      "clearcoat": 0.65,
+      "transmission": 0
+    },
+    {
+      "name": "INT_LED_0",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "LED_INT_LIMITER",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 1
+    },
+    {
+      "name": "MIRROR",
+      "type": "MeshStandardMaterial",
+      "roughness": 0,
+      "metalness": 1
+    },
+    {
+      "name": "INT_Steer",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.5775255696017358,
+      "metalness": 1
+    },
+    {
+      "name": "INT_Steer_Alcantara",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.65,
+      "metalness": 0
+    },
+    {
+      "name": "INT_Steer_Buttons",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.5226682595604101,
+      "metalness": 0.5043824895466348
+    },
+    {
+      "name": "Material_350",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "RPM_Overlay",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "LCD_LTS",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0.8152405797808145
+    },
+    {
+      "name": "LCD_RTS",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "LCD_LIGHT",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.4739062061903426,
+      "metalness": 1
+    },
+    {
+      "name": "LCD_TC",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "LCD_OVERLAY",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "LCD_FUEL",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.30933427606636515,
+      "metalness": 1
+    },
+    {
+      "name": "LCD_PIT",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.5043824895466348,
+      "metalness": 1
+    },
+    {
+      "name": "BELT_Schroth",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.3946678694639831,
+      "metalness": 0.821335836452073
+    },
+    {
+      "name": "RL_PIT",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "EXT_Carpaint_Inst_1",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 0.3,
+      "metalness": 0.12,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "EXT_Detail_Screws",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.4190488961490168,
+      "metalness": 1
+    },
+    {
+      "name": "INT_Auxlight",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "Details_door",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.957705,
+      "metalness": 0
+    },
+    {
+      "name": "amg_gt3_tyres",
+      "type": "MeshStandardMaterial",
+      "roughness": 0.86,
+      "metalness": 0
+    },
+    {
+      "name": "PaletteMaterial003",
+      "type": "MeshPhysicalMaterial",
+      "roughness": 1,
+      "metalness": 1,
+      "clearcoat": 1,
+      "transmission": 0
+    },
+    {
+      "name": "amg_gt3_rims_blur",
+      "type": "MeshStandardMaterial",
+      "roughness": 1,
+      "metalness": 1
+    },
+    {
+      "name": "soft-contact-occlusion",
+      "type": "MeshBasicMaterial"
+    }
+  ]
+}

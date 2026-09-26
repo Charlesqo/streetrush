@@ -1,0 +1,17 @@
+{
+  "variant": "retain-bias",
+  "scope": "Fresh flat-plane GT3RS scenario approximating recorded speed, braking and tap timings; NOT exact state replay or a proposed physics fix.",
+  "samples": 2542,
+  "sourceUnchanged": true,
+  "brakeEntrySpeed": 213.82260615525973,
+  "preTap": {
+    "speed": 156.78609485016847,
+    "yaw": 0.00004014243677374907
+  },
+  "maxBeta": 74.92430012220585,
+  "maxYaw": 0.8298645615577698,
+  "minRearLoad": 0,
+  "firstRearZeroTime": 2.2249999999999996,
+  "finalSpeed": 12.093058624111643,
+  "reset": null
+}

@@ -1,0 +1,136 @@
+{
+  "asset_id": "leafy_grass",
+  "title": "Leafy Grass",
+  "source_url": "https://polyhaven.com/a/leafy_grass",
+  "license": {
+    "name": "CC0-1.0",
+    "url": "https://polyhaven.com/license",
+    "asset_page_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "evidence_file": "sources/pbr/region/leafy_grass/polyhaven-license.html",
+    "evidence_sha256": "0c027ff13cb095a3f9c6de523363bba336c6f478790fa37c3f46d4a2768b8017"
+  },
+  "api": {
+    "info_url": "https://api.polyhaven.com/info/leafy_grass",
+    "files_url": "https://api.polyhaven.com/files/leafy_grass",
+    "info_metadata": "sources/pbr/region/leafy_grass/polyhaven-leafy_grass-info.json",
+    "info_metadata_sha256": "6ca1703a50334cacd60e72e4007e31b73fa8c738c41067a30ebb811ccdf7af43",
+    "files_metadata": "sources/pbr/region/leafy_grass/polyhaven-leafy_grass-files.json",
+    "files_metadata_sha256": "705daf71157e399391d094d14cd9e932d5c337bb2c3044bb91823145162afc83"
+  },
+  "asset_metadata": {
+    "authors": {
+      "Charlotte Baglioni": "All"
+    },
+    "dimensions_api_raw": [
+      2000,
+      2000
+    ],
+    "dimensions_api_unit": "millimeters (Poly Haven API schema)",
+    "physical_scale_m": [
+      2.0,
+      2.0
+    ],
+    "physical_scale_note": "API dimensions converted from millimeters to meters; this is a 2.0 m x 2.0 m texture tiling starting point.",
+    "max_resolution_api_raw": [
+      8192,
+      8192
+    ],
+    "files_hash": "90fd49a21ddface404d32d9956c3a9f3ca8e0679",
+    "description": "Free 8K leafy grass texture: trampled green blades with scattered brown leaves and twigs, low-relief rough soil surface with a natural matte finish.",
+    "category": "Ground & Terrain/Grass & Vegetation/Lush & Green Grass",
+    "attributes": {
+      "surface_use": "ground",
+      "origin": "natural",
+      "setting": "outdoor"
+    }
+  },
+  "acquisition": {
+    "acquired_date": "2026-09-07",
+    "resolution": "2K",
+    "map_format_policy": "JPEG for diffuse, normal_gl and packed ARM; 16-bit grayscale PNG for displacement.",
+    "channels": {
+      "diffuse": "sRGB base colour",
+      "normal_gl": "OpenGL tangent normal",
+      "arm": "R ambient occlusion, G roughness, B metallic",
+      "displacement": "16-bit height"
+    },
+    "texture_bytes": 22242043,
+    "texture_limit_bytes": 65000000,
+    "within_texture_limit": true,
+    "files": [
+      {
+        "channel": "diffuse",
+        "file": "sources/pbr/region/leafy_grass/leafy_grass_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/leafy_grass/leafy_grass_diff_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 4766204,
+        "downloaded_bytes": 4766204,
+        "api_md5": "8014f4dace676a62ed71b3dd76119dae",
+        "downloaded_md5": "8014f4dace676a62ed71b3dd76119dae",
+        "sha256": "8e1c6d21365d4b89bc5a35ab664da98a78dbc3ab9ba6100474881c8619a5b113",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "normal_gl",
+        "file": "sources/pbr/region/leafy_grass/leafy_grass_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/leafy_grass/leafy_grass_nor_gl_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 6047262,
+        "downloaded_bytes": 6047262,
+        "api_md5": "ea5e91abe01dc5e5d7028c68c3bc9194",
+        "downloaded_md5": "ea5e91abe01dc5e5d7028c68c3bc9194",
+        "sha256": "df0cf0ce96e653f033e5b934d5b12995464bda027aa53bd12e329be889aa9f45",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "arm",
+        "file": "sources/pbr/region/leafy_grass/leafy_grass_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/leafy_grass/leafy_grass_arm_2k.jpg",
+        "format": "JPEG",
+        "mode": "RGB",
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 4116600,
+        "downloaded_bytes": 4116600,
+        "api_md5": "64f2eb364e806301df19edc7a67d65bb",
+        "downloaded_md5": "64f2eb364e806301df19edc7a67d65bb",
+        "sha256": "70d61c669fe9d186a84f5bb50e8a337083014d7e46534306a89d47d48fd5eb0e",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      },
+      {
+        "channel": "displacement",
+        "file": "sources/pbr/region/leafy_grass/leafy_grass_disp_2k.png",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/leafy_grass/leafy_grass_disp_2k.png",
+        "format": "PNG",
+        "mode": "I;16 grayscale",
+        "bit_depth": 16,
+        "dimensions_px": [
+          2048,
+          2048
+        ],
+        "api_bytes": 7311977,
+        "downloaded_bytes": 7311977,
+        "api_md5": "540555d31b8bf2d674b818a7e2e61125",
+        "downloaded_md5": "540555d31b8bf2d674b818a7e2e61125",
+        "sha256": "506ed7d425d9a73f6881e17f03e2a0d2fa57893bb0555a4b86ad905d2cabe510",
+        "byte_count_matches_api": true,
+        "md5_matches_api": true
+      }
+    ]
+  }
+}
