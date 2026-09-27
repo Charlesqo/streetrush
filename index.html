@@ -7,16 +7,33 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>晴空环线 · Street Rush</title>
+  <title>StreetRush 晴空环线 — 浏览器 3D 赛车游戏</title>
+  <meta name="description" content="StreetRush 晴空环线是一款可在线玩的浏览器 3D 赛车游戏。选择车辆，在封闭赛道完成三圈计时挑战，刷新个人最佳成绩。" />
+  <link rel="canonical" href="https://street.charlesq.net/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="StreetRush" />
+  <meta property="og:title" content="StreetRush 晴空环线 — 浏览器 3D 赛车游戏" />
+  <meta property="og:description" content="选择车辆，在封闭赛道完成三圈计时挑战。在线试玩 StreetRush 晴空环线。" />
+  <meta property="og:url" content="https://street.charlesq.net/" />
+  <meta property="og:image" content="https://street.charlesq.net/social-preview.jpg" />
+  <meta property="og:image:width" content="1280" />
+  <meta property="og:image:height" content="720" />
+  <meta property="og:image:alt" content="StreetRush 实机画面：MX-5 在赛道起点，显示圈速、检查点与驾驶 HUD" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="StreetRush 晴空环线 — 浏览器 3D 赛车游戏" />
+  <meta name="twitter:description" content="选择车辆，在封闭赛道完成三圈计时挑战。在线试玩 StreetRush 晴空环线。" />
+  <meta name="twitter:image" content="https://street.charlesq.net/social-preview.jpg" />
+  <meta name="twitter:image:alt" content="StreetRush 实机画面：MX-5 在赛道起点，显示圈速、检查点与驾驶 HUD" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"4c5fced4239d40f5955bf4bbbb316435"}'></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <canvas id="game" tabindex="-1" aria-label="Street Rush 游戏画面"></canvas>
+  <canvas id="game" tabindex="-1" aria-label="StreetRush 游戏画面"></canvas>
 
   <div id="loading" class="loading">
     <div class="loading-mark">SR</div>
@@ -51,7 +68,7 @@
   <main id="menu" class="menu">
     <div class="eyebrow">晴空试车计划 / 01</div>
     <h1>今天，<br><em>跑哪一台？</em></h1>
-    <p class="lede">六台真车模型，一条封闭城市赛道。控制轮胎负载，跑出三圈稳定节奏。</p>
+    <p class="lede">StreetRush 晴空环线是一款可在线玩的浏览器 3D 赛车游戏。六辆可选车辆，一条封闭赛道，挑战三圈最佳成绩。<a href="https://github.com/Charlesqo/streetrush" target="_blank" rel="noopener noreferrer">查看 GitHub 源码</a></p>
 
     <section class="garage">
       <button id="prev-car" class="nav-button" aria-label="上一辆车">←</button>
@@ -184,7 +201,7 @@
       <ol>
         <li>点击 Safari 底部或顶部的分享按钮</li>
         <li>选择“添加到主屏幕”</li>
-        <li>从主屏幕上的 Street Rush 图标重新打开</li>
+        <li>从主屏幕上的 StreetRush 图标重新打开</li>
       </ol>
     </div>
   </section>
@@ -251,7 +268,7 @@
     const bootRetry = document.getElementById('boot-retry-button');
     bootRetry?.addEventListener('click', () => location.reload());
     import('/src/main.js').catch((error) => {
-      console.error('[Street Rush] boot failed', error);
+      console.error('[StreetRush] boot failed', error);
       document.getElementById('loading')?.classList.remove('hidden');
       const status = document.getElementById('loading-status');
       if (status) {

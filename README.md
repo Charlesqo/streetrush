@@ -1,5 +1,7 @@
 # StreetRush · 晴空环线
 
+**[Play StreetRush online](https://street.charlesq.net)** — a browser-based 3D racing game where you pick a car and chase your best three-lap time.
+
 一个持续开发中的浏览器 3D 赛车项目。选一辆车，跑完三圈，挑战自己的最佳成绩。
 
 **[在线试玩](https://street.charlesq.net)** · [备用地址](https://street-rush.pages.dev) · [反馈问题](https://github.com/Charlesqo/streetrush/issues)
