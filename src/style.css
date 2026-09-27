@@ -53,6 +53,7 @@ button { font: inherit; color: inherit; }
 h1 { margin: 13px 0 15px; font: 800 clamp(52px, 6.3vw, 100px)/.78 "Barlow Condensed"; letter-spacing: -.035em; text-transform: uppercase; }
 h1 em { color: transparent; -webkit-text-stroke: 1px #f5f7fb; font-style: normal; }
 .lede { max-width: 430px; color: #a4aab5; font-size: 13px; line-height: 1.8; }
+.lede a { color: #ebff00; text-underline-offset: 3px; }
 .garage { margin-top: 28px; width: min(500px, 90%); display: flex; align-items: center; border-top: 1px solid rgba(255,255,255,.17); border-bottom: 1px solid rgba(255,255,255,.17); }
 .nav-button { width: 52px; height: 78px; border: 0; background: transparent; font-size: 22px; cursor: pointer; transition: color .2s, background .2s; }
 .nav-button:hover { color: #ebff00; background: rgba(255,255,255,.04); }
