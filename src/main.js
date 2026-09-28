@@ -1265,7 +1265,7 @@ function animate(now) {
       fixedUpdate(frameInput);
     } catch (error) {
       if (error.code !== 'V24_ACTIVE_STEP_ABORTED' || (state !== 'race' && state !== 'countdown')) throw error;
-      console.error('[Street Rush] vehicle simulation paused', error);
+      console.error('[StreetRush] vehicle simulation paused', error);
       physicsFault = true;
       openRaceMenu();
       resetPhysicsScheduler();

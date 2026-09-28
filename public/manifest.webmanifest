@@ -1,7 +1,7 @@
 {
-  "name": "Street Rush",
-  "short_name": "Street Rush",
-  "description": "个人浏览器驾驶实验",
+  "name": "StreetRush 晴空环线",
+  "short_name": "StreetRush",
+  "description": "可在线玩的浏览器 3D 赛车游戏：选车挑战三圈计时，刷新个人最佳成绩。",
   "start_url": "/?touch=1",
   "scope": "/",
   "display": "fullscreen",
