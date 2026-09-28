@@ -24,7 +24,7 @@ export default defineConfig({
   server: { host: '127.0.0.1' },
   build: {
     rollupOptions: {
-      input: { game: 'index.html', validation: 'validation.html' },
+      input: { game: 'index.html' },
     },
   },
 });
